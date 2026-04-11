@@ -393,13 +393,20 @@ function buildGraph(){
   svgG=svgEl.append('g');
   const lG=svgG.append('g'),nG=svgG.append('g'),tG=svgG.append('g');
 
+  const nodeRadius = d => Math.max(6,(d.decen||50)/8+3);
+  const labelCollision = d => {
+    const nr = nodeRadius(d);
+    const labelPad = Math.min(18, 6 + (d.name ? d.name.length * 0.45 : 0));
+    return nr + labelPad;
+  };
+
   const s=d3.forceSimulation(sn)
-    .force('link',d3.forceLink(se).id(d=>d.id).distance(82).strength(.3))
-    .force('charge',d3.forceManyBody().strength(-125))
+    .force('link',d3.forceLink(se).id(d=>d.id).distance(86).strength(.28))
+    .force('charge',d3.forceManyBody().strength(-136))
     .force('center',d3.forceCenter(w/2,h/2))
-    .force('x',d3.forceX(w/2).strength(.035))
-    .force('y',d3.forceY(h/2).strength(.035))
-    .force('collision',d3.forceCollide(d=>Math.max(12,(d.decen||50)/4+6)));
+    .force('x',d3.forceX(w/2).strength(.028))
+    .force('y',d3.forceY(h/2).strength(.028))
+    .force('collision',d3.forceCollide(labelCollision));
   sim=s;
 
   // Edges with color by type
@@ -409,7 +416,7 @@ function buildGraph(){
     .attr('opacity',.25);
 
   const ns=nG.selectAll('circle').data(sn).enter().append('circle')
-    .attr('r',d=>Math.max(6,(d.decen||50)/8+3))
+    .attr('r',nodeRadius)
     .attr('fill',d=>SC[d.stack]||'var(--text-3)')
     .attr('fill-opacity',.2)
     .attr('stroke',d=>SC[d.stack]||'var(--text-3)')
@@ -417,16 +424,19 @@ function buildGraph(){
     .style('cursor','pointer')
     .call(d3.drag().on('start',(e,d)=>{if(!e.active)s.alphaTarget(.3).restart();d.fx=d.x;d.fy=d.y}).on('drag',(e,d)=>{d.fx=e.x;d.fy=e.y}).on('end',(e,d)=>{if(!e.active)s.alphaTarget(0);d.fx=null;d.fy=null}));
 
-  tG.selectAll('text').data(sn).enter().append('text').text(d=>d.name)
-    .attr('font-size',11)
+  const labels=tG.selectAll('text').data(sn).enter().append('text').text(d=>d.name)
+    .attr('font-size',10)
     .attr('font-family','Nunito Sans,sans-serif')
     .attr('font-weight',600)
     .attr('fill','var(--graph-label)')
-    .attr('stroke','rgba(0,0,0,.65)')
-    .attr('stroke-width',0.8)
+    .attr('stroke','rgba(0,0,0,.72)')
+    .attr('stroke-width',1.1)
     .attr('paint-order','stroke')
     .attr('text-anchor','middle')
-    .attr('dy',-14)
+    .attr('dy',d=>{
+      const k = (d.id || '').split('').reduce((a,c)=>a+c.charCodeAt(0),0) % 3;
+      return k===0 ? -15 : (k===1 ? -22 : 18);
+    })
     .style('pointer-events','none');
 
   ns.on('click',(e,d)=>{selNode(d.id);el('app').classList.remove('hide-right')});
@@ -446,8 +456,8 @@ function resizeGraphViewport(){
     .attr('height', h);
 
   if (sim.force('center')) sim.force('center', d3.forceCenter(w / 2, h / 2));
-  if (sim.force('x')) sim.force('x', d3.forceX(w / 2).strength(0.035));
-  if (sim.force('y')) sim.force('y', d3.forceY(h / 2).strength(0.035));
+  if (sim.force('x')) sim.force('x', d3.forceX(w / 2).strength(0.028));
+  if (sim.force('y')) sim.force('y', d3.forceY(h / 2).strength(0.028));
 
   sim.alphaTarget(0.12).restart();
   setTimeout(() => {
@@ -489,7 +499,7 @@ function resizeGraphViewport(){
   s.on('tick',()=>{
     lines.attr('x1',d=>d.source.x).attr('y1',d=>d.source.y).attr('x2',d=>d.target.x).attr('y2',d=>d.target.y);
     ns.attr('cx',d=>d.x).attr('cy',d=>d.y);
-    tG.selectAll('text').attr('x',d=>d.x).attr('y',d=>d.y);
+    labels.attr('x',d=>d.x).attr('y',d=>d.y);
   });
 
   // Legend (collapsible)
