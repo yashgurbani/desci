@@ -15,10 +15,10 @@
   --gold:#d4a853;--gold-dim:#b8923e;--gold-glow:rgba(212,168,83,.08);
   --sage:#6ec89b;--rose:#e87e9a;--teal:#5ab8b3;
   --red:#e05c5c;--blue:#5c9ee0;
-  --graph-label:#d6d6d6;
   --mono:'Fira Code',monospace;--display:'Playfair Display',Georgia,serif;
   --body:'Nunito Sans',system-ui,sans-serif;
   --radius:8px;--radius-sm:5px;
+  --graph-label:#d6d6d6;
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{font-size:16px}
@@ -362,7 +362,7 @@ function togglePanel(p){
   a.classList.toggle(p==='left'?'hide-left':'hide-right');
   requestAnimationFrame(()=>requestAnimationFrame(()=>{
     window.dispatchEvent(new Event('resize'));
-    if(view==='graph'||view==='pgraph') render();
+    if(view==='graph'||view==='pgraph')render();
   }));
 }
 function setView(v,b){view=v;document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));b.classList.add('on');render()}
@@ -371,7 +371,6 @@ function setView(v,b){view=v;document.querySelectorAll('.tab').forEach(t=>t.clas
 function render(){
   const m=el('main');m.querySelectorAll('svg,.table-wrap,.people-grid,.lit-panel,.legend').forEach(e=>e.remove());
   if(sim)sim.stop();
-  el('zoomCtrl').style.display='none';
   if(view==='graph')buildGraph();
   else if(view==='table')renderTable();
   else if(view==='people')renderPeople();
@@ -383,12 +382,11 @@ function render(){
 function buildGraph(){
   const m=el('main'),w=m.clientWidth,h=m.clientHeight;
   if(!w||!h)return;
-  el('zoomCtrl').style.display='flex';
   const sn=D.nodes.filter(vis);
   const si=new Set(sn.map(n=>n.id));
-  const se = D.edges
-  .filter(e => si.has(e.s) && si.has(e.t))
-  .map(e => ({ ...e, source: e.s, target: e.t }));
+  const se=D.edges
+    .filter(e=>si.has(e.s)&&si.has(e.t))
+    .map(e=>({ ...e, source:e.s, target:e.t }));
   const svgEl=d3.select(m).append('svg').attr('width',w).attr('height',h);
   zoomBehavior=d3.zoom().scaleExtent([.15,4]).on('zoom',e=>svgG.attr('transform',e.transform));
   svgEl.call(zoomBehavior);
@@ -418,9 +416,16 @@ function buildGraph(){
     .call(d3.drag().on('start',(e,d)=>{if(!e.active)s.alphaTarget(.3).restart();d.fx=d.x;d.fy=d.y}).on('drag',(e,d)=>{d.fx=e.x;d.fy=e.y}).on('end',(e,d)=>{if(!e.active)s.alphaTarget(0);d.fx=null;d.fy=null}));
 
   tG.selectAll('text').data(sn).enter().append('text').text(d=>d.name)
-    .attr('font-size',11).attr('font-family','Nunito Sans,sans-serif').attr('font-weight',600)
-    .attr('fill','var(--graph-label)').attr('stroke','rgba(0,0,0,.65)').attr('stroke-width',0.8).attr('paint-order','stroke')
-    .attr('text-anchor','middle').attr('dy',-14).style('pointer-events','none');
+    .attr('font-size',11)
+    .attr('font-family','Nunito Sans,sans-serif')
+    .attr('font-weight',600)
+    .attr('fill','var(--graph-label)')
+    .attr('stroke','rgba(0,0,0,.65)')
+    .attr('stroke-width',0.8)
+    .attr('paint-order','stroke')
+    .attr('text-anchor','middle')
+    .attr('dy',-14)
+    .style('pointer-events','none');
 
   ns.on('click',(e,d)=>{selNode(d.id);el('app').classList.remove('hide-right')});
 
@@ -465,8 +470,6 @@ function buildGraph(){
   lg.innerHTML=`<div class="legend-header" onclick="this.parentElement.classList.toggle('collapsed')"><span class="legend-title">Legend</span><span class="legend-toggle">▼</span></div><div class="legend-body"><div style="margin-top:6px"><div class="legend-row"><div class="legend-dot" style="background:var(--sage)"></div>Infrastructure</div><div class="legend-row"><div class="legend-dot" style="background:var(--rose)"></div>Application</div><div class="legend-row"><div class="legend-dot" style="background:var(--teal)"></div>Governance</div></div><div style="margin-top:8px;border-top:1px solid var(--border);padding-top:6px"><div class="legend-row"><div style="width:14px;height:2px;background:var(--edge-funder);border-radius:1px"></div>Funder</div><div class="legend-row"><div style="width:14px;height:2px;background:var(--edge-ecosystem);border-radius:1px"></div>Ecosystem</div><div class="legend-row"><div style="width:14px;height:2px;background:var(--edge-partner);border-radius:1px"></div>Partner</div><div class="legend-row"><div style="width:14px;height:2px;background:var(--edge-overlap);border-radius:1px"></div>Overlap</div><div class="legend-row"><div style="width:14px;height:2px;background:var(--edge-collaborator);border-radius:1px"></div>Collaborator</div></div><div style="margin-top:6px;font-size:.6rem;color:var(--text-3)">Node size = decentralization<br>Thick border = overlap ≥40%</div></div>`;
   m.appendChild(lg);
 }
-function zoomGraph(f){const s=d3.select('#main svg');if(zoomBehavior)s.transition().duration(300).call(zoomBehavior.scaleBy,f)}
-function zoomReset(){const s=d3.select('#main svg');if(zoomBehavior)s.transition().duration(400).call(zoomBehavior.transform,d3.zoomIdentity)}
 
 // ===== TABLE =====
 function renderTable(){
