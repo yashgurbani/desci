@@ -391,26 +391,26 @@ function buildGraph(){
 
   const svgEl=d3.select(m).append('svg').attr('width',w).attr('height',h);
   svgG=svgEl.append('g');
-  zoomBehavior=d3.zoom().scaleExtent([.3,3]).on('zoom',e=>svgG.attr('transform',e.transform));
+  zoomBehavior=d3.zoom().scaleExtent([.35,3]).on('zoom',e=>svgG.attr('transform',e.transform));
   svgEl.call(zoomBehavior);
 
   const lG=svgG.append('g'),nG=svgG.append('g'),tG=svgG.append('g');
 
   // Start nodes near the center so disconnected components do not spawn all over the canvas.
   sn.forEach((d,i)=>{
-    d.x = w/2 + ((i%8)-4)*22;
-    d.y = h/2 + (Math.floor(i/8)%8-4)*22;
+    d.x = w/2 + ((i%8)-4)*18;
+    d.y = h/2 + (Math.floor(i/8)%8-4)*18;
   });
 
   const s=d3.forceSimulation(sn)
     .alpha(1)
-    .alphaDecay(0.045)
-    .force('link',d3.forceLink(se).id(d=>d.id).distance(92).strength(0.28))
-    .force('charge',d3.forceManyBody().strength(-155))
+    .alphaDecay(0.05)
+    .force('link',d3.forceLink(se).id(d=>d.id).distance(46).strength(0.55))
+    .force('charge',d3.forceManyBody().strength(-65))
     .force('center',d3.forceCenter(w/2,h/2))
-    .force('x',d3.forceX(w/2).strength(0.012))
-    .force('y',d3.forceY(h/2).strength(0.012))
-    .force('collision',d3.forceCollide(d=>Math.max(15,(d.decen||50)/8+8)));
+    .force('x',d3.forceX(w/2).strength(0.045))
+    .force('y',d3.forceY(h/2).strength(0.045))
+    .force('collision',d3.forceCollide(d=>Math.max(9,(d.decen||50)/10+5)));
   sim=s;
 
   const lines=lG.selectAll('line').data(se).enter().append('line')
@@ -473,15 +473,15 @@ function buildGraph(){
     if(fitted||!svgG||!zoomBehavior)return;
     const box=svgG.node().getBBox();
     if(!box.width||!box.height)return;
-    const pad=168;
-    const scale=Math.max(0.3, Math.min(0.88, Math.min((w-pad)/box.width,(h-pad)/box.height)));
+    const pad=48;
+    const scale=Math.max(0.45, Math.min(1.6, Math.min((w-pad)/box.width,(h-pad)/box.height)));
     const tx=(w-box.width*scale)/2 - box.x*scale;
     const ty=(h-box.height*scale)/2 - box.y*scale;
     svgEl.transition().duration(350).call(zoomBehavior.transform,d3.zoomIdentity.translate(tx,ty).scale(scale));
     fitted=true;
   };
   s.on('end', fitGraphNow);
-  setTimeout(fitGraphNow, 900);
+  setTimeout(fitGraphNow, 700);
 
   const lg=document.createElement('div');lg.className='legend';lg.id='graphLegend';
   lg.innerHTML=`<div class="legend-header" onclick="this.parentElement.classList.toggle('collapsed')"><span class="legend-title">Legend</span><span class="legend-toggle">▼</span></div><div class="legend-body"><div style="margin-top:6px"><div class="legend-row"><div class="legend-dot" style="background:var(--sage)"></div>Infrastructure</div><div class="legend-row"><div class="legend-dot" style="background:var(--rose)"></div>Application</div><div class="legend-row"><div class="legend-dot" style="background:var(--teal)"></div>Governance</div></div><div style="margin-top:8px;border-top:1px solid var(--border);padding-top:6px"><div class="legend-row"><div style="width:14px;height:2px;background:var(--edge-funder);border-radius:1px"></div>Funder</div><div class="legend-row"><div style="width:14px;height:2px;background:var(--edge-ecosystem);border-radius:1px"></div>Ecosystem</div><div class="legend-row"><div style="width:14px;height:2px;background:var(--edge-partner);border-radius:1px"></div>Partner</div><div class="legend-row"><div style="width:14px;height:2px;background:var(--edge-overlap);border-radius:1px"></div>Overlap</div><div class="legend-row"><div style="width:14px;height:2px;background:var(--edge-collaborator);border-radius:1px"></div>Collaborator</div></div><div style="margin-top:6px;font-size:.6rem;color:var(--text-3)">Node size = decentralization<br>Thick border = overlap ≥40%</div></div>`;
