@@ -19,10 +19,18 @@
   --body:'Nunito Sans',system-ui,sans-serif;
   --radius:8px;--radius-sm:5px;
   --graph-label:#d6d6d6;
+  --link:#7fcfff;--link-h:#b7e6ff;
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{font-size:16px}
+html{font-size:16px;color-scheme:dark;scrollbar-color:#2a2a2a #050505}
 body{font-family:var(--body);background:var(--bg);color:var(--text);height:100vh;overflow:hidden;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:var(--link);text-decoration:none}
+a:hover{color:var(--link-h)}
+.sidebar,.detail,.node-list,.table-wrap,.people-grid,.lit-panel,.modal{scrollbar-width:thin;scrollbar-color:#2a2a2a #050505}
+.sidebar::-webkit-scrollbar,.detail::-webkit-scrollbar,.node-list::-webkit-scrollbar,.table-wrap::-webkit-scrollbar,.people-grid::-webkit-scrollbar,.lit-panel::-webkit-scrollbar,.modal::-webkit-scrollbar{width:12px;height:12px}
+.sidebar::-webkit-scrollbar-track,.detail::-webkit-scrollbar-track,.node-list::-webkit-scrollbar-track,.table-wrap::-webkit-scrollbar-track,.people-grid::-webkit-scrollbar-track,.lit-panel::-webkit-scrollbar-track,.modal::-webkit-scrollbar-track{background:#050505}
+.sidebar::-webkit-scrollbar-thumb,.detail::-webkit-scrollbar-thumb,.node-list::-webkit-scrollbar-thumb,.table-wrap::-webkit-scrollbar-thumb,.people-grid::-webkit-scrollbar-thumb,.lit-panel::-webkit-scrollbar-thumb,.modal::-webkit-scrollbar-thumb{background:#2a2a2a;border:2px solid #050505;border-radius:999px}
+.sidebar::-webkit-scrollbar-thumb:hover,.detail::-webkit-scrollbar-thumb:hover,.node-list::-webkit-scrollbar-thumb:hover,.table-wrap::-webkit-scrollbar-thumb:hover,.people-grid::-webkit-scrollbar-thumb:hover,.lit-panel::-webkit-scrollbar-thumb:hover,.modal::-webkit-scrollbar-thumb:hover{background:#3a3a3a}
 
 /* LAYOUT */
 .app{display:grid;grid-template-columns:240px 1fr 360px;grid-template-rows:52px 1fr;height:100vh}
@@ -124,7 +132,7 @@ select.finput{appearance:none;cursor:pointer}
 .p-name{font-family:var(--display);font-size:1.05rem;font-weight:600;margin-bottom:3px}
 .p-role{font-size:.8rem;color:var(--text-2);line-height:1.4;margin-bottom:8px}
 .p-links{display:flex;gap:10px;font-size:.75rem}
-.p-links a{color:var(--gold);text-decoration:none}
+.p-links a{color:var(--link);text-decoration:none}
 .p-orgs{font-family:var(--mono);font-size:.65rem;color:var(--text-3);margin-top:8px}
 
 /* TABLE */
@@ -175,7 +183,7 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
 /* EDGE COLORS */
 :root {
   --edge-funder:#5cb87a;--edge-ecosystem:#5caab8;--edge-partner:#9b7ed4;
-  --edge-overlap:#c9a84c;--edge-collaborator:#e87e9a;
+  --edge-overlap:#e3be4d;--edge-collaborator:#e87e9a;
 }
 
 /* CREDIBILITY BADGE */
@@ -275,7 +283,7 @@ const GLOSS={
 // ===== GLOBALS =====
 const el=id=>document.getElementById(id);
 let D={nodes:[],edges:[],people:[]};
-let view='graph',selId=null,sim=null,zoomBehavior=null,svgG=null,graphComponents=[],graphComponentCenters=new Map();
+let view='graph',selId=null,sim=null,zoomBehavior=null,svgG=null;
 let flt={stack:[],type:[],overlap:[]};
 let sortC='overlapScore',sortA=false;
 let zoteroItems=null;
@@ -284,8 +292,8 @@ const SC={infrastructure:'var(--sage)',application:'var(--rose)',governance:'var
 const SBG={infrastructure:'rgba(110,200,155,.12)',application:'rgba(232,126,154,.12)',governance:'rgba(90,184,179,.12)'};
 const SS={0:'·',1:'○',2:'◐',3:'●'};
 const SL=['S1\nData','S2\nLedger','S3\nAI','S4\nProof','S5\nGov'];
-const EC={'funder':'var(--edge-funder)','ecosystem':'var(--edge-ecosystem)','partner':'var(--edge-partner)','overlap':'var(--edge-overlap)','collaborator':'var(--edge-collaborator)'};
-const RB={funder:{b:'rgba(92,184,122,.2)',c:'var(--sage)'},ecosystem:{b:'rgba(92,170,184,.2)',c:'var(--teal)'},partner:{b:'rgba(155,126,212,.2)',c:'#9b7ed4'},overlap:{b:'rgba(201,168,76,.2)',c:'var(--gold)'},collaborator:{b:'rgba(232,126,154,.2)',c:'var(--rose)'}};
+const EC={'funder':'var(--edge-funder)','ecosystem':'var(--edge-ecosystem)','partner':'var(--edge-partner)','overlap':'var(--edge-overlap)'};
+const RB={funder:{b:'rgba(92,184,122,.2)',c:'var(--sage)'},ecosystem:{b:'rgba(92,170,184,.2)',c:'var(--teal)'},partner:{b:'rgba(155,126,212,.2)',c:'#9b7ed4'},overlap:{b:'rgba(227,190,77,.22)',c:'var(--gold)'}};
 const OV_LABELS={"publishing":"Publishing","peer-review":"Peer Review","reputation":"Reputation","dao-gov":"DAO Gov","compute":"Compute","ai-ml":"AI/ML","citation-graph":"Citations","scicomm":"SciComm","citizen-sci":"Citizen Sci","smart-contracts":"Contracts/NFT","data-sovereignty":"Data Sov","ip-nft":"IP-NFT"};
 
 // ===== INIT =====
@@ -302,6 +310,7 @@ async function init(){
   }
   if(!D.nodes||!D.nodes.length){D={nodes:[],edges:[],people:[]}; return}
   D.nodes.forEach(n=>{n.wp=n.wp||'';n.git=n.git||'';n.twitter=n.twitter||'';n.cf=n.cf||{};n.overlapTags=n.overlapTags||[];n.credScore=n.credScore||0;n.overlapScore=n.overlapScore||0;n.decentNote=n.decentNote||'';n.techStack=n.techStack||'';n.compNote=n.compNote||''});
+  D.edges=(D.edges||[]).map(e=>e.type==='collaborator'?({...e,type:'partner'}):e);
   if(!D.people)D.people=[];
   buildPills();render();updateSB();updateStats();
   setTimeout(autoSync,500);
@@ -367,6 +376,74 @@ function togglePanel(p){
 }
 function setView(v,b){view=v;document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));b.classList.add('on');render()}
 
+function computeComponents(nodes, links){
+  const ids = nodes.map(n => n.id);
+  const adj = new Map(ids.map(id => [id, []]));
+  links.forEach(e => {
+    const a = typeof e.source === 'object' ? e.source.id : (e.source || e.s);
+    const b = typeof e.target === 'object' ? e.target.id : (e.target || e.t);
+    if (adj.has(a) && adj.has(b)) {
+      adj.get(a).push(b);
+      adj.get(b).push(a);
+    }
+  });
+  const seen = new Set();
+  const out = [];
+  for (const id of ids) {
+    if (seen.has(id)) continue;
+    const stack = [id];
+    seen.add(id);
+    const comp = [];
+    while (stack.length) {
+      const cur = stack.pop();
+      comp.push(cur);
+      for (const nxt of adj.get(cur) || []) {
+        if (!seen.has(nxt)) {
+          seen.add(nxt);
+          stack.push(nxt);
+        }
+      }
+    }
+    out.push(comp);
+  }
+  return out.sort((a,b) => b.length - a.length);
+}
+
+function componentAnchors(w, h, comps){
+  const n = comps.length;
+  if (!n) return [];
+  const cx = w / 2, cy = h / 2;
+  const minDim = Math.min(w, h);
+  const anchors = [];
+  let placed = 0;
+  let ring = 0;
+
+  while (placed < n) {
+    const radius = minDim * (0.22 + ring * 0.16);
+    const capacity = Math.max(5 + ring * 3, Math.ceil(2 * Math.PI * radius / 210));
+    const count = Math.min(capacity, n - placed);
+    const offset = -Math.PI / 2 + (ring % 2 ? Math.PI / count : 0);
+
+    for (let i = 0; i < count; i++) {
+      const a = offset + (i * 2 * Math.PI / count);
+      anchors.push({
+        x: cx + Math.cos(a) * radius,
+        y: cy + Math.sin(a) * radius
+      });
+    }
+
+    placed += count;
+    ring += 1;
+  }
+
+  return anchors;
+}
+
+function labelDyFor(i){
+  return [-16, -24, 18, 26][i % 4];
+}
+
+
 // ===== RENDER =====
 function render(){
   const m=el('main');m.querySelectorAll('svg,.table-wrap,.people-grid,.lit-panel,.legend').forEach(e=>e.remove());
@@ -379,160 +456,79 @@ function render(){
 }
 
 // ===== GRAPH =====
-
-function computeGraphComponentCenters(w,h){
-  graphComponentCenters = new Map();
-  const comps = graphComponents || [];
-  if(!comps.length) return graphComponentCenters;
-  const cx = w / 2, cy = h / 2;
-  if(comps.length === 1){
-    graphComponentCenters.set(0,{x:cx,y:cy});
-    return graphComponentCenters;
-  }
-
-  const innerCount = Math.min(6, comps.length);
-  const outerCount = Math.max(0, comps.length - innerCount);
-  const innerR = Math.min(w,h) * 0.19;
-  const outerR = Math.min(w,h) * 0.31;
-
-  for(let i=0;i<innerCount;i++){
-    const a = (-Math.PI/2) + (2*Math.PI*i/innerCount);
-    graphComponentCenters.set(i,{x:cx + Math.cos(a)*innerR, y:cy + Math.sin(a)*innerR});
-  }
-  for(let i=0;i<outerCount;i++){
-    const a = (-Math.PI/2) + (2*Math.PI*i/outerCount) + (outerCount ? Math.PI/outerCount : 0);
-    graphComponentCenters.set(innerCount + i,{x:cx + Math.cos(a)*outerR, y:cy + Math.sin(a)*outerR});
-  }
-  return graphComponentCenters;
-}
-
 function buildGraph(){
   const m=el('main'),w=m.clientWidth,h=m.clientHeight;
   if(!w||!h)return;
-  const sn=D.nodes.filter(vis);
+
+  const sn=D.nodes.filter(vis).map((n, i)=>({ ...n, _i:i }));
   const si=new Set(sn.map(n=>n.id));
   const se=D.edges
     .filter(e=>si.has(e.s)&&si.has(e.t))
     .map(e=>({ ...e, source:e.s, target:e.t }));
+
+  const comps = computeComponents(sn, se);
+  const compIndex = new Map();
+  comps.forEach((comp, i) => comp.forEach(id => compIndex.set(id, i)));
+  const anchors = componentAnchors(w, h, comps);
+  const anchorById = new Map();
+  comps.forEach((comp, i) => comp.forEach(id => anchorById.set(id, anchors[i])));
+
+  sn.forEach((d, i) => {
+    const a = anchorById.get(d.id) || { x:w/2, y:h/2 };
+    const spread = 44 + (i % 5) * 7;
+    d.x = a.x + (Math.random() - 0.5) * spread;
+    d.y = a.y + (Math.random() - 0.5) * spread;
+  });
+
   const svgEl=d3.select(m).append('svg').attr('width',w).attr('height',h);
   zoomBehavior=d3.zoom().scaleExtent([.15,4]).on('zoom',e=>svgG.attr('transform',e.transform));
   svgEl.call(zoomBehavior);
   svgG=svgEl.append('g');
   const lG=svgG.append('g'),nG=svgG.append('g'),tG=svgG.append('g');
 
-  const adj=new Map(sn.map(n=>[n.id,[]]));
-  se.forEach(e=>{
-    adj.get(e.source)?.push(e.target);
-    adj.get(e.target)?.push(e.source);
-  });
-
-  const seen=new Set(), components=[];
-  for(const n of sn){
-    if(seen.has(n.id)) continue;
-    const q=[n.id], comp=[];
-    seen.add(n.id);
-    while(q.length){
-      const cur=q.pop();
-      comp.push(cur);
-      for(const nxt of (adj.get(cur)||[])){
-        if(!seen.has(nxt)){
-          seen.add(nxt);
-          q.push(nxt);
-        }
-      }
-    }
-    components.push(comp);
-  }
-  components.sort((a,b)=>b.length-a.length);
-  graphComponents = components;
-  computeGraphComponentCenters(w,h);
-
-  const compIndex=new Map();
-  components.forEach((comp,i)=>comp.forEach(id=>compIndex.set(id,i)));
-
-  const nodeRadius = d => Math.max(6,(d.decen||50)/8+3);
-  const labelCollision = d => {
-    const nr = nodeRadius(d);
-    const labelPad = Math.min(28, 10 + (d.name ? d.name.length * 0.58 : 0));
-    return nr + labelPad;
-  };
-
-  sn.forEach(d=>{
-    d._comp = compIndex.get(d.id) ?? 0;
-    const c = graphComponentCenters.get(d._comp) || {x:w/2,y:h/2};
-    if(!Number.isFinite(d.x)) d.x = c.x + (Math.random()-.5)*96;
-    if(!Number.isFinite(d.y)) d.y = c.y + (Math.random()-.5)*78;
-  });
-
   const s=d3.forceSimulation(sn)
-    .force('link',d3.forceLink(se).id(d=>d.id).distance(108).strength(.20))
-    .force('charge',d3.forceManyBody().strength(-162))
+    .force('link',d3.forceLink(se).id(d=>d.id).distance(88).strength(.2))
+    .force('charge',d3.forceManyBody().strength(-180))
     .force('center',d3.forceCenter(w/2,h/2))
-    .force('clusterX',d3.forceX(d=>(graphComponentCenters.get(d._comp)||{x:w/2}).x).strength(.058))
-    .force('clusterY',d3.forceY(d=>(graphComponentCenters.get(d._comp)||{y:h/2}).y).strength(.058))
-    .force('collision',d3.forceCollide(d=>labelCollision(d)+9));
+    .force('clusterX', d3.forceX(d => (anchorById.get(d.id) || {x:w/2}).x).strength(.11))
+    .force('clusterY', d3.forceY(d => (anchorById.get(d.id) || {y:h/2}).y).strength(.11))
+    .force('collision',d3.forceCollide(d => {
+      const r = Math.max(7,(d.decen||50)/8+4);
+      const labelPad = Math.min(28, (d.name || '').length * 0.24);
+      return r + labelPad + 13;
+    }));
   sim=s;
 
-  // Edges with color by type
   const lines=lG.selectAll('line').data(se).enter().append('line')
     .attr('stroke',d=>EC[d.type]||'var(--raised)')
-    .attr('stroke-width',1.5)
-    .attr('opacity',.25);
+    .attr('stroke-width',d=>d.type==='overlap'?1.9:1.5)
+    .attr('stroke-dasharray',d=>d.type==='overlap'?'7 5':null)
+    .attr('stroke-linecap','round')
+    .attr('opacity',d=>d.type==='overlap'?.46:.22);
 
   const ns=nG.selectAll('circle').data(sn).enter().append('circle')
-    .attr('r',nodeRadius)
+    .attr('r',d=>Math.max(6,(d.decen||50)/8+3))
     .attr('fill',d=>SC[d.stack]||'var(--text-3)')
     .attr('fill-opacity',.2)
     .attr('stroke',d=>SC[d.stack]||'var(--text-3)')
     .attr('stroke-width',d=>(d.overlapScore||0)>=40?2.5:1.2)
     .style('cursor','pointer')
-    .call(d3.drag().on('start',(e,d)=>{if(!e.active)s.alphaTarget(.3).restart();d.fx=d.x;d.fy=d.y}).on('drag',(e,d)=>{d.fx=e.x;d.fy=e.y}).on('end',(e,d)=>{if(!e.active)s.alphaTarget(0);d.fx=null;d.fy=null}));
+    .call(d3.drag().on('start',(e,d)=>{if(!e.active)s.alphaTarget(.22).restart();d.fx=d.x;d.fy=d.y}).on('drag',(e,d)=>{d.fx=e.x;d.fy=e.y}).on('end',(e,d)=>{if(!e.active)s.alphaTarget(0);d.fx=null;d.fy=null}));
 
-  const labels=tG.selectAll('text').data(sn).enter().append('text').text(d=>d.name)
+  tG.selectAll('text').data(sn).enter().append('text').text(d=>d.name)
     .attr('font-size',9.5)
     .attr('font-family','Nunito Sans,sans-serif')
     .attr('font-weight',600)
     .attr('fill','var(--graph-label)')
-    .attr('stroke','rgba(0,0,0,.82)')
+    .attr('stroke','rgba(0,0,0,.72)')
     .attr('stroke-width',1.25)
     .attr('paint-order','stroke')
     .attr('text-anchor','middle')
-    .attr('dy',d=>{
-      const k = (d.id || '').split('').reduce((a,c)=>a+c.charCodeAt(0),0) % 4;
-      return k===0 ? -18 : (k===1 ? -32 : (k===2 ? 22 : 36));
-    })
+    .attr('dy',d=>labelDyFor(compIndex.get(d.id) || d._i))
     .style('pointer-events','none');
 
   ns.on('click',(e,d)=>{selNode(d.id);el('app').classList.remove('hide-right')});
 
-
-function resizeGraphViewport(){
-  const svgNode = document.querySelector('#main svg');
-  if (!svgNode || !sim || !svgG) return;
-
-  const m = el('main');
-  const w = m.clientWidth;
-  const h = m.clientHeight;
-  if (!w || !h) return;
-
-  d3.select(svgNode)
-    .attr('width', w)
-    .attr('height', h);
-
-  computeGraphComponentCenters(w,h);
-
-  if (sim.force('center')) sim.force('center', d3.forceCenter(w / 2, h / 2));
-  if (sim.force('clusterX')) sim.force('clusterX', d3.forceX(d => (graphComponentCenters.get(d._comp) || {x:w/2}).x).strength(0.058));
-  if (sim.force('clusterY')) sim.force('clusterY', d3.forceY(d => (graphComponentCenters.get(d._comp) || {y:h/2}).y).strength(0.058));
-
-  sim.alphaTarget(0.12).restart();
-  setTimeout(() => {
-    if (sim) sim.alphaTarget(0);
-  }, 220);
-}
-
-
-  // Tooltip for nodes
   const tip=el('tip');
   ns.on('mouseenter',(e,d)=>{
     const cred=d.credScore||0;
@@ -543,36 +539,27 @@ function resizeGraphViewport(){
   .on('mousemove',e=>{const r=m.getBoundingClientRect();tip.style.left=(e.clientX-r.left+14)+'px';tip.style.top=(e.clientY-r.top-10)+'px'})
   .on('mouseleave',()=>tip.classList.remove('vis'));
 
-  // Edge hover tooltip
-  lines.on('mouseenter',(e,d)=>{
-    const sn=D.nodes.find(n=>n.id===(d.source.id||d.source));
-    const tn=D.nodes.find(n=>n.id===(d.target.id||d.target));
-    tip.innerHTML=`<h4 style="font-size:.8rem">${sn?.name||''} → ${tn?.name||''}</h4><div class="tm"><span class="rel-badge" style="background:${(RB[d.type]||{}).b||'var(--raised)'};color:${(RB[d.type]||{}).c||'#fff'}">${d.type}</span> ${d.l||''}</div>`;
-    tip.classList.add('vis');
-  })
-  .on('mousemove',e=>{const r=m.getBoundingClientRect();tip.style.left=(e.clientX-r.left+14)+'px';tip.style.top=(e.clientY-r.top-10)+'px'})
-  .on('mouseleave',()=>tip.classList.remove('vis'))
-  .style('cursor','pointer')
-  .attr('stroke-width',1.5)
-  .on('mouseenter',function(e,d){d3.select(this).attr('stroke-width',3).attr('opacity',.6);
+  lines.on('mouseenter',function(e,d){
+    d3.select(this).attr('stroke-width',3).attr('opacity',.55);
     const sn2=D.nodes.find(n=>n.id===(d.source.id||d.source));
     const tn2=D.nodes.find(n=>n.id===(d.target.id||d.target));
     tip.innerHTML=`<h4 style="font-size:.8rem">${sn2?.name||''} → ${tn2?.name||''}</h4><div class="tm"><span class="rel-badge" style="background:${(RB[d.type]||{}).b||'var(--raised)'};color:${(RB[d.type]||{}).c||'#fff'}">${d.type}</span> ${d.l||''}</div>`;
     tip.classList.add('vis');
   })
-  .on('mouseleave',function(){d3.select(this).attr('stroke-width',1.5).attr('opacity',.25);tip.classList.remove('vis')});
+  .on('mousemove',e=>{const r=m.getBoundingClientRect();tip.style.left=(e.clientX-r.left+14)+'px';tip.style.top=(e.clientY-r.top-10)+'px'})
+  .on('mouseleave',function(){d3.select(this).attr('stroke-width',d=>d.type==='overlap'?1.9:1.5).attr('opacity',d=>d.type==='overlap'?.46:.22);tip.classList.remove('vis')});
 
   s.on('tick',()=>{
     lines.attr('x1',d=>d.source.x).attr('y1',d=>d.source.y).attr('x2',d=>d.target.x).attr('y2',d=>d.target.y);
     ns.attr('cx',d=>d.x).attr('cy',d=>d.y);
-    labels.attr('x',d=>d.x).attr('y',d=>d.y);
+    tG.selectAll('text').attr('x',d=>d.x).attr('y',d=>d.y);
   });
 
-  // Legend (collapsible)
   const lg=document.createElement('div');lg.className='legend';lg.id='graphLegend';
-  lg.innerHTML=`<div class="legend-header" onclick="this.parentElement.classList.toggle('collapsed')"><span class="legend-title">Legend</span><span class="legend-toggle">▼</span></div><div class="legend-body"><div style="margin-top:6px"><div class="legend-row"><div class="legend-dot" style="background:var(--sage)"></div>Infrastructure</div><div class="legend-row"><div class="legend-dot" style="background:var(--rose)"></div>Application</div><div class="legend-row"><div class="legend-dot" style="background:var(--teal)"></div>Governance</div></div><div style="margin-top:8px;border-top:1px solid var(--border);padding-top:6px"><div class="legend-row"><div style="width:14px;height:2px;background:var(--edge-funder);border-radius:1px"></div>Funder</div><div class="legend-row"><div style="width:14px;height:2px;background:var(--edge-ecosystem);border-radius:1px"></div>Ecosystem</div><div class="legend-row"><div style="width:14px;height:2px;background:var(--edge-partner);border-radius:1px"></div>Partner</div><div class="legend-row"><div style="width:14px;height:2px;background:var(--edge-overlap);border-radius:1px"></div>Overlap</div><div class="legend-row"><div style="width:14px;height:2px;background:var(--edge-collaborator);border-radius:1px"></div>Collaborator</div></div><div style="margin-top:6px;font-size:.6rem;color:var(--text-3)">Node size = decentralization<br>Thick border = overlap ≥40%</div></div>`;
+  lg.innerHTML=`<div class="legend-header" onclick="this.parentElement.classList.toggle('collapsed')"><span class="legend-title">Legend</span><span class="legend-toggle">▼</span></div><div class="legend-body"><div style="margin-top:6px"><div class="legend-row"><div class="legend-dot" style="background:var(--sage)"></div>Infrastructure</div><div class="legend-row"><div class="legend-dot" style="background:var(--rose)"></div>Application</div><div class="legend-row"><div class="legend-dot" style="background:var(--teal)"></div>Governance</div></div><div style="margin-top:8px;border-top:1px solid var(--border);padding-top:6px"><div class="legend-row"><div style="width:14px;height:2px;background:var(--edge-funder);border-radius:1px"></div>Funder</div><div class="legend-row"><div style="width:14px;height:2px;background:var(--edge-ecosystem);border-radius:1px"></div>Ecosystem</div><div class="legend-row"><div style="width:14px;height:2px;background:var(--edge-partner);border-radius:1px"></div>Partner</div><div class="legend-row"><div style="width:14px;height:2px;background:var(--edge-overlap);border-radius:1px;border-top:2px dashed var(--edge-overlap)"></div>Overlap</div></div><div style="margin-top:6px;font-size:.6rem;color:var(--text-3)">Node size = decentralization<br>Thick border = overlap ≥40%</div></div>`;
   m.appendChild(lg);
 }
+
 
 // ===== TABLE =====
 function renderTable(){
@@ -596,7 +583,7 @@ function renderPeople(){
 }
 function showPerson(pid){
   const p=D.people.find(x=>x.id===pid);if(!p)return;
-  el('detE').style.display='none';el('detC').innerHTML=`<div class="det-name">${p.name}</div><div class="det-sub">${p.role||''}</div>${p.linkedin?`<a href="${p.linkedin}" target="_blank" style="color:var(--gold);font-size:.85rem">LinkedIn ↗</a> `:''} ${p.twitter?`<a href="https://x.com/${p.twitter.replace('@','')}" target="_blank" style="color:var(--gold);font-size:.85rem">${p.twitter}</a>`:''}`;
+  el('detE').style.display='none';el('detC').innerHTML=`<div class="det-name">${p.name}</div><div class="det-sub">${p.role||''}</div>${p.linkedin?`<a href="${p.linkedin}" target="_blank" style="color:var(--link);font-size:.85rem">LinkedIn ↗</a> `:''} ${p.twitter?`<a href="https://x.com/${p.twitter.replace('@','')}" target="_blank" style="color:var(--link);font-size:.85rem">${p.twitter}</a>`:''}`;
   el('app').classList.remove('hide-right');
 }
 
@@ -604,118 +591,68 @@ function showPerson(pid){
 function renderPeopleGraph(){
   const m=el('main'),w=m.clientWidth,h=m.clientHeight;
   if(!w||!h)return;
-  const pN=D.people.map(p=>({...p,_t:'person'}));
-  const oN=D.nodes.filter(n=>D.people.some(p=>p.orgs.includes(n.id))).map(n=>({id:n.id,name:n.name,_t:'org',stack:n.stack}));
+  const pN=D.people.map((p, i)=>({...p,_t:'person', _i:i}));
+  const oN=D.nodes.filter(n=>D.people.some(p=>p.orgs.includes(n.id))).map((n, i)=>({id:n.id,name:n.name,_t:'org',stack:n.stack,_i:i+1000}));
   const allN=[...pN,...oN];
   const links=[];
   D.people.forEach(p=>p.orgs.forEach(o=>{if(D.nodes.find(n=>n.id===o))links.push({source:p.id,target:o,_t:'member'})}));
   D.people.forEach((p1,i)=>D.people.forEach((p2,j)=>{if(j>i&&p1.orgs.some(o=>p2.orgs.includes(o)))links.push({source:p1.id,target:p2.id,_t:'colleague'})}));
 
+  const comps = computeComponents(allN, links);
+  const compIndex = new Map();
+  comps.forEach((comp, i) => comp.forEach(id => compIndex.set(id, i)));
+  const anchors = componentAnchors(w, h, comps);
+  const anchorById = new Map();
+  comps.forEach((comp, i) => comp.forEach(id => anchorById.set(id, anchors[i])));
+
+  allN.forEach((d, i) => {
+    const a = anchorById.get(d.id) || { x:w/2, y:h/2 };
+    const spread = 38 + (i % 6) * 6;
+    d.x = a.x + (Math.random() - 0.5) * spread;
+    d.y = a.y + (Math.random() - 0.5) * spread;
+  });
+
   const svgEl=d3.select(m).append('svg').attr('width',w).attr('height',h);
   svgEl.call(d3.zoom().scaleExtent([.2,4]).on('zoom',e=>gEl.attr('transform',e.transform)));
   const gEl=svgEl.append('g'),lG=gEl.append('g'),nG=gEl.append('g'),tG=gEl.append('g');
 
-  const adj=new Map(allN.map(n=>[n.id,[]]));
-  links.forEach(l=>{
-    const s=typeof l.source==='object'?l.source.id:l.source;
-    const t=typeof l.target==='object'?l.target.id:l.target;
-    adj.get(s)?.push(t);
-    adj.get(t)?.push(s);
-  });
-
-  const seen=new Set(), comps=[];
-  for(const n of allN){
-    if(seen.has(n.id)) continue;
-    const q=[n.id], comp=[];
-    seen.add(n.id);
-    while(q.length){
-      const cur=q.pop();
-      comp.push(cur);
-      for(const nxt of (adj.get(cur)||[])){
-        if(!seen.has(nxt)){
-          seen.add(nxt);
-          q.push(nxt);
-        }
-      }
-    }
-    comps.push(comp);
-  }
-  comps.sort((a,b)=>b.length-a.length);
-  const compIndex=new Map();
-  comps.forEach((comp,i)=>comp.forEach(id=>compIndex.set(id,i)));
-
-  const cx=w/2, cy=h/2;
-  const inner=Math.min(5, comps.length), outer=Math.max(0, comps.length-inner);
-  const centers=new Map();
-  const innerR=Math.min(w,h)*0.18;
-  const outerR=Math.min(w,h)*0.32;
-  for(let i=0;i<inner;i++){
-    const a=(-Math.PI/2)+(2*Math.PI*i/Math.max(1,inner));
-    centers.set(i,{x:cx+Math.cos(a)*innerR,y:cy+Math.sin(a)*innerR});
-  }
-  for(let i=0;i<outer;i++){
-    const a=(-Math.PI/2)+(2*Math.PI*i/Math.max(1,outer))+(outer?Math.PI/outer:0);
-    centers.set(inner+i,{x:cx+Math.cos(a)*outerR,y:cy+Math.sin(a)*outerR});
-  }
-
-  const nodeR=d=>d._t==='person'?10:11;
-  const labelCollision=d=>nodeR(d)+Math.min(24,10+(d.name?d.name.length*0.48:0));
-
-  allN.forEach(d=>{
-    d._comp=compIndex.get(d.id) ?? 0;
-    const c=centers.get(d._comp) || {x:cx,y:cy};
-    if(!Number.isFinite(d.x)) d.x = c.x + (Math.random()-.5)*100;
-    if(!Number.isFinite(d.y)) d.y = c.y + (Math.random()-.5)*82;
-  });
-
   const s=d3.forceSimulation(allN)
-    .force('link',d3.forceLink(links).id(d=>d.id).distance(88).strength(.22))
-    .force('charge',d3.forceManyBody().strength(-228))
+    .force('link',d3.forceLink(links).id(d=>d.id).distance(d=>d._t==='colleague'?108:90).strength(.19))
+    .force('charge',d3.forceManyBody().strength(-195))
     .force('center',d3.forceCenter(w/2,h/2))
-    .force('clusterX',d3.forceX(d=>(centers.get(d._comp)||{x:w/2}).x).strength(.065))
-    .force('clusterY',d3.forceY(d=>(centers.get(d._comp)||{y:h/2}).y).strength(.065))
-    .force('collision',d3.forceCollide(d=>labelCollision(d)+8));
+    .force('clusterX', d3.forceX(d => (anchorById.get(d.id) || {x:w/2}).x).strength(.11))
+    .force('clusterY', d3.forceY(d => (anchorById.get(d.id) || {y:h/2}).y).strength(.11))
+    .force('collision',d3.forceCollide(d => d._t==='person' ? 36 : 31));
   sim=s;
 
   lG.selectAll('line').data(links).enter().append('line')
     .attr('stroke',d=>d._t==='colleague'?'var(--gold)':'var(--raised)')
-    .attr('stroke-width',d=>d._t==='colleague'?1.6:1)
+    .attr('stroke-width',d=>d._t==='colleague'?1.8:1)
     .attr('opacity',.24);
 
   const ns=nG.selectAll('g').data(allN).enter().append('g').style('cursor','pointer')
-    .call(d3.drag()
-      .on('start',(e,d)=>{if(!e.active)s.alphaTarget(.3).restart();d.fx=d.x;d.fy=d.y})
-      .on('drag',(e,d)=>{d.fx=e.x;d.fy=e.y})
-      .on('end',(e,d)=>{if(!e.active)s.alphaTarget(0);d.fx=null;d.fy=null})
-    );
+    .call(d3.drag().on('start',(e,d)=>{if(!e.active)s.alphaTarget(.22).restart();d.fx=d.x;d.fy=d.y}).on('drag',(e,d)=>{d.fx=e.x;d.fy=e.y}).on('end',(e,d)=>{if(!e.active)s.alphaTarget(0);d.fx=null;d.fy=null}));
 
-  ns.filter(d=>d._t==='person').append('circle')
-    .attr('r',10).attr('fill','var(--gold)').attr('fill-opacity',.15).attr('stroke','var(--gold)').attr('stroke-width',1.5);
-  ns.filter(d=>d._t==='org').append('rect')
-    .attr('x',-9).attr('y',-9).attr('width',18).attr('height',18).attr('rx',4)
-    .attr('fill',d=>SC[d.stack]||'var(--text-3)').attr('fill-opacity',.15)
-    .attr('stroke',d=>SC[d.stack]||'var(--text-3)').attr('stroke-width',1.2);
+  ns.filter(d=>d._t==='person').append('circle').attr('r',10).attr('fill','var(--gold)').attr('fill-opacity',.15).attr('stroke','var(--gold)').attr('stroke-width',1.5);
+  ns.filter(d=>d._t==='org').append('rect').attr('x',-9).attr('y',-9).attr('width',18).attr('height',18).attr('rx',4).attr('fill',d=>SC[d.stack]||'var(--text-3)').attr('fill-opacity',.15).attr('stroke',d=>SC[d.stack]||'var(--text-3)').attr('stroke-width',1.2);
 
-  const labels=tG.selectAll('text').data(allN).enter().append('text').text(d=>d.name)
+  tG.selectAll('text').data(allN).enter().append('text').text(d=>d.name)
     .attr('font-size',9.5)
     .attr('font-family','Nunito Sans,sans-serif')
     .attr('font-weight',d=>d._t==='person'?600:400)
     .attr('fill',d=>d._t==='person'?'var(--gold)':'var(--text-2)')
-    .attr('stroke','rgba(0,0,0,.82)')
-    .attr('stroke-width',1.1)
+    .attr('stroke','rgba(0,0,0,.72)')
+    .attr('stroke-width',1.2)
     .attr('paint-order','stroke')
     .attr('text-anchor','middle')
-    .attr('dy',d=>{
-      const k=(d.id||'').split('').reduce((a,c)=>a+c.charCodeAt(0),0)%4;
-      return k===0 ? -16 : (k===1 ? -28 : (k===2 ? 20 : 32));
-    })
+    .attr('dy',d=>labelDyFor(compIndex.get(d.id) || d._i))
     .style('pointer-events','none');
 
   ns.on('click',(e,d)=>{if(d._t==='org')selNode(d.id);else showPerson(d.id)});
   s.on('tick',()=>{
     lG.selectAll('line').attr('x1',d=>d.source.x).attr('y1',d=>d.source.y).attr('x2',d=>d.target.x).attr('y2',d=>d.target.y);
     nG.selectAll('g').attr('transform',d=>`translate(${d.x},${d.y})`);
-    labels.attr('x',d=>d.x).attr('y',d=>d.y);
+    tG.selectAll('text').attr('x',d=>d.x).attr('y',d=>d.y);
   });
 
   const lg=document.createElement('div');lg.className='legend';
@@ -723,17 +660,18 @@ function renderPeopleGraph(){
   m.appendChild(lg);
 }
 
+
 // ===== LITERATURE =====
 function renderLit(){
   const m=el('main'),p=document.createElement('div');p.className='lit-panel';
-  p.innerHTML=`<div class="lit-title">Literature & References</div><div id="zotC"><p style="color:var(--text-3)">Loading from Zotero...</p></div><p style="margin-top:16px"><a href="https://www.zotero.org/groups/6075364/descai/library" target="_blank" style="color:var(--gold)">View full Zotero library ↗</a></p>`;
+  p.innerHTML=`<div class="lit-title">Literature & References</div><div id="zotC"><p style="color:var(--text-3)">Loading from Zotero...</p></div><p style="margin-top:16px"><a href="https://www.zotero.org/groups/6075364/descai/library" target="_blank" style="color:var(--link)">View full Zotero library ↗</a></p>`;
   m.appendChild(p);
   if(zoteroItems)displayZ();else fetchZotero();
 }
 async function fetchZotero(){
   try{const r=await fetch('https://api.zotero.org/groups/6075364/items?format=json&limit=50&sort=dateModified&direction=desc');if(!r.ok)throw new Error();zoteroItems=await r.json();displayZ()}catch(e){const c=document.getElementById('zotC');if(c)c.innerHTML='<p style="color:var(--text-3)">Could not load from Zotero. Check group visibility.</p>'}
 }
-function displayZ(){const c=document.getElementById('zotC');if(!c||!zoteroItems)return;c.innerHTML=zoteroItems.filter(i=>i.data.title).map(i=>{const d=i.data;return`<div class="paper"><div class="paper-t">${d.title}</div><div class="paper-a">${(d.creators||[]).map(c=>c.lastName).join(', ')} ${d.date||''} ${d.DOI?`<a href="https://doi.org/${d.DOI}" target="_blank" style="color:var(--gold)">DOI↗</a>`:''}</div></div>`}).join('')}
+function displayZ(){const c=document.getElementById('zotC');if(!c||!zoteroItems)return;c.innerHTML=zoteroItems.filter(i=>i.data.title).map(i=>{const d=i.data;return`<div class="paper"><div class="paper-t">${d.title}</div><div class="paper-a">${(d.creators||[]).map(c=>c.lastName).join(', ')} ${d.date||''} ${d.DOI?`<a href="https://doi.org/${d.DOI}" target="_blank" style="color:var(--link)">DOI↗</a>`:''}</div></div>`}).join('')}
 
 // ===== DETAIL PANEL =====
 function selNode(id){
@@ -743,7 +681,7 @@ function selNode(id){
   const ppl=D.people.filter(pp=>pp.orgs.includes(id));
   const credC=n.credScore>=60?'var(--sage)':n.credScore>=30?'var(--gold)':'var(--text-3)';
   const ovC=(n.overlapScore||0)>=60?'var(--gold)':(n.overlapScore||0)>=30?'var(--text-2)':'var(--text-3)';
-  p.innerHTML=`<div class="det-name">${n.name}</div><div class="det-sub">${n.type} · ${n.stage} · <span class="cred-badge" style="background:rgba(110,200,155,.08);color:${credC}">Cred ${n.credScore||0}</span>${n.twitter?` · <a href="https://x.com/${n.twitter.replace('@','')}" target="_blank" style="color:var(--gold)">${n.twitter}</a>`:''}</div>
+  p.innerHTML=`<div class="det-name">${n.name}</div><div class="det-sub">${n.type} · ${n.stage} · <span class="cred-badge" style="background:rgba(110,200,155,.08);color:${credC}">Cred ${n.credScore||0}</span>${n.twitter?` · <a href="https://x.com/${n.twitter.replace('@','')}" target="_blank" style="color:var(--link)">${n.twitter}</a>`:''}</div>
   <div class="field"><div class="flabel">Description</div><textarea class="finput" onchange="upd('${id}','desc',this.value)">${n.desc||''}</textarea></div>
   ${(n.overlapScore||n.compNote)?`<div class="overlap-box" style="border:1px solid ${(n.overlapScore||0)>=50?'rgba(212,168,83,.25)':'var(--border)'}">
     <div class="flabel" style="color:var(--gold)">Overlap with our platform <span style="font-weight:700">${n.overlapScore||0}%</span></div>
@@ -796,7 +734,7 @@ function addEdgeM(){
   el('mc').innerHTML=`<h2>Add Relationship</h2>
   <div class="field"><div class="flabel">Source</div><select class="finput" id="eS">${opts}</select></div>
   <div class="field"><div class="flabel">Target</div><select class="finput" id="eT">${opts}</select></div>
-  <div class="field"><div class="flabel">Type</div><select class="finput" id="eType"><option>funder</option><option>ecosystem</option><option>partner</option><option>overlap</option><option>collaborator</option></select></div>
+  <div class="field"><div class="flabel">Type</div><select class="finput" id="eType"><option>funder</option><option>ecosystem</option><option>partner</option><option>overlap</option></select></div>
   <div class="field"><div class="flabel">Label</div><input class="finput" id="eL"></div>
   <div class="modal-foot"><button class="btn" onclick="clM()">Cancel</button><button class="btn btn-fill" onclick="doAddEdge()">Add</button></div>`;
 }
