@@ -197,6 +197,51 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
 .fin-bar-bg{flex:1;height:8px;background:var(--raised);border-radius:4px;overflow:hidden}
 .fin-bar-fill{height:100%;border-radius:4px;transition:width .3s}
 
+
+.prov-box{background:var(--card);padding:14px;border-radius:var(--radius);margin-bottom:16px;border:1px solid var(--border)}
+.conf-badge{display:inline-flex;align-items:center;gap:4px;font-family:var(--mono);font-size:.68rem;padding:3px 8px;border-radius:10px;text-transform:uppercase}
+.conf-high{background:rgba(110,200,155,.12);color:var(--sage)}
+.conf-medium{background:rgba(212,168,83,.12);color:var(--gold)}
+.conf-low{background:rgba(224,92,92,.12);color:var(--red)}
+.src-list{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.src-chip{font-size:.68rem;padding:4px 9px;border-radius:14px;border:1px solid var(--border);background:var(--raised);color:var(--link);display:inline-flex;align-items:center;gap:5px}
+.score-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:8px}
+.score-cell{background:var(--raised);border:1px solid var(--border);border-radius:var(--radius-sm);padding:7px 6px;text-align:center}
+.score-cell .k{display:block;font-size:.58rem;color:var(--text-3);font-family:var(--mono);text-transform:uppercase}
+.score-cell .v{display:block;font-size:.78rem;color:var(--text-2);font-weight:600}
+
+
+/* BUSINESS MODEL VIEW */
+.biz-wrap{height:100%;display:flex;flex-direction:column;padding:18px;gap:14px;overflow:auto}
+.biz-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+.biz-title{font-family:var(--display);font-size:1.2rem;color:var(--text)}
+.biz-sub{font-size:.82rem;color:var(--text-2);max-width:860px;line-height:1.5}
+.biz-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.biz-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:12px}
+.biz-card .k{display:block;font-size:.62rem;color:var(--text-3);font-family:var(--mono);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.biz-card .v{display:block;font-size:1rem;color:var(--text);font-weight:700}
+.biz-card .s{display:block;font-size:.74rem;color:var(--text-2);margin-top:4px;line-height:1.4}
+.biz-main{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:14px;min-height:0;flex:1}
+.biz-panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px;min-height:0}
+.biz-svg{width:100%;height:100%;min-height:560px;display:block}
+.biz-side-title{font-family:var(--mono);font-size:.66rem;color:var(--text-3);text-transform:uppercase;letter-spacing:1.4px;margin-bottom:8px}
+.biz-list{display:flex;flex-direction:column;gap:8px}
+.biz-item{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px;cursor:pointer;transition:all .15s}
+.biz-item:hover{border-color:var(--gold);transform:translateY(-1px)}
+.biz-item-name{font-size:.84rem;font-weight:600;color:var(--text)}
+.biz-item-meta{font-size:.72rem;color:var(--text-2);margin-top:3px;line-height:1.4}
+.biz-legend{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.biz-legend-chip{font-size:.68rem;padding:4px 9px;border-radius:14px;background:var(--card);border:1px solid var(--border);color:var(--text-2)}
+.axis-label{font-size:.72rem;fill:var(--text-2);font-family:var(--mono)}
+.biz-note{font-size:.74rem;color:var(--text-3);line-height:1.45;margin-top:10px}
+.biz-controls{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-start;margin-top:10px}
+.biz-control-group{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.biz-control-label{font-size:.62rem;color:var(--text-3);font-family:var(--mono);text-transform:uppercase;letter-spacing:1px;margin-right:2px;padding-top:4px}
+.biz-mini-btn{font-size:.68rem;padding:4px 9px;border-radius:12px;background:var(--card);border:1px solid var(--border);color:var(--text-2);cursor:pointer;transition:all .15s}
+.biz-mini-btn:hover{border-color:var(--gold);color:var(--gold)}
+.biz-mini-btn.on{border-color:rgba(212,168,83,.35);color:var(--gold);background:var(--gold-glow)}
+@media(max-width:1050px){.biz-main{grid-template-columns:1fr}.biz-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
 /* RESPONSIVE */
 @media(max-width:768px){
   .app{grid-template-columns:1fr!important;grid-template-rows:auto 1fr}
@@ -223,6 +268,7 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
       <button class="tab" onclick="setView('people',this)">People</button>
       <button class="tab" onclick="setView('pgraph',this)">People Graph</button>
       <button class="tab" onclick="setView('lit',this)">Literature</button>
+      <button class="tab" onclick="setView('biz',this)">Business Models</button>
     </nav>
     <div class="actions">
       <button class="btn" onclick="addOrgM()">+ Org</button>
@@ -240,9 +286,11 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
       <div class="slider-filter"><div class="sf-label"><span>Overlap ≥</span><span id="slOvV">0%</span></div><input class="sf-range" type="range" min="0" max="100" value="0" id="slOv" oninput="el('slOvV').textContent=this.value+'%';af()"></div>
       <div class="slider-filter"><div class="sf-label"><span>Decentralization ≥</span><span id="slDcV">0%</span></div><input class="sf-range" type="range" min="0" max="100" value="0" id="slDc" oninput="el('slDcV').textContent=this.value+'%';af()"></div>
       <div class="slider-filter"><div class="sf-label"><span>Credibility ≥</span><span id="slCrV">0</span></div><input class="sf-range" type="range" min="0" max="100" value="0" id="slCr" oninput="el('slCrV').textContent=this.value;af()"></div>
+      <div class="slider-filter"><div class="sf-label"><span>Open-science fit ≥</span><span id="slOsV">0</span></div><input class="sf-range" type="range" min="0" max="100" value="0" id="slOs" oninput="el('slOsV').textContent=this.value;af()"></div>
       <div class="slider-filter"><div class="sf-label"><span>Profit Score ≤</span><span id="slPrV">100</span></div><input class="sf-range" type="range" min="0" max="100" value="100" id="slPr" oninput="el('slPrV').textContent=this.value;af()"></div>
     </div>
     <div class="sb-section"><div class="sb-label">Legal Structure</div><div class="pills" id="pLegal"></div></div>
+    <div class="sb-section"><div class="sb-label">Evidence Confidence</div><div class="pills" id="pConf"></div></div>
     <div class="sb-section"><div class="sb-label">Type</div><div class="pills" id="pType"></div></div>
     <div class="sb-section"><div class="sb-label">Organizations <b id="nc">0</b></div><ul class="node-list" id="nlist"></ul></div>
   </aside>
@@ -304,9 +352,11 @@ const GLOSS={
 const el=id=>document.getElementById(id);
 let D={nodes:[],edges:[],people:[]};
 let view='graph',selId=null,sim=null,zoomBehavior=null,svgG=null;
-let flt={stack:[],type:[],overlap:[],legal:[]};
+let flt={stack:[],type:[],overlap:[],legal:[],conf:[]};
 let sortC='overlapScore',sortA=false;
 let zoteroItems=null;
+let bizLabelSet='notable';
+let bizLabelDetail='metrics';
 
 const SC={infrastructure:'var(--sage)',application:'var(--rose)',governance:'var(--teal)'};
 const SBG={infrastructure:'rgba(110,200,155,.12)',application:'rgba(232,126,154,.12)',governance:'rgba(90,184,179,.12)'};
@@ -321,13 +371,22 @@ function profitC(s){return s<=20?'var(--sage)':s<=40?'var(--teal)':s<=60?'var(--
 function profitBg(s){return s<=20?'rgba(110,200,155,.1)':s<=40?'rgba(116,221,215,.1)':s<=60?'rgba(212,168,83,.1)':s<=80?'rgba(232,168,124,.1)':'rgba(224,92,92,.1)'}
 function profitBarC(s){return s<=20?'var(--sage)':s<=40?'var(--teal)':s<=60?'var(--gold)':s<=80?'#e8a87c':'var(--red)'}
 function finBoxClass(s){return s<=30?'commons':s<=60?'hybrid':'profit'}
+function osC(s){return s>=85?'var(--sage)':s>=70?'var(--teal)':s>=50?'var(--gold)':s>=35?'#e8a87c':'var(--red)'}
+function osBg(s){return s>=85?'rgba(110,200,155,.12)':s>=70?'rgba(116,221,215,.12)':s>=50?'rgba(212,168,83,.10)':s>=35?'rgba(232,168,124,.10)':'rgba(224,92,92,.10)'}
+function osBand(s){return s>=85?'very strong':s>=70?'strong':s>=50?'moderate':s>=35?'mixed':'weak'}
+
+
+function confClass(c){return c==='high'?'conf-high':c==='medium'?'conf-medium':'conf-low'}
+function confColor(c){return c==='high'?'var(--sage)':c==='medium'?'var(--gold)':'var(--red)'}
+function setBizLabelSet(v){bizLabelSet=v;if(view==='biz')render()}
+function setBizLabelDetail(v){bizLabelDetail=v;if(view==='biz')render()}
 
 // ===== INIT =====
 async function init(){
   // Try loading data.json, fall back to localStorage
   let loaded=false;
   try{
-    const r=await fetch('data.json');
+    const r=await fetch('data_researched_pass7_source_audited.json');
     if(r.ok){D=await r.json();loaded=true}
   }catch(e){}
   if(!loaded){
@@ -335,7 +394,7 @@ async function init(){
     if(s)try{D=JSON.parse(s)}catch(e){}
   }
   if(!D.nodes||!D.nodes.length){D={nodes:[],edges:[],people:[]}; return}
-  D.nodes.forEach(n=>{n.wp=n.wp||'';n.git=n.git||'';n.twitter=n.twitter||'';n.cf=n.cf||{};n.overlapTags=n.overlapTags||[];n.credScore=n.credScore||0;n.overlapScore=n.overlapScore||0;n.decentNote=n.decentNote||'';n.techStack=n.techStack||'';n.compNote=n.compNote||'';n.notes=n.notes||'';n.finModel=n.finModel||'';n.legalStructure=n.legalStructure||'unknown';n.apc=n.apc||false;n.profitScore=n.profitScore??50;n.finNote=n.finNote||'';n.fundingRaised=n.fundingRaised||''});
+  D.nodes.forEach(n=>{n.wp=n.wp||'';n.git=n.git||'';n.twitter=n.twitter||'';n.cf=n.cf||{};n.overlapTags=n.overlapTags||[];n.credScore=n.credScore||0;n.overlapScore=n.overlapScore||0;n.decentNote=n.decentNote||'';n.techStack=n.techStack||'';n.compNote=n.compNote||'';n.notes=n.notes||'';n.finModel=n.finModel||'';n.legalStructure=n.legalStructure||'unknown';n.apc=n.apc||false;n.profitScore=n.profitScore??50;n.openScienceScore=n.openScienceScore??((n.financials&&n.financials.openScienceCompatibilityScore)??50);n.finNote=n.finNote||'';n.fundingRaised=n.fundingRaised||'';n.provenance=n.provenance||{confidence:'low',hasUnverifiedClaims:true,sources:[],lastVerified:'',notes:''};n.financials=n.financials||{revenueSources:[],researcherPays:'unknown',institutionPays:'unknown',openScienceAlignment:'unknown',openScienceAlignmentNote:'',scoreBreakdown:{},openScienceCompatibilityScore:50,openScienceCompatibilityBand:'moderate',scoreAudit:{}};if(n.financials&&n.financials.openScienceCompatibilityScore==null)n.financials.openScienceCompatibilityScore=n.openScienceScore??50;n.sourceAsterisk=!!n.sourceAsterisk});
   D.edges=(D.edges||[]).map(e=>e.type==='collaborator'?({...e,type:'partner'}):e);
   if(!D.people)D.people=[];
   buildPills();render();updateSB();updateStats();
@@ -371,7 +430,16 @@ function buildPills(){
   el('pStack').innerHTML=['infrastructure','application','governance'].map(s=>`<button class="pill" onclick="togF('stack','${s}',this)">${s}</button>`).join('');
   el('pOverlap').innerHTML=Object.entries(OV_LABELS).map(([k,v])=>`<button class="pill" onclick="togF('overlap','${k}',this)">${v}</button>`).join('');
   el('pType').innerHTML=[...new Set(D.nodes.map(n=>n.type))].sort().map(t=>`<button class="pill" onclick="togF('type','${t}',this)">${t}</button>`).join('');
-  el('pLegal').innerHTML=['nonprofit','foundation','DAO','hybrid','for-profit'].map(s=>`<button class="pill" onclick="togF('legal','${s}',this)">${s}</button>`).join('');
+  const legalOrder=['nonprofit','foundation','DAO','hybrid','for-profit','protocol','consortium','community','event','unknown'];
+  const legalVals=[...new Set(D.nodes.map(n=>n.legalStructure||'unknown'))].sort((a,b)=>{
+    const ia=legalOrder.indexOf(a), ib=legalOrder.indexOf(b);
+    if(ia===-1&&ib===-1)return a.localeCompare(b);
+    if(ia===-1)return 1;
+    if(ib===-1)return -1;
+    return ia-ib;
+  });
+  el('pLegal').innerHTML=legalVals.map(s=>`<button class="pill" onclick="togF('legal','${s}',this)">${s}</button>`).join('');
+  el('pConf').innerHTML=['high','medium','low'].map(s=>`<button class="pill" onclick="togF('conf','${s}',this)">${s}</button>`).join('');
 }
 function togF(c,v,b){const i=flt[c].indexOf(v);if(i>=0){flt[c].splice(i,1);b.classList.remove('on')}else{flt[c].push(v);b.classList.add('on')}af()}
 function vis(n){
@@ -381,16 +449,18 @@ function vis(n){
   if(flt.type.length&&!flt.type.includes(n.type))return false;
   if(flt.overlap.length&&!flt.overlap.some(t=>(n.overlapTags||[]).includes(t)))return false;
   if(flt.legal.length&&!flt.legal.includes(n.legalStructure))return false;
+  const conf=(n.provenance&&n.provenance.confidence)||'low'; if(flt.conf.length&&!flt.conf.includes(conf))return false;
   const sOv=+el('slOv').value; if(sOv>0&&(n.overlapScore||0)<sOv)return false;
   const sDc=+el('slDc').value; if(sDc>0&&(n.decen||0)<sDc)return false;
   const sCr=+el('slCr').value; if(sCr>0&&(n.credScore||0)<sCr)return false;
+  const sOs=+el('slOs').value; if(sOs>0&&(n.openScienceScore ?? ((n.financials&&n.financials.openScienceCompatibilityScore) || 0))<sOs)return false;
   const sPr=+el('slPr').value; if(sPr<100&&(n.profitScore||50)>sPr)return false;
   return true;
 }
 function af(){updateSB();updateStats();if(view==='graph')render();else render()}
 function updateSB(){
   const v=D.nodes.filter(vis);el('nc').textContent=v.length;
-  el('nlist').innerHTML=v.sort((a,b)=>(b.overlapScore||0)-(a.overlapScore||0)).map(n=>`<li class="nli ${n.id===selId?'sel':''}" onclick="selNode('${n.id}')"><span class="nli-dot" style="background:${SC[n.stack]||'var(--text-3)'}"></span><span class="nli-name">${n.name}</span></li>`).join('');
+  el('nlist').innerHTML=v.sort((a,b)=>(b.overlapScore||0)-(a.overlapScore||0)).map(n=>`<li class="nli ${n.id===selId?'sel':''}" title="confidence: ${(n.provenance&&n.provenance.confidence)||'low'}" onclick="selNode('${n.id}')"><span class="nli-dot" style="background:${SC[n.stack]||'var(--text-3)'}"></span><span class="nli-name">${n.name}${n.sourceAsterisk?' *':''}</span></li>`).join('');
 }
 function updateStats(){const v=D.nodes.filter(vis);el('stats').innerHTML=`<b>${v.length}</b>/${D.nodes.length} orgs · <b>${D.edges.length}</b> edges · <b>${D.people.length}</b> people`}
 
@@ -549,7 +619,8 @@ function render(){
   else if(view==='table')renderTable();
   else if(view==='people')renderPeople();
   else if(view==='pgraph')renderPeopleGraph();
-  else renderLit();
+  else if(view==='lit')renderLit();
+  else renderBiz();
 }
 
 // ===== GRAPH =====
@@ -667,13 +738,14 @@ function buildGraph(){
 // ===== TABLE =====
 function renderTable(){
   const m=el('main');
-  const cols=[{k:'name',l:'Name'},{k:'type',l:'Type'},{k:'stack',l:'Stack'},{k:'overlapScore',l:'Overlap'},{k:'credScore',l:'Cred'},{k:'techStack',l:'Tech Stack'},{k:'stage',l:'Stage'},{k:'compNote',l:'Comparison'}];
+  const cols=[{k:'name',l:'Name'},{k:'type',l:'Type'},{k:'stack',l:'Stack'},{k:'overlapScore',l:'Overlap'},{k:'credScore',l:'Cred'},{k:'profitScore',l:'Profit'},{k:'openScienceScore',l:'OS Fit'},{k:'confidence',l:'Evidence'},{k:'stage',l:'Stage'},{k:'compNote',l:'Comparison'}];
   let ns=D.nodes.filter(vis);
-  ns.sort((a,b)=>{let va=a[sortC]??'',vb=b[sortC]??'';if(typeof va==='number')return sortA?va-vb:vb-va;return sortA?String(va).localeCompare(String(vb)):String(vb).localeCompare(String(va))});
+  ns.sort((a,b)=>{let va=(sortC==='confidence'?((a.provenance&&a.provenance.confidence)||'low'):(sortC==='openScienceScore'?(a.openScienceScore ?? ((a.financials&&a.financials.openScienceCompatibilityScore) || 0)):a[sortC]))??'',vb=(sortC==='confidence'?((b.provenance&&b.provenance.confidence)||'low'):(sortC==='openScienceScore'?(b.openScienceScore ?? ((b.financials&&b.financials.openScienceCompatibilityScore) || 0)):b[sortC]))??'';if(typeof va==='number')return sortA?va-vb:vb-va;return sortA?String(va).localeCompare(String(vb)):String(vb).localeCompare(String(va))});
   const w=document.createElement('div');w.className='table-wrap';
   const ovBar=(v)=>{const c=v>=60?'var(--gold)':v>=30?'var(--text-2)':'var(--text-3)';return `<div class="ob"><div class="ob-bar"><div class="ob-fill" style="width:${v}%;background:${c}"></div></div><span style="font-family:var(--mono);font-size:.68rem">${v}</span></div>`};
   const credBadge=(v)=>{const c=v>=60?'var(--sage)':v>=30?'var(--gold)':'var(--text-3)';const bg=v>=60?'rgba(110,200,155,.12)':v>=30?'rgba(212,168,83,.08)':'var(--raised)';return `<span class="cred-badge" style="background:${bg};color:${c}">${v}</span>`};
-  w.innerHTML=`<table class="dtbl"><thead><tr>${cols.map(c=>`<th onclick="doSort('${c.k}')">${c.l}${sortC===c.k?(sortA?' ↑':' ↓'):''}</th>`).join('')}</tr></thead><tbody>${ns.map(n=>`<tr class="${n.id===selId?'sel':''}" onclick="selNode('${n.id}');el('app').classList.remove('hide-right')"><td><strong>${n.name}</strong></td><td>${n.type||''}</td><td><span class="stack-chip" style="background:${SBG[n.stack]||''};color:${SC[n.stack]||''}">${n.stack||''}</span></td><td>${ovBar(n.overlapScore||0)}</td><td>${credBadge(n.credScore||0)}</td><td title="${(n.techStack||'').replace(/"/g,'&quot;')}" style="max-width:180px;overflow:hidden;text-overflow:ellipsis">${n.techStack||''}</td><td>${n.stage||''}</td><td title="${(n.compNote||'').replace(/"/g,'&quot;')}" style="max-width:220px;overflow:hidden;text-overflow:ellipsis;font-size:.75rem;color:var(--text-2)">${n.compNote||''}</td></tr>`).join('')}</tbody></table>`;
+  const osBadge=(v)=>`<span class="profit-badge" style="background:${osBg(v)};color:${osC(v)}">${v}</span>`;
+  w.innerHTML=`<table class="dtbl"><thead><tr>${cols.map(c=>`<th onclick="doSort('${c.k}')">${c.l}${sortC===c.k?(sortA?' ↑':' ↓'):''}</th>`).join('')}</tr></thead><tbody>${ns.map(n=>`<tr class="${n.id===selId?'sel':''}" onclick="selNode('${n.id}');el('app').classList.remove('hide-right')"><td><strong>${n.name}${n.sourceAsterisk?' *':''}</strong></td><td>${n.type||''}</td><td><span class="stack-chip" style="background:${SBG[n.stack]||''};color:${SC[n.stack]||''}">${n.stack||''}</span></td><td>${ovBar(n.overlapScore||0)}</td><td>${credBadge(n.credScore||0)}</td><td><span class="profit-badge" style="background:${profitBg(n.profitScore)};color:${profitC(n.profitScore)}">${n.profitScore??50}</span></td><td>${osBadge(n.openScienceScore ?? ((n.financials&&n.financials.openScienceCompatibilityScore) || 0))}</td><td><span class="conf-badge ${confClass((n.provenance&&n.provenance.confidence)||'low')}">${(n.provenance&&n.provenance.confidence)||'low'}</span></td><td>${n.stage||''}</td><td title="${(n.compNote||'').replace(/"/g,'&quot;')}" style="max-width:220px;overflow:hidden;text-overflow:ellipsis;font-size:.75rem;color:var(--text-2)">${n.compNote||''}</td></tr>`).join('')}</tbody></table>`;
   m.appendChild(w);
 }
 function doSort(c){if(sortC===c)sortA=!sortA;else{sortC=c;sortA=false}render()}
@@ -768,6 +840,201 @@ function renderPeopleGraph(){
 }
 
 // ===== LITERATURE =====
+
+function quadrantOf(n){
+  const p=n.profitScore??50, o=n.openScienceScore??((n.financials&&n.financials.openScienceCompatibilityScore)??50);
+  if(p<50 && o>=50) return 'commons';
+  if(p>=50 && o>=50) return 'hybrid-open';
+  if(p<50 && o<50) return 'mission-fragile';
+  return 'extractive-risk';
+}
+function renderBiz(){
+  const m=el('main');
+  const nodes=D.nodes.filter(vis).map(n=>({...n,profitScore:n.profitScore??50,openScienceScore:n.openScienceScore??((n.financials&&n.financials.openScienceCompatibilityScore)??50)}));
+  const avg=(arr,fn)=>arr.length?Math.round(arr.reduce((s,x)=>s+fn(x),0)/arr.length):0;
+  const qDefs={
+    'commons':{label:'Commons-aligned',desc:'Lower commercial pressure, stronger open-science fit.'},
+    'hybrid-open':{label:'Open-core hybrid',desc:'Commercial or tokenized, but still relatively compatible with open science.'},
+    'mission-fragile':{label:'Low-profit / low-fit',desc:'Weak monetization and weak open-science fit, often unclear or immature models.'},
+    'extractive-risk':{label:'Commercial pressure',desc:'Higher commerciality with weaker open-science compatibility.'}
+  };
+  const counts=Object.fromEntries(Object.keys(qDefs).map(k=>[k,0]));
+  nodes.forEach(n=>counts[quadrantOf(n)]++);
+  const hiRisk=[...nodes].filter(n=>n.profitScore>=65&&n.openScienceScore<50).sort((a,b)=>(b.profitScore-b.openScienceScore)-(a.profitScore-a.openScienceScore)).slice(0,6);
+  const bestAligned=[...nodes].filter(n=>n.openScienceScore>=70).sort((a,b)=>(b.openScienceScore-a.openScienceScore)||(a.profitScore-b.profitScore)).slice(0,6);
+  const interesting=[...nodes].filter(n=>n.profitScore>=50&&n.openScienceScore>=50).sort((a,b)=>(b.openScienceScore+b.profitScore)-(a.openScienceScore+a.profitScore)).slice(0,6);
+  const topOverlap=[...nodes].sort((a,b)=>(b.overlapScore||0)-(a.overlapScore||0)).slice(0,6);
+  const mostDec=[...nodes].sort((a,b)=>(b.decen||0)-(a.decen||0)).slice(0,6);
+
+  const wrap=d3.select(m).append('div').attr('class','biz-wrap');
+  const head=wrap.append('div').attr('class','biz-head');
+  const headLeft=head.append('div');
+  headLeft.html(`
+    <div class="biz-title">Business models map</div>
+    <div class="biz-sub">Each point is an organization. The x-axis is <b>commerciality / profit score</b> and the y-axis is <b>open-science compatibility</b>. Point <b>size scales with overlap with us</b>, while <b>outline thickness scales with decentralization</b>. Use the label controls to surface overlap and decentralization directly on the plot.</div>
+    <div class="biz-legend">
+      <span class="biz-legend-chip">Color = stack layer</span>
+      <span class="biz-legend-chip">Ring color = evidence confidence</span>
+      <span class="biz-legend-chip">Point size = overlap with us</span>
+      <span class="biz-legend-chip">Outline thickness = decentralization</span>
+    </div>
+  `);
+  const controls=head.append('div').attr('class','biz-controls');
+  const addControl=(label,vals,current,fn)=>{
+    const g=controls.append('div').attr('class','biz-control-group');
+    g.append('span').attr('class','biz-control-label').text(label);
+    vals.forEach(v=>g.append('button').attr('class','biz-mini-btn'+(current===v.value?' on':''))
+      .text(v.label).on('click',()=>fn(v.value)));
+  };
+  addControl('Label set',[
+    {value:'notable',label:'Notable'},
+    {value:'overlap',label:'High overlap'},
+    {value:'decent',label:'High decentralization'},
+    {value:'competitors',label:'Competitors'},
+    {value:'all',label:'All filtered'}
+  ],bizLabelSet,setBizLabelSet);
+  addControl('Label detail',[
+    {value:'name',label:'Name'},
+    {value:'overlap',label:'+ Overlap'},
+    {value:'decent',label:'+ Decent'},
+    {value:'metrics',label:'Full metrics'}
+  ],bizLabelDetail,setBizLabelDetail);
+
+  const cards=wrap.append('div').attr('class','biz-cards');
+  const cardData=[
+    {k:'Visible nodes',v:nodes.length,s:`${counts['commons']} commons-aligned · ${counts['hybrid-open']} open-core hybrid`},
+    {k:'Avg commerciality',v:avg(nodes,n=>n.profitScore),s:'Lower = more commons-oriented, higher = more commercial pressure'},
+    {k:'Avg OS fit',v:avg(nodes,n=>n.openScienceScore),s:'Higher = stronger compatibility with open-science-style business models'},
+    {k:'Avg overlap',v:avg(nodes,n=>n.overlapScore||0),s:'Higher = closer overlap with your platform thesis'},
+    {k:'Avg decentralization',v:avg(nodes,n=>n.decen||0),s:'Higher = more decentralized architecture/governance'},
+    {k:'High-risk count',v:hiRisk.length,s:'Nodes currently landing in high-profit / lower-fit territory'}
+  ];
+  const c=cards.selectAll('div').data(cardData).enter().append('div').attr('class','biz-card');
+  c.append('span').attr('class','k').text(d=>d.k);
+  c.append('span').attr('class','v').text(d=>d.v);
+  c.append('span').attr('class','s').text(d=>d.s);
+
+  const main=wrap.append('div').attr('class','biz-main');
+  const chartPanel=main.append('div').attr('class','biz-panel');
+  const side=main.append('div').attr('class','biz-panel');
+
+  const sideSection=(title,arr,fmt)=>{
+    side.append('div').attr('class','biz-side-title').text(title);
+    const list=side.append('div').attr('class','biz-list');
+    if(!arr.length){list.append('div').attr('class','biz-note').text('No nodes in this bucket under the current filters.');return}
+    arr.forEach(n=>{
+      const item=list.append('div').attr('class','biz-item').on('click',()=>{selNode(n.id);el('app').classList.remove('hide-right')});
+      item.append('div').attr('class','biz-item-name').text(n.name+(n.sourceAsterisk?' *':''));
+      item.append('div').attr('class','biz-item-meta').html(fmt(n));
+    });
+  };
+  sideSection('Likely pressure points', hiRisk, n=>`Profit ${n.profitScore} · OS fit ${n.openScienceScore} · Overlap ${n.overlapScore||0} · Decent ${n.decen||0}`);
+  sideSection('Best aligned models', bestAligned, n=>`OS fit ${n.openScienceScore} · Profit ${n.profitScore} · ${(n.financials&&n.financials.openScienceCompatibilityBand)||osBand(n.openScienceScore)}`);
+  sideSection('Highest overlap with us', topOverlap, n=>`Overlap ${n.overlapScore||0} · Profit ${n.profitScore} · OS fit ${n.openScienceScore} · Decent ${n.decen||0}`);
+  sideSection('Most decentralized', mostDec, n=>`Decent ${n.decen||0} · Profit ${n.profitScore} · OS fit ${n.openScienceScore} · Overlap ${n.overlapScore||0}`);
+  sideSection('Hybrid but still open', interesting, n=>`Profit ${n.profitScore} · OS fit ${n.openScienceScore} · ${(n.financials&&n.financials.openScienceAlignment)||'mixed'}`);
+  side.append('div').attr('class','biz-note').html('Suggested reading of the quadrants:<br>• <b>Top-left</b>: commons/public-good infrastructure<br>• <b>Top-right</b>: hybrid or open-core commercialization<br>• <b>Bottom-right</b>: stronger extraction / enclosure risk<br>• <b>Bottom-left</b>: unclear, weak, or immature business-model fit');
+
+  const bounds=chartPanel.node().getBoundingClientRect();
+  const w=Math.max(760,bounds.width-28), h=Math.max(560,Math.min(860,(m.clientHeight||720)-120));
+  const margin={top:28,right:36,bottom:58,left:64};
+  const innerW=w-margin.left-margin.right, innerH=h-margin.top-margin.bottom;
+  const svg=chartPanel.append('svg').attr('class','biz-svg').attr('viewBox',`0 0 ${w} ${h}`);
+  const g=svg.append('g').attr('transform',`translate(${margin.left},${margin.top})`);
+  const x=d3.scaleLinear().domain([0,100]).range([0,innerW]);
+  const y=d3.scaleLinear().domain([0,100]).range([innerH,0]);
+
+  const quads=[
+    {x0:0,x1:50,y0:50,y1:100,fill:'rgba(110,200,155,.06)',label:'Commons-aligned',sub:`${counts['commons']} nodes`},
+    {x0:50,x1:100,y0:50,y1:100,fill:'rgba(116,221,215,.06)',label:'Open-core hybrid',sub:`${counts['hybrid-open']} nodes`},
+    {x0:0,x1:50,y0:0,y1:50,fill:'rgba(212,168,83,.05)',label:'Low-profit / low-fit',sub:`${counts['mission-fragile']} nodes`},
+    {x0:50,x1:100,y0:0,y1:50,fill:'rgba(224,92,92,.06)',label:'Commercial pressure',sub:`${counts['extractive-risk']} nodes`}
+  ];
+  g.selectAll('.quad').data(quads).enter().append('rect')
+    .attr('x',d=>x(d.x0)).attr('y',d=>y(d.y1)).attr('width',d=>x(d.x1)-x(d.x0)).attr('height',d=>y(d.y0)-y(d.y1))
+    .attr('fill',d=>d.fill).attr('stroke','rgba(255,255,255,.04)');
+  g.selectAll('.quad-label').data(quads).enter().append('text')
+    .attr('x',d=>x((d.x0+d.x1)/2)).attr('y',d=>y(d.y1)-8)
+    .attr('text-anchor','middle').attr('font-size',11).attr('font-family','Nunito Sans,sans-serif').attr('fill','var(--text-2)').text(d=>d.label);
+  g.selectAll('.quad-sub').data(quads).enter().append('text')
+    .attr('x',d=>x((d.x0+d.x1)/2)).attr('y',d=>y(d.y1)+8)
+    .attr('text-anchor','middle').attr('font-size',10).attr('font-family','Fira Code,monospace').attr('fill','var(--text-3)').text(d=>d.sub);
+
+  g.append('g').attr('transform',`translate(0,${innerH})`).call(d3.axisBottom(x).ticks(10)).call(g=>g.selectAll('text').attr('fill','var(--text-2)')).call(g=>g.selectAll('line,path').attr('stroke','var(--border-h)'));
+  g.append('g').call(d3.axisLeft(y).ticks(10)).call(g=>g.selectAll('text').attr('fill','var(--text-2)')).call(g=>g.selectAll('line,path').attr('stroke','var(--border-h)'));
+  g.append('line').attr('x1',x(50)).attr('x2',x(50)).attr('y1',0).attr('y2',innerH).attr('stroke','rgba(212,168,83,.35)').attr('stroke-dasharray','6,5');
+  g.append('line').attr('x1',0).attr('x2',innerW).attr('y1',y(50)).attr('y2',y(50)).attr('stroke','rgba(212,168,83,.35)').attr('stroke-dasharray','6,5');
+  g.append('text').attr('class','axis-label').attr('x',innerW/2).attr('y',innerH+42).attr('text-anchor','middle').text('Commerciality / Profit Score →');
+  g.append('text').attr('class','axis-label').attr('transform',`translate(${-46},${innerH/2}) rotate(-90)`).attr('text-anchor','middle').text('Open-science compatibility →');
+
+  const plot=nodes.map(n=>({...n,tx:x(n.profitScore),ty:y(n.openScienceScore)}));
+  const radius=n=>5 + Math.min(7,(n.overlapScore||0)/14);
+  const decStroke=n=>1 + Math.min(3.5,(n.decen||0)/32);
+  const sim=d3.forceSimulation(plot)
+    .force('x',d3.forceX(d=>d.tx).strength(1))
+    .force('y',d3.forceY(d=>d.ty).strength(1))
+    .force('collide',d3.forceCollide(d=>radius(d)+2.2))
+    .stop();
+  for(let i=0;i<140;i++) sim.tick();
+
+  const tip=el('tip');
+  const points=g.selectAll('.biz-point').data(plot).enter().append('g').style('cursor','pointer')
+    .on('click',(e,d)=>{selNode(d.id);el('app').classList.remove('hide-right')})
+    .on('mouseenter',(e,d)=>{
+      const rev=((d.financials&&d.financials.revenueSources)||[]).slice(0,3).join(', ') || 'revenue model unclear';
+      tip.innerHTML=`<h4>${d.name}${d.sourceAsterisk?' *':''}</h4><div class="tm">Profit ${d.profitScore} · OS fit ${d.openScienceScore} · Overlap ${d.overlapScore||0} · Decent ${d.decen||0} · ${d.legalStructure||'unknown'} · ${rev}</div>`;
+      tip.classList.add('vis');
+    })
+    .on('mousemove',e=>{
+      const r=m.getBoundingClientRect();
+      tip.style.left=(e.clientX-r.left+12)+'px';
+      tip.style.top=(e.clientY-r.top-8)+'px';
+    })
+    .on('mouseleave',()=>tip.classList.remove('vis'));
+
+  points.append('circle')
+    .attr('cx',d=>d.x).attr('cy',d=>d.y).attr('r',d=>radius(d)+1.6)
+    .attr('fill','none')
+    .attr('stroke',d=>confColor((d.provenance&&d.provenance.confidence)||'low'))
+    .attr('stroke-width',1.2)
+    .attr('stroke-opacity',.95);
+
+  points.append('circle')
+    .attr('cx',d=>d.x).attr('cy',d=>d.y).attr('r',d=>radius(d))
+    .attr('fill',d=>SC[d.stack]||'var(--text-3)')
+    .attr('fill-opacity',.22)
+    .attr('stroke',d=>SC[d.stack]||'var(--text-3)')
+    .attr('stroke-width',d=>decStroke(d))
+    .attr('stroke-opacity',.9);
+
+  points.append('circle')
+    .attr('cx',d=>d.x).attr('cy',d=>d.y).attr('r',2.5)
+    .attr('fill',d=>SC[d.stack]||'var(--text-3)')
+    .attr('fill-opacity',.95);
+
+  const labelSetFns={
+    notable:d=>d.id===selId || (d.overlapScore||0)>=55 || (d.decen||0)>=75 || Math.abs((d.profitScore||50)-(d.openScienceScore||50))>=38,
+    overlap:d=>(d.overlapScore||0)>=45,
+    decent:d=>(d.decen||0)>=70,
+    competitors:d=>(d.overlapScore||0)>=55 || ((d.overlapTags||[]).includes('publishing') && (d.overlapTags||[]).includes('peer-review')),
+    all:d=>true
+  };
+  const labelFmt=(d)=>{
+    if(bizLabelDetail==='name') return d.name;
+    if(bizLabelDetail==='overlap') return `${d.name} · Ov ${d.overlapScore||0}`;
+    if(bizLabelDetail==='decent') return `${d.name} · Dc ${d.decen||0}`;
+    return `${d.name} · Ov ${d.overlapScore||0} · Dc ${d.decen||0}`;
+  };
+  let labels=plot.filter(labelSetFns[bizLabelSet]||labelSetFns.notable);
+  if(bizLabelSet!=='all') labels=labels.slice(0,22);
+  else labels=labels.sort((a,b)=>((b.overlapScore||0)+(b.decen||0))-((a.overlapScore||0)+(a.decen||0))).slice(0,30);
+  g.selectAll('.biz-label').data(labels).enter().append('text')
+    .attr('x',d=>d.x+radius(d)+5).attr('y',d=>d.y-6)
+    .attr('font-size',10).attr('font-family','Nunito Sans,sans-serif').attr('fill','var(--graph-label)')
+    .attr('stroke','rgba(0,0,0,.82)').attr('stroke-width',1.5).attr('paint-order','stroke')
+    .text(d=>labelFmt(d));
+}
+
 function renderLit(){
   const m=el('main'),p=document.createElement('div');p.className='lit-panel';
   p.innerHTML=`<div class="lit-title">Literature & References</div><div id="zotC"><p style="color:var(--text-3)">Loading from Zotero...</p></div><p style="margin-top:16px"><a href="https://www.zotero.org/groups/6075364/descai/library" target="_blank" style="color:var(--link)">View full Zotero library ↗</a></p>`;
@@ -782,12 +1049,18 @@ function displayZ(){const c=document.getElementById('zotC');if(!c||!zoteroItems)
 // ===== DETAIL PANEL =====
 function selNode(id){
   selId=id;const n=D.nodes.find(x=>x.id===id);if(!n)return;
+  const prov=n.provenance||{}, fin=n.financials||{}, bdg=(fin.scoreBreakdown||{});
+  const conf=prov.confidence||'low';
+  const confCls=confClass(conf);
   el('detE').style.display='none';
   const p=el('detC'),rels=D.edges.filter(e=>e.s===id||e.t===id);
   const ppl=D.people.filter(pp=>pp.orgs.includes(id));
   const credC=n.credScore>=60?'var(--sage)':n.credScore>=30?'var(--gold)':'var(--text-3)';
   const ovC=(n.overlapScore||0)>=60?'var(--gold)':(n.overlapScore||0)>=30?'var(--text-2)':'var(--text-3)';
-  p.innerHTML=`<div class="det-name">${n.name}</div><div class="det-sub">${n.type} · ${n.stage} · <span class="cred-badge" style="background:rgba(110,200,155,.08);color:${credC}">Cred ${n.credScore||0}</span> · <span class="profit-badge" style="background:${profitBg(n.profitScore)};color:${profitC(n.profitScore)}">Profit ${n.profitScore??50}</span>${n.twitter?` · <a href="https://x.com/${n.twitter.replace('@','')}" target="_blank" style="color:var(--link)">${n.twitter}</a>`:''}</div>
+  const srcHtml=(prov.sources||[]).map(s=>`<a class="src-chip" href="${s.url}" target="_blank" rel="noopener">${s.label}${s.type?` · ${s.type}`:''}</a>`).join('');
+  const osScore=n.openScienceScore??fin.openScienceCompatibilityScore??50;
+  const audit=fin.scoreAudit||{};
+  p.innerHTML=`<div class="det-name">${n.name}${n.sourceAsterisk?' *':''}</div><div class="det-sub">${n.type} · ${n.stage} · <span class="cred-badge" style="background:rgba(110,200,155,.08);color:${credC}">Cred ${n.credScore||0}</span> · <span class="profit-badge" style="background:${profitBg(n.profitScore)};color:${profitC(n.profitScore)}">Profit ${n.profitScore??50}</span> · <span class="profit-badge" style="background:${osBg(osScore)};color:${osC(osScore)}">OS Fit ${osScore}</span> · <span class="conf-badge ${confCls}">${conf}</span>${n.twitter?` · <a href="https://x.com/${n.twitter.replace('@','')}" target="_blank" style="color:var(--link)">${n.twitter}</a>`:''}</div>
   <div class="field"><div class="flabel">Description</div><textarea class="finput" onchange="upd('${id}','desc',this.value)">${n.desc||''}</textarea></div>
   ${(n.overlapScore||n.compNote)?`<div class="overlap-box" style="border:1px solid ${(n.overlapScore||0)>=50?'rgba(212,168,83,.25)':'var(--border)'}">
     <div class="flabel" style="color:var(--gold)">Overlap with our platform <span style="font-weight:700">${n.overlapScore||0}%</span></div>
@@ -795,37 +1068,44 @@ function selNode(id){
     <div style="font-size:.82rem;color:var(--text-2);line-height:1.5">${n.compNote||''}</div>
   </div>`:''}
   ${(n.finModel||n.finNote)?`<div class="fin-box ${finBoxClass(n.profitScore)}">
-    <div class="flabel" style="color:${profitC(n.profitScore)}">Financial Model <span style="font-weight:700">${n.profitScore??50}/100</span> ${n.legalStructure!=='unknown'?`· <span style="text-transform:capitalize">${n.legalStructure}</span>`:''} ${n.apc?'· <span style="color:var(--red)">Has APC</span>':''}</div>
+    <div class="flabel" style="color:${profitC(n.profitScore)}">Commerciality score <span style="font-weight:700">${n.profitScore??50}/100</span> ${n.legalStructure!=='unknown'?`· <span style="text-transform:capitalize">${n.legalStructure}</span>`:''} ${n.apc?'· <span style="color:var(--red)">Has fee/APC</span>':''}</div>
     <div class="fin-bar-wrap"><div class="fin-bar-bg"><div class="fin-bar-fill" style="width:${n.profitScore??50}%;background:${profitBarC(n.profitScore)}"></div></div></div>
-    ${n.fundingRaised?`<div style="font-size:.75rem;color:var(--text-3);margin-bottom:6px">Funding: ${n.fundingRaised}</div>`:''}
+    <div class="flabel" style="margin-top:10px;color:${osC(osScore)}">Open-science compatibility <span style="font-weight:700">${osScore}/100</span> ${fin.openScienceCompatibilityBand?`· <span style="text-transform:capitalize">${fin.openScienceCompatibilityBand}</span>`:''}</div>
+    <div class="fin-bar-wrap"><div class="fin-bar-bg"><div class="fin-bar-fill" style="width:${osScore}%;background:${osC(osScore)}"></div></div></div>
+    ${n.fundingRaised?`<div style="font-size:.75rem;color:var(--text-3);margin-bottom:6px">Funding / scale: ${n.fundingRaised}</div>`:''}
+    ${fin.revenueSources&&fin.revenueSources.length?`<div style="font-size:.75rem;color:var(--text-3);margin-bottom:6px">Revenue sources: ${fin.revenueSources.join(', ')}</div>`:''}
+    ${fin.researcherPays&&fin.researcherPays!=='unknown'?`<div style="font-size:.75rem;color:var(--text-3);margin-bottom:6px">Researcher pays: ${fin.researcherPays}</div>`:''}
+    ${fin.institutionPays&&fin.institutionPays!=='unknown'?`<div style="font-size:.75rem;color:var(--text-3);margin-bottom:6px">Institution pays: ${fin.institutionPays}</div>`:''}
+    ${fin.apcAmountText?`<div style="font-size:.75rem;color:var(--text-3);margin-bottom:6px">Fee detail: ${fin.apcAmountText}</div>`:''}
+    ${fin.financialSummary?`<div style="font-size:.8rem;color:var(--text-2);line-height:1.45">${fin.financialSummary}</div>`:''}
     <div style="font-size:.82rem;color:var(--text-2);line-height:1.5">${n.finModel||''}</div>
-    ${n.finNote?`<div style="font-size:.78rem;color:var(--text-3);line-height:1.5;margin-top:6px;font-style:italic">${n.finNote}</div>`:''}
+    ${n.finNote?`<div style="font-size:.8rem;color:var(--text-3);line-height:1.5;margin-top:8px">${n.finNote}</div>`:''}
+    ${(bdg&&Object.keys(bdg).length)?`<div class="score-grid">
+      <div class="score-cell"><span class="k">Structure</span><span class="v">${bdg.structure??'—'}</span></div>
+      <div class="score-cell"><span class="k">Revenue</span><span class="v">${bdg.revenue??'—'}</span></div>
+      <div class="score-cell"><span class="k">Capital</span><span class="v">${bdg.capital??'—'}</span></div>
+      <div class="score-cell"><span class="k">Total</span><span class="v">${bdg.total??(n.profitScore??'—')}</span></div>
+    </div>`:''}
+    ${audit&&audit.previousProfitScore!=null?`<div style="font-size:.76rem;color:var(--text-3);line-height:1.5;margin-top:8px">Score audit: was ${audit.previousProfitScore}, now ${audit.auditedProfitScore} (${audit.delta>=0?'+':''}${audit.delta}). ${audit.reasons&&audit.reasons.length?`Main drivers: ${audit.reasons.join('; ')}.`:''}</div>`:''}
   </div>`:''}
-  ${n.techStack?`<div class="field"><div class="flabel">Core Tech Stack</div><div style="font-size:.85rem;color:var(--text);font-family:var(--mono);line-height:1.6">${n.techStack}</div></div>`:''}
-  ${n.decentNote?`<div class="field"><div class="flabel">Decentralization <span style="color:var(--teal);font-weight:700">${n.decen||0}%</span></div><div style="font-size:.82rem;color:var(--text-2);line-height:1.5">${n.decentNote}</div></div>`:''}
-  <div class="field"><div class="flabel">Notes</div><textarea class="finput" style="min-height:140px" placeholder="Open-ended notes, hypotheses, meeting takeaways, or follow-ups" onchange="upd('${id}','notes',this.value)">${n.notes||''}</textarea></div>
-  <div class="field"><div class="flabel">Tags</div><div class="tag-row">${(n.tags||[]).map((t,i)=>`<span class="tag-chip">${t}<span class="rm" onclick="rTag('${id}',${i})">×</span></span>`).join('')}</div><input class="finput" style="margin-top:5px" placeholder="Add tag, press Enter" onkeydown="if(event.key==='Enter'){aTag('${id}',this.value);this.value=''}"></div>
-  <div class="field"><div class="flabel">People</div>${ppl.length?ppl.map(p=>`<div style="padding:4px 0;border-bottom:1px solid var(--border);font-size:.85rem"><strong>${p.name}</strong> <span style="color:var(--text-3)">${p.role||''}</span>${p.linkedin?` <a href="${p.linkedin}" target="_blank">LinkedIn↗</a>`:''}${p.twitter?` <a href="https://x.com/${p.twitter.replace('@','')}" target="_blank">${p.twitter}</a>`:''}</div>`).join(''):'<span style="color:var(--text-3);font-size:.8rem">No linked people</span>'}</div>
-  <div class="field"><div class="flabel">Strata</div><div class="strata">${SL.map((s,i)=>{const k='s'+(i+1);return`<div class="stm" data-v="${n[k]||0}" onclick="cyc('${id}','${k}')">${s}<br>${SS[n[k]||0]}</div>`}).join('')}</div></div>
-  <div class="field"><div class="flabel">Stack</div><select class="finput" onchange="upd('${id}','stack',this.value);save();render();updateSB()"><option value="infrastructure" ${n.stack==='infrastructure'?'selected':''}>Infrastructure</option><option value="application" ${n.stack==='application'?'selected':''}>Application</option><option value="governance" ${n.stack==='governance'?'selected':''}>Governance</option></select></div>
-  <div class="field"><div class="flabel">Funding</div><input class="finput" value="${n.funding||''}" onchange="upd('${id}','funding',this.value)"></div>
-  <div class="field"><div class="flabel">Chain</div><input class="finput" value="${n.chain||''}" onchange="upd('${id}','chain',this.value)"></div>
-  <div class="field"><div class="flabel">Website</div><input class="finput" value="${n.web||''}" onchange="upd('${id}','web',this.value)">${n.web?` <a href="${n.web}" target="_blank">↗</a>`:''}</div>
-  <div class="field"><div class="flabel">GitHub</div><input class="finput" value="${n.git||''}" onchange="upd('${id}','git',this.value)">${n.git?` <a href="${n.git}" target="_blank">↗</a>`:''}</div>
-  <div class="field"><div class="flabel">Source</div><input class="finput" value="${n.source||''}" onchange="upd('${id}','source',this.value)"></div>
-  <div class="field"><div class="flabel">Relations (${rels.length})</div><ul class="rel-list">${rels.map(r=>{const oid=r.s===id?r.t:r.s;const o=D.nodes.find(x=>x.id===oid);const st=RB[r.type]||{b:'var(--text-3)',c:'#fff'};return`<li class="rel-item"><span class="rel-badge" style="background:${st.b};color:${st.c}">${r.type}</span><span style="cursor:pointer" onclick="selNode('${oid}')">${o?.name||oid}</span><span style="font-size:.7rem;color:var(--text-3);margin-left:auto">${r.l||''}</span></li>`}).join('')}</ul></div>
-  <button class="btn btn-x" style="margin-top:16px" onclick="delN('${id}')">Delete Organization</button>`;
-  updateSB();
+  <div class="prov-box">
+    <div class="flabel">Provenance ${prov.hasUnverifiedClaims?'<span style="color:var(--red)">· * inferred / unresolved fields remain</span>':''}</div>
+    <div style="font-size:.8rem;color:var(--text-2);line-height:1.45">Confidence: <span class="conf-badge ${confCls}">${conf}</span>${prov.lastVerified?` · Last verified: ${prov.lastVerified}`:''}</div>
+    ${fin.openScienceAlignment&&fin.openScienceAlignment!=='unknown'?`<div style="font-size:.8rem;color:var(--text-2);line-height:1.45;margin-top:6px">Open-science alignment: <strong style="color:${osC(osScore)};text-transform:capitalize">${fin.openScienceAlignment}</strong></div>`:''}
+    ${fin.openScienceCompatibilityReasons&&fin.openScienceCompatibilityReasons.length?`<div style="font-size:.78rem;color:var(--text-3);line-height:1.5;margin-top:6px">Compatibility drivers: ${fin.openScienceCompatibilityReasons.join('; ')}.</div>`:''}
+    ${fin.openScienceAlignmentNote?`<div style="font-size:.8rem;color:var(--text-3);line-height:1.5;margin-top:6px">${fin.openScienceAlignmentNote}</div>`:''}
+    ${prov.notes?`<div style="font-size:.8rem;color:var(--text-3);line-height:1.5;margin-top:8px">${prov.notes}</div>`:''}
+    ${srcHtml?`<div class="src-list">${srcHtml}</div>`:'<div style="font-size:.78rem;color:var(--text-3);margin-top:8px">No external source links attached yet.</div>'}
+  </div>
+  <div class="field"><div class="flabel">Type</div><input class="finput" value="${n.type||''}" onchange="upd('${id}','type',this.value)"></div>
+  <div class="field"><div class="flabel">Stage</div><input class="finput" value="${n.stage||''}" onchange="upd('${id}','stage',this.value)"></div>
+  <div class="field"><div class="flabel">Website</div><input class="finput" value="${n.web||''}" onchange="upd('${id}','web',this.value)"></div>
+  <div class="field"><div class="flabel">Tech Stack</div><textarea class="finput" onchange="upd('${id}','techStack',this.value)">${n.techStack||''}</textarea></div>
+  <div class="field"><div class="flabel">Notes</div><textarea class="finput" onchange="upd('${id}','notes',this.value)">${n.notes||''}</textarea></div>
+  ${ppl.length?`<div class="field"><div class="flabel">People</div><ul class="rel-list">${ppl.map(pp=>`<li class="rel-item"><span>${pp.name}</span></li>`).join('')}</ul></div>`:''}
+  ${rels.length?`<div class="field"><div class="flabel">Relations</div><ul class="rel-list">${rels.map(r=>{const other=r.s===id?r.t:r.s;const on=D.nodes.find(x=>x.id===other)?.name||other;const c=RB[r.type]||{b:'var(--raised)',c:'var(--text-3)'};return`<li class="rel-item"><span class="rel-badge" style="background:${c.b};color:${c.c}">${r.type}</span><span>${on}</span>${r.l?`<span style="color:var(--text-3);font-size:.72rem">· ${r.l}</span>`:''}</li>`}).join('')}</ul></div>`:''}`;
+  el('app').classList.remove('hide-right');
 }
-
-// ===== DATA OPS =====
-function upd(id,k,v){const n=D.nodes.find(x=>x.id===id);if(n){n[k]=v;save()}}
-function cyc(id,k){const n=D.nodes.find(x=>x.id===id);if(n){n[k]=(n[k]+1)%4;save();selNode(id)}}
-function aTag(id,v){if(!v.trim())return;const n=D.nodes.find(x=>x.id===id);if(n){if(!n.tags)n.tags=[];n.tags.push(v.trim());save();selNode(id);buildPills()}}
-function rTag(id,i){const n=D.nodes.find(x=>x.id===id);if(n){n.tags.splice(i,1);save();selNode(id);buildPills()}}
-function delN(id){if(!confirm('Delete '+id+'?'))return;D.nodes=D.nodes.filter(n=>n.id!==id);D.edges=D.edges.filter(e=>e.s!==id&&e.t!==id);selId=null;save();render();updateSB();updateStats();el('detC').innerHTML='';el('detE').style.display=''}
-function rEdge(s,t,ty){D.edges=D.edges.filter(e=>!(e.s===s&&e.t===t&&e.type===ty));save();if(selId)selNode(selId)}
-
 // ===== MODALS =====
 function clM(){el('mo').style.display='none'}
 function addOrgM(){
@@ -839,7 +1119,7 @@ function addOrgM(){
 }
 function doAddOrg(){
   const id=el('nId').value.trim(),name=el('nName').value.trim();if(!id||!name)return;
-  D.nodes.push({id,name,desc:'',type:el('nType').value.trim()||'Unknown',stack:el('nStack').value,stage:'Early',tags:[],s1:0,s2:0,s3:0,s4:0,s5:0,decen:50,chain:'',web:'',funding:'',source:'Manual',cf:{},wp:'',git:'',twitter:'',people:'',techStack:'',decentNote:'',overlapScore:0,compNote:'',notes:'',overlapTags:[],credScore:0,finModel:'',legalStructure:'unknown',apc:false,profitScore:50,finNote:'',fundingRaised:''});
+  D.nodes.push({id,name,desc:'',type:el('nType').value.trim()||'Unknown',stack:el('nStack').value,stage:'Early',tags:[],s1:0,s2:0,s3:0,s4:0,s5:0,decen:50,chain:'',web:'',funding:'',source:'Manual',cf:{},wp:'',git:'',twitter:'',people:'',techStack:'',decentNote:'',overlapScore:0,compNote:'',notes:'',overlapTags:[],credScore:0,finModel:'',legalStructure:'unknown',apc:false,profitScore:50,finNote:'',fundingRaised:'',provenance:{confidence:'low',hasUnverifiedClaims:true,sources:[],lastVerified:'',notes:'Manual entry'},financials:{revenueSources:[],researcherPays:'unknown',institutionPays:'unknown',openScienceAlignment:'unknown',openScienceAlignmentNote:'',openScienceCompatibilityScore:50,openScienceCompatibilityBand:'moderate',scoreBreakdown:{},scoreAudit:{}},openScienceScore:50,sourceAsterisk:true});
   save();render();updateSB();updateStats();buildPills();clM();
 }
 function addEdgeM(){
@@ -860,7 +1140,7 @@ function impFile(inp){
   const f=inp.files[0];if(!f)return;
   const r=new FileReader();r.onload=e=>{
     try{
-      if(f.name.endsWith('.json')){D=JSON.parse(e.target.result);D.nodes.forEach(n=>{n.overlapTags=n.overlapTags||[];n.credScore=n.credScore||0;n.finModel=n.finModel||'';n.legalStructure=n.legalStructure||'unknown';n.apc=n.apc||false;n.profitScore=n.profitScore??50;n.finNote=n.finNote||'';n.fundingRaised=n.fundingRaised||''})}
+      if(f.name.endsWith('.json')){D=JSON.parse(e.target.result);D.nodes.forEach(n=>{n.overlapTags=n.overlapTags||[];n.credScore=n.credScore||0;n.finModel=n.finModel||'';n.legalStructure=n.legalStructure||'unknown';n.apc=n.apc||false;n.profitScore=n.profitScore??50;n.openScienceScore=n.openScienceScore??((n.financials&&n.financials.openScienceCompatibilityScore)??50);n.finNote=n.finNote||'';n.fundingRaised=n.fundingRaised||'';n.provenance=n.provenance||{confidence:'low',hasUnverifiedClaims:true,sources:[],lastVerified:'',notes:''};n.financials=n.financials||{revenueSources:[],researcherPays:'unknown',institutionPays:'unknown',openScienceAlignment:'unknown',openScienceAlignmentNote:'',scoreBreakdown:{},openScienceCompatibilityScore:50,openScienceCompatibilityBand:'moderate',scoreAudit:{}};if(n.financials&&n.financials.openScienceCompatibilityScore==null)n.financials.openScienceCompatibilityScore=n.openScienceScore??50;n.sourceAsterisk=!!n.sourceAsterisk})}
       else if(f.name.endsWith('.csv')){const p=Papa.parse(e.target.result,{header:true});p.data.forEach(row=>{if(!row.id)return;const ex=D.nodes.find(n=>n.id===row.id);if(ex)Object.assign(ex,row);else D.nodes.push({...row,tags:(row.tags||'').split(','),s1:+row.s1||0,s2:+row.s2||0,s3:+row.s3||0,s4:+row.s4||0,s5:+row.s5||0,decen:+row.decen||50,cf:{},overlapTags:[],credScore:0,profitScore:50})})}
       save();render();updateSB();updateStats();buildPills();
     }catch(err){alert('Import error: '+err.message)}
