@@ -419,21 +419,6 @@ function estimateLabelPad(name, mode='org'){
   return Math.max(10, Math.min(mode==='people' ? 32 : 36, (name || '').length * mult));
 }
 
-function nodeLayoutScore(node, degree=0, mode='org'){
-  const cred = +(node.credScore || 0);
-  const dec = +(node.decen || 0);
-  const overlap = +(node.overlapScore || 0);
-  const deg = +degree;
-  if (mode === 'people') {
-    return (node._t === 'org' ? 85 : 30) + deg * 28 + (node.orgs ? node.orgs.length * 10 : 0);
-  }
-  return cred * 0.9 + dec * 0.45 + overlap * 0.35 + deg * 32;
-}
-
-function componentScore(compIds, byId, degreeMap, mode='org'){
-  return compIds.reduce((sum, id) => sum + nodeLayoutScore(byId.get(id) || {}, degreeMap.get(id) || 0, mode), 0);
-}
-
 function componentRing(size, minDim, mode='org'){
   if (mode === 'people') {
     if (size >= 10) return minDim * 0.26;
@@ -456,29 +441,16 @@ function componentRadius(compIds, byId, mode='org'){
   return base + sizeTerm + labelTerm;
 }
 
-function componentAnchors(w, h, comps, byId, degreeMap, mode='org'){
+function componentAnchors(w, h, comps, byId, mode='org'){
   const cx = w / 2, cy = h / 2;
   const minDim = Math.min(w, h);
-  const ranked = comps
-    .map(ids => ({ ids, score: componentScore(ids, byId, degreeMap, mode) }))
-    .sort((a, b) => b.score - a.score);
-
-  const ringByIndex = i => {
-    if (i === 0) return minDim * (mode === 'people' ? 0.14 : 0.16);
-    if (i <= 2) return minDim * (mode === 'people' ? 0.30 : 0.33);
-    if (i <= 5) return minDim * (mode === 'people' ? 0.46 : 0.50);
-    if (i <= 9) return minDim * (mode === 'people' ? 0.62 : 0.67);
-    return minDim * (mode === 'people' ? 0.78 : 0.82);
-  };
-
-  const compNodes = ranked.map((c, i) => {
-    const ring = ringByIndex(i);
-    const angle = -Math.PI / 2 + (i * 2 * Math.PI / Math.max(1, ranked.length));
+  const compNodes = comps.map((ids, i) => {
+    const ring = componentRing(ids.length, minDim, mode);
+    const angle = -Math.PI / 2 + (i * 2 * Math.PI / Math.max(1, comps.length));
     return {
       id: i,
-      ids: c.ids,
-      score: c.score,
-      r: componentRadius(c.ids, byId, mode),
+      ids,
+      r: componentRadius(ids, byId, mode),
       ring,
       x: cx + Math.cos(angle) * ring,
       y: cy + Math.sin(angle) * ring
@@ -486,16 +458,18 @@ function componentAnchors(w, h, comps, byId, degreeMap, mode='org'){
   });
 
   const cSim = d3.forceSimulation(compNodes)
-    .force('radial', d3.forceRadial(d => d.ring, cx, cy).strength(0.8))
-    .force('charge', d3.forceManyBody().strength(-2600))
-    .force('collision', d3.forceCollide(d => d.r + 82))
+    .force('radial', d3.forceRadial(d => d.ring, cx, cy).strength(0.95))
+    .force('charge', d3.forceManyBody().strength(-2200))
+    .force('collision', d3.forceCollide(d => d.r + 48))
+    .force('x', d3.forceX(cx).strength(0.015))
+    .force('y', d3.forceY(cy).strength(0.015))
     .stop();
 
-  for (let i = 0; i < 360; i++) cSim.tick();
+  for (let i = 0; i < 320; i++) cSim.tick();
 
   const out = new Map();
   compNodes.forEach(c => {
-    const pad = c.r + 34;
+    const pad = c.r + 24;
     c.x = Math.max(pad, Math.min(w - pad, c.x));
     c.y = Math.max(pad, Math.min(h - pad, c.y));
     c.ids.forEach(id => out.set(id, {x:c.x, y:c.y, r:c.r}));
@@ -503,35 +477,20 @@ function componentAnchors(w, h, comps, byId, degreeMap, mode='org'){
   return out;
 }
 
-
-function seedNodesByComponent(nodes, comps, anchorById, degreeMap, mode='org'){
-  const byId = new Map(nodes.map(n => [n.id, n]));
+function seedNodesByComponent(nodes, comps, anchorById){
   comps.forEach(ids => {
-    const base = anchorById.get(ids[0]) || {x:0, y:0, r:120};
-    const ranked = ids
-      .map(id => byId.get(id))
-      .filter(Boolean)
-      .sort((a, b) => nodeLayoutScore(b, degreeMap.get(b.id) || 0, mode) - nodeLayoutScore(a, degreeMap.get(a.id) || 0, mode));
-
-    ranked.forEach((d, idx) => {
-      if (idx === 0) {
-        d.x = base.x;
-        d.y = base.y;
-        return;
-      }
-      const shell = Math.floor((idx - 1) / 6) + 1;
-      const inShell = (idx - 1) % 6;
-      const shellCount = Math.min(6 + (shell - 1) * 4, Math.max(6, ranked.length - 1));
-      const angleOffset = shell % 2 ? 0 : Math.PI / shellCount;
-      const angle = angleOffset + (inShell / shellCount) * Math.PI * 2;
-      const shellGap = mode === 'people' ? 34 : 42;
-      const localR = Math.min(base.r * 0.72, 26 + shell * shellGap);
+    const count = ids.length;
+    const base = anchorById.get(ids[0]) || {x:0, y:0, r:100};
+    ids.forEach((id, j) => {
+      const d = nodes.find(n => n.id === id);
+      if (!d) return;
+      const angle = (j / Math.max(1, count)) * Math.PI * 2;
+      const localR = Math.min(base.r * 0.42, 20 + Math.sqrt(count) * 9 + (j % 3) * 8);
       d.x = base.x + Math.cos(angle) * localR;
       d.y = base.y + Math.sin(angle) * localR;
     });
   });
 }
-
 
 function labelPlacement(d, anchorById, mode='org'){
   const a = anchorById.get(d.id) || {x:d.x || 0, y:d.y || 0};
@@ -569,100 +528,109 @@ function buildGraph(){
   const m=el('main'),w=m.clientWidth,h=m.clientHeight;
   if(!w||!h)return;
 
-  const sn=D.nodes.filter(vis).map((n, i)=>({ ...n, _i:i }));
+  const sn=D.nodes.filter(vis).map(n=>({...n}));
   const si=new Set(sn.map(n=>n.id));
   const se=D.edges
     .filter(e=>si.has(e.s)&&si.has(e.t))
-    .map(e=>({ ...e, source:e.s, target:e.t }));
-
-  const byId = new Map(sn.map(n => [n.id, n]));
-  const degreeMap = new Map(sn.map(n => [n.id, 0]));
-  se.forEach(e => {
-    degreeMap.set(e.source, (degreeMap.get(e.source) || 0) + 1);
-    degreeMap.set(e.target, (degreeMap.get(e.target) || 0) + 1);
-  });
-  const comps = computeComponents(sn, se);
-  const anchorById = componentAnchors(w, h, comps, byId, degreeMap, 'org');
-  seedNodesByComponent(sn, comps, anchorById, degreeMap, 'org');
+    .map(e=>({source:e.s,target:e.t,type:e.type,l:e.l||e.label||''}));
 
   const svgEl=d3.select(m).append('svg').attr('width',w).attr('height',h);
-  zoomBehavior=d3.zoom().scaleExtent([.15,4]).on('zoom',e=>svgG.attr('transform',e.transform));
+  zoomBehavior=d3.zoom().scaleExtent([.12,4]).on('zoom',e=>svgG.attr('transform',e.transform));
   svgEl.call(zoomBehavior);
   svgG=svgEl.append('g');
   const lG=svgG.append('g'),nG=svgG.append('g'),tG=svgG.append('g');
 
   const s=d3.forceSimulation(sn)
-    .force('link',d3.forceLink(se).id(d=>d.id).distance(d=>{
-      const sa = anchorById.get(d.source.id || d.source)?.r || 120;
-      return Math.min(146, Math.max(92, sa * 0.42));
-    }).strength(.16))
-    .force('charge',d3.forceManyBody().strength(-170))
-    .force('clusterX', d3.forceX(d => (anchorById.get(d.id) || {x:w/2}).x).strength(.12))
-    .force('clusterY', d3.forceY(d => (anchorById.get(d.id) || {y:h/2}).y).strength(.12))
-    .force('collision',d3.forceCollide(d => estimateNodeRadius(d,'org') + estimateLabelPad(d.name,'org') + 18))
-    .alphaDecay(0.045)
-    .velocityDecay(0.30);
+    .force('link',d3.forceLink(se).id(d=>d.id).distance(106).strength(.19))
+    .force('charge',d3.forceManyBody().strength(-235))
+    .force('center',d3.forceCenter(w/2,h/2))
+    .force('x',d3.forceX(w/2).strength(.022))
+    .force('y',d3.forceY(h/2).strength(.022))
+    .force('collision',d3.forceCollide().radius(d=>estimateNodeRadius(d,'org')+12))
+    .alphaDecay(.032)
+    .velocityDecay(.34);
   sim=s;
 
   const lines=lG.selectAll('line').data(se).enter().append('line')
-    .attr('stroke',d=>EC[d.type]||'var(--raised)')
-    .attr('stroke-width',d=>d.type==='overlap'?1.15:1.55)
-    .attr('stroke-dasharray',d=>d.type==='overlap'?'7 5':null)
+    .attr('stroke',d=>EC[d.type]||'var(--border-h)')
+    .attr('stroke-width',d=>d.type==='overlap'?0.95:1.3)
+    .attr('stroke-dasharray',d=>d.type==='overlap'?'5,4':null)
     .attr('stroke-linecap','round')
-    .attr('opacity',d=>d.type==='overlap'?.32:.24);
+    .attr('opacity',d=>d.type==='overlap'?.42:.34);
 
-  const ns=nG.selectAll('circle').data(sn).enter().append('circle')
+  const ns=nG.selectAll('g').data(sn).enter().append('g')
+    .style('cursor','pointer')
+    .call(d3.drag()
+      .on('start',(e,d)=>{if(!e.active)s.alphaTarget(.25).restart();d.fx=d.x;d.fy=d.y})
+      .on('drag',(e,d)=>{d.fx=e.x;d.fy=e.y})
+      .on('end',(e,d)=>{if(!e.active)s.alphaTarget(0);d.fx=null;d.fy=null}));
+
+  ns.append('circle')
     .attr('r',d=>estimateNodeRadius(d,'org'))
     .attr('fill',d=>SC[d.stack]||'var(--text-3)')
-    .attr('fill-opacity',.2)
+    .attr('fill-opacity',.16)
     .attr('stroke',d=>SC[d.stack]||'var(--text-3)')
-    .attr('stroke-width',d=>(d.overlapScore||0)>=40?2.3:1.15)
-    .style('cursor','pointer')
-    .call(d3.drag().on('start',(e,d)=>{if(!e.active)s.alphaTarget(.18).restart();d.fx=d.x;d.fy=d.y}).on('drag',(e,d)=>{d.fx=e.x;d.fy=e.y}).on('end',(e,d)=>{if(!e.active)s.alphaTarget(0);d.fx=null;d.fy=null}));
+    .attr('stroke-width',d=>(d.overlapScore||0)>=40?2.2:1.45);
 
-  const labels=tG.selectAll('text').data(sn).enter().append('text').text(d=>d.name)
-    .attr('font-size',9)
+  ns.append('circle')
+    .attr('r',2.3)
+    .attr('fill',d=>SC[d.stack]||'var(--text-3)')
+    .attr('fill-opacity',.95);
+
+  tG.selectAll('text').data(sn).enter().append('text').text(d=>d.name)
+    .attr('font-size',10)
     .attr('font-family','Nunito Sans,sans-serif')
-    .attr('font-weight',600)
+    .attr('font-weight',500)
     .attr('fill','var(--graph-label)')
-    .attr('stroke','rgba(0,0,0,.8)')
-    .attr('stroke-width',1.35)
+    .attr('stroke','rgba(0,0,0,.75)')
+    .attr('stroke-width',1.4)
     .attr('paint-order','stroke')
+    .attr('text-anchor','middle')
+    .attr('dy',d=>-(estimateNodeRadius(d,'org')+12))
     .style('pointer-events','none');
 
   ns.on('click',(e,d)=>{selNode(d.id);el('app').classList.remove('hide-right')});
 
   const tip=el('tip');
   ns.on('mouseenter',(e,d)=>{
-    const cred=d.credScore||0;
-    const cc=cred>=60?'var(--sage)':cred>=30?'var(--gold)':'var(--text-3)';
-    tip.innerHTML=`<h4>${d.name}</h4><div class="tm">${d.type} · ${d.stage} · Overlap ${d.overlapScore||0}%<br>Cred: <span style="color:${cc}">${cred}/100</span></div>`;
-    tip.classList.add('vis')
-  })
-  .on('mousemove',e=>{const r=m.getBoundingClientRect();tip.style.left=(e.clientX-r.left+14)+'px';tip.style.top=(e.clientY-r.top-10)+'px'})
-  .on('mouseleave',()=>tip.classList.remove('vis'));
-
-  lines.on('mouseenter',function(e,d){
-    d3.select(this).attr('stroke-width',d.type==='overlap'?1.9:2.7).attr('opacity',.58);
-    const sn2=D.nodes.find(n=>n.id===(d.source.id||d.source));
-    const tn2=D.nodes.find(n=>n.id===(d.target.id||d.target));
-    tip.innerHTML=`<h4 style="font-size:.8rem">${sn2?.name||''} → ${tn2?.name||''}</h4><div class="tm"><span class="rel-badge" style="background:${(RB[d.type]||{}).b||'var(--raised)'};color:${(RB[d.type]||{}).c||'#fff'}">${d.type}</span> ${d.l||''}</div>`;
+    tip.innerHTML=`<h4>${d.name}</h4><div class="tm">${d.type||''} · ${d.stack||''} · ${(d.tags||[]).slice(0,3).join(', ')}</div>`;
     tip.classList.add('vis');
-  })
-  .on('mousemove',e=>{const r=m.getBoundingClientRect();tip.style.left=(e.clientX-r.left+14)+'px';tip.style.top=(e.clientY-r.top-10)+'px'})
-  .on('mouseleave',function(){d3.select(this).attr('stroke-width',d=>d.type==='overlap'?1.15:1.55).attr('opacity',d=>d.type==='overlap'?.32:.24);tip.classList.remove('vis')});
+  }).on('mousemove',e=>{
+    const r=m.getBoundingClientRect();
+    tip.style.left=(e.clientX-r.left+12)+'px';
+    tip.style.top=(e.clientY-r.top-8)+'px';
+  }).on('mouseleave',()=>tip.classList.remove('vis'));
+
+  lines.on('mouseenter',(e,d)=>{
+    const sName=typeof d.source==='object'?d.source.name:(D.nodes.find(n=>n.id===d.source)?.name||d.source);
+    const tName=typeof d.target==='object'?d.target.name:(D.nodes.find(n=>n.id===d.target)?.name||d.target);
+    tip.innerHTML=`<h4>${sName} → ${tName}</h4><div class="tm">${d.type||'relation'}${d.l?` · ${d.l}`:''}</div>`;
+    tip.classList.add('vis');
+    d3.select(e.currentTarget).attr('opacity',.85).attr('stroke-width',d.type==='overlap'?1.4:1.9);
+  }).on('mousemove',e=>{
+    const r=m.getBoundingClientRect();
+    tip.style.left=(e.clientX-r.left+12)+'px';
+    tip.style.top=(e.clientY-r.top-8)+'px';
+  }).on('mouseleave',e=>{
+    tip.classList.remove('vis');
+    d3.select(e.currentTarget).attr('opacity',d=>d.type==='overlap'?.42:.34).attr('stroke-width',d=>d.type==='overlap'?0.95:1.3);
+  });
 
   s.on('tick',()=>{
     lines.attr('x1',d=>d.source.x).attr('y1',d=>d.source.y).attr('x2',d=>d.target.x).attr('y2',d=>d.target.y);
-    ns.attr('cx',d=>d.x).attr('cy',d=>d.y);
-    labels.each(function(d){
-      const p = labelPlacement(d, anchorById, 'org');
-      d3.select(this).attr('text-anchor', p.anchor).attr('x', p.x).attr('y', p.y);
-    });
+    ns.attr('transform',d=>`translate(${d.x},${d.y})`);
+    tG.selectAll('text').attr('x',d=>d.x).attr('y',d=>d.y);
   });
 
-  const lg=document.createElement('div');lg.className='legend';lg.id='graphLegend';
-  lg.innerHTML=`<div class="legend-header" onclick="this.parentElement.classList.toggle('collapsed')"><span class="legend-title">Legend</span><span class="legend-toggle">▼</span></div><div class="legend-body"><div style="margin-top:6px"><div class="legend-row"><div class="legend-dot" style="background:var(--sage)"></div>Infrastructure</div><div class="legend-row"><div class="legend-dot" style="background:var(--rose)"></div>Application</div><div class="legend-row"><div class="legend-dot" style="background:var(--teal)"></div>Governance</div></div><div style="margin-top:8px;border-top:1px solid var(--border);padding-top:6px"><div class="legend-row"><div style="width:14px;height:2px;background:var(--edge-funder);border-radius:1px"></div>Funder</div><div class="legend-row"><div style="width:14px;height:2px;background:var(--edge-ecosystem);border-radius:1px"></div>Ecosystem</div><div class="legend-row"><div style="width:14px;height:2px;background:var(--edge-partner);border-radius:1px"></div>Partner</div><div class="legend-row"><div style="width:14px;height:2px;background:var(--edge-overlap);border-radius:1px;border-top:2px dashed var(--edge-overlap)"></div>Overlap</div></div><div style="margin-top:6px;font-size:.6rem;color:var(--text-3)">Node size = decentralization<br>Thick border = overlap ≥40%</div></div>`;
+  const lg=document.createElement('div');
+  lg.className='legend';
+  lg.innerHTML=`<div class="legend-title">Graph</div>
+  <div class="legend-row"><div class="legend-dot" style="background:${SC.infrastructure}"></div>Infrastructure</div>
+  <div class="legend-row"><div class="legend-dot" style="background:${SC.application}"></div>Application</div>
+  <div class="legend-row"><div class="legend-dot" style="background:${SC.governance}"></div>Governance</div>
+  <div style="margin-top:6px"><div class="legend-row"><div class="legend-line" style="background:${EC.partner};width:18px;height:2px"></div>Partner</div>
+  <div class="legend-row"><div class="legend-line" style="background:${EC.overlap};width:18px;height:2px;border-top:2px dashed ${EC.overlap};background:none"></div>Overlap</div>
+  <div class="legend-row"><div class="legend-line" style="background:${EC.funder};width:18px;height:2px"></div>Funder</div></div>`;
   m.appendChild(lg);
 }
 
@@ -697,71 +665,64 @@ function showPerson(pid){
 function renderPeopleGraph(){
   const m=el('main'),w=m.clientWidth,h=m.clientHeight;
   if(!w||!h)return;
-  const pN=D.people.map((p, i)=>({...p,_t:'person', _i:i}));
-  const oN=D.nodes.filter(n=>D.people.some(p=>p.orgs.includes(n.id))).map((n, i)=>({id:n.id,name:n.name,_t:'org',stack:n.stack,_i:i+1000}));
+
+  const pN=D.people.map(p=>({...p,_t:'person'}));
+  const oN=D.nodes.filter(n=>D.people.some(p=>p.orgs.includes(n.id))).map(n=>({id:n.id,name:n.name,_t:'org',stack:n.stack}));
   const allN=[...pN,...oN];
   const links=[];
   D.people.forEach(p=>p.orgs.forEach(o=>{if(D.nodes.find(n=>n.id===o))links.push({source:p.id,target:o,_t:'member'})}));
   D.people.forEach((p1,i)=>D.people.forEach((p2,j)=>{if(j>i&&p1.orgs.some(o=>p2.orgs.includes(o)))links.push({source:p1.id,target:p2.id,_t:'colleague'})}));
-
-  const byId = new Map(allN.map(n => [n.id, n]));
-  const degreeMap = new Map(allN.map(n => [n.id, 0]));
-  links.forEach(e => {
-    degreeMap.set(e.source, (degreeMap.get(e.source) || 0) + 1);
-    degreeMap.set(e.target, (degreeMap.get(e.target) || 0) + 1);
-  });
-  const comps = computeComponents(allN, links);
-  const anchorById = componentAnchors(w, h, comps, byId, degreeMap, 'people');
-  seedNodesByComponent(allN, comps, anchorById, degreeMap, 'people');
 
   const svgEl=d3.select(m).append('svg').attr('width',w).attr('height',h);
   svgEl.call(d3.zoom().scaleExtent([.2,4]).on('zoom',e=>gEl.attr('transform',e.transform)));
   const gEl=svgEl.append('g'),lG=gEl.append('g'),nG=gEl.append('g'),tG=gEl.append('g');
 
   const s=d3.forceSimulation(allN)
-    .force('link',d3.forceLink(links).id(d=>d.id).distance(d=>d._t==='colleague'?108:92).strength(.15))
-    .force('charge',d3.forceManyBody().strength(-185))
-    .force('clusterX', d3.forceX(d => (anchorById.get(d.id) || {x:w/2}).x).strength(.11))
-    .force('clusterY', d3.forceY(d => (anchorById.get(d.id) || {y:h/2}).y).strength(.11))
-    .force('collision',d3.forceCollide(d => estimateNodeRadius(d,'people') + estimateLabelPad(d.name,'people') + 16))
-    .alphaDecay(0.05)
-    .velocityDecay(0.32);
+    .force('link',d3.forceLink(links).id(d=>d.id).distance(d=>d._t==='colleague'?86:76).strength(.28))
+    .force('charge',d3.forceManyBody().strength(-190))
+    .force('center',d3.forceCenter(w/2,h/2))
+    .force('x',d3.forceX(w/2).strength(.024))
+    .force('y',d3.forceY(h/2).strength(.024))
+    .force('collision',d3.forceCollide(26))
+    .alphaDecay(.036)
+    .velocityDecay(.34);
   sim=s;
 
   lG.selectAll('line').data(links).enter().append('line')
     .attr('stroke',d=>d._t==='colleague'?'var(--gold)':'var(--raised)')
-    .attr('stroke-width',d=>d._t==='colleague'?1.8:1.05)
-    .attr('opacity',.28);
+    .attr('stroke-width',d=>d._t==='colleague'?1.5:1)
+    .attr('opacity',.32);
 
   const ns=nG.selectAll('g').data(allN).enter().append('g').style('cursor','pointer')
-    .call(d3.drag().on('start',(e,d)=>{if(!e.active)s.alphaTarget(.18).restart();d.fx=d.x;d.fy=d.y}).on('drag',(e,d)=>{d.fx=e.x;d.fy=e.y}).on('end',(e,d)=>{if(!e.active)s.alphaTarget(0);d.fx=null;d.fy=null}));
+    .call(d3.drag().on('start',(e,d)=>{if(!e.active)s.alphaTarget(.25).restart();d.fx=d.x;d.fy=d.y}).on('drag',(e,d)=>{d.fx=e.x;d.fy=e.y}).on('end',(e,d)=>{if(!e.active)s.alphaTarget(0);d.fx=null;d.fy=null}));
 
-  ns.filter(d=>d._t==='person').append('circle').attr('r',10).attr('fill','var(--gold)').attr('fill-opacity',.18).attr('stroke','var(--gold)').attr('stroke-width',1.6);
+  ns.filter(d=>d._t==='person').append('circle').attr('r',10).attr('fill','var(--gold)').attr('fill-opacity',.15).attr('stroke','var(--gold)').attr('stroke-width',1.5);
   ns.filter(d=>d._t==='org').append('rect').attr('x',-9).attr('y',-9).attr('width',18).attr('height',18).attr('rx',4).attr('fill',d=>SC[d.stack]||'var(--text-3)').attr('fill-opacity',.15).attr('stroke',d=>SC[d.stack]||'var(--text-3)').attr('stroke-width',1.2);
 
-  const labels=tG.selectAll('text').data(allN).enter().append('text').text(d=>d.name)
-    .attr('font-size',8.8)
+  tG.selectAll('text').data(allN).enter().append('text').text(d=>d.name)
+    .attr('font-size',10)
     .attr('font-family','Nunito Sans,sans-serif')
     .attr('font-weight',d=>d._t==='person'?600:400)
     .attr('fill',d=>d._t==='person'?'var(--gold)':'var(--text-2)')
-    .attr('stroke','rgba(0,0,0,.8)')
-    .attr('stroke-width',1.3)
+    .attr('stroke','rgba(0,0,0,.75)')
+    .attr('stroke-width',1.25)
     .attr('paint-order','stroke')
+    .attr('text-anchor','middle')
+    .attr('dy',-16)
     .style('pointer-events','none');
 
   ns.on('click',(e,d)=>{if(d._t==='org')selNode(d.id);else showPerson(d.id)});
+
+  const tip=el('tip');
+  ns.on('mouseenter',(e,d)=>{tip.innerHTML=`<h4>${d.name}</h4><div class="tm">${d._t==='person'?(d.role||''):(d.name)}</div>`;tip.classList.add('vis')}).on('mousemove',e=>{const r=m.getBoundingClientRect();tip.style.left=(e.clientX-r.left+12)+'px';tip.style.top=(e.clientY-r.top-8)+'px'}).on('mouseleave',()=>tip.classList.remove('vis'));
+
   s.on('tick',()=>{
     lG.selectAll('line').attr('x1',d=>d.source.x).attr('y1',d=>d.source.y).attr('x2',d=>d.target.x).attr('y2',d=>d.target.y);
-    nG.selectAll('g').attr('transform',d=>`translate(${d.x},${d.y})`);
-    labels.each(function(d){
-      const p = labelPlacement(d, anchorById, 'people');
-      d3.select(this).attr('text-anchor', p.anchor).attr('x', p.x).attr('y', p.y);
-    });
+    ns.attr('transform',d=>`translate(${d.x},${d.y})`);
+    tG.selectAll('text').attr('x',d=>d.x).attr('y',d=>d.y);
   });
 
-  const lg=document.createElement('div');lg.className='legend';
-  lg.innerHTML=`<div class="legend-header" onclick="this.parentElement.classList.toggle('collapsed')"><span class="legend-title">People Graph</span><span class="legend-toggle">▼</span></div><div class="legend-body"><div class="legend-row"><div class="legend-dot" style="background:var(--gold)"></div>Person</div><div class="legend-row"><div class="legend-dot" style="background:var(--sage)"></div>Org (Infra)</div><div class="legend-row"><div class="legend-dot" style="background:var(--rose)"></div>Org (App)</div><div class="legend-row"><div class="legend-dot" style="background:var(--teal)"></div>Org (Gov)</div></div>`;
-  m.appendChild(lg);
+  const lg=document.createElement('div');lg.className='legend';lg.innerHTML=`<div class="legend-title">People Graph</div><div class="legend-row"><div class="legend-dot" style="background:var(--gold)"></div>Person</div><div class="legend-row"><div class="legend-dot" style="background:${SC.infrastructure}"></div>Org (Infra)</div><div class="legend-row"><div class="legend-dot" style="background:${SC.application}"></div>Org (App)</div><div class="legend-row"><div class="legend-dot" style="background:${SC.governance}"></div>Org (Gov)</div><div style="margin-top:6px"><div class="legend-row"><div class="legend-line" style="background:var(--gold);width:18px;height:2px"></div>Colleagues (shared org)</div><div class="legend-row"><div class="legend-line" style="background:var(--raised);width:18px;height:1px"></div>Member of</div></div>`;m.appendChild(lg);
 }
 
 
