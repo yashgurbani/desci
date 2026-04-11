@@ -385,8 +385,6 @@ table.dtbl { width: 100%; border-collapse: separate; border-spacing: 0; font-siz
 .sync-status.synced { border-color: rgba(92,184,122,.3); color: var(--green-edge); }
 .sync-status.error { border-color: rgba(224,92,92,.3); color: var(--red); }
 .sync-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
-.sync-help { font-size: .75rem; color: var(--text-2); line-height: 1.5; margin-bottom: 12px; }
-.sync-help code { font-family: var(--mono); font-size: .7rem; background: var(--card); padding: 1px 5px; border-radius: 3px; }
 </style>
 </head>
 <body>
@@ -394,7 +392,7 @@ table.dtbl { width: 100%; border-collapse: separate; border-spacing: 0; font-siz
 <header class="header">
   <span class="logo">DeSci Landscape</span>
   <span class="stats" id="stats"></span>
-  <span class="sync-status" id="syncStatus" onclick="githubPull()" title="Click to pull from GitHub"><span class="sync-dot"></span>local only</span>
+  <span class="sync-status" id="syncStatus" onclick="onSyncClick()" title="Click to sync"><span class="sync-dot"></span><span id="syncText">local</span></span>
   <div class="tabs">
     <button class="tab on" onclick="setView('graph',this)">Graph</button>
     <button class="tab" onclick="setView('table',this)">Directory</button>
@@ -413,7 +411,6 @@ table.dtbl { width: 100%; border-collapse: separate; border-spacing: 0; font-siz
     <button class="btn" onclick="xCSV()">CSV</button>
     <button class="btn" onclick="xJSON()">JSON</button>
     <button class="btn" onclick="el('imp').click()">Import</button>
-    <button class="btn" onclick="syncSettings()" title="GitHub sync settings">⚙ Sync</button>
     <input type="file" id="imp" accept=".csv,.json" style="display:none" onchange="doImport(event)">
   </div>
 </header>
@@ -473,16 +470,9 @@ function init(){
   if(!D.people)D.people=SEED_DATA.people;
   buildPills();render();updateSB();updateStats();
 }
-function save(){
+function save(skipPush){
   localStorage.setItem('desci5',JSON.stringify(D));
-  // Mark as modified if GitHub is configured
-  if(ghConfigured()){
-    const ss=el('syncStatus');
-    if(!ss.classList.contains('error')){
-      ss.className='sync-status';ss.innerHTML='<span class="sync-dot"></span>modified · click to push';
-      ss.onclick=githubPush;
-    }
-  }
+  if(!skipPush)debouncedPush();
 }
 
 // ===== FILTERS =====
@@ -646,110 +636,120 @@ function xCSV(){const cols=['id','name','type','stack','stage','funding','chain'
 function dl(b,n){const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=n;a.click()}
 function doImport(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{const txt=ev.target.result;if(f.name.endsWith('.json')){try{const d=JSON.parse(txt);if(d.nodes){D=d;D.people=D.people||SEED_DATA.people;D.nodes.forEach(n=>{n.wp=n.wp||'';n.git=n.git||'';n.twitter=n.twitter||'';n.cf=n.cf||{}});save();render();updateSB();updateStats();buildPills()}}catch(err){alert('Invalid JSON')}}else{Papa.parse(txt,{header:true,complete:res=>{res.data.filter(r=>r.name||r.id).forEach(r=>{const id=r.id||(r.name||'').toLowerCase().replace(/[^a-z0-9]+/g,'-');const ex=D.nodes.find(n=>n.id===id);const node={id,name:r.name||id,desc:r.desc||'',people:r.people||'',funding:r.funding||'',stage:r.stage||'Unknown',stack:r.stack||'application',tags:(r.tags||'').split('|').filter(Boolean),type:r.type||'Unknown',web:r.web||'',chain:r.chain||'',source:r.source||'CSV',s1:+(r.s1||0),s2:+(r.s2||0),s3:+(r.s3||0),s4:+(r.s4||0),s5:+(r.s5||0),decen:+(r.decen||50),cf:{},wp:r.wp||'',git:r.git||'',twitter:r.twitter||''};if(ex)Object.assign(ex,node);else D.nodes.push(node)});save();render();updateSB();updateStats();buildPills()}})}};r.readAsText(f);e.target.value=''}
 
-// ===== GITHUB SYNC =====
-function getGH(){
-  return {
-    owner: localStorage.getItem('gh-owner') || '',
-    repo: localStorage.getItem('gh-repo') || '',
-    token: localStorage.getItem('gh-token') || '',
-    path: localStorage.getItem('gh-path') || 'data.json',
-  };
-}
-function ghConfigured(){ const g=getGH(); return g.owner && g.repo && g.token; }
+// ===== GITHUB SYNC (automatic backend) =====
+const GH = {
+  get owner(){ return localStorage.getItem('gh-owner')||'' },
+  get repo(){ return localStorage.getItem('gh-repo')||'' },
+  get token(){ return localStorage.getItem('gh-token')||'' },
+  get path(){ return localStorage.getItem('gh-path')||'data.json' },
+  get ok(){ return !!(this.owner && this.repo && this.token) }
+};
 
-function syncSettings(){
-  const g=getGH();
-  el('mo').style.display='flex';
-  el('mc').innerHTML=`<h2>GitHub Sync</h2>
-  <div class="sync-help">
-    Store your landscape data as a JSON file in a GitHub repo. Both you and your cofounder can edit from any browser.<br><br>
-    <strong>Setup:</strong><br>
-    1. Your repo: <code>desci</code><br>
-    2. Generate a <a href="https://github.com/settings/tokens/new" target="_blank">Personal Access Token</a> with <code>repo</code> scope<br>
-    3. Share the repo with your cofounder<br>
-    4. Each person enters their own token below
-  </div>
-  <div class="field"><div class="flabel">GitHub Username / Org</div><input class="finput" id="ghOwner" value="${g.owner}" placeholder="e.g. yashgurbani"></div>
-  <div class="field"><div class="flabel">Repository Name</div><input class="finput" id="ghRepo" value="${g.repo}" placeholder="desci"></div>
-  <div class="field"><div class="flabel">File Path</div><input class="finput" id="ghPath" value="${g.path}" placeholder="data.json"></div>
-  <div class="field"><div class="flabel">Personal Access Token</div><input class="finput" id="ghToken" type="password" value="${g.token}" placeholder="ghp_..."><div style="font-size:.65rem;color:var(--text-3);margin-top:3px">Stored in your browser only. Never sent anywhere except GitHub API.</div></div>
-  <div class="modal-foot">
-    <button class="btn" onclick="clM()">Cancel</button>
-    <button class="btn" onclick="githubPull()" style="border-color:var(--sage);color:var(--sage)">Pull from GitHub</button>
-    <button class="btn btn-fill" onclick="saveGHSettings();githubPush()">Save & Push</button>
-  </div>`;
+// Auto-detect repo from GitHub Pages URL
+function detectGHPages(){
+  const h=location.hostname;
+  if(h.endsWith('.github.io')){
+    const owner=h.replace('.github.io','');
+    const repo=location.pathname.split('/').filter(Boolean)[0]||owner+'.github.io';
+    if(!localStorage.getItem('gh-owner'))localStorage.setItem('gh-owner',owner);
+    if(!localStorage.getItem('gh-repo'))localStorage.setItem('gh-repo',repo);
+    if(!localStorage.getItem('gh-path'))localStorage.setItem('gh-path','data.json');
+  }
 }
 
-function saveGHSettings(){
-  localStorage.setItem('gh-owner', el('ghOwner').value.trim());
-  localStorage.setItem('gh-repo', el('ghRepo').value.trim());
-  localStorage.setItem('gh-path', el('ghPath').value.trim() || 'data.json');
-  localStorage.setItem('gh-token', el('ghToken').value.trim());
+function promptToken(){
+  if(GH.token)return true;
+  const t=prompt('Enter GitHub Personal Access Token (fine-grained, Contents read+write on this repo).\nThis is stored in your browser only.');
+  if(!t)return false;
+  localStorage.setItem('gh-token',t.trim());
+  return true;
 }
 
-async function githubPull(){
-  if(!ghConfigured()){syncSettings();return}
-  const g=getGH(), ss=el('syncStatus');
-  ss.className='sync-status';ss.innerHTML='<span class="sync-dot"></span>pulling...';
+function setSyncUI(state, msg){
+  const s=el('syncStatus'), t=el('syncText');
+  s.className='sync-status'+(state==='ok'?' synced':state==='err'?' error':'');
+  t.textContent=msg;
+}
+
+let pushTimer=null;
+function debouncedPush(){
+  if(!GH.ok)return;
+  clearTimeout(pushTimer);
+  setSyncUI('','saving...');
+  pushTimer=setTimeout(()=>ghPush(),2000);
+}
+
+async function ghPull(){
+  if(!GH.ok){detectGHPages();if(!promptToken())return}
+  if(!GH.ok)return;
+  setSyncUI('','pulling...');
   try{
-    const r=await fetch(`https://api.github.com/repos/${g.owner}/${g.repo}/contents/${g.path}`,{
-      headers:{'Authorization':'Bearer '+g.token,'Accept':'application/vnd.github.v3+json'}
+    const r=await fetch(`https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/${GH.path}`,{
+      headers:{'Authorization':'Bearer '+GH.token,'Accept':'application/vnd.github.v3+json'}
     });
-    if(r.status===404){
-      ss.innerHTML='<span class="sync-dot"></span>no remote file yet';
-      ss.className='sync-status';return;
-    }
+    if(r.status===404){setSyncUI('ok','no remote data yet');return}
+    if(r.status===401||r.status===403){localStorage.removeItem('gh-token');setSyncUI('err','bad token');return}
     if(!r.ok)throw new Error('HTTP '+r.status);
-    const json=await r.json();
-    const content=JSON.parse(atob(json.content));
-    // Store SHA for later updates
-    localStorage.setItem('gh-sha',json.sha);
+    const j=await r.json();
+    const raw=atob(j.content.replace(/\n/g,''));
+    const content=JSON.parse(raw);
+    localStorage.setItem('gh-sha',j.sha);
     D=content;
     D.nodes.forEach(n=>{n.wp=n.wp||'';n.git=n.git||'';n.twitter=n.twitter||'';n.cf=n.cf||{}});
     if(!D.people)D.people=SEED_DATA.people;
-    save();render();updateSB();updateStats();buildPills();
-    ss.className='sync-status synced';ss.innerHTML='<span class="sync-dot"></span>synced';
-    clM();
-  }catch(e){
-    ss.className='sync-status error';ss.innerHTML='<span class="sync-dot"></span>'+e.message;
-  }
+    save(true); // true = skip push
+    render();updateSB();updateStats();buildPills();
+    setSyncUI('ok','synced');
+  }catch(e){setSyncUI('err',e.message)}
 }
 
-async function githubPush(){
-  if(!ghConfigured()){syncSettings();return}
-  const g=getGH(), ss=el('syncStatus');
-  ss.className='sync-status';ss.innerHTML='<span class="sync-dot"></span>pushing...';
+async function ghPush(){
+  if(!GH.ok)return;
+  setSyncUI('','pushing...');
   try{
-    // Get current SHA if we don't have it
+    // Get current SHA
     let sha=localStorage.getItem('gh-sha')||'';
     if(!sha){
-      const check=await fetch(`https://api.github.com/repos/${g.owner}/${g.repo}/contents/${g.path}`,{
-        headers:{'Authorization':'Bearer '+g.token,'Accept':'application/vnd.github.v3+json'}
-      });
-      if(check.ok){const j=await check.json();sha=j.sha;}
+      try{
+        const c=await fetch(`https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/${GH.path}`,{
+          headers:{'Authorization':'Bearer '+GH.token,'Accept':'application/vnd.github.v3+json'}
+        });
+        if(c.ok){const j=await c.json();sha=j.sha}
+      }catch(e){}
     }
-    const body={
-      message:'Update DeSci landscape data - '+new Date().toISOString().slice(0,16),
-      content:btoa(unescape(encodeURIComponent(JSON.stringify(D,null,2)))),
-    };
+    // Encode content safely
+    const text=JSON.stringify(D,null,2);
+    const bytes=new TextEncoder().encode(text);
+    let binary='';for(let i=0;i<bytes.length;i++)binary+=String.fromCharCode(bytes[i]);
+    const encoded=btoa(binary);
+
+    const body={message:'Update landscape '+new Date().toISOString().slice(0,16),content:encoded};
     if(sha)body.sha=sha;
-    const r=await fetch(`https://api.github.com/repos/${g.owner}/${g.repo}/contents/${g.path}`,{
+
+    const r=await fetch(`https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/${GH.path}`,{
       method:'PUT',
-      headers:{'Authorization':'Bearer '+g.token,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},
+      headers:{'Authorization':'Bearer '+GH.token,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},
       body:JSON.stringify(body)
     });
-    if(!r.ok){const err=await r.json();throw new Error(err.message||'HTTP '+r.status)}
+    if(r.status===401||r.status===403){localStorage.removeItem('gh-token');setSyncUI('err','token rejected');return}
+    if(r.status===409){
+      // SHA conflict, re-pull then push
+      setSyncUI('','conflict, re-syncing...');
+      await ghPull();await ghPush();return;
+    }
+    if(!r.ok){const e=await r.json();throw new Error(e.message||'HTTP '+r.status)}
     const result=await r.json();
     localStorage.setItem('gh-sha',result.content.sha);
-    ss.className='sync-status synced';ss.innerHTML='<span class="sync-dot"></span>pushed ✓';
-    clM();
-  }catch(e){
-    ss.className='sync-status error';ss.innerHTML='<span class="sync-dot"></span>'+e.message;
-  }
+    setSyncUI('ok','saved');
+  }catch(e){setSyncUI('err',e.message)}
 }
 
-// Auto-pull on load if configured
-function autoSync(){if(ghConfigured())githubPull()}
+// Auto-sync on load
+function autoSync(){detectGHPages();if(GH.ok)ghPull()}
+function onSyncClick(){
+  if(!GH.ok){detectGHPages();if(promptToken())ghPull()}
+  else ghPush();
+}
 
 // ===== THEME =====
 function setTheme(t){
