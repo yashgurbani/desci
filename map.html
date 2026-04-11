@@ -649,9 +649,17 @@ function renderTable(){
   let ns=D.nodes.filter(vis);
   ns.sort((a,b)=>{let va=a[sortC]||'',vb=b[sortC]||'';if(typeof va==='number')return sortA?va-vb:vb-va;return sortA?String(va).localeCompare(String(vb)):String(vb).localeCompare(String(va))});
   const w=document.createElement('div');w.className='table-wrap';
-  const overlapBar=(v)=>`<div style="display:flex;align-items:center;gap:6px"><div style="width:48px;height:6px;background:var(--raised);border-radius:3px;overflow:hidden"><div style="width:${v}%;height:100%;background:${v>=60?'var(--gold)':v>=30?'var(--text-3)':'var(--raised)';border-radius:3px}"></div></div><span style="font-family:var(--mono);font-size:.7rem">${v}</span></div>`;
+  const overlapBar = (v) => `
+  <div style="display:flex;align-items:center;gap:6px">
+    <div style="width:48px;height:6px;background:var(--raised);border-radius:3px;overflow:hidden">
+      <div style="width:${v}%;height:100%;background:${v>=60 ? 'var(--gold)' : v>=30 ? 'var(--text-3)' : 'var(--raised)'};border-radius:3px"></div>
+    </div>
+    <span style="font-family:var(--mono);font-size:.7rem">${v}</span>
+  </div>
+`;
   w.innerHTML=`<table class="dtbl"><thead><tr>${cols.map(c=>`<th onclick="doSort('${c}')">${labels[c]||c}${sortC===c?(sortA?' ↑':' ↓'):''}</th>`).join('')}<th>Comparison</th></tr></thead><tbody>${ns.map(n=>`<tr class="${n.id===selId?'sel':''}" onclick="selNode('${n.id}')"><td><strong>${n.name}</strong></td><td>${n.type}</td><td><span class="stack-chip" style="background:${SBG[n.stack]||''};color:${SC[n.stack]||''}">${n.stack}</span></td><td>${overlapBar(n.overlapScore||0)}</td><td title="${n.techStack||''}" style="max-width:160px;overflow:hidden;text-overflow:ellipsis">${n.techStack||''}</td><td>${n.stage}</td><td>${SS[n.s1]}</td><td>${SS[n.s2]}</td><td>${SS[n.s3]}</td><td>${SS[n.s4]}</td><td>${SS[n.s5]}</td><td>${n.source}</td><td title="${n.compNote||''}" style="max-width:200px;overflow:hidden;text-overflow:ellipsis;font-size:.75rem;color:var(--text-2)">${n.compNote||''}</td></tr>`).join('')}</tbody></table>`;
   m.appendChild(w);
+  
 }
 function doSort(c){if(sortC===c)sortA=!sortA;else{sortC=c;sortA=true}render()}
 
