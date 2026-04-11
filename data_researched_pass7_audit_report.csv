@@ -1,0 +1,79 @@
+name,confidence,attributionStatus,sourceCount,hasUnverifiedClaims,legalStatus,fundingStatus,finModelStatus,fundingRaised,profitScore,openScienceScore
+AxonDAO,medium,source-backed-with-gaps,3,True,partially-verified,undisclosed,verified-tokenomics,Undisclosed; token/treasury funded,36,65
+DataLake,medium,source-backed-with-gaps,4,True,verified,undisclosed-primary,verified,Undisclosed total; official site says initial funding came from the European Union,66,33
+elizaOS,medium,source-backed-with-gaps,3,True,partially-verified,undisclosed-primary,verified-tokenomics,Undisclosed primary financing; token economics publicly documented,55,44
+Galeon Care,high,source-backed-with-gaps,4,True,verified,secondary-supported,verified,~$15M token/ICO financing + operating SaaS contracts,79,23
+Hetu Protocol,medium,source-backed-with-gaps,2,True,partially-verified,undisclosed,verified-docs,Undisclosed; grant/community model claimed,42,60
+LabDAO,high,source-backed-with-gaps,3,True,partially-verified,well-supported-secondary,verified,$3.6M seed financing,27,79
+Prime Intellect,high,strict-source-clean,2,False,source-backed,official-or-primary-supported,source-backed-model,Over $20M total; $15M announced Feb 2025,76,46
+Pump Science,medium,source-backed-with-gaps,3,True,unclear,unclear,verified-secondary,No clean venture total verified; revenue appears fee- and product-driven,89,11
+Rare Compute,medium,source-backed-with-gaps,3,True,partially-verified,undisclosed-or-not-comparable,source-backed-model,Undisclosed; official site describes a non-profit consortium,14,84
+ResearchHub,high,source-backed-with-gaps,3,True,partially-verified,official-announcement,verified,$5M officially announced seed round; later follow-on still secondary-sourced,57,64
+Rejuve AI,medium,source-backed-with-gaps,4,True,partially-verified,undisclosed-primary,verified,Token-funded ecosystem; exact primary raise total not confirmed in current pass,75,28
+ValleyDAO / Phlo,medium,source-backed-with-gaps,5,True,verified-dao,treasury-visible-but-cumulative-raise-unclear,source-backed-model,Official site shows ~$4M treasury; cumulative raised capital not cleanly disclosed,38,63
+VitaDAO,high,source-backed-with-gaps,3,True,verified-dao/hybrid,official-announcement,verified,Officially documented $4.1M 2023 strategic round; wider treasury value fluctuates with token holdings,75,48
+Welshare Health,medium,source-backed-with-gaps,4,True,partially-verified,undisclosed-primary,source-backed-model,Undisclosed in primary sources reviewed,55,30
+Molecule,high,source-backed-with-gaps,2,True,verified,official-announcement,verified,$12.7M seed officially announced,90,18
+BIO Protocol,high,source-backed-with-gaps,4,True,partially-verified,mixed-auction-and-seed,verified,Official public-auction rounds plus reported $6.9M seed; exact cumulative total depends on how auctions are counted,67,44
+Episteme,medium,source-backed-with-gaps,3,True,unclear,undisclosed,verified-concept,No disclosed financing found in current pass,59,46
+Ocean Protocol,medium,source-backed-with-gaps,4,True,partially-verified,historic-token-launch,verified,Historic token-sale financing; official launch terms and protocol docs support token-led capitalization rather than classic equity disclosure,38,74
+Numerai,high,strict-source-clean,3,False,source-backed,official-or-primary-supported,source-backed-model,$30M Series C in 2025,93,13
+Polymarket,high,strict-source-clean,2,False,source-backed,official-or-primary-supported,source-backed-model,"ICE direct investment: $1.0B in Oct 2025 + new $600M in Mar 2026, plus up to $40M expected secondary purchases",95,8
+HairDAO,medium,source-backed-with-gaps,5,True,verified-dao,funded-output-visible-total-capital-undisclosed,source-backed-model,Official site shows $75k research funded; cumulative treasury/capital raised undisclosed,48,51
+AthenaDAO,medium,source-backed-with-gaps,3,True,verified-dao,undisclosed-primary,verified,No clean primary capital total found in current pass,47,55
+CerebrumDAO,medium,source-backed-with-gaps,4,True,verified-dao,token-sale-funded-output-total-undisclosed,source-backed-model,Funded through NEURON token sales; cumulative capital total undisclosed,40,69
+PsyDAO,medium,source-backed-with-gaps,3,True,verified-dao,official-site-shows-funded-output-not-total-capital,source-backed-model,Official site shows $280k total funded across 6 grants/projects; total treasury/capital raised undisclosed,35,68
+CryoDAO,high,source-backed-with-gaps,3,True,verified-dao,treasury-not-raise,verified,Treasury size publicly shown; cumulative raises remain distinct from treasury mark-to-market,34,96
+Curetopia,high,strict-source-clean,3,False,source-backed,official-or-primary-supported,source-backed-model,$1.77M community auction (official/press-backed),42,86
+DeSci Labs / Nodes,high,source-backed-with-gaps,4,True,verified,first-party-about-page,verified,$6.5M seed publicly stated on company about page,73,75
+Orvium,high,strict-source-clean,2,False,source-backed,official-or-primary-supported,source-backed-model,EU grant support + VC backing from CV VC,58,53
+OriginTrail,high,source-backed-with-gaps,4,True,partially-verified,official-ICO-announcement,verified,$22.5M ICO publicly announced; additional grant support also visible,65,47
+GenomesDAO,medium,source-backed-with-gaps,4,True,partially-verified,official-announcement-amount-undisclosed,source-backed-model,2024 investment round officially announced; amount undisclosed,63,54
+Hippocrat,medium,source-backed-with-gaps,4,True,verified-protocol,undisclosed-primary,verified,No classic venture total disclosed in current pass,63,48
+DeSci World,medium,source-backed-with-gaps,3,True,community,undisclosed,verified-identity-only,Undisclosed / community supported,25,56
+DeSci Berlin,medium,source-backed-with-gaps,3,True,event,not-applicable,verified-event-model,Sponsors + registration; no disclosed capital raise,14,51
+DeSci London,medium,source-backed-with-gaps,3,True,event,not-applicable,verified-event-model,Sponsors + registration; no disclosed capital raise,10,56
+Dynex,medium,source-backed-with-gaps,4,True,protocol,fair-launch-claimed,verified,No ICO / no premine claimed; community/self-funded launch,55,44
+The Innovation Game,medium,source-backed-with-gaps,3,True,foundation/protocol,not-company-style,verified,No clear outside raise found; token/protocol capitalization,46,56
+Pfizer Ventures,high,strict-source-clean,2,False,verified-fund,official-commitment,verified-fund,$900M current capital commitment; $1.6B AUM (official Pfizer page),88,0
+Binance Labs,medium,source-backed-with-gaps,3,True,verified-fund,official-fund-size,verified-fund,Fund vehicle; 2025 official coverage references a $1B Builder Fund,70,29
+SingularityNET,medium,source-backed-with-gaps,4,True,partially-verified,historic-token-plus-grants,verified,Historic token-led capitalization; official materials highlight $1.25M and $1.5M+ Deep Funding grant rounds rather than classic equity rounds,38,74
+NobleBlocks,medium,source-backed-with-gaps,4,True,unclear,undisclosed,verified-concept,No public financing round located in current pass,55,44
+YesNoError,medium,source-backed-with-gaps,2,True,partially-verified,undisclosed-primary,source-backed-whitepaper-model,Undisclosed in primary sources reviewed,46,60
+Open Humans,high,strict-source-clean,3,False,source-backed,partially-disclosed,source-backed-model,Nonprofit grant and donation support,3,100
+Quantum Biology DAO,medium,source-backed-with-gaps,5,True,verified-ecosystem-hybrid,secondary-auction-reporting,source-backed-ecosystem-model,Community auction amount reported by secondary sources; primary ecosystem structure verified,41,90
+Vibe Bio,medium,source-backed-with-gaps,3,True,partially-verified,official-or-primary-supported,source-backed-model,$12M financing announced in 2022,70,56
+Hippo Protocol,medium,source-backed-with-gaps,3,True,partially-verified,undisclosed-or-not-comparable,source-backed-model,Undisclosed,53,44
+AminoChain,high,source-backed-with-gaps,5,True,verified,official-announcement,verified,$5M seed officially announced; $7M total with prior pre-seed widely reported,71,48
+NanoVita,low,low-confidence,4,True,identity-only,secondary-reports-post-money-valuation-only,identity-only,Secondary reports mention a recent round and a $20M post-money valuation; amount raised remains undisclosed and low-confidence,50,60
+Genpulse,medium,source-backed-with-gaps,3,True,commercial-startup-likely,small-grant/incubator-visible,partially-verified,At least small grant/incubator support visible; larger financing undisclosed,63,18
+Stadium.Science,medium,source-backed-with-gaps,3,True,unclear,secondary-database-only,verified-product,"At least one fundraising entry appears in secondary databases, but details remain sparse",58,48
+Ants-Review,medium,source-backed-with-gaps,3,True,unclear,partially-disclosed,source-backed-model,No verified institutional financing; hackathon / grant support only,31,42
+BeerReview,medium,source-backed-with-gaps,2,True,unclear,partially-disclosed,source-backed-model,No disclosed financing,15,55
+bloxberg,high,source-backed-with-gaps,3,True,verified-consortium,not-applicable,verified-consortium,Not a conventional startup raise; consortium/institutional support model,24,67
+OpScientia / Holonym,medium,source-backed-with-gaps,3,True,unclear,grant/ecosystem,verified-commons,Grant/ecosystem support visible; no clean venture round verified,43,59
+Peer Community In (PCI),high,strict-source-clean,3,False,source-backed,official-or-primary-supported,source-backed-model,Public/institutional support; no consolidated total verified here,3,100
+eLife (new model),high,strict-source-clean,3,False,source-backed,partially-disclosed,source-backed-model,Grant- and institutional-support model plus publication fee,28,34
+Review Commons,high,strict-source-clean,3,False,source-backed,partially-disclosed,source-backed-model,Grant / affiliate-publisher support,5,95
+PREreview,high,strict-source-clean,2,False,source-backed,official-or-primary-supported,source-backed-model,Grant-funded nonprofit project,3,100
+OpenReview,high,strict-source-clean,2,False,source-backed,undisclosed-or-not-comparable,source-backed-model,Sponsorships / donations / hosting revenue; exact totals undisclosed in current pass,12,96
+JoVE,high,strict-source-clean,4,False,source-backed,partially-disclosed,source-backed-model,Commercial subscription and publication-fee business; historical outside funding not fully verified in this pass,84,8
+Sapien Capital,high,strict-source-clean,2,False,source-backed,official-or-primary-supported,source-backed-model,$65M Open Science Fund I backed by Sei Foundation,75,58
+OpenAlex,high,strict-source-clean,6,False,verified-nonprofit,official-grants-and-earned-revenue,verified,At least $12.688M verified grants plus paid service/member revenue,12,90
+OpenCitations,high,strict-source-clean,2,False,source-backed,official-or-primary-supported,source-backed-model,"SCOSS fundraising target €1,530,198 for 3 years",2,98
+DeSci Foundation,high,strict-source-clean,2,False,source-backed,partially-disclosed,source-backed-model,Nonprofit foundation support; exact budget not publicly extracted here,6,100
+Gitcoin DeSci Rounds,medium,source-backed-with-gaps,3,True,partially-verified,official-or-primary-supported,source-backed-model,Impact metric rather than corporate fundraising: Gitcoin reports $63M distributed across funding rounds,28,78
+PubPeer,high,strict-source-clean,3,False,source-backed,secondary-supported,source-backed-model,$308k revenue in 2024 + €200k Einstein Foundation award support,4,100
+Seeds of Science,medium,source-backed-with-gaps,3,True,community,none-disclosed,verified-diamond-oa,No disclosed outside financing / effectively volunteer supported,4,100
+F1000Research,high,strict-source-clean,2,False,source-backed,partially-disclosed,source-backed-model,Commercial publisher-owned,80,12
+Bacalhau,medium,source-backed-with-gaps,3,True,open-source project,ecosystem-supported,verified-open-source,No standalone raise verified; ecosystem-supported open-source project,24,88
+Kudos,high,source-backed-with-gaps,4,True,verified-company,not-focus,verified-pricing,Pricing verified; external fundraising totals still not strongly evidenced in primary sources,69,7
+Etica Protocol,medium,source-backed-with-gaps,5,True,protocol-community,no-ico-no-premine-claimed,source-backed-whitepaper-model,No ICO / no premine claimed; protocol emission model,46,48
+Gridcoin,high,strict-source-clean,4,False,unclear,undisclosed-or-not-comparable,source-backed-model,No ICO / fair-launch style community protocol,24,64
+SciNet / OpSci,medium,source-backed-with-gaps,2,True,partially-verified,undisclosed-or-not-comparable,source-backed-model,Project-level ETH raises visible; organization-level funding undisclosed,23,88
+TalentDAO,medium,source-backed-with-gaps,4,True,dao/community,grant/community,partially-verified,Gitcoin/public-goods support referenced; exact cumulative amount not verified,21,71
+ORCID,high,strict-source-clean,3,False,source-backed,partially-disclosed,source-backed-model,$6.81M revenue (2024),1,100
+Crossref / DOI,high,strict-source-clean,3,False,source-backed,partially-disclosed,source-backed-model,~$14M annual budget,12,98
+Maelstrom Fund (Arthur Hayes),high,source-backed-with-gaps,3,True,verified-family-office-fund,not-comparable-own-capital-undisclosed,verified-fund,"Own capital undisclosed; family office, not comparable to startup fundraising",85,8
+Northpond Ventures,high,source-backed-with-gaps,3,True,verified-fund,public-profile-supported,verified-fund,Public profile says over $1B in committed capital; exact current AUM still varies by source,84,8
+OSS Capital,high,source-backed-with-gaps,2,True,verified-fund,fund-size-undisclosed-on-official-site,verified-fund,Fund size not disclosed on official site; investor in ResearchHub seed,81,48
