@@ -435,9 +435,9 @@ function componentRing(size, minDim, mode='org'){
 function componentRadius(compIds, byId, mode='org'){
   const size = compIds.length;
   const labelMass = compIds.reduce((sum, id) => sum + estimateLabelPad((byId.get(id) || {}).name || '', mode), 0);
-  const base = mode==='people' ? 52 : 62;
-  const sizeTerm = Math.sqrt(Math.max(1, size)) * (mode==='people' ? 24 : 28);
-  const labelTerm = Math.min(mode==='people' ? 74 : 86, labelMass / Math.max(3, size));
+  const base = mode==='people' ? 88 : 112;
+  const sizeTerm = Math.sqrt(Math.max(1, size)) * (mode==='people' ? 32 : 40);
+  const labelTerm = Math.min(mode==='people' ? 120 : 150, labelMass / Math.max(2, size) * 1.25);
   return base + sizeTerm + labelTerm;
 }
 
@@ -445,7 +445,7 @@ function componentAnchors(w, h, comps, byId, mode='org'){
   const cx = w / 2, cy = h / 2;
   const minDim = Math.min(w, h);
   const compNodes = comps.map((ids, i) => {
-    const ring = componentRing(ids.length, minDim, mode);
+    const ring = componentRing(ids.length, minDim, mode) + (mode==='people' ? 20 : 40);
     const angle = -Math.PI / 2 + (i * 2 * Math.PI / Math.max(1, comps.length));
     return {
       id: i,
@@ -458,18 +458,16 @@ function componentAnchors(w, h, comps, byId, mode='org'){
   });
 
   const cSim = d3.forceSimulation(compNodes)
-    .force('radial', d3.forceRadial(d => d.ring, cx, cy).strength(0.95))
-    .force('charge', d3.forceManyBody().strength(-2200))
-    .force('collision', d3.forceCollide(d => d.r + 48))
-    .force('x', d3.forceX(cx).strength(0.015))
-    .force('y', d3.forceY(cy).strength(0.015))
+    .force('radial', d3.forceRadial(d => d.ring, cx, cy).strength(1.0))
+    .force('charge', d3.forceManyBody().strength(mode==='people' ? -3400 : -4200))
+    .force('collision', d3.forceCollide(d => d.r + (mode==='people' ? 96 : 118)))
     .stop();
 
-  for (let i = 0; i < 320; i++) cSim.tick();
+  for (let i = 0; i < 420; i++) cSim.tick();
 
   const out = new Map();
   compNodes.forEach(c => {
-    const pad = c.r + 24;
+    const pad = c.r + 48;
     c.x = Math.max(pad, Math.min(w - pad, c.x));
     c.y = Math.max(pad, Math.min(h - pad, c.y));
     c.ids.forEach(id => out.set(id, {x:c.x, y:c.y, r:c.r}));
@@ -480,31 +478,95 @@ function componentAnchors(w, h, comps, byId, mode='org'){
 function seedNodesByComponent(nodes, comps, anchorById){
   comps.forEach(ids => {
     const count = ids.length;
-    const base = anchorById.get(ids[0]) || {x:0, y:0, r:100};
+    const base = anchorById.get(ids[0]) || {x:0, y:0, r:140};
     ids.forEach((id, j) => {
       const d = nodes.find(n => n.id === id);
       if (!d) return;
       const angle = (j / Math.max(1, count)) * Math.PI * 2;
-      const localR = Math.min(base.r * 0.42, 20 + Math.sqrt(count) * 9 + (j % 3) * 8);
+      const localR = Math.min(base.r * 0.55, 30 + Math.sqrt(count) * 12 + (j % 4) * 10);
       d.x = base.x + Math.cos(angle) * localR;
       d.y = base.y + Math.sin(angle) * localR;
     });
   });
 }
 
-function labelPlacement(d, anchorById, mode='org'){
-  const a = anchorById.get(d.id) || {x:d.x || 0, y:d.y || 0};
-  const dx = (d.x || 0) - a.x;
-  const dy = (d.y || 0) - a.y;
-  const r = estimateNodeRadius(d, mode);
-  const sidePad = mode==='people' ? 8 : 9;
-  const vertPad = mode==='people' ? 10 : 11;
-  if (Math.abs(dx) >= Math.abs(dy)) {
-    if (dx >= 0) return {anchor:'start', x:(d.x || 0) + r + sidePad, y:(d.y || 0) + 3};
-    return {anchor:'end', x:(d.x || 0) - r - sidePad, y:(d.y || 0) + 3};
+function buildSpanningHierarchy(ids, links, byId){
+  const idSet = new Set(ids);
+  const adj = new Map(ids.map(id => [id, []]));
+  links.forEach(l => {
+    const s = l.source?.id || l.source;
+    const t = l.target?.id || l.target;
+    if (!idSet.has(s) || !idSet.has(t)) return;
+    adj.get(s).push(t);
+    adj.get(t).push(s);
+  });
+  const degree = new Map(ids.map(id => [id, adj.get(id).length]));
+  const rootId = ids.slice().sort((a,b) => {
+    const da = degree.get(a), db = degree.get(b);
+    if (db !== da) return db - da;
+    return String((byId.get(a)||{}).name || a).localeCompare(String((byId.get(b)||{}).name || b));
+  })[0];
+
+  const parent = new Map([[rootId, null]]);
+  const queue = [rootId];
+  while (queue.length) {
+    const u = queue.shift();
+    const neigh = adj.get(u).slice().sort((a,b) => {
+      const da = degree.get(a), db = degree.get(b);
+      if (db !== da) return db - da;
+      return String((byId.get(a)||{}).name || a).localeCompare(String((byId.get(b)||{}).name || b));
+    });
+    neigh.forEach(v => {
+      if (!parent.has(v)) {
+        parent.set(v, u);
+        queue.push(v);
+      }
+    });
   }
-  if (dy >= 0) return {anchor:'middle', x:(d.x || 0), y:(d.y || 0) + r + vertPad + 8};
-  return {anchor:'middle', x:(d.x || 0), y:(d.y || 0) - r - vertPad};
+
+  const children = new Map(ids.map(id => [id, []]));
+  parent.forEach((p, id) => { if (p != null) children.get(p).push(id); });
+  function makeNode(id){
+    return { id, children: (children.get(id) || []).map(makeNode) };
+  }
+  return { rootId, hierarchy: makeNode(rootId), parent, degree };
+}
+
+function componentTreeExtent(ids, links, byId, mode='org'){
+  const { hierarchy } = buildSpanningHierarchy(ids, links, byId);
+  const root = d3.hierarchy(hierarchy);
+  const depthStep = mode==='people' ? 82 : 94;
+  d3.tree().size([2 * Math.PI, root.height * depthStep || depthStep])(root);
+  const leaves = root.leaves().length;
+  const radial = (root.height + 1) * depthStep;
+  return Math.max(radial + 36, (mode==='people' ? 110 : 132) + leaves * (mode==='people' ? 7 : 9));
+}
+
+function layoutComponentTree(ids, links, byId, center, mode='org'){
+  const { hierarchy } = buildSpanningHierarchy(ids, links, byId);
+  const root = d3.hierarchy(hierarchy);
+  const depthStep = mode==='people' ? 82 : 94;
+  d3.tree().size([2 * Math.PI, Math.max(depthStep, root.height * depthStep)])(root);
+  const out = new Map();
+  root.descendants().forEach(d => {
+    const angle = d.x - Math.PI / 2;
+    const r = d.depth === 0 ? 0 : 22 + d.depth * depthStep;
+    out.set(d.data.id, { x: center.x + Math.cos(angle) * r, y: center.y + Math.sin(angle) * r, angle, depth: d.depth, cx:center.x, cy:center.y });
+  });
+  return out;
+}
+
+function labelPlacement(d, posById, mode='org'){
+  const a = posById.get(d.id) || {x:d.x || 0, y:d.y || 0, cx:d.x || 0, cy:d.y || 0};
+  const angle = Math.atan2((a.y || 0) - (a.cy || 0), (a.x || 0) - (a.cx || 0));
+  const r = estimateNodeRadius(d, mode);
+  const dist = r + (mode==='people' ? 16 : 18);
+  const ox = Math.cos(angle) * dist;
+  const oy = Math.sin(angle) * dist;
+  let anchor = 'middle';
+  if (Math.cos(angle) > 0.35) anchor = 'start';
+  else if (Math.cos(angle) < -0.35) anchor = 'end';
+  return { anchor, x:(a.x || 0) + ox, y:(a.y || 0) + oy + 4 };
 }
 
 function resizeGraphViewport(){
@@ -537,33 +599,35 @@ function buildGraph(){
   const byId = new Map(sn.map(n => [n.id, n]));
   const comps = computeComponents(sn, se);
   const anchorById = componentAnchors(w, h, comps, byId, 'org');
-  seedNodesByComponent(sn, comps, anchorById);
+  const layoutPos = new Map();
+  comps.forEach(ids => {
+    const center = anchorById.get(ids[0]) || {x:w/2, y:h/2};
+    const pos = layoutComponentTree(ids, se, byId, center, 'org');
+    pos.forEach((v,k) => layoutPos.set(k,v));
+  });
+  sn.forEach(d => {
+    const p = layoutPos.get(d.id);
+    d.x = p?.x ?? w/2;
+    d.y = p?.y ?? h/2;
+  });
 
   const svgEl=d3.select(m).append('svg').attr('width',w).attr('height',h);
   zoomBehavior=d3.zoom().scaleExtent([.15,4]).on('zoom',e=>svgG.attr('transform',e.transform));
   svgEl.call(zoomBehavior);
   svgG=svgEl.append('g');
   const lG=svgG.append('g'),nG=svgG.append('g'),tG=svgG.append('g');
-
-  const s=d3.forceSimulation(sn)
-    .force('link',d3.forceLink(se).id(d=>d.id).distance(d=>{
-      const sa = anchorById.get(d.source.id || d.source)?.r || 120;
-      return Math.min(120, Math.max(76, sa * 0.34));
-    }).strength(.22))
-    .force('charge',d3.forceManyBody().strength(-125))
-    .force('clusterX', d3.forceX(d => (anchorById.get(d.id) || {x:w/2}).x).strength(.22))
-    .force('clusterY', d3.forceY(d => (anchorById.get(d.id) || {y:h/2}).y).strength(.22))
-    .force('collision',d3.forceCollide(d => estimateNodeRadius(d,'org') + estimateLabelPad(d.name,'org') + 10))
-    .alphaDecay(0.05)
-    .velocityDecay(0.34);
-  sim=s;
+  sim=null;
 
   const lines=lG.selectAll('line').data(se).enter().append('line')
     .attr('stroke',d=>EC[d.type]||'var(--raised)')
-    .attr('stroke-width',d=>d.type==='overlap'?1.15:1.55)
+    .attr('stroke-width',d=>d.type==='overlap'?0.85:1.4)
     .attr('stroke-dasharray',d=>d.type==='overlap'?'7 5':null)
     .attr('stroke-linecap','round')
-    .attr('opacity',d=>d.type==='overlap'?.4:.26);
+    .attr('opacity',d=>d.type==='overlap'?.34:.32)
+    .attr('x1',d=>layoutPos.get(d.source.id||d.source)?.x || 0)
+    .attr('y1',d=>layoutPos.get(d.source.id||d.source)?.y || 0)
+    .attr('x2',d=>layoutPos.get(d.target.id||d.target)?.x || 0)
+    .attr('y2',d=>layoutPos.get(d.target.id||d.target)?.y || 0);
 
   const ns=nG.selectAll('circle').data(sn).enter().append('circle')
     .attr('r',d=>estimateNodeRadius(d,'org'))
@@ -571,18 +635,23 @@ function buildGraph(){
     .attr('fill-opacity',.2)
     .attr('stroke',d=>SC[d.stack]||'var(--text-3)')
     .attr('stroke-width',d=>(d.overlapScore||0)>=40?2.3:1.15)
-    .style('cursor','pointer')
-    .call(d3.drag().on('start',(e,d)=>{if(!e.active)s.alphaTarget(.18).restart();d.fx=d.x;d.fy=d.y}).on('drag',(e,d)=>{d.fx=e.x;d.fy=e.y}).on('end',(e,d)=>{if(!e.active)s.alphaTarget(0);d.fx=null;d.fy=null}));
+    .attr('cx',d=>d.x)
+    .attr('cy',d=>d.y)
+    .style('cursor','pointer');
 
   const labels=tG.selectAll('text').data(sn).enter().append('text').text(d=>d.name)
-    .attr('font-size',9)
+    .attr('font-size',8.5)
     .attr('font-family','Nunito Sans,sans-serif')
     .attr('font-weight',600)
     .attr('fill','var(--graph-label)')
-    .attr('stroke','rgba(0,0,0,.8)')
-    .attr('stroke-width',1.35)
+    .attr('stroke','rgba(0,0,0,.86)')
+    .attr('stroke-width',1.6)
     .attr('paint-order','stroke')
-    .style('pointer-events','none');
+    .style('pointer-events','none')
+    .each(function(d){
+      const p = labelPlacement(d, layoutPos, 'org');
+      d3.select(this).attr('text-anchor', p.anchor).attr('x', p.x).attr('y', p.y);
+    });
 
   ns.on('click',(e,d)=>{selNode(d.id);el('app').classList.remove('hide-right')});
 
@@ -597,23 +666,14 @@ function buildGraph(){
   .on('mouseleave',()=>tip.classList.remove('vis'));
 
   lines.on('mouseenter',function(e,d){
-    d3.select(this).attr('stroke-width',d.type==='overlap'?1.9:2.7).attr('opacity',.58);
+    d3.select(this).attr('stroke-width',d.type==='overlap'?1.25:2.15).attr('opacity',.56);
     const sn2=D.nodes.find(n=>n.id===(d.source.id||d.source));
     const tn2=D.nodes.find(n=>n.id===(d.target.id||d.target));
     tip.innerHTML=`<h4 style="font-size:.8rem">${sn2?.name||''} → ${tn2?.name||''}</h4><div class="tm"><span class="rel-badge" style="background:${(RB[d.type]||{}).b||'var(--raised)'};color:${(RB[d.type]||{}).c||'#fff'}">${d.type}</span> ${d.l||''}</div>`;
     tip.classList.add('vis');
   })
   .on('mousemove',e=>{const r=m.getBoundingClientRect();tip.style.left=(e.clientX-r.left+14)+'px';tip.style.top=(e.clientY-r.top-10)+'px'})
-  .on('mouseleave',function(){d3.select(this).attr('stroke-width',d=>d.type==='overlap'?1.15:1.55).attr('opacity',d=>d.type==='overlap'?.4:.26);tip.classList.remove('vis')});
-
-  s.on('tick',()=>{
-    lines.attr('x1',d=>d.source.x).attr('y1',d=>d.source.y).attr('x2',d=>d.target.x).attr('y2',d=>d.target.y);
-    ns.attr('cx',d=>d.x).attr('cy',d=>d.y);
-    labels.each(function(d){
-      const p = labelPlacement(d, anchorById, 'org');
-      d3.select(this).attr('text-anchor', p.anchor).attr('x', p.x).attr('y', p.y);
-    });
-  });
+  .on('mouseleave',function(){d3.select(this).attr('stroke-width',d=>d.type==='overlap'?0.85:1.4).attr('opacity',d=>d.type==='overlap'?.34:.32);tip.classList.remove('vis')});
 
   const lg=document.createElement('div');lg.className='legend';lg.id='graphLegend';
   lg.innerHTML=`<div class="legend-header" onclick="this.parentElement.classList.toggle('collapsed')"><span class="legend-title">Legend</span><span class="legend-toggle">▼</span></div><div class="legend-body"><div style="margin-top:6px"><div class="legend-row"><div class="legend-dot" style="background:var(--sage)"></div>Infrastructure</div><div class="legend-row"><div class="legend-dot" style="background:var(--rose)"></div>Application</div><div class="legend-row"><div class="legend-dot" style="background:var(--teal)"></div>Governance</div></div><div style="margin-top:8px;border-top:1px solid var(--border);padding-top:6px"><div class="legend-row"><div style="width:14px;height:2px;background:var(--edge-funder);border-radius:1px"></div>Funder</div><div class="legend-row"><div style="width:14px;height:2px;background:var(--edge-ecosystem);border-radius:1px"></div>Ecosystem</div><div class="legend-row"><div style="width:14px;height:2px;background:var(--edge-partner);border-radius:1px"></div>Partner</div><div class="legend-row"><div style="width:14px;height:2px;background:var(--edge-overlap);border-radius:1px;border-top:2px dashed var(--edge-overlap)"></div>Overlap</div></div><div style="margin-top:6px;font-size:.6rem;color:var(--text-3)">Node size = decentralization<br>Thick border = overlap ≥40%</div></div>`;
@@ -661,52 +721,53 @@ function renderPeopleGraph(){
   const byId = new Map(allN.map(n => [n.id, n]));
   const comps = computeComponents(allN, links);
   const anchorById = componentAnchors(w, h, comps, byId, 'people');
-  seedNodesByComponent(allN, comps, anchorById);
+  const layoutPos = new Map();
+  comps.forEach(ids => {
+    const center = anchorById.get(ids[0]) || {x:w/2, y:h/2};
+    const pos = layoutComponentTree(ids, links, byId, center, 'people');
+    pos.forEach((v,k) => layoutPos.set(k,v));
+  });
+  allN.forEach(d => {
+    const p = layoutPos.get(d.id);
+    d.x = p?.x ?? w/2;
+    d.y = p?.y ?? h/2;
+  });
 
   const svgEl=d3.select(m).append('svg').attr('width',w).attr('height',h);
   svgEl.call(d3.zoom().scaleExtent([.2,4]).on('zoom',e=>gEl.attr('transform',e.transform)));
   const gEl=svgEl.append('g'),lG=gEl.append('g'),nG=gEl.append('g'),tG=gEl.append('g');
-
-  const s=d3.forceSimulation(allN)
-    .force('link',d3.forceLink(links).id(d=>d.id).distance(d=>d._t==='colleague'?92:78).strength(.2))
-    .force('charge',d3.forceManyBody().strength(-140))
-    .force('clusterX', d3.forceX(d => (anchorById.get(d.id) || {x:w/2}).x).strength(.22))
-    .force('clusterY', d3.forceY(d => (anchorById.get(d.id) || {y:h/2}).y).strength(.22))
-    .force('collision',d3.forceCollide(d => estimateNodeRadius(d,'people') + estimateLabelPad(d.name,'people') + 12))
-    .alphaDecay(0.055)
-    .velocityDecay(0.36);
-  sim=s;
+  sim=null;
 
   lG.selectAll('line').data(links).enter().append('line')
     .attr('stroke',d=>d._t==='colleague'?'var(--gold)':'var(--raised)')
-    .attr('stroke-width',d=>d._t==='colleague'?1.8:1.05)
-    .attr('opacity',.28);
+    .attr('stroke-width',d=>d._t==='colleague'?1.2:1.0)
+    .attr('opacity',.3)
+    .attr('x1',d=>layoutPos.get(d.source.id||d.source)?.x || 0)
+    .attr('y1',d=>layoutPos.get(d.source.id||d.source)?.y || 0)
+    .attr('x2',d=>layoutPos.get(d.target.id||d.target)?.x || 0)
+    .attr('y2',d=>layoutPos.get(d.target.id||d.target)?.y || 0);
 
   const ns=nG.selectAll('g').data(allN).enter().append('g').style('cursor','pointer')
-    .call(d3.drag().on('start',(e,d)=>{if(!e.active)s.alphaTarget(.18).restart();d.fx=d.x;d.fy=d.y}).on('drag',(e,d)=>{d.fx=e.x;d.fy=e.y}).on('end',(e,d)=>{if(!e.active)s.alphaTarget(0);d.fx=null;d.fy=null}));
+    .attr('transform',d=>`translate(${d.x},${d.y})`);
 
   ns.filter(d=>d._t==='person').append('circle').attr('r',10).attr('fill','var(--gold)').attr('fill-opacity',.18).attr('stroke','var(--gold)').attr('stroke-width',1.6);
   ns.filter(d=>d._t==='org').append('rect').attr('x',-9).attr('y',-9).attr('width',18).attr('height',18).attr('rx',4).attr('fill',d=>SC[d.stack]||'var(--text-3)').attr('fill-opacity',.15).attr('stroke',d=>SC[d.stack]||'var(--text-3)').attr('stroke-width',1.2);
 
   const labels=tG.selectAll('text').data(allN).enter().append('text').text(d=>d.name)
-    .attr('font-size',8.8)
+    .attr('font-size',8.2)
     .attr('font-family','Nunito Sans,sans-serif')
     .attr('font-weight',d=>d._t==='person'?600:400)
     .attr('fill',d=>d._t==='person'?'var(--gold)':'var(--text-2)')
-    .attr('stroke','rgba(0,0,0,.8)')
-    .attr('stroke-width',1.3)
+    .attr('stroke','rgba(0,0,0,.85)')
+    .attr('stroke-width',1.5)
     .attr('paint-order','stroke')
-    .style('pointer-events','none');
-
-  ns.on('click',(e,d)=>{if(d._t==='org')selNode(d.id);else showPerson(d.id)});
-  s.on('tick',()=>{
-    lG.selectAll('line').attr('x1',d=>d.source.x).attr('y1',d=>d.source.y).attr('x2',d=>d.target.x).attr('y2',d=>d.target.y);
-    nG.selectAll('g').attr('transform',d=>`translate(${d.x},${d.y})`);
-    labels.each(function(d){
-      const p = labelPlacement(d, anchorById, 'people');
+    .style('pointer-events','none')
+    .each(function(d){
+      const p = labelPlacement(d, layoutPos, 'people');
       d3.select(this).attr('text-anchor', p.anchor).attr('x', p.x).attr('y', p.y);
     });
-  });
+
+  ns.on('click',(e,d)=>{if(d._t==='org')selNode(d.id);else showPerson(d.id)});
 
   const lg=document.createElement('div');lg.className='legend';
   lg.innerHTML=`<div class="legend-header" onclick="this.parentElement.classList.toggle('collapsed')"><span class="legend-title">People Graph</span><span class="legend-toggle">▼</span></div><div class="legend-body"><div class="legend-row"><div class="legend-dot" style="background:var(--gold)"></div>Person</div><div class="legend-row"><div class="legend-dot" style="background:var(--sage)"></div>Org (Infra)</div><div class="legend-row"><div class="legend-dot" style="background:var(--rose)"></div>Org (App)</div><div class="legend-row"><div class="legend-dot" style="background:var(--teal)"></div>Org (Gov)</div></div>`;
