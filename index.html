@@ -453,24 +453,24 @@ function buildGraph(){
   const nodeRadius = d => Math.max(6,(d.decen||50)/8+3);
   const labelCollision = d => {
     const nr = nodeRadius(d);
-    const labelPad = Math.min(24, 9 + (d.name ? d.name.length * 0.52 : 0));
+    const labelPad = Math.min(28, 10 + (d.name ? d.name.length * 0.58 : 0));
     return nr + labelPad;
   };
 
   sn.forEach(d=>{
     d._comp = compIndex.get(d.id) ?? 0;
     const c = graphComponentCenters.get(d._comp) || {x:w/2,y:h/2};
-    if(!Number.isFinite(d.x)) d.x = c.x + (Math.random()-.5)*70;
-    if(!Number.isFinite(d.y)) d.y = c.y + (Math.random()-.5)*56;
+    if(!Number.isFinite(d.x)) d.x = c.x + (Math.random()-.5)*96;
+    if(!Number.isFinite(d.y)) d.y = c.y + (Math.random()-.5)*78;
   });
 
   const s=d3.forceSimulation(sn)
-    .force('link',d3.forceLink(se).id(d=>d.id).distance(94).strength(.24))
-    .force('charge',d3.forceManyBody().strength(-148))
+    .force('link',d3.forceLink(se).id(d=>d.id).distance(108).strength(.20))
+    .force('charge',d3.forceManyBody().strength(-162))
     .force('center',d3.forceCenter(w/2,h/2))
-    .force('clusterX',d3.forceX(d=>(graphComponentCenters.get(d._comp)||{x:w/2}).x).strength(.085))
-    .force('clusterY',d3.forceY(d=>(graphComponentCenters.get(d._comp)||{y:h/2}).y).strength(.085))
-    .force('collision',d3.forceCollide(d=>labelCollision(d)+4));
+    .force('clusterX',d3.forceX(d=>(graphComponentCenters.get(d._comp)||{x:w/2}).x).strength(.058))
+    .force('clusterY',d3.forceY(d=>(graphComponentCenters.get(d._comp)||{y:h/2}).y).strength(.058))
+    .force('collision',d3.forceCollide(d=>labelCollision(d)+9));
   sim=s;
 
   // Edges with color by type
@@ -499,7 +499,7 @@ function buildGraph(){
     .attr('text-anchor','middle')
     .attr('dy',d=>{
       const k = (d.id || '').split('').reduce((a,c)=>a+c.charCodeAt(0),0) % 4;
-      return k===0 ? -16 : (k===1 ? -26 : (k===2 ? 18 : 28));
+      return k===0 ? -18 : (k===1 ? -32 : (k===2 ? 22 : 36));
     })
     .style('pointer-events','none');
 
@@ -522,8 +522,8 @@ function resizeGraphViewport(){
   computeGraphComponentCenters(w,h);
 
   if (sim.force('center')) sim.force('center', d3.forceCenter(w / 2, h / 2));
-  if (sim.force('clusterX')) sim.force('clusterX', d3.forceX(d => (graphComponentCenters.get(d._comp) || {x:w/2}).x).strength(0.085));
-  if (sim.force('clusterY')) sim.force('clusterY', d3.forceY(d => (graphComponentCenters.get(d._comp) || {y:h/2}).y).strength(0.085));
+  if (sim.force('clusterX')) sim.force('clusterX', d3.forceX(d => (graphComponentCenters.get(d._comp) || {x:w/2}).x).strength(0.058));
+  if (sim.force('clusterY')) sim.force('clusterY', d3.forceY(d => (graphComponentCenters.get(d._comp) || {y:h/2}).y).strength(0.058));
 
   sim.alphaTarget(0.12).restart();
   setTimeout(() => {
@@ -610,18 +610,114 @@ function renderPeopleGraph(){
   const links=[];
   D.people.forEach(p=>p.orgs.forEach(o=>{if(D.nodes.find(n=>n.id===o))links.push({source:p.id,target:o,_t:'member'})}));
   D.people.forEach((p1,i)=>D.people.forEach((p2,j)=>{if(j>i&&p1.orgs.some(o=>p2.orgs.includes(o)))links.push({source:p1.id,target:p2.id,_t:'colleague'})}));
+
   const svgEl=d3.select(m).append('svg').attr('width',w).attr('height',h);
   svgEl.call(d3.zoom().scaleExtent([.2,4]).on('zoom',e=>gEl.attr('transform',e.transform)));
   const gEl=svgEl.append('g'),lG=gEl.append('g'),nG=gEl.append('g'),tG=gEl.append('g');
-  const s=d3.forceSimulation(allN).force('link',d3.forceLink(links).id(d=>d.id).distance(70).strength(.3)).force('charge',d3.forceManyBody().strength(-180)).force('center',d3.forceCenter(w/2,h/2)).force('collision',d3.forceCollide(24));
+
+  const adj=new Map(allN.map(n=>[n.id,[]]));
+  links.forEach(l=>{
+    const s=typeof l.source==='object'?l.source.id:l.source;
+    const t=typeof l.target==='object'?l.target.id:l.target;
+    adj.get(s)?.push(t);
+    adj.get(t)?.push(s);
+  });
+
+  const seen=new Set(), comps=[];
+  for(const n of allN){
+    if(seen.has(n.id)) continue;
+    const q=[n.id], comp=[];
+    seen.add(n.id);
+    while(q.length){
+      const cur=q.pop();
+      comp.push(cur);
+      for(const nxt of (adj.get(cur)||[])){
+        if(!seen.has(nxt)){
+          seen.add(nxt);
+          q.push(nxt);
+        }
+      }
+    }
+    comps.push(comp);
+  }
+  comps.sort((a,b)=>b.length-a.length);
+  const compIndex=new Map();
+  comps.forEach((comp,i)=>comp.forEach(id=>compIndex.set(id,i)));
+
+  const cx=w/2, cy=h/2;
+  const inner=Math.min(5, comps.length), outer=Math.max(0, comps.length-inner);
+  const centers=new Map();
+  const innerR=Math.min(w,h)*0.18;
+  const outerR=Math.min(w,h)*0.32;
+  for(let i=0;i<inner;i++){
+    const a=(-Math.PI/2)+(2*Math.PI*i/Math.max(1,inner));
+    centers.set(i,{x:cx+Math.cos(a)*innerR,y:cy+Math.sin(a)*innerR});
+  }
+  for(let i=0;i<outer;i++){
+    const a=(-Math.PI/2)+(2*Math.PI*i/Math.max(1,outer))+(outer?Math.PI/outer:0);
+    centers.set(inner+i,{x:cx+Math.cos(a)*outerR,y:cy+Math.sin(a)*outerR});
+  }
+
+  const nodeR=d=>d._t==='person'?10:11;
+  const labelCollision=d=>nodeR(d)+Math.min(24,10+(d.name?d.name.length*0.48:0));
+
+  allN.forEach(d=>{
+    d._comp=compIndex.get(d.id) ?? 0;
+    const c=centers.get(d._comp) || {x:cx,y:cy};
+    if(!Number.isFinite(d.x)) d.x = c.x + (Math.random()-.5)*100;
+    if(!Number.isFinite(d.y)) d.y = c.y + (Math.random()-.5)*82;
+  });
+
+  const s=d3.forceSimulation(allN)
+    .force('link',d3.forceLink(links).id(d=>d.id).distance(88).strength(.22))
+    .force('charge',d3.forceManyBody().strength(-228))
+    .force('center',d3.forceCenter(w/2,h/2))
+    .force('clusterX',d3.forceX(d=>(centers.get(d._comp)||{x:w/2}).x).strength(.065))
+    .force('clusterY',d3.forceY(d=>(centers.get(d._comp)||{y:h/2}).y).strength(.065))
+    .force('collision',d3.forceCollide(d=>labelCollision(d)+8));
   sim=s;
-  lG.selectAll('line').data(links).enter().append('line').attr('stroke',d=>d._t==='colleague'?'var(--gold)':'var(--raised)').attr('stroke-width',d=>d._t==='colleague'?1.8:1).attr('opacity',.3);
-  const ns=nG.selectAll('g').data(allN).enter().append('g').style('cursor','pointer').call(d3.drag().on('start',(e,d)=>{if(!e.active)s.alphaTarget(.3).restart();d.fx=d.x;d.fy=d.y}).on('drag',(e,d)=>{d.fx=e.x;d.fy=e.y}).on('end',(e,d)=>{if(!e.active)s.alphaTarget(0);d.fx=null;d.fy=null}));
-  ns.filter(d=>d._t==='person').append('circle').attr('r',10).attr('fill','var(--gold)').attr('fill-opacity',.15).attr('stroke','var(--gold)').attr('stroke-width',1.5);
-  ns.filter(d=>d._t==='org').append('rect').attr('x',-9).attr('y',-9).attr('width',18).attr('height',18).attr('rx',4).attr('fill',d=>SC[d.stack]||'var(--text-3)').attr('fill-opacity',.15).attr('stroke',d=>SC[d.stack]||'var(--text-3)').attr('stroke-width',1.2);
-  tG.selectAll('text').data(allN).enter().append('text').text(d=>d.name).attr('font-size',10).attr('font-family','Nunito Sans,sans-serif').attr('font-weight',d=>d._t==='person'?600:400).attr('fill',d=>d._t==='person'?'var(--gold)':'var(--text-2)').attr('text-anchor','middle').attr('dy',-16).style('pointer-events','none');
+
+  lG.selectAll('line').data(links).enter().append('line')
+    .attr('stroke',d=>d._t==='colleague'?'var(--gold)':'var(--raised)')
+    .attr('stroke-width',d=>d._t==='colleague'?1.6:1)
+    .attr('opacity',.24);
+
+  const ns=nG.selectAll('g').data(allN).enter().append('g').style('cursor','pointer')
+    .call(d3.drag()
+      .on('start',(e,d)=>{if(!e.active)s.alphaTarget(.3).restart();d.fx=d.x;d.fy=d.y})
+      .on('drag',(e,d)=>{d.fx=e.x;d.fy=e.y})
+      .on('end',(e,d)=>{if(!e.active)s.alphaTarget(0);d.fx=null;d.fy=null})
+    );
+
+  ns.filter(d=>d._t==='person').append('circle')
+    .attr('r',10).attr('fill','var(--gold)').attr('fill-opacity',.15).attr('stroke','var(--gold)').attr('stroke-width',1.5);
+  ns.filter(d=>d._t==='org').append('rect')
+    .attr('x',-9).attr('y',-9).attr('width',18).attr('height',18).attr('rx',4)
+    .attr('fill',d=>SC[d.stack]||'var(--text-3)').attr('fill-opacity',.15)
+    .attr('stroke',d=>SC[d.stack]||'var(--text-3)').attr('stroke-width',1.2);
+
+  const labels=tG.selectAll('text').data(allN).enter().append('text').text(d=>d.name)
+    .attr('font-size',9.5)
+    .attr('font-family','Nunito Sans,sans-serif')
+    .attr('font-weight',d=>d._t==='person'?600:400)
+    .attr('fill',d=>d._t==='person'?'var(--gold)':'var(--text-2)')
+    .attr('stroke','rgba(0,0,0,.82)')
+    .attr('stroke-width',1.1)
+    .attr('paint-order','stroke')
+    .attr('text-anchor','middle')
+    .attr('dy',d=>{
+      const k=(d.id||'').split('').reduce((a,c)=>a+c.charCodeAt(0),0)%4;
+      return k===0 ? -16 : (k===1 ? -28 : (k===2 ? 20 : 32));
+    })
+    .style('pointer-events','none');
+
   ns.on('click',(e,d)=>{if(d._t==='org')selNode(d.id);else showPerson(d.id)});
-  s.on('tick',()=>{lG.selectAll('line').attr('x1',d=>d.source.x).attr('y1',d=>d.source.y).attr('x2',d=>d.target.x).attr('y2',d=>d.target.y);nG.selectAll('g').attr('transform',d=>`translate(${d.x},${d.y})`);tG.selectAll('text').attr('x',d=>d.x).attr('y',d=>d.y)});
+  s.on('tick',()=>{
+    lG.selectAll('line').attr('x1',d=>d.source.x).attr('y1',d=>d.source.y).attr('x2',d=>d.target.x).attr('y2',d=>d.target.y);
+    nG.selectAll('g').attr('transform',d=>`translate(${d.x},${d.y})`);
+    labels.attr('x',d=>d.x).attr('y',d=>d.y);
+  });
+
   const lg=document.createElement('div');lg.className='legend';
   lg.innerHTML=`<div class="legend-header" onclick="this.parentElement.classList.toggle('collapsed')"><span class="legend-title">People Graph</span><span class="legend-toggle">▼</span></div><div class="legend-body"><div class="legend-row"><div class="legend-dot" style="background:var(--gold)"></div>Person</div><div class="legend-row"><div class="legend-dot" style="background:var(--sage)"></div>Org (Infra)</div><div class="legend-row"><div class="legend-dot" style="background:var(--rose)"></div>Org (App)</div><div class="legend-row"><div class="legend-dot" style="background:var(--teal)"></div>Org (Gov)</div></div>`;
   m.appendChild(lg);
