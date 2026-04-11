@@ -188,6 +188,14 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
 
 /* CREDIBILITY BADGE */
 .cred-badge{display:inline-flex;align-items:center;gap:4px;font-family:var(--mono);font-size:.7rem;padding:3px 8px;border-radius:10px}
+.profit-badge{display:inline-flex;align-items:center;gap:4px;font-family:var(--mono);font-size:.7rem;padding:3px 8px;border-radius:10px}
+.fin-box{background:var(--card);padding:14px;border-radius:var(--radius);margin-bottom:16px;border:1px solid var(--border)}
+.fin-box.commons{border-color:rgba(110,200,155,.25)}
+.fin-box.hybrid{border-color:rgba(212,168,83,.25)}
+.fin-box.profit{border-color:rgba(224,92,92,.25)}
+.fin-bar-wrap{display:flex;align-items:center;gap:10px;margin:6px 0}
+.fin-bar-bg{flex:1;height:8px;background:var(--raised);border-radius:4px;overflow:hidden}
+.fin-bar-fill{height:100%;border-radius:4px;transition:width .3s}
 
 /* RESPONSIVE */
 @media(max-width:768px){
@@ -232,7 +240,9 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
       <div class="slider-filter"><div class="sf-label"><span>Overlap ≥</span><span id="slOvV">0%</span></div><input class="sf-range" type="range" min="0" max="100" value="0" id="slOv" oninput="el('slOvV').textContent=this.value+'%';af()"></div>
       <div class="slider-filter"><div class="sf-label"><span>Decentralization ≥</span><span id="slDcV">0%</span></div><input class="sf-range" type="range" min="0" max="100" value="0" id="slDc" oninput="el('slDcV').textContent=this.value+'%';af()"></div>
       <div class="slider-filter"><div class="sf-label"><span>Credibility ≥</span><span id="slCrV">0</span></div><input class="sf-range" type="range" min="0" max="100" value="0" id="slCr" oninput="el('slCrV').textContent=this.value;af()"></div>
+      <div class="slider-filter"><div class="sf-label"><span>Profit Score ≤</span><span id="slPrV">100</span></div><input class="sf-range" type="range" min="0" max="100" value="100" id="slPr" oninput="el('slPrV').textContent=this.value;af()"></div>
     </div>
+    <div class="sb-section"><div class="sb-label">Legal Structure</div><div class="pills" id="pLegal"></div></div>
     <div class="sb-section"><div class="sb-label">Type</div><div class="pills" id="pType"></div></div>
     <div class="sb-section"><div class="sb-label">Organizations <b id="nc">0</b></div><ul class="node-list" id="nlist"></ul></div>
   </aside>
@@ -278,13 +288,23 @@ const GLOSS={
   'RWA':'Real World Asset. Tokenized representation of physical/legal assets.',
   'LLM':'Large Language Model. AI trained on text for generation/analysis.',
   'ORCID':'Open Researcher and Contributor ID. Persistent researcher identifier.',
+  'ICO':'Initial Coin Offering. Token sale to raise capital, often unregulated.',
+  'SAFT':'Simple Agreement for Future Tokens. Legal framework for compliant token sales.',
+  '501(c)(3)':'US tax-exempt nonprofit organization status.',
+  'GmbH':'German limited liability company (Gesellschaft mit beschränkter Haftung).',
+  'SAS':'French simplified joint-stock company (Société par Actions Simplifiée).',
+  'Verein':'Swiss nonprofit association structure.',
+  'Series A':'First major VC funding round after seed, typically $5-15M.',
+  'AUM':'Assets Under Management. Total value managed by investment fund.',
+  'LP fees':'Liquidity Provider fees. Revenue from automated market maker pools.',
+  'veToken':'Vote-escrowed token. Locked governance token that earns protocol fees.',
 };
 
 // ===== GLOBALS =====
 const el=id=>document.getElementById(id);
 let D={nodes:[],edges:[],people:[]};
 let view='graph',selId=null,sim=null,zoomBehavior=null,svgG=null;
-let flt={stack:[],type:[],overlap:[]};
+let flt={stack:[],type:[],overlap:[],legal:[]};
 let sortC='overlapScore',sortA=false;
 let zoteroItems=null;
 
@@ -295,6 +315,12 @@ const SL=['S1\nData','S2\nLedger','S3\nAI','S4\nProof','S5\nGov'];
 const EC={'funder':'var(--edge-funder)','ecosystem':'var(--edge-ecosystem)','partner':'var(--edge-partner)','overlap':'var(--edge-overlap)'};
 const RB={funder:{b:'rgba(92,184,122,.2)',c:'var(--sage)'},ecosystem:{b:'rgba(92,170,184,.2)',c:'var(--teal)'},partner:{b:'rgba(155,126,212,.2)',c:'#9b7ed4'},overlap:{b:'rgba(227,190,77,.22)',c:'var(--gold)'}};
 const OV_LABELS={"publishing":"Publishing","peer-review":"Peer Review","reputation":"Reputation","dao-gov":"DAO Gov","compute":"Compute","ai-ml":"AI/ML","citation-graph":"Citations","scicomm":"SciComm","citizen-sci":"Citizen Sci","smart-contracts":"Contracts/NFT","data-sovereignty":"Data Sov","ip-nft":"IP-NFT"};
+
+// Profit score color helpers (0=commons/green, 100=profit/red)
+function profitC(s){return s<=20?'var(--sage)':s<=40?'var(--teal)':s<=60?'var(--gold)':s<=80?'#e8a87c':'var(--red)'}
+function profitBg(s){return s<=20?'rgba(110,200,155,.1)':s<=40?'rgba(116,221,215,.1)':s<=60?'rgba(212,168,83,.1)':s<=80?'rgba(232,168,124,.1)':'rgba(224,92,92,.1)'}
+function profitBarC(s){return s<=20?'var(--sage)':s<=40?'var(--teal)':s<=60?'var(--gold)':s<=80?'#e8a87c':'var(--red)'}
+function finBoxClass(s){return s<=30?'commons':s<=60?'hybrid':'profit'}
 
 // ===== INIT =====
 async function init(){
@@ -309,7 +335,7 @@ async function init(){
     if(s)try{D=JSON.parse(s)}catch(e){}
   }
   if(!D.nodes||!D.nodes.length){D={nodes:[],edges:[],people:[]}; return}
-  D.nodes.forEach(n=>{n.wp=n.wp||'';n.git=n.git||'';n.twitter=n.twitter||'';n.cf=n.cf||{};n.overlapTags=n.overlapTags||[];n.credScore=n.credScore||0;n.overlapScore=n.overlapScore||0;n.decentNote=n.decentNote||'';n.techStack=n.techStack||'';n.compNote=n.compNote||'';n.notes=n.notes||''});
+  D.nodes.forEach(n=>{n.wp=n.wp||'';n.git=n.git||'';n.twitter=n.twitter||'';n.cf=n.cf||{};n.overlapTags=n.overlapTags||[];n.credScore=n.credScore||0;n.overlapScore=n.overlapScore||0;n.decentNote=n.decentNote||'';n.techStack=n.techStack||'';n.compNote=n.compNote||'';n.notes=n.notes||'';n.finModel=n.finModel||'';n.legalStructure=n.legalStructure||'unknown';n.apc=n.apc||false;n.profitScore=n.profitScore??50;n.finNote=n.finNote||'';n.fundingRaised=n.fundingRaised||''});
   D.edges=(D.edges||[]).map(e=>e.type==='collaborator'?({...e,type:'partner'}):e);
   if(!D.people)D.people=[];
   buildPills();render();updateSB();updateStats();
@@ -345,6 +371,7 @@ function buildPills(){
   el('pStack').innerHTML=['infrastructure','application','governance'].map(s=>`<button class="pill" onclick="togF('stack','${s}',this)">${s}</button>`).join('');
   el('pOverlap').innerHTML=Object.entries(OV_LABELS).map(([k,v])=>`<button class="pill" onclick="togF('overlap','${k}',this)">${v}</button>`).join('');
   el('pType').innerHTML=[...new Set(D.nodes.map(n=>n.type))].sort().map(t=>`<button class="pill" onclick="togF('type','${t}',this)">${t}</button>`).join('');
+  el('pLegal').innerHTML=['nonprofit','foundation','DAO','hybrid','for-profit'].map(s=>`<button class="pill" onclick="togF('legal','${s}',this)">${s}</button>`).join('');
 }
 function togF(c,v,b){const i=flt[c].indexOf(v);if(i>=0){flt[c].splice(i,1);b.classList.remove('on')}else{flt[c].push(v);b.classList.add('on')}af()}
 function vis(n){
@@ -353,9 +380,11 @@ function vis(n){
   if(flt.stack.length&&!flt.stack.includes(n.stack))return false;
   if(flt.type.length&&!flt.type.includes(n.type))return false;
   if(flt.overlap.length&&!flt.overlap.some(t=>(n.overlapTags||[]).includes(t)))return false;
+  if(flt.legal.length&&!flt.legal.includes(n.legalStructure))return false;
   const sOv=+el('slOv').value; if(sOv>0&&(n.overlapScore||0)<sOv)return false;
   const sDc=+el('slDc').value; if(sDc>0&&(n.decen||0)<sDc)return false;
   const sCr=+el('slCr').value; if(sCr>0&&(n.credScore||0)<sCr)return false;
+  const sPr=+el('slPr').value; if(sPr<100&&(n.profitScore||50)>sPr)return false;
   return true;
 }
 function af(){updateSB();updateStats();if(view==='graph')render();else render()}
@@ -758,12 +787,19 @@ function selNode(id){
   const ppl=D.people.filter(pp=>pp.orgs.includes(id));
   const credC=n.credScore>=60?'var(--sage)':n.credScore>=30?'var(--gold)':'var(--text-3)';
   const ovC=(n.overlapScore||0)>=60?'var(--gold)':(n.overlapScore||0)>=30?'var(--text-2)':'var(--text-3)';
-  p.innerHTML=`<div class="det-name">${n.name}</div><div class="det-sub">${n.type} · ${n.stage} · <span class="cred-badge" style="background:rgba(110,200,155,.08);color:${credC}">Cred ${n.credScore||0}</span>${n.twitter?` · <a href="https://x.com/${n.twitter.replace('@','')}" target="_blank" style="color:var(--link)">${n.twitter}</a>`:''}</div>
+  p.innerHTML=`<div class="det-name">${n.name}</div><div class="det-sub">${n.type} · ${n.stage} · <span class="cred-badge" style="background:rgba(110,200,155,.08);color:${credC}">Cred ${n.credScore||0}</span> · <span class="profit-badge" style="background:${profitBg(n.profitScore)};color:${profitC(n.profitScore)}">Profit ${n.profitScore??50}</span>${n.twitter?` · <a href="https://x.com/${n.twitter.replace('@','')}" target="_blank" style="color:var(--link)">${n.twitter}</a>`:''}</div>
   <div class="field"><div class="flabel">Description</div><textarea class="finput" onchange="upd('${id}','desc',this.value)">${n.desc||''}</textarea></div>
   ${(n.overlapScore||n.compNote)?`<div class="overlap-box" style="border:1px solid ${(n.overlapScore||0)>=50?'rgba(212,168,83,.25)':'var(--border)'}">
     <div class="flabel" style="color:var(--gold)">Overlap with our platform <span style="font-weight:700">${n.overlapScore||0}%</span></div>
     <div class="overlap-bar-wrap"><div class="overlap-bar-bg"><div class="overlap-bar-fill" style="width:${n.overlapScore||0}%;background:${ovC}"></div></div></div>
     <div style="font-size:.82rem;color:var(--text-2);line-height:1.5">${n.compNote||''}</div>
+  </div>`:''}
+  ${(n.finModel||n.finNote)?`<div class="fin-box ${finBoxClass(n.profitScore)}">
+    <div class="flabel" style="color:${profitC(n.profitScore)}">Financial Model <span style="font-weight:700">${n.profitScore??50}/100</span> ${n.legalStructure!=='unknown'?`· <span style="text-transform:capitalize">${n.legalStructure}</span>`:''} ${n.apc?'· <span style="color:var(--red)">Has APC</span>':''}</div>
+    <div class="fin-bar-wrap"><div class="fin-bar-bg"><div class="fin-bar-fill" style="width:${n.profitScore??50}%;background:${profitBarC(n.profitScore)}"></div></div></div>
+    ${n.fundingRaised?`<div style="font-size:.75rem;color:var(--text-3);margin-bottom:6px">Funding: ${n.fundingRaised}</div>`:''}
+    <div style="font-size:.82rem;color:var(--text-2);line-height:1.5">${n.finModel||''}</div>
+    ${n.finNote?`<div style="font-size:.78rem;color:var(--text-3);line-height:1.5;margin-top:6px;font-style:italic">${n.finNote}</div>`:''}
   </div>`:''}
   ${n.techStack?`<div class="field"><div class="flabel">Core Tech Stack</div><div style="font-size:.85rem;color:var(--text);font-family:var(--mono);line-height:1.6">${n.techStack}</div></div>`:''}
   ${n.decentNote?`<div class="field"><div class="flabel">Decentralization <span style="color:var(--teal);font-weight:700">${n.decen||0}%</span></div><div style="font-size:.82rem;color:var(--text-2);line-height:1.5">${n.decentNote}</div></div>`:''}
@@ -803,7 +839,7 @@ function addOrgM(){
 }
 function doAddOrg(){
   const id=el('nId').value.trim(),name=el('nName').value.trim();if(!id||!name)return;
-  D.nodes.push({id,name,desc:'',type:el('nType').value.trim()||'Unknown',stack:el('nStack').value,stage:'Early',tags:[],s1:0,s2:0,s3:0,s4:0,s5:0,decen:50,chain:'',web:'',funding:'',source:'Manual',cf:{},wp:'',git:'',twitter:'',people:'',techStack:'',decentNote:'',overlapScore:0,compNote:'',notes:'',overlapTags:[],credScore:0});
+  D.nodes.push({id,name,desc:'',type:el('nType').value.trim()||'Unknown',stack:el('nStack').value,stage:'Early',tags:[],s1:0,s2:0,s3:0,s4:0,s5:0,decen:50,chain:'',web:'',funding:'',source:'Manual',cf:{},wp:'',git:'',twitter:'',people:'',techStack:'',decentNote:'',overlapScore:0,compNote:'',notes:'',overlapTags:[],credScore:0,finModel:'',legalStructure:'unknown',apc:false,profitScore:50,finNote:'',fundingRaised:''});
   save();render();updateSB();updateStats();buildPills();clM();
 }
 function addEdgeM(){
@@ -824,8 +860,8 @@ function impFile(inp){
   const f=inp.files[0];if(!f)return;
   const r=new FileReader();r.onload=e=>{
     try{
-      if(f.name.endsWith('.json')){D=JSON.parse(e.target.result);D.nodes.forEach(n=>{n.overlapTags=n.overlapTags||[];n.credScore=n.credScore||0})}
-      else if(f.name.endsWith('.csv')){const p=Papa.parse(e.target.result,{header:true});p.data.forEach(row=>{if(!row.id)return;const ex=D.nodes.find(n=>n.id===row.id);if(ex)Object.assign(ex,row);else D.nodes.push({...row,tags:(row.tags||'').split(','),s1:+row.s1||0,s2:+row.s2||0,s3:+row.s3||0,s4:+row.s4||0,s5:+row.s5||0,decen:+row.decen||50,cf:{},overlapTags:[],credScore:0})})}
+      if(f.name.endsWith('.json')){D=JSON.parse(e.target.result);D.nodes.forEach(n=>{n.overlapTags=n.overlapTags||[];n.credScore=n.credScore||0;n.finModel=n.finModel||'';n.legalStructure=n.legalStructure||'unknown';n.apc=n.apc||false;n.profitScore=n.profitScore??50;n.finNote=n.finNote||'';n.fundingRaised=n.fundingRaised||''})}
+      else if(f.name.endsWith('.csv')){const p=Papa.parse(e.target.result,{header:true});p.data.forEach(row=>{if(!row.id)return;const ex=D.nodes.find(n=>n.id===row.id);if(ex)Object.assign(ex,row);else D.nodes.push({...row,tags:(row.tags||'').split(','),s1:+row.s1||0,s2:+row.s2||0,s3:+row.s3||0,s4:+row.s4||0,s5:+row.s5||0,decen:+row.decen||50,cf:{},overlapTags:[],credScore:0,profitScore:50})})}
       save();render();updateSB();updateStats();buildPills();
     }catch(err){alert('Import error: '+err.message)}
   };r.readAsText(f);inp.value='';

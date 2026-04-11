@@ -36,7 +36,13 @@
     "ai-ml",
     "dao-gov"
    ],
-   "credScore": 40
+   "credScore": 40,
+   "finModel": "DAO Treasury. AXGT token. Early stage.",
+   "legalStructure": "DAO",
+   "apc": false,
+   "profitScore": 45,
+   "finNote": "Neuroscience-focused BioDAO. EEG/MRI AI inference. Part of emerging BioDAO ecosystem.",
+   "fundingRaised": "DAO Treasury"
   },
   {
    "id": "datalake",
@@ -73,7 +79,13 @@
     "ai-ml",
     "data-sovereignty"
    ],
-   "credScore": 30
+   "credScore": 30,
+   "finModel": "Token sale. LAKE token. AI curator agents.",
+   "legalStructure": "hybrid",
+   "apc": false,
+   "profitScore": 50,
+   "finNote": "Consent-bound dataset curation. Token-incentivized data marketplace.",
+   "fundingRaised": "Token sale"
   },
   {
    "id": "elizaos",
@@ -110,7 +122,13 @@
     "ai-ml",
     "compute"
    ],
-   "credScore": 95
+   "credScore": 95,
+   "finModel": "VC + Token. Open source AI agent framework.",
+   "legalStructure": "hybrid",
+   "apc": false,
+   "profitScore": 55,
+   "finNote": "Shaw project. Solana-based. Open source but commercial backing.",
+   "fundingRaised": "VC + Token"
   },
   {
    "id": "galeon",
@@ -148,7 +166,13 @@
     "ai-ml",
     "data-sovereignty"
    ],
-   "credScore": 75
+   "credScore": 75,
+   "finModel": "ICO (~$15M). SaaS EHR revenue from 12+ French hospitals. GALEON token buyback-and-burn.",
+   "legalStructure": "for-profit",
+   "apc": false,
+   "profitScore": 75,
+   "finNote": "French SAS. Only DeSci project with real clinical deployment (500K+ patient records). Token tied to hospital onboarding milestones.",
+   "fundingRaised": "~$15M"
   },
   {
    "id": "hetu",
@@ -186,7 +210,13 @@
     "peer-review",
     "smart-contracts"
    ],
-   "credScore": 30
+   "credScore": 30,
+   "finModel": "Grants only. POCW consensus. Research-focused.",
+   "legalStructure": "research",
+   "apc": false,
+   "profitScore": 20,
+   "finNote": "Adversarial AI verification. Proof of Cognitive Work. Grant-funded, no commercial model yet.",
+   "fundingRaised": "Grants"
   },
   {
    "id": "labdao",
@@ -223,7 +253,13 @@
     "compute",
     "dao-gov"
    ],
-   "credScore": 90
+   "credScore": 90,
+   "finModel": "Grants + DAO ($3.6M). Molecule, Gnosis DAO, Balaji invested. Open source compute.",
+   "legalStructure": "DAO",
+   "apc": false,
+   "profitScore": 30,
+   "finNote": "Decentralized life science compute. PLEX on Bacalhau. No token (yet). Free for researchers. Strong commons orientation.",
+   "fundingRaised": "$3.6M"
   },
   {
    "id": "prime-intellect",
@@ -260,7 +296,13 @@
     "compute",
     "ai-ml"
    ],
-   "credScore": 95
+   "credScore": 95,
+   "finModel": "VC ($70.4M: $15M Series A Founders Fund, $49.9M Series B). Token planned but not launched.",
+   "legalStructure": "for-profit",
+   "apc": false,
+   "profitScore": 70,
+   "finNote": "Distributed AI training. Andrej Karpathy, Clem Delangue (Hugging Face), Emad Mostaque angels. Best-funded pure compute play.",
+   "fundingRaised": "$70.4M"
   },
   {
    "id": "pump-science",
@@ -298,7 +340,13 @@
     "smart-contracts",
     "citizen-sci"
    ],
-   "credScore": 55
+   "credScore": 55,
+   "finModel": "Trading fees (75% fund next experiment). Supplement storefront. Solana token per compound.",
+   "legalStructure": "for-profit",
+   "apc": false,
+   "profitScore": 65,
+   "finNote": "Built by Molecule in 3 weeks. Gamified longevity research. Nov 2024 GitHub key leak incident. Revenue from trading fees + DTC sales.",
+   "fundingRaised": "Solana Foundation grant"
   },
   {
    "id": "rare-compute",
@@ -335,7 +383,13 @@
     "compute",
     "smart-contracts"
    ],
-   "credScore": 45
+   "credScore": 45,
+   "finModel": "Token + Grants. Compute-credit NFTs.",
+   "legalStructure": "hybrid",
+   "apc": false,
+   "profitScore": 50,
+   "finNote": "GPU marketplace for antibody optimization. RL agents on Lilypad.",
+   "fundingRaised": "Token + Grants"
   },
   {
    "id": "researchhub",
@@ -377,7 +431,13 @@
     "ai-ml",
     "smart-contracts"
    ],
-   "credScore": 80
+   "credScore": 80,
+   "finModel": "VC ($7M total: $5M OSSCI 2023, $2M Boost VC 2025). Pre-revenue. RSC token rewards.",
+   "legalStructure": "hybrid",
+   "apc": false,
+   "profitScore": 58,
+   "finNote": "For-profit startup + ResearchHub Foundation (token governance). Brian Armstrong (Coinbase CEO) co-founder. Paid $1M to peer reviewers. RSC down 95% from Jan 2025 peak. Charges researchers nothing.",
+   "fundingRaised": "$7M"
   },
   {
    "id": "rejuve",
@@ -415,7 +475,13 @@
     "ai-ml",
     "data-sovereignty"
    ],
-   "credScore": 60
+   "credScore": 60,
+   "finModel": "Token sale (~$3M). RJV token. SingularityNET spinout. Pre-revenue.",
+   "legalStructure": "hybrid",
+   "apc": false,
+   "profitScore": 50,
+   "finNote": "Ben Goertzel project. RJV trading at fractions of a cent. Longevity AI focus. Part of SingularityNET ecosystem.",
+   "fundingRaised": "~$3M"
   },
   {
    "id": "valleydao",
@@ -454,7 +520,13 @@
     "dao-gov",
     "ip-nft"
    ],
-   "credScore": 70
+   "credScore": 70,
+   "finModel": "DAO + Retro-PGF. $GROW token (governance + IP exposure). $100K from Juniper VC. IPTokens ($HEMPY, $FORGE).",
+   "legalStructure": "DAO",
+   "apc": false,
+   "profitScore": 45,
+   "finNote": "Climate biotech focus. Phlo AI platform. Imperial College collaborations. Token provides exposure to funded IP.",
+   "fundingRaised": "~$100K+ VC + DAO treasury"
   },
   {
    "id": "vitadao",
@@ -493,7 +565,13 @@
     "ip-nft",
     "smart-contracts"
    ],
-   "credScore": 75
+   "credScore": 75,
+   "finModel": "Token sales + institutional ($4.1M Pfizer Ventures, 2023). Treasury ~$18M. IP licensing, spinouts.",
+   "legalStructure": "hybrid",
+   "apc": false,
+   "profitScore": 55,
+   "finNote": "Pure DAO with VitaTech for-profit subsidiary (2023). Pfizer Ventures investment was first pharma-to-DAO deal. VITA token fixed supply (64.3M). Funds researchers, doesn't charge them.",
+   "fundingRaised": "$9-10M"
   },
   {
    "id": "welshare",
@@ -531,7 +609,13 @@
     "data-sovereignty",
     "smart-contracts"
    ],
-   "credScore": 30
+   "credScore": 30,
+   "finModel": "Grants. Patient-owned health records. Consent management.",
+   "legalStructure": "nonprofit",
+   "apc": false,
+   "profitScore": 25,
+   "finNote": "Grant-funded. Focus on patient data sovereignty. No commercial extraction.",
+   "fundingRaised": "Grants"
   },
   {
    "id": "molecule",
@@ -569,7 +653,13 @@
     "dao-gov",
     "smart-contracts"
    ],
-   "credScore": 95
+   "credScore": 95,
+   "finModel": "VC seed ($12.7M, 2022). Platform fees on Catalyst launches. 5% BIO token allocation.",
+   "legalStructure": "for-profit",
+   "apc": false,
+   "profitScore": 65,
+   "finNote": "For-profit GmbH (Switzerland). Revenue from IP-NFT minting, bonding curve fees. Does not charge researchers directly. Northpond Ventures, Shine Capital, 1kx led rounds.",
+   "fundingRaised": "$12.7M"
   },
   {
    "id": "bio-protocol",
@@ -608,7 +698,13 @@
     "ip-nft",
     "smart-contracts"
    ],
-   "credScore": 75
+   "credScore": 75,
+   "finModel": "Genesis auctions (~$33M), Binance Labs strategic, $6.9M seed (Maelstrom). Launchpad fees, LP revenue.",
+   "legalStructure": "hybrid",
+   "apc": false,
+   "profitScore": 60,
+   "finNote": "Zug, Switzerland entity. BIO token down 98% from peak. $4M+ LP fees reported. Animoca Brands, Mechanism Capital invested. Arthur Hayes (Maelstrom) led seed.",
+   "fundingRaised": "$33M+"
   },
   {
    "id": "episteme",
@@ -647,7 +743,13 @@
     "smart-contracts",
     "reputation"
    ],
-   "credScore": 35
+   "credScore": 35,
+   "finModel": "No funding disclosed. Testnet on Humanode. No token, no revenue.",
+   "legalStructure": "unknown",
+   "apc": false,
+   "profitScore": 25,
+   "finNote": "Sasha Shilina's research prototype. Market-oriented philosophy (prediction markets) but pre-operational. Cannot assess true incentive alignment yet.",
+   "fundingRaised": "Undisclosed"
   },
   {
    "id": "ocean",
@@ -685,7 +787,13 @@
     "smart-contracts",
     "compute"
    ],
-   "credScore": 90
+   "credScore": 90,
+   "finModel": "Token sales ($39.2M). Marketplace fees, Data Farming, 5% burn mechanism.",
+   "legalStructure": "foundation",
+   "apc": false,
+   "profitScore": 45,
+   "finNote": "Singapore Foundation. Withdrew from ASI Alliance Oct 2025 amid $100M+ token dispute. Cypher Capital $5M (2022). Fee-sharing with veOCEAN stakers.",
+   "fundingRaised": "$39.2M"
   },
   {
    "id": "numerai",
@@ -723,7 +831,13 @@
     "smart-contracts",
     "reputation"
    ],
-   "credScore": 90
+   "credScore": 90,
+   "finModel": "Hedge fund fees (25.45% net return 2024). $550M AUM. VC ($42.8M). NMR staking/burning.",
+   "legalStructure": "for-profit",
+   "apc": false,
+   "profitScore": 75,
+   "finNote": "San Francisco C-Corp. Proven revenue model. USV, Paradigm, Paul Tudor Jones invested. JPMorgan committed $500M capacity. ~6 employees. $500M valuation.",
+   "fundingRaised": "$42.8M"
   },
   {
    "id": "polymarket",
@@ -758,7 +872,13 @@
    "overlapTags": [
     "smart-contracts"
    ],
-   "credScore": 75
+   "credScore": 75,
+   "finModel": "VC mega-rounds ($2.3B total, $2B Series D from ICE Oct 2025). Zero trading fees. Pre-revenue.",
+   "legalStructure": "for-profit",
+   "apc": false,
+   "profitScore": 80,
+   "finNote": "Blockratize Inc. (New York). $9B valuation. Founders Fund, Vitalik Buterin, Point72 invested. Planning POLY token. Pure VC subsidy model currently.",
+   "fundingRaised": "$2.3B"
   },
   {
    "id": "hairdao",
@@ -795,7 +915,13 @@
     "dao-gov",
     "ip-nft"
    ],
-   "credScore": 70
+   "credScore": 70,
+   "finModel": "Seed round ($3.3M+ from Cherry Ventures, Libertus, Zee Prime). HAIR token (~$9.5M mcap).",
+   "legalStructure": "DAO",
+   "apc": false,
+   "profitScore": 50,
+   "finNote": "Hair loss research. Most VC-backed of the small BioDAOs. Plans commercialization via spinouts.",
+   "fundingRaised": "$3.3M+"
   },
   {
    "id": "athenadao",
@@ -832,7 +958,13 @@
     "dao-gov",
     "ip-nft"
    ],
-   "credScore": 65
+   "credScore": 65,
+   "finModel": "Token sale via bio.xyz (~$350K treasury). IP-NFT investments.",
+   "legalStructure": "DAO",
+   "apc": false,
+   "profitScore": 45,
+   "finNote": "Women's health focus. Small treasury. Community-funded. Plans commercialization via licensing.",
+   "fundingRaised": "~$350K"
   },
   {
    "id": "cerebrumdao",
@@ -867,7 +999,13 @@
    "overlapTags": [
     "dao-gov"
    ],
-   "credScore": 20
+   "credScore": 20,
+   "finModel": "IPT sales ($500K+). NEURON token (~$16.7M mcap). BIO Protocol ecosystem.",
+   "legalStructure": "DAO",
+   "apc": false,
+   "profitScore": 45,
+   "finNote": "Neuroscience focus. Community-funded. IP-NFT investment model.",
+   "fundingRaised": "$500K+"
   },
   {
    "id": "psydao",
@@ -903,7 +1041,13 @@
    "overlapTags": [
     "dao-gov"
    ],
-   "credScore": 45
+   "credScore": 45,
+   "finModel": "Token sale (~$2M). Molecule/bio.xyz ecosystem. Gitcoin grants.",
+   "legalStructure": "DAO",
+   "apc": false,
+   "profitScore": 45,
+   "finNote": "Psychedelics research DAO. PSY token. Funds research, doesn't charge researchers. Part of BIO Protocol ecosystem.",
+   "fundingRaised": "~$2M"
   },
   {
    "id": "cryodao",
@@ -938,7 +1082,13 @@
    "overlapTags": [
     "dao-gov"
    ],
-   "credScore": 25
+   "credScore": 25,
+   "finModel": "DAO treasury. CRYO token. Community-funded cryonics research.",
+   "legalStructure": "DAO",
+   "apc": false,
+   "profitScore": 40,
+   "finNote": "Cryopreservation research DAO. Part of BIO Protocol ecosystem. Small treasury.",
+   "fundingRaised": "DAO Treasury"
   },
   {
    "id": "curetopia",
@@ -974,7 +1124,13 @@
    "overlapTags": [
     "dao-gov"
    ],
-   "credScore": 25
+   "credScore": 25,
+   "finModel": "BIO Protocol launchpad ($1.77M, March 2025). CURES token on Solana.",
+   "legalStructure": "nonprofit",
+   "apc": false,
+   "profitScore": 35,
+   "finNote": "Swiss Verein (nonprofit association). First Solana-native BioDAO. Perlara partnership. Rare disease focus.",
+   "fundingRaised": "$1.77M"
   },
   {
    "id": "desci-labs",
@@ -1013,7 +1169,13 @@
     "reputation",
     "citation-graph"
    ],
-   "credScore": 95
+   "credScore": 95,
+   "finModel": "VC ($6.5M: Stride VC, Protocol Labs, Holtzbrinck Digital). Free for researchers. No token.",
+   "legalStructure": "for-profit",
+   "apc": false,
+   "profitScore": 45,
+   "finNote": "Amsterdam startup. Holtzbrinck (Springer Nature parent) invested. DeSci Nodes on IPFS. Plans premium features, currently free.",
+   "fundingRaised": "$6.5M"
   },
   {
    "id": "orvium",
@@ -1052,7 +1214,13 @@
     "dao-gov",
     "smart-contracts"
    ],
-   "credScore": 70
+   "credScore": 70,
+   "finModel": "EU grants (Horizon 2020). Blockchain-based manuscript management.",
+   "legalStructure": "for-profit",
+   "apc": false,
+   "profitScore": 50,
+   "finNote": "Spanish startup. CERN spin-off. EU-funded but for-profit structure. Plans premium features.",
+   "fundingRaised": "EU Grants"
   },
   {
    "id": "origintrail",
@@ -1091,7 +1259,13 @@
     "data-sovereignty",
     "ai-ml"
    ],
-   "credScore": 90
+   "credScore": 90,
+   "finModel": "ICO ($22.5M, 2018). Zero VC. EU Horizon 2020 grants. Enterprise B2B revenue.",
+   "legalStructure": "hybrid",
+   "apc": false,
+   "profitScore": 40,
+   "finNote": "Trace Labs (Hong Kong for-profit) + Trace Alliance (nonprofit). 125M+ Knowledge Assets. Walmart uses for 40% of US import security audits. TRAC is pure utility, no inflation.",
+   "fundingRaised": "$22.5M"
   },
   {
    "id": "genomesdao",
@@ -1128,7 +1302,13 @@
     "data-sovereignty",
     "smart-contracts"
    ],
-   "credScore": 70
+   "credScore": 70,
+   "finModel": "Token sale (GENOME). Privacy-preserving genomic data marketplace.",
+   "legalStructure": "hybrid",
+   "apc": false,
+   "profitScore": 55,
+   "finNote": "Users own and monetize their genomic data. Token incentives for data contribution. Encrypgen partnership.",
+   "fundingRaised": "Token sale"
   },
   {
    "id": "hippocrat",
@@ -1166,7 +1346,13 @@
     "data-sovereignty",
     "smart-contracts"
    ],
-   "credScore": 70
+   "credScore": 70,
+   "finModel": "Token (HPO). Healthcare data sovereignty. Patient data marketplace.",
+   "legalStructure": "hybrid",
+   "apc": false,
+   "profitScore": 55,
+   "finNote": "Korean project. Patients monetize health data. Token economy for data sharing.",
+   "fundingRaised": "Token (HPO)"
   },
   {
    "id": "desci-world",
@@ -1201,7 +1387,13 @@
    "overlapTags": [
     "citizen-sci"
    ],
-   "credScore": 90
+   "credScore": 90,
+   "finModel": "Community-supported. Event aggregation. No token.",
+   "legalStructure": "community",
+   "apc": false,
+   "profitScore": 15,
+   "finNote": "DeSci community hub. Event listings, resources. Volunteer/community run.",
+   "fundingRaised": "Community"
   },
   {
    "id": "desci-berlin",
@@ -1234,7 +1426,13 @@
    "overlapScore": 0,
    "compNote": "Conference. Networking.",
    "overlapTags": [],
-   "credScore": 30
+   "credScore": 30,
+   "finModel": "Sponsorship + ticket sales. Annual conference.",
+   "legalStructure": "event",
+   "apc": false,
+   "profitScore": 25,
+   "finNote": "Conference event. Protocol Labs, Molecule sponsors. Registration fees + sponsors.",
+   "fundingRaised": "Sponsorship"
   },
   {
    "id": "desci-london",
@@ -1267,7 +1465,13 @@
    "overlapScore": 0,
    "compNote": "Conference at UCL.",
    "overlapTags": [],
-   "credScore": 30
+   "credScore": 30,
+   "finModel": "Sponsorship + ticket sales. Annual conference.",
+   "legalStructure": "event",
+   "apc": false,
+   "profitScore": 25,
+   "finNote": "Conference event. Major DeSci gathering. Registration fees + sponsors.",
+   "fundingRaised": "Sponsorship"
   },
   {
    "id": "dynex",
@@ -1303,7 +1507,13 @@
     "compute",
     "smart-contracts"
    ],
-   "credScore": 85
+   "credScore": 85,
+   "finModel": "Token (DNX). Neuromorphic computing. Mining-based.",
+   "legalStructure": "hybrid",
+   "apc": false,
+   "profitScore": 50,
+   "finNote": "Quantum-inspired computing. Token mining for compute contribution. Commercial applications.",
+   "fundingRaised": "Token"
   },
   {
    "id": "tig",
@@ -1339,7 +1549,13 @@
    "overlapTags": [
     "compute"
    ],
-   "credScore": 30
+   "credScore": 30,
+   "finModel": "Token. Algorithmic competition platform. Winner-takes-rewards.",
+   "legalStructure": "hybrid",
+   "apc": false,
+   "profitScore": 55,
+   "finNote": "The Innovation Game. Competitive algorithm optimization. Token incentives for compute.",
+   "fundingRaised": "Token"
   },
   {
    "id": "pfizer-ventures",
@@ -1372,7 +1588,13 @@
    "overlapScore": 0,
    "compNote": "Funder. Validates DeSci institutionally.",
    "overlapTags": [],
-   "credScore": 30
+   "credScore": 30,
+   "finModel": "Corporate VC arm. Strategic biotech investments.",
+   "legalStructure": "for-profit",
+   "apc": false,
+   "profitScore": 90,
+   "finNote": "Pfizer's venture arm. First pharma to invest in a DAO (VitaDAO). Strategic not financial returns primary.",
+   "fundingRaised": "Corporate (Pfizer)"
   },
   {
    "id": "binance-labs",
@@ -1404,7 +1626,13 @@
    "overlapScore": 0,
    "compNote": "Funder.",
    "overlapTags": [],
-   "credScore": 55
+   "credScore": 55,
+   "finModel": "Corporate VC. Crypto/blockchain investments. Exchange-backed.",
+   "legalStructure": "for-profit",
+   "apc": false,
+   "profitScore": 85,
+   "finNote": "Binance's investment arm. BIO Protocol was first DeSci bet. Strategic ecosystem building.",
+   "fundingRaised": "Corporate (Binance)"
   },
   {
    "id": "singularitynet",
@@ -1441,7 +1669,13 @@
     "ai-ml",
     "compute"
    ],
-   "credScore": 90
+   "credScore": 90,
+   "finModel": "ICO ($36M, 2017). AGIX token. AI marketplace fees.",
+   "legalStructure": "foundation",
+   "apc": false,
+   "profitScore": 50,
+   "finNote": "Ben Goertzel. ASI Alliance (with Fetch.ai, Ocean withdrew). Decentralized AI marketplace.",
+   "fundingRaised": "$36M"
   },
   {
    "id": "nobleblocks",
@@ -1480,7 +1714,13 @@
     "reputation",
     "smart-contracts"
    ],
-   "credScore": 50
+   "credScore": 50,
+   "finModel": "Token (NOBL). Blockchain publishing. Smart contract peer review.",
+   "legalStructure": "hybrid",
+   "apc": false,
+   "profitScore": 50,
+   "finNote": "Token-incentivized publishing. Early stage. Reviewer reputation on-chain.",
+   "fundingRaised": "Token sale"
   },
   {
    "id": "yesnoerror",
@@ -1517,7 +1757,13 @@
     "peer-review",
     "ai-ml"
    ],
-   "credScore": 45
+   "credScore": 45,
+   "finModel": "Token (YNE). AI-powered scientific claim verification.",
+   "legalStructure": "hybrid",
+   "apc": false,
+   "profitScore": 50,
+   "finNote": "AI audit of scientific papers. Token incentives for verification. Early stage.",
+   "fundingRaised": "Token (YNE)"
   },
   {
    "id": "open-humans",
@@ -1555,7 +1801,13 @@
     "citizen-sci",
     "data-sovereignty"
    ],
-   "credScore": 90
+   "credScore": 90,
+   "finModel": "Grants (Knight Foundation, Shuttleworth). Citizen science data sharing.",
+   "legalStructure": "nonprofit",
+   "apc": false,
+   "profitScore": 10,
+   "finNote": "Open Humans Foundation. Personal Genome Project spinoff. Data commons model.",
+   "fundingRaised": "Foundation grants"
   },
   {
    "id": "quantum-bio-dao",
@@ -1591,7 +1843,13 @@
    "overlapTags": [
     "dao-gov"
    ],
-   "credScore": 10
+   "credScore": 10,
+   "finModel": "IPT sale (1,724 WETH raised). Quantum biology research.",
+   "legalStructure": "DAO",
+   "apc": false,
+   "profitScore": 45,
+   "finNote": "Significant IPT raise (~$5M+ at ETH prices). Quantum effects in biology focus. BIO Protocol ecosystem.",
+   "fundingRaised": "1,724 WETH (~$5M+)"
   },
   {
    "id": "vibe-bio",
@@ -1629,7 +1887,13 @@
     "ai-ml",
     "dao-gov"
    ],
-   "credScore": 75
+   "credScore": 75,
+   "finModel": "VC ($12M Initialized Capital). Abandoned DAO model. Traditional venture structure.",
+   "legalStructure": "for-profit",
+   "apc": false,
+   "profitScore": 70,
+   "finNote": "Pivoted from $VIBE token to C-Corp fund model. Naval Ravikant, Balaji Srinivasan angels. Creates separate C-corps per drug program. VibeOne AI platform.",
+   "fundingRaised": "$12M"
   },
   {
    "id": "hippo-protocol",
@@ -1667,7 +1931,13 @@
     "data-sovereignty",
     "smart-contracts"
    ],
-   "credScore": 35
+   "credScore": 35,
+   "finModel": "VC-backed. Healthcare data interoperability.",
+   "legalStructure": "for-profit",
+   "apc": false,
+   "profitScore": 65,
+   "finNote": "Enterprise healthcare focus. VC funding model. B2B revenue target.",
+   "fundingRaised": "VC"
   },
   {
    "id": "aminochain",
@@ -1703,7 +1973,13 @@
    "overlapTags": [
     "data-sovereignty"
    ],
-   "credScore": 55
+   "credScore": 55,
+   "finModel": "VC ($7M: $5M a16z crypto seed). Biosample marketplace fees planned.",
+   "legalStructure": "for-profit",
+   "apc": false,
+   "profitScore": 65,
+   "finNote": "a16z's first DeSci investment. Specimen Center GA May 2025. Blockchain-tracked biosamples. Arianna Simpson (a16z) led.",
+   "fundingRaised": "$7M"
   },
   {
    "id": "nanovita",
@@ -1741,7 +2017,13 @@
     "ai-ml",
     "data-sovereignty"
    ],
-   "credScore": 20
+   "credScore": 20,
+   "finModel": "VC ($20M Series A). AI health platform. Subscription model.",
+   "legalStructure": "for-profit",
+   "apc": false,
+   "profitScore": 75,
+   "finNote": "Series A stage. AI-powered health recommendations. Consumer subscription model.",
+   "fundingRaised": "$20M Series A"
   },
   {
    "id": "genpulse",
@@ -1778,7 +2060,13 @@
     "citizen-sci",
     "data-sovereignty"
    ],
-   "credScore": 20
+   "credScore": 20,
+   "finModel": "Token. DePIN for genomic data collection.",
+   "legalStructure": "hybrid",
+   "apc": false,
+   "profitScore": 55,
+   "finNote": "Decentralized genomic data network. Token rewards for data contribution.",
+   "fundingRaised": "Token"
   },
   {
    "id": "stadium-science",
@@ -1816,13 +2104,19 @@
     "citizen-sci",
     "smart-contracts"
    ],
-   "credScore": 50
+   "credScore": 50,
+   "finModel": "Token. Gamified science experiments. Speculation-driven.",
+   "legalStructure": "hybrid",
+   "apc": false,
+   "profitScore": 60,
+   "finNote": "Similar to Pump Science. Gamified research funding. Token speculation element.",
+   "fundingRaised": "Token"
   },
   {
    "id": "ants-review",
    "name": "Ants-Review",
    "desc": "Ethereum protocol for incentivized open peer review with ZK-SNARK privacy. Won ETHTurin 2020. 353 commits. Kovan testnet (deprecated).",
-   "people": "Bianca Trovò, Nazzareno Massari",
+   "people": "Bianca Trov\u00f2, Nazzareno Massari",
    "funding": "Hackathon/Grants",
    "stage": "Abandoned",
    "stack": "application",
@@ -1855,7 +2149,13 @@
     "smart-contracts",
     "reputation"
    ],
-   "credScore": 40
+   "credScore": 40,
+   "finModel": "None. Academic prototype. ETH Turin Hackathon 2020 winner. First DeSci Gitcoin grant.",
+   "legalStructure": "research",
+   "apc": false,
+   "profitScore": 10,
+   "finNote": "Bianca Trov\u00f2 (Sorbonne/CEA). Bounty-based peer review smart contracts. Never scaled beyond PoC. Dormant.",
+   "fundingRaised": "Gitcoin grant"
   },
   {
    "id": "beerreview",
@@ -1893,7 +2193,13 @@
     "ai-ml",
     "smart-contracts"
    ],
-   "credScore": 25
+   "credScore": 25,
+   "finModel": "Academic prototype. No funding. Joke peer review concept.",
+   "legalStructure": "research",
+   "apc": false,
+   "profitScore": 5,
+   "finNote": "Academic humor project. Not an actual platform. Satirical peer review over beer.",
+   "fundingRaised": "None"
   },
   {
    "id": "bloxberg",
@@ -1929,7 +2235,13 @@
    "overlapTags": [
     "smart-contracts"
    ],
-   "credScore": 80
+   "credScore": 80,
+   "finModel": "Institutional consortium. Max Planck Society + 40 research orgs. No token.",
+   "legalStructure": "consortium",
+   "apc": false,
+   "profitScore": 10,
+   "finNote": "Research institution blockchain. PoA consensus by verified scientists. No commercial model.",
+   "fundingRaised": "Institutional consortium"
   },
   {
    "id": "opscientia",
@@ -1968,7 +2280,13 @@
     "smart-contracts",
     "data-sovereignty"
    ],
-   "credScore": 70
+   "credScore": 70,
+   "finModel": "Grants. Rebranded to Holonym. ZK identity for science.",
+   "legalStructure": "hybrid",
+   "apc": false,
+   "profitScore": 35,
+   "finNote": "Pivoted from OpSci to Holonym (ZK identity). Grant-funded but exploring enterprise.",
+   "fundingRaised": "Grants"
   },
   {
    "id": "pci",
@@ -2007,7 +2325,13 @@
     "publishing",
     "citizen-sci"
    ],
-   "credScore": 60
+   "credScore": 60,
+   "finModel": "Institutional support (INRAE, CNRS). Diamond OA overlay journals. No APCs.",
+   "legalStructure": "nonprofit",
+   "apc": false,
+   "profitScore": 5,
+   "finNote": "Peer Community In. French institutional backing. Free for authors and readers. Recommends preprints.",
+   "fundingRaised": "Institutional (INRAE, CNRS)"
   },
   {
    "id": "elife-new",
@@ -2045,7 +2369,13 @@
     "peer-review",
     "publishing"
    ],
-   "credScore": 60
+   "credScore": 60,
+   "finModel": "Foundation grants (HHMI, Wellcome, Max Planck). No APCs. Review+publish model.",
+   "legalStructure": "nonprofit",
+   "apc": false,
+   "profitScore": 10,
+   "finNote": "Reformed 2023 to publish-then-review. Ended rejection. Major foundation backing. Strong UNESCO alignment.",
+   "fundingRaised": "HHMI, Wellcome, Max Planck"
   },
   {
    "id": "review-commons",
@@ -2082,7 +2412,13 @@
     "peer-review",
     "publishing"
    ],
-   "credScore": 55
+   "credScore": 55,
+   "finModel": "Foundation support (EMBO, ASAPbio). Journal-agnostic reviews. Free service.",
+   "legalStructure": "nonprofit",
+   "apc": false,
+   "profitScore": 8,
+   "finNote": "Portable peer review platform. EMBO backing. Transfers reviews to partner journals. Pure public good.",
+   "fundingRaised": "EMBO, ASAPbio"
   },
   {
    "id": "prereview",
@@ -2122,7 +2458,13 @@
     "reputation",
     "citizen-sci"
    ],
-   "credScore": 80
+   "credScore": 80,
+   "finModel": "Foundation grants (Gates, CZI). Community preprint reviews. Free.",
+   "legalStructure": "nonprofit",
+   "apc": false,
+   "profitScore": 8,
+   "finNote": "Training + review platform. Code for Science & Society fiscal sponsor. Strong open science values.",
+   "fundingRaised": "Gates Foundation, CZI"
   },
   {
    "id": "openreview",
@@ -2159,7 +2501,13 @@
     "peer-review",
     "publishing"
    ],
-   "credScore": 90
+   "credScore": 90,
+   "finModel": "Academic grants. ML conference hosting fees. OpenReview.net.",
+   "legalStructure": "nonprofit",
+   "apc": false,
+   "profitScore": 15,
+   "finNote": "UMass Amherst + Google. Powers NeurIPS, ICLR submissions. Minimal fees for large conferences.",
+   "fundingRaised": "Academic grants"
   },
   {
    "id": "jove",
@@ -2196,7 +2544,13 @@
     "scicomm",
     "publishing"
    ],
-   "credScore": 75
+   "credScore": 75,
+   "finModel": "Subscriptions + author fees ($2,400/video). $1.7M angel. $100M+ revenue. Profitable since 2009.",
+   "legalStructure": "for-profit",
+   "apc": true,
+   "profitScore": 75,
+   "finNote": "Video journal. 1,800+ institutional subscribers. 648 employees. Author pays for video production. Traditional publishing economics.",
+   "fundingRaised": "$1.7M angel"
   },
   {
    "id": "sapien-capital",
@@ -2229,7 +2583,13 @@
    "overlapScore": 0,
    "compNote": "$65M dedicated DeSci fund. Potential funder for us. Check sizes $100K-$2M fit our stage.",
    "overlapTags": [],
-   "credScore": 30
+   "credScore": 30,
+   "finModel": "Sei Foundation ecosystem fund. DeSci/AI focus.",
+   "legalStructure": "foundation",
+   "apc": false,
+   "profitScore": 55,
+   "finNote": "Sei blockchain ecosystem fund. Supporting DeSci on Sei. Grant + investment hybrid.",
+   "fundingRaised": "Sei Foundation"
   },
   {
    "id": "openax",
@@ -2267,7 +2627,13 @@
     "citation-graph",
     "ai-ml"
    ],
-   "credScore": 95
+   "credScore": 95,
+   "finModel": "Grants ($11.7M: $7.5M Arcadia, $3.5M Wellcome). Premium API subscriptions. $800K ARR.",
+   "legalStructure": "nonprofit",
+   "apc": false,
+   "profitScore": 8,
+   "finNote": "Same as OpenAlex. OurResearch 501(c)(3). Grant-to-earned-revenue transition succeeding.",
+   "fundingRaised": "$11.7M grants"
   },
   {
    "id": "opencitations",
@@ -2303,7 +2669,13 @@
    "overlapTags": [
     "citation-graph"
    ],
-   "credScore": 90
+   "credScore": 90,
+   "finModel": "SCOSS pledging + EU grants (OpenAIRE). Open citation data.",
+   "legalStructure": "nonprofit",
+   "apc": false,
+   "profitScore": 5,
+   "finNote": "University of Bologna. I4OC initiative. CC0 citation data. Pure open infrastructure.",
+   "fundingRaised": "SCOSS, EU grants"
   },
   {
    "id": "desci-foundation",
@@ -2337,7 +2709,13 @@
    "overlapScore": 5,
    "compNote": "Legitimacy bridge. George Church, Gideon Nave on board. Could validate our approach.",
    "overlapTags": [],
-   "credScore": 70
+   "credScore": 70,
+   "finModel": "Grants + donations. Supporting DeSci ecosystem.",
+   "legalStructure": "foundation",
+   "apc": false,
+   "profitScore": 15,
+   "finNote": "Juan Benet (Protocol Labs) on board. Philipp Koellinger co-founder. Ecosystem support.",
+   "fundingRaised": "Foundation funding"
   },
   {
    "id": "gitcoin-desci",
@@ -2374,7 +2752,13 @@
     "dao-gov",
     "smart-contracts"
    ],
-   "credScore": 75
+   "credScore": 75,
+   "finModel": "Quadratic funding rounds. Ethereum Foundation + Protocol Labs + Vitalik matching.",
+   "legalStructure": "grants",
+   "apc": false,
+   "profitScore": 15,
+   "finNote": "DeSci-specific Gitcoin rounds. QF mechanism. Major ecosystem funders provide matching pool.",
+   "fundingRaised": "QF matching pools"
   },
   {
    "id": "pubpeer",
@@ -2411,7 +2795,13 @@
     "peer-review",
     "reputation"
    ],
-   "credScore": 60
+   "credScore": 60,
+   "finModel": "Donations. Post-publication commentary platform. No fees.",
+   "legalStructure": "nonprofit",
+   "apc": false,
+   "profitScore": 5,
+   "finNote": "Anonymous post-publication peer review. Fraud detection focus. Donation-supported.",
+   "fundingRaised": "Donations"
   },
   {
    "id": "seeds-of-science",
@@ -2450,7 +2840,13 @@
     "citizen-sci",
     "dao-gov"
    ],
-   "credScore": 55
+   "credScore": 55,
+   "finModel": "Volunteer-run. No funding. Community journal for unconventional ideas.",
+   "legalStructure": "nonprofit",
+   "apc": false,
+   "profitScore": 0,
+   "finNote": "Pure volunteer effort. Diamond OA. Accepts speculative/unconventional science. Zero budget.",
+   "fundingRaised": "None (volunteer)"
   },
   {
    "id": "f1000research",
@@ -2487,7 +2883,13 @@
     "publishing",
     "peer-review"
    ],
-   "credScore": 60
+   "credScore": 60,
+   "finModel": "APCs ($1,350-$2,800). Acquired by Taylor & Francis 2020. Open peer review.",
+   "legalStructure": "for-profit",
+   "apc": true,
+   "profitScore": 80,
+   "finNote": "Owned by major commercial publisher (Informa). Post-publication peer review model but APC-funded.",
+   "fundingRaised": "Acquired by Taylor & Francis"
   },
   {
    "id": "bacalhau",
@@ -2523,7 +2925,13 @@
    "overlapTags": [
     "compute"
    ],
-   "credScore": 80
+   "credScore": 80,
+   "finModel": "Protocol Labs subsidiary. Compute-over-data on IPFS. No token.",
+   "legalStructure": "for-profit",
+   "apc": false,
+   "profitScore": 40,
+   "finNote": "Expanso company. Protocol Labs ecosystem. Enterprise compute focus. LabDAO uses for PLEX.",
+   "fundingRaised": "Protocol Labs"
   },
   {
    "id": "kudos",
@@ -2559,7 +2967,13 @@
    "overlapTags": [
     "scicomm"
    ],
-   "credScore": 75
+   "credScore": 75,
+   "finModel": "VC-backed. Research communication/impact tracking. Freemium SaaS.",
+   "legalStructure": "for-profit",
+   "apc": false,
+   "profitScore": 65,
+   "finNote": "UK company. Helps researchers track and share impact. Publisher partnerships. B2B focus.",
+   "fundingRaised": "VC"
   },
   {
    "id": "etica",
@@ -2596,7 +3010,13 @@
     "dao-gov",
     "smart-contracts"
    ],
-   "credScore": 85
+   "credScore": 85,
+   "finModel": "Protocol mining (ETI). No ICO, no premine.",
+   "legalStructure": "protocol",
+   "apc": false,
+   "profitScore": 15,
+   "finNote": "Fair launch. Disease research funding via protocol emissions. No centralized funding.",
+   "fundingRaised": "None (fair launch)"
   },
   {
    "id": "gridcoin",
@@ -2633,7 +3053,13 @@
     "compute",
     "citizen-sci"
    ],
-   "credScore": 90
+   "credScore": 90,
+   "finModel": "Community mining. Rewards BOINC contributions. No ICO, no premine.",
+   "legalStructure": "protocol",
+   "apc": false,
+   "profitScore": 15,
+   "finNote": "Fair launch 2013. PoS + PoR (Research). Rewards distributed computing for science projects.",
+   "fundingRaised": "None (fair launch)"
   },
   {
    "id": "scinet",
@@ -2670,7 +3096,13 @@
     "citation-graph",
     "data-sovereignty"
    ],
-   "credScore": 30
+   "credScore": 30,
+   "finModel": "Grants. OpScientia/Holonym rebrand. Open science infrastructure.",
+   "legalStructure": "nonprofit",
+   "apc": false,
+   "profitScore": 20,
+   "finNote": "Originally OpSci. Pivoted to Holonym (identity). Grant-funded open science tools.",
+   "fundingRaised": "Grants"
   },
   {
    "id": "talentdao",
@@ -2709,7 +3141,13 @@
     "peer-review",
     "dao-gov"
    ],
-   "credScore": 70
+   "credScore": 70,
+   "finModel": "DAO. Research on talent/work futures.",
+   "legalStructure": "DAO",
+   "apc": false,
+   "profitScore": 35,
+   "finNote": "Research DAO focused on future of work. Publishing arm.",
+   "fundingRaised": "DAO Treasury"
   },
   {
    "id": "orcid",
@@ -2745,7 +3183,13 @@
    "overlapTags": [
     "reputation"
    ],
-   "credScore": 80
+   "credScore": 80,
+   "finModel": "Institutional memberships ($6.8M/yr revenue). 1,200+ paying orgs. Tiered fees.",
+   "legalStructure": "nonprofit",
+   "apc": false,
+   "profitScore": 5,
+   "finNote": "US 501(c)(3). Wellcome Trust, Thomson Reuters founding supporters. Free for researchers, membership required to change. Gold standard for sustainable open infra.",
+   "fundingRaised": "Membership revenue"
   },
   {
    "id": "crossref",
@@ -2781,7 +3225,13 @@
    "overlapTags": [
     "reputation"
    ],
-   "credScore": 95
+   "credScore": 95,
+   "finModel": "Membership fees (~$14M/yr). DOI registration. Nonprofit governance.",
+   "legalStructure": "nonprofit",
+   "apc": false,
+   "profitScore": 15,
+   "finNote": "Essential infrastructure. Publisher-funded membership. No researcher fees. Metadata freely available.",
+   "fundingRaised": "$14M/yr membership"
   },
   {
    "id": "maelstrom",
@@ -2814,7 +3264,13 @@
    "overlapScore": 0,
    "compNote": "Led BIO Protocol seed. Crypto-native DeSci investor.",
    "overlapTags": [],
-   "credScore": 30
+   "credScore": 30,
+   "finModel": "Family office/fund. Arthur Hayes. Crypto-native investments.",
+   "legalStructure": "for-profit",
+   "apc": false,
+   "profitScore": 80,
+   "finNote": "BitMEX founder's fund. Led BIO Protocol seed. High-risk crypto focus.",
+   "fundingRaised": "Family office"
   },
   {
    "id": "northpond",
@@ -2847,7 +3303,13 @@
    "overlapScore": 0,
    "compNote": "$3B biotech fund. Bridges pharma and DeSci. Led largest DeSci equity round.",
    "overlapTags": [],
-   "credScore": 45
+   "credScore": 45,
+   "finModel": "VC fund ($3B AUM). Life sciences focus. Traditional biotech VC.",
+   "legalStructure": "for-profit",
+   "apc": false,
+   "profitScore": 85,
+   "finNote": "Led Molecule seed. $3B AUM. Traditional biotech VC entering DeSci.",
+   "fundingRaised": "$3B AUM fund"
   },
   {
    "id": "oss-capital",
@@ -2880,7 +3342,13 @@
    "overlapScore": 0,
    "compNote": "Open-source VC backing both ResearchHub and DeSci Labs. Strong alignment with our commons philosophy.",
    "overlapTags": [],
-   "credScore": 30
+   "credScore": 30,
+   "finModel": "VC fund. Open source software focus. COSS model.",
+   "legalStructure": "for-profit",
+   "apc": false,
+   "profitScore": 70,
+   "finNote": "Commercial Open Source Software fund. Led ResearchHub round. Joseph Jacks founder.",
+   "fundingRaised": "VC fund"
   }
  ],
  "edges": [
@@ -3473,7 +3941,7 @@
   },
   {
    "id": "p-trovo",
-   "name": "Bianca Trovò",
+   "name": "Bianca Trov\u00f2",
    "role": "Developer, Ants-Review. Sorbonne/CEA NeuroSpin researcher.",
    "linkedin": "",
    "twitter": "",
