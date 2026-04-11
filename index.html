@@ -394,7 +394,9 @@ function buildGraph(){
   el('zoomCtrl').style.display='flex';
   const sn=D.nodes.filter(vis);
   const si=new Set(sn.map(n=>n.id));
-  const se=D.edges.filter(e=>si.has(e.s)&&si.has(e.t));
+  const se = D.edges
+  .filter(e => si.has(e.s) && si.has(e.t))
+  .map(e => ({ ...e, source: e.s, target: e.t }));
   const svgEl=d3.select(m).append('svg').attr('width',w).attr('height',h);
   zoomBehavior=d3.zoom().scaleExtent([.15,4]).on('zoom',e=>svgG.attr('transform',e.transform));
   svgEl.call(zoomBehavior);
