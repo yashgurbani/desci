@@ -2,11 +2,6 @@
 
 Interactive competitive intelligence tool mapping 78+ Decentralized Science projects, 33 key people, and 65 relationships.
 
-## Quick Start
-
-1. Open `index.html` in any browser (works locally with `data.json` alongside it)
-2. Or deploy to GitHub Pages (see below)
-
 ## Files
 
 - `index.html` — App (single-file, loads data.json via fetch)
@@ -26,27 +21,9 @@ Interactive competitive intelligence tool mapping 78+ Decentralized Science proj
 - **Collapsible legend** — click to minimize
 - **GitHub sync** — auto-detects GitHub Pages URL, debounced auto-push
 
-## Deploy to GitHub Pages
-
-```bash
-# 1. Create repo (e.g. "desci")
-gh repo create desci --public
-
-# 2. Copy files
-cp index.html data.json desci/
-cd desci && git init && git add . && git commit -m "Initial"
-
-# 3. Push
-git remote add origin https://github.com/YOUR_USERNAME/desci.git
-git push -u origin main
-
-# 4. Enable Pages: Settings > Pages > Source: main branch
-# Visit: https://YOUR_USERNAME.github.io/desci/
-```
-
 ## Collaboration
 
-Both cofounders can edit from any browser. First visit prompts for a GitHub Personal Access Token (fine-grained, Contents read+write). Edits auto-push after 2 seconds.
+First visit prompts for a GitHub Personal Access Token (fine-grained, Contents read+write). Edits auto-push after 2 seconds.
 
 ## Data Schema
 
