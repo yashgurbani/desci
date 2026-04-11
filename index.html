@@ -166,11 +166,14 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
 .legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
 
 /* TOOLTIPS */
-.tip{position:absolute;z-index:20;pointer-events:none;background:var(--card);border:1px solid var(--border-h);border-radius:var(--radius-sm);padding:10px 14px;max-width:360px;max-height:52vh;overflow:auto;font-size:.8rem;box-shadow:0 8px 30px rgba(0,0,0,.4);opacity:0;transition:opacity .12s}
+.tip{position:absolute;z-index:20;pointer-events:none;background:rgba(20,20,20,.94);border:1px solid var(--border-h);border-radius:var(--radius-sm);padding:10px 14px;max-width:380px;max-height:52vh;overflow:auto;font-size:.8rem;line-height:1.45;box-shadow:0 10px 38px rgba(0,0,0,.5);backdrop-filter:blur(4px);opacity:0;transition:opacity .12s}
 .tip.interactive{pointer-events:auto}
 .tip.vis{opacity:1}
-.tip h4{font-family:var(--display);font-size:.9rem;margin-bottom:3px}
-.tip .tm{font-size:.72rem;color:var(--text-2);line-height:1.4}
+.tip h4{font-family:var(--display);font-size:.96rem;margin-bottom:4px;line-height:1.2}
+.tip .tm{font-size:.74rem;color:var(--text-2);line-height:1.45}
+.tip-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.tip-pin-btn{font-size:.62rem;font-family:var(--mono);padding:3px 7px;border-radius:999px;border:1px solid var(--border);background:var(--raised);color:var(--text-2);cursor:pointer}
+.tip-pin-btn:hover{border-color:var(--gold);color:var(--gold)}
 .tip-src-title{margin-top:8px;font-family:var(--mono);font-size:.62rem;letter-spacing:1px;text-transform:uppercase;color:var(--text-3)}
 .tip-src-list{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
 .tip-src-link{font-size:.66rem;padding:3px 8px;border-radius:12px;background:var(--raised);border:1px solid var(--border);color:var(--link);display:inline-flex;align-items:center;gap:5px}
@@ -251,6 +254,16 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
 .biz-zoom-chip{font-family:var(--mono);font-size:.62rem;color:var(--text-3);padding:4px 8px;border-radius:999px;background:rgba(0,0,0,.35);border:1px solid var(--border)}
 .biz-label-link{stroke:rgba(255,255,255,.2);stroke-width:.7;stroke-dasharray:3,3}
 .biz-quad-hover{fill-opacity:.11}
+.biz-fit-line{stroke:rgba(127,207,255,.85);stroke-width:1.5;stroke-dasharray:6,5}
+.biz-fit-band{stroke:rgba(127,207,255,.22);stroke-width:10;fill:none}
+.biz-grid line{stroke:rgba(255,255,255,.06)}
+.biz-flag-outlier{stroke:rgba(224,92,92,.85);stroke-width:1.15;stroke-dasharray:2,2;fill:none}
+.biz-flag-sweet{stroke:rgba(138,232,186,.82);stroke-width:1.1;fill:none}
+.unesco-list{display:flex;flex-direction:column;gap:7px;margin-top:10px}
+.unesco-item{background:var(--raised);border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 9px}
+.unesco-item .t{font-size:.72rem;color:var(--text);font-weight:600;line-height:1.3}
+.unesco-item .d{font-size:.74rem;color:var(--text-2);line-height:1.45;margin-top:3px}
+.unesco-ref{font-size:.7rem;color:var(--link);margin-top:8px;display:inline-flex;align-items:center;gap:4px}
 @media(max-width:1050px){.biz-main{grid-template-columns:1fr}.biz-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 /* RESPONSIVE */
@@ -294,11 +307,11 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
     <div class="sb-section"><div class="sb-label">Stack Layer</div><div class="pills" id="pStack"></div></div>
     <div class="sb-section"><div class="sb-label">Overlap with Us</div><div class="pills" id="pOverlap"></div></div>
     <div class="sb-section"><div class="sb-label">Sliders</div>
-      <div class="slider-filter"><div class="sf-label"><span>Overlap â‰¥</span><span id="slOvV">0%</span></div><input class="sf-range" type="range" min="0" max="100" value="0" id="slOv" oninput="el('slOvV').textContent=this.value+'%';af()"></div>
-      <div class="slider-filter"><div class="sf-label"><span>Decentralization â‰¥</span><span id="slDcV">0%</span></div><input class="sf-range" type="range" min="0" max="100" value="0" id="slDc" oninput="el('slDcV').textContent=this.value+'%';af()"></div>
-      <div class="slider-filter"><div class="sf-label"><span>Credibility â‰¥</span><span id="slCrV">0</span></div><input class="sf-range" type="range" min="0" max="100" value="0" id="slCr" oninput="el('slCrV').textContent=this.value;af()"></div>
-      <div class="slider-filter"><div class="sf-label"><span>Open-science fit â‰¥</span><span id="slOsV">0</span></div><input class="sf-range" type="range" min="0" max="100" value="0" id="slOs" oninput="el('slOsV').textContent=this.value;af()"></div>
-      <div class="slider-filter"><div class="sf-label"><span>Profit Score â‰¤</span><span id="slPrV">100</span></div><input class="sf-range" type="range" min="0" max="100" value="100" id="slPr" oninput="el('slPrV').textContent=this.value;af()"></div>
+      <div class="slider-filter"><div class="sf-label"><span>Overlap >=</span><span id="slOvV">0%</span></div><input class="sf-range" type="range" min="0" max="100" value="0" id="slOv" oninput="el('slOvV').textContent=this.value+'%';af()"></div>
+      <div class="slider-filter"><div class="sf-label"><span>Decentralization >=</span><span id="slDcV">0%</span></div><input class="sf-range" type="range" min="0" max="100" value="0" id="slDc" oninput="el('slDcV').textContent=this.value+'%';af()"></div>
+      <div class="slider-filter"><div class="sf-label"><span>Credibility >=</span><span id="slCrV">0</span></div><input class="sf-range" type="range" min="0" max="100" value="0" id="slCr" oninput="el('slCrV').textContent=this.value;af()"></div>
+      <div class="slider-filter"><div class="sf-label"><span>Open-science fit >=</span><span id="slOsV">0</span></div><input class="sf-range" type="range" min="0" max="100" value="0" id="slOs" oninput="el('slOsV').textContent=this.value;af()"></div>
+      <div class="slider-filter"><div class="sf-label"><span>Profit Score <=</span><span id="slPrV">100</span></div><input class="sf-range" type="range" min="0" max="100" value="100" id="slPr" oninput="el('slPrV').textContent=this.value;af()"></div>
     </div>
     <div class="sb-section"><div class="sb-label">Legal Structure</div><div class="pills" id="pLegal"></div></div>
     <div class="sb-section"><div class="sb-label">Evidence Confidence</div><div class="pills" id="pConf"></div></div>
@@ -306,8 +319,8 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
     <div class="sb-section"><div class="sb-label">Organizations <b id="nc">0</b></div><ul class="node-list" id="nlist"></ul></div>
   </aside>
   <main class="main" id="main">
-    <button class="toggle-left" onclick="togglePanel('left')">â—€</button>
-    <button class="toggle-right" onclick="togglePanel('right')">â–¶</button>
+    <button class="toggle-left" onclick="togglePanel('left')">&lt;</button>
+    <button class="toggle-right" onclick="togglePanel('right')">&gt;</button>
     <div class="tip" id="tip"></div>
   </main>
   <aside class="detail" id="detP">
@@ -350,8 +363,8 @@ const GLOSS={
   'ICO':'Initial Coin Offering. Token sale to raise capital, often unregulated.',
   'SAFT':'Simple Agreement for Future Tokens. Legal framework for compliant token sales.',
   '501(c)(3)':'US tax-exempt nonprofit organization status.',
-  'GmbH':'German limited liability company (Gesellschaft mit beschrÃ¤nkter Haftung).',
-  'SAS':'French simplified joint-stock company (SociÃ©tÃ© par Actions SimplifiÃ©e).',
+  'GmbH':'German limited liability company (Gesellschaft mit beschrankter Haftung).',
+  'SAS':'French simplified joint-stock company (Societe par Actions Simplifiee).',
   'Verein':'Swiss nonprofit association structure.',
   'Series A':'First major VC funding round after seed, typically $5-15M.',
   'AUM':'Assets Under Management. Total value managed by investment fund.',
@@ -366,17 +379,71 @@ let view='graph',selId=null,sim=null,zoomBehavior=null,svgG=null;
 let flt={stack:[],type:[],overlap:[],legal:[],conf:[]};
 let sortC='overlapScore',sortA=false;
 let zoteroItems=null;
-let bizLabelSet='notable';
+let bizLabelSet='none';
 let bizLabelDetail='metrics';
 let auditRowsByKey=new Map();
+let bizTipPinned=false;
+let bizTipPinnedNodeId=null;
 
 const SC={infrastructure:'var(--sage)',application:'var(--rose)',governance:'var(--teal)'};
 const SBG={infrastructure:'rgba(110,200,155,.12)',application:'rgba(232,126,154,.12)',governance:'rgba(90,184,179,.12)'};
-const SS={0:'Â·',1:'â—‹',2:'â—',3:'â—'};
+const SS={0:'.',1:'o',2:'O',3:'@'};
 const SL=['S1\nData','S2\nLedger','S3\nAI','S4\nProof','S5\nGov'];
 const EC={'funder':'var(--edge-funder)','ecosystem':'var(--edge-ecosystem)','partner':'var(--edge-partner)','overlap':'var(--edge-overlap)'};
 const RB={funder:{b:'rgba(92,184,122,.2)',c:'var(--sage)'},ecosystem:{b:'rgba(92,170,184,.2)',c:'var(--teal)'},partner:{b:'rgba(155,126,212,.2)',c:'#9b7ed4'},overlap:{b:'rgba(227,190,77,.22)',c:'var(--gold)'}};
 const OV_LABELS={"publishing":"Publishing","peer-review":"Peer Review","reputation":"Reputation","dao-gov":"DAO Gov","compute":"Compute","ai-ml":"AI/ML","citation-graph":"Citations","scicomm":"SciComm","citizen-sci":"Citizen Sci","smart-contracts":"Contracts/NFT","data-sovereignty":"Data Sov","ip-nft":"IP-NFT"};
+
+const MOJIBAKE_FIXES=[
+  ['â‰¥','>='],['â‰¤','<='],['â—€','<'],['â–¶','>'],
+  ['Â·',' | '],['â†’','->'],['â†—','->'],
+  ['â€”','-'],['â€“','-'],['â€¢','*'],['Ã—','x'],
+  ['â—‹','o'],['â—','O'],['â—','@'],
+  ['Ã¤','a'],['Ã¶','o'],['Ã¼','u'],['Ã©','e'],['Ã¨','e'],['ÃŸ','ss'],
+  ['â€œ','"'],['â€','"'],['â€˜',"'"],['â€™',"'"],
+  ['â',"'"],['â','"'],['â','"'],['â','-'],['â','-'],['â€¦','...'],
+  ['Â','']
+];
+function mojibakeScore(s){return (String(s).match(/[ÃÂâ]/g)||[]).length}
+function cleanMojibakeString(v){
+  let s=String(v??'');
+  if(!s)return s;
+  if(/[ÃÂâ]/.test(s)){
+    try{
+      const bytes=Uint8Array.from([...s].map(ch=>ch.charCodeAt(0)&0xff));
+      const dec=new TextDecoder('utf-8').decode(bytes);
+      if(mojibakeScore(dec)<mojibakeScore(s))s=dec;
+    }catch(e){}
+  }
+  for(const [bad,good] of MOJIBAKE_FIXES)s=s.split(bad).join(good);
+  return s.replace(/\s+\|\s+\|\s+/g,' | ');
+}
+function cleanMojibakeDeep(v,seen){
+  if(typeof v==='string')return cleanMojibakeString(v);
+  if(!v||typeof v!=='object')return v;
+  const memo=seen||new WeakSet();
+  if(memo.has(v))return v;
+  memo.add(v);
+  if(Array.isArray(v)){for(let i=0;i<v.length;i++)v[i]=cleanMojibakeDeep(v[i],memo);return v}
+  Object.keys(v).forEach(k=>{v[k]=cleanMojibakeDeep(v[k],memo)});
+  return v;
+}
+function sanitizeVisibleText(root){
+  const host=root||document.body;
+  if(!host)return;
+  const w=document.createTreeWalker(host,NodeFilter.SHOW_TEXT);
+  const list=[];
+  while(w.nextNode()){
+    const n=w.currentNode;
+    const p=n.parentElement;
+    if(p&&(p.tagName==='SCRIPT'||p.tagName==='STYLE'))continue;
+    list.push(n);
+  }
+  list.forEach(n=>{
+    const t=n.nodeValue||'';
+    const f=cleanMojibakeString(t);
+    if(f&&f!==t)n.nodeValue=f;
+  });
+}
 
 // Profit score color helpers (0=commons/green, 100=profit/red)
 function profitC(s){return s<=20?'var(--sage)':s<=40?'var(--teal)':s<=60?'var(--gold)':s<=80?'#e8a87c':'var(--red)'}
@@ -408,6 +475,7 @@ async function init(){
     let s=localStorage.getItem('desci6');
     if(s)try{D=JSON.parse(s)}catch(e){}
   }
+  D=cleanMojibakeDeep(D);
   if(!D.nodes||!D.nodes.length){D={nodes:[],edges:[],people:[]}; return}
   await loadAuditRows();
   D.nodes.forEach(n=>{n.wp=n.wp||'';n.git=n.git||'';n.twitter=n.twitter||'';n.cf=n.cf||{};n.overlapTags=n.overlapTags||[];n.credScore=n.credScore||0;n.overlapScore=n.overlapScore||0;n.decentNote=n.decentNote||'';n.techStack=n.techStack||'';n.compNote=n.compNote||'';n.notes=n.notes||'';n.finModel=n.finModel||'';n.legalStructure=n.legalStructure||'unknown';n.apc=n.apc||false;n.profitScore=n.profitScore??50;n.openScienceScore=n.openScienceScore??((n.financials&&n.financials.openScienceCompatibilityScore)??50);n.finNote=n.finNote||'';n.fundingRaised=n.fundingRaised||'';n.provenance=n.provenance||{confidence:'low',hasUnverifiedClaims:true,sources:[],lastVerified:'',notes:''};n.financials=n.financials||{revenueSources:[],researcherPays:'unknown',institutionPays:'unknown',openScienceAlignment:'unknown',openScienceAlignmentNote:'',scoreBreakdown:{},openScienceCompatibilityScore:50,openScienceCompatibilityBand:'moderate',scoreAudit:{}};if(n.financials&&n.financials.openScienceCompatibilityScore==null)n.financials.openScienceCompatibilityScore=n.openScienceScore??50;n.sourceAsterisk=!!n.sourceAsterisk});
@@ -416,6 +484,7 @@ async function init(){
   buildPills();render();updateSB();updateStats();
   setTimeout(autoSync,500);
   initGlossary();
+  sanitizeVisibleText(document.body);
 }
 function save(skipPush){localStorage.setItem('desci6',JSON.stringify(D));if(!skipPush)debouncedPush()}
 
@@ -427,6 +496,7 @@ async function loadAuditRows(){
     const txt=await r.text();
     const parsed=Papa.parse(txt,{header:true,skipEmptyLines:true});
     parsed.data.forEach(row=>{
+      row=cleanMojibakeDeep(row);
       const id=(row.id||'').trim().toLowerCase();
       const name=(row.name||'').trim().toLowerCase();
       if(id)auditRowsByKey.set(id,row);
@@ -440,7 +510,7 @@ function initGlossary(){
   document.addEventListener('mouseover',e=>{
     const t=e.target;
     if(!t.classList||!t.classList.contains('pill')&&!t.classList.contains('tag-chip')&&!t.classList.contains('stack-chip'))return;
-    const txt=t.textContent.trim().replace('Ã—','').trim();
+    const txt=cleanMojibakeString(t.textContent||'').replace(/[x×]/g,'').trim();
     const def=GLOSS[txt];
     if(!def)return;
     const gt=el('glossTip');
@@ -494,7 +564,7 @@ function updateSB(){
   const v=D.nodes.filter(vis);el('nc').textContent=v.length;
   el('nlist').innerHTML=v.sort((a,b)=>(b.overlapScore||0)-(a.overlapScore||0)).map(n=>`<li class="nli ${n.id===selId?'sel':''}" title="confidence: ${(n.provenance&&n.provenance.confidence)||'low'}" onclick="selNode('${n.id}')"><span class="nli-dot" style="background:${SC[n.stack]||'var(--text-3)'}"></span><span class="nli-name">${n.name}${n.sourceAsterisk?' *':''}</span></li>`).join('');
 }
-function updateStats(){const v=D.nodes.filter(vis);el('stats').innerHTML=`<b>${v.length}</b>/${D.nodes.length} orgs Â· <b>${D.edges.length}</b> edges Â· <b>${D.people.length}</b> people`}
+function updateStats(){const v=D.nodes.filter(vis);el('stats').innerHTML=`<b>${v.length}</b>/${D.nodes.length} orgs | <b>${D.edges.length}</b> edges | <b>${D.people.length}</b> people`}
 
 // ===== PANELS =====
 function togglePanel(p){
@@ -646,6 +716,7 @@ function resizeGraphViewport(){
 // ===== RENDER =====
 function render(){
   const m=el('main');m.querySelectorAll('svg,.table-wrap,.people-grid,.lit-panel,.legend,.biz-wrap').forEach(e=>e.remove());
+  if(view!=='biz'){bizTipPinned=false;bizTipPinnedNodeId=null;}
   const tip=el('tip'); if(tip){tip.classList.remove('vis');tip.classList.toggle('interactive',view==='biz');}
   if(sim)sim.stop();
   if(view==='graph')buildGraph();
@@ -654,6 +725,7 @@ function render(){
   else if(view==='pgraph')renderPeopleGraph();
   else if(view==='lit')renderLit();
   else renderBiz();
+  sanitizeVisibleText(m);
 }
 
 // ===== GRAPH =====
@@ -726,7 +798,7 @@ function buildGraph(){
 
   const tip=el('tip');
   ns.on('mouseenter',(e,d)=>{
-    tip.innerHTML=`<h4>${d.name}</h4><div class="tm">${d.type||''} Â· ${d.stack||''} Â· ${(d.tags||[]).slice(0,3).join(', ')}</div>`;
+    tip.innerHTML=`<h4>${d.name}</h4><div class="tm">${d.type||''} | ${d.stack||''} | ${(d.tags||[]).slice(0,3).join(', ')}</div>`;
     tip.classList.add('vis');
   }).on('mousemove',e=>{
     const r=m.getBoundingClientRect();
@@ -737,7 +809,7 @@ function buildGraph(){
   lines.on('mouseenter',(e,d)=>{
     const sName=typeof d.source==='object'?d.source.name:(D.nodes.find(n=>n.id===d.source)?.name||d.source);
     const tName=typeof d.target==='object'?d.target.name:(D.nodes.find(n=>n.id===d.target)?.name||d.target);
-    tip.innerHTML=`<h4>${sName} â†’ ${tName}</h4><div class="tm">${d.type||'relation'}${d.l?` Â· ${d.l}`:''}</div>`;
+    tip.innerHTML=`<h4>${sName} -> ${tName}</h4><div class="tm">${d.type||'relation'}${d.l?` | ${d.l}`:''}</div>`;
     tip.classList.add('vis');
     d3.select(e.currentTarget).attr('opacity',.85).attr('stroke-width',d.type==='overlap'?1.4:1.9);
   }).on('mousemove',e=>{
@@ -778,7 +850,7 @@ function renderTable(){
   const ovBar=(v)=>{const c=v>=60?'var(--gold)':v>=30?'var(--text-2)':'var(--text-3)';return `<div class="ob"><div class="ob-bar"><div class="ob-fill" style="width:${v}%;background:${c}"></div></div><span style="font-family:var(--mono);font-size:.68rem">${v}</span></div>`};
   const credBadge=(v)=>{const c=v>=60?'var(--sage)':v>=30?'var(--gold)':'var(--text-3)';const bg=v>=60?'rgba(110,200,155,.12)':v>=30?'rgba(212,168,83,.08)':'var(--raised)';return `<span class="cred-badge" style="background:${bg};color:${c}">${v}</span>`};
   const osBadge=(v)=>`<span class="profit-badge" style="background:${osBg(v)};color:${osC(v)}">${v}</span>`;
-  w.innerHTML=`<table class="dtbl"><thead><tr>${cols.map(c=>`<th onclick="doSort('${c.k}')">${c.l}${sortC===c.k?(sortA?' â†‘':' â†“'):''}</th>`).join('')}</tr></thead><tbody>${ns.map(n=>`<tr class="${n.id===selId?'sel':''}" onclick="selNode('${n.id}');el('app').classList.remove('hide-right')"><td><strong>${n.name}${n.sourceAsterisk?' *':''}</strong></td><td>${n.type||''}</td><td><span class="stack-chip" style="background:${SBG[n.stack]||''};color:${SC[n.stack]||''}">${n.stack||''}</span></td><td>${ovBar(n.overlapScore||0)}</td><td>${credBadge(n.credScore||0)}</td><td><span class="profit-badge" style="background:${profitBg(n.profitScore)};color:${profitC(n.profitScore)}">${n.profitScore??50}</span></td><td>${osBadge(n.openScienceScore ?? ((n.financials&&n.financials.openScienceCompatibilityScore) || 0))}</td><td><span class="conf-badge ${confClass((n.provenance&&n.provenance.confidence)||'low')}">${(n.provenance&&n.provenance.confidence)||'low'}</span></td><td>${n.stage||''}</td><td title="${(n.compNote||'').replace(/"/g,'&quot;')}" style="max-width:220px;overflow:hidden;text-overflow:ellipsis;font-size:.75rem;color:var(--text-2)">${n.compNote||''}</td></tr>`).join('')}</tbody></table>`;
+  w.innerHTML=`<table class="dtbl"><thead><tr>${cols.map(c=>`<th onclick="doSort('${c.k}')">${c.l}${sortC===c.k?(sortA?' ↑':' ↓'):''}</th>`).join('')}</tr></thead><tbody>${ns.map(n=>`<tr class="${n.id===selId?'sel':''}" onclick="selNode('${n.id}');el('app').classList.remove('hide-right')"><td><strong>${n.name}${n.sourceAsterisk?' *':''}</strong></td><td>${n.type||''}</td><td><span class="stack-chip" style="background:${SBG[n.stack]||''};color:${SC[n.stack]||''}">${n.stack||''}</span></td><td>${ovBar(n.overlapScore||0)}</td><td>${credBadge(n.credScore||0)}</td><td><span class="profit-badge" style="background:${profitBg(n.profitScore)};color:${profitC(n.profitScore)}">${n.profitScore??50}</span></td><td>${osBadge(n.openScienceScore ?? ((n.financials&&n.financials.openScienceCompatibilityScore) || 0))}</td><td><span class="conf-badge ${confClass((n.provenance&&n.provenance.confidence)||'low')}">${(n.provenance&&n.provenance.confidence)||'low'}</span></td><td>${n.stage||''}</td><td title="${(n.compNote||'').replace(/"/g,'&quot;')}" style="max-width:220px;overflow:hidden;text-overflow:ellipsis;font-size:.75rem;color:var(--text-2)">${n.compNote||''}</td></tr>`).join('')}</tbody></table>`;
   m.appendChild(w);
 }
 function doSort(c){if(sortC===c)sortA=!sortA;else{sortC=c;sortA=false}render()}
@@ -786,12 +858,13 @@ function doSort(c){if(sortC===c)sortA=!sortA;else{sortC=c;sortA=false}render()}
 // ===== PEOPLE =====
 function renderPeople(){
   const m=el('main'),g=document.createElement('div');g.className='people-grid';
-  g.innerHTML=D.people.map(p=>{const on=p.orgs.map(id=>D.nodes.find(n=>n.id===id)?.name||id).join(', ');return`<div class="p-card" onclick="showPerson('${p.id}')"><div class="p-name">${p.name}</div><div class="p-role">${p.role||''}</div><div class="p-links">${p.linkedin?`<a href="${p.linkedin}" target="_blank" onclick="event.stopPropagation()">LinkedIn â†—</a>`:''}${p.twitter?`<a href="https://x.com/${p.twitter.replace('@','')}" target="_blank" onclick="event.stopPropagation()">${p.twitter}</a>`:''}</div>${on?`<div class="p-orgs">${on}</div>`:''}</div>`}).join('');
+  g.innerHTML=D.people.map(p=>{const on=p.orgs.map(id=>D.nodes.find(n=>n.id===id)?.name||id).join(', ');return`<div class="p-card" onclick="showPerson('${p.id}')"><div class="p-name">${p.name}</div><div class="p-role">${p.role||''}</div><div class="p-links">${p.linkedin?`<a href="${p.linkedin}" target="_blank" onclick="event.stopPropagation()">LinkedIn -></a>`:''}${p.twitter?`<a href="https://x.com/${p.twitter.replace('@','')}" target="_blank" onclick="event.stopPropagation()">${p.twitter}</a>`:''}</div>${on?`<div class="p-orgs">${on}</div>`:''}</div>`}).join('');
   m.appendChild(g);
 }
 function showPerson(pid){
   const p=D.people.find(x=>x.id===pid);if(!p)return;
-  el('detE').style.display='none';el('detC').innerHTML=`<div class="det-name">${p.name}</div><div class="det-sub">${p.role||''}</div>${p.linkedin?`<a href="${p.linkedin}" target="_blank" style="color:var(--link);font-size:.85rem">LinkedIn â†—</a> `:''} ${p.twitter?`<a href="https://x.com/${p.twitter.replace('@','')}" target="_blank" style="color:var(--link);font-size:.85rem">${p.twitter}</a>`:''}`;
+  el('detE').style.display='none';el('detC').innerHTML=`<div class="det-name">${p.name}</div><div class="det-sub">${p.role||''}</div>${p.linkedin?`<a href="${p.linkedin}" target="_blank" style="color:var(--link);font-size:.85rem">LinkedIn -></a> `:''} ${p.twitter?`<a href="https://x.com/${p.twitter.replace('@','')}" target="_blank" style="color:var(--link);font-size:.85rem">${p.twitter}</a>`:''}`;
+  sanitizeVisibleText(el('detC'));
   el('app').classList.remove('hide-right');
 }
 
@@ -906,8 +979,131 @@ function bizSources(n,max=6){
   (p.materialClaims||[]).forEach(c=>(c.sources||[]).forEach(add));
   return out.slice(0,max);
 }
+function meanNum(arr){
+  if(!arr.length)return 0;
+  return arr.reduce((s,v)=>s+v,0)/arr.length;
+}
+function stdNum(arr){
+  if(arr.length<2)return 0;
+  const m=meanNum(arr);
+  return Math.sqrt(arr.reduce((s,v)=>s+Math.pow(v-m,2),0)/(arr.length-1));
+}
+function computeLinearFit(nodes){
+  if(nodes.length<2)return {slope:0,intercept:50,corr:0,r2:0,residuals:[]};
+  const xs=nodes.map(n=>n.profitScore??50);
+  const ys=nodes.map(n=>n.openScienceScore??50);
+  const mx=meanNum(xs), my=meanNum(ys);
+  let cov=0,varX=0,varY=0;
+  for(let i=0;i<xs.length;i++){
+    const dx=xs[i]-mx, dy=ys[i]-my;
+    cov+=dx*dy;
+    varX+=dx*dx;
+    varY+=dy*dy;
+  }
+  const slope=varX?cov/varX:0;
+  const intercept=my-slope*mx;
+  const corr=(varX&&varY)?(cov/Math.sqrt(varX*varY)):0;
+  const residuals=nodes.map(n=>{
+    const pred=intercept+slope*(n.profitScore??50);
+    const resid=(n.openScienceScore??50)-pred;
+    return {node:n,pred,resid};
+  });
+  const sd=stdNum(residuals.map(r=>r.resid))||1;
+  residuals.forEach(r=>{r.z=r.resid/sd;r.absZ=Math.abs(r.z)});
+  return {slope,intercept,corr,r2:corr*corr,residuals};
+}
+function dominatesBiz(a,b){
+  const aOv=a.overlapScore||0, bOv=b.overlapScore||0;
+  const betterOrEqual=(a.openScienceScore>=b.openScienceScore)&&(aOv>=bOv)&&((a.profitScore??50)<=(b.profitScore??50));
+  const strictlyBetter=(a.openScienceScore>b.openScienceScore)||(aOv>bOv)||((a.profitScore??50)<(b.profitScore??50));
+  return betterOrEqual&&strictlyBetter;
+}
+function paretoFrontier(nodes){
+  return nodes.filter(n=>!nodes.some(o=>o.id!==n.id&&dominatesBiz(o,n)));
+}
+function sweetSpotScore(n){
+  const p=n.profitScore??50;
+  const os=n.openScienceScore??50;
+  const ov=n.overlapScore||0;
+  const dc=n.decen||0;
+  const conf=((n.provenance&&n.provenance.confidence)||'low');
+  const confBonus=conf==='high'?8:conf==='medium'?4:0;
+  const profitBalance=100-Math.min(100,Math.abs(p-42)*1.8);
+  return (os*0.44)+(ov*0.28)+(profitBalance*0.2)+(dc*0.08)+confBonus;
+}
+function analyzeBizLandscape(nodes){
+  const fit=computeLinearFit(nodes);
+  const outliers=[...fit.residuals].sort((a,b)=>b.absZ-a.absZ);
+  const frontier=paretoFrontier(nodes).sort((a,b)=>((b.openScienceScore||0)+(b.overlapScore||0))-((a.openScienceScore||0)+(a.overlapScore||0)));
+  const sweet=[...nodes].map(n=>({node:n,score:sweetSpotScore(n)})).sort((a,b)=>b.score-a.score);
+  const pressure=[...nodes].map(n=>({node:n,pressure:(n.profitScore??50)-(n.openScienceScore??50)})).sort((a,b)=>b.pressure-a.pressure);
+  return {fit,outliers,frontier,sweet,pressure};
+}
+
+const UNESCO_OS_REFERENCE={
+  label:'UNESCO Recommendation on Open Science',
+  url:'https://www.unesco.org/en/natural-sciences/open-science'
+};
+const UNESCO_PRINCIPLES=[
+  {id:'knowledge',label:'Open scientific knowledge'},
+  {id:'infrastructure',label:'Open science infrastructures'},
+  {id:'engagement',label:'Open engagement of societal actors'},
+  {id:'equity',label:'Equity, fairness and inclusiveness'},
+  {id:'transparency',label:'Transparency, reproducibility and scrutiny'},
+  {id:'responsibility',label:'Responsibility and accountability'}
+];
+function inferUnescoPrinciples(n){
+  const fin=n.financials||{};
+  const text=[n.desc,n.finModel,n.finNote,n.techStack,n.type,n.legalStructure,fin.openScienceAlignment,fin.openScienceAlignmentNote,fin.financialSummary].join(' ').toLowerCase();
+  const tags=(n.tags||[]).map(t=>String(t).toLowerCase());
+  const overlap=(n.overlapTags||[]).map(t=>String(t).toLowerCase());
+  const reasons=[];
+  const push=(id,why)=>{
+    if(reasons.some(r=>r.id===id))return;
+    const meta=UNESCO_PRINCIPLES.find(p=>p.id===id);
+    reasons.push({id,label:meta?meta.label:id,why});
+  };
+
+  if(fin.researcherPays==='no' || !n.apc || /open access|diamond|public good|commons/.test(text) || overlap.includes('publishing') || overlap.includes('peer-review')){
+    push('knowledge','Signals of open dissemination or reduced paywalls for researchers.');
+  }
+  if(n.stack==='infrastructure' || /open source|repository|data|interoperab|ipfs|protocol|ledger/.test(text) || overlap.includes('data-sovereignty') || overlap.includes('compute')){
+    push('infrastructure','Evidence of shared technical infrastructure or interoperable research tooling.');
+  }
+  if(n.legalStructure==='DAO' || /community|citizen|dao|governance|participatory/.test(text) || overlap.includes('dao-gov') || overlap.includes('citizen-sci')){
+    push('engagement','Community governance or participatory science signals societal engagement.');
+  }
+  if(fin.researcherPays==='no' || /nonprofit|foundation|equity|inclusive|public interest/.test(text) || ['nonprofit','foundation','community','consortium'].includes((n.legalStructure||'').toLowerCase())){
+    push('equity','Cost-sharing, nonprofit structures, or public-interest framing supports equitable access.');
+  }
+  if((n.credScore||0)>=50 || /peer review|reproduc|transparent|audit|proof|verification|citation/.test(text) || overlap.includes('peer-review') || overlap.includes('citation-graph') || overlap.includes('reputation')){
+    push('transparency','Focus on verification, peer review, citations, or reproducibility improves scrutiny.');
+  }
+  if(((n.provenance&&n.provenance.sources)||[]).length>=2 || (n.provenance&&n.provenance.confidence==='high')){
+    push('responsibility','Traceable provenance and stronger source confidence improve accountability.');
+  }
+
+  const os=n.openScienceScore??fin.openScienceCompatibilityScore??50;
+  const riskNotes=[];
+  if(n.apc || fin.researcherPays==='yes')riskNotes.push('researcher-facing fees can constrain openness');
+  if((n.profitScore??50)>=70)riskNotes.push('high commercial pressure can reduce open-science alignment over time');
+  if((n.provenance&&n.provenance.confidence)==='low')riskNotes.push('low evidence confidence weakens certainty of alignment claims');
+
+  const summary=`Score ${os}/100 reflects ${reasons.length} UNESCO-aligned principle signal${reasons.length===1?'':'s'}${riskNotes.length?`; risk checks: ${riskNotes.join('; ')}`:''}.`;
+  return {score:os,principles:reasons.slice(0,6),summary,risks:riskNotes,reference:UNESCO_OS_REFERENCE};
+}
+function renderUnescoProfileBox(n){
+  const profile=inferUnescoPrinciples(n);
+  const chips=profile.principles.length
+    ? `<div class="unesco-list">${profile.principles.map(p=>`<div class="unesco-item"><div class="t">${escapeHtml(p.label)}</div><div class="d">${escapeHtml(p.why)}</div></div>`).join('')}</div>`
+    : '<div style="font-size:.76rem;color:var(--text-3);margin-top:8px">No explicit UNESCO-aligned principle evidence detected from current node fields.</div>';
+  return `<div class="prov-box"><div class="flabel">Open-science score justification</div><div style="font-size:.8rem;color:var(--text-2);line-height:1.45">${escapeHtml(profile.summary)}</div>${chips}<a class="unesco-ref" href="${profile.reference.url}" target="_blank" rel="noopener">${escapeHtml(profile.reference.label)} -></a></div>`;
+}
+
 function renderBiz(){
   const m=el('main');
+  bizTipPinned=false;
+  bizTipPinnedNodeId=null;
   const nodes=D.nodes.filter(vis).map(n=>({...n,profitScore:n.profitScore??50,openScienceScore:n.openScienceScore??((n.financials&&n.financials.openScienceCompatibilityScore)??50)}));
   const avg=(arr,fn)=>arr.length?Math.round(arr.reduce((s,x)=>s+fn(x),0)/arr.length):0;
   const qDefs={
@@ -918,11 +1114,15 @@ function renderBiz(){
   };
   const counts=Object.fromEntries(Object.keys(qDefs).map(k=>[k,0]));
   nodes.forEach(n=>counts[quadrantOf(n)]++);
-  const hiRisk=[...nodes].filter(n=>n.profitScore>=65&&n.openScienceScore<50).sort((a,b)=>(b.profitScore-b.openScienceScore)-(a.profitScore-a.openScienceScore)).slice(0,8);
+
+  const analytics=analyzeBizLandscape(nodes);
+  const hiRisk=analytics.pressure.slice(0,8).map(x=>x.node).filter(n=>(n.profitScore??50)>=60);
   const bestAligned=[...nodes].filter(n=>n.openScienceScore>=70).sort((a,b)=>(b.openScienceScore-a.openScienceScore)||(a.profitScore-b.profitScore)).slice(0,8);
-  const interesting=[...nodes].filter(n=>n.profitScore>=50&&n.openScienceScore>=50).sort((a,b)=>(b.openScienceScore+b.profitScore)-(a.openScienceScore+a.profitScore)).slice(0,8);
   const topOverlap=[...nodes].sort((a,b)=>(b.overlapScore||0)-(a.overlapScore||0)).slice(0,8);
   const mostDec=[...nodes].sort((a,b)=>(b.decen||0)-(a.decen||0)).slice(0,8);
+  const outliers=analytics.outliers.slice(0,8);
+  const sweet=analytics.sweet.slice(0,8);
+  const frontier=analytics.frontier.slice(0,8);
 
   const wrap=d3.select(m).append('div').attr('class','biz-wrap');
   const head=wrap.append('div').attr('class','biz-head');
@@ -934,12 +1134,13 @@ function renderBiz(){
       <span class="biz-legend-chip">Color = stack layer</span>
       <span class="biz-legend-chip">Ring = evidence confidence</span>
       <span class="biz-legend-chip">Size = overlap with us</span>
-      <span class="biz-legend-chip">Outline thickness = decentralization</span>
+      <span class="biz-legend-chip">Outline = decentralization</span>
+      <span class="biz-legend-chip">Dashed blue line = linear fit</span>
     </div>
   `);
 
-  const currentLabelSet=bizLabelSet==='decent'?'decen':bizLabelSet;
-  const currentLabelDetail=bizLabelDetail==='decent'?'decen':bizLabelDetail;
+  const currentLabelSet=(bizLabelSet==='decent'?'decen':bizLabelSet)||'none';
+  const currentLabelDetail=(bizLabelDetail==='decent'?'decen':bizLabelDetail)||'name';
   bizLabelSet=currentLabelSet;
   bizLabelDetail=currentLabelDetail;
 
@@ -950,10 +1151,10 @@ function renderBiz(){
     vals.forEach(v=>g.append('button').attr('class','biz-mini-btn'+(current===v.value?' on':'')).text(v.label).on('click',()=>fn(v.value)));
   };
   addControl('Label set',[
+    {value:'none',label:'None'},
     {value:'notable',label:'Notable'},
     {value:'overlap',label:'High overlap'},
     {value:'decen',label:'High decentralization'},
-    {value:'competitors',label:'Competitors'},
     {value:'all',label:'All filtered'}
   ],currentLabelSet,setBizLabelSet);
   addControl('Label detail',[
@@ -968,9 +1169,11 @@ function renderBiz(){
     {k:'Visible nodes',v:nodes.length,s:`${counts['commons']} commons-aligned / ${counts['hybrid-open']} open-core hybrid`},
     {k:'Avg commerciality',v:avg(nodes,n=>n.profitScore),s:'Lower = more commons-oriented'},
     {k:'Avg OS fit',v:avg(nodes,n=>n.openScienceScore),s:'Higher = stronger open-science compatibility'},
-    {k:'Avg overlap',v:avg(nodes,n=>n.overlapScore||0),s:'Higher = closer overlap with your platform thesis'},
-    {k:'Avg decentralization',v:avg(nodes,n=>n.decen||0),s:'Higher = more decentralized architecture/governance'},
-    {k:'High-risk count',v:hiRisk.length,s:'Nodes currently in high-profit / lower-fit territory'}
+    {k:'Fit correlation',v:analytics.fit.corr.toFixed(2),s:'Pearson correlation between profit and OS fit'},
+    {k:'Fit R2',v:analytics.fit.r2.toFixed(2),s:'Linear fit explanatory strength'},
+    {k:'Outlier count',v:outliers.filter(o=>o.absZ>=1.2).length,s:'Nodes with largest residuals from fit line'},
+    {k:'Sweet-spot candidates',v:sweet.length,s:'High OS fit + strategic overlap + balanced commercial pressure'},
+    {k:'Pareto frontier',v:frontier.length,s:'Not dominated on OS fit + overlap while keeping lower profit pressure'}
   ];
   const c=cards.selectAll('div').data(cardData).enter().append('div').attr('class','biz-card');
   c.append('span').attr('class','k').text(d=>d.k);
@@ -981,7 +1184,7 @@ function renderBiz(){
   const chartPanel=main.append('div').attr('class','biz-panel biz-panel-chart');
   const side=main.append('div').attr('class','biz-panel biz-panel-side');
 
-  const sideSection=(title,arr,fmt)=>{
+  const sideSectionNodes=(title,arr,fmt)=>{
     side.append('div').attr('class','biz-side-title').text(title);
     const list=side.append('div').attr('class','biz-list');
     if(!arr.length){list.append('div').attr('class','biz-note').text('No nodes in this bucket under the current filters.');return}
@@ -991,11 +1194,24 @@ function renderBiz(){
       item.append('div').attr('class','biz-item-meta').html(fmt(n));
     });
   };
-  sideSection('Likely pressure points', hiRisk, n=>`Profit ${n.profitScore} / OS fit ${n.openScienceScore} / Overlap ${n.overlapScore||0} / Decen ${n.decen||0}`);
-  sideSection('Best aligned models', bestAligned, n=>`OS fit ${n.openScienceScore} / Profit ${n.profitScore} / ${(n.financials&&n.financials.openScienceCompatibilityBand)||osBand(n.openScienceScore)}`);
-  sideSection('Highest overlap with us', topOverlap, n=>`Overlap ${n.overlapScore||0} / Profit ${n.profitScore} / OS fit ${n.openScienceScore} / Decen ${n.decen||0}`);
-  sideSection('Most decentralized', mostDec, n=>`Decen ${n.decen||0} / Profit ${n.profitScore} / OS fit ${n.openScienceScore} / Overlap ${n.overlapScore||0}`);
-  sideSection('Hybrid but still open', interesting, n=>`Profit ${n.profitScore} / OS fit ${n.openScienceScore} / ${(n.financials&&n.financials.openScienceAlignment)||'mixed'}`);
+  const sideSectionDerived=(title,arr,fmt)=>{
+    side.append('div').attr('class','biz-side-title').text(title);
+    const list=side.append('div').attr('class','biz-list');
+    if(!arr.length){list.append('div').attr('class','biz-note').text('No nodes in this bucket under the current filters.');return}
+    arr.forEach(entry=>{
+      const n=entry.node;
+      const item=list.append('div').attr('class','biz-item').on('click',()=>{selNode(n.id);el('app').classList.remove('hide-right')});
+      item.append('div').attr('class','biz-item-name').text(n.name+(n.sourceAsterisk?' *':''));
+      item.append('div').attr('class','biz-item-meta').html(fmt(entry));
+    });
+  };
+  sideSectionNodes('Likely pressure points', hiRisk, n=>`Profit ${n.profitScore} / OS fit ${n.openScienceScore} / Overlap ${n.overlapScore||0} / Decen ${n.decen||0}`);
+  sideSectionDerived('Model outliers', outliers, e=>`Residual z ${e.z.toFixed(2)} / Predicted OS ${e.pred.toFixed(1)} / Actual ${e.node.openScienceScore}`);
+  sideSectionDerived('Sweet-spot candidates', sweet, e=>`Sweet score ${e.score.toFixed(1)} / Profit ${e.node.profitScore} / OS fit ${e.node.openScienceScore} / Overlap ${e.node.overlapScore||0}`);
+  sideSectionNodes('Pareto frontier', frontier, n=>`OS fit ${n.openScienceScore} / Overlap ${n.overlapScore||0} / Profit ${n.profitScore}`);
+  sideSectionNodes('Best aligned models', bestAligned, n=>`OS fit ${n.openScienceScore} / Profit ${n.profitScore} / ${(n.financials&&n.financials.openScienceCompatibilityBand)||osBand(n.openScienceScore)}`);
+  sideSectionNodes('Highest overlap with us', topOverlap, n=>`Overlap ${n.overlapScore||0} / Profit ${n.profitScore} / OS fit ${n.openScienceScore} / Decen ${n.decen||0}`);
+  sideSectionNodes('Most decentralized', mostDec, n=>`Decen ${n.decen||0} / Profit ${n.profitScore} / OS fit ${n.openScienceScore} / Overlap ${n.overlapScore||0}`);
   side.append('div').attr('class','biz-note').html('Quadrant reading:<br>&bull; <b>Top-left</b>: commons/public-good infrastructure<br>&bull; <b>Top-right</b>: hybrid/open-core commercialization<br>&bull; <b>Bottom-right</b>: stronger extraction pressure<br>&bull; <b>Bottom-left</b>: weak or immature business-model fit');
 
   const bounds=chartPanel.node().getBoundingClientRect();
@@ -1005,19 +1221,40 @@ function renderBiz(){
   const innerW=w-margin.left-margin.right, innerH=h-margin.top-margin.bottom;
 
   const svg=chartPanel.append('svg').attr('class','biz-svg').attr('viewBox',`0 0 ${w} ${h}`).attr('preserveAspectRatio','xMidYMid meet');
+  const defs=svg.append('defs');
+  const grad=defs.append('linearGradient').attr('id','biz-bg-grad').attr('x1','0%').attr('y1','0%').attr('x2','100%').attr('y2','100%');
+  grad.append('stop').attr('offset','0%').attr('stop-color','rgba(116,221,215,.08)');
+  grad.append('stop').attr('offset','50%').attr('stop-color','rgba(212,168,83,.04)');
+  grad.append('stop').attr('offset','100%').attr('stop-color','rgba(224,92,92,.06)');
+
   const root=svg.append('g').attr('transform',`translate(${margin.left},${margin.top})`);
   const plotLayer=root.append('g').attr('class','biz-zoom-layer');
   const axisLayer=root.append('g');
   const x=d3.scaleLinear().domain([0,100]).range([0,innerW]);
   const y=d3.scaleLinear().domain([0,100]).range([innerH,0]);
 
+  plotLayer.append('rect').attr('x',0).attr('y',0).attr('width',innerW).attr('height',innerH).attr('fill','url(#biz-bg-grad)').attr('stroke','rgba(255,255,255,.04)');
+  const grid=plotLayer.append('g').attr('class','biz-grid');
+  const gridTicks=d3.range(0,101,10);
+  grid.selectAll('line.v').data(gridTicks).enter().append('line').attr('x1',d=>x(d)).attr('x2',d=>x(d)).attr('y1',0).attr('y2',innerH);
+  grid.selectAll('line.h').data(gridTicks).enter().append('line').attr('x1',0).attr('x2',innerW).attr('y1',d=>y(d)).attr('y2',d=>y(d));
+
   const tip=el('tip');
   if(!tip.dataset.bizBound){
     tip.addEventListener('mouseenter',()=>{clearTimeout(window._bizTipHideTimer)});
-    tip.addEventListener('mouseleave',()=>tip.classList.remove('vis'));
+    tip.addEventListener('mouseleave',()=>{if(!bizTipPinned)tip.classList.remove('vis')});
+    tip.addEventListener('click',evt=>{
+      const pinBtn=evt.target.closest('[data-tip-pin]');
+      if(pinBtn){
+        bizTipPinned=false;
+        bizTipPinnedNodeId=null;
+        tip.classList.remove('vis');
+      }
+    });
     tip.dataset.bizBound='1';
   }
   const hideTipSoon=()=>{
+    if(bizTipPinned)return;
     clearTimeout(window._bizTipHideTimer);
     window._bizTipHideTimer=setTimeout(()=>tip.classList.remove('vis'),140);
   };
@@ -1030,27 +1267,32 @@ function renderBiz(){
     tip.style.left=Math.max(8,left)+'px';
     tip.style.top=Math.max(8,top)+'px';
   };
-  const showNodeTip=(evt,d)=>{
+  const showNodeTip=(evt,d,persist=false)=>{
+    if(bizTipPinned && !persist && bizTipPinnedNodeId!==d.id)return;
     clearTimeout(window._bizTipHideTimer);
     const rev=((d.financials&&d.financials.revenueSources)||[]).slice(0,3).join(', ') || 'revenue model unclear';
     const srcs=bizSources(d,6);
     const srcHtml=srcs.length
-      ? `<div class="tip-src-title">Citations</div><div class="tip-src-list">${srcs.map(s=>`<a class="tip-src-link" href="${escapeHtml(s.url)}" target="_blank" rel="noopener">${escapeHtml(s.label)}${s.type?` · ${escapeHtml(s.type)}`:''}</a>`).join('')}</div>`
+      ? `<div class="tip-src-title">Citations</div><div class="tip-src-list">${srcs.map(s=>`<a class="tip-src-link" href="${escapeHtml(s.url)}" target="_blank" rel="noopener">${escapeHtml(s.label)}${s.type?` | ${escapeHtml(s.type)}`:''}</a>`).join('')}</div>`
       : `<div class="tm" style="margin-top:8px">No source URLs attached on this node.</div>`;
     const audit=bizAuditRow(d);
     const auditHtml=audit
-      ? `<div class="tm" style="margin-top:6px">Audit CSV: confidence ${escapeHtml(audit.confidence||'n/a')} · source count ${escapeHtml(audit.sourceCount||'0')} · <a href="data_researched_pass7_audit_report.csv" target="_blank" rel="noopener">CSV</a></div>`
+      ? `<div class="tm" style="margin-top:6px">Audit CSV: confidence ${escapeHtml(audit.confidence||'n/a')} | source count ${escapeHtml(audit.sourceCount||'0')} | <a href="data_researched_pass7_audit_report.csv" target="_blank" rel="noopener">CSV</a></div>`
       : '';
-    tip.innerHTML=`<h4>${escapeHtml(d.name)}${d.sourceAsterisk?' *':''}</h4><div class="tm">Profit ${d.profitScore} · OS fit ${d.openScienceScore} · Overlap ${d.overlapScore||0} · Decen ${d.decen||0} · ${escapeHtml(d.legalStructure||'unknown')} · ${escapeHtml(rev)}</div>${auditHtml}${srcHtml}`;
+    const osProfile=inferUnescoPrinciples(d);
+    const pList=osProfile.principles.slice(0,3).map(p=>escapeHtml(p.label)).join('; ');
+    const principleHtml=`<div class="tm" style="margin-top:6px">UNESCO principles: ${pList||'none surfaced'} | <a href="${osProfile.reference.url}" target="_blank" rel="noopener">guideline</a></div>`;
+    tip.innerHTML=`<div class="tip-head"><h4>${escapeHtml(d.name)}${d.sourceAsterisk?' *':''}</h4><button class="tip-pin-btn" data-tip-pin>${persist?'Unpin':'Close'}</button></div><div class="tm">Profit ${d.profitScore} | OS fit ${d.openScienceScore} | Overlap ${d.overlapScore||0} | Decen ${d.decen||0} | ${escapeHtml(d.legalStructure||'unknown')} | ${escapeHtml(rev)}</div>${principleHtml}${auditHtml}${srcHtml}`;
+    if(persist){bizTipPinned=true;bizTipPinnedNodeId=d.id;}
     tip.classList.add('vis');
     moveTip(evt);
   };
 
   const quads=[
-    {key:'commons',x0:0,x1:50,y0:50,y1:100,fill:'rgba(110,200,155,.06)',label:'Commons-aligned',sub:`${counts['commons']} nodes`,desc:qDefs['commons'].desc},
-    {key:'hybrid-open',x0:50,x1:100,y0:50,y1:100,fill:'rgba(116,221,215,.06)',label:'Open-core hybrid',sub:`${counts['hybrid-open']} nodes`,desc:qDefs['hybrid-open'].desc},
+    {key:'commons',x0:0,x1:50,y0:50,y1:100,fill:'rgba(110,200,155,.05)',label:'Commons-aligned',sub:`${counts['commons']} nodes`,desc:qDefs['commons'].desc},
+    {key:'hybrid-open',x0:50,x1:100,y0:50,y1:100,fill:'rgba(116,221,215,.05)',label:'Open-core hybrid',sub:`${counts['hybrid-open']} nodes`,desc:qDefs['hybrid-open'].desc},
     {key:'mission-fragile',x0:0,x1:50,y0:0,y1:50,fill:'rgba(212,168,83,.05)',label:'Low-profit / low-fit',sub:`${counts['mission-fragile']} nodes`,desc:qDefs['mission-fragile'].desc},
-    {key:'extractive-risk',x0:50,x1:100,y0:0,y1:50,fill:'rgba(224,92,92,.06)',label:'Commercial pressure',sub:`${counts['extractive-risk']} nodes`,desc:qDefs['extractive-risk'].desc}
+    {key:'extractive-risk',x0:50,x1:100,y0:0,y1:50,fill:'rgba(224,92,92,.05)',label:'Commercial pressure',sub:`${counts['extractive-risk']} nodes`,desc:qDefs['extractive-risk'].desc}
   ];
   const quadG=plotLayer.append('g').attr('class','biz-quads');
   const quadRects=quadG.selectAll('.biz-quad').data(quads).enter().append('rect')
@@ -1091,18 +1333,40 @@ function renderBiz(){
   plotLayer.append('line').attr('x1',x(50)).attr('x2',x(50)).attr('y1',0).attr('y2',innerH).attr('stroke','rgba(212,168,83,.35)').attr('stroke-dasharray','6,5');
   plotLayer.append('line').attr('x1',0).attr('x2',innerW).attr('y1',y(50)).attr('y2',y(50)).attr('stroke','rgba(212,168,83,.35)').attr('stroke-dasharray','6,5');
 
+  if(nodes.length>=2){
+    const y0=Math.max(0,Math.min(100,analytics.fit.intercept+(analytics.fit.slope*0)));
+    const y1=Math.max(0,Math.min(100,analytics.fit.intercept+(analytics.fit.slope*100)));
+    plotLayer.append('line').attr('class','biz-fit-band').attr('x1',x(0)).attr('y1',y(y0)).attr('x2',x(100)).attr('y2',y(y1));
+    plotLayer.append('line').attr('class','biz-fit-line').attr('x1',x(0)).attr('y1',y(y0)).attr('x2',x(100)).attr('y2',y(y1));
+  }
+
   const floating=chartPanel.append('div').attr('class','biz-floating-actions');
   floating.append('span').attr('class','biz-zoom-chip').text('Scroll = zoom, drag = pan');
+  floating.append('span').attr('class','biz-zoom-chip').text(`r ${analytics.fit.corr.toFixed(2)} / R2 ${analytics.fit.r2.toFixed(2)}`);
 
   const radius=n=>6 + Math.min(8,(n.overlapScore||0)/11);
   const decStroke=n=>1 + Math.min(3.8,(n.decen||0)/30);
   const plot=nodes.map((n,i)=>({...n,tx:x(n.profitScore),ty:y(n.openScienceScore),x:x(n.profitScore)+((i%7)-3)*0.6,y:y(n.openScienceScore)+((Math.floor(i/7)%7)-3)*0.6}));
 
+  const outlierIds=new Set(outliers.slice(0,5).map(o=>o.node.id));
+  const sweetIds=new Set(sweet.slice(0,5).map(o=>o.node.id));
+
   const pointLayer=plotLayer.append('g').attr('class','biz-points');
   const points=pointLayer.selectAll('.biz-point').data(plot,d=>d.id).enter().append('g').attr('class','biz-point').style('cursor','pointer')
-    .on('click',(e,d)=>{selNode(d.id);el('app').classList.remove('hide-right')})
-    .on('mouseenter',(e,d)=>{showNodeTip(e,d);d3.select(e.currentTarget).raise()})
-    .on('mousemove',(e,d)=>moveTip(e))
+    .on('click',(e,d)=>{
+      e.stopPropagation();
+      if(bizTipPinned && bizTipPinnedNodeId===d.id){
+        bizTipPinned=false;
+        bizTipPinnedNodeId=null;
+        tip.classList.remove('vis');
+      }else{
+        showNodeTip(e,d,true);
+      }
+      selNode(d.id);
+      el('app').classList.remove('hide-right');
+    })
+    .on('mouseenter',(e,d)=>{showNodeTip(e,d,false);d3.select(e.currentTarget).raise()})
+    .on('mousemove',(e,d)=>{if(!bizTipPinned || bizTipPinnedNodeId===d.id)moveTip(e)})
     .on('mouseleave',hideTipSoon);
 
   points.append('circle')
@@ -1116,7 +1380,7 @@ function renderBiz(){
     .attr('class','biz-core')
     .attr('r',d=>radius(d))
     .attr('fill',d=>SC[d.stack]||'var(--text-3)')
-    .attr('fill-opacity',.24)
+    .attr('fill-opacity',.3)
     .attr('stroke',d=>SC[d.stack]||'var(--text-3)')
     .attr('stroke-width',d=>decStroke(d))
     .attr('stroke-opacity',.92);
@@ -1125,13 +1389,15 @@ function renderBiz(){
     .attr('r',2.6)
     .attr('fill',d=>SC[d.stack]||'var(--text-3)')
     .attr('fill-opacity',.95);
+  points.filter(d=>outlierIds.has(d.id)).append('circle').attr('class','biz-flag-outlier').attr('r',d=>radius(d)+4.6);
+  points.filter(d=>sweetIds.has(d.id)).append('circle').attr('class','biz-flag-sweet').attr('r',d=>radius(d)+3.2);
 
   const labelSetFns={
-    notable:d=>d.id===selId || (d.overlapScore||0)>=55 || (d.decen||0)>=75 || Math.abs((d.profitScore||50)-(d.openScienceScore||50))>=38,
-    overlap:d=>(d.overlapScore||0)>=45,
+    none:d=>false,
+    notable:d=>d.id===selId || (d.overlapScore||0)>=58 || (d.decen||0)>=78 || Math.abs((d.profitScore||50)-(d.openScienceScore||50))>=40,
+    overlap:d=>(d.overlapScore||0)>=48,
     decen:d=>(d.decen||0)>=70,
     decent:d=>(d.decen||0)>=70,
-    competitors:d=>(d.overlapScore||0)>=55 || ((d.overlapTags||[]).includes('publishing') && (d.overlapTags||[]).includes('peer-review')),
     all:d=>true
   };
   const labelFmt=(d)=>{
@@ -1140,23 +1406,25 @@ function renderBiz(){
     if(currentLabelDetail==='decen') return `${d.name} · Dc ${d.decen||0}`;
     return `${d.name} · Ov ${d.overlapScore||0} · Dc ${d.decen||0}`;
   };
-  let labels=plot.filter(labelSetFns[currentLabelSet]||labelSetFns.notable)
-    .sort((a,b)=>((b.overlapScore||0)+(b.decen||0)+Math.abs((b.profitScore||50)-(b.openScienceScore||50))*0.4)-((a.overlapScore||0)+(a.decen||0)+Math.abs((a.profitScore||50)-(a.openScienceScore||50))*0.4));
-  labels=labels.slice(0,currentLabelSet==='all'?34:26);
+  let labels=plot.filter(labelSetFns[currentLabelSet]||labelSetFns.none)
+    .sort((a,b)=>((b.overlapScore||0)+(b.decen||0)+Math.abs((b.profitScore||50)-(b.openScienceScore||50))*0.42)-((a.overlapScore||0)+(a.decen||0)+Math.abs((a.profitScore||50)-(a.openScienceScore||50))*0.42));
+  const labelBudget=Math.max(8,Math.round(innerW/95));
+  const cap=currentLabelSet==='all'?Math.min(24,labelBudget+8):Math.min(16,labelBudget);
+  labels=labels.slice(0,cap);
 
   const labelLayer=plotLayer.append('g').attr('class','biz-labels');
   const labelNodes=labels.map(d=>({id:d.id,node:d,text:labelFmt(d),priority:(d.overlapScore||0)+(d.decen||0)}));
   const labelLinks=labelLayer.selectAll('line').data(labelNodes,d=>d.id).enter().append('line').attr('class','biz-label-link');
   const labelTexts=labelLayer.selectAll('text').data(labelNodes,d=>d.id).enter().append('text')
-    .attr('font-size',10).attr('font-family','Nunito Sans,sans-serif').attr('fill','var(--graph-label)')
-    .attr('stroke','rgba(0,0,0,.84)').attr('stroke-width',1.5).attr('paint-order','stroke');
+    .attr('font-size',10).attr('font-family','Nunito Sans,sans-serif').attr('fill','rgba(245,245,245,.95)')
+    .attr('stroke','rgba(0,0,0,.9)').attr('stroke-width',1.9).attr('paint-order','stroke');
 
   const placeLabels=()=>{
     const placed=[];
     labelNodes.sort((a,b)=>b.priority-a.priority);
     labelNodes.forEach(lbl=>{
       lbl.text=labelFmt(lbl.node);
-      lbl.w=Math.min(300,Math.max(56,lbl.text.length*6.2+12));
+      lbl.w=Math.min(260,Math.max(52,lbl.text.length*6+12));
       const r=radius(lbl.node);
       const choices=[
         {dx:r+8,dy:-8,anchor:'start'},
@@ -1170,8 +1438,8 @@ function renderBiz(){
         const x0=c.anchor==='start'?x1:(c.anchor==='end'?x1-lbl.w:x1-lbl.w/2);
         const xx1=x0+lbl.w, y0=y1-11, yy1=y1+2;
         let penalty=0;
-        if(x0<2||xx1>innerW-2||y0<2||yy1>innerH-2)penalty+=500;
-        for(const p of placed){if(!(xx1<p.x0||x0>p.x1||yy1<p.y0||y0>p.y1))penalty+=220;}
+        if(x0<2||xx1>innerW-2||y0<2||yy1>innerH-2)penalty+=560;
+        for(const p of placed){if(!(xx1<p.x0||x0>p.x1||yy1<p.y0||y0>p.y1))penalty+=240;}
         penalty+=Math.abs(c.dx)*0.8+Math.abs(c.dy)*0.35;
         if(penalty<bestPenalty){bestPenalty=penalty;best={x:x1,y:y1,anchor:c.anchor,x0,x1:xx1,y0,y1:yy1};}
       });
@@ -1192,7 +1460,7 @@ function renderBiz(){
   let tickN=0;
   const draw=()=>{
     points.attr('transform',d=>`translate(${d.x},${d.y})`);
-    if(!tickN || tickN%2===0)placeLabels();
+    if(labelNodes.length&&(!tickN || tickN%2===0))placeLabels();
     tickN++;
   };
   sim=d3.forceSimulation(plot)
@@ -1203,7 +1471,7 @@ function renderBiz(){
     .alphaDecay(.048)
     .velocityDecay(.35)
     .on('tick',()=>{plot.forEach(clampNode);draw()})
-    .on('end',placeLabels);
+    .on('end',()=>{if(labelNodes.length)placeLabels();});
 
   const zoom=d3.zoom().scaleExtent([0.75,8]).translateExtent([[-innerW*.65,-innerH*.65],[innerW*1.65,innerH*1.65]]).on('zoom',evt=>plotLayer.attr('transform',evt.transform));
   svg.call(zoom).on('dblclick.zoom',null);
@@ -1213,19 +1481,25 @@ function renderBiz(){
     if(document.fullscreenElement===node){if(document.exitFullscreen)document.exitFullscreen();}
     else if(node.requestFullscreen)node.requestFullscreen().catch(()=>{});
   });
-  svg.on('click',evt=>{if(evt.target===svg.node())tip.classList.remove('vis')});
+  svg.on('click',evt=>{
+    if(evt.target===svg.node()){
+      bizTipPinned=false;
+      bizTipPinnedNodeId=null;
+      tip.classList.remove('vis');
+    }
+  });
 }
 
 function renderLit(){
   const m=el('main'),p=document.createElement('div');p.className='lit-panel';
-  p.innerHTML=`<div class="lit-title">Literature & References</div><div id="zotC"><p style="color:var(--text-3)">Loading from Zotero...</p></div><p style="margin-top:16px"><a href="https://www.zotero.org/groups/6075364/descai/library" target="_blank" style="color:var(--link)">View full Zotero library â†—</a></p>`;
+  p.innerHTML=`<div class="lit-title">Literature & References</div><div id="zotC"><p style="color:var(--text-3)">Loading from Zotero...</p></div><p style="margin-top:16px"><a href="https://www.zotero.org/groups/6075364/descai/library" target="_blank" style="color:var(--link)">View full Zotero library -></a></p>`;
   m.appendChild(p);
   if(zoteroItems)displayZ();else fetchZotero();
 }
 async function fetchZotero(){
   try{const r=await fetch('https://api.zotero.org/groups/6075364/items?format=json&limit=50&sort=dateModified&direction=desc');if(!r.ok)throw new Error();zoteroItems=await r.json();displayZ()}catch(e){const c=document.getElementById('zotC');if(c)c.innerHTML='<p style="color:var(--text-3)">Could not load from Zotero. Check group visibility.</p>'}
 }
-function displayZ(){const c=document.getElementById('zotC');if(!c||!zoteroItems)return;c.innerHTML=zoteroItems.filter(i=>i.data.title).map(i=>{const d=i.data;return`<div class="paper"><div class="paper-t">${d.title}</div><div class="paper-a">${(d.creators||[]).map(c=>c.lastName).join(', ')} ${d.date||''} ${d.DOI?`<a href="https://doi.org/${d.DOI}" target="_blank" style="color:var(--link)">DOIâ†—</a>`:''}</div></div>`}).join('')}
+function displayZ(){const c=document.getElementById('zotC');if(!c||!zoteroItems)return;c.innerHTML=zoteroItems.filter(i=>i.data.title).map(i=>{const d=i.data;return`<div class="paper"><div class="paper-t">${d.title}</div><div class="paper-a">${(d.creators||[]).map(c=>c.lastName).join(', ')} ${d.date||''} ${d.DOI?`<a href="https://doi.org/${d.DOI}" target="_blank" style="color:var(--link)">DOI -></a>`:''}</div></div>`}).join('')}
 
 // ===== DETAIL PANEL =====
 function selNode(id){
@@ -1238,10 +1512,10 @@ function selNode(id){
   const ppl=D.people.filter(pp=>pp.orgs.includes(id));
   const credC=n.credScore>=60?'var(--sage)':n.credScore>=30?'var(--gold)':'var(--text-3)';
   const ovC=(n.overlapScore||0)>=60?'var(--gold)':(n.overlapScore||0)>=30?'var(--text-2)':'var(--text-3)';
-  const srcHtml=(prov.sources||[]).map(s=>`<a class="src-chip" href="${s.url}" target="_blank" rel="noopener">${s.label}${s.type?` Â· ${s.type}`:''}</a>`).join('');
+  const srcHtml=(prov.sources||[]).map(s=>`<a class="src-chip" href="${s.url}" target="_blank" rel="noopener">${s.label}${s.type?` | ${s.type}`:''}</a>`).join('');
   const osScore=n.openScienceScore??fin.openScienceCompatibilityScore??50;
   const audit=fin.scoreAudit||{};
-  p.innerHTML=`<div class="det-name">${n.name}${n.sourceAsterisk?' *':''}</div><div class="det-sub">${n.type} Â· ${n.stage} Â· <span class="cred-badge" style="background:rgba(110,200,155,.08);color:${credC}">Cred ${n.credScore||0}</span> Â· <span class="profit-badge" style="background:${profitBg(n.profitScore)};color:${profitC(n.profitScore)}">Profit ${n.profitScore??50}</span> Â· <span class="profit-badge" style="background:${osBg(osScore)};color:${osC(osScore)}">OS Fit ${osScore}</span> Â· <span class="conf-badge ${confCls}">${conf}</span>${n.twitter?` Â· <a href="https://x.com/${n.twitter.replace('@','')}" target="_blank" style="color:var(--link)">${n.twitter}</a>`:''}</div>
+  p.innerHTML=`<div class="det-name">${n.name}${n.sourceAsterisk?' *':''}</div><div class="det-sub">${n.type} | ${n.stage} | <span class="cred-badge" style="background:rgba(110,200,155,.08);color:${credC}">Cred ${n.credScore||0}</span> | <span class="profit-badge" style="background:${profitBg(n.profitScore)};color:${profitC(n.profitScore)}">Profit ${n.profitScore??50}</span> | <span class="profit-badge" style="background:${osBg(osScore)};color:${osC(osScore)}">OS Fit ${osScore}</span> | <span class="conf-badge ${confCls}">${conf}</span>${n.twitter?` | <a href="https://x.com/${n.twitter.replace('@','')}" target="_blank" style="color:var(--link)">${n.twitter}</a>`:''}</div>
   <div class="field"><div class="flabel">Description</div><textarea class="finput" onchange="upd('${id}','desc',this.value)">${n.desc||''}</textarea></div>
   ${(n.overlapScore||n.compNote)?`<div class="overlap-box" style="border:1px solid ${(n.overlapScore||0)>=50?'rgba(212,168,83,.25)':'var(--border)'}">
     <div class="flabel" style="color:var(--gold)">Overlap with our platform <span style="font-weight:700">${n.overlapScore||0}%</span></div>
@@ -1249,9 +1523,9 @@ function selNode(id){
     <div style="font-size:.82rem;color:var(--text-2);line-height:1.5">${n.compNote||''}</div>
   </div>`:''}
   ${(n.finModel||n.finNote)?`<div class="fin-box ${finBoxClass(n.profitScore)}">
-    <div class="flabel" style="color:${profitC(n.profitScore)}">Commerciality score <span style="font-weight:700">${n.profitScore??50}/100</span> ${n.legalStructure!=='unknown'?`Â· <span style="text-transform:capitalize">${n.legalStructure}</span>`:''} ${n.apc?'Â· <span style="color:var(--red)">Has fee/APC</span>':''}</div>
+    <div class="flabel" style="color:${profitC(n.profitScore)}">Commerciality score <span style="font-weight:700">${n.profitScore??50}/100</span> ${n.legalStructure!=='unknown'?`| <span style="text-transform:capitalize">${n.legalStructure}</span>`:''} ${n.apc?'| <span style="color:var(--red)">Has fee/APC</span>':''}</div>
     <div class="fin-bar-wrap"><div class="fin-bar-bg"><div class="fin-bar-fill" style="width:${n.profitScore??50}%;background:${profitBarC(n.profitScore)}"></div></div></div>
-    <div class="flabel" style="margin-top:10px;color:${osC(osScore)}">Open-science compatibility <span style="font-weight:700">${osScore}/100</span> ${fin.openScienceCompatibilityBand?`Â· <span style="text-transform:capitalize">${fin.openScienceCompatibilityBand}</span>`:''}</div>
+    <div class="flabel" style="margin-top:10px;color:${osC(osScore)}">Open-science compatibility <span style="font-weight:700">${osScore}/100</span> ${fin.openScienceCompatibilityBand?`| <span style="text-transform:capitalize">${fin.openScienceCompatibilityBand}</span>`:''}</div>
     <div class="fin-bar-wrap"><div class="fin-bar-bg"><div class="fin-bar-fill" style="width:${osScore}%;background:${osC(osScore)}"></div></div></div>
     ${n.fundingRaised?`<div style="font-size:.75rem;color:var(--text-3);margin-bottom:6px">Funding / scale: ${n.fundingRaised}</div>`:''}
     ${fin.revenueSources&&fin.revenueSources.length?`<div style="font-size:.75rem;color:var(--text-3);margin-bottom:6px">Revenue sources: ${fin.revenueSources.join(', ')}</div>`:''}
@@ -1262,29 +1536,31 @@ function selNode(id){
     <div style="font-size:.82rem;color:var(--text-2);line-height:1.5">${n.finModel||''}</div>
     ${n.finNote?`<div style="font-size:.8rem;color:var(--text-3);line-height:1.5;margin-top:8px">${n.finNote}</div>`:''}
     ${(bdg&&Object.keys(bdg).length)?`<div class="score-grid">
-      <div class="score-cell"><span class="k">Structure</span><span class="v">${bdg.structure??'â€”'}</span></div>
-      <div class="score-cell"><span class="k">Revenue</span><span class="v">${bdg.revenue??'â€”'}</span></div>
-      <div class="score-cell"><span class="k">Capital</span><span class="v">${bdg.capital??'â€”'}</span></div>
-      <div class="score-cell"><span class="k">Total</span><span class="v">${bdg.total??(n.profitScore??'â€”')}</span></div>
+      <div class="score-cell"><span class="k">Structure</span><span class="v">${bdg.structure??'-'}</span></div>
+      <div class="score-cell"><span class="k">Revenue</span><span class="v">${bdg.revenue??'-'}</span></div>
+      <div class="score-cell"><span class="k">Capital</span><span class="v">${bdg.capital??'-'}</span></div>
+      <div class="score-cell"><span class="k">Total</span><span class="v">${bdg.total??(n.profitScore??'-')}</span></div>
     </div>`:''}
     ${audit&&audit.previousProfitScore!=null?`<div style="font-size:.76rem;color:var(--text-3);line-height:1.5;margin-top:8px">Score audit: was ${audit.previousProfitScore}, now ${audit.auditedProfitScore} (${audit.delta>=0?'+':''}${audit.delta}). ${audit.reasons&&audit.reasons.length?`Main drivers: ${audit.reasons.join('; ')}.`:''}</div>`:''}
   </div>`:''}
   <div class="prov-box">
-    <div class="flabel">Provenance ${prov.hasUnverifiedClaims?'<span style="color:var(--red)">Â· * inferred / unresolved fields remain</span>':''}</div>
-    <div style="font-size:.8rem;color:var(--text-2);line-height:1.45">Confidence: <span class="conf-badge ${confCls}">${conf}</span>${prov.lastVerified?` Â· Last verified: ${prov.lastVerified}`:''}</div>
+    <div class="flabel">Provenance ${prov.hasUnverifiedClaims?'<span style="color:var(--red)">| * inferred / unresolved fields remain</span>':''}</div>
+    <div style="font-size:.8rem;color:var(--text-2);line-height:1.45">Confidence: <span class="conf-badge ${confCls}">${conf}</span>${prov.lastVerified?` | Last verified: ${prov.lastVerified}`:''}</div>
     ${fin.openScienceAlignment&&fin.openScienceAlignment!=='unknown'?`<div style="font-size:.8rem;color:var(--text-2);line-height:1.45;margin-top:6px">Open-science alignment: <strong style="color:${osC(osScore)};text-transform:capitalize">${fin.openScienceAlignment}</strong></div>`:''}
     ${fin.openScienceCompatibilityReasons&&fin.openScienceCompatibilityReasons.length?`<div style="font-size:.78rem;color:var(--text-3);line-height:1.5;margin-top:6px">Compatibility drivers: ${fin.openScienceCompatibilityReasons.join('; ')}.</div>`:''}
     ${fin.openScienceAlignmentNote?`<div style="font-size:.8rem;color:var(--text-3);line-height:1.5;margin-top:6px">${fin.openScienceAlignmentNote}</div>`:''}
     ${prov.notes?`<div style="font-size:.8rem;color:var(--text-3);line-height:1.5;margin-top:8px">${prov.notes}</div>`:''}
     ${srcHtml?`<div class="src-list">${srcHtml}</div>`:'<div style="font-size:.78rem;color:var(--text-3);margin-top:8px">No external source links attached yet.</div>'}
   </div>
+  ${renderUnescoProfileBox(n)}
   <div class="field"><div class="flabel">Type</div><input class="finput" value="${n.type||''}" onchange="upd('${id}','type',this.value)"></div>
   <div class="field"><div class="flabel">Stage</div><input class="finput" value="${n.stage||''}" onchange="upd('${id}','stage',this.value)"></div>
   <div class="field"><div class="flabel">Website</div><input class="finput" value="${n.web||''}" onchange="upd('${id}','web',this.value)"></div>
   <div class="field"><div class="flabel">Tech Stack</div><textarea class="finput" onchange="upd('${id}','techStack',this.value)">${n.techStack||''}</textarea></div>
   <div class="field"><div class="flabel">Notes</div><textarea class="finput" onchange="upd('${id}','notes',this.value)">${n.notes||''}</textarea></div>
   ${ppl.length?`<div class="field"><div class="flabel">People</div><ul class="rel-list">${ppl.map(pp=>`<li class="rel-item"><span>${pp.name}</span></li>`).join('')}</ul></div>`:''}
-  ${rels.length?`<div class="field"><div class="flabel">Relations</div><ul class="rel-list">${rels.map(r=>{const other=r.s===id?r.t:r.s;const on=D.nodes.find(x=>x.id===other)?.name||other;const c=RB[r.type]||{b:'var(--raised)',c:'var(--text-3)'};return`<li class="rel-item"><span class="rel-badge" style="background:${c.b};color:${c.c}">${r.type}</span><span>${on}</span>${r.l?`<span style="color:var(--text-3);font-size:.72rem">Â· ${r.l}</span>`:''}</li>`}).join('')}</ul></div>`:''}`;
+  ${rels.length?`<div class="field"><div class="flabel">Relations</div><ul class="rel-list">${rels.map(r=>{const other=r.s===id?r.t:r.s;const on=D.nodes.find(x=>x.id===other)?.name||other;const c=RB[r.type]||{b:'var(--raised)',c:'var(--text-3)'};return`<li class="rel-item"><span class="rel-badge" style="background:${c.b};color:${c.c}">${r.type}</span><span>${on}</span>${r.l?`<span style="color:var(--text-3);font-size:.72rem">| ${r.l}</span>`:''}</li>`}).join('')}</ul></div>`:''}`;
+  sanitizeVisibleText(p);
   el('app').classList.remove('hide-right');
 }
 // ===== MODALS =====
@@ -1321,8 +1597,9 @@ function impFile(inp){
   const f=inp.files[0];if(!f)return;
   const r=new FileReader();r.onload=e=>{
     try{
-      if(f.name.endsWith('.json')){D=JSON.parse(e.target.result);D.nodes.forEach(n=>{n.overlapTags=n.overlapTags||[];n.credScore=n.credScore||0;n.finModel=n.finModel||'';n.legalStructure=n.legalStructure||'unknown';n.apc=n.apc||false;n.profitScore=n.profitScore??50;n.openScienceScore=n.openScienceScore??((n.financials&&n.financials.openScienceCompatibilityScore)??50);n.finNote=n.finNote||'';n.fundingRaised=n.fundingRaised||'';n.provenance=n.provenance||{confidence:'low',hasUnverifiedClaims:true,sources:[],lastVerified:'',notes:''};n.financials=n.financials||{revenueSources:[],researcherPays:'unknown',institutionPays:'unknown',openScienceAlignment:'unknown',openScienceAlignmentNote:'',scoreBreakdown:{},openScienceCompatibilityScore:50,openScienceCompatibilityBand:'moderate',scoreAudit:{}};if(n.financials&&n.financials.openScienceCompatibilityScore==null)n.financials.openScienceCompatibilityScore=n.openScienceScore??50;n.sourceAsterisk=!!n.sourceAsterisk})}
-      else if(f.name.endsWith('.csv')){const p=Papa.parse(e.target.result,{header:true});p.data.forEach(row=>{if(!row.id)return;const ex=D.nodes.find(n=>n.id===row.id);if(ex)Object.assign(ex,row);else D.nodes.push({...row,tags:(row.tags||'').split(','),s1:+row.s1||0,s2:+row.s2||0,s3:+row.s3||0,s4:+row.s4||0,s5:+row.s5||0,decen:+row.decen||50,cf:{},overlapTags:[],credScore:0,profitScore:50})})}
+      if(f.name.endsWith('.json')){D=cleanMojibakeDeep(JSON.parse(e.target.result));D.nodes.forEach(n=>{n.overlapTags=n.overlapTags||[];n.credScore=n.credScore||0;n.finModel=n.finModel||'';n.legalStructure=n.legalStructure||'unknown';n.apc=n.apc||false;n.profitScore=n.profitScore??50;n.openScienceScore=n.openScienceScore??((n.financials&&n.financials.openScienceCompatibilityScore)??50);n.finNote=n.finNote||'';n.fundingRaised=n.fundingRaised||'';n.provenance=n.provenance||{confidence:'low',hasUnverifiedClaims:true,sources:[],lastVerified:'',notes:''};n.financials=n.financials||{revenueSources:[],researcherPays:'unknown',institutionPays:'unknown',openScienceAlignment:'unknown',openScienceAlignmentNote:'',scoreBreakdown:{},openScienceCompatibilityScore:50,openScienceCompatibilityBand:'moderate',scoreAudit:{}};if(n.financials&&n.financials.openScienceCompatibilityScore==null)n.financials.openScienceCompatibilityScore=n.openScienceScore??50;n.sourceAsterisk=!!n.sourceAsterisk})}
+      else if(f.name.endsWith('.csv')){const p=Papa.parse(e.target.result,{header:true});p.data.forEach(row=>{row=cleanMojibakeDeep(row);if(!row.id)return;const ex=D.nodes.find(n=>n.id===row.id);if(ex)Object.assign(ex,row);else D.nodes.push({...row,tags:(row.tags||'').split(','),s1:+row.s1||0,s2:+row.s2||0,s3:+row.s3||0,s4:+row.s4||0,s5:+row.s5||0,decen:+row.decen||50,cf:{},overlapTags:[],credScore:0,profitScore:50})})}
+      D=cleanMojibakeDeep(D);
       save();render();updateSB();updateStats();buildPills();
     }catch(err){alert('Import error: '+err.message)}
   };r.readAsText(f);inp.value='';
@@ -1335,7 +1612,7 @@ function promptToken(){if(GH.token)return true;const t=prompt('GitHub PAT (fine-
 function setSyncUI(state,msg){const s=el('syncStatus'),t=el('syncText');s.className='sync-status'+(state==='ok'?' synced':state==='err'?' error':'');t.textContent=msg}
 let pushTimer=null;
 function debouncedPush(){if(!GH.ok)return;clearTimeout(pushTimer);setSyncUI('','saving...');pushTimer=setTimeout(()=>ghPush(),2000)}
-async function ghPull(){if(!GH.ok){detectGHPages();if(!promptToken())return}if(!GH.ok)return;setSyncUI('','pulling...');try{const r=await fetch(`https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/${GH.path}`,{headers:{'Authorization':'Bearer '+GH.token,'Accept':'application/vnd.github.v3+json'}});if(r.status===404){setSyncUI('ok','no remote');return}if(r.status===401||r.status===403){localStorage.removeItem('gh-token');setSyncUI('err','bad token');return}if(!r.ok)throw new Error('HTTP '+r.status);const j=await r.json();const raw=atob(j.content.replace(/\n/g,''));D=JSON.parse(raw);localStorage.setItem('gh-sha',j.sha);D.nodes.forEach(n=>{n.overlapTags=n.overlapTags||[];n.credScore=n.credScore||0;n.notes=n.notes||''});save(true);render();updateSB();updateStats();buildPills();setSyncUI('ok','synced')}catch(e){setSyncUI('err',e.message)}}
+async function ghPull(){if(!GH.ok){detectGHPages();if(!promptToken())return}if(!GH.ok)return;setSyncUI('','pulling...');try{const r=await fetch(`https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/${GH.path}`,{headers:{'Authorization':'Bearer '+GH.token,'Accept':'application/vnd.github.v3+json'}});if(r.status===404){setSyncUI('ok','no remote');return}if(r.status===401||r.status===403){localStorage.removeItem('gh-token');setSyncUI('err','bad token');return}if(!r.ok)throw new Error('HTTP '+r.status);const j=await r.json();const raw=atob(j.content.replace(/\n/g,''));D=cleanMojibakeDeep(JSON.parse(raw));localStorage.setItem('gh-sha',j.sha);D.nodes.forEach(n=>{n.overlapTags=n.overlapTags||[];n.credScore=n.credScore||0;n.notes=n.notes||''});save(true);render();updateSB();updateStats();buildPills();setSyncUI('ok','synced')}catch(e){setSyncUI('err',e.message)}}
 async function ghPush(){if(!GH.ok)return;setSyncUI('','pushing...');try{let sha=localStorage.getItem('gh-sha')||'';if(!sha){try{const c=await fetch(`https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/${GH.path}`,{headers:{'Authorization':'Bearer '+GH.token,'Accept':'application/vnd.github.v3+json'}});if(c.ok){const j=await c.json();sha=j.sha}}catch(e){}}const text=JSON.stringify(D,null,2);const bytes=new TextEncoder().encode(text);let bin='';for(let i=0;i<bytes.length;i++)bin+=String.fromCharCode(bytes[i]);const body={message:'Update '+new Date().toISOString().slice(0,16),content:btoa(bin)};if(sha)body.sha=sha;const r=await fetch(`https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/${GH.path}`,{method:'PUT',headers:{'Authorization':'Bearer '+GH.token,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},body:JSON.stringify(body)});if(r.status===409){setSyncUI('','conflict...');await ghPull();await ghPush();return}if(!r.ok){const e=await r.json();throw new Error(e.message||'HTTP '+r.status)}const result=await r.json();localStorage.setItem('gh-sha',result.content.sha);setSyncUI('ok','saved')}catch(e){setSyncUI('err',e.message)}}
 function autoSync(){detectGHPages();if(GH.ok)ghPull()}
 function onSyncClick(){if(!GH.ok){detectGHPages();if(promptToken())ghPull()}else ghPush()}
@@ -1343,8 +1620,8 @@ function onSyncClick(){if(!GH.ok){detectGHPages();if(promptToken())ghPull()}else
 // ===== BOOT =====
 init();
 window.addEventListener('resize',()=>{clearTimeout(window._rt);window._rt=setTimeout(()=>{if(view==='graph'||view==='pgraph'||view==='biz')render()},300)});
-document.addEventListener('fullscreenchange',()=>{if(view==='biz'){clearTimeout(window._bfs);window._bfs=setTimeout(()=>render(),120)}});
 </script>
 </body>
 </html>
+
 
