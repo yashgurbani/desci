@@ -361,8 +361,8 @@ function togglePanel(p){
   const a=el('app');
   a.classList.toggle(p==='left'?'hide-left':'hide-right');
   requestAnimationFrame(()=>requestAnimationFrame(()=>{
-    window.dispatchEvent(new Event('resize'));
-    if(view==='graph'||view==='pgraph')render();
+    if(view==='graph') resizeGraphViewport();
+    else if(view==='pgraph') render();
   }));
 }
 function setView(v,b){view=v;document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));b.classList.add('on');render()}
@@ -394,9 +394,11 @@ function buildGraph(){
   const lG=svgG.append('g'),nG=svgG.append('g'),tG=svgG.append('g');
 
   const s=d3.forceSimulation(sn)
-    .force('link',d3.forceLink(se).id(d=>d.id).distance(90).strength(.25))
-    .force('charge',d3.forceManyBody().strength(-200))
+    .force('link',d3.forceLink(se).id(d=>d.id).distance(82).strength(.3))
+    .force('charge',d3.forceManyBody().strength(-125))
     .force('center',d3.forceCenter(w/2,h/2))
+    .force('x',d3.forceX(w/2).strength(.035))
+    .force('y',d3.forceY(h/2).strength(.035))
     .force('collision',d3.forceCollide(d=>Math.max(12,(d.decen||50)/4+6)));
   sim=s;
 
@@ -428,6 +430,31 @@ function buildGraph(){
     .style('pointer-events','none');
 
   ns.on('click',(e,d)=>{selNode(d.id);el('app').classList.remove('hide-right')});
+
+
+function resizeGraphViewport(){
+  const svgNode = document.querySelector('#main svg');
+  if (!svgNode || !sim || !svgG) return;
+
+  const m = el('main');
+  const w = m.clientWidth;
+  const h = m.clientHeight;
+  if (!w || !h) return;
+
+  d3.select(svgNode)
+    .attr('width', w)
+    .attr('height', h);
+
+  if (sim.force('center')) sim.force('center', d3.forceCenter(w / 2, h / 2));
+  if (sim.force('x')) sim.force('x', d3.forceX(w / 2).strength(0.035));
+  if (sim.force('y')) sim.force('y', d3.forceY(h / 2).strength(0.035));
+
+  sim.alphaTarget(0.12).restart();
+  setTimeout(() => {
+    if (sim) sim.alphaTarget(0);
+  }, 220);
+}
+
 
   // Tooltip for nodes
   const tip=el('tip');
