@@ -419,6 +419,21 @@ function estimateLabelPad(name, mode='org'){
   return Math.max(10, Math.min(mode==='people' ? 32 : 36, (name || '').length * mult));
 }
 
+function nodeLayoutScore(node, degree=0, mode='org'){
+  const cred = +(node.credScore || 0);
+  const dec = +(node.decen || 0);
+  const overlap = +(node.overlapScore || 0);
+  const deg = +degree;
+  if (mode === 'people') {
+    return (node._t === 'org' ? 85 : 30) + deg * 28 + (node.orgs ? node.orgs.length * 10 : 0);
+  }
+  return cred * 0.9 + dec * 0.45 + overlap * 0.35 + deg * 32;
+}
+
+function componentScore(compIds, byId, degreeMap, mode='org'){
+  return compIds.reduce((sum, id) => sum + nodeLayoutScore(byId.get(id) || {}, degreeMap.get(id) || 0, mode), 0);
+}
+
 function componentRing(size, minDim, mode='org'){
   if (mode === 'people') {
     if (size >= 10) return minDim * 0.26;
@@ -441,16 +456,29 @@ function componentRadius(compIds, byId, mode='org'){
   return base + sizeTerm + labelTerm;
 }
 
-function componentAnchors(w, h, comps, byId, mode='org'){
+function componentAnchors(w, h, comps, byId, degreeMap, mode='org'){
   const cx = w / 2, cy = h / 2;
   const minDim = Math.min(w, h);
-  const compNodes = comps.map((ids, i) => {
-    const ring = componentRing(ids.length, minDim, mode);
-    const angle = -Math.PI / 2 + (i * 2 * Math.PI / Math.max(1, comps.length));
+  const ranked = comps
+    .map(ids => ({ ids, score: componentScore(ids, byId, degreeMap, mode) }))
+    .sort((a, b) => b.score - a.score);
+
+  const ringByIndex = i => {
+    if (i === 0) return minDim * (mode === 'people' ? 0.14 : 0.16);
+    if (i <= 2) return minDim * (mode === 'people' ? 0.30 : 0.33);
+    if (i <= 5) return minDim * (mode === 'people' ? 0.46 : 0.50);
+    if (i <= 9) return minDim * (mode === 'people' ? 0.62 : 0.67);
+    return minDim * (mode === 'people' ? 0.78 : 0.82);
+  };
+
+  const compNodes = ranked.map((c, i) => {
+    const ring = ringByIndex(i);
+    const angle = -Math.PI / 2 + (i * 2 * Math.PI / Math.max(1, ranked.length));
     return {
       id: i,
-      ids,
-      r: componentRadius(ids, byId, mode),
+      ids: c.ids,
+      score: c.score,
+      r: componentRadius(c.ids, byId, mode),
       ring,
       x: cx + Math.cos(angle) * ring,
       y: cy + Math.sin(angle) * ring
@@ -458,18 +486,16 @@ function componentAnchors(w, h, comps, byId, mode='org'){
   });
 
   const cSim = d3.forceSimulation(compNodes)
-    .force('radial', d3.forceRadial(d => d.ring, cx, cy).strength(0.95))
-    .force('charge', d3.forceManyBody().strength(-2200))
-    .force('collision', d3.forceCollide(d => d.r + 48))
-    .force('x', d3.forceX(cx).strength(0.015))
-    .force('y', d3.forceY(cy).strength(0.015))
+    .force('radial', d3.forceRadial(d => d.ring, cx, cy).strength(0.8))
+    .force('charge', d3.forceManyBody().strength(-2600))
+    .force('collision', d3.forceCollide(d => d.r + 82))
     .stop();
 
-  for (let i = 0; i < 320; i++) cSim.tick();
+  for (let i = 0; i < 360; i++) cSim.tick();
 
   const out = new Map();
   compNodes.forEach(c => {
-    const pad = c.r + 24;
+    const pad = c.r + 34;
     c.x = Math.max(pad, Math.min(w - pad, c.x));
     c.y = Math.max(pad, Math.min(h - pad, c.y));
     c.ids.forEach(id => out.set(id, {x:c.x, y:c.y, r:c.r}));
@@ -477,20 +503,35 @@ function componentAnchors(w, h, comps, byId, mode='org'){
   return out;
 }
 
-function seedNodesByComponent(nodes, comps, anchorById){
+
+function seedNodesByComponent(nodes, comps, anchorById, degreeMap, mode='org'){
+  const byId = new Map(nodes.map(n => [n.id, n]));
   comps.forEach(ids => {
-    const count = ids.length;
-    const base = anchorById.get(ids[0]) || {x:0, y:0, r:100};
-    ids.forEach((id, j) => {
-      const d = nodes.find(n => n.id === id);
-      if (!d) return;
-      const angle = (j / Math.max(1, count)) * Math.PI * 2;
-      const localR = Math.min(base.r * 0.42, 20 + Math.sqrt(count) * 9 + (j % 3) * 8);
+    const base = anchorById.get(ids[0]) || {x:0, y:0, r:120};
+    const ranked = ids
+      .map(id => byId.get(id))
+      .filter(Boolean)
+      .sort((a, b) => nodeLayoutScore(b, degreeMap.get(b.id) || 0, mode) - nodeLayoutScore(a, degreeMap.get(a.id) || 0, mode));
+
+    ranked.forEach((d, idx) => {
+      if (idx === 0) {
+        d.x = base.x;
+        d.y = base.y;
+        return;
+      }
+      const shell = Math.floor((idx - 1) / 6) + 1;
+      const inShell = (idx - 1) % 6;
+      const shellCount = Math.min(6 + (shell - 1) * 4, Math.max(6, ranked.length - 1));
+      const angleOffset = shell % 2 ? 0 : Math.PI / shellCount;
+      const angle = angleOffset + (inShell / shellCount) * Math.PI * 2;
+      const shellGap = mode === 'people' ? 34 : 42;
+      const localR = Math.min(base.r * 0.72, 26 + shell * shellGap);
       d.x = base.x + Math.cos(angle) * localR;
       d.y = base.y + Math.sin(angle) * localR;
     });
   });
 }
+
 
 function labelPlacement(d, anchorById, mode='org'){
   const a = anchorById.get(d.id) || {x:d.x || 0, y:d.y || 0};
@@ -535,9 +576,14 @@ function buildGraph(){
     .map(e=>({ ...e, source:e.s, target:e.t }));
 
   const byId = new Map(sn.map(n => [n.id, n]));
+  const degreeMap = new Map(sn.map(n => [n.id, 0]));
+  se.forEach(e => {
+    degreeMap.set(e.source, (degreeMap.get(e.source) || 0) + 1);
+    degreeMap.set(e.target, (degreeMap.get(e.target) || 0) + 1);
+  });
   const comps = computeComponents(sn, se);
-  const anchorById = componentAnchors(w, h, comps, byId, 'org');
-  seedNodesByComponent(sn, comps, anchorById);
+  const anchorById = componentAnchors(w, h, comps, byId, degreeMap, 'org');
+  seedNodesByComponent(sn, comps, anchorById, degreeMap, 'org');
 
   const svgEl=d3.select(m).append('svg').attr('width',w).attr('height',h);
   zoomBehavior=d3.zoom().scaleExtent([.15,4]).on('zoom',e=>svgG.attr('transform',e.transform));
@@ -548,14 +594,14 @@ function buildGraph(){
   const s=d3.forceSimulation(sn)
     .force('link',d3.forceLink(se).id(d=>d.id).distance(d=>{
       const sa = anchorById.get(d.source.id || d.source)?.r || 120;
-      return Math.min(120, Math.max(76, sa * 0.34));
-    }).strength(.22))
-    .force('charge',d3.forceManyBody().strength(-125))
-    .force('clusterX', d3.forceX(d => (anchorById.get(d.id) || {x:w/2}).x).strength(.22))
-    .force('clusterY', d3.forceY(d => (anchorById.get(d.id) || {y:h/2}).y).strength(.22))
-    .force('collision',d3.forceCollide(d => estimateNodeRadius(d,'org') + estimateLabelPad(d.name,'org') + 10))
-    .alphaDecay(0.05)
-    .velocityDecay(0.34);
+      return Math.min(146, Math.max(92, sa * 0.42));
+    }).strength(.16))
+    .force('charge',d3.forceManyBody().strength(-170))
+    .force('clusterX', d3.forceX(d => (anchorById.get(d.id) || {x:w/2}).x).strength(.12))
+    .force('clusterY', d3.forceY(d => (anchorById.get(d.id) || {y:h/2}).y).strength(.12))
+    .force('collision',d3.forceCollide(d => estimateNodeRadius(d,'org') + estimateLabelPad(d.name,'org') + 18))
+    .alphaDecay(0.045)
+    .velocityDecay(0.30);
   sim=s;
 
   const lines=lG.selectAll('line').data(se).enter().append('line')
@@ -563,7 +609,7 @@ function buildGraph(){
     .attr('stroke-width',d=>d.type==='overlap'?1.15:1.55)
     .attr('stroke-dasharray',d=>d.type==='overlap'?'7 5':null)
     .attr('stroke-linecap','round')
-    .attr('opacity',d=>d.type==='overlap'?.4:.26);
+    .attr('opacity',d=>d.type==='overlap'?.32:.24);
 
   const ns=nG.selectAll('circle').data(sn).enter().append('circle')
     .attr('r',d=>estimateNodeRadius(d,'org'))
@@ -604,7 +650,7 @@ function buildGraph(){
     tip.classList.add('vis');
   })
   .on('mousemove',e=>{const r=m.getBoundingClientRect();tip.style.left=(e.clientX-r.left+14)+'px';tip.style.top=(e.clientY-r.top-10)+'px'})
-  .on('mouseleave',function(){d3.select(this).attr('stroke-width',d=>d.type==='overlap'?1.15:1.55).attr('opacity',d=>d.type==='overlap'?.4:.26);tip.classList.remove('vis')});
+  .on('mouseleave',function(){d3.select(this).attr('stroke-width',d=>d.type==='overlap'?1.15:1.55).attr('opacity',d=>d.type==='overlap'?.32:.24);tip.classList.remove('vis')});
 
   s.on('tick',()=>{
     lines.attr('x1',d=>d.source.x).attr('y1',d=>d.source.y).attr('x2',d=>d.target.x).attr('y2',d=>d.target.y);
@@ -659,22 +705,27 @@ function renderPeopleGraph(){
   D.people.forEach((p1,i)=>D.people.forEach((p2,j)=>{if(j>i&&p1.orgs.some(o=>p2.orgs.includes(o)))links.push({source:p1.id,target:p2.id,_t:'colleague'})}));
 
   const byId = new Map(allN.map(n => [n.id, n]));
+  const degreeMap = new Map(allN.map(n => [n.id, 0]));
+  links.forEach(e => {
+    degreeMap.set(e.source, (degreeMap.get(e.source) || 0) + 1);
+    degreeMap.set(e.target, (degreeMap.get(e.target) || 0) + 1);
+  });
   const comps = computeComponents(allN, links);
-  const anchorById = componentAnchors(w, h, comps, byId, 'people');
-  seedNodesByComponent(allN, comps, anchorById);
+  const anchorById = componentAnchors(w, h, comps, byId, degreeMap, 'people');
+  seedNodesByComponent(allN, comps, anchorById, degreeMap, 'people');
 
   const svgEl=d3.select(m).append('svg').attr('width',w).attr('height',h);
   svgEl.call(d3.zoom().scaleExtent([.2,4]).on('zoom',e=>gEl.attr('transform',e.transform)));
   const gEl=svgEl.append('g'),lG=gEl.append('g'),nG=gEl.append('g'),tG=gEl.append('g');
 
   const s=d3.forceSimulation(allN)
-    .force('link',d3.forceLink(links).id(d=>d.id).distance(d=>d._t==='colleague'?92:78).strength(.2))
-    .force('charge',d3.forceManyBody().strength(-140))
-    .force('clusterX', d3.forceX(d => (anchorById.get(d.id) || {x:w/2}).x).strength(.22))
-    .force('clusterY', d3.forceY(d => (anchorById.get(d.id) || {y:h/2}).y).strength(.22))
-    .force('collision',d3.forceCollide(d => estimateNodeRadius(d,'people') + estimateLabelPad(d.name,'people') + 12))
-    .alphaDecay(0.055)
-    .velocityDecay(0.36);
+    .force('link',d3.forceLink(links).id(d=>d.id).distance(d=>d._t==='colleague'?108:92).strength(.15))
+    .force('charge',d3.forceManyBody().strength(-185))
+    .force('clusterX', d3.forceX(d => (anchorById.get(d.id) || {x:w/2}).x).strength(.11))
+    .force('clusterY', d3.forceY(d => (anchorById.get(d.id) || {y:h/2}).y).strength(.11))
+    .force('collision',d3.forceCollide(d => estimateNodeRadius(d,'people') + estimateLabelPad(d.name,'people') + 16))
+    .alphaDecay(0.05)
+    .velocityDecay(0.32);
   sim=s;
 
   lG.selectAll('line').data(links).enter().append('line')
