@@ -13,7 +13,7 @@
   --border:rgba(255,255,255,.08);--border-h:rgba(255,255,255,.14);
   --text:#eaeaea;--text-2:#a0a0a0;--text-3:#606060;
   --gold:#d4a853;--gold-dim:#b8923e;--gold-glow:rgba(212,168,83,.08);
-  --sage:#6ec89b;--rose:#e87e9a;--teal:#5ab8b3;
+  --sage:#8ae8ba;--rose:#ff9abb;--teal:#74ddd7;
   --red:#e05c5c;--blue:#5c9ee0;
   --mono:'Fira Code',monospace;--display:'Playfair Display',Georgia,serif;
   --body:'Nunito Sans',system-ui,sans-serif;
@@ -182,8 +182,8 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
 
 /* EDGE COLORS */
 :root {
-  --edge-funder:#5cb87a;--edge-ecosystem:#5caab8;--edge-partner:#9b7ed4;
-  --edge-overlap:#e3be4d;--edge-collaborator:#e87e9a;
+  --edge-funder:#78dca2;--edge-ecosystem:#76cee0;--edge-partner:#b29aff;
+  --edge-overlap:#f0cb5a;--edge-collaborator:#ff9abb;
 }
 
 /* CREDIBILITY BADGE */
@@ -560,10 +560,10 @@ function buildGraph(){
 
   const lines=lG.selectAll('line').data(se).enter().append('line')
     .attr('stroke',d=>EC[d.type]||'var(--raised)')
-    .attr('stroke-width',d=>d.type==='overlap'?1.9:1.45)
+    .attr('stroke-width',d=>d.type==='overlap'?1.15:1.55)
     .attr('stroke-dasharray',d=>d.type==='overlap'?'7 5':null)
     .attr('stroke-linecap','round')
-    .attr('opacity',d=>d.type==='overlap'?.44:.2);
+    .attr('opacity',d=>d.type==='overlap'?.4:.26);
 
   const ns=nG.selectAll('circle').data(sn).enter().append('circle')
     .attr('r',d=>estimateNodeRadius(d,'org'))
@@ -597,14 +597,14 @@ function buildGraph(){
   .on('mouseleave',()=>tip.classList.remove('vis'));
 
   lines.on('mouseenter',function(e,d){
-    d3.select(this).attr('stroke-width',3).attr('opacity',.55);
+    d3.select(this).attr('stroke-width',d.type==='overlap'?1.9:2.7).attr('opacity',.58);
     const sn2=D.nodes.find(n=>n.id===(d.source.id||d.source));
     const tn2=D.nodes.find(n=>n.id===(d.target.id||d.target));
     tip.innerHTML=`<h4 style="font-size:.8rem">${sn2?.name||''} → ${tn2?.name||''}</h4><div class="tm"><span class="rel-badge" style="background:${(RB[d.type]||{}).b||'var(--raised)'};color:${(RB[d.type]||{}).c||'#fff'}">${d.type}</span> ${d.l||''}</div>`;
     tip.classList.add('vis');
   })
   .on('mousemove',e=>{const r=m.getBoundingClientRect();tip.style.left=(e.clientX-r.left+14)+'px';tip.style.top=(e.clientY-r.top-10)+'px'})
-  .on('mouseleave',function(){d3.select(this).attr('stroke-width',d=>d.type==='overlap'?1.9:1.45).attr('opacity',d=>d.type==='overlap'?.44:.2);tip.classList.remove('vis')});
+  .on('mouseleave',function(){d3.select(this).attr('stroke-width',d=>d.type==='overlap'?1.15:1.55).attr('opacity',d=>d.type==='overlap'?.4:.26);tip.classList.remove('vis')});
 
   s.on('tick',()=>{
     lines.attr('x1',d=>d.source.x).attr('y1',d=>d.source.y).attr('x2',d=>d.target.x).attr('y2',d=>d.target.y);
@@ -679,13 +679,13 @@ function renderPeopleGraph(){
 
   lG.selectAll('line').data(links).enter().append('line')
     .attr('stroke',d=>d._t==='colleague'?'var(--gold)':'var(--raised)')
-    .attr('stroke-width',d=>d._t==='colleague'?1.7:1)
-    .attr('opacity',.22);
+    .attr('stroke-width',d=>d._t==='colleague'?1.8:1.05)
+    .attr('opacity',.28);
 
   const ns=nG.selectAll('g').data(allN).enter().append('g').style('cursor','pointer')
     .call(d3.drag().on('start',(e,d)=>{if(!e.active)s.alphaTarget(.18).restart();d.fx=d.x;d.fy=d.y}).on('drag',(e,d)=>{d.fx=e.x;d.fy=e.y}).on('end',(e,d)=>{if(!e.active)s.alphaTarget(0);d.fx=null;d.fy=null}));
 
-  ns.filter(d=>d._t==='person').append('circle').attr('r',10).attr('fill','var(--gold)').attr('fill-opacity',.15).attr('stroke','var(--gold)').attr('stroke-width',1.5);
+  ns.filter(d=>d._t==='person').append('circle').attr('r',10).attr('fill','var(--gold)').attr('fill-opacity',.18).attr('stroke','var(--gold)').attr('stroke-width',1.6);
   ns.filter(d=>d._t==='org').append('rect').attr('x',-9).attr('y',-9).attr('width',18).attr('height',18).attr('rx',4).attr('fill',d=>SC[d.stack]||'var(--text-3)').attr('fill-opacity',.15).attr('stroke',d=>SC[d.stack]||'var(--text-3)').attr('stroke-width',1.2);
 
   const labels=tG.selectAll('text').data(allN).enter().append('text').text(d=>d.name)
