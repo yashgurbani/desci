@@ -275,7 +275,7 @@ const GLOSS={
 // ===== GLOBALS =====
 const el=id=>document.getElementById(id);
 let D={nodes:[],edges:[],people:[]};
-let view='graph',selId=null,sim=null,zoomBehavior=null,svgG=null;
+let view='graph',selId=null,sim=null,zoomBehavior=null,svgG=null,graphComponents=[],graphComponentCenters=new Map();
 let flt={stack:[],type:[],overlap:[]};
 let sortC='overlapScore',sortA=false;
 let zoteroItems=null;
@@ -379,6 +379,33 @@ function render(){
 }
 
 // ===== GRAPH =====
+
+function computeGraphComponentCenters(w,h){
+  graphComponentCenters = new Map();
+  const comps = graphComponents || [];
+  if(!comps.length) return graphComponentCenters;
+  const cx = w / 2, cy = h / 2;
+  if(comps.length === 1){
+    graphComponentCenters.set(0,{x:cx,y:cy});
+    return graphComponentCenters;
+  }
+
+  const innerCount = Math.min(6, comps.length);
+  const outerCount = Math.max(0, comps.length - innerCount);
+  const innerR = Math.min(w,h) * 0.19;
+  const outerR = Math.min(w,h) * 0.31;
+
+  for(let i=0;i<innerCount;i++){
+    const a = (-Math.PI/2) + (2*Math.PI*i/innerCount);
+    graphComponentCenters.set(i,{x:cx + Math.cos(a)*innerR, y:cy + Math.sin(a)*innerR});
+  }
+  for(let i=0;i<outerCount;i++){
+    const a = (-Math.PI/2) + (2*Math.PI*i/outerCount) + (outerCount ? Math.PI/outerCount : 0);
+    graphComponentCenters.set(innerCount + i,{x:cx + Math.cos(a)*outerR, y:cy + Math.sin(a)*outerR});
+  }
+  return graphComponentCenters;
+}
+
 function buildGraph(){
   const m=el('main'),w=m.clientWidth,h=m.clientHeight;
   if(!w||!h)return;
@@ -393,20 +420,57 @@ function buildGraph(){
   svgG=svgEl.append('g');
   const lG=svgG.append('g'),nG=svgG.append('g'),tG=svgG.append('g');
 
+  const adj=new Map(sn.map(n=>[n.id,[]]));
+  se.forEach(e=>{
+    adj.get(e.source)?.push(e.target);
+    adj.get(e.target)?.push(e.source);
+  });
+
+  const seen=new Set(), components=[];
+  for(const n of sn){
+    if(seen.has(n.id)) continue;
+    const q=[n.id], comp=[];
+    seen.add(n.id);
+    while(q.length){
+      const cur=q.pop();
+      comp.push(cur);
+      for(const nxt of (adj.get(cur)||[])){
+        if(!seen.has(nxt)){
+          seen.add(nxt);
+          q.push(nxt);
+        }
+      }
+    }
+    components.push(comp);
+  }
+  components.sort((a,b)=>b.length-a.length);
+  graphComponents = components;
+  computeGraphComponentCenters(w,h);
+
+  const compIndex=new Map();
+  components.forEach((comp,i)=>comp.forEach(id=>compIndex.set(id,i)));
+
   const nodeRadius = d => Math.max(6,(d.decen||50)/8+3);
   const labelCollision = d => {
     const nr = nodeRadius(d);
-    const labelPad = Math.min(18, 6 + (d.name ? d.name.length * 0.45 : 0));
+    const labelPad = Math.min(24, 9 + (d.name ? d.name.length * 0.52 : 0));
     return nr + labelPad;
   };
 
+  sn.forEach(d=>{
+    d._comp = compIndex.get(d.id) ?? 0;
+    const c = graphComponentCenters.get(d._comp) || {x:w/2,y:h/2};
+    if(!Number.isFinite(d.x)) d.x = c.x + (Math.random()-.5)*70;
+    if(!Number.isFinite(d.y)) d.y = c.y + (Math.random()-.5)*56;
+  });
+
   const s=d3.forceSimulation(sn)
-    .force('link',d3.forceLink(se).id(d=>d.id).distance(86).strength(.28))
-    .force('charge',d3.forceManyBody().strength(-136))
+    .force('link',d3.forceLink(se).id(d=>d.id).distance(94).strength(.24))
+    .force('charge',d3.forceManyBody().strength(-148))
     .force('center',d3.forceCenter(w/2,h/2))
-    .force('x',d3.forceX(w/2).strength(.028))
-    .force('y',d3.forceY(h/2).strength(.028))
-    .force('collision',d3.forceCollide(labelCollision));
+    .force('clusterX',d3.forceX(d=>(graphComponentCenters.get(d._comp)||{x:w/2}).x).strength(.085))
+    .force('clusterY',d3.forceY(d=>(graphComponentCenters.get(d._comp)||{y:h/2}).y).strength(.085))
+    .force('collision',d3.forceCollide(d=>labelCollision(d)+4));
   sim=s;
 
   // Edges with color by type
@@ -425,17 +489,17 @@ function buildGraph(){
     .call(d3.drag().on('start',(e,d)=>{if(!e.active)s.alphaTarget(.3).restart();d.fx=d.x;d.fy=d.y}).on('drag',(e,d)=>{d.fx=e.x;d.fy=e.y}).on('end',(e,d)=>{if(!e.active)s.alphaTarget(0);d.fx=null;d.fy=null}));
 
   const labels=tG.selectAll('text').data(sn).enter().append('text').text(d=>d.name)
-    .attr('font-size',10)
+    .attr('font-size',9.5)
     .attr('font-family','Nunito Sans,sans-serif')
     .attr('font-weight',600)
     .attr('fill','var(--graph-label)')
-    .attr('stroke','rgba(0,0,0,.72)')
-    .attr('stroke-width',1.1)
+    .attr('stroke','rgba(0,0,0,.82)')
+    .attr('stroke-width',1.25)
     .attr('paint-order','stroke')
     .attr('text-anchor','middle')
     .attr('dy',d=>{
-      const k = (d.id || '').split('').reduce((a,c)=>a+c.charCodeAt(0),0) % 3;
-      return k===0 ? -15 : (k===1 ? -22 : 18);
+      const k = (d.id || '').split('').reduce((a,c)=>a+c.charCodeAt(0),0) % 4;
+      return k===0 ? -16 : (k===1 ? -26 : (k===2 ? 18 : 28));
     })
     .style('pointer-events','none');
 
@@ -455,9 +519,11 @@ function resizeGraphViewport(){
     .attr('width', w)
     .attr('height', h);
 
+  computeGraphComponentCenters(w,h);
+
   if (sim.force('center')) sim.force('center', d3.forceCenter(w / 2, h / 2));
-  if (sim.force('x')) sim.force('x', d3.forceX(w / 2).strength(0.028));
-  if (sim.force('y')) sim.force('y', d3.forceY(h / 2).strength(0.028));
+  if (sim.force('clusterX')) sim.force('clusterX', d3.forceX(d => (graphComponentCenters.get(d._comp) || {x:w/2}).x).strength(0.085));
+  if (sim.force('clusterY')) sim.force('clusterY', d3.forceY(d => (graphComponentCenters.get(d._comp) || {y:h/2}).y).strength(0.085));
 
   sim.alphaTarget(0.12).restart();
   setTimeout(() => {
