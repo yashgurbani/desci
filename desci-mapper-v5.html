@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DeSci Landscape</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Nunito+Sans:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap');
+
+:root, [data-theme="navy"] {
+  --bg: #0c1018; --surface: #131a24; --card: #1a2332; --raised: #212d3e;
+  --border: rgba(255,255,255,.06); --border-h: rgba(255,255,255,.12);
+  --text: #e4e8ef; --text-2: #8d9bb0; --text-3: #526176;
+  --gold: #d4a853; --gold-dim: #b8923e; --gold-glow: rgba(212,168,83,.1);
+  --sage: #6ec89b; --rose: #e87e9a; --teal: #5ab8b3;
+  --red: #e05c5c; --blue: #5c9ee0;
+  --green-edge: #5cb87a; --red-edge: #d46060; --yellow-edge: #c9a84c;
+  --purple-edge: #9b7ed4; --cyan-edge: #5caab8; --orange-edge: #c98a4c;
+  --graph-label: #8d9bb0; --legend-bg: rgba(19,26,36,.94);
+  --mono: 'Fira Code', monospace;
+  --display: 'Playfair Display', Georgia, serif;
+  --body: 'Nunito Sans', system-ui, sans-serif;
+  --radius: 8px; --radius-sm: 5px;
+}
+[data-theme="black"] {
+  --bg: #000000; --surface: #0a0a0a; --card: #141414; --raised: #1e1e1e;
+  --border: rgba(255,255,255,.08); --border-h: rgba(255,255,255,.14);
+  --text: #e8e8e8; --text-2: #999; --text-3: #555;
+  --gold: #d4a853; --gold-dim: #b8923e; --gold-glow: rgba(212,168,83,.08);
+  --sage: #6ec89b; --rose: #e87e9a; --teal: #5ab8b3;
+  --graph-label: #999; --legend-bg: rgba(0,0,0,.92);
+}
+[data-theme="light"] {
+  --bg: #f5f3ef; --surface: #ffffff; --card: #f0ede8; --raised: #e8e4de;
+  --border: rgba(0,0,0,.08); --border-h: rgba(0,0,0,.14);
+  --text: #1a1a1a; --text-2: #5a5a5a; --text-3: #999;
+  --gold: #9a7230; --gold-dim: #7d5c26; --gold-glow: rgba(154,114,48,.08);
+  --sage: #2a8f5e; --rose: #c45070; --teal: #2a8a84;
+  --red: #c04040; --blue: #3070c0;
+  --green-edge: #2a8f5e; --red-edge: #c04040; --yellow-edge: #9a7e30;
+  --purple-edge: #7050b0; --cyan-edge: #2a7a88; --orange-edge: #b07030;
+  --graph-label: #5a5a5a; --legend-bg: rgba(255,255,255,.94);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { font-size: 15px; }
+body { font-family: var(--body); background: var(--bg); color: var(--text); height: 100vh; overflow: hidden; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--raised); border-radius: 3px; }
+a { color: var(--gold); text-decoration: none; transition: color .15s; }
+a:hover { color: #e8c06a; }
+
+/* ===== LAYOUT ===== */
+.app {
+  display: grid;
+  grid-template-rows: 56px 1fr;
+  grid-template-columns: var(--sidebar-w, 256px) 1fr var(--detail-w, 380px);
+  height: 100vh;
+  transition: grid-template-columns .3s ease;
+}
+.app.hide-left { --sidebar-w: 0px; }
+.app.hide-right { --detail-w: 0px; }
+.app.hide-left .sidebar { width: 0; padding: 0; overflow: hidden; border: none; opacity: 0; pointer-events: none; }
+.app.hide-right .detail { width: 0; padding: 0; overflow: hidden; border: none; opacity: 0; pointer-events: none; }
+.sidebar, .detail { transition: opacity .2s, padding .3s; }
+
+/* Panel toggles */
+.toggle-left, .toggle-right {
+  position: absolute; top: 50%; z-index: 10;
+  width: 20px; height: 40px; border-radius: 0 6px 6px 0;
+  background: var(--surface); border: 1px solid var(--border-h); border-left: none;
+  color: var(--text-3); cursor: pointer; display: flex; align-items: center; justify-content: center;
+  font-size: .7rem; transition: all .15s; transform: translateY(-50%);
+}
+.toggle-left { left: 0; }
+.toggle-right { right: 0; border-radius: 6px 0 0 6px; border: 1px solid var(--border-h); border-right: none; }
+.toggle-left:hover, .toggle-right:hover { color: var(--gold); background: var(--card); }
+
+/* Zoom controls */
+.zoom-controls {
+  position: absolute; top: 16px; right: 16px; z-index: 5;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.zoom-btn {
+  width: 36px; height: 36px; border-radius: var(--radius);
+  background: var(--legend-bg); backdrop-filter: blur(8px);
+  border: 1px solid var(--border-h); color: var(--text-2);
+  font-size: 1rem; cursor: pointer; display: flex;
+  align-items: center; justify-content: center; transition: all .15s;
+  font-family: var(--body);
+}
+.zoom-btn:hover { color: var(--gold); border-color: var(--gold); }
+
+/* Theme switcher */
+.theme-switch {
+  display: flex; gap: 3px; margin-left: 12px;
+}
+.theme-dot {
+  width: 18px; height: 18px; border-radius: 50%;
+  border: 2px solid var(--border-h); cursor: pointer;
+  transition: all .15s;
+}
+.theme-dot:hover { border-color: var(--gold); transform: scale(1.15); }
+.theme-dot.active { border-color: var(--gold); box-shadow: 0 0 0 2px var(--gold-glow); }
+.theme-dot[data-t="navy"] { background: #0c1018; }
+.theme-dot[data-t="black"] { background: #000; }
+.theme-dot[data-t="light"] { background: #f5f3ef; }
+
+/* ===== HEADER ===== */
+.header {
+  grid-column: 1 / -1;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center;
+  padding: 0 24px; gap: 20px;
+}
+.logo {
+  font-family: var(--display);
+  font-size: 1.1rem; font-weight: 600;
+  color: var(--gold);
+}
+.stats {
+  font-family: var(--mono); font-size: .7rem;
+  color: var(--text-3);
+}
+.stats b { color: var(--text-2); }
+
+.tabs { display: flex; gap: 4px; margin-left: 28px; }
+.tab {
+  font-family: var(--body); font-size: .8rem; font-weight: 600;
+  padding: 8px 18px; border-radius: 20px;
+  border: none; background: transparent;
+  color: var(--text-3); cursor: pointer;
+  transition: all .2s ease;
+}
+.tab:hover { color: var(--text-2); background: rgba(255,255,255,.03); }
+.tab.on {
+  background: var(--gold-glow); color: var(--gold);
+  box-shadow: inset 0 0 0 1px rgba(212,168,83,.25);
+}
+
+.actions { margin-left: auto; display: flex; gap: 6px; }
+.btn {
+  font-family: var(--body); font-size: .75rem; font-weight: 600;
+  padding: 7px 14px; border-radius: 20px;
+  border: 1px solid var(--border-h); background: transparent;
+  color: var(--text-2); cursor: pointer; transition: all .15s;
+}
+.btn:hover { border-color: var(--gold); color: var(--gold); background: var(--gold-glow); }
+.btn-fill { background: var(--gold-dim); border-color: var(--gold-dim); color: #0c1018; }
+.btn-fill:hover { background: var(--gold); }
+.btn-x { border-color: rgba(224,92,92,.3); color: var(--red); }
+.btn-x:hover { background: rgba(224,92,92,.1); }
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  padding: 20px 16px; overflow-y: auto;
+}
+.sb-section { margin-bottom: 20px; }
+.sb-label {
+  font-family: var(--mono); font-size: .6rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 2px;
+  color: var(--text-3); margin-bottom: 8px;
+}
+.sb-search {
+  width: 100%; padding: 10px 14px;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); color: var(--text);
+  font-size: .9rem; font-family: var(--body);
+  transition: border-color .2s;
+}
+.sb-search:focus { outline: none; border-color: rgba(212,168,83,.4); }
+.sb-search::placeholder { color: var(--text-3); }
+.pills { display: flex; flex-wrap: wrap; gap: 4px; }
+.pill {
+  font-size: .7rem; font-weight: 500;
+  padding: 4px 10px; border-radius: 14px;
+  border: 1px solid var(--border); background: transparent;
+  color: var(--text-3); cursor: pointer; transition: all .15s;
+}
+.pill:hover { color: var(--text-2); border-color: var(--border-h); }
+.pill.on { border-color: rgba(212,168,83,.35); color: var(--gold); background: var(--gold-glow); }
+
+.node-list { list-style: none; margin-top: 4px; }
+.nli {
+  padding: 7px 10px; border-radius: var(--radius-sm);
+  cursor: pointer; display: flex; align-items: center; gap: 10px;
+  font-size: .85rem; transition: background .12s;
+}
+.nli:hover { background: var(--card); }
+.nli.sel { background: var(--gold-glow); }
+.nli-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.nli-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* ===== MAIN ===== */
+.main { position: relative; overflow: hidden; background: var(--bg); }
+.main svg { width: 100%; height: 100%; }
+
+/* ===== DETAIL ===== */
+.detail {
+  background: var(--surface); border-left: 1px solid var(--border);
+  padding: 24px 20px; overflow-y: auto;
+}
+.det-empty {
+  height: 100%; display: flex; align-items: center; justify-content: center;
+  color: var(--text-3); font-size: .9rem; font-style: italic;
+}
+.det-name { font-family: var(--display); font-size: 1.5rem; font-weight: 600; line-height: 1.2; margin-bottom: 4px; }
+.det-sub { font-size: .85rem; color: var(--text-2); margin-bottom: 20px; }
+
+.field { margin-bottom: 16px; }
+.flabel {
+  font-family: var(--mono); font-size: .6rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 1.5px;
+  color: var(--text-3); margin-bottom: 5px;
+}
+.finput {
+  width: 100%; padding: 9px 13px;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); color: var(--text);
+  font-size: .85rem; font-family: var(--body);
+  transition: border-color .2s;
+}
+.finput:focus { outline: none; border-color: rgba(212,168,83,.4); }
+textarea.finput { resize: vertical; min-height: 64px; line-height: 1.5; }
+select.finput { appearance: none; cursor: pointer; }
+
+.tag-row { display: flex; flex-wrap: wrap; gap: 5px; }
+.tag-chip {
+  font-size: .7rem; font-weight: 500;
+  padding: 3px 10px; border-radius: 14px;
+  background: var(--card); border: 1px solid var(--border);
+  color: var(--text-2); display: inline-flex; align-items: center; gap: 5px;
+}
+.tag-chip .rm { cursor: pointer; opacity: .4; }
+.tag-chip .rm:hover { opacity: 1; color: var(--red); }
+
+.strata { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; }
+.stm {
+  text-align: center; padding: 8px 3px; border-radius: var(--radius-sm);
+  font-family: var(--mono); font-size: .65rem; line-height: 1.3;
+  border: 1px solid var(--border); cursor: pointer; transition: all .15s;
+}
+.stm:hover { border-color: var(--gold); }
+.stm[data-v="0"] { color: var(--text-3); }
+.stm[data-v="1"] { background: rgba(224,92,92,.08); color: var(--red); border-color: rgba(224,92,92,.25); }
+.stm[data-v="2"] { background: rgba(201,168,76,.08); color: var(--yellow-edge); border-color: rgba(201,168,76,.25); }
+.stm[data-v="3"] { background: rgba(92,184,122,.08); color: var(--green-edge); border-color: rgba(92,184,122,.25); }
+
+.slider-row { display: flex; align-items: center; gap: 10px; }
+.slider-row input[type=range] { flex: 1; accent-color: var(--gold); }
+.slider-v { font-family: var(--mono); font-size: .8rem; color: var(--gold); min-width: 32px; text-align: right; }
+
+.rel-list { list-style: none; }
+.rel-item {
+  display: flex; align-items: center; gap: 8px;
+  padding: 6px 0; font-size: .8rem;
+  border-bottom: 1px solid var(--border);
+}
+.rel-badge {
+  font-family: var(--mono); font-size: .6rem; font-weight: 600;
+  padding: 2px 8px; border-radius: 4px; text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* ===== TABLE ===== */
+.table-wrap { padding: 20px; overflow: auto; height: 100%; }
+table.dtbl { width: 100%; border-collapse: separate; border-spacing: 0; font-size: .8rem; }
+.dtbl th {
+  position: sticky; top: 0; z-index: 2;
+  background: var(--surface); padding: 10px 12px; text-align: left;
+  font-family: var(--mono); font-size: .65rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: .5px;
+  color: var(--text-3); cursor: pointer; white-space: nowrap;
+  border-bottom: 2px solid var(--border-h);
+}
+.dtbl th:hover { color: var(--gold); }
+.dtbl td {
+  padding: 8px 12px; border-bottom: 1px solid var(--border);
+  max-width: 240px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.dtbl tbody tr { transition: background .1s; }
+.dtbl tbody tr:hover { background: var(--card); }
+.dtbl tbody tr.sel { background: var(--gold-glow); }
+.stack-chip {
+  font-family: var(--mono); font-size: .6rem; font-weight: 600;
+  padding: 3px 8px; border-radius: 4px; display: inline-block;
+}
+
+/* ===== PEOPLE ===== */
+.people-grid {
+  padding: 24px; display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 14px; overflow-y: auto; height: 100%; align-content: start;
+}
+.p-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 18px 20px;
+  cursor: pointer; transition: all .2s;
+}
+.p-card:hover { border-color: var(--gold); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(0,0,0,.2); }
+.p-name { font-family: var(--display); font-size: 1.05rem; font-weight: 600; margin-bottom: 3px; }
+.p-role { font-size: .8rem; color: var(--text-2); line-height: 1.4; margin-bottom: 8px; }
+.p-links { display: flex; gap: 10px; font-size: .75rem; }
+.p-orgs { font-family: var(--mono); font-size: .65rem; color: var(--text-3); margin-top: 8px; }
+
+/* ===== LITERATURE ===== */
+.lit-panel { padding: 28px 32px; overflow-y: auto; height: 100%; max-width: 900px; }
+.lit-title { font-family: var(--display); font-size: 1.6rem; font-weight: 600; margin-bottom: 6px; }
+.lit-desc { font-size: .9rem; color: var(--text-2); margin-bottom: 16px; }
+.zotero-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 20px; background: var(--gold-dim); color: #0c1018;
+  border-radius: 20px; font-family: var(--body); font-size: .8rem; font-weight: 600;
+  transition: background .15s; border: none; cursor: pointer;
+}
+.zotero-btn:hover { background: var(--gold); color: #0c1018; text-decoration: none; }
+.lit-cat {
+  font-family: var(--mono); font-size: .7rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 2px;
+  color: var(--gold); margin: 28px 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--border-h);
+}
+.paper {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 14px 18px; margin-bottom: 10px;
+  transition: border-color .15s;
+}
+.paper:hover { border-color: var(--border-h); }
+.paper-t { font-family: var(--display); font-size: .95rem; font-weight: 500; margin-bottom: 3px; line-height: 1.3; }
+.paper-a { font-size: .75rem; color: var(--text-2); }
+.paper-m { font-family: var(--mono); font-size: .65rem; color: var(--text-3); margin-top: 5px; }
+.paper-n { font-size: .75rem; color: var(--text-2); margin-top: 5px; font-style: italic; }
+
+/* ===== GRAPH LEGEND ===== */
+.legend {
+  position: absolute; bottom: 16px; left: 16px;
+  background: var(--legend-bg); backdrop-filter: blur(8px);
+  border: 1px solid var(--border-h); border-radius: var(--radius);
+  padding: 12px 16px; font-size: .7rem; z-index: 5;
+}
+.legend-title { font-family: var(--mono); font-size: .6rem; font-weight: 600; color: var(--text-3); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 6px; }
+.legend-row { display: flex; align-items: center; gap: 8px; margin-bottom: 3px; color: var(--text-2); }
+.legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+.legend-line { width: 18px; height: 2px; border-radius: 1px; }
+
+.tooltip {
+  position: absolute; background: var(--card); border: 1px solid var(--border-h);
+  border-radius: var(--radius); padding: 10px 14px;
+  pointer-events: none; opacity: 0; transition: opacity .12s;
+  font-size: .8rem; max-width: 260px; z-index: 50;
+  box-shadow: 0 8px 32px rgba(0,0,0,.3);
+}
+.tooltip.vis { opacity: 1; }
+.tooltip h4 { font-family: var(--display); font-size: .9rem; margin-bottom: 3px; }
+.tooltip .tm { font-family: var(--mono); font-size: .65rem; color: var(--text-3); }
+
+/* ===== MODAL ===== */
+.modal-bg {
+  position: fixed; inset: 0; background: rgba(0,0,0,.5); backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center; z-index: 100;
+}
+.modal {
+  background: var(--surface); border: 1px solid var(--border-h);
+  border-radius: 12px; padding: 28px; width: 500px; max-height: 80vh; overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0,0,0,.4);
+}
+.modal h2 { font-family: var(--display); font-size: 1.2rem; margin-bottom: 20px; }
+.modal-foot { display: flex; gap: 8px; justify-content: flex-end; margin-top: 20px; }
+
+/* Sync indicator */
+.sync-status {
+  font-family: var(--mono); font-size: .6rem;
+  padding: 3px 10px; border-radius: 14px;
+  border: 1px solid var(--border); color: var(--text-3);
+  display: inline-flex; align-items: center; gap: 5px;
+  cursor: pointer; transition: all .15s; margin-left: 6px;
+}
+.sync-status:hover { border-color: var(--gold); color: var(--text-2); }
+.sync-status.synced { border-color: rgba(92,184,122,.3); color: var(--green-edge); }
+.sync-status.error { border-color: rgba(224,92,92,.3); color: var(--red); }
+.sync-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.sync-help { font-size: .75rem; color: var(--text-2); line-height: 1.5; margin-bottom: 12px; }
+.sync-help code { font-family: var(--mono); font-size: .7rem; background: var(--card); padding: 1px 5px; border-radius: 3px; }
+</style>
+</head>
+<body>
+<div class="app hide-right">
+<header class="header">
+  <span class="logo">DeSci Landscape</span>
+  <span class="stats" id="stats"></span>
+  <span class="sync-status" id="syncStatus" onclick="githubPull()" title="Click to pull from GitHub"><span class="sync-dot"></span>local only</span>
+  <div class="tabs">
+    <button class="tab on" onclick="setView('graph',this)">Graph</button>
+    <button class="tab" onclick="setView('table',this)">Directory</button>
+    <button class="tab" onclick="setView('people',this)">People</button>
+    <button class="tab" onclick="setView('lit',this)">Literature</button>
+  </div>
+  <div class="actions">
+    <div class="theme-switch">
+      <div class="theme-dot active" data-t="navy" onclick="setTheme('navy')" title="Navy"></div>
+      <div class="theme-dot" data-t="black" onclick="setTheme('black')" title="Black"></div>
+      <div class="theme-dot" data-t="light" onclick="setTheme('light')" title="Light"></div>
+    </div>
+    <button class="btn" onclick="addOrgM()">+ Org</button>
+    <button class="btn" onclick="addEdgeM()">+ Relation</button>
+    <button class="btn" onclick="addPersonM()">+ Person</button>
+    <button class="btn" onclick="xCSV()">CSV</button>
+    <button class="btn" onclick="xJSON()">JSON</button>
+    <button class="btn" onclick="el('imp').click()">Import</button>
+    <button class="btn" onclick="syncSettings()" title="GitHub sync settings">⚙ Sync</button>
+    <input type="file" id="imp" accept=".csv,.json" style="display:none" onchange="doImport(event)">
+  </div>
+</header>
+
+<aside class="sidebar">
+  <div class="sb-section"><div class="sb-label">Search</div><input class="sb-search" id="search" placeholder="Filter organizations..." oninput="af()"></div>
+  <div class="sb-section"><div class="sb-label">Stack Layer</div><div class="pills" id="pStack"></div></div>
+  <div class="sb-section"><div class="sb-label">Tags</div><div class="pills" id="pTags"></div></div>
+  <div class="sb-section"><div class="sb-label">Type</div><div class="pills" id="pType"></div></div>
+  <div class="sb-section"><div class="sb-label">Organizations <b id="nc">0</b></div><ul class="node-list" id="nlist"></ul></div>
+</aside>
+
+<main class="main" id="main">
+  <div class="tooltip" id="tip"></div>
+  <button class="toggle-left" onclick="togglePanel('left')" title="Toggle sidebar">◀</button>
+  <button class="toggle-right" onclick="togglePanel('right')" title="Toggle detail">◀</button>
+  <div class="zoom-controls" id="zoomCtrl" style="display:none">
+    <button class="zoom-btn" onclick="zoomIn()" title="Zoom in">+</button>
+    <button class="zoom-btn" onclick="zoomOut()" title="Zoom out">−</button>
+    <button class="zoom-btn" onclick="zoomReset()" title="Fit to view" style="font-size:.7rem">⟲</button>
+  </div>
+</main>
+
+<aside class="detail" id="detP">
+  <div class="det-empty" id="detE">Select an organization</div>
+  <div id="detC" style="display:none"></div>
+</aside>
+</div>
+
+<div class="modal-bg" id="mo" style="display:none" onclick="if(event.target===this)clM()"><div class="modal" id="mc"></div></div>
+
+<script>
+const el=id=>document.getElementById(id);
+const SL=['S1 Prov','S2 Value','S3 Agent','S4 Verif','S5 Gov'];
+const SS={0:'—',1:'Plan',2:'Partial',3:'Live'};
+const SC={infrastructure:'var(--sage)',application:'var(--rose)',governance:'var(--teal)'};
+const SBG={infrastructure:'rgba(110,200,155,.12)',application:'rgba(232,126,154,.12)',governance:'rgba(90,184,179,.12)'};
+const EC={competitor:'var(--red-edge)',collaborator:'var(--green-edge)',overlap:'var(--yellow-edge)',funder:'var(--purple-edge)',partner:'var(--cyan-edge)',ecosystem:'var(--orange-edge)'};
+const RB={competitor:{b:'var(--red-edge)',c:'#fff'},collaborator:{b:'var(--green-edge)',c:'#fff'},overlap:{b:'var(--yellow-edge)',c:'#0c1018'},funder:{b:'var(--purple-edge)',c:'#fff'},partner:{b:'var(--cyan-edge)',c:'#fff'},ecosystem:{b:'var(--orange-edge)',c:'#fff'}};
+
+/* ===== DATA (same as v4, inlined for standalone deployment) ===== */
+const SEED_DATA = /* will load from localStorage or use fetch from v4 export */
+{"nodes":[{"id":"axondao","name":"AxonDAO","desc":"Neuroscience-focused DAO. Diagnostic inference on EEG/MRI streams. AXGT token on Ethereum.","people":"","funding":"DAO Treasury","stage":"Early","stack":"infrastructure","tags":["bioDAO","neuroscience","AI","tokenomics"],"type":"BioDAO","web":"https://axondao.io","chain":"Ethereum","source":"Shilina 2025","s1":3,"s2":3,"s3":3,"s4":0,"s5":2,"decen":70,"cf":{},"wp":"","git":"","twitter":""},{"id":"datalake","name":"DataLake","desc":"Consent-bound dataset curation with AI curator agents. LAKE token.","people":"","funding":"Token sale","stage":"Beta","stack":"infrastructure","tags":["data","AI","tokenomics"],"type":"Data Platform","web":"","chain":"Ethereum","source":"Shilina 2025","s1":3,"s2":3,"s3":2,"s4":0,"s5":2,"decen":60,"cf":{},"wp":"","git":"","twitter":""},{"id":"elizaos","name":"elizaOS","desc":"Open-source AI agent framework. Protein-design hypothesis generation via agent swarms.","people":"Shaw","funding":"VC + Token","stage":"Live","stack":"infrastructure","tags":["AI","agents","open-source"],"type":"AI Framework","web":"https://elizaos.ai","chain":"Solana","source":"Shilina 2025","s1":3,"s2":3,"s3":3,"s4":2,"s5":2,"decen":80,"cf":{},"wp":"","git":"https://github.com/elizaOS/eliza","twitter":"@elizaOS"},{"id":"galeon","name":"Galeon Care","desc":"Federated learning across 20+ French hospitals. GALEON token. Atlantis DAO community layer.","people":"","funding":"Series A","stage":"Live","stack":"application","tags":["healthcare","AI","federated-learning","tokenomics"],"type":"HealthTech","web":"https://galeon.care","chain":"Ethereum","source":"Shilina 2025","s1":3,"s2":3,"s3":2,"s4":0,"s5":2,"decen":50,"cf":{},"wp":"","git":"","twitter":"@GaleonCare"},{"id":"hetu","name":"Hetu Protocol","desc":"Adversarial AI agents stress-test causal graphs. Proof of Cognitive Work (POCW) consensus.","people":"","funding":"Grants","stage":"Beta","stack":"infrastructure","tags":["AI","verification","causal-inference"],"type":"Verification","web":"","chain":"Cosmos","source":"Shilina 2025","s1":3,"s2":3,"s3":3,"s4":2,"s5":2,"decen":85,"cf":{},"wp":"","git":"","twitter":""},{"id":"labdao","name":"LabDAO","desc":"Decentralized compute for reproducible scientific workflows. PLEX on Bacalhau.","people":"Niklas Rindtorff","funding":"Grants + DAO","stage":"Live","stack":"infrastructure","tags":["compute","reproducibility","open-source"],"type":"Compute/Lab","web":"https://labdao.xyz","chain":"Ethereum","source":"Shilina 2025","s1":3,"s2":2,"s3":3,"s4":1,"s5":1,"decen":75,"cf":{},"wp":"","git":"https://github.com/labdao","twitter":"@lab_dao"},{"id":"prime-intellect","name":"Prime Intellect","desc":"Distributed LLM/RL training. Replayable proofs for compute verification.","people":"","funding":"VC","stage":"Live","stack":"infrastructure","tags":["compute","AI","distributed-training"],"type":"Compute","web":"https://primeintellect.ai","chain":"Testnet","source":"Shilina 2025","s1":3,"s2":3,"s3":3,"s4":2,"s5":0,"decen":70,"cf":{},"wp":"","git":"https://github.com/PrimeIntellect-ai","twitter":"@PrimeIntellect"},{"id":"pump-science","name":"Pump Science","desc":"Gamified longevity research. CV bots grade live assays. RIF/URO tokens.","people":"","funding":"Token","stage":"Beta","stack":"application","tags":["longevity","gamified","tokenomics"],"type":"Gamified Science","web":"https://pump.science","chain":"Solana","source":"Shilina 2025","s1":2,"s2":3,"s3":2,"s4":0,"s5":2,"decen":40,"cf":{},"wp":"","git":"","twitter":"@pumpdotscience"},{"id":"rare-compute","name":"Rare Compute","desc":"GPU marketplace for antibody optimization. RL agents on Lilypad containers.","people":"","funding":"Token + Grants","stage":"Live","stack":"infrastructure","tags":["compute","tokenomics","GPU"],"type":"Compute","web":"","chain":"Ethereum","source":"Shilina 2025","s1":2,"s2":3,"s3":3,"s4":1,"s5":1,"decen":60,"cf":{},"wp":"","git":"","twitter":""},{"id":"researchhub","name":"ResearchHub","desc":"Open science publishing. RSC token for peer-review bounties. AI reviewer. Coinbase-backed.","people":"Patrick Joyce","funding":"Coinbase-backed","stage":"Live","stack":"application","tags":["publishing","peer-review","tokenomics","AI","open-access"],"type":"Publishing","web":"https://researchhub.com","chain":"Base","source":"Shilina 2025","s1":2,"s2":3,"s3":2,"s4":0,"s5":2,"decen":50,"cf":{},"wp":"","git":"https://github.com/ResearchHub","twitter":"@ResearchHub"},{"id":"rejuve","name":"Rejuve AI","desc":"Mobile longevity platform. Ensemble age models. RJV token. SingularityNET ecosystem.","people":"Ben Goertzel","funding":"SingularityNET","stage":"Live","stack":"application","tags":["longevity","AI","healthcare","tokenomics"],"type":"Longevity","web":"https://rejuve.ai","chain":"Cardano","source":"Shilina 2025","s1":3,"s2":3,"s3":3,"s4":2,"s5":2,"decen":65,"cf":{},"wp":"","git":"","twitter":"@rejaboratories"},{"id":"valleydao","name":"ValleyDAO / Phlo","desc":"SynBio venture studio. AI copilot for techno-economics. VLY token. Climate biotech.","people":"","funding":"DAO + Retro-PGF","stage":"Live","stack":"application","tags":["bioDAO","synbio","climate","AI"],"type":"BioDAO","web":"https://valleydao.xyz","chain":"Base","source":"Shilina 2025","s1":1,"s2":3,"s3":3,"s4":1,"s5":1,"decen":55,"cf":{},"wp":"","git":"","twitter":"@valley_dao"},{"id":"vitadao","name":"VitaDAO","desc":"Flagship longevity DAO. IP-NFTs, VITA token, 20+ projects. $10M+ raised. Pfizer Ventures.","people":"","funding":"DAO + Pfizer Ventures","stage":"Live","stack":"governance","tags":["bioDAO","longevity","IP-NFT","tokenomics"],"type":"BioDAO","web":"https://vitadao.com","chain":"Ethereum","source":"Shilina 2025","s1":3,"s2":3,"s3":2,"s4":2,"s5":2,"decen":70,"cf":{},"wp":"","git":"","twitter":"@vita_dao"},{"id":"welshare","name":"Welshare Health","desc":"Consent marketplace for health data. Consent NFTs, WEL tokens. ZK-DP proofs planned.","people":"","funding":"Grants","stage":"Beta","stack":"application","tags":["healthcare","data","ZK-proofs","tokenomics"],"type":"HealthTech","web":"","chain":"Ethereum","source":"Shilina 2025","s1":3,"s2":3,"s3":2,"s4":1,"s5":2,"decen":55,"cf":{},"wp":"","git":"","twitter":""},{"id":"molecule","name":"Molecule","desc":"IP-NFT infrastructure and BioDAO launchpad. Molecule Labs ('GitHub for DeSci'). Founded 2020.","people":"Paul Kohlhaas, Tyler Golato, Kevin Noessler","funding":"VC (Northpond, Placeholder)","stage":"Live","stack":"infrastructure","tags":["IP-NFT","infrastructure","launchpad"],"type":"Infra/Launchpad","web":"https://molecule.xyz","chain":"Ethereum","source":"Shilina 2025, Crunchbase","s1":3,"s2":3,"s3":2,"s4":1,"s5":2,"decen":55,"cf":{},"wp":"","git":"https://github.com/moleculeprotocol","twitter":"@molecule_dao"},{"id":"bio-protocol","name":"BIO Protocol","desc":"Metaplatform: BioDAO incubation, hackathons, grants. Binance Labs backed.","people":"Paul Kohlhaas","funding":"Token (BIO), Binance Labs","stage":"Live","stack":"governance","tags":["metaplatform","bioDAO","accelerator","tokenomics"],"type":"Accelerator","web":"https://bio.xyz","chain":"Base/Ethereum","source":"Shilina 2025, BIO blog","s1":2,"s2":3,"s3":2,"s4":1,"s5":2,"decen":60,"cf":{},"wp":"","git":"","twitter":"@bioprotocol"},{"id":"episteme","name":"Episteme","desc":"Claim-native architecture. Hypotheses as tokens, AI-oracled resolution, bonding curves. Market philosophy.","people":"Sasha Shilina","funding":"Unknown","stage":"Whitepaper","stack":"application","tags":["prediction-market","AI","market-oriented"],"type":"Prediction/Publishing","web":"https://episteme.ac","chain":"Humanode L1","source":"Episteme Whitepaper","s1":1,"s2":1,"s3":1,"s4":1,"s5":1,"decen":60,"cf":{},"wp":"https://episteme.ac","git":"","twitter":"@saborsky"},{"id":"ocean","name":"Ocean Protocol","desc":"Data tokenization marketplace. Dataset NFTs, compute-to-data.","people":"Trent McConaghy, Bruce Pon","funding":"Token (OCEAN)","stage":"Live","stack":"infrastructure","tags":["data","tokenomics","marketplace"],"type":"Data Platform","web":"https://oceanprotocol.com","chain":"Ethereum","source":"Crunchbase","s1":2,"s2":3,"s3":1,"s4":1,"s5":1,"decen":65,"cf":{},"wp":"","git":"https://github.com/oceanprotocol","twitter":"@oceanprotocol"},{"id":"numerai","name":"Numerai","desc":"Crowdsourced hedge fund. Data scientists stake NMR on trading models.","people":"Richard Craib","funding":"Token (NMR)","stage":"Live","stack":"application","tags":["prediction-market","market-oriented","AI"],"type":"Prediction Market","web":"https://numer.ai","chain":"Ethereum","source":"Crunchbase","s1":1,"s2":3,"s3":2,"s4":1,"s5":1,"decen":40,"cf":{},"wp":"","git":"https://github.com/numerai","twitter":"@numerai"},{"id":"polymarket","name":"Polymarket","desc":"General prediction market. Proven liquidity. No scientific provenance.","people":"Shayne Coplan","funding":"VC (Founders Fund)","stage":"Live","stack":"application","tags":["prediction-market","market-oriented"],"type":"Prediction Market","web":"https://polymarket.com","chain":"Polygon","source":"Crunchbase","s1":0,"s2":3,"s3":0,"s4":0,"s5":1,"decen":35,"cf":{},"wp":"","git":"","twitter":"@Polymarket"},{"id":"hairdao","name":"HairDAO","desc":"Hair loss research DAO. First medical patent by a DAO. FoliCool D2C product. $122M treasury.","people":"","funding":"DAO (HAIR)","stage":"Live","stack":"governance","tags":["bioDAO","IP-NFT","tokenomics"],"type":"BioDAO","web":"https://hairdao.xyz","chain":"Ethereum","source":"BIO blog, Nature Biotech","s1":2,"s2":3,"s3":1,"s4":1,"s5":2,"decen":60,"cf":{},"wp":"","git":"","twitter":"@HairDAO_"},{"id":"athenadao","name":"AthenaDAO","desc":"Women's health R&D DAO. 250+ reviews, $500K funded, 14 IP deals. 11K members.","people":"","funding":"DAO + IP-NFTs","stage":"Live","stack":"governance","tags":["bioDAO","womens-health","IP-NFT"],"type":"BioDAO","web":"https://athenadao.co","chain":"Ethereum","source":"BIO blog, Nature Biotech","s1":2,"s2":3,"s3":1,"s4":1,"s5":2,"decen":55,"cf":{},"wp":"","git":"","twitter":""},{"id":"cerebrumdao","name":"CerebrumDAO","desc":"Brain research DAO. BIO Protocol incubated.","people":"","funding":"DAO","stage":"Early","stack":"governance","tags":["bioDAO","neuroscience"],"type":"BioDAO","web":"","chain":"Ethereum","source":"BIO blog","s1":1,"s2":2,"s3":1,"s4":0,"s5":1,"decen":50,"cf":{},"wp":"","git":"","twitter":""},{"id":"psydao","name":"PsyDAO","desc":"Psychedelics research DAO. BIO Protocol incubated.","people":"","funding":"DAO","stage":"Early","stack":"governance","tags":["bioDAO","mental-health","psychedelics"],"type":"BioDAO","web":"https://psydao.io","chain":"Ethereum","source":"BIO blog","s1":1,"s2":2,"s3":0,"s4":0,"s5":1,"decen":50,"cf":{},"wp":"","git":"","twitter":"@PsyDAO_"},{"id":"cryodao","name":"CryoDAO","desc":"Cryopreservation research DAO. BIO Protocol incubated.","people":"","funding":"DAO","stage":"Early","stack":"governance","tags":["bioDAO","longevity"],"type":"BioDAO","web":"","chain":"Ethereum","source":"BIO blog","s1":1,"s2":2,"s3":0,"s4":0,"s5":1,"decen":50,"cf":{},"wp":"","git":"","twitter":"@CryoDAO"},{"id":"curetopia","name":"Curetopia","desc":"First BioDAO on Solana. Rare disease treatments. $1.77M raised.","people":"","funding":"$1.77M","stage":"Early","stack":"governance","tags":["bioDAO","rare-disease","tokenomics"],"type":"BioDAO","web":"","chain":"Solana","source":"BIO blog","s1":1,"s2":2,"s3":1,"s4":0,"s5":1,"decen":45,"cf":{},"wp":"","git":"","twitter":""},{"id":"desci-labs","name":"DeSci Labs / Nodes","desc":"Research object versioning. DPID persistent identifiers.","people":"Chris Hill","funding":"Grants + VC","stage":"Live","stack":"infrastructure","tags":["publishing","infrastructure","open-access"],"type":"Publishing Infra","web":"https://desci.com","chain":"Ethereum/Ceramic","source":"Web","s1":3,"s2":1,"s3":1,"s4":1,"s5":1,"decen":70,"cf":{},"wp":"","git":"https://github.com/desci-labs","twitter":"@DeSciLabs"},{"id":"orvium","name":"Orvium","desc":"Open science publishing. Decentralized Autonomous Journals. EU-funded MVP.","people":"","funding":"EU Grants","stage":"Beta","stack":"application","tags":["publishing","peer-review","open-access"],"type":"Publishing","web":"https://orvium.io","chain":"Ethereum","source":"Frontiers review","s1":2,"s2":1,"s3":0,"s4":1,"s5":2,"decen":55,"cf":{},"wp":"","git":"https://github.com/orvium","twitter":""},{"id":"origintrail","name":"OriginTrail","desc":"Decentralized Knowledge Graph (DKG). TRAC token.","people":"","funding":"Token (TRAC)","stage":"Live","stack":"infrastructure","tags":["knowledge-graph","data","AI","tokenomics"],"type":"Knowledge Graph","web":"https://origintrail.io","chain":"Multi-chain","source":"DWF Labs","s1":3,"s2":3,"s3":2,"s4":1,"s5":1,"decen":65,"cf":{},"wp":"","git":"https://github.com/OriginTrail","twitter":"@origin_trail"},{"id":"genomesdao","name":"GenomesDAO","desc":"DNA data vaults. Genome Mining Vault. Personal genomics ownership.","people":"","funding":"Token (GENOME)","stage":"Live","stack":"application","tags":["genomics","data","tokenomics"],"type":"Genomics","web":"https://genomes.io","chain":"Ethereum","source":"DWF Labs","s1":2,"s2":3,"s3":1,"s4":1,"s5":2,"decen":55,"cf":{},"wp":"","git":"","twitter":"@GenomesDAO"},{"id":"hippocrat","name":"Hippocrat","desc":"Healthcare Data Protocol. ZK proofs for sovereignty. HPO token.","people":"","funding":"Token (HPO)","stage":"Live","stack":"infrastructure","tags":["healthcare","data","ZK-proofs","tokenomics"],"type":"Health Protocol","web":"https://hippocrat.io","chain":"Bitcoin L2","source":"desci.world","s1":2,"s2":3,"s3":1,"s4":2,"s5":1,"decen":60,"cf":{},"wp":"","git":"","twitter":"@hippocrat_io"},{"id":"desci-world","name":"DeSci World","desc":"Ecosystem directory. 75+ projects. Fellowship program.","people":"","funding":"Community","stage":"Live","stack":"governance","tags":["community","directory"],"type":"Community Hub","web":"https://desci.world","chain":"N/A","source":"desci.world","s1":0,"s2":0,"s3":0,"s4":0,"s5":1,"decen":50,"cf":{},"wp":"","git":"https://github.com/DeSciWorldDAO/awesome-desci","twitter":"@DeSciWorld"},{"id":"desci-berlin","name":"DeSci Berlin","desc":"Annual conference at Molecule HQ. 350+ in-person, 53K online (2025).","people":"","funding":"Sponsorship","stage":"Recurring","stack":"governance","tags":["community","conference"],"type":"Conference","web":"https://desci.berlin","chain":"N/A","source":"molecule.xyz blog","s1":0,"s2":0,"s3":0,"s4":0,"s5":0,"decen":50,"cf":{},"wp":"","git":"","twitter":"@DeSciBerlin"},{"id":"desci-london","name":"DeSci London","desc":"2-day conference at UCL. DEI travel grants.","people":"","funding":"Sponsorship","stage":"Recurring","stack":"governance","tags":["community","conference"],"type":"Conference","web":"https://desci.london","chain":"N/A","source":"desci.london","s1":0,"s2":0,"s3":0,"s4":0,"s5":0,"decen":40,"cf":{},"wp":"","git":"","twitter":"@DesciLondon"},{"id":"dynex","name":"Dynex","desc":"Neuromorphic computing. DNX token. Proof of Useful Work.","people":"","funding":"Token (DNX)","stage":"Live","stack":"infrastructure","tags":["compute","tokenomics"],"type":"Compute","web":"https://dynex.co","chain":"Own chain","source":"DWF Labs","s1":1,"s2":3,"s3":2,"s4":1,"s5":1,"decen":55,"cf":{},"wp":"","git":"https://github.com/dynexcoin","twitter":""},{"id":"tig","name":"The Innovation Game","desc":"Algorithm development protocol. Synthetic market for solutions.","people":"","funding":"Token","stage":"Beta","stack":"infrastructure","tags":["compute","algorithms","tokenomics"],"type":"Compute","web":"","chain":"","source":"desci.world","s1":1,"s2":2,"s3":1,"s4":1,"s5":1,"decen":60,"cf":{},"wp":"","git":"","twitter":""},{"id":"pfizer-ventures","name":"Pfizer Ventures","desc":"Corporate VC. Invested in VitaDAO.","people":"","funding":"Corporate","stage":"Established","stack":"governance","tags":["pharma","VC"],"type":"Funder","web":"","chain":"N/A","source":"VitaDAO announcements","s1":0,"s2":0,"s3":0,"s4":0,"s5":0,"decen":5,"cf":{},"wp":"","git":"","twitter":""},{"id":"binance-labs","name":"Binance Labs","desc":"Crypto VC. Led BIO Protocol round.","people":"","funding":"Corporate","stage":"Established","stack":"governance","tags":["crypto-VC"],"type":"Funder","web":"https://labs.binance.com","chain":"N/A","source":"BIO announcements","s1":0,"s2":0,"s3":0,"s4":0,"s5":0,"decen":10,"cf":{},"wp":"","git":"","twitter":"@BinanceLabs"},{"id":"singularitynet","name":"SingularityNET","desc":"Decentralized AI marketplace. Parent of Rejuve AI.","people":"Ben Goertzel","funding":"Token (AGIX)","stage":"Live","stack":"infrastructure","tags":["AI","ecosystem","tokenomics"],"type":"AI Platform","web":"https://singularitynet.io","chain":"Cardano/Ethereum","source":"Web","s1":0,"s2":3,"s3":2,"s4":0,"s5":1,"decen":50,"cf":{},"wp":"","git":"https://github.com/singnet","twitter":"@SingularityNET"}],
+"edges":[{"s":"molecule","t":"vitadao","type":"funder","l":"IP-NFT rails"},{"s":"molecule","t":"valleydao","type":"funder","l":""},{"s":"molecule","t":"bio-protocol","type":"partner","l":"Co-founded"},{"s":"molecule","t":"desci-berlin","type":"partner","l":"Hosts"},{"s":"bio-protocol","t":"vitadao","type":"ecosystem","l":"BioDAO"},{"s":"bio-protocol","t":"valleydao","type":"ecosystem","l":"BioDAO"},{"s":"bio-protocol","t":"axondao","type":"ecosystem","l":"BioDAO"},{"s":"bio-protocol","t":"hairdao","type":"ecosystem","l":"Incubated"},{"s":"bio-protocol","t":"athenadao","type":"ecosystem","l":"Incubated"},{"s":"bio-protocol","t":"cerebrumdao","type":"ecosystem","l":"Incubated"},{"s":"bio-protocol","t":"psydao","type":"ecosystem","l":"Incubated"},{"s":"bio-protocol","t":"cryodao","type":"ecosystem","l":"Incubated"},{"s":"bio-protocol","t":"curetopia","type":"ecosystem","l":"Cohort 2"},{"s":"researchhub","t":"desci-labs","type":"overlap","l":"Publishing"},{"s":"episteme","t":"polymarket","type":"overlap","l":"Prediction"},{"s":"episteme","t":"numerai","type":"overlap","l":"Market-oriented"},{"s":"labdao","t":"rare-compute","type":"collaborator","l":"Compute"},{"s":"prime-intellect","t":"rare-compute","type":"overlap","l":"Distributed compute"},{"s":"rejuve","t":"vitadao","type":"collaborator","l":"Longevity"},{"s":"galeon","t":"welshare","type":"overlap","l":"Health data"},{"s":"hippocrat","t":"genomesdao","type":"overlap","l":"Data sovereignty"},{"s":"ocean","t":"numerai","type":"overlap","l":"Data tokens"},{"s":"desci-world","t":"desci-berlin","type":"partner","l":""},{"s":"desci-world","t":"desci-london","type":"partner","l":""},{"s":"pfizer-ventures","t":"vitadao","type":"funder","l":"Invested"},{"s":"binance-labs","t":"bio-protocol","type":"funder","l":"Led round"},{"s":"singularitynet","t":"rejuve","type":"ecosystem","l":"Parent"},{"s":"pump-science","t":"episteme","type":"overlap","l":"Gamified eval"}],
+"people":[{"id":"p-kohlhaas","name":"Paul Kohlhaas","role":"Co-founder & CEO, Molecule. Founding Member, BIO Protocol. Co-initiator, VitaDAO.","linkedin":"https://linkedin.com/in/kohlhaas","twitter":"@paulkhls","orgs":["molecule","bio-protocol","vitadao"]},{"id":"p-golato","name":"Tyler Golato","role":"Co-founder & CSO, Molecule","linkedin":"https://linkedin.com/in/tylergolato","twitter":"","orgs":["molecule"]},{"id":"p-noessler","name":"Kevin Noessler","role":"CPO, Molecule","linkedin":"https://linkedin.com/in/kevinnoessler","twitter":"","orgs":["molecule"]},{"id":"p-rindtorff","name":"Niklas Rindtorff","role":"Founder, LabDAO","linkedin":"https://linkedin.com/in/niklasrindtorff","twitter":"@nrindtorff","orgs":["labdao"]},{"id":"p-goertzel","name":"Ben Goertzel","role":"CEO, SingularityNET. Founder, Rejuve AI.","linkedin":"https://linkedin.com/in/bengoertzel","twitter":"@bengoertzel","orgs":["rejuve","singularitynet"]},{"id":"p-mcconaghy","name":"Trent McConaghy","role":"Founder, Ocean Protocol","linkedin":"https://linkedin.com/in/trentmc0","twitter":"@taborvm","orgs":["ocean"]},{"id":"p-pon","name":"Bruce Pon","role":"Co-founder, Ocean Protocol","linkedin":"https://linkedin.com/in/brucepon","twitter":"","orgs":["ocean"]},{"id":"p-craib","name":"Richard Craib","role":"Founder, Numerai","linkedin":"https://linkedin.com/in/richardcraib","twitter":"@richardcraib","orgs":["numerai"]},{"id":"p-coplan","name":"Shayne Coplan","role":"Founder & CEO, Polymarket","linkedin":"https://linkedin.com/in/shaynecoplan","twitter":"","orgs":["polymarket"]},{"id":"p-joyce","name":"Patrick Joyce","role":"CEO, ResearchHub","linkedin":"https://linkedin.com/in/patrickjoyce1","twitter":"","orgs":["researchhub"]},{"id":"p-armstrong","name":"Brian Armstrong","role":"CEO, Coinbase. Backer of ResearchHub.","linkedin":"https://linkedin.com/in/barmstrong","twitter":"@brian_armstrong","orgs":["researchhub"]},{"id":"p-hill","name":"Chris Hill","role":"Founder, DeSci Labs / Nodes","linkedin":"","twitter":"","orgs":["desci-labs"]},{"id":"p-shilina","name":"Sasha Shilina","role":"Founder, Episteme. DeScAI researcher.","linkedin":"https://linkedin.com/in/sashashilina","twitter":"@saborsky","orgs":["episteme"]},{"id":"p-tenorio","name":"Antonio Tenorio-Fornes","role":"Researcher, UCM Madrid. Blockchain peer review pioneer.","linkedin":"","twitter":"","orgs":[]},{"id":"p-weidener","name":"Lukas Weidener","role":"DeSci researcher. Definition/values framework (Frontiers 2024).","linkedin":"","twitter":"","orgs":[]},{"id":"p-ernst","name":"Friederike Ernst","role":"Co-founder Gnosis. DeSci Berlin panelist.","linkedin":"","twitter":"","orgs":[]},{"id":"p-diaz","name":"Francisco Diaz","role":"DeSci ecosystem survey (Frontiers 2025, 49 projects).","linkedin":"","twitter":"","orgs":[]}]};
+
+// ===== STATE =====
+let D, selId=null, view='graph', sim, svg, gg, sortC='name', sortA=true;
+let flt={stack:[],tags:[],type:[]};
+let zoteroItems=null;
+
+function init(){
+  let s=localStorage.getItem('desci5');
+  if(s)try{D=JSON.parse(s)}catch(e){D=null}
+  if(!D)D=JSON.parse(JSON.stringify(SEED_DATA));
+  D.nodes.forEach(n=>{n.wp=n.wp||'';n.git=n.git||'';n.twitter=n.twitter||'';n.cf=n.cf||{}});
+  if(!D.people)D.people=SEED_DATA.people;
+  buildPills();render();updateSB();updateStats();
+}
+function save(){
+  localStorage.setItem('desci5',JSON.stringify(D));
+  // Mark as modified if GitHub is configured
+  if(ghConfigured()){
+    const ss=el('syncStatus');
+    if(!ss.classList.contains('error')){
+      ss.className='sync-status';ss.innerHTML='<span class="sync-dot"></span>modified · click to push';
+      ss.onclick=githubPush;
+    }
+  }
+}
+
+// ===== FILTERS =====
+function buildPills(){
+  el('pStack').innerHTML=['infrastructure','application','governance'].map(s=>`<button class="pill" onclick="togF('stack','${s}',this)">${s}</button>`).join('');
+  const tags=[...new Set(D.nodes.flatMap(n=>n.tags||[]))].sort();
+  el('pTags').innerHTML=tags.slice(0,20).map(t=>`<button class="pill" onclick="togF('tags','${t}',this)">${t}</button>`).join('');
+  el('pType').innerHTML=[...new Set(D.nodes.map(n=>n.type))].sort().map(t=>`<button class="pill" onclick="togF('type','${t}',this)">${t}</button>`).join('');
+}
+function togF(c,v,b){const i=flt[c].indexOf(v);if(i>=0){flt[c].splice(i,1);b.classList.remove('on')}else{flt[c].push(v);b.classList.add('on')}af()}
+function vis(n){
+  const q=el('search').value.toLowerCase();
+  if(q&&!n.name.toLowerCase().includes(q)&&!(n.type||'').toLowerCase().includes(q)&&!(n.desc||'').toLowerCase().includes(q)&&!(n.tags||[]).join(' ').toLowerCase().includes(q))return false;
+  if(flt.stack.length&&!flt.stack.includes(n.stack))return false;
+  if(flt.tags.length&&!flt.tags.some(t=>(n.tags||[]).includes(t)))return false;
+  if(flt.type.length&&!flt.type.includes(n.type))return false;
+  return true;
+}
+function af(){updateSB();updateStats();if(view==='graph')gVis();else render()}
+function updateSB(){
+  const v=D.nodes.filter(vis);el('nc').textContent=v.length;
+  el('nlist').innerHTML=v.map(n=>`<li class="nli ${n.id===selId?'sel':''}" onclick="selNode('${n.id}')"><span class="nli-dot" style="background:${SC[n.stack]||'var(--text-3)'}"></span><span class="nli-name">${n.name}</span></li>`).join('');
+}
+function updateStats(){const v=D.nodes.filter(vis);el('stats').innerHTML=`<b>${v.length}</b>/${D.nodes.length} orgs · <b>${D.edges.length}</b> edges · <b>${D.people.length}</b> people`}
+
+// ===== VIEWS =====
+function setView(v,b){view=v;document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));b.classList.add('on');render()}
+function render(){const m=el('main');m.querySelectorAll('svg,.table-wrap,.people-grid,.lit-panel,.legend').forEach(e=>e.remove());if(sim)sim.stop();el('zoomCtrl').style.display='none';if(view==='graph')buildGraph();else if(view==='table')renderTable();else if(view==='people')renderPeople();else renderLit()}
+
+// ===== GRAPH =====
+function buildGraph(){
+  const m=el('main'),w=m.clientWidth,h=m.clientHeight;
+  svg=d3.select(m).append('svg').attr('width',w).attr('height',h);
+  zoomBehavior=d3.zoom().scaleExtent([.1,4]).on('zoom',e=>gg.attr('transform',e.transform));
+  svg.call(zoomBehavior);
+  el('zoomCtrl').style.display='flex';
+  gg=svg.append('g');const lG=gg.append('g'),nG=gg.append('g'),tG=gg.append('g');
+  const sn=D.nodes.map(n=>({...n}));
+  const se=D.edges.filter(e=>D.nodes.find(n=>n.id===e.s)&&D.nodes.find(n=>n.id===e.t)).map(e=>({source:e.s,target:e.t,type:e.type,l:e.l}));
+  sim=d3.forceSimulation(sn).force('link',d3.forceLink(se).id(d=>d.id).distance(100).strength(.2)).force('charge',d3.forceManyBody().strength(-220)).force('center',d3.forceCenter(w/2,h/2)).force('collision',d3.forceCollide().radius(d=>8+(d.decen||50)/100*14)).force('x',d3.forceX(w/2).strength(.025)).force('y',d3.forceY(h/2).strength(.025));
+  lG.selectAll('line').data(se).enter().append('line').attr('stroke',d=>EC[d.type]||'var(--border-h)').attr('stroke-width',1.2).attr('stroke-dasharray',d=>d.type==='overlap'?'4,3':d.type==='competitor'?'2,2':'none').attr('opacity',.35);
+  const ns=nG.selectAll('g').data(sn).enter().append('g').style('cursor','pointer').call(d3.drag().on('start',(e,d)=>{if(!e.active)sim.alphaTarget(.3).restart();d.fx=d.x;d.fy=d.y}).on('drag',(e,d)=>{d.fx=e.x;d.fy=e.y}).on('end',(e,d)=>{if(!e.active)sim.alphaTarget(0);d.fx=null;d.fy=null}));
+  ns.append('circle').attr('r',d=>6+(d.decen||50)/100*14).attr('fill',d=>SC[d.stack]||'var(--text-3)').attr('fill-opacity',.15).attr('stroke',d=>SC[d.stack]||'var(--text-3)').attr('stroke-width',1.5);
+  ns.append('circle').attr('r',2.5).attr('fill',d=>SC[d.stack]||'var(--text-3)');
+  ns.on('click',(e,d)=>selNode(d.id));
+  const tip=el('tip');
+  ns.on('mouseenter',(e,d)=>{tip.innerHTML=`<h4>${d.name}</h4><div class="tm">${d.type} · ${d.stack} · ${(d.tags||[]).slice(0,3).join(', ')}</div>`;tip.classList.add('vis')}).on('mousemove',e=>{const r=m.getBoundingClientRect();tip.style.left=(e.clientX-r.left+12)+'px';tip.style.top=(e.clientY-r.top-8)+'px'}).on('mouseleave',()=>tip.classList.remove('vis'));
+  tG.selectAll('text').data(sn).enter().append('text').text(d=>d.name).attr('font-size',9).attr('font-family','Nunito Sans, sans-serif').attr('font-weight',500).attr('fill','var(--graph-label)').attr('text-anchor','middle').attr('dy',d=>-(10+(d.decen||50)/100*14)).style('pointer-events','none');
+  sim.on('tick',()=>{lG.selectAll('line').attr('x1',d=>d.source.x).attr('y1',d=>d.source.y).attr('x2',d=>d.target.x).attr('y2',d=>d.target.y);nG.selectAll('g').attr('transform',d=>`translate(${d.x},${d.y})`);tG.selectAll('text').attr('x',d=>d.x).attr('y',d=>d.y)});
+  // Legend
+  const lg=document.createElement('div');lg.className='legend';lg.innerHTML=`<div class="legend-title">Stack</div><div class="legend-row"><div class="legend-dot" style="background:var(--sage)"></div>Infrastructure</div><div class="legend-row"><div class="legend-dot" style="background:var(--rose)"></div>Application</div><div class="legend-row"><div class="legend-dot" style="background:var(--teal)"></div>Governance</div><div class="legend-title" style="margin-top:10px">Relations</div><div class="legend-row"><div class="legend-line" style="background:var(--green-edge)"></div>Collaborator</div><div class="legend-row"><div class="legend-line" style="background:var(--red-edge)"></div>Competitor</div><div class="legend-row"><div class="legend-line" style="background:var(--yellow-edge)"></div>Overlap</div><div class="legend-row"><div class="legend-line" style="background:var(--purple-edge)"></div>Funder</div><div class="legend-row"><div class="legend-line" style="background:var(--cyan-edge)"></div>Partner</div><div class="legend-row"><div class="legend-line" style="background:var(--orange-edge)"></div>Ecosystem</div><div style="margin-top:8px;font-size:.65rem;color:var(--text-3)">Node size = decentralization</div>`;m.appendChild(lg);
+  gVis();
+}
+function gVis(){if(!svg)return;const vi=new Set(D.nodes.filter(vis).map(n=>n.id));svg.selectAll('g g').attr('opacity',function(d){return d&&d.id?vi.has(d.id)?1:.04:1});svg.selectAll('text').attr('opacity',function(d){return d&&d.id?vi.has(d.id)?1:0:1});svg.selectAll('line').attr('opacity',function(d){return d&&d.source?(vi.has(d.source.id||d.source)&&vi.has(d.target.id||d.target)?.35:.02):.35})}
+
+// ===== TABLE =====
+function renderTable(){
+  const m=el('main'),cols=['name','type','stack','stage','chain','decen','s1','s2','s3','s4','s5','source'];
+  let ns=D.nodes.filter(vis);
+  ns.sort((a,b)=>{let va=a[sortC]||'',vb=b[sortC]||'';if(typeof va==='number')return sortA?va-vb:vb-va;return sortA?String(va).localeCompare(String(vb)):String(vb).localeCompare(String(va))});
+  const w=document.createElement('div');w.className='table-wrap';
+  w.innerHTML=`<table class="dtbl"><thead><tr>${cols.map(c=>`<th onclick="doSort('${c}')">${c}${sortC===c?(sortA?' ↑':' ↓'):''}</th>`).join('')}</tr></thead><tbody>${ns.map(n=>`<tr class="${n.id===selId?'sel':''}" onclick="selNode('${n.id}')"><td><strong>${n.name}</strong></td><td>${n.type}</td><td><span class="stack-chip" style="background:${SBG[n.stack]||''};color:${SC[n.stack]||''}">${n.stack}</span></td><td>${n.stage}</td><td>${n.chain}</td><td>${n.decen}%</td><td>${SS[n.s1]}</td><td>${SS[n.s2]}</td><td>${SS[n.s3]}</td><td>${SS[n.s4]}</td><td>${SS[n.s5]}</td><td>${n.source}</td></tr>`).join('')}</tbody></table>`;
+  m.appendChild(w);
+}
+function doSort(c){if(sortC===c)sortA=!sortA;else{sortC=c;sortA=true}render()}
+
+// ===== PEOPLE =====
+function renderPeople(){
+  const m=el('main'),g=document.createElement('div');g.className='people-grid';
+  g.innerHTML=D.people.map(p=>{const on=p.orgs.map(id=>D.nodes.find(n=>n.id===id)?.name||id).join(', ');return`<div class="p-card" onclick="showPerson('${p.id}')"><div class="p-name">${p.name}</div><div class="p-role">${p.role||''}</div><div class="p-links">${p.linkedin?`<a href="${p.linkedin}" target="_blank" onclick="event.stopPropagation()">LinkedIn ↗</a>`:''}${p.twitter?`<a href="https://x.com/${p.twitter.replace('@','')}" target="_blank" onclick="event.stopPropagation()">${p.twitter}</a>`:''}</div>${on?`<div class="p-orgs">${on}</div>`:''}</div>`}).join('');
+  m.appendChild(g);
+}
+
+// ===== LITERATURE =====
+function renderLit(){
+  const m=el('main'),w=document.createElement('div');w.className='lit-panel';
+  w.innerHTML=`<div class="lit-title">Literature</div><div class="lit-desc">Pull papers from your shared Zotero group. No API key needed for public groups.</div><a class="zotero-btn" href="https://www.zotero.org/groups/6075364/desciai" target="_blank">Open in Zotero ↗</a> <button class="zotero-btn" onclick="fetchZotero()" style="margin-left:8px;background:var(--card);color:var(--gold);border:1px solid var(--border-h)">Pull from Zotero API</button><div id="zStatus"></div><div id="zResults"></div>`;
+  m.appendChild(w);
+  if(zoteroItems)displayZ();
+}
+async function fetchZotero(){
+  const s=document.getElementById('zStatus');
+  if(s)s.innerHTML='<p style="padding:12px 0;color:var(--text-3)">Fetching...</p>';
+  try{
+    const r=await fetch('https://api.zotero.org/groups/6075364/items/top?format=json&limit=100&sort=dateAdded&direction=desc');
+    if(!r.ok)throw new Error('HTTP '+r.status);
+    zoteroItems=await r.json();displayZ();
+  }catch(e){if(s)s.innerHTML=`<p style="padding:12px 0;color:var(--red)">Error: ${e.message}. Group may be private. <a href="https://www.zotero.org/groups/6075364/desciai" target="_blank">Open manually ↗</a></p>`}
+}
+function displayZ(){
+  const c=document.getElementById('zResults'),s=document.getElementById('zStatus');
+  if(!c||!zoteroItems)return;
+  const items=zoteroItems.filter(i=>i.data&&i.data.itemType!=='attachment'&&i.data.itemType!=='note');
+  if(s)s.innerHTML=`<p style="padding:8px 0;color:var(--sage);font-family:var(--mono);font-size:.7rem">✓ ${items.length} items loaded</p>`;
+  c.innerHTML=`<div class="lit-cat">Zotero Library (${items.length})</div>${items.map(i=>{const d=i.data,auth=(d.creators||[]).map(c=>c.lastName?`${c.lastName} ${(c.firstName||'')[0]||''}.`:c.name).join(', '),doi=d.DOI?`https://doi.org/${d.DOI}`:d.url||'';return`<div class="paper"><div class="paper-t">${d.title||'Untitled'}</div><div class="paper-a">${auth} (${d.date||''})</div><div class="paper-m">${d.publicationTitle||d.itemType}${doi?` · <a href="${doi}" target="_blank">Link ↗</a>`:''}</div>${d.abstractNote?`<div class="paper-n">${d.abstractNote.slice(0,180)}${d.abstractNote.length>180?'...':''}</div>`:''}</div>`}).join('')}`;
+}
+
+// ===== DETAIL =====
+function selNode(id){
+  selId=id;const n=D.nodes.find(x=>x.id===id);if(!n)return;
+  // Open right panel
+  const app=document.querySelector('.app');
+  const wasHidden=app.classList.contains('hide-right');
+  app.classList.remove('hide-right');
+  document.querySelector('.toggle-right').textContent='▶';
+  if(wasHidden&&view==='graph')setTimeout(()=>render(),320);
+  el('detE').style.display='none';const p=el('detC');p.style.display='block';
+  const rels=D.edges.filter(e=>e.s===id||e.t===id);
+  const ppl=D.people.filter(pp=>pp.orgs.includes(id));
+  p.innerHTML=`<div class="det-name">${n.name}</div><div class="det-sub">${n.type} · ${n.stage}${n.twitter?` · <a href="https://x.com/${n.twitter.replace('@','')}" target="_blank">${n.twitter}</a>`:''}</div>
+  <div class="field"><div class="flabel">Description</div><textarea class="finput" onchange="upd('${id}','desc',this.value)">${n.desc||''}</textarea></div>
+  <div class="field"><div class="flabel">Tags</div><div class="tag-row">${(n.tags||[]).map((t,i)=>`<span class="tag-chip">${t}<span class="rm" onclick="rTag('${id}',${i})">×</span></span>`).join('')}</div><input class="finput" style="margin-top:5px" placeholder="Add tag, press Enter" onkeydown="if(event.key==='Enter'){aTag('${id}',this.value);this.value=''}"></div>
+  <div class="field"><div class="flabel">People</div>${ppl.length?ppl.map(p=>`<div style="padding:4px 0;border-bottom:1px solid var(--border);font-size:.85rem"><strong>${p.name}</strong> <span style="color:var(--text-3)">${p.role||''}</span>${p.linkedin?` <a href="${p.linkedin}" target="_blank">LinkedIn↗</a>`:''}${p.twitter?` <a href="https://x.com/${p.twitter.replace('@','')}" target="_blank">${p.twitter}</a>`:''}</div>`).join(''):'<span style="color:var(--text-3);font-size:.8rem">No linked people</span>'}</div>
+  <div class="field"><div class="flabel">Strata <span style="font-weight:400;text-transform:none;letter-spacing:0">(click to cycle)</span></div><div class="strata">${SL.map((s,i)=>{const k='s'+(i+1);return`<div class="stm" data-v="${n[k]||0}" onclick="cyc('${id}','${k}')">${s}<br>${SS[n[k]||0]}</div>`}).join('')}</div></div>
+  <div class="field"><div class="flabel">Decentralization</div><div class="slider-row"><input type="range" min="0" max="100" value="${n.decen||0}" oninput="upd('${id}','decen',+this.value);this.nextElementSibling.textContent=this.value+'%'" onchange="save()"><span class="slider-v">${n.decen||0}%</span></div></div>
+  <div class="field"><div class="flabel">Stack</div><select class="finput" onchange="upd('${id}','stack',this.value);save();render();updateSB()"><option value="infrastructure" ${n.stack==='infrastructure'?'selected':''}>Infrastructure</option><option value="application" ${n.stack==='application'?'selected':''}>Application</option><option value="governance" ${n.stack==='governance'?'selected':''}>Governance</option></select></div>
+  <div class="field"><div class="flabel">Type</div><input class="finput" value="${n.type||''}" onchange="upd('${id}','type',this.value);save()"></div>
+  <div class="field"><div class="flabel">Funding</div><input class="finput" value="${n.funding||''}" onchange="upd('${id}','funding',this.value)"></div>
+  <div class="field"><div class="flabel">Chain</div><input class="finput" value="${n.chain||''}" onchange="upd('${id}','chain',this.value)"></div>
+  <div class="field"><div class="flabel">Website</div><input class="finput" value="${n.web||''}" onchange="upd('${id}','web',this.value)">${n.web?` <a href="${n.web}" target="_blank">↗</a>`:''}</div>
+  <div class="field"><div class="flabel">Whitepaper</div><input class="finput" value="${n.wp||''}" onchange="upd('${id}','wp',this.value)">${n.wp?` <a href="${n.wp}" target="_blank">↗</a>`:''}</div>
+  <div class="field"><div class="flabel">GitHub</div><input class="finput" value="${n.git||''}" onchange="upd('${id}','git',this.value)">${n.git?` <a href="${n.git}" target="_blank">↗</a>`:''}</div>
+  <div class="field"><div class="flabel">Twitter</div><input class="finput" value="${n.twitter||''}" onchange="upd('${id}','twitter',this.value)"></div>
+  <div class="field"><div class="flabel">Source</div><input class="finput" value="${n.source||''}" onchange="upd('${id}','source',this.value)"></div>
+  <div class="field"><div class="flabel">Relations (${rels.length})</div><ul class="rel-list">${rels.map(r=>{const oid=r.s===id?r.t:r.s;const o=D.nodes.find(x=>x.id===oid);const st=RB[r.type]||{b:'var(--text-3)',c:'#fff'};return`<li class="rel-item"><span class="rel-badge" style="background:${st.b};color:${st.c}">${r.type}</span><span style="cursor:pointer" onclick="selNode('${oid}')">${o?.name||oid}</span><span style="font-size:.7rem;color:var(--text-3);margin-left:auto">${r.l||''}</span><button class="btn btn-x" style="padding:2px 8px;font-size:.6rem;margin-left:4px" onclick="rEdge('${r.s}','${r.t}','${r.type}')">×</button></li>`}).join('')}</ul></div>
+  <button class="btn btn-x" style="margin-top:16px" onclick="delN('${id}')">Delete Organization</button>`;
+  updateSB();
+}
+function showPerson(pid){
+  const p=D.people.find(x=>x.id===pid);if(!p)return;
+  const wasHidden2=document.querySelector('.app').classList.contains('hide-right');
+  document.querySelector('.app').classList.remove('hide-right');
+  document.querySelector('.toggle-right').textContent='▶';
+  if(wasHidden2&&view==='graph')setTimeout(()=>render(),320);
+  el('detE').style.display='none';const d=el('detC');d.style.display='block';
+  const orgs=p.orgs.map(o=>{const n=D.nodes.find(x=>x.id===o);return n?`<span style="cursor:pointer;color:var(--gold)" onclick="selNode('${o}')">${n.name}</span>`:o}).join(', ');
+  d.innerHTML=`<div class="det-name">${p.name}</div><div class="det-sub">${p.role||''}</div>${p.linkedin?`<div class="field"><div class="flabel">LinkedIn</div><a href="${p.linkedin}" target="_blank">${p.linkedin}</a></div>`:''}${p.twitter?`<div class="field"><div class="flabel">Twitter</div><a href="https://x.com/${p.twitter.replace('@','')}" target="_blank">${p.twitter}</a></div>`:''}<div class="field"><div class="flabel">Organizations</div><div style="font-size:.9rem">${orgs||'None'}</div></div><div class="field"><div class="flabel">Edit</div><input class="finput" value="${p.name}" onchange="uP('${pid}','name',this.value)" placeholder="Name"><input class="finput" style="margin-top:4px" value="${p.role||''}" onchange="uP('${pid}','role',this.value)" placeholder="Role"><input class="finput" style="margin-top:4px" value="${p.linkedin||''}" onchange="uP('${pid}','linkedin',this.value)" placeholder="LinkedIn"><input class="finput" style="margin-top:4px" value="${p.twitter||''}" onchange="uP('${pid}','twitter',this.value)" placeholder="@handle"><input class="finput" style="margin-top:4px" value="${(p.orgs||[]).join(', ')}" onchange="uP('${pid}','orgs',this.value.split(',').map(s=>s.trim()))" placeholder="Org IDs"></div><button class="btn btn-x" style="margin-top:12px" onclick="D.people=D.people.filter(x=>x.id!=='${pid}');save();render();el('detC').style.display='none';el('detE').style.display='flex'">Delete Person</button>`;
+}
+
+// ===== CRUD =====
+function upd(id,f,v){const n=D.nodes.find(x=>x.id===id);if(n){n[f]=v;save()}}
+function uP(pid,f,v){const p=D.people.find(x=>x.id===pid);if(p){p[f]=v;save()}}
+function aTag(id,t){if(!t.trim())return;const n=D.nodes.find(x=>x.id===id);if(n){n.tags=n.tags||[];n.tags.push(t.trim());save();selNode(id);buildPills()}}
+function rTag(id,i){const n=D.nodes.find(x=>x.id===id);if(n){n.tags.splice(i,1);save();selNode(id);buildPills()}}
+function cyc(id,k){const n=D.nodes.find(x=>x.id===id);if(n){n[k]=((n[k]||0)+1)%4;save();selNode(id)}}
+function rEdge(s,t,ty){D.edges=D.edges.filter(e=>!(e.s===s&&e.t===t&&e.type===ty));save();if(selId)selNode(selId)}
+function delN(id){if(!confirm('Delete?'))return;D.nodes=D.nodes.filter(x=>x.id!==id);D.edges=D.edges.filter(e=>e.s!==id&&e.t!==id);selId=null;el('detC').style.display='none';el('detE').style.display='flex';save();render();updateSB();updateStats();buildPills()}
+
+// Modals
+function addOrgM(){el('mo').style.display='flex';el('mc').innerHTML=`<h2>Add Organization</h2><div class="field"><div class="flabel">Name</div><input class="finput" id="mn"></div><div class="field"><div class="flabel">Type</div><input class="finput" id="mt"></div><div class="field"><div class="flabel">Stack</div><select class="finput" id="ms"><option value="infrastructure">Infrastructure</option><option value="application">Application</option><option value="governance">Governance</option></select></div><div class="field"><div class="flabel">Tags (comma-sep)</div><input class="finput" id="mtg"></div><div class="field"><div class="flabel">Description</div><textarea class="finput" id="md"></textarea></div><div class="field"><div class="flabel">Website</div><input class="finput" id="mw"></div><div class="field"><div class="flabel">Twitter</div><input class="finput" id="mtwit" placeholder="@handle"></div><div class="modal-foot"><button class="btn" onclick="clM()">Cancel</button><button class="btn btn-fill" onclick="cAddO()">Add</button></div>`}
+function cAddO(){const nm=el('mn').value.trim();if(!nm)return;const id=nm.toLowerCase().replace(/[^a-z0-9]+/g,'-');if(D.nodes.find(x=>x.id===id)){alert('Exists');return}D.nodes.push({id,name:nm,desc:el('md').value,people:'',funding:'',stage:'Unknown',stack:el('ms').value,tags:el('mtg').value.split(',').map(t=>t.trim()).filter(Boolean),type:el('mt').value||'Unknown',web:el('mw').value,chain:'',source:'Manual',s1:0,s2:0,s3:0,s4:0,s5:0,decen:50,cf:{},wp:'',git:'',twitter:el('mtwit').value});save();clM();render();updateSB();updateStats();buildPills()}
+function addEdgeM(){const opts=D.nodes.map(n=>`<option value="${n.id}">${n.name}</option>`).join('');el('mo').style.display='flex';el('mc').innerHTML=`<h2>Add Relation</h2><div class="field"><div class="flabel">From</div><select class="finput" id="ef">${opts}</select></div><div class="field"><div class="flabel">To</div><select class="finput" id="et">${opts}</select></div><div class="field"><div class="flabel">Type</div><select class="finput" id="ety"><option>collaborator</option><option>competitor</option><option>overlap</option><option>funder</option><option>partner</option><option>ecosystem</option></select></div><div class="field"><div class="flabel">Label</div><input class="finput" id="elb"></div><div class="modal-foot"><button class="btn" onclick="clM()">Cancel</button><button class="btn btn-fill" onclick="cAddE()">Add</button></div>`}
+function cAddE(){const s=el('ef').value,t=el('et').value;if(s===t)return;D.edges.push({s,t,type:el('ety').value,l:el('elb').value});save();clM();render();updateStats()}
+function addPersonM(){el('mo').style.display='flex';el('mc').innerHTML=`<h2>Add Person</h2><div class="field"><div class="flabel">Name</div><input class="finput" id="pn"></div><div class="field"><div class="flabel">Role</div><input class="finput" id="pr"></div><div class="field"><div class="flabel">LinkedIn</div><input class="finput" id="pl"></div><div class="field"><div class="flabel">Twitter</div><input class="finput" id="pt" placeholder="@handle"></div><div class="field"><div class="flabel">Org IDs (comma-sep)</div><input class="finput" id="po"></div><div class="modal-foot"><button class="btn" onclick="clM()">Cancel</button><button class="btn btn-fill" onclick="cAddP()">Add</button></div>`}
+function cAddP(){const nm=el('pn').value.trim();if(!nm)return;D.people.push({id:'p-'+nm.toLowerCase().replace(/[^a-z0-9]+/g,'-'),name:nm,role:el('pr').value,linkedin:el('pl').value,twitter:el('pt').value,orgs:el('po').value.split(',').map(s=>s.trim()).filter(Boolean)});save();clM();if(view==='people')render();updateStats()}
+function clM(){el('mo').style.display='none'}
+
+// ===== IMPORT/EXPORT =====
+function xJSON(){dl(new Blob([JSON.stringify(D,null,2)],{type:'application/json'}),'desci-'+new Date().toISOString().slice(0,10)+'.json')}
+function xCSV(){const cols=['id','name','type','stack','stage','funding','chain','decen','s1','s2','s3','s4','s5','tags','desc','web','source','wp','git','twitter'];dl(new Blob([Papa.unparse({fields:cols,data:D.nodes.map(n=>cols.map(c=>{let v=n[c];if(Array.isArray(v))v=v.join('|');return v??''}))})],{type:'text/csv'}),'desci-nodes-'+new Date().toISOString().slice(0,10)+'.csv')}
+function dl(b,n){const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=n;a.click()}
+function doImport(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{const txt=ev.target.result;if(f.name.endsWith('.json')){try{const d=JSON.parse(txt);if(d.nodes){D=d;D.people=D.people||SEED_DATA.people;D.nodes.forEach(n=>{n.wp=n.wp||'';n.git=n.git||'';n.twitter=n.twitter||'';n.cf=n.cf||{}});save();render();updateSB();updateStats();buildPills()}}catch(err){alert('Invalid JSON')}}else{Papa.parse(txt,{header:true,complete:res=>{res.data.filter(r=>r.name||r.id).forEach(r=>{const id=r.id||(r.name||'').toLowerCase().replace(/[^a-z0-9]+/g,'-');const ex=D.nodes.find(n=>n.id===id);const node={id,name:r.name||id,desc:r.desc||'',people:r.people||'',funding:r.funding||'',stage:r.stage||'Unknown',stack:r.stack||'application',tags:(r.tags||'').split('|').filter(Boolean),type:r.type||'Unknown',web:r.web||'',chain:r.chain||'',source:r.source||'CSV',s1:+(r.s1||0),s2:+(r.s2||0),s3:+(r.s3||0),s4:+(r.s4||0),s5:+(r.s5||0),decen:+(r.decen||50),cf:{},wp:r.wp||'',git:r.git||'',twitter:r.twitter||''};if(ex)Object.assign(ex,node);else D.nodes.push(node)});save();render();updateSB();updateStats();buildPills()}})}};r.readAsText(f);e.target.value=''}
+
+// ===== GITHUB SYNC =====
+function getGH(){
+  return {
+    owner: localStorage.getItem('gh-owner') || '',
+    repo: localStorage.getItem('gh-repo') || '',
+    token: localStorage.getItem('gh-token') || '',
+    path: localStorage.getItem('gh-path') || 'data.json',
+  };
+}
+function ghConfigured(){ const g=getGH(); return g.owner && g.repo && g.token; }
+
+function syncSettings(){
+  const g=getGH();
+  el('mo').style.display='flex';
+  el('mc').innerHTML=`<h2>GitHub Sync</h2>
+  <div class="sync-help">
+    Store your landscape data as a JSON file in a GitHub repo. Both you and your cofounder can edit from any browser.<br><br>
+    <strong>Setup:</strong><br>
+    1. Your repo: <code>desci</code><br>
+    2. Generate a <a href="https://github.com/settings/tokens/new" target="_blank">Personal Access Token</a> with <code>repo</code> scope<br>
+    3. Share the repo with your cofounder<br>
+    4. Each person enters their own token below
+  </div>
+  <div class="field"><div class="flabel">GitHub Username / Org</div><input class="finput" id="ghOwner" value="${g.owner}" placeholder="e.g. yashgurbani"></div>
+  <div class="field"><div class="flabel">Repository Name</div><input class="finput" id="ghRepo" value="${g.repo}" placeholder="desci"></div>
+  <div class="field"><div class="flabel">File Path</div><input class="finput" id="ghPath" value="${g.path}" placeholder="data.json"></div>
+  <div class="field"><div class="flabel">Personal Access Token</div><input class="finput" id="ghToken" type="password" value="${g.token}" placeholder="ghp_..."><div style="font-size:.65rem;color:var(--text-3);margin-top:3px">Stored in your browser only. Never sent anywhere except GitHub API.</div></div>
+  <div class="modal-foot">
+    <button class="btn" onclick="clM()">Cancel</button>
+    <button class="btn" onclick="githubPull()" style="border-color:var(--sage);color:var(--sage)">Pull from GitHub</button>
+    <button class="btn btn-fill" onclick="saveGHSettings();githubPush()">Save & Push</button>
+  </div>`;
+}
+
+function saveGHSettings(){
+  localStorage.setItem('gh-owner', el('ghOwner').value.trim());
+  localStorage.setItem('gh-repo', el('ghRepo').value.trim());
+  localStorage.setItem('gh-path', el('ghPath').value.trim() || 'data.json');
+  localStorage.setItem('gh-token', el('ghToken').value.trim());
+}
+
+async function githubPull(){
+  if(!ghConfigured()){syncSettings();return}
+  const g=getGH(), ss=el('syncStatus');
+  ss.className='sync-status';ss.innerHTML='<span class="sync-dot"></span>pulling...';
+  try{
+    const r=await fetch(`https://api.github.com/repos/${g.owner}/${g.repo}/contents/${g.path}`,{
+      headers:{'Authorization':'Bearer '+g.token,'Accept':'application/vnd.github.v3+json'}
+    });
+    if(r.status===404){
+      ss.innerHTML='<span class="sync-dot"></span>no remote file yet';
+      ss.className='sync-status';return;
+    }
+    if(!r.ok)throw new Error('HTTP '+r.status);
+    const json=await r.json();
+    const content=JSON.parse(atob(json.content));
+    // Store SHA for later updates
+    localStorage.setItem('gh-sha',json.sha);
+    D=content;
+    D.nodes.forEach(n=>{n.wp=n.wp||'';n.git=n.git||'';n.twitter=n.twitter||'';n.cf=n.cf||{}});
+    if(!D.people)D.people=SEED_DATA.people;
+    save();render();updateSB();updateStats();buildPills();
+    ss.className='sync-status synced';ss.innerHTML='<span class="sync-dot"></span>synced';
+    clM();
+  }catch(e){
+    ss.className='sync-status error';ss.innerHTML='<span class="sync-dot"></span>'+e.message;
+  }
+}
+
+async function githubPush(){
+  if(!ghConfigured()){syncSettings();return}
+  const g=getGH(), ss=el('syncStatus');
+  ss.className='sync-status';ss.innerHTML='<span class="sync-dot"></span>pushing...';
+  try{
+    // Get current SHA if we don't have it
+    let sha=localStorage.getItem('gh-sha')||'';
+    if(!sha){
+      const check=await fetch(`https://api.github.com/repos/${g.owner}/${g.repo}/contents/${g.path}`,{
+        headers:{'Authorization':'Bearer '+g.token,'Accept':'application/vnd.github.v3+json'}
+      });
+      if(check.ok){const j=await check.json();sha=j.sha;}
+    }
+    const body={
+      message:'Update DeSci landscape data - '+new Date().toISOString().slice(0,16),
+      content:btoa(unescape(encodeURIComponent(JSON.stringify(D,null,2)))),
+    };
+    if(sha)body.sha=sha;
+    const r=await fetch(`https://api.github.com/repos/${g.owner}/${g.repo}/contents/${g.path}`,{
+      method:'PUT',
+      headers:{'Authorization':'Bearer '+g.token,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},
+      body:JSON.stringify(body)
+    });
+    if(!r.ok){const err=await r.json();throw new Error(err.message||'HTTP '+r.status)}
+    const result=await r.json();
+    localStorage.setItem('gh-sha',result.content.sha);
+    ss.className='sync-status synced';ss.innerHTML='<span class="sync-dot"></span>pushed ✓';
+    clM();
+  }catch(e){
+    ss.className='sync-status error';ss.innerHTML='<span class="sync-dot"></span>'+e.message;
+  }
+}
+
+// Auto-pull on load if configured
+function autoSync(){if(ghConfigured())githubPull()}
+
+// ===== THEME =====
+function setTheme(t){
+  document.documentElement.setAttribute('data-theme',t);
+  document.querySelectorAll('.theme-dot').forEach(d=>{d.classList.toggle('active',d.dataset.t===t)});
+  localStorage.setItem('desci5-theme',t);
+  // Rebuild graph if active (colors change)
+  if(view==='graph')render();
+}
+(function(){const t=localStorage.getItem('desci5-theme');if(t)setTheme(t)})();
+
+// ===== PANEL TOGGLE =====
+function togglePanel(side){
+  const app=document.querySelector('.app');
+  if(side==='left')app.classList.toggle('hide-left');
+  else app.classList.toggle('hide-right');
+  // Update toggle arrows
+  document.querySelector('.toggle-left').textContent=app.classList.contains('hide-left')?'▶':'◀';
+  document.querySelector('.toggle-right').textContent=app.classList.contains('hide-right')?'◀':'▶';
+  // Resize graph after transition
+  setTimeout(()=>{if(view==='graph')render()},350);
+}
+
+// ===== ZOOM =====
+let zoomBehavior=null, currentTransform=d3.zoomIdentity;
+function zoomIn(){if(zoomBehavior&&svg){svg.transition().duration(300).call(zoomBehavior.scaleBy,1.4)}}
+function zoomOut(){if(zoomBehavior&&svg){svg.transition().duration(300).call(zoomBehavior.scaleBy,0.7)}}
+function zoomReset(){if(zoomBehavior&&svg){svg.transition().duration(500).call(zoomBehavior.transform,d3.zoomIdentity)}}
+
+init();
+setTimeout(autoSync, 500); // Auto-pull from GitHub if configured
+</script>
+</body>
+</html>
