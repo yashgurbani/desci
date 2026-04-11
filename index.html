@@ -309,7 +309,7 @@ async function init(){
     if(s)try{D=JSON.parse(s)}catch(e){}
   }
   if(!D.nodes||!D.nodes.length){D={nodes:[],edges:[],people:[]}; return}
-  D.nodes.forEach(n=>{n.wp=n.wp||'';n.git=n.git||'';n.twitter=n.twitter||'';n.cf=n.cf||{};n.overlapTags=n.overlapTags||[];n.credScore=n.credScore||0;n.overlapScore=n.overlapScore||0;n.decentNote=n.decentNote||'';n.techStack=n.techStack||'';n.compNote=n.compNote||''});
+  D.nodes.forEach(n=>{n.wp=n.wp||'';n.git=n.git||'';n.twitter=n.twitter||'';n.cf=n.cf||{};n.overlapTags=n.overlapTags||[];n.credScore=n.credScore||0;n.overlapScore=n.overlapScore||0;n.decentNote=n.decentNote||'';n.techStack=n.techStack||'';n.compNote=n.compNote||'';n.notes=n.notes||''});
   D.edges=(D.edges||[]).map(e=>e.type==='collaborator'?({...e,type:'partner'}):e);
   if(!D.people)D.people=[];
   buildPills();render();updateSB();updateStats();
@@ -409,38 +409,106 @@ function computeComponents(nodes, links){
   return out.sort((a,b) => b.length - a.length);
 }
 
-function componentAnchors(w, h, comps){
-  const n = comps.length;
-  if (!n) return [];
-  const cx = w / 2, cy = h / 2;
-  const minDim = Math.min(w, h);
-  const anchors = [];
-  let placed = 0;
-  let ring = 0;
-
-  while (placed < n) {
-    const radius = minDim * (0.22 + ring * 0.16);
-    const capacity = Math.max(5 + ring * 3, Math.ceil(2 * Math.PI * radius / 210));
-    const count = Math.min(capacity, n - placed);
-    const offset = -Math.PI / 2 + (ring % 2 ? Math.PI / count : 0);
-
-    for (let i = 0; i < count; i++) {
-      const a = offset + (i * 2 * Math.PI / count);
-      anchors.push({
-        x: cx + Math.cos(a) * radius,
-        y: cy + Math.sin(a) * radius
-      });
-    }
-
-    placed += count;
-    ring += 1;
-  }
-
-  return anchors;
+function estimateNodeRadius(d, mode='org'){
+  if(mode==='people') return d._t==='person' ? 10 : 9;
+  return Math.max(6,(d.decen||50)/8+3);
 }
 
-function labelDyFor(i){
-  return [-16, -24, 18, 26][i % 4];
+function estimateLabelPad(name, mode='org'){
+  const mult = mode==='people' ? 1.9 : 2.1;
+  return Math.max(10, Math.min(mode==='people' ? 32 : 36, (name || '').length * mult));
+}
+
+function componentRing(size, minDim, mode='org'){
+  if (mode === 'people') {
+    if (size >= 10) return minDim * 0.26;
+    if (size >= 6) return minDim * 0.36;
+    if (size >= 3) return minDim * 0.47;
+    return minDim * 0.58;
+  }
+  if (size >= 12) return minDim * 0.24;
+  if (size >= 7) return minDim * 0.35;
+  if (size >= 4) return minDim * 0.47;
+  return minDim * 0.60;
+}
+
+function componentRadius(compIds, byId, mode='org'){
+  const size = compIds.length;
+  const labelMass = compIds.reduce((sum, id) => sum + estimateLabelPad((byId.get(id) || {}).name || '', mode), 0);
+  const base = mode==='people' ? 52 : 62;
+  const sizeTerm = Math.sqrt(Math.max(1, size)) * (mode==='people' ? 24 : 28);
+  const labelTerm = Math.min(mode==='people' ? 74 : 86, labelMass / Math.max(3, size));
+  return base + sizeTerm + labelTerm;
+}
+
+function componentAnchors(w, h, comps, byId, mode='org'){
+  const cx = w / 2, cy = h / 2;
+  const minDim = Math.min(w, h);
+  const compNodes = comps.map((ids, i) => {
+    const ring = componentRing(ids.length, minDim, mode);
+    const angle = -Math.PI / 2 + (i * 2 * Math.PI / Math.max(1, comps.length));
+    return {
+      id: i,
+      ids,
+      r: componentRadius(ids, byId, mode),
+      ring,
+      x: cx + Math.cos(angle) * ring,
+      y: cy + Math.sin(angle) * ring
+    };
+  });
+
+  const cSim = d3.forceSimulation(compNodes)
+    .force('radial', d3.forceRadial(d => d.ring, cx, cy).strength(0.95))
+    .force('charge', d3.forceManyBody().strength(-2200))
+    .force('collision', d3.forceCollide(d => d.r + 48))
+    .force('x', d3.forceX(cx).strength(0.015))
+    .force('y', d3.forceY(cy).strength(0.015))
+    .stop();
+
+  for (let i = 0; i < 320; i++) cSim.tick();
+
+  const out = new Map();
+  compNodes.forEach(c => {
+    const pad = c.r + 24;
+    c.x = Math.max(pad, Math.min(w - pad, c.x));
+    c.y = Math.max(pad, Math.min(h - pad, c.y));
+    c.ids.forEach(id => out.set(id, {x:c.x, y:c.y, r:c.r}));
+  });
+  return out;
+}
+
+function seedNodesByComponent(nodes, comps, anchorById){
+  comps.forEach(ids => {
+    const count = ids.length;
+    const base = anchorById.get(ids[0]) || {x:0, y:0, r:100};
+    ids.forEach((id, j) => {
+      const d = nodes.find(n => n.id === id);
+      if (!d) return;
+      const angle = (j / Math.max(1, count)) * Math.PI * 2;
+      const localR = Math.min(base.r * 0.42, 20 + Math.sqrt(count) * 9 + (j % 3) * 8);
+      d.x = base.x + Math.cos(angle) * localR;
+      d.y = base.y + Math.sin(angle) * localR;
+    });
+  });
+}
+
+function labelPlacement(d, anchorById, mode='org'){
+  const a = anchorById.get(d.id) || {x:d.x || 0, y:d.y || 0};
+  const dx = (d.x || 0) - a.x;
+  const dy = (d.y || 0) - a.y;
+  const r = estimateNodeRadius(d, mode);
+  const sidePad = mode==='people' ? 8 : 9;
+  const vertPad = mode==='people' ? 10 : 11;
+  if (Math.abs(dx) >= Math.abs(dy)) {
+    if (dx >= 0) return {anchor:'start', x:(d.x || 0) + r + sidePad, y:(d.y || 0) + 3};
+    return {anchor:'end', x:(d.x || 0) - r - sidePad, y:(d.y || 0) + 3};
+  }
+  if (dy >= 0) return {anchor:'middle', x:(d.x || 0), y:(d.y || 0) + r + vertPad + 8};
+  return {anchor:'middle', x:(d.x || 0), y:(d.y || 0) - r - vertPad};
+}
+
+function resizeGraphViewport(){
+  if(view==='graph' || view==='pgraph') render();
 }
 
 
@@ -466,19 +534,10 @@ function buildGraph(){
     .filter(e=>si.has(e.s)&&si.has(e.t))
     .map(e=>({ ...e, source:e.s, target:e.t }));
 
+  const byId = new Map(sn.map(n => [n.id, n]));
   const comps = computeComponents(sn, se);
-  const compIndex = new Map();
-  comps.forEach((comp, i) => comp.forEach(id => compIndex.set(id, i)));
-  const anchors = componentAnchors(w, h, comps);
-  const anchorById = new Map();
-  comps.forEach((comp, i) => comp.forEach(id => anchorById.set(id, anchors[i])));
-
-  sn.forEach((d, i) => {
-    const a = anchorById.get(d.id) || { x:w/2, y:h/2 };
-    const spread = 44 + (i % 5) * 7;
-    d.x = a.x + (Math.random() - 0.5) * spread;
-    d.y = a.y + (Math.random() - 0.5) * spread;
-  });
+  const anchorById = componentAnchors(w, h, comps, byId, 'org');
+  seedNodesByComponent(sn, comps, anchorById);
 
   const svgEl=d3.select(m).append('svg').attr('width',w).attr('height',h);
   zoomBehavior=d3.zoom().scaleExtent([.15,4]).on('zoom',e=>svgG.attr('transform',e.transform));
@@ -487,44 +546,42 @@ function buildGraph(){
   const lG=svgG.append('g'),nG=svgG.append('g'),tG=svgG.append('g');
 
   const s=d3.forceSimulation(sn)
-    .force('link',d3.forceLink(se).id(d=>d.id).distance(88).strength(.2))
-    .force('charge',d3.forceManyBody().strength(-180))
-    .force('center',d3.forceCenter(w/2,h/2))
-    .force('clusterX', d3.forceX(d => (anchorById.get(d.id) || {x:w/2}).x).strength(.11))
-    .force('clusterY', d3.forceY(d => (anchorById.get(d.id) || {y:h/2}).y).strength(.11))
-    .force('collision',d3.forceCollide(d => {
-      const r = Math.max(7,(d.decen||50)/8+4);
-      const labelPad = Math.min(28, (d.name || '').length * 0.24);
-      return r + labelPad + 13;
-    }));
+    .force('link',d3.forceLink(se).id(d=>d.id).distance(d=>{
+      const sa = anchorById.get(d.source.id || d.source)?.r || 120;
+      return Math.min(120, Math.max(76, sa * 0.34));
+    }).strength(.22))
+    .force('charge',d3.forceManyBody().strength(-125))
+    .force('clusterX', d3.forceX(d => (anchorById.get(d.id) || {x:w/2}).x).strength(.22))
+    .force('clusterY', d3.forceY(d => (anchorById.get(d.id) || {y:h/2}).y).strength(.22))
+    .force('collision',d3.forceCollide(d => estimateNodeRadius(d,'org') + estimateLabelPad(d.name,'org') + 10))
+    .alphaDecay(0.05)
+    .velocityDecay(0.34);
   sim=s;
 
   const lines=lG.selectAll('line').data(se).enter().append('line')
     .attr('stroke',d=>EC[d.type]||'var(--raised)')
-    .attr('stroke-width',d=>d.type==='overlap'?1.9:1.5)
+    .attr('stroke-width',d=>d.type==='overlap'?1.9:1.45)
     .attr('stroke-dasharray',d=>d.type==='overlap'?'7 5':null)
     .attr('stroke-linecap','round')
-    .attr('opacity',d=>d.type==='overlap'?.46:.22);
+    .attr('opacity',d=>d.type==='overlap'?.44:.2);
 
   const ns=nG.selectAll('circle').data(sn).enter().append('circle')
-    .attr('r',d=>Math.max(6,(d.decen||50)/8+3))
+    .attr('r',d=>estimateNodeRadius(d,'org'))
     .attr('fill',d=>SC[d.stack]||'var(--text-3)')
     .attr('fill-opacity',.2)
     .attr('stroke',d=>SC[d.stack]||'var(--text-3)')
-    .attr('stroke-width',d=>(d.overlapScore||0)>=40?2.5:1.2)
+    .attr('stroke-width',d=>(d.overlapScore||0)>=40?2.3:1.15)
     .style('cursor','pointer')
-    .call(d3.drag().on('start',(e,d)=>{if(!e.active)s.alphaTarget(.22).restart();d.fx=d.x;d.fy=d.y}).on('drag',(e,d)=>{d.fx=e.x;d.fy=e.y}).on('end',(e,d)=>{if(!e.active)s.alphaTarget(0);d.fx=null;d.fy=null}));
+    .call(d3.drag().on('start',(e,d)=>{if(!e.active)s.alphaTarget(.18).restart();d.fx=d.x;d.fy=d.y}).on('drag',(e,d)=>{d.fx=e.x;d.fy=e.y}).on('end',(e,d)=>{if(!e.active)s.alphaTarget(0);d.fx=null;d.fy=null}));
 
-  tG.selectAll('text').data(sn).enter().append('text').text(d=>d.name)
-    .attr('font-size',9.5)
+  const labels=tG.selectAll('text').data(sn).enter().append('text').text(d=>d.name)
+    .attr('font-size',9)
     .attr('font-family','Nunito Sans,sans-serif')
     .attr('font-weight',600)
     .attr('fill','var(--graph-label)')
-    .attr('stroke','rgba(0,0,0,.72)')
-    .attr('stroke-width',1.25)
+    .attr('stroke','rgba(0,0,0,.8)')
+    .attr('stroke-width',1.35)
     .attr('paint-order','stroke')
-    .attr('text-anchor','middle')
-    .attr('dy',d=>labelDyFor(compIndex.get(d.id) || d._i))
     .style('pointer-events','none');
 
   ns.on('click',(e,d)=>{selNode(d.id);el('app').classList.remove('hide-right')});
@@ -547,12 +604,15 @@ function buildGraph(){
     tip.classList.add('vis');
   })
   .on('mousemove',e=>{const r=m.getBoundingClientRect();tip.style.left=(e.clientX-r.left+14)+'px';tip.style.top=(e.clientY-r.top-10)+'px'})
-  .on('mouseleave',function(){d3.select(this).attr('stroke-width',d=>d.type==='overlap'?1.9:1.5).attr('opacity',d=>d.type==='overlap'?.46:.22);tip.classList.remove('vis')});
+  .on('mouseleave',function(){d3.select(this).attr('stroke-width',d=>d.type==='overlap'?1.9:1.45).attr('opacity',d=>d.type==='overlap'?.44:.2);tip.classList.remove('vis')});
 
   s.on('tick',()=>{
     lines.attr('x1',d=>d.source.x).attr('y1',d=>d.source.y).attr('x2',d=>d.target.x).attr('y2',d=>d.target.y);
     ns.attr('cx',d=>d.x).attr('cy',d=>d.y);
-    tG.selectAll('text').attr('x',d=>d.x).attr('y',d=>d.y);
+    labels.each(function(d){
+      const p = labelPlacement(d, anchorById, 'org');
+      d3.select(this).attr('text-anchor', p.anchor).attr('x', p.x).attr('y', p.y);
+    });
   });
 
   const lg=document.createElement('div');lg.className='legend';lg.id='graphLegend';
@@ -598,61 +658,54 @@ function renderPeopleGraph(){
   D.people.forEach(p=>p.orgs.forEach(o=>{if(D.nodes.find(n=>n.id===o))links.push({source:p.id,target:o,_t:'member'})}));
   D.people.forEach((p1,i)=>D.people.forEach((p2,j)=>{if(j>i&&p1.orgs.some(o=>p2.orgs.includes(o)))links.push({source:p1.id,target:p2.id,_t:'colleague'})}));
 
+  const byId = new Map(allN.map(n => [n.id, n]));
   const comps = computeComponents(allN, links);
-  const compIndex = new Map();
-  comps.forEach((comp, i) => comp.forEach(id => compIndex.set(id, i)));
-  const anchors = componentAnchors(w, h, comps);
-  const anchorById = new Map();
-  comps.forEach((comp, i) => comp.forEach(id => anchorById.set(id, anchors[i])));
-
-  allN.forEach((d, i) => {
-    const a = anchorById.get(d.id) || { x:w/2, y:h/2 };
-    const spread = 38 + (i % 6) * 6;
-    d.x = a.x + (Math.random() - 0.5) * spread;
-    d.y = a.y + (Math.random() - 0.5) * spread;
-  });
+  const anchorById = componentAnchors(w, h, comps, byId, 'people');
+  seedNodesByComponent(allN, comps, anchorById);
 
   const svgEl=d3.select(m).append('svg').attr('width',w).attr('height',h);
   svgEl.call(d3.zoom().scaleExtent([.2,4]).on('zoom',e=>gEl.attr('transform',e.transform)));
   const gEl=svgEl.append('g'),lG=gEl.append('g'),nG=gEl.append('g'),tG=gEl.append('g');
 
   const s=d3.forceSimulation(allN)
-    .force('link',d3.forceLink(links).id(d=>d.id).distance(d=>d._t==='colleague'?108:90).strength(.19))
-    .force('charge',d3.forceManyBody().strength(-195))
-    .force('center',d3.forceCenter(w/2,h/2))
-    .force('clusterX', d3.forceX(d => (anchorById.get(d.id) || {x:w/2}).x).strength(.11))
-    .force('clusterY', d3.forceY(d => (anchorById.get(d.id) || {y:h/2}).y).strength(.11))
-    .force('collision',d3.forceCollide(d => d._t==='person' ? 36 : 31));
+    .force('link',d3.forceLink(links).id(d=>d.id).distance(d=>d._t==='colleague'?92:78).strength(.2))
+    .force('charge',d3.forceManyBody().strength(-140))
+    .force('clusterX', d3.forceX(d => (anchorById.get(d.id) || {x:w/2}).x).strength(.22))
+    .force('clusterY', d3.forceY(d => (anchorById.get(d.id) || {y:h/2}).y).strength(.22))
+    .force('collision',d3.forceCollide(d => estimateNodeRadius(d,'people') + estimateLabelPad(d.name,'people') + 12))
+    .alphaDecay(0.055)
+    .velocityDecay(0.36);
   sim=s;
 
   lG.selectAll('line').data(links).enter().append('line')
     .attr('stroke',d=>d._t==='colleague'?'var(--gold)':'var(--raised)')
-    .attr('stroke-width',d=>d._t==='colleague'?1.8:1)
-    .attr('opacity',.24);
+    .attr('stroke-width',d=>d._t==='colleague'?1.7:1)
+    .attr('opacity',.22);
 
   const ns=nG.selectAll('g').data(allN).enter().append('g').style('cursor','pointer')
-    .call(d3.drag().on('start',(e,d)=>{if(!e.active)s.alphaTarget(.22).restart();d.fx=d.x;d.fy=d.y}).on('drag',(e,d)=>{d.fx=e.x;d.fy=e.y}).on('end',(e,d)=>{if(!e.active)s.alphaTarget(0);d.fx=null;d.fy=null}));
+    .call(d3.drag().on('start',(e,d)=>{if(!e.active)s.alphaTarget(.18).restart();d.fx=d.x;d.fy=d.y}).on('drag',(e,d)=>{d.fx=e.x;d.fy=e.y}).on('end',(e,d)=>{if(!e.active)s.alphaTarget(0);d.fx=null;d.fy=null}));
 
   ns.filter(d=>d._t==='person').append('circle').attr('r',10).attr('fill','var(--gold)').attr('fill-opacity',.15).attr('stroke','var(--gold)').attr('stroke-width',1.5);
   ns.filter(d=>d._t==='org').append('rect').attr('x',-9).attr('y',-9).attr('width',18).attr('height',18).attr('rx',4).attr('fill',d=>SC[d.stack]||'var(--text-3)').attr('fill-opacity',.15).attr('stroke',d=>SC[d.stack]||'var(--text-3)').attr('stroke-width',1.2);
 
-  tG.selectAll('text').data(allN).enter().append('text').text(d=>d.name)
-    .attr('font-size',9.5)
+  const labels=tG.selectAll('text').data(allN).enter().append('text').text(d=>d.name)
+    .attr('font-size',8.8)
     .attr('font-family','Nunito Sans,sans-serif')
     .attr('font-weight',d=>d._t==='person'?600:400)
     .attr('fill',d=>d._t==='person'?'var(--gold)':'var(--text-2)')
-    .attr('stroke','rgba(0,0,0,.72)')
-    .attr('stroke-width',1.2)
+    .attr('stroke','rgba(0,0,0,.8)')
+    .attr('stroke-width',1.3)
     .attr('paint-order','stroke')
-    .attr('text-anchor','middle')
-    .attr('dy',d=>labelDyFor(compIndex.get(d.id) || d._i))
     .style('pointer-events','none');
 
   ns.on('click',(e,d)=>{if(d._t==='org')selNode(d.id);else showPerson(d.id)});
   s.on('tick',()=>{
     lG.selectAll('line').attr('x1',d=>d.source.x).attr('y1',d=>d.source.y).attr('x2',d=>d.target.x).attr('y2',d=>d.target.y);
     nG.selectAll('g').attr('transform',d=>`translate(${d.x},${d.y})`);
-    tG.selectAll('text').attr('x',d=>d.x).attr('y',d=>d.y);
+    labels.each(function(d){
+      const p = labelPlacement(d, anchorById, 'people');
+      d3.select(this).attr('text-anchor', p.anchor).attr('x', p.x).attr('y', p.y);
+    });
   });
 
   const lg=document.createElement('div');lg.className='legend';
@@ -690,6 +743,7 @@ function selNode(id){
   </div>`:''}
   ${n.techStack?`<div class="field"><div class="flabel">Core Tech Stack</div><div style="font-size:.85rem;color:var(--text);font-family:var(--mono);line-height:1.6">${n.techStack}</div></div>`:''}
   ${n.decentNote?`<div class="field"><div class="flabel">Decentralization <span style="color:var(--teal);font-weight:700">${n.decen||0}%</span></div><div style="font-size:.82rem;color:var(--text-2);line-height:1.5">${n.decentNote}</div></div>`:''}
+  <div class="field"><div class="flabel">Notes</div><textarea class="finput" style="min-height:140px" placeholder="Open-ended notes, hypotheses, meeting takeaways, or follow-ups" onchange="upd('${id}','notes',this.value)">${n.notes||''}</textarea></div>
   <div class="field"><div class="flabel">Tags</div><div class="tag-row">${(n.tags||[]).map((t,i)=>`<span class="tag-chip">${t}<span class="rm" onclick="rTag('${id}',${i})">×</span></span>`).join('')}</div><input class="finput" style="margin-top:5px" placeholder="Add tag, press Enter" onkeydown="if(event.key==='Enter'){aTag('${id}',this.value);this.value=''}"></div>
   <div class="field"><div class="flabel">People</div>${ppl.length?ppl.map(p=>`<div style="padding:4px 0;border-bottom:1px solid var(--border);font-size:.85rem"><strong>${p.name}</strong> <span style="color:var(--text-3)">${p.role||''}</span>${p.linkedin?` <a href="${p.linkedin}" target="_blank">LinkedIn↗</a>`:''}${p.twitter?` <a href="https://x.com/${p.twitter.replace('@','')}" target="_blank">${p.twitter}</a>`:''}</div>`).join(''):'<span style="color:var(--text-3);font-size:.8rem">No linked people</span>'}</div>
   <div class="field"><div class="flabel">Strata</div><div class="strata">${SL.map((s,i)=>{const k='s'+(i+1);return`<div class="stm" data-v="${n[k]||0}" onclick="cyc('${id}','${k}')">${s}<br>${SS[n[k]||0]}</div>`}).join('')}</div></div>
@@ -725,7 +779,7 @@ function addOrgM(){
 }
 function doAddOrg(){
   const id=el('nId').value.trim(),name=el('nName').value.trim();if(!id||!name)return;
-  D.nodes.push({id,name,desc:'',type:el('nType').value.trim()||'Unknown',stack:el('nStack').value,stage:'Early',tags:[],s1:0,s2:0,s3:0,s4:0,s5:0,decen:50,chain:'',web:'',funding:'',source:'Manual',cf:{},wp:'',git:'',twitter:'',people:'',techStack:'',decentNote:'',overlapScore:0,compNote:'',overlapTags:[],credScore:0});
+  D.nodes.push({id,name,desc:'',type:el('nType').value.trim()||'Unknown',stack:el('nStack').value,stage:'Early',tags:[],s1:0,s2:0,s3:0,s4:0,s5:0,decen:50,chain:'',web:'',funding:'',source:'Manual',cf:{},wp:'',git:'',twitter:'',people:'',techStack:'',decentNote:'',overlapScore:0,compNote:'',notes:'',overlapTags:[],credScore:0});
   save();render();updateSB();updateStats();buildPills();clM();
 }
 function addEdgeM(){
@@ -760,7 +814,7 @@ function promptToken(){if(GH.token)return true;const t=prompt('GitHub PAT (fine-
 function setSyncUI(state,msg){const s=el('syncStatus'),t=el('syncText');s.className='sync-status'+(state==='ok'?' synced':state==='err'?' error':'');t.textContent=msg}
 let pushTimer=null;
 function debouncedPush(){if(!GH.ok)return;clearTimeout(pushTimer);setSyncUI('','saving...');pushTimer=setTimeout(()=>ghPush(),2000)}
-async function ghPull(){if(!GH.ok){detectGHPages();if(!promptToken())return}if(!GH.ok)return;setSyncUI('','pulling...');try{const r=await fetch(`https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/${GH.path}`,{headers:{'Authorization':'Bearer '+GH.token,'Accept':'application/vnd.github.v3+json'}});if(r.status===404){setSyncUI('ok','no remote');return}if(r.status===401||r.status===403){localStorage.removeItem('gh-token');setSyncUI('err','bad token');return}if(!r.ok)throw new Error('HTTP '+r.status);const j=await r.json();const raw=atob(j.content.replace(/\n/g,''));D=JSON.parse(raw);localStorage.setItem('gh-sha',j.sha);D.nodes.forEach(n=>{n.overlapTags=n.overlapTags||[];n.credScore=n.credScore||0});save(true);render();updateSB();updateStats();buildPills();setSyncUI('ok','synced')}catch(e){setSyncUI('err',e.message)}}
+async function ghPull(){if(!GH.ok){detectGHPages();if(!promptToken())return}if(!GH.ok)return;setSyncUI('','pulling...');try{const r=await fetch(`https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/${GH.path}`,{headers:{'Authorization':'Bearer '+GH.token,'Accept':'application/vnd.github.v3+json'}});if(r.status===404){setSyncUI('ok','no remote');return}if(r.status===401||r.status===403){localStorage.removeItem('gh-token');setSyncUI('err','bad token');return}if(!r.ok)throw new Error('HTTP '+r.status);const j=await r.json();const raw=atob(j.content.replace(/\n/g,''));D=JSON.parse(raw);localStorage.setItem('gh-sha',j.sha);D.nodes.forEach(n=>{n.overlapTags=n.overlapTags||[];n.credScore=n.credScore||0;n.notes=n.notes||''});save(true);render();updateSB();updateStats();buildPills();setSyncUI('ok','synced')}catch(e){setSyncUI('err',e.message)}}
 async function ghPush(){if(!GH.ok)return;setSyncUI('','pushing...');try{let sha=localStorage.getItem('gh-sha')||'';if(!sha){try{const c=await fetch(`https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/${GH.path}`,{headers:{'Authorization':'Bearer '+GH.token,'Accept':'application/vnd.github.v3+json'}});if(c.ok){const j=await c.json();sha=j.sha}}catch(e){}}const text=JSON.stringify(D,null,2);const bytes=new TextEncoder().encode(text);let bin='';for(let i=0;i<bytes.length;i++)bin+=String.fromCharCode(bytes[i]);const body={message:'Update '+new Date().toISOString().slice(0,16),content:btoa(bin)};if(sha)body.sha=sha;const r=await fetch(`https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/${GH.path}`,{method:'PUT',headers:{'Authorization':'Bearer '+GH.token,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},body:JSON.stringify(body)});if(r.status===409){setSyncUI('','conflict...');await ghPull();await ghPush();return}if(!r.ok){const e=await r.json();throw new Error(e.message||'HTTP '+r.status)}const result=await r.json();localStorage.setItem('gh-sha',result.content.sha);setSyncUI('ok','saved')}catch(e){setSyncUI('err',e.message)}}
 function autoSync(){detectGHPages();if(GH.ok)ghPull()}
 function onSyncClick(){if(!GH.ok){detectGHPages();if(promptToken())ghPull()}else ghPush()}
