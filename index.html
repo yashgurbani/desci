@@ -15,9 +15,10 @@
   --gold:#d4a853;--gold-dim:#b8923e;--gold-glow:rgba(212,168,83,.08);
   --sage:#6ec89b;--rose:#e87e9a;--teal:#5ab8b3;
   --red:#e05c5c;--blue:#5c9ee0;
+  --graph-label:#d6d6d6;
   --mono:'Fira Code',monospace;--display:'Playfair Display',Georgia,serif;
   --body:'Nunito Sans',system-ui,sans-serif;
-  --radius:8px;--radius-sm:5px;--graph-label:#d6d6d6;
+  --radius:8px;--radius-sm:5px;
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{font-size:16px}
@@ -49,7 +50,7 @@ body{font-family:var(--body);background:var(--bg);color:var(--text);height:100vh
 .sync-dot{width:6px;height:6px;border-radius:50%;background:currentColor}
 
 /* SIDEBAR */
-.sidebar{grid-column:1;grid-row:2;min-width:0;min-height:0;background:var(--surface);border-right:1px solid var(--border);overflow-y:auto;padding:16px 14px}
+.sidebar{grid-column:1;grid-row:2;background:var(--surface);border-right:1px solid var(--border);overflow-y:auto;padding:16px 14px;min-width:0;min-height:0}
 .app.hide-left .sidebar{display:none}
 .sb-section{margin-bottom:18px}
 .sb-label{font-family:var(--mono);font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--text-3);margin-bottom:8px}
@@ -84,7 +85,7 @@ body{font-family:var(--body);background:var(--bg);color:var(--text);height:100vh
 .toggle-left:hover,.toggle-right:hover{border-color:var(--gold);color:var(--gold)}
 
 /* DETAIL */
-.detail{grid-column:3;grid-row:2;min-width:0;min-height:0;background:var(--surface);border-left:1px solid var(--border);padding:24px 20px;overflow-y:auto}
+.detail{grid-column:3;grid-row:2;background:var(--surface);border-left:1px solid var(--border);padding:24px 20px;overflow-y:auto;min-width:0;min-height:0}
 .app.hide-right .detail{display:none}
 .det-empty{height:100%;display:flex;align-items:center;justify-content:center;color:var(--text-3);font-size:.9rem;font-style:italic}
 .det-name{font-family:var(--display);font-size:1.5rem;font-weight:600;line-height:1.2;margin-bottom:4px}
@@ -361,16 +362,16 @@ function togglePanel(p){
   a.classList.toggle(p==='left'?'hide-left':'hide-right');
   requestAnimationFrame(()=>requestAnimationFrame(()=>{
     window.dispatchEvent(new Event('resize'));
-    if(view==='graph'||view==='pgraph')render();
+    if(view==='graph'||view==='pgraph') render();
   }));
 }
 function setView(v,b){view=v;document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));b.classList.add('on');render()}
 
 // ===== RENDER =====
 function render(){
-  const m=el('main');
-  m.querySelectorAll('svg,.table-wrap,.people-grid,.lit-panel,.legend').forEach(e=>e.remove());
+  const m=el('main');m.querySelectorAll('svg,.table-wrap,.people-grid,.lit-panel,.legend').forEach(e=>e.remove());
   if(sim)sim.stop();
+  el('zoomCtrl').style.display='none';
   if(view==='graph')buildGraph();
   else if(view==='table')renderTable();
   else if(view==='people')renderPeople();
@@ -382,84 +383,76 @@ function render(){
 function buildGraph(){
   const m=el('main'),w=m.clientWidth,h=m.clientHeight;
   if(!w||!h)return;
-
-  const sn=D.nodes.filter(vis).map(n=>({ ...n }));
+  el('zoomCtrl').style.display='flex';
+  const sn=D.nodes.filter(vis);
   const si=new Set(sn.map(n=>n.id));
-  const se=D.edges
-    .filter(e=>si.has(e.s)&&si.has(e.t))
-    .map(e=>({ ...e, source:e.s, target:e.t }));
-
+  const se = D.edges
+  .filter(e => si.has(e.s) && si.has(e.t))
+  .map(e => ({ ...e, source: e.s, target: e.t }));
   const svgEl=d3.select(m).append('svg').attr('width',w).attr('height',h);
-  svgG=svgEl.append('g');
-  zoomBehavior=d3.zoom().scaleExtent([.35,3]).on('zoom',e=>svgG.attr('transform',e.transform));
+  zoomBehavior=d3.zoom().scaleExtent([.15,4]).on('zoom',e=>svgG.attr('transform',e.transform));
   svgEl.call(zoomBehavior);
-
+  svgG=svgEl.append('g');
   const lG=svgG.append('g'),nG=svgG.append('g'),tG=svgG.append('g');
 
-  // Start nodes near the center so disconnected components do not spawn all over the canvas.
-  sn.forEach((d,i)=>{
-    d.x = w/2 + ((i%8)-4)*18;
-    d.y = h/2 + (Math.floor(i/8)%8-4)*18;
-  });
-
   const s=d3.forceSimulation(sn)
-    .alpha(1)
-    .alphaDecay(0.05)
-    .force('link',d3.forceLink(se).id(d=>d.id).distance(46).strength(0.55))
-    .force('charge',d3.forceManyBody().strength(-65))
+    .force('link',d3.forceLink(se).id(d=>d.id).distance(90).strength(.25))
+    .force('charge',d3.forceManyBody().strength(-200))
     .force('center',d3.forceCenter(w/2,h/2))
-    .force('x',d3.forceX(w/2).strength(0.045))
-    .force('y',d3.forceY(h/2).strength(0.045))
-    .force('collision',d3.forceCollide(d=>Math.max(9,(d.decen||50)/10+5)));
+    .force('collision',d3.forceCollide(d=>Math.max(12,(d.decen||50)/4+6)));
   sim=s;
 
+  // Edges with color by type
   const lines=lG.selectAll('line').data(se).enter().append('line')
     .attr('stroke',d=>EC[d.type]||'var(--raised)')
     .attr('stroke-width',1.5)
-    .attr('opacity',.32);
+    .attr('opacity',.25);
 
   const ns=nG.selectAll('circle').data(sn).enter().append('circle')
     .attr('r',d=>Math.max(6,(d.decen||50)/8+3))
     .attr('fill',d=>SC[d.stack]||'var(--text-3)')
-    .attr('fill-opacity',.22)
+    .attr('fill-opacity',.2)
     .attr('stroke',d=>SC[d.stack]||'var(--text-3)')
     .attr('stroke-width',d=>(d.overlapScore||0)>=40?2.5:1.2)
     .style('cursor','pointer')
-    .call(d3.drag()
-      .on('start',(e,d)=>{if(!e.active)s.alphaTarget(.25).restart();d.fx=d.x;d.fy=d.y})
-      .on('drag',(e,d)=>{d.fx=e.x;d.fy=e.y})
-      .on('end',(e,d)=>{if(!e.active)s.alphaTarget(0);d.fx=null;d.fy=null}));
+    .call(d3.drag().on('start',(e,d)=>{if(!e.active)s.alphaTarget(.3).restart();d.fx=d.x;d.fy=d.y}).on('drag',(e,d)=>{d.fx=e.x;d.fy=e.y}).on('end',(e,d)=>{if(!e.active)s.alphaTarget(0);d.fx=null;d.fy=null}));
 
   tG.selectAll('text').data(sn).enter().append('text').text(d=>d.name)
-    .attr('font-size',11)
-    .attr('font-family','Nunito Sans,sans-serif')
-    .attr('font-weight',600)
-    .attr('fill','var(--graph-label)')
-    .attr('stroke','rgba(0,0,0,.65)')
-    .attr('stroke-width',0.8)
-    .attr('paint-order','stroke')
-    .attr('text-anchor','middle')
-    .attr('dy',-14)
-    .style('pointer-events','none');
+    .attr('font-size',11).attr('font-family','Nunito Sans,sans-serif').attr('font-weight',600)
+    .attr('fill','var(--graph-label)').attr('stroke','rgba(0,0,0,.65)').attr('stroke-width',0.8).attr('paint-order','stroke')
+    .attr('text-anchor','middle').attr('dy',-14).style('pointer-events','none');
 
   ns.on('click',(e,d)=>{selNode(d.id);el('app').classList.remove('hide-right')});
 
+  // Tooltip for nodes
   const tip=el('tip');
-  ns.on('mouseenter',function(e,d){
-    d3.select(this).attr('fill-opacity',.34).attr('stroke-width',2.6);
-    tip.style.left=(e.clientX+12)+'px';tip.style.top=(e.clientY+12)+'px';
-    tip.innerHTML=`<h4>${d.name}</h4><div class="tm">${d.type||''}</div><div class="tm" style="margin-top:5px">${d.desc||''}</div>`;
-    tip.classList.add('vis');
-  }).on('mousemove',e=>{tip.style.left=(e.clientX+12)+'px';tip.style.top=(e.clientY+12)+'px'})
-  .on('mouseleave',function(){d3.select(this).attr('fill-opacity',.22).attr('stroke-width',d=>(d.overlapScore||0)>=40?2.5:1.2);tip.classList.remove('vis')});
+  ns.on('mouseenter',(e,d)=>{
+    const cred=d.credScore||0;
+    const cc=cred>=60?'var(--sage)':cred>=30?'var(--gold)':'var(--text-3)';
+    tip.innerHTML=`<h4>${d.name}</h4><div class="tm">${d.type} · ${d.stage} · Overlap ${d.overlapScore||0}%<br>Cred: <span style="color:${cc}">${cred}/100</span></div>`;
+    tip.classList.add('vis')
+  })
+  .on('mousemove',e=>{const r=m.getBoundingClientRect();tip.style.left=(e.clientX-r.left+14)+'px';tip.style.top=(e.clientY-r.top-10)+'px'})
+  .on('mouseleave',()=>tip.classList.remove('vis'));
 
-  lines.on('mouseenter',function(e,d){
-    d3.select(this).attr('stroke-width',3).attr('opacity',.9);
-    tip.style.left=(e.clientX+12)+'px';tip.style.top=(e.clientY+12)+'px';
-    tip.innerHTML=`<h4>${d.source.name} → ${d.target.name}</h4><div class="tm"><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:${(RB[d.type]||{}).b||'var(--raised)'};color:${(RB[d.type]||{}).c||'#fff'}">${d.type}</span> ${d.l||''}</div>`;
+  // Edge hover tooltip
+  lines.on('mouseenter',(e,d)=>{
+    const sn=D.nodes.find(n=>n.id===(d.source.id||d.source));
+    const tn=D.nodes.find(n=>n.id===(d.target.id||d.target));
+    tip.innerHTML=`<h4 style="font-size:.8rem">${sn?.name||''} → ${tn?.name||''}</h4><div class="tm"><span class="rel-badge" style="background:${(RB[d.type]||{}).b||'var(--raised)'};color:${(RB[d.type]||{}).c||'#fff'}">${d.type}</span> ${d.l||''}</div>`;
     tip.classList.add('vis');
-  }).on('mousemove',e=>{tip.style.left=(e.clientX+12)+'px';tip.style.top=(e.clientY+12)+'px'})
-  .on('mouseleave',function(){d3.select(this).attr('stroke-width',1.5).attr('opacity',.32);tip.classList.remove('vis')});
+  })
+  .on('mousemove',e=>{const r=m.getBoundingClientRect();tip.style.left=(e.clientX-r.left+14)+'px';tip.style.top=(e.clientY-r.top-10)+'px'})
+  .on('mouseleave',()=>tip.classList.remove('vis'))
+  .style('cursor','pointer')
+  .attr('stroke-width',1.5)
+  .on('mouseenter',function(e,d){d3.select(this).attr('stroke-width',3).attr('opacity',.6);
+    const sn2=D.nodes.find(n=>n.id===(d.source.id||d.source));
+    const tn2=D.nodes.find(n=>n.id===(d.target.id||d.target));
+    tip.innerHTML=`<h4 style="font-size:.8rem">${sn2?.name||''} → ${tn2?.name||''}</h4><div class="tm"><span class="rel-badge" style="background:${(RB[d.type]||{}).b||'var(--raised)'};color:${(RB[d.type]||{}).c||'#fff'}">${d.type}</span> ${d.l||''}</div>`;
+    tip.classList.add('vis');
+  })
+  .on('mouseleave',function(){d3.select(this).attr('stroke-width',1.5).attr('opacity',.25);tip.classList.remove('vis')});
 
   s.on('tick',()=>{
     lines.attr('x1',d=>d.source.x).attr('y1',d=>d.source.y).attr('x2',d=>d.target.x).attr('y2',d=>d.target.y);
@@ -467,28 +460,13 @@ function buildGraph(){
     tG.selectAll('text').attr('x',d=>d.x).attr('y',d=>d.y);
   });
 
-  // Auto-fit once the layout has settled so the graph starts compact and visible.
-  let fitted=false;
-  const fitGraphNow=()=>{
-    if(fitted||!svgG||!zoomBehavior)return;
-    const box=svgG.node().getBBox();
-    if(!box.width||!box.height)return;
-    const pad=48;
-    const scale=Math.max(0.45, Math.min(1.6, Math.min((w-pad)/box.width,(h-pad)/box.height)));
-    const tx=(w-box.width*scale)/2 - box.x*scale;
-    const ty=(h-box.height*scale)/2 - box.y*scale;
-    svgEl.transition().duration(350).call(zoomBehavior.transform,d3.zoomIdentity.translate(tx,ty).scale(scale));
-    fitted=true;
-  };
-  s.on('end', fitGraphNow);
-  setTimeout(fitGraphNow, 700);
-
+  // Legend (collapsible)
   const lg=document.createElement('div');lg.className='legend';lg.id='graphLegend';
   lg.innerHTML=`<div class="legend-header" onclick="this.parentElement.classList.toggle('collapsed')"><span class="legend-title">Legend</span><span class="legend-toggle">▼</span></div><div class="legend-body"><div style="margin-top:6px"><div class="legend-row"><div class="legend-dot" style="background:var(--sage)"></div>Infrastructure</div><div class="legend-row"><div class="legend-dot" style="background:var(--rose)"></div>Application</div><div class="legend-row"><div class="legend-dot" style="background:var(--teal)"></div>Governance</div></div><div style="margin-top:8px;border-top:1px solid var(--border);padding-top:6px"><div class="legend-row"><div style="width:14px;height:2px;background:var(--edge-funder);border-radius:1px"></div>Funder</div><div class="legend-row"><div style="width:14px;height:2px;background:var(--edge-ecosystem);border-radius:1px"></div>Ecosystem</div><div class="legend-row"><div style="width:14px;height:2px;background:var(--edge-partner);border-radius:1px"></div>Partner</div><div class="legend-row"><div style="width:14px;height:2px;background:var(--edge-overlap);border-radius:1px"></div>Overlap</div><div class="legend-row"><div style="width:14px;height:2px;background:var(--edge-collaborator);border-radius:1px"></div>Collaborator</div></div><div style="margin-top:6px;font-size:.6rem;color:var(--text-3)">Node size = decentralization<br>Thick border = overlap ≥40%</div></div>`;
   m.appendChild(lg);
 }
-function zoomGraph(f){const s=d3.select('#main svg');if(zoomBehavior&&!s.empty())s.transition().duration(300).call(zoomBehavior.scaleBy,f)}
-function zoomReset(){const s=d3.select('#main svg');if(zoomBehavior&&!s.empty())s.transition().duration(400).call(zoomBehavior.transform,d3.zoomIdentity)}
+function zoomGraph(f){const s=d3.select('#main svg');if(zoomBehavior)s.transition().duration(300).call(zoomBehavior.scaleBy,f)}
+function zoomReset(){const s=d3.select('#main svg');if(zoomBehavior)s.transition().duration(400).call(zoomBehavior.transform,d3.zoomIdentity)}
 
 // ===== TABLE =====
 function renderTable(){
