@@ -689,9 +689,11 @@ function renderPeopleGraph(){
   sim=s;
 
   lG.selectAll('line').data(links).enter().append('line')
-    .attr('stroke',d=>d._t==='colleague'?'var(--gold)':'var(--raised)')
-    .attr('stroke-width',d=>d._t==='colleague'?1.5:1)
-    .attr('opacity',.32);
+    .attr('stroke',d=>d._t==='colleague'?'var(--gold)':'var(--blue)')
+    .attr('stroke-width',d=>d._t==='colleague'?1.5:1.2)
+    .attr('stroke-opacity',d=>d._t==='colleague'?0.9:0.55)
+    .attr('stroke-dasharray',d=>d._t==='colleague'?'6,4':null)
+    .attr('stroke-linecap','round');
 
   const ns=nG.selectAll('g').data(allN).enter().append('g').style('cursor','pointer')
     .call(d3.drag().on('start',(e,d)=>{if(!e.active)s.alphaTarget(.25).restart();d.fx=d.x;d.fy=d.y}).on('drag',(e,d)=>{d.fx=e.x;d.fy=e.y}).on('end',(e,d)=>{if(!e.active)s.alphaTarget(0);d.fx=null;d.fy=null}));
@@ -722,9 +724,19 @@ function renderPeopleGraph(){
     tG.selectAll('text').attr('x',d=>d.x).attr('y',d=>d.y);
   });
 
-  const lg=document.createElement('div');lg.className='legend';lg.innerHTML=`<div class="legend-title">People Graph</div><div class="legend-row"><div class="legend-dot" style="background:var(--gold)"></div>Person</div><div class="legend-row"><div class="legend-dot" style="background:${SC.infrastructure}"></div>Org (Infra)</div><div class="legend-row"><div class="legend-dot" style="background:${SC.application}"></div>Org (App)</div><div class="legend-row"><div class="legend-dot" style="background:${SC.governance}"></div>Org (Gov)</div><div style="margin-top:6px"><div class="legend-row"><div class="legend-line" style="background:var(--gold);width:18px;height:2px"></div>Colleagues (shared org)</div><div class="legend-row"><div class="legend-line" style="background:var(--raised);width:18px;height:1px"></div>Member of</div></div>`;m.appendChild(lg);
+  const lg=document.createElement('div');
+  lg.className='legend';
+  lg.innerHTML=`<div class="legend-title">People Graph</div>
+    <div class="legend-row"><div class="legend-dot" style="background:var(--gold)"></div>Person</div>
+    <div class="legend-row"><div class="legend-dot" style="background:${SC.infrastructure}"></div>Org (Infra)</div>
+    <div class="legend-row"><div class="legend-dot" style="background:${SC.application}"></div>Org (App)</div>
+    <div class="legend-row"><div class="legend-dot" style="background:${SC.governance}"></div>Org (Gov)</div>
+    <div style="margin-top:6px">
+      <div class="legend-row"><div class="legend-line" style="background:var(--gold);width:18px;height:2px;border-top:2px dashed var(--gold)"></div>Colleagues (shared org)</div>
+      <div class="legend-row"><div class="legend-line" style="background:var(--blue);opacity:.7;width:18px;height:2px"></div>Member of</div>
+    </div>`;
+  m.appendChild(lg);
 }
-
 
 // ===== LITERATURE =====
 function renderLit(){
