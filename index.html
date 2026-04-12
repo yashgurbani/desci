@@ -298,9 +298,10 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
   position:absolute;
   inset:16px 18px 18px 18px;
   display:grid;
-  grid-template-columns:minmax(0,1.15fr) minmax(300px,348px);
+  grid-template-columns:minmax(0,1fr) minmax(312px,352px);
   gap:16px;
   align-items:stretch;
+  justify-content:space-between;
   pointer-events:none;
   min-height:0;
 }
@@ -310,7 +311,7 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
   flex-direction:column;
   gap:14px;
 }
-.home-main-col{min-width:0;align-items:stretch}
+.home-main-col{min-width:0;align-items:stretch;max-width:640px}
 .home-side-col{min-width:300px;justify-self:end;width:min(100%,348px)}
 .home-overlay-top{
   position:absolute;top:14px;left:14px;right:14px;
@@ -399,11 +400,11 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
 .feed-item .meta{font-size:.66rem;color:#989898;margin-top:4px}
 .feed-item.empty{border-style:dashed;background:rgba(255,255,255,.02)}
 .feed-item.empty .meta{margin-top:0}
-.home-feed-panel.unified{max-height:74vh;display:flex;flex-direction:column}
+.home-feed-panel.unified{max-height:50vh;display:flex;flex-direction:column}
 .home-feed-panel.unified .feed-list{max-height:none;flex:1;overflow:auto;padding-right:4px}
 .home-feed-panel.unified .ticker-main{min-height:54px}
 .home-feed-panel.unified .ticker-meta{margin-bottom:8px}
-.home-feed-panel.feed-left{height:100%;max-height:none;min-height:0;width:100%;justify-self:start}
+.home-feed-panel.feed-left{flex:0 0 50vh;height:50vh;max-height:50vh;min-height:320px;width:100%;justify-self:start}
 .home-hero-meta{margin-top:14px;font-family:var(--mono);font-size:.68rem;color:#b8b8b8}
 .yt-add-wrap{display:flex;align-items:center;justify-content:space-between;gap:8px;position:relative}
 .yt-add-btn{width:18px;height:18px;border-radius:50%;border:1px solid rgba(255,255,255,.28);background:rgba(24,24,24,.9);color:#d8d8d8;font-size:.78rem;line-height:1;cursor:pointer}
@@ -448,7 +449,7 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
 .home-journal .d{font-family:var(--mono);font-size:.66rem;color:#b9b9b9;margin-bottom:5px}
 .home-journal .b{font-size:.73rem;line-height:1.42;color:#dfdfdf}
 #homeDeadlines{flex:0 0 auto;max-height:32vh}
-#homeLastJournal{flex:0 0 auto;max-height:22vh}
+#homeLastJournal{flex:0 0 auto;max-height:28vh;max-width:none;width:100%}
 #homeDeadlines .feed-list{max-height:none}
 .home-kanban{
   pointer-events:auto;
@@ -955,8 +956,10 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
 @media(max-width:1250px){
   .home-overlay-top,.home-overlay-bottom{grid-template-columns:1fr}
   .home-shell{grid-template-columns:1fr;overflow:auto}
+  .home-main-col,.home-side-col{max-width:none}
   .home-side-col{min-width:0}
-  .home-feed-panel{max-height:50vh}
+  .home-feed-panel{max-height:46vh}
+  .home-feed-panel.feed-left{height:auto;max-height:46vh;min-height:300px}
   .home-kanban{max-height:36vh}
   .feed-list{max-height:11vh}
   .home-grid{grid-template-columns:1fr}
@@ -3138,8 +3141,8 @@ function renderJournal(){
   sanitizeVisibleText(wrap);
 }
 
-const HOME_FEED_CACHE_KEY='home-feed-cache-v6';
-const HOME_FEED_CACHE_VERSION=6;
+const HOME_FEED_CACHE_KEY='home-feed-cache-v7';
+const HOME_FEED_CACHE_VERSION=7;
 const HOME_FEED_MIN_FETCH_GAP_MS=4*60*1000;
 const HOME_FEED_STALE_MS=20*60*60*1000;
 async function fetchTextWithTimeout(url,ms){
@@ -3260,7 +3263,7 @@ const HOME_GENERAL_QUERIES=[
   'peer review reform',
   'ai for science'
 ];
-const HOME_SOCIAL_SUBREDDITS=['deSci','Open_Science','science','MachineLearning'];
+const HOME_SOCIAL_SUBREDDITS=['deSci','science','academia','bioinformatics','MachineLearning'];
 function weightedDatasetTerms(limit){
   const ban=new Set(['infrastructure','application','governance','desci','science','protocol','project']);
   const map=new Map();
@@ -3332,6 +3335,104 @@ function twitterProfileUrl(raw){
   const h=normalizeTwitterHandle(raw);
   return h?`https://x.com/${h}`:'';
 }
+function githubRepoFromRaw(raw){
+  const s=String(raw||'').trim();
+  if(!s)return '';
+  if(/^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(s))return s;
+  const url=normalizeHttpUrl(s);
+  if(!url)return '';
+  try{
+    const u=new URL(url);
+    const host=u.hostname.replace(/^www\./,'').toLowerCase();
+    if(host!=='github.com')return '';
+    const parts=u.pathname.replace(/^\/+|\/+$/g,'').split('/');
+    if(parts.length<2)return '';
+    const owner=parts[0]||'';
+    const repo=parts[1]||'';
+    if(!/^[A-Za-z0-9_.-]+$/.test(owner) || !/^[A-Za-z0-9_.-]+$/.test(repo))return '';
+    return `${owner}/${repo}`;
+  }catch(e){return ''}
+}
+function hostMatchesBase(host,base){
+  const h=String(host||'').replace(/^www\./,'').toLowerCase();
+  const b=String(base||'').replace(/^www\./,'').toLowerCase();
+  return !!h && !!b && (h===b || h.endsWith('.'+b));
+}
+function collectNodeSourceEntries(node){
+  const out=[];
+  const push=(kind,val)=>{
+    const s=String(val||'').trim();
+    if(!s)return;
+    out.push({kind:kind||'source',raw:s});
+  };
+  if(!node)return out;
+  ['web','wp','website','url'].forEach(k=>push('site',node[k]));
+  push('github',node.git);
+  push('twitter',node.twitter);
+  const over=nodeSourceOverride(node)||{};
+  (over.site||[]).forEach(v=>push('site',v));
+  (over.github||[]).forEach(v=>push('github',v));
+  const prov=node.provenance||{};
+  (prov.sources||[]).forEach(src=>push(src.type||src.label||'provenance',src&&src.url));
+  Object.values(prov.fieldSources||{}).forEach(arr=>{
+    (Array.isArray(arr)?arr:[]).forEach(src=>push(src.type||src.label||'field',src&&src.url));
+  });
+  (prov.materialClaims||[]).forEach(cl=>{
+    (Array.isArray(cl&&cl.sources)?cl.sources:[]).forEach(src=>push(src.type||src.label||'claim',src&&src.url));
+  });
+  return out;
+}
+function nodeFeedSignals(node){
+  const sites=[];
+  const domains=[];
+  const handles=[];
+  const github=[];
+  const seenSites=new Set();
+  const seenDomains=new Set();
+  const seenHandles=new Set();
+  const seenRepos=new Set();
+  const blockedBases=['x.com','twitter.com','github.com','reddit.com','youtube.com','youtu.be','doi.org','linkedin.com','discord.gg'];
+  const addSite=(raw)=>{
+    const url=normalizeHttpUrl(raw);
+    if(!url)return;
+    try{
+      const u=new URL(url);
+      const host=u.hostname.replace(/^www\./,'').toLowerCase();
+      if(blockedBases.some(base=>hostMatchesBase(host,base)))return;
+      if(/\.(pdf|png|jpe?g|gif|webp|zip)$/i.test(u.pathname))return;
+      const clean=(u.origin+u.pathname).replace(/\/+$/,'') || u.origin;
+      if(!seenSites.has(clean)){
+        seenSites.add(clean);
+        sites.push(clean);
+      }
+      if(!seenDomains.has(host)){
+        seenDomains.add(host);
+        domains.push(host);
+      }
+    }catch(e){}
+  };
+  const addHandle=(raw)=>{
+    const h=normalizeTwitterHandle(raw);
+    if(h && !seenHandles.has(h)){
+      seenHandles.add(h);
+      handles.push(h);
+    }
+  };
+  const addRepo=(raw)=>{
+    const r=githubRepoFromRaw(raw);
+    if(r && !seenRepos.has(r)){
+      seenRepos.add(r);
+      github.push(r);
+    }
+  };
+  collectNodeSourceEntries(node).forEach(entry=>{
+    const kind=String(entry.kind||'').toLowerCase();
+    addHandle(entry.raw);
+    addRepo(entry.raw);
+    if(!/news|secondary/.test(kind))addSite(entry.raw);
+  });
+  return {sites,domains,handles,github};
+}
 function keySignalNodes(limit){
   return [...(D.nodes||[])].sort((a,b)=>{
     const as=((a.overlapScore||0)*1.06)+((a.credScore||0)*1.14);
@@ -3347,8 +3448,8 @@ function keyNodeDataSources(limit){
   const rows=[];
   keySignalNodes(limit||8).forEach(n=>{
     const nName=cleanMojibakeString(n.name||'Node');
-    const over=nodeSourceOverride(n);
-    const web=normalizeHttpUrl((over&&over.site&&over.site[0])||n.wp||n.web||'');
+    const sig=nodeFeedSignals(n);
+    const web=sig.sites[0]||'';
     if(web){
       rows.push({
         title:`${nName}: official site/blog`,
@@ -3357,7 +3458,7 @@ function keyNodeDataSources(limit){
         topic:`${nName} blog`
       });
     }
-    const tw=twitterProfileUrl(n.twitter||'');
+    const tw=twitterProfileUrl(sig.handles[0]||n.twitter||'');
     if(tw){
       rows.push({
         title:`${nName} on X`,
@@ -3397,12 +3498,11 @@ function githubAtomCandidates(repo){
   ];
 }
 async function fetchNodeWebsiteUpdates(limit){
-  const nodes=keySignalNodes(limit||7).filter(n=>normalizeHttpUrl(((nodeSourceOverride(n)||{}).site||[])[0]||n.wp||n.web||n.website||n.url||''));
+  const nodes=keySignalNodes(limit||8).filter(n=>nodeFeedSignals(n).sites.length);
   const rows=await Promise.allSettled(nodes.map(async n=>{
-    const over=nodeSourceOverride(n);
-    const site=normalizeHttpUrl((over&&over.site&&over.site[0])||n.wp||n.web||n.website||n.url||'');
+    const sig=nodeFeedSignals(n);
     const sourceName=cleanMojibakeString(n.name||'Node');
-    const candidates=[...new Set([...(over&&over.site||[]).flatMap(siteFeedCandidates),...siteFeedCandidates(site)])].slice(0,6);
+    const candidates=[...new Set(sig.sites.flatMap(siteFeedCandidates))].slice(0,8);
     if(!candidates.length)return [];
     try{
       const items=await Promise.any(candidates.map(url=>
@@ -3417,14 +3517,11 @@ async function fetchNodeWebsiteUpdates(limit){
   return rows.flatMap(r=>(r.status==='fulfilled'&&Array.isArray(r.value))?r.value:[]);
 }
 async function fetchNodeGitUpdates(limit){
-  const nodes=keySignalNodes(limit||6).filter(n=>{
-    const over=nodeSourceOverride(n);
-    return !!(over&&Array.isArray(over.github)&&over.github.length);
-  });
+  const nodes=keySignalNodes(limit||8).filter(n=>nodeFeedSignals(n).github.length);
   const rows=await Promise.allSettled(nodes.map(async n=>{
-    const over=nodeSourceOverride(n);
+    const sig=nodeFeedSignals(n);
     const sourceName=cleanMojibakeString(n.name||'Node');
-    const repos=(over&&over.github||[]).slice(0,2);
+    const repos=sig.github.slice(0,2);
     if(!repos.length)return [];
     try{
       const items=await Promise.any(repos.flatMap(repo=>githubAtomCandidates(repo)).map(url=>
@@ -3440,25 +3537,28 @@ async function fetchNodeGitUpdates(limit){
 }
 function nodeSpecificQueries(limit){
   return keySignalNodes(limit||8).flatMap(n=>{
-    const over=nodeSourceOverride(n);
+    const sig=nodeFeedSignals(n);
     const name=cleanMojibakeString(n.name||'').trim();
-    const web=normalizeHttpUrl((over&&over.site&&over.site[0])||n.wp||n.web||n.website||n.url||'');
-    let domain='';
-    try{ if(web) domain=new URL(web).hostname.replace(/^www\./,''); }catch(e){}
-    const q=[`"${name}" decentralized science`,`"${name}" open science`,`"${name}" update`];
-    if(domain)q.push(`site:${domain} ${name}`,`site:${domain} blog`,`site:${domain} update`);
-    const h=normalizeTwitterHandle(n.twitter||'');
-    if(h)q.push(`site:x.com/${h}`,`site:x.com ${name}`);
+    const q=[`"${name}" decentralized science`,`"${name}" open science`,`"${name}" update`,`"${name}" funding`,`"${name}" release`];
+    sig.domains.slice(0,3).forEach(domain=>{
+      q.push(`site:${domain} "${name}"`,`site:${domain} blog`,`site:${domain} update`);
+    });
+    sig.handles.slice(0,1).forEach(h=>{
+      q.push(`site:x.com/${h}`,`site:x.com "${name}"`);
+    });
     return q;
   });
 }
 function keyTwitterHandles(limit){
-  return [...new Set(keySignalNodes(limit||10).map(n=>normalizeTwitterHandle(n.twitter||'')).filter(Boolean))].slice(0,limit||6);
+  return [...new Set(keySignalNodes(limit||10).flatMap(n=>nodeFeedSignals(n).handles).filter(Boolean))].slice(0,limit||8);
 }
 function desciTwitterKeywords(limit){
-  const seeds=['desci','decentralized science','open science','metascience','science reproducibility'];
+  const seeds=['desci','decentralized science','open science','metascience','science reproducibility','research integrity','peer review reform'];
   const terms=weightedDatasetTerms(3).map(t=>`${t} science`);
   return [...new Set([...seeds,...terms])].slice(0,limit||5);
+}
+function keyRedditQueries(limit){
+  return [...new Set(keySignalNodes(limit||8).map(n=>cleanMojibakeString(n.name||'').trim()).filter(Boolean))].slice(0,limit||6);
 }
 const NITTER_INSTANCES=['https://nitter.net','https://nitter.poast.org','https://nitter.moomoo.me'];
 async function fetchNitterRss(path,source,topic,max){
@@ -3808,6 +3908,10 @@ function scoreFeedItem(item,intents){
   if(/reddit\.com|openrss\.org/.test(url))s+=1.2;
   if(/youtube\.com|youtu\.be/.test(url))s+=1.4;
   if(/x\.com|twitter\.com|nitter\./.test(url))s+=1.2;
+  relationWatchNames().slice(0,10).forEach(name=>{
+    const low=String(name||'').toLowerCase();
+    if(low && (title.includes(low) || topic.includes(low)))s+=2.4;
+  });
   PURPOSE_TERMS.forEach(t=>{if(title.includes(t)||topic.includes(t)||summary.includes(t))s+=1.8});
   const ts=Date.parse(item.pubDate||'');
   if(!Number.isNaN(ts)){
@@ -3833,6 +3937,48 @@ function googleNewsQueryItem(query,prefix){
     source:'query',
     topic:q
   };
+}
+function feedSourceKind(item){
+  const url=String(item&&item.link||'').toLowerCase();
+  const source=String(item&&item.source||'').toLowerCase();
+  if(/github\.com/.test(url) || source==='github')return 'github';
+  if(/x\.com|twitter\.com|nitter\./.test(url) || /\bx\b|twitter/.test(source))return 'x';
+  if(/reddit\.com|openrss\.org/.test(url) || source==='reddit')return 'reddit';
+  if(/youtube\.com|youtu\.be/.test(url) || /youtube/.test(source))return 'video';
+  if(/google news|news/.test(source) || /news/.test(url))return 'news';
+  if(/blog|official/.test(source))return 'blog';
+  return 'general';
+}
+function feedItemTimestampMs(item){
+  const ts=Date.parse(item&&item.pubDate||'');
+  return Number.isFinite(ts)?ts:null;
+}
+function isLowSignalFeedItem(item){
+  const title=String(item&&item.title||'').trim().toLowerCase();
+  const summary=String(item&&item.summary||'').trim().toLowerCase();
+  const url=String(item&&item.link||'').trim().toLowerCase();
+  if(!title || title.length<6)return true;
+  if(/^(home|index|rss|feed)$/i.test(title))return true;
+  if(/for all things .*science/.test(title) && /reddit|openrss/.test(url))return true;
+  if(/reddit\.com\/r\/[^/]+\/?$/.test(url) || /reddit\.com\/r\/[^/]+\/new\/?$/.test(url))return true;
+  if(summary && summary===title && /reddit|openrss/.test(url))return true;
+  return false;
+}
+function isFreshFeedItem(item){
+  const kind=feedSourceKind(item);
+  const ts=feedItemTimestampMs(item);
+  if(ts===null)return !['x','reddit'].includes(kind);
+  const ageDays=(Date.now()-ts)/86400000;
+  if(kind==='x')return ageDays<=30;
+  if(kind==='reddit')return ageDays<=45;
+  if(kind==='github')return ageDays<=180;
+  if(kind==='video')return ageDays<=120;
+  if(kind==='news')return ageDays<=240;
+  if(kind==='blog')return ageDays<=365;
+  return ageDays<=300;
+}
+function curateLiveFeedPool(items){
+  return (items||[]).filter(it=>!isLowSignalFeedItem(it) && isFreshFeedItem(it));
 }
 const HOME_STATIC_FEEDS={
   general:[
@@ -3894,12 +4040,13 @@ function renderHomeLastJournal(){
     host.innerHTML='<div class="t">Last Journal Entry</div><div class="b">No journal entries yet. Add one from the Journal tab.</div>';
     return;
   }
-  host.innerHTML=`<div class="t">Last Journal Entry</div><div class="d">${escapeHtml(e.date||'')}</div><div class="b"><b>Hours:</b> ${escapeHtml(e.hours??0)}<br><b>Did:</b> ${escapeHtml((e.did||'').slice(0,180) || '-')}<br><b>Plan:</b> ${escapeHtml((e.plan||'').slice(0,180) || '-')}</div>`;
+  host.innerHTML=`<div class="t">Last Journal Entry</div><div class="d">${escapeHtml(e.date||'')}</div><div class="b"><b>Hours:</b> ${escapeHtml(e.hours??0)}<br><b>Did:</b> ${escapeHtml((e.did||'').slice(0,240) || '-')}<br><b>Plan:</b> ${escapeHtml((e.plan||'').slice(0,220) || '-')}</div>`;
 }
 function loadHomeFeedCache(){
   try{
     localStorage.removeItem('home-feed-cache-v2');
     localStorage.removeItem('home-feed-cache-v3');
+    localStorage.removeItem('home-feed-cache-v6');
     const raw=localStorage.getItem(HOME_FEED_CACHE_KEY);
     if(!raw)return;
     const j=JSON.parse(raw);
@@ -3950,10 +4097,10 @@ function renderHomeFeeds(){
   const meta=el('homeMetaAll');
   const list=el('homeFeedAll');
   if(list){
-    list.innerHTML=items.slice(0,12).map(it=>{
+    list.innerHTML=items.slice(0,9).map(it=>{
       const title=escapeHtml(it.title||'Untitled');
       const metaLine=`${escapeHtml(it.source||'news')} | ${escapeHtml(it.topic||'')}${it.pubDate?` | ${escapeHtml(String(it.pubDate).slice(0,24))}`:''}`;
-      const summary=escapeHtml(plainFeedText(it.summary||'',170));
+      const summary=escapeHtml(plainFeedText(it.summary||'',145));
       if(it.disabled || !it.link || it.link==='#')return `<article class="feed-item empty"><div>${title}</div><div class="meta">${metaLine}</div></article>`;
       return `<article class="feed-item"><a href="${escapeHtml(it.link)}" target="_blank" rel="noopener">${title}</a>${summary?`<div class="feed-snippet">${summary}</div>`:''}<div class="meta">${metaLine}</div></article>`;
     }).join('') || '<div class="lite-note">No live feed items yet.</div>';
@@ -3989,28 +4136,42 @@ async function refreshHomeFeeds(force){
   }
   const keyNodes=keySignalNodes(12);
   const nodeNames=[...new Set(keyNodes.map(n=>String(n.name||'').trim()).filter(Boolean))];
-  const generalQueries=[...new Set([...HOME_GENERAL_QUERIES,...projectKeywords().slice(0,4),'science credibility crisis','open access publishing'])].slice(0,9);
+  const generalQueries=[...new Set([...HOME_GENERAL_QUERIES,...projectKeywords().slice(0,5),'science credibility crisis','open access publishing','meta-research'])].slice(0,10);
   const nodeQueries=[...new Set([...nodeNames.map(n=>`"${n}"`),...relationWatchNames().slice(0,6).map(n=>`"${n}"`),...nodeSpecificQueries(8)])].slice(0,18);
-  const socialKeywords=[...new Set([...desciTwitterKeywords(6),'science publishing','peer review reform','research integrity','open access'])].slice(0,8);
+  const socialKeywords=[...new Set([...desciTwitterKeywords(8),...projectKeywords().slice(0,3),'science publishing','peer review reform','research integrity','open access'])].slice(0,10);
   const twHandles=keyTwitterHandles(10);
   const xNewsQueries=[
     ...socialKeywords.map(q=>`site:x.com ${q}`),
-    ...twHandles.map(h=>`site:x.com/${h}`)
-  ].slice(0,12);
-  const redditQueries=[...new Set([...socialKeywords,'decentralized science','researchhub','openreview'])].slice(0,6);
+    ...twHandles.map(h=>`site:x.com/${h}`),
+    ...nodeNames.slice(0,5).map(n=>`site:x.com "${n}"`)
+  ].slice(0,16);
+  const redditQueries=[...new Set([...socialKeywords,'decentralized science','researchhub','openreview','openalex',...keyRedditQueries(5)])].slice(0,10);
   const [curatedNews,generalNews,nodeNews,nodeBlogs,nodeGit,twitterHandles,twitterKeywords,redditSubs,redditSearch,xNews]=await Promise.all([
     fetchCuratedNews(4),
     fetchGoogleNewsBatch(generalQueries,8,3),
     fetchGoogleNewsBatch(nodeQueries,12,2),
-    fetchNodeWebsiteUpdates(7),
-    fetchNodeGitUpdates(6),
+    fetchNodeWebsiteUpdates(8),
+    fetchNodeGitUpdates(8),
     fetchTwitterHandleBatch(twHandles,8,2),
-    fetchTwitterKeywordBatch(socialKeywords,6,2),
-    fetchRedditSubredditBatch(HOME_SOCIAL_SUBREDDITS,4,3),
-    fetchRedditSearchBatch(redditQueries,6,2),
+    fetchTwitterKeywordBatch(socialKeywords,8,2),
+    fetchRedditSubredditBatch(HOME_SOCIAL_SUBREDDITS,5,2),
+    fetchRedditSearchBatch(redditQueries,8,2),
     fetchGoogleNewsBatch(xNewsQueries,10,2)
   ]);
-  const combinedPool=[
+  const combinedPool=curateLiveFeedPool([
+    ...curatedNews,
+    ...generalNews,
+    ...nodeNews,
+    ...nodeBlogs,
+    ...nodeGit,
+    ...twitterHandles,
+    ...twitterKeywords,
+    ...redditSubs,
+    ...redditSearch,
+    ...xNews
+  ]);
+  const intents=combinedHomeFeedIntents();
+  const rankedPool=combinedPool.length?combinedPool:[
     ...curatedNews,
     ...generalNews,
     ...nodeNews,
@@ -4022,8 +4183,7 @@ async function refreshHomeFeeds(force){
     ...redditSearch,
     ...xNews
   ];
-  const intents=combinedHomeFeedIntents();
-  const combined=rankFeedItems(combinedPool,intents,18,{minHits:0}).map(it=>({
+  const combined=rankFeedItems(rankedPool,intents,18,{minHits:1}).map(it=>({
     ...it,
     source:cleanMojibakeString(it.source||feedSourceFromUrl(it.link,'news')),
     topic:cleanMojibakeString(it.topic||'desci'),
@@ -4440,10 +4600,10 @@ function renderHome(){
         <div class="home-updated" id="homeLastUpdated" style="pointer-events:auto;margin:0 0 8px 0">Last update: pending</div>
         <div class="feed-list" id="homeFeedAll"></div>
         </section>
+        <section class="home-journal" id="homeLastJournal"></section>
       </div>
       <div class="home-side-col">
         <section class="home-journal" id="homeDeadlines"></section>
-        <section class="home-journal" id="homeLastJournal"></section>
         <section class="home-kanban" id="homeKanban"></section>
       </div>
     </div>
