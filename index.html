@@ -2857,80 +2857,79 @@ function subtractSegments(segs,cuts){
     });
     out=next;
   });
-  return out.filter(seg=>(seg[1]-seg[0])>0.006);
+  return out.filter(seg=>(seg[1]-seg[0])>0.005);
 }
-const MAP_GR_L=[[0,0.16],[0.4,0.14],[0.7,0.15],[1,0.17]];
-const MAP_GR_R=[[0,0.25],[0.4,0.23],[0.7,0.24],[1,0.26]];
-const MAP_NA_L=[[0,0.03],[0.22,0.02],[0.45,0.04],[0.72,0.08],[1,0.12]];
-const MAP_NA_R=[[0,0.23],[0.22,0.29],[0.45,0.32],[0.72,0.28],[1,0.22]];
-const MAP_CA_L=[[0,0.22],[0.4,0.24],[0.7,0.27],[1,0.29]];
-const MAP_CA_R=[[0,0.28],[0.4,0.31],[0.7,0.33],[1,0.34]];
-const MAP_SA_L=[[0,0.26],[0.3,0.28],[0.55,0.30],[0.8,0.31],[1,0.30]];
-const MAP_SA_R=[[0,0.36],[0.3,0.39],[0.55,0.41],[0.8,0.37],[1,0.34]];
-const MAP_EU_L=[[0,0.48],[0.4,0.47],[0.7,0.49],[1,0.51]];
-const MAP_EU_R=[[0,0.58],[0.4,0.59],[0.7,0.60],[1,0.57]];
-const MAP_AF_L=[[0,0.51],[0.3,0.50],[0.6,0.49],[1,0.50]];
-const MAP_AF_R=[[0,0.61],[0.3,0.60],[0.6,0.58],[1,0.56]];
-const MAP_AS_L=[[0,0.56],[0.24,0.55],[0.5,0.58],[0.75,0.63],[1,0.68]];
-const MAP_AS_R=[[0,0.89],[0.24,0.95],[0.5,0.98],[0.75,0.96],[1,0.90]];
-const MAP_AU_L=[[0,0.78],[0.45,0.76],[1,0.77]];
-const MAP_AU_R=[[0,0.89],[0.45,0.87],[1,0.84]];
-function worldSegments(q){
-  const segs=[];
-  if(q>=0.08&&q<=0.16){
-    const t=(q-0.08)/0.08;
-    segs.push([lerpStops(t,MAP_GR_L),lerpStops(t,MAP_GR_R)]);
+// Simplified ASCII world map - using direct segment data per row fraction
+// Format: [rowFraction, [[x0,x1], [x0,x1], ...]]
+const WORLD_MAP_ROWS=[
+  // Greenland / Iceland / Northern Canada
+  [0.08, [[0.02,0.06],[0.12,0.18],[0.42,0.46]]],
+  [0.10, [[0.02,0.08],[0.10,0.20],[0.41,0.47]]],
+  [0.12, [[0.01,0.09],[0.10,0.22],[0.40,0.48]]],
+  // Canada / Northern Europe / Russia
+  [0.15, [[0.01,0.24],[0.38,0.52],[0.55,0.98]]],
+  [0.18, [[0.02,0.26],[0.36,0.54],[0.56,0.99]]],
+  [0.20, [[0.03,0.27],[0.35,0.55],[0.58,0.99]]],
+  [0.22, [[0.04,0.28],[0.35,0.42],[0.44,0.56],[0.60,0.99]]],
+  // USA / Europe / Russia-China
+  [0.25, [[0.04,0.28],[0.36,0.42],[0.44,0.55],[0.62,0.98]]],
+  [0.28, [[0.05,0.27],[0.37,0.41],[0.44,0.54],[0.64,0.96]]],
+  [0.30, [[0.06,0.26],[0.38,0.40],[0.44,0.53],[0.58,0.62],[0.66,0.94]]],
+  [0.32, [[0.08,0.25],[0.44,0.52],[0.56,0.62],[0.68,0.92]]],
+  // Mexico / North Africa / Middle East / India / China / Japan
+  [0.35, [[0.10,0.24],[0.40,0.62],[0.68,0.72],[0.74,0.90],[0.94,0.97]]],
+  [0.38, [[0.12,0.22],[0.40,0.64],[0.70,0.88],[0.94,0.96]]],
+  [0.40, [[0.14,0.20],[0.40,0.65],[0.72,0.86]]],
+  // Central America / Africa / SE Asia
+  [0.42, [[0.16,0.20],[0.42,0.64],[0.74,0.84],[0.88,0.92]]],
+  [0.45, [[0.18,0.22],[0.42,0.62],[0.76,0.82],[0.88,0.94]]],
+  [0.48, [[0.20,0.24],[0.43,0.60],[0.78,0.80],[0.88,0.96]]],
+  // South America / Africa / Indonesia
+  [0.50, [[0.22,0.32],[0.44,0.58],[0.88,0.98]]],
+  [0.52, [[0.24,0.34],[0.44,0.56],[0.90,0.96]]],
+  [0.55, [[0.25,0.35],[0.45,0.55]]],
+  [0.58, [[0.26,0.36],[0.46,0.54]]],
+  [0.60, [[0.27,0.36],[0.46,0.53]]],
+  [0.62, [[0.28,0.36],[0.47,0.52]]],
+  [0.65, [[0.29,0.35],[0.48,0.51]]],
+  // Southern South America / Southern Africa / Australia
+  [0.68, [[0.30,0.34],[0.48,0.50],[0.82,0.94]]],
+  [0.70, [[0.30,0.33],[0.84,0.94]]],
+  [0.72, [[0.31,0.33],[0.84,0.93]]],
+  [0.75, [[0.85,0.92]]],
+  [0.78, [[0.86,0.91]]],
+  // New Zealand
+  [0.82, [[0.94,0.96]]],
+  [0.85, [[0.95,0.96]]],
+];
+
+function worldSegmentsForRow(q){
+  // Find the two closest rows and interpolate
+  let below=null, above=null;
+  for(const row of WORLD_MAP_ROWS){
+    if(row[0]<=q) below=row;
+    if(row[0]>=q && !above) above=row;
   }
-  if(q>=0.16&&q<=0.42){
-    const t=(q-0.16)/0.26;
-    segs.push([lerpStops(t,MAP_NA_L),lerpStops(t,MAP_NA_R)]);
-  }
-  if(q>=0.40&&q<=0.56){
-    const t=(q-0.40)/0.16;
-    segs.push([lerpStops(t,MAP_CA_L),lerpStops(t,MAP_CA_R)]);
-  }
-  if(q>=0.48&&q<=0.88){
-    const t=(q-0.48)/0.40;
-    segs.push([lerpStops(t,MAP_SA_L),lerpStops(t,MAP_SA_R)]);
-  }
-  if(q>=0.18&&q<=0.34){
-    const t=(q-0.18)/0.16;
-    segs.push([lerpStops(t,MAP_EU_L),lerpStops(t,MAP_EU_R)]);
-  }
-  if(q>=0.30&&q<=0.84){
-    const t=(q-0.30)/0.54;
-    segs.push([lerpStops(t,MAP_AF_L),lerpStops(t,MAP_AF_R)]);
-  }
-  if(q>=0.18&&q<=0.62){
-    const t=(q-0.18)/0.44;
-    segs.push([lerpStops(t,MAP_AS_L),lerpStops(t,MAP_AS_R)]);
-  }
-  if(q>=0.66&&q<=0.84){
-    const t=(q-0.66)/0.18;
-    segs.push([lerpStops(t,MAP_AU_L),lerpStops(t,MAP_AU_R)]);
-  }
-  if(q>=0.54&&q<=0.62)segs.push([0.69,0.74]);
-  const cuts=[];
-  if(q>0.24&&q<0.37)cuts.push([0.60,0.66]);
-  if(q>0.32&&q<0.55)cuts.push([0.64,0.74]);
-  if(q>0.56&&q<0.84)cuts.push([0.68,0.76]);
-  return subtractSegments(segs,cuts);
+  if(!below && !above) return [];
+  if(!below) return above[1];
+  if(!above) return below[1];
+  if(below[0]===above[0]) return below[1];
+  
+  // Simple: just use the closer one
+  const t=(q-below[0])/(above[0]-below[0]);
+  return t<0.5 ? below[1] : above[1];
 }
+
 function asciiWorldStatic(cols,rows){
-  const w=Math.max(136,cols||136);
-  const h=Math.max(36,rows||36);
-  const g=Array.from({length:h},()=>Array.from({length:w},()=> ' '));
-  const top=Math.max(1,Math.floor(h*0.05));
-  const band=Math.max(26,Math.floor(h*0.9));
-  let lastY=-1;
-  for(let r=0;r<band;r++){
-    const q=r/Math.max(1,band-1);
-    const y=top+Math.round(q*band);
-    if(y<=lastY || y>=h)continue;
-    lastY=y;
-    const segs=worldSegments(q);
-    const phase=r&1;
-    segs.forEach(seg=>{
+  const w=Math.max(80,cols||120);
+  const h=Math.max(24,rows||30);
+  const g=Array.from({length:h},()=>Array.from({length:w},()=>' '));
+  
+  for(let y=0;y<h;y++){
+    const q=y/h;
+    const segs=worldSegmentsForRow(q);
+    const phase=y&1;
+    (segs||[]).forEach(seg=>{
       const x0=Math.max(0,Math.floor(seg[0]*w));
       const x1=Math.min(w-1,Math.floor(seg[1]*w));
       for(let x=x0;x<=x1;x++){
@@ -2939,28 +2938,6 @@ function asciiWorldStatic(cols,rows){
       }
     });
   }
-  // Add DeSci hub markers (approximate locations)
-  const markers=[
-    // North America
-    {x:0.12,y:0.28,c:'◆',label:'SF'},    // San Francisco (Protocol Labs, etc)
-    {x:0.18,y:0.30,c:'◆',label:'NYC'},   // NYC (VitaDAO, Molecule)
-    {x:0.20,y:0.28,c:'◇',label:'BOS'},   // Boston (JoVE, MIT)
-    // Europe
-    {x:0.50,y:0.22,c:'◆',label:'LON'},   // London (DeSci London)
-    {x:0.52,y:0.24,c:'◇',label:'BER'},   // Berlin (DeSci Berlin)
-    {x:0.54,y:0.26,c:'◇',label:'ZRH'},   // Zurich (ETH)
-    {x:0.49,y:0.28,c:'◇',label:'PAR'},   // Paris (OpenAlex EU)
-    // Asia
-    {x:0.78,y:0.35,c:'◇',label:'SG'},    // Singapore
-    {x:0.88,y:0.30,c:'◇',label:'TKY'},   // Tokyo
-  ];
-  markers.forEach(m=>{
-    const mx=Math.floor(m.x*w);
-    const my=Math.floor(top+m.y*band);
-    if(mx>=0&&mx<w&&my>=0&&my<h){
-      g[my][mx]=m.c;
-    }
-  });
   return g.map(row=>row.join('')).join('\n');
 }
 function renderHome(){
