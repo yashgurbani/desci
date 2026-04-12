@@ -18228,6 +18228,14 @@
   "kanban": {
     "todo": [],
     "doing": [],
-    "done": []
+    "done": [
+      "initial web dashboard"
+    ]
+  },
+  "journal": [],
+  "litProgress": {},
+  "homeWatch": {
+    "videos": [],
+    "playlists": []
   }
 }
