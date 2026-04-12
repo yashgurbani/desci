@@ -279,15 +279,15 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
 .ascii-map{
   position:absolute;inset:0;margin:0;
   font-family:var(--mono);
-  font-size:clamp(.5rem,.66vw,.76rem);
-  line-height:1.02;
-  letter-spacing:.11px;
-  font-weight:700;
-  color:#f5f5f5;
+  font-size:clamp(.46rem,.62vw,.7rem);
+  line-height:1.08;
+  letter-spacing:.08em;
+  font-weight:500;
+  color:rgba(126,217,255,.12);
   white-space:pre;
   overflow:hidden;
   background:#000;
-  padding:14px 14px 12px 14px;
+  padding:18px 18px 14px 18px;
   text-shadow:none;
   opacity:1;
 }
@@ -450,6 +450,104 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
   letter-spacing:.8px;
   text-transform:uppercase;
 }
+.home-stage{
+  position:relative;
+  z-index:1;
+  height:100%;
+  display:grid;
+  grid-template-rows:auto 1fr;
+  gap:14px;
+  padding:18px;
+  pointer-events:none;
+}
+.home-status{
+  pointer-events:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding:10px 14px;
+  border:1px solid rgba(126,217,255,.16);
+  border-radius:12px;
+  background:rgba(2,6,5,.86);
+}
+.home-status .k{
+  font-family:var(--mono);
+  font-size:.68rem;
+  color:var(--gold);
+  letter-spacing:1.3px;
+  text-transform:uppercase;
+}
+.home-status .v{
+  font-family:var(--mono);
+  font-size:.7rem;
+  color:var(--text-2);
+}
+.home-grid{
+  min-height:0;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+}
+.home-stream{
+  pointer-events:auto;
+  min-height:0;
+  display:flex;
+  flex-direction:column;
+  border:1px solid rgba(126,217,255,.15);
+  border-radius:14px;
+  background:linear-gradient(180deg, rgba(4,9,8,.92), rgba(2,4,4,.94));
+  box-shadow:inset 0 0 0 1px rgba(118,234,176,.04);
+}
+.stream-head{
+  padding:12px 14px 0 14px;
+  font-family:var(--mono);
+  font-size:.68rem;
+  color:var(--gold);
+  letter-spacing:1.25px;
+  text-transform:uppercase;
+}
+.stream-lead{
+  padding:8px 14px 0 14px;
+  min-height:76px;
+  font-size:.97rem;
+  line-height:1.45;
+  color:var(--text);
+}
+.stream-lead a{color:var(--text)}
+.stream-lead a:hover{color:var(--link-h)}
+.stream-meta{
+  padding:0 14px 10px 14px;
+  font-size:.72rem;
+  color:var(--text-3);
+}
+.stream-list{
+  min-height:0;
+  overflow:auto;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  padding:0 14px 14px 14px;
+}
+.home-stage .feed-item{
+  border:1px solid rgba(126,217,255,.1);
+  border-radius:10px;
+  padding:8px 10px;
+  background:rgba(255,255,255,.02);
+}
+.home-stage .feed-item a{
+  font-size:.78rem;
+  font-weight:600;
+  line-height:1.38;
+  color:var(--text);
+}
+.home-stage .feed-item .meta{
+  font-size:.68rem;
+  color:var(--text-3);
+  margin-top:4px;
+}
+.home-stage .feed-item.empty{border-style:dashed;background:rgba(255,255,255,.015)}
+.home-stage .feed-item.empty .meta{margin-top:0}
 .info-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .info-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:13px}
 .info-card h3{font-size:.88rem;color:var(--gold);font-family:var(--mono);margin-bottom:6px}
@@ -491,6 +589,8 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
   .home-feed-panel{max-height:50vh}
   .home-kanban{max-height:36vh}
   .feed-list{max-height:11vh}
+  .home-grid{grid-template-columns:1fr}
+  .stream-lead{min-height:0}
 }
 @media(max-width:1150px){.journal-shell{grid-template-columns:1fr}.info-grid{grid-template-columns:1fr}}
 @media(max-width:980px){.kan-grid{grid-template-columns:1fr}}
@@ -614,7 +714,7 @@ let bizLabelDetail='metrics';
 let auditRowsByKey=new Map();
 let bizTipPinned=false;
 let bizTipPinnedNodeId=null;
-let homeFeedState={items:[],sections:{keywords:[],nodes:[],twitter:[],youtube:[]},lastUpdated:''};
+let homeFeedState={items:[],sections:{general:[],ecosystem:[],social:[]},lastUpdated:''};
 let homeTickerTimer=null;
 let homeRefreshTimer=null;
 let homeAsciiTimer=null;
@@ -2024,8 +2124,8 @@ function renderJournal(){
   sanitizeVisibleText(wrap);
 }
 
-const HOME_FEED_CACHE_KEY='home-feed-cache-v3';
-const HOME_FEED_CACHE_VERSION=3;
+const HOME_FEED_CACHE_KEY='home-feed-cache-v5';
+const HOME_FEED_CACHE_VERSION=5;
 const HOME_FEED_MIN_FETCH_GAP_MS=4*60*1000;
 const HOME_FEED_STALE_MS=20*60*60*1000;
 async function fetchTextWithTimeout(url,ms){
@@ -2100,78 +2200,21 @@ function parseRssItems(xmlText,source,max){
   }catch(e){return []}
 }
 const PURPOSE_TERMS=['metascience','peer review','reproducibility','research integrity','science of science','publication bias','ai for science','open science','open data','scientific integrity'];
-const QUALITY_DOMAIN_RE=/(nature\.com|science\.org|pnas\.org|cell\.com|thelancet\.com|nejm\.org|elifesciences\.org|plos\.org|biorxiv\.org|medrxiv\.org|pubmed\.ncbi\.nlm\.nih\.gov|crossref\.org|openalex\.org|orcid\.org|retractionwatch\.com|frontiersin\.org|peerj\.com|arxiv\.org|jamanetwork\.com|bmj\.com|statnews\.com)/i;
+const QUALITY_DOMAIN_RE=/(nature\.com|science\.org|pnas\.org|cell\.com|thelancet\.com|nejm\.org|elifesciences\.org|plos\.org|biorxiv\.org|medrxiv\.org|pubmed\.ncbi\.nlm\.nih\.gov|crossref\.org|openalex\.org|orcid\.org|retractionwatch\.com|frontiersin\.org|peerj\.com|arxiv\.org|jamanetwork\.com|bmj\.com|statnews\.com|sciencedaily\.com|scholarlykitchen\.sspnet\.org)/i;
 const CURATED_NEWS_FEEDS=[
-  // Research Integrity & Metascience
   {url:'https://retractionwatch.com/feed/',source:'Retraction Watch',topic:'research integrity'},
-  {url:'https://www.nature.com/nature.rss',source:'Nature',topic:'science policy'},
-  {url:'https://scholarlykitchen.sspnet.org/feed/',source:'Scholarly Kitchen',topic:'publishing industry'},
-  {url:'https://blogs.lse.ac.uk/impactofsocialsciences/feed/',source:'LSE Impact Blog',topic:'research impact'},
-  // Open Science Infrastructure
-  {url:'https://theplosblog.plos.org/feed/',source:'PLOS Blog',topic:'open science'},
-  {url:'https://elifesciences.org/rss/current.xml',source:'eLife',topic:'open publishing'},
-  {url:'https://blog.ourresearch.org/feed/',source:'OurResearch',topic:'open infrastructure'},
-  {url:'https://info.orcid.org/feed/',source:'ORCID',topic:'researcher identity'},
-  {url:'https://www.crossref.org/blog/feed/',source:'Crossref',topic:'metadata infrastructure'},
-  {url:'https://sparcopen.org/feed/',source:'SPARC',topic:'open access policy'},
-  // DeSci & Web3 Science
-  {url:'https://medium.com/feed/@VitaDAO',source:'VitaDAO',topic:'longevity DeSci'},
-  {url:'https://medium.com/feed/@molecule_dao',source:'Molecule',topic:'DeSci IP'},
-  {url:'https://valleydao.substack.com/feed',source:'ValleyDAO',topic:'climate biotech'},
-  {url:'https://protocol.ai/blog/index.xml',source:'Protocol Labs',topic:'decentralized web'},
-  // ArXiv Feeds
-  {url:'https://rss.arxiv.org/rss/cs.DL',source:'arXiv cs.DL',topic:'digital libraries'},
-  {url:'https://rss.arxiv.org/rss/physics.soc-ph',source:'arXiv soc-ph',topic:'science of science'}
+  {url:'https://scholarlykitchen.sspnet.org/feed/',source:'The Scholarly Kitchen',topic:'science publishing'},
+  {url:'https://elifesciences.org/rss/current.xml',source:'eLife',topic:'open science'},
+  {url:'https://www.sciencedaily.com/rss/computers_math/artificial_intelligence.xml',source:'ScienceDaily AI',topic:'science and ai'}
 ];
-// YouTube channels for DeSci ecosystem (channel IDs)
-const DESCI_YOUTUBE_CHANNELS=[
-  {id:'UC_E4JLbB3Tql7Kl9rY6QyYw',name:'DeSci Foundation',topic:'DeSci ecosystem'},
-  {id:'UCdjsUXJ3QawK4O5L1kqqsew',name:'Protocol Labs',topic:'decentralized web'},
-  {id:'UCd7JL3xBhcYvAqZDqgQ6fQQ',name:'VitaDAO',topic:'longevity research'},
-  {id:'UCkTNX9FnqYJmDyFO8QEPGPQ',name:'Molecule',topic:'DeSci IP-NFTs'},
-  {id:'UCeKRqRjzSzq5yP-zUPwc6_w',name:'Gitcoin',topic:'public goods funding'},
-  {id:'UCGiK0veF5qWz9MPJV3Gpgqg',name:'Bankless',topic:'web3 culture'},
-  {id:'UCsZ7Ir5n7j7gJD9q7VYjJdA',name:'OpenAlex',topic:'open research data'}
+const HOME_GENERAL_QUERIES=[
+  'decentralized science',
+  'science publishing',
+  'open access publishing',
+  'peer review reform',
+  'ai for science'
 ];
-// Get RSS feeds from nodes in data.json (sorted by overlap score)
-function getNodeRssFeeds(limit){
-  return [...(D.nodes||[])]
-    .filter(n=>n.rss&&typeof n.rss==='string'&&n.rss.startsWith('http'))
-    .sort((a,b)=>((b.overlapScore||0)+(b.credScore||0)*0.5)-((a.overlapScore||0)+(a.credScore||0)*0.5))
-    .slice(0,limit||8)
-    .map(n=>({url:n.rss,source:n.name,topic:n.type||'DeSci'}));
-}
-// Fetch YouTube channel RSS feed
-async function fetchYouTubeChannel(channelId,channelName,topic,max){
-  const cid=String(channelId||'').trim();
-  if(!cid)return [];
-  const url='https://www.youtube.com/feeds/videos.xml?channel_id='+encodeURIComponent(cid);
-  const j=await fetchViaRss2Json(url,channelName||'youtube',max||4,topic||'youtube');
-  if(j.length)return j;
-  const txt=await fetchRssText(url);
-  return parseRssItems(txt,channelName||'youtube',max||4).map(i=>({...i,topic:topic||channelName||'youtube'}));
-}
-// Fetch all DeSci YouTube channels
-async function fetchDesciYouTubeChannels(maxChannels,maxPerChannel){
-  const channels=DESCI_YOUTUBE_CHANNELS.slice(0,maxChannels||4);
-  const nodeChannels=[...(D.nodes||[])]
-    .filter(n=>n.youtubeChannel&&typeof n.youtubeChannel==='string')
-    .slice(0,3)
-    .map(n=>({id:n.youtubeChannel,name:n.name,topic:n.type||'DeSci'}));
-  const allChannels=[...channels,...nodeChannels].slice(0,maxChannels||5);
-  const rows=await Promise.allSettled(
-    allChannels.map(ch=>fetchYouTubeChannel(ch.id,ch.name,ch.topic,maxPerChannel||3))
-  );
-  return rows.flatMap(r=>(r.status==='fulfilled'&&Array.isArray(r.value))?r.value:[]);
-}
-// Fetch RSS feeds from nodes in data.json
-async function fetchNodeRssFeeds(maxFeeds,maxPerFeed){
-  const feeds=getNodeRssFeeds(maxFeeds||6);
-  const rows=await Promise.allSettled(
-    feeds.map(feed=>fetchRssFeed(feed.url,feed.source,feed.topic,maxPerFeed||3))
-  );
-  return rows.flatMap(r=>(r.status==='fulfilled'&&Array.isArray(r.value))?r.value:[]);
-}
+const HOME_SOCIAL_SUBREDDITS=['deSci','Open_Science','science','MachineLearning'];
 function weightedDatasetTerms(limit){
   const ban=new Set(['infrastructure','application','governance','desci','science','protocol','project']);
   const map=new Map();
@@ -2324,6 +2367,58 @@ function twitterSearchItem(keyword,prefix){
     link:'https://x.com/search?q='+encodeURIComponent(q)+'&src=typed_query&f=live',
     source:'x search',
     topic:q
+  };
+}
+async function fetchRedditSubreddit(subreddit){
+  const sub=String(subreddit||'').replace(/^r\//i,'').trim();
+  if(!sub)return [];
+  const urls=[
+    `https://www.reddit.com/r/${sub}/new.rss`,
+    `https://openrss.org/reddit.com/r/${sub}/new`
+  ];
+  for(const url of urls){
+    try{
+      const rows=await fetchRssFeed(url,'reddit',`r/${sub}`,4);
+      if(rows.length)return rows;
+    }catch(e){}
+  }
+  return [];
+}
+async function fetchRedditSearch(query){
+  const q=String(query||'').trim();
+  if(!q)return [];
+  const urls=[
+    'https://www.reddit.com/search.rss?q='+encodeURIComponent(q)+'&sort=new',
+    'https://openrss.org/reddit.com/search?q='+encodeURIComponent(q)+'&sort=new'
+  ];
+  for(const url of urls){
+    try{
+      const rows=await fetchRssFeed(url,'reddit',q,4);
+      if(rows.length)return rows;
+    }catch(e){}
+  }
+  return [];
+}
+async function fetchRedditSubredditBatch(subreddits,maxSubs,maxPerSub){
+  const subs=[...new Set((subreddits||[]).map(x=>String(x||'').replace(/^r\//i,'').trim()).filter(Boolean))].slice(0,maxSubs||4);
+  if(!subs.length)return [];
+  const rows=await Promise.allSettled(subs.map(sub=>fetchRedditSubreddit(sub).then(items=>items.slice(0,maxPerSub||2).map(it=>({...it,topic:`r/${sub}`})))));
+  return rows.flatMap(r=>(r.status==='fulfilled'&&Array.isArray(r.value))?r.value:[]);
+}
+async function fetchRedditSearchBatch(queries,maxQueries,maxPerQuery){
+  const q=[...new Set((queries||[]).map(x=>String(x||'').trim()).filter(Boolean))].slice(0,maxQueries||4);
+  if(!q.length)return [];
+  const rows=await Promise.allSettled(q.map(one=>fetchRedditSearch(one).then(items=>items.slice(0,maxPerQuery||2).map(it=>({...it,topic:one})))));
+  return rows.flatMap(r=>(r.status==='fulfilled'&&Array.isArray(r.value))?r.value:[]);
+}
+function redditFallbackItem(label){
+  const sub=String(label||'').replace(/^r\//i,'').trim();
+  if(!sub)return null;
+  return {
+    title:`r/${sub} new posts`,
+    link:`https://www.reddit.com/r/${sub}/new/`,
+    source:'reddit',
+    topic:`r/${sub}`
   };
 }
 function feedSourceFromUrl(url,fallback){
@@ -2574,6 +2669,7 @@ function scoreFeedItem(item,intents){
   const hits=relevanceHits(item,intents);
   s+=hits*2.1;
   if(QUALITY_DOMAIN_RE.test(url))s+=6.2;
+  if(/reddit\.com|openrss\.org/.test(url))s+=1.2;
   if(/youtube\.com|youtu\.be/.test(url))s+=1.4;
   if(/x\.com|twitter\.com|nitter\./.test(url))s+=1.2;
   PURPOSE_TERMS.forEach(t=>{if(title.includes(t)||topic.includes(t))s+=1.8});
@@ -2603,26 +2699,23 @@ function googleNewsQueryItem(query,prefix){
   };
 }
 const HOME_STATIC_FEEDS={
-  keywords:[
-    {title:'Open Science Headlines',link:'https://news.google.com/search?q=open%20science&hl=en-US&gl=US&ceid=US:en',source:'fallback',topic:'open science'},
-    {title:'Metascience Headlines',link:'https://news.google.com/search?q=metascience&hl=en-US&gl=US&ceid=US:en',source:'fallback',topic:'metascience'},
-    {title:'Research Integrity Updates',link:'https://retractionwatch.com/',source:'fallback',topic:'research integrity'},
-    {title:'eLife Current',link:'https://elifesciences.org/rss/current.xml',source:'fallback',topic:'open publishing'}
+  general:[
+    {title:'Retraction Watch',link:'https://retractionwatch.com/',source:'fallback',topic:'research integrity'},
+    {title:'The Scholarly Kitchen',link:'https://scholarlykitchen.sspnet.org/',source:'fallback',topic:'science publishing'},
+    {title:'eLife Current',link:'https://elifesciences.org/rss/current.xml',source:'fallback',topic:'open science'},
+    {title:'ScienceDaily AI',link:'https://www.sciencedaily.com/news/computers_math/artificial_intelligence/',source:'fallback',topic:'science and ai'}
   ],
-  nodes:[
-    {title:'Nature',link:'https://www.nature.com/nature.rss',source:'fallback',topic:'science news'},
-    {title:'PLOS Blog Network',link:'https://theplosblog.plos.org/',source:'fallback',topic:'open publishing'},
-    {title:'OpenAlex',link:'https://openalex.org/',source:'fallback',topic:'scholarly infrastructure'},
-    {title:'Google News: DeSci',link:'https://news.google.com/search?q=decentralized%20science&hl=en-US&gl=US&ceid=US:en',source:'fallback',topic:'decentralized science'}
+  ecosystem:[
+    {title:'ResearchHub',link:'https://researchhub.com',source:'fallback',topic:'researchhub'},
+    {title:'DeSci Labs',link:'https://desci.com',source:'fallback',topic:'desci labs'},
+    {title:'OpenReview',link:'https://openreview.net',source:'fallback',topic:'openreview'},
+    {title:'OpenAlex',link:'https://openalex.org',source:'fallback',topic:'openalex'}
   ],
-  youtube:[
-    {title:'Metascience videos',link:'https://www.youtube.com/results?search_query=metascience+open+science',source:'fallback',topic:'video search'},
-    {title:'Open science videos',link:'https://www.youtube.com/results?search_query=open+science+research',source:'fallback',topic:'video search'}
-  ],
-  twitter:[
-    {title:'X search: DeSci',link:'https://x.com/search?q=desci&src=typed_query&f=live',source:'fallback',topic:'desci'},
-    {title:'X search: open science',link:'https://x.com/search?q=open%20science&src=typed_query&f=live',source:'fallback',topic:'open science'},
-    {title:'X search: metascience',link:'https://x.com/search?q=metascience&src=typed_query&f=live',source:'fallback',topic:'metascience'}
+  social:[
+    {title:'r/deSci new posts',link:'https://www.reddit.com/r/deSci/new/',source:'reddit',topic:'r/deSci'},
+    {title:'r/Open_Science new posts',link:'https://www.reddit.com/r/Open_Science/new/',source:'reddit',topic:'r/Open_Science'},
+    {title:'X search: decentralized science',link:'https://x.com/search?q=decentralized%20science&src=typed_query&f=live',source:'x search',topic:'decentralized science'},
+    {title:'X search: open science',link:'https://x.com/search?q=open%20science&src=typed_query&f=live',source:'x search',topic:'open science'}
   ]
 };
 function fallbackFeedSection(section,intents,extra){
@@ -2670,6 +2763,7 @@ function renderHomeLastJournal(){
 function loadHomeFeedCache(){
   try{
     localStorage.removeItem('home-feed-cache-v2');
+    localStorage.removeItem('home-feed-cache-v3');
     const raw=localStorage.getItem(HOME_FEED_CACHE_KEY);
     if(!raw)return;
     const j=JSON.parse(raw);
@@ -2680,11 +2774,10 @@ function loadHomeFeedCache(){
     homeFeedState={
       items:Array.isArray(j.items)?j.items:[],
       sections:(j.sections&&typeof j.sections==='object')?{
-        keywords:Array.isArray(j.sections.keywords)?j.sections.keywords:[],
-        nodes:Array.isArray(j.sections.nodes)?j.sections.nodes:[],
-        twitter:Array.isArray(j.sections.twitter)?j.sections.twitter:[],
-        youtube:Array.isArray(j.sections.youtube)?j.sections.youtube:[]
-      }:{keywords:[],nodes:[],twitter:[],youtube:[]},
+        general:Array.isArray(j.sections.general)?j.sections.general:[],
+        ecosystem:Array.isArray(j.sections.ecosystem)?j.sections.ecosystem:[],
+        social:Array.isArray(j.sections.social)?j.sections.social:[]
+      }:{general:[],ecosystem:[],social:[]},
       lastUpdated:j.lastUpdated||''
     };
     homeFeedLastFetchMs=fetchedAt;
@@ -2702,49 +2795,50 @@ function saveHomeFeedCache(){
   }catch(e){}
 }
 function renderHomeFeeds(){
-  const titleEl=el('homeTickerTitle');
-  const metaEl=el('homeTickerMeta');
-  const items=homeFeedState.items||[];
-  if(!titleEl||!metaEl)return;
+  const streams=[
+    {key:'general',lead:'homeLeadGeneral',meta:'homeMetaGeneral',list:'homeFeedGeneral'},
+    {key:'ecosystem',lead:'homeLeadEcosystem',meta:'homeMetaEcosystem',list:'homeFeedEcosystem'},
+    {key:'social',lead:'homeLeadSocial',meta:'homeMetaSocial',list:'homeFeedSocial'}
+  ];
   if(homeTickerTimer){clearInterval(homeTickerTimer);homeTickerTimer=null;}
-  if(!items.length){
-    titleEl.textContent='Feed standby';
-    metaEl.textContent='Using local watchlists until remote sources respond.';
-  }else{
-    let idx=0;
-    const paint=()=>{
-      if(!items.length)return;
-      const it=items[idx%items.length];
-      if(it.disabled || !it.link || it.link==='#'){
-        titleEl.textContent=cleanMojibakeString(it.title||'Feed standby');
-      }else{
-        titleEl.innerHTML=`<a href="${escapeHtml(it.link)}" target="_blank" rel="noopener">${escapeHtml(it.title)}</a>`;
-      }
-      metaEl.textContent=`${cleanMojibakeString(it.source||'news')} | ${cleanMojibakeString(it.topic||'general')}${it.pubDate?` | ${cleanMojibakeString(String(it.pubDate).slice(0,24))}`:''}`;
-      idx++;
-    };
-    paint();
-    homeTickerTimer=setInterval(paint,7600);
-  }
-
   const mount=(id,arr)=>{
     const c=el(id);
     if(!c)return;
-    c.innerHTML=(arr||[]).slice(0,6).map(it=>{
+    c.innerHTML=(arr||[]).slice(0,7).map(it=>{
       const title=escapeHtml(it.title||'Untitled');
       const meta=`${escapeHtml(it.source||'news')} | ${escapeHtml(it.topic||'')}`;
       if(it.disabled || !it.link || it.link==='#')return `<article class="feed-item empty"><div>${title}</div><div class="meta">${meta}</div></article>`;
       return `<article class="feed-item"><a href="${escapeHtml(it.link)}" target="_blank" rel="noopener">${title}</a><div class="meta">${meta}</div></article>`;
     }).join('') || '<div class="lite-note">No items yet.</div>';
   };
-  mount('homeFeedKeywords',homeFeedState.sections.keywords||[]);
-  mount('homeFeedNodes',homeFeedState.sections.nodes||[]);
-  mount('homeFeedTwitter',homeFeedState.sections.twitter||[]);
-  mount('homeFeedYoutube',homeFeedState.sections.youtube||[]);
+  const idx={general:0,ecosystem:0,social:0};
+  const paint=(cfg)=>{
+    const items=(homeFeedState.sections&&homeFeedState.sections[cfg.key])||[];
+    const lead=el(cfg.lead), meta=el(cfg.meta);
+    if(!lead||!meta)return;
+    if(!items.length){
+      lead.textContent='Feed standby';
+      meta.textContent='Waiting for sources to respond.';
+      return;
+    }
+    const it=items[idx[cfg.key]%items.length];
+    if(it.disabled || !it.link || it.link==='#')lead.textContent=cleanMojibakeString(it.title||'Feed standby');
+    else lead.innerHTML=`<a href="${escapeHtml(it.link)}" target="_blank" rel="noopener">${escapeHtml(it.title)}</a>`;
+    meta.textContent=`${cleanMojibakeString(it.source||'news')} | ${cleanMojibakeString(it.topic||'general')}${it.pubDate?` | ${cleanMojibakeString(String(it.pubDate).slice(0,24))}`:''}`;
+  };
+  streams.forEach(cfg=>{
+    mount(cfg.list,(homeFeedState.sections&&homeFeedState.sections[cfg.key])||[]);
+    paint(cfg);
+  });
+  homeTickerTimer=setInterval(()=>{
+    streams.forEach(cfg=>{
+      const items=(homeFeedState.sections&&homeFeedState.sections[cfg.key])||[];
+      if(items.length>1)idx[cfg.key]=(idx[cfg.key]+1)%items.length;
+      paint(cfg);
+    });
+  },7200);
   const lu=el('homeLastUpdated');
   if(lu)lu.textContent=homeFeedState.lastUpdated?`Last update: ${homeFeedState.lastUpdated}`:'Last update: pending';
-  renderHomeWatchConfig();
-  renderHomeLastJournal();
 }
 async function refreshHomeFeeds(force){
   const now=Date.now();
@@ -2752,78 +2846,61 @@ async function refreshHomeFeeds(force){
     if(view==='home')renderHomeFeeds();
     return;
   }
-  ensureHomeWatchConfig();
-  const kw=projectKeywords().slice(0,4);
-  const nodeNames=relationWatchNames().slice(0,6);
-  const nodeQueries=nodeNames.map(n=>`"${n}"`).slice(0,4);
-  const ytQ=[...new Set([...weightedDatasetTerms(3).map(t=>`${t} research`),...PURPOSE_TERMS.slice(0,2)])].slice(0,2);
-  const twKeywords=desciTwitterKeywords(4);
+  const generalQueries=[...new Set([...HOME_GENERAL_QUERIES,...projectKeywords().slice(0,2)])].slice(0,6);
+  const keyNodes=keySignalNodes(8);
+  const nodeNames=keyNodes.map(n=>String(n.name||'').trim()).filter(Boolean);
+  const ecosystemQueries=[...new Set([...nodeNames.map(n=>`"${n}"`),...weightedDatasetTerms(3)])].slice(0,7);
+  const socialKeywords=[...new Set([...desciTwitterKeywords(4),'science publishing','peer review'])].slice(0,5);
   const twHandles=keyTwitterHandles(5);
-  const twNewsQueries=[
-    ...twKeywords.map(q=>`site:x.com ${q}`),
+  const xNewsQueries=[
+    ...socialKeywords.map(q=>`site:x.com ${q}`),
     ...twHandles.map(h=>`site:x.com/${h}`)
-  ].slice(0,4);
-  const keySources=keyNodeDataSources(10);
-  const keyBlogSources=keySources.filter(it=>it.source==='node blog');
-  const keyTwitterSources=keySources.filter(it=>it.source==='x profile');
-  const playlistIds=(D.homeWatch.playlists||[]).slice(0,3);
-  const customVideos=(D.homeWatch.videos||[]).map(v=>({title:v.title||'Custom video',link:v.url,topic:'custom watchlist',source:'youtube'}));
-  // Enhanced feed fetching with node RSS and YouTube channels
-  const [kwRes,nodeRes,curatedRes,nodeRssRes,ytRes,ytChannelRes,playlistRes,twNewsRes]=await Promise.all([
-    fetchGoogleNewsBatch(kw,4,3),
-    fetchGoogleNewsBatch(nodeQueries,4,3),
-    fetchCuratedNews(2),
-    fetchNodeRssFeeds(6,3),
-    fetchYouTubeBatch(ytQ,2,3),
-    fetchDesciYouTubeChannels(4,3),
-    Promise.allSettled(playlistIds.map(pid=>fetchYouTubePlaylist(pid))).then(rows=>rows.flatMap(r=>(r.status==='fulfilled'&&Array.isArray(r.value))?r.value:[])),
-    fetchGoogleNewsBatch(twNewsQueries,4,2)
+  ].slice(0,5);
+  const redditQueries=[...new Set([...socialKeywords.slice(0,3),'decentralized science'])].slice(0,4);
+  const nodeSources=keyNodeDataSources(10);
+  const [generalFeedRes,generalNewsRes,ecosystemNewsRes,redditSubRes,redditSearchRes,xNewsRes]=await Promise.all([
+    fetchCuratedNews(4),
+    fetchGoogleNewsBatch(generalQueries,5,3),
+    fetchGoogleNewsBatch(ecosystemQueries,6,2),
+    fetchRedditSubredditBatch(HOME_SOCIAL_SUBREDDITS,4,2),
+    fetchRedditSearchBatch(redditQueries,4,2),
+    fetchGoogleNewsBatch(xNewsQueries,5,2)
   ]);
-  const keywordPool=[...kwRes,...curatedRes,...nodeRssRes];
-  const nodePool=[...nodeRes,...nodeRssRes,...curatedRes,...keyBlogSources,...keyTwitterSources];
-  const youtubePool=[...ytRes,...ytChannelRes,...playlistRes,...customVideos];
-  const twitterSeed=[
-    ...twKeywords.map(q=>twitterSearchItem(q,'X keyword')).filter(Boolean),
-    ...twHandles.map(h=>({title:`@${h} on X`,link:`https://x.com/${h}`,source:'x profile',topic:`@${h}`})),
-    ...keyTwitterSources
+  const generalPool=[...generalFeedRes,...generalNewsRes];
+  const ecosystemPool=[...ecosystemNewsRes,...nodeSources];
+  const socialFallback=[
+    ...HOME_SOCIAL_SUBREDDITS.map(redditFallbackItem).filter(Boolean),
+    ...socialKeywords.map(q=>twitterSearchItem(q,'X search')).filter(Boolean),
+    ...twHandles.map(h=>({title:`@${h} on X`,link:`https://x.com/${h}`,source:'x profile',topic:`@${h}`}))
   ];
-  const twitterPool=[...twNewsRes,...twitterSeed];
-  const twitterIntents=[...twKeywords,...twHandles.map(h=>`@${h}`),...nodeNames];
-  let keywords=rankFeedItems(keywordPool,[...kw,...PURPOSE_TERMS],10,{minHits:1});
-  let nodes=rankFeedItems(nodePool,[...nodeNames,...nodeQueries,'blog','update'],10,{minHits:0});
-  let twitter=rankFeedItems(twitterPool,twitterIntents,10,{minHits:0});
-  let youtube=rankFeedItems(youtubePool,[...ytQ,'desci','research','science'],10,{minHits:0});
-  if(!keywords.length){
-    const queryLinks=kw.slice(0,6).map(q=>googleNewsQueryItem(q,'Keyword')).filter(Boolean);
-    keywords=fallbackFeedSection('keywords',[...kw,...PURPOSE_TERMS],queryLinks);
+  const socialPool=[...redditSubRes,...redditSearchRes,...xNewsRes,...socialFallback];
+  let general=rankFeedItems(generalPool,generalQueries,14,{minHits:0});
+  let ecosystem=rankFeedItems(ecosystemPool,[...nodeNames,...ecosystemQueries,'blog','update'],14,{minHits:0});
+  let social=rankFeedItems(socialPool,[...socialKeywords,...twHandles.map(h=>`@${h}`),...HOME_SOCIAL_SUBREDDITS],14,{minHits:0});
+  if(!general.length){
+    const queryLinks=generalQueries.map(q=>googleNewsQueryItem(q,'Topic')).filter(Boolean);
+    general=fallbackFeedSection('general',generalQueries,queryLinks);
   }
-  if(!nodes.length){
+  if(!ecosystem.length){
     const queryLinks=[
-      ...nodeNames.slice(0,8).map(n=>googleNewsQueryItem(`"${n}"`,'Org')).filter(Boolean),
-      ...keyBlogSources,
-      ...keyTwitterSources
+      ...nodeNames.map(n=>googleNewsQueryItem(`"${n}"`,'Org')).filter(Boolean),
+      ...nodeSources
     ];
-    nodes=fallbackFeedSection('nodes',[...nodeNames,...nodeQueries],queryLinks);
+    ecosystem=fallbackFeedSection('ecosystem',[...nodeNames,...ecosystemQueries],queryLinks);
   }
-  if(!twitter.length){
-    twitter=fallbackFeedSection('twitter',twitterIntents,twitterSeed);
-  }
-  if(!youtube.length){
-    youtube=fallbackFeedSection('youtube',ytQ,customVideos);
+  if(!social.length){
+    social=fallbackFeedSection('social',[...socialKeywords,...HOME_SOCIAL_SUBREDDITS],socialFallback);
   }
   homeFeedState.sections={
-    keywords,
-    nodes,
-    twitter,
-    youtube
+    general,
+    ecosystem,
+    social
   };
   homeFeedState.items=rankFeedItems([
-    ...homeFeedState.sections.keywords,
-    ...homeFeedState.sections.nodes,
-    ...homeFeedState.sections.twitter,
-    ...homeFeedState.sections.youtube,
-    ...curatedRes
-  ],[...kw,...nodeNames,...PURPOSE_TERMS],40,{minHits:0});
+    ...homeFeedState.sections.general,
+    ...homeFeedState.sections.ecosystem,
+    ...homeFeedState.sections.social
+  ],[...generalQueries,...nodeNames,...socialKeywords],40,{minHits:0});
   if(!homeFeedState.items.length){
     homeFeedState.items=makeFeedEmptyState('No remote feed items responded yet. Open the query links and retry.');
   }
@@ -2832,112 +2909,47 @@ async function refreshHomeFeeds(force){
   saveHomeFeedCache();
   if(view==='home')renderHomeFeeds();
 }
-function lerpStops(q,stops){
-  if(!stops||!stops.length)return 0;
-  if(q<=stops[0][0])return stops[0][1];
-  for(let i=1;i<stops.length;i++){
-    const a=stops[i-1], b=stops[i];
-    if(q<=b[0]){
-      const t=(q-a[0])/(b[0]-a[0]||1);
-      return a[1]+(b[1]-a[1])*t;
+function asciiSignalBackdrop(cols,rows){
+  const w=Math.max(120,cols||120);
+  const h=Math.max(34,rows||34);
+  const g=Array.from({length:h},()=>Array.from({length:w},()=> ' '));
+  const place=(x,y,text)=>{
+    if(y<0||y>=h)return;
+    [...String(text||'')].forEach((ch,i)=>{
+      const xx=x+i;
+      if(xx>=0&&xx<w)g[y][xx]=ch;
+    });
+  };
+  for(let y=1;y<h;y+=4){
+    for(let x=(y%8===1?2:8);x<w-2;x+=9){
+      g[y][x]='.';
+      if(x+1<w)g[y][x+1]=':';
+      if(x+2<w)g[y][x+2]='.';
     }
   }
-  return stops[stops.length-1][1];
-}
-function subtractSegments(segs,cuts){
-  let out=(segs||[]).map(s=>[s[0],s[1]]);
-  (cuts||[]).forEach(cut=>{
-    const a=cut[0], b=cut[1];
-    const next=[];
-    out.forEach(seg=>{
-      const s=seg[0], e=seg[1];
-      if(e<=a || s>=b){next.push([s,e]);return;}
-      if(s<a)next.push([s,a]);
-      if(e>b)next.push([b,e]);
-    });
-    out=next;
+  const rails=[
+    '  +-----------+      +-------------+      +-------------+      +-----------+  ',
+    '  | evidence  | ---- | publishing  | ---- | ai for sci  | ---- | commons   |  ',
+    '  +-----------+      +-------------+      +-------------+      +-----------+  ',
+    '         \\\\                 //   \\\\                 //   \\\\                 // ',
+    '          \\\\               //     \\\\               //     \\\\               //  ',
+    '           +-------------+        +-------------+        +-------------+      ',
+    '           |  open data  | ------ | peer review | ------ | governance  |      ',
+    '           +-------------+        +-------------+        +-------------+      '
+  ];
+  const mid=Math.max(2,Math.floor(h*0.34));
+  rails.forEach((line,i)=>place(Math.max(2,Math.floor((w-line.length)/2)),mid+i,line));
+  const tags=[
+    '[ desci ]','[ science publishing ]','[ open access ]','[ research integrity ]',
+    '[ ai for science ]','[ metascience ]','[ reproducibility ]'
+  ];
+  tags.forEach((tag,i)=>{
+    const y=Math.max(2,h-10+(i%4));
+    const x=4+((i*17)%Math.max(20,w-20));
+    place(x,y,tag);
   });
-  return out.filter(seg=>(seg[1]-seg[0])>0.005);
-}
-// Simplified ASCII world map - using direct segment data per row fraction
-// Format: [rowFraction, [[x0,x1], [x0,x1], ...]]
-const WORLD_MAP_ROWS=[
-  // Greenland / Iceland / Northern Canada
-  [0.08, [[0.02,0.06],[0.12,0.18],[0.42,0.46]]],
-  [0.10, [[0.02,0.08],[0.10,0.20],[0.41,0.47]]],
-  [0.12, [[0.01,0.09],[0.10,0.22],[0.40,0.48]]],
-  // Canada / Northern Europe / Russia
-  [0.15, [[0.01,0.24],[0.38,0.52],[0.55,0.98]]],
-  [0.18, [[0.02,0.26],[0.36,0.54],[0.56,0.99]]],
-  [0.20, [[0.03,0.27],[0.35,0.55],[0.58,0.99]]],
-  [0.22, [[0.04,0.28],[0.35,0.42],[0.44,0.56],[0.60,0.99]]],
-  // USA / Europe / Russia-China
-  [0.25, [[0.04,0.28],[0.36,0.42],[0.44,0.55],[0.62,0.98]]],
-  [0.28, [[0.05,0.27],[0.37,0.41],[0.44,0.54],[0.64,0.96]]],
-  [0.30, [[0.06,0.26],[0.38,0.40],[0.44,0.53],[0.58,0.62],[0.66,0.94]]],
-  [0.32, [[0.08,0.25],[0.44,0.52],[0.56,0.62],[0.68,0.92]]],
-  // Mexico / North Africa / Middle East / India / China / Japan
-  [0.35, [[0.10,0.24],[0.40,0.62],[0.68,0.72],[0.74,0.90],[0.94,0.97]]],
-  [0.38, [[0.12,0.22],[0.40,0.64],[0.70,0.88],[0.94,0.96]]],
-  [0.40, [[0.14,0.20],[0.40,0.65],[0.72,0.86]]],
-  // Central America / Africa / SE Asia
-  [0.42, [[0.16,0.20],[0.42,0.64],[0.74,0.84],[0.88,0.92]]],
-  [0.45, [[0.18,0.22],[0.42,0.62],[0.76,0.82],[0.88,0.94]]],
-  [0.48, [[0.20,0.24],[0.43,0.60],[0.78,0.80],[0.88,0.96]]],
-  // South America / Africa / Indonesia
-  [0.50, [[0.22,0.32],[0.44,0.58],[0.88,0.98]]],
-  [0.52, [[0.24,0.34],[0.44,0.56],[0.90,0.96]]],
-  [0.55, [[0.25,0.35],[0.45,0.55]]],
-  [0.58, [[0.26,0.36],[0.46,0.54]]],
-  [0.60, [[0.27,0.36],[0.46,0.53]]],
-  [0.62, [[0.28,0.36],[0.47,0.52]]],
-  [0.65, [[0.29,0.35],[0.48,0.51]]],
-  // Southern South America / Southern Africa / Australia
-  [0.68, [[0.30,0.34],[0.48,0.50],[0.82,0.94]]],
-  [0.70, [[0.30,0.33],[0.84,0.94]]],
-  [0.72, [[0.31,0.33],[0.84,0.93]]],
-  [0.75, [[0.85,0.92]]],
-  [0.78, [[0.86,0.91]]],
-  // New Zealand
-  [0.82, [[0.94,0.96]]],
-  [0.85, [[0.95,0.96]]],
-];
-
-function worldSegmentsForRow(q){
-  // Find the two closest rows and interpolate
-  let below=null, above=null;
-  for(const row of WORLD_MAP_ROWS){
-    if(row[0]<=q) below=row;
-    if(row[0]>=q && !above) above=row;
-  }
-  if(!below && !above) return [];
-  if(!below) return above[1];
-  if(!above) return below[1];
-  if(below[0]===above[0]) return below[1];
-  
-  // Simple: just use the closer one
-  const t=(q-below[0])/(above[0]-below[0]);
-  return t<0.5 ? below[1] : above[1];
-}
-
-function asciiWorldStatic(cols,rows){
-  const w=Math.max(80,cols||120);
-  const h=Math.max(24,rows||30);
-  const g=Array.from({length:h},()=>Array.from({length:w},()=>' '));
-  
-  for(let y=0;y<h;y++){
-    const q=y/h;
-    const segs=worldSegmentsForRow(q);
-    const phase=y&1;
-    (segs||[]).forEach(seg=>{
-      const x0=Math.max(0,Math.floor(seg[0]*w));
-      const x1=Math.min(w-1,Math.floor(seg[1]*w));
-      for(let x=x0;x<=x1;x++){
-        if(((x+phase)&1)!==0)continue;
-        g[y][x]=(x===x0||x===x1)?'.':'o';
-      }
-    });
-  }
+  place(4,2,'desci map // signal board');
+  place(Math.max(4,w-34),h-3,'news | ecosystem | social');
   return g.map(row=>row.join('')).join('\n');
 }
 function renderHome(){
@@ -2946,70 +2958,47 @@ function renderHome(){
   wrap.className='home-wrap';
   wrap.innerHTML=`
     <pre class="ascii-map" id="asciiMap"></pre>
-    <div class="home-overlay-top">
-      <div class="ticker">
-        <div class="ticker-head">DeSci Live Ticker</div>
-        <div class="ticker-main" id="homeTickerTitle">Loading feed...</div>
-        <div class="ticker-meta" id="homeTickerMeta"></div>
+    <div class="home-stage">
+      <div class="home-status">
+        <div class="k">Live Monitoring Surface</div>
+        <div class="v" id="homeLastUpdated">Last update: pending</div>
       </div>
-      <aside class="home-feed-panel">
-        <div class="feed-title">Keyword + Metascience Feed</div>
-        <div class="feed-list" id="homeFeedKeywords"></div>
-        <div class="feed-title" style="margin-top:10px">Organization Updates</div>
-        <div class="feed-list" id="homeFeedNodes"></div>
-        <div class="feed-title" style="margin-top:10px">Twitter / X Signals</div>
-        <div class="feed-list" id="homeFeedTwitter"></div>
-        <div class="feed-title yt-add-wrap" style="margin-top:10px">
-          <span>YouTube Watch</span>
-          <button class="yt-add-btn" id="homeYtPopBtn" onclick="toggleHomeYtPop(event)">+</button>
-          <div class="yt-pop" id="homeYtPop">
-            <div class="yt-pop-head">YouTube Watchlist</div>
-            <div class="watch-tools">
-              <div class="watch-row"><input class="finput watch-input" id="homeVideoInput" placeholder="Custom video: Title | URL"><button class="btn watch-btn" onclick="addHomeVideoWatch()">Add Video</button></div>
-              <div class="watch-row"><input class="finput watch-input" id="homePlaylistInput" placeholder="Public playlist URL or ID"><button class="btn watch-btn" onclick="addHomePlaylistWatch()">Add Playlist</button></div>
-              <div class="watch-list" id="homeWatchConfig"></div>
-            </div>
-          </div>
-        </div>
-        <div class="feed-list" id="homeFeedYoutube"></div>
-      </aside>
-    </div>
-    <div class="home-overlay-bottom">
-      <div class="home-bottom-left">
-        <div class="home-updated" id="homeLastUpdated">Last update: pending</div>
-        <section class="home-journal" id="homeLastJournal"></section>
+      <div class="home-grid">
+        <section class="home-stream">
+          <div class="stream-head">General Briefing</div>
+          <div class="stream-lead" id="homeLeadGeneral">Loading feed...</div>
+          <div class="stream-meta" id="homeMetaGeneral"></div>
+          <div class="stream-list" id="homeFeedGeneral"></div>
+        </section>
+        <section class="home-stream">
+          <div class="stream-head">Ecosystem Watch</div>
+          <div class="stream-lead" id="homeLeadEcosystem">Loading feed...</div>
+          <div class="stream-meta" id="homeMetaEcosystem"></div>
+          <div class="stream-list" id="homeFeedEcosystem"></div>
+        </section>
+        <section class="home-stream">
+          <div class="stream-head">Social Pulse</div>
+          <div class="stream-lead" id="homeLeadSocial">Loading feed...</div>
+          <div class="stream-meta" id="homeMetaSocial"></div>
+          <div class="stream-list" id="homeFeedSocial"></div>
+        </section>
       </div>
-      <section class="home-kanban" id="homeKanban"></section>
     </div>
   `;
   m.appendChild(wrap);
-  renderHomeKanban();
-  renderHomeWatchConfig();
-  renderHomeLastJournal();
-  if(!window._homePopBound){
-    document.addEventListener('click',evt=>{
-      const pop=el('homeYtPop');
-      const btn=el('homeYtPopBtn');
-      if(!pop||!btn)return;
-      if(pop.contains(evt.target)||btn.contains(evt.target))return;
-      pop.classList.remove('open');
-    });
-    window._homePopBound=1;
-  }
-
   const draw=()=>{
     const p=el('asciiMap');
     if(!p)return;
-    const cols=Math.floor((p.clientWidth||m.clientWidth)/7.1);
+    const cols=Math.floor((p.clientWidth||m.clientWidth)/7.2);
     const rows=Math.floor((p.clientHeight||m.clientHeight)/12.2);
-    p.textContent=asciiWorldStatic(cols,rows);
+    p.textContent=asciiSignalBackdrop(cols,rows);
   };
   draw();
   requestAnimationFrame(draw);
   renderHomeFeeds();
   const shouldForceFetch=!homeFeedState.items.length || (Date.now()-homeFeedLastFetchMs)>(7*60*1000);
   refreshHomeFeeds(shouldForceFetch);
-  homeRefreshTimer=setInterval(()=>refreshHomeFeeds(true),20*60*1000);
+  homeRefreshTimer=setInterval(()=>refreshHomeFeeds(true),15*60*1000);
   sanitizeVisibleText(wrap);
 }
 
@@ -3226,3 +3215,6 @@ window.addEventListener('resize',()=>{clearTimeout(window._rt);window._rt=setTim
 </script>
 </body>
 </html>
+
+
+
