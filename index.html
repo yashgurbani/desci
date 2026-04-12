@@ -323,7 +323,24 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
 .feed-item{border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:7px 9px;background:rgba(20,20,20,.84)}
 .feed-item a{font-size:.75rem;font-weight:600;line-height:1.34;color:#efefef}
 .feed-item .meta{font-size:.66rem;color:#989898;margin-top:3px}
-.watch-tools{border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:8px;background:rgba(16,16,16,.85);margin-top:9px}
+.yt-add-wrap{display:flex;align-items:center;justify-content:space-between;gap:8px;position:relative}
+.yt-add-btn{width:18px;height:18px;border-radius:50%;border:1px solid rgba(255,255,255,.28);background:rgba(24,24,24,.9);color:#d8d8d8;font-size:.78rem;line-height:1;cursor:pointer}
+.yt-add-btn:hover{border-color:var(--gold);color:var(--gold)}
+.yt-pop{
+  display:none;
+  position:absolute;
+  right:0; top:22px;
+  width:min(360px,80vw);
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:9px;
+  background:rgba(10,10,10,.96);
+  padding:9px;
+  z-index:9;
+  box-shadow:0 10px 30px rgba(0,0,0,.45);
+}
+.yt-pop.open{display:block}
+.yt-pop-head{font-family:var(--mono);font-size:.62rem;color:#bdbdbd;text-transform:uppercase;letter-spacing:.9px;margin-bottom:6px}
+.watch-tools{border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:8px;background:rgba(16,16,16,.85);margin-top:4px}
 .watch-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px;margin-bottom:6px}
 .watch-row:last-child{margin-bottom:4px}
 .watch-input{font-size:.72rem;padding:7px 9px}
@@ -526,7 +543,7 @@ let bizLabelDetail='metrics';
 let auditRowsByKey=new Map();
 let bizTipPinned=false;
 let bizTipPinnedNodeId=null;
-let homeFeedState={items:[],sections:{keywords:[],nodes:[],papers:[],youtube:[]},lastUpdated:''};
+let homeFeedState={items:[],sections:{keywords:[],nodes:[],youtube:[]},lastUpdated:''};
 let homeTickerTimer=null;
 let homeRefreshTimer=null;
 let homeAsciiTimer=null;
@@ -888,6 +905,10 @@ function render(){
   if(homeAsciiTimer){clearInterval(homeAsciiTimer);homeAsciiTimer=null;}
   if(view!=='biz'){bizTipPinned=false;bizTipPinnedNodeId=null;}
   const tip=el('tip'); if(tip){tip.classList.remove('vis');tip.classList.toggle('interactive',view==='biz');}
+  const tLeft=m.querySelector('.toggle-left');
+  const tRight=m.querySelector('.toggle-right');
+  if(tLeft)tLeft.style.display=view==='home'?'none':'flex';
+  if(tRight)tRight.style.display=view==='home'?'none':'flex';
   if(sim)sim.stop();
   if(view==='home')renderHome();
   else if(view==='graph')buildGraph();
@@ -1888,12 +1909,35 @@ async function fetchTextWithTimeout(url,ms){
 }
 async function fetchRssText(url){
   const raw='https://api.allorigins.win/raw?url='+encodeURIComponent(url);
+  const get='https://api.allorigins.win/get?url='+encodeURIComponent(url);
+  try{
+    const t=await fetchTextWithTimeout(get,9000);
+    if(t){
+      const j=JSON.parse(t);
+      if(j&&j.contents&&j.contents.length>80)return j.contents;
+    }
+  }catch(e){}
   const jina='https://r.jina.ai/http://'+url.replace(/^https?:\/\//,'');
   const tries=[raw,jina,url];
   for(const u of tries){
     try{const txt=await fetchTextWithTimeout(u,9000);if(txt&&txt.length>80)return txt;}catch(e){}
   }
   return '';
+}
+async function fetchViaRss2Json(url,source,max,topic){
+  try{
+    const api='https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent(url)+'&count='+(max||8);
+    const txt=await fetchTextWithTimeout(api,10000);
+    const j=JSON.parse(txt||'{}');
+    const rows=(j.items||[]).slice(0,max||8).map(it=>({
+      title:cleanMojibakeString(it.title||''),
+      link:(it.link||'').trim(),
+      pubDate:it.pubDate||'',
+      source:source||'news',
+      topic:topic||''
+    })).filter(it=>it.title&&it.link);
+    return rows;
+  }catch(e){return []}
 }
 function parseRssItems(xmlText,source,max){
   const cap=max||6;
@@ -1961,16 +2005,22 @@ function relationWatchNames(){
 }
 async function fetchGoogleNews(query){
   const url='https://news.google.com/rss/search?q='+encodeURIComponent(query)+'&hl=en-US&gl=US&ceid=US:en';
+  const j=await fetchViaRss2Json(url,'news',6,query);
+  if(j.length)return j;
   const txt=await fetchRssText(url);
   return parseRssItems(txt,'news',6).map(i=>({...i,topic:query}));
 }
 async function fetchYouTube(query){
   const url='https://www.youtube.com/feeds/videos.xml?search_query='+encodeURIComponent(query);
+  const j=await fetchViaRss2Json(url,'youtube',5,query);
+  if(j.length)return j;
   const txt=await fetchRssText(url);
   return parseRssItems(txt,'youtube',5).map(i=>({...i,topic:query}));
 }
 async function fetchYouTubePlaylist(playlistId){
   const url='https://www.youtube.com/feeds/videos.xml?playlist_id='+encodeURIComponent(playlistId);
+  const j=await fetchViaRss2Json(url,'youtube-playlist',6,`playlist:${playlistId}`);
+  if(j.length)return j;
   const txt=await fetchRssText(url);
   return parseRssItems(txt,'youtube-playlist',6).map(i=>({...i,topic:`playlist:${playlistId}`}));
 }
@@ -2057,6 +2107,13 @@ function removeHomePlaylistWatch(idx){
   save();
   renderHomeWatchConfig();
   refreshHomeFeeds(true);
+}
+function toggleHomeYtPop(evt){
+  if(evt)evt.stopPropagation();
+  const p=el('homeYtPop');
+  if(!p)return;
+  p.classList.toggle('open');
+  if(p.classList.contains('open'))renderHomeWatchConfig();
 }
 const K_COLS=['todo','doing','done'];
 const K_LABELS={todo:'To Do',doing:'In Progress',done:'Done'};
@@ -2208,7 +2265,6 @@ function renderHomeFeeds(){
   };
   mount('homeFeedKeywords',homeFeedState.sections.keywords||[]);
   mount('homeFeedNodes',homeFeedState.sections.nodes||[]);
-  mount('homeFeedPapers',homeFeedState.sections.papers||[]);
   mount('homeFeedYoutube',homeFeedState.sections.youtube||[]);
   const lu=el('homeLastUpdated');
   if(lu)lu.textContent=homeFeedState.lastUpdated?`Last update: ${homeFeedState.lastUpdated}`:'Last update: pending';
@@ -2224,42 +2280,39 @@ async function refreshHomeFeeds(force){
   ensureHomeWatchConfig();
   const kw=projectKeywords().slice(0,6);
   const nodeQs=relationWatchNames().slice(0,6);
-  const paperQs=paperKeywordQueries().slice(0,5);
   const ytQ=[...new Set([...weightedDatasetTerms(3).map(t=>`${t} research`),...PURPOSE_TERMS.slice(0,3)])].slice(0,5);
   const playlistIds=(D.homeWatch.playlists||[]).slice(0,3);
   const customVideos=(D.homeWatch.videos||[]).map(v=>({title:v.title||'Custom video',link:v.url,topic:'custom watchlist',source:'youtube'}));
 
   try{
-    const [kwRes,nodeRes,ytRes,paperRes,playlistRes]=await Promise.all([
+    const [kwRes,nodeRes,ytRes,playlistRes]=await Promise.all([
       Promise.all(kw.map(q=>fetchGoogleNews(q))).then(x=>x.flat()),
       Promise.all(nodeQs.map(q=>fetchGoogleNews(`${q} open science`))).then(x=>x.flat()),
       Promise.all(ytQ.map(q=>fetchYouTube(q))).then(x=>x.flat()),
-      Promise.all(paperQs.map(q=>fetchArxiv(q))).then(x=>x.flat()),
       Promise.all(playlistIds.map(pid=>fetchYouTubePlaylist(pid))).then(x=>x.flat())
     ]);
-
-    const zoteroPapers=zoteroPaperSuggestions(8);
     homeFeedState.sections={
       keywords:rankFeedItems(kwRes,kw,10),
       nodes:rankFeedItems(nodeRes,nodeQs,10),
-      papers:rankFeedItems([...paperRes,...zoteroPapers],paperQs,10),
       youtube:rankFeedItems([...ytRes,...playlistRes,...customVideos],ytQ,10)
     };
     homeFeedState.items=rankFeedItems([
       ...homeFeedState.sections.keywords,
       ...homeFeedState.sections.nodes,
-      ...homeFeedState.sections.papers,
       ...homeFeedState.sections.youtube
-    ],[...kw,...nodeQs,...paperQs],40);
+    ],[...kw,...nodeQs,...PURPOSE_TERMS],40);
   }catch(e){
-    if(!homeFeedState.items.length){
-      const fallback=(D.nodes||[]).filter(n=>n.web).slice(0,14).map(n=>({title:`Watch ${n.name} updates`,link:n.web||'#',source:'local',topic:n.type||'node'}));
-      homeFeedState.items=fallback;
-      homeFeedState.sections.keywords=fallback.slice(0,8);
-      homeFeedState.sections.nodes=fallback.slice(0,8);
-      homeFeedState.sections.papers=[];
-      homeFeedState.sections.youtube=(D.homeWatch&&D.homeWatch.videos||[]).map(v=>({title:v.title||'Custom video',link:v.url,topic:'custom watchlist',source:'youtube'}));
-    }
+    const fallbackNews=[
+      {title:'Open Science Headlines (Google News)',link:'https://news.google.com/search?q=open%20science',source:'news',topic:'open science'},
+      {title:'Metascience Headlines (Google News)',link:'https://news.google.com/search?q=metascience',source:'news',topic:'metascience'},
+      {title:'Retraction Watch',link:'https://retractionwatch.com/',source:'news',topic:'research integrity'},
+      {title:'Nature News',link:'https://www.nature.com/news',source:'news',topic:'science news'},
+      {title:'eLife News',link:'https://elifesciences.org/inside-elife',source:'news',topic:'open publishing'}
+    ];
+    homeFeedState.sections.keywords=fallbackNews.slice(0,5);
+    homeFeedState.sections.nodes=fallbackNews.slice(0,5);
+    homeFeedState.sections.youtube=(D.homeWatch&&D.homeWatch.videos||[]).map(v=>({title:v.title||'Custom video',link:v.url,topic:'custom watchlist',source:'youtube'}));
+    homeFeedState.items=[...homeFeedState.sections.keywords,...homeFeedState.sections.nodes,...homeFeedState.sections.youtube];
   }
   homeFeedLastFetchMs=Date.now();
   homeFeedState.lastUpdated=new Date().toLocaleString();
@@ -2304,12 +2357,8 @@ const LEFT_TAIL_X0=[[0.82,0.35],[1,0.34]];
 const LEFT_TAIL_X1=[[0.82,0.39],[1,0.37]];
 const RIGHT_EU_X0=[[0,0.82],[0.10,0.76],[0.22,0.68],[0.36,0.58],[0.50,0.52],[0.62,0.56],[0.76,0.66],[0.88,0.77],[1,0.85]];
 const RIGHT_EU_X1=[[0,0.99],[0.10,0.99],[0.22,1.00],[0.36,1.00],[0.50,0.99],[0.62,0.98],[0.76,0.98],[0.88,0.99],[1,0.99]];
-const RIGHT_AF_X0=[[0.44,0.63],[0.58,0.59],[0.72,0.57],[0.86,0.58],[1,0.60]];
-const RIGHT_AF_X1=[[0.44,0.73],[0.58,0.70],[0.72,0.67],[0.86,0.65],[1,0.63]];
-const RIGHT_LEG1_X0=[[0.76,0.61],[1,0.62]];
-const RIGHT_LEG1_X1=[[0.76,0.66],[1,0.66]];
-const RIGHT_LEG2_X0=[[0.76,0.69],[1,0.70]];
-const RIGHT_LEG2_X1=[[0.76,0.73],[1,0.73]];
+const RIGHT_AF_X0=[[0.44,0.62],[0.58,0.60],[0.72,0.58],[0.86,0.58],[1,0.59]];
+const RIGHT_AF_X1=[[0.44,0.74],[0.58,0.71],[0.72,0.68],[0.86,0.66],[1,0.64]];
 function leftSegments(q){
   const segs=[[lerpStops(q,LEFT_MAIN_X0),lerpStops(q,LEFT_MAIN_X1)]];
   if(q>=0.44&&q<=1)segs.push([lerpStops(q,LEFT_SA_X0),lerpStops(q,LEFT_SA_X1)]);
@@ -2323,14 +2372,10 @@ function leftSegments(q){
 function rightSegments(q){
   const segs=[[lerpStops(q,RIGHT_EU_X0),lerpStops(q,RIGHT_EU_X1)]];
   if(q>=0.44)segs.push([lerpStops(q,RIGHT_AF_X0),lerpStops(q,RIGHT_AF_X1)]);
-  if(q>=0.76){
-    segs.push([lerpStops(q,RIGHT_LEG1_X0),lerpStops(q,RIGHT_LEG1_X1)]);
-    segs.push([lerpStops(q,RIGHT_LEG2_X0),lerpStops(q,RIGHT_LEG2_X1)]);
-  }
   const cuts=[];
   if(q>0.33&&q<0.47)cuts.push([0.66,0.74]);
   if(q>0.50&&q<0.72)cuts.push([0.74,0.89]);
-  if(q>0.74)cuts.push([0.66,0.69]);
+  if(q>0.74)cuts.push([0.67,0.70]);
   return subtractSegments(segs,cuts);
 }
 function asciiFrame(nodes,tick,cols,rows){
@@ -2379,15 +2424,19 @@ function renderHome(){
         <div class="feed-list" id="homeFeedKeywords"></div>
         <div class="feed-title" style="margin-top:10px">Nodes Feed</div>
         <div class="feed-list" id="homeFeedNodes"></div>
-        <div class="feed-title" style="margin-top:10px">Research Papers</div>
-        <div class="feed-list" id="homeFeedPapers"></div>
-        <div class="feed-title" style="margin-top:10px">YouTube Watch</div>
-        <div class="feed-list" id="homeFeedYoutube"></div>
-        <div class="watch-tools">
-          <div class="watch-row"><input class="finput watch-input" id="homeVideoInput" placeholder="Custom video: Title | URL"><button class="btn watch-btn" onclick="addHomeVideoWatch()">Add Video</button></div>
-          <div class="watch-row"><input class="finput watch-input" id="homePlaylistInput" placeholder="Public playlist URL or ID"><button class="btn watch-btn" onclick="addHomePlaylistWatch()">Add Playlist</button></div>
-          <div class="watch-list" id="homeWatchConfig"></div>
+        <div class="feed-title yt-add-wrap" style="margin-top:10px">
+          <span>YouTube Watch</span>
+          <button class="yt-add-btn" id="homeYtPopBtn" onclick="toggleHomeYtPop(event)">+</button>
+          <div class="yt-pop" id="homeYtPop">
+            <div class="yt-pop-head">YouTube Watchlist</div>
+            <div class="watch-tools">
+              <div class="watch-row"><input class="finput watch-input" id="homeVideoInput" placeholder="Custom video: Title | URL"><button class="btn watch-btn" onclick="addHomeVideoWatch()">Add Video</button></div>
+              <div class="watch-row"><input class="finput watch-input" id="homePlaylistInput" placeholder="Public playlist URL or ID"><button class="btn watch-btn" onclick="addHomePlaylistWatch()">Add Playlist</button></div>
+              <div class="watch-list" id="homeWatchConfig"></div>
+            </div>
+          </div>
         </div>
+        <div class="feed-list" id="homeFeedYoutube"></div>
       </aside>
     </div>
     <div class="home-overlay-bottom">
@@ -2402,6 +2451,16 @@ function renderHome(){
   renderHomeKanban();
   renderHomeWatchConfig();
   renderHomeLastJournal();
+  if(!window._homePopBound){
+    document.addEventListener('click',evt=>{
+      const pop=el('homeYtPop');
+      const btn=el('homeYtPopBtn');
+      if(!pop||!btn)return;
+      if(pop.contains(evt.target)||btn.contains(evt.target))return;
+      pop.classList.remove('open');
+    });
+    window._homePopBound=1;
+  }
 
   let tick=0;
   const draw=()=>{
