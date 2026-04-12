@@ -91,6 +91,9 @@ a:hover{color:var(--link-h)}
 .toggle-left{top:12px;left:12px}
 .toggle-right{top:12px;right:12px}
 .toggle-left:hover,.toggle-right:hover{border-color:var(--gold);color:var(--gold)}
+.toggle-left.edge-toggle,.toggle-right.edge-toggle{top:50%;transform:translateY(-50%);background:rgba(7,12,10,.92);box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.toggle-left.edge-toggle{left:10px}
+.toggle-right.edge-toggle{right:10px}
 
 /* DETAIL */
 .detail{grid-column:3;grid-row:2;background:var(--surface);border-left:1px solid var(--border);padding:24px 20px;overflow-y:auto;min-width:0;min-height:0}
@@ -279,21 +282,39 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
 .ascii-map{
   position:absolute;inset:0;margin:0;
   font-family:var(--mono);
-  font-size:clamp(.46rem,.62vw,.7rem);
-  line-height:1.08;
-  letter-spacing:.08em;
+  font-size:clamp(.5rem,.64vw,.76rem);
+  line-height:1.01;
+  letter-spacing:.035em;
   font-weight:500;
-  color:rgba(126,217,255,.12);
+  color:rgba(143,224,214,.17);
   white-space:pre;
   overflow:hidden;
   background:#000;
   padding:18px 18px 14px 18px;
-  text-shadow:none;
-  opacity:1;
+  text-shadow:0 0 10px rgba(103,216,245,.05), 0 0 26px rgba(240,195,107,.03);
+  opacity:.94;
 }
+.home-shell{
+  position:absolute;
+  inset:16px 18px 18px 18px;
+  display:grid;
+  grid-template-columns:minmax(0,1.15fr) minmax(300px,348px);
+  gap:16px;
+  align-items:stretch;
+  pointer-events:none;
+  min-height:0;
+}
+.home-main-col,.home-side-col{
+  min-height:0;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+.home-main-col{min-width:0;align-items:stretch}
+.home-side-col{min-width:300px;justify-self:end;width:min(100%,348px)}
 .home-overlay-top{
   position:absolute;top:14px;left:14px;right:14px;
-  display:grid;grid-template-columns:minmax(0,1fr) 430px;gap:10px;
+  display:grid;grid-template-columns:260px minmax(0,1fr);gap:10px;
   align-items:start;pointer-events:none;
 }
 .home-overlay-bottom{
@@ -382,6 +403,7 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
 .home-feed-panel.unified .feed-list{max-height:none;flex:1;overflow:auto;padding-right:4px}
 .home-feed-panel.unified .ticker-main{min-height:54px}
 .home-feed-panel.unified .ticker-meta{margin-bottom:8px}
+.home-feed-panel.feed-left{height:100%;max-height:none;min-height:0;width:100%;justify-self:start}
 .home-hero-meta{margin-top:14px;font-family:var(--mono);font-size:.68rem;color:#b8b8b8}
 .yt-add-wrap{display:flex;align-items:center;justify-content:space-between;gap:8px;position:relative}
 .yt-add-btn{width:18px;height:18px;border-radius:50%;border:1px solid rgba(255,255,255,.28);background:rgba(24,24,24,.9);color:#d8d8d8;font-size:.78rem;line-height:1;cursor:pointer}
@@ -419,20 +441,26 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
   background:rgba(8,8,8,.9);
   padding:12px;
   max-width:560px;
+  overflow:auto;
   box-shadow:none;
 }
 .home-journal .t{font-family:var(--mono);font-size:.66rem;color:var(--gold);text-transform:uppercase;letter-spacing:1.1px;margin-bottom:6px}
 .home-journal .d{font-family:var(--mono);font-size:.66rem;color:#b9b9b9;margin-bottom:5px}
 .home-journal .b{font-size:.73rem;line-height:1.42;color:#dfdfdf}
+#homeDeadlines{flex:0 0 auto;max-height:32vh}
+#homeLastJournal{flex:0 0 auto;max-height:22vh}
+#homeDeadlines .feed-list{max-height:none}
 .home-kanban{
   pointer-events:auto;
   border:1px solid rgba(255,255,255,.16);
   border-radius:10px;
   background:rgba(8,8,8,.9);
   padding:12px;
-  max-height:52vh;
+  max-height:none;
+  flex:1;
   overflow:auto;
   box-shadow:none;
+  min-height:260px;
 }
 .kan-title{font-family:var(--mono);font-size:.66rem;color:var(--gold);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:8px}
 .kan-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
@@ -926,6 +954,8 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
 .status-inline{font-size:.7rem;color:var(--text-3)}
 @media(max-width:1250px){
   .home-overlay-top,.home-overlay-bottom{grid-template-columns:1fr}
+  .home-shell{grid-template-columns:1fr;overflow:auto}
+  .home-side-col{min-width:0}
   .home-feed-panel{max-height:50vh}
   .home-kanban{max-height:36vh}
   .feed-list{max-height:11vh}
@@ -1080,6 +1110,18 @@ const RB={funder:{b:'rgba(92,184,122,.2)',c:'var(--sage)'},ecosystem:{b:'rgba(92
 const OV_LABELS={"publishing":"Publishing","peer-review":"Peer Review","reputation":"Reputation","dao-gov":"DAO Gov","compute":"Compute","ai-ml":"AI/ML","citation-graph":"Citations","scicomm":"SciComm","citizen-sci":"Citizen Sci","smart-contracts":"Contracts/NFT","data-sovereignty":"Data Sov","ip-nft":"IP-NFT"};
 const HIDDEN_GLOBAL_VIEWS=new Set(['home','journal','lit','grants']);
 const OPPORTUNITIES=[];
+const NODE_SOURCE_OVERRIDES={
+  'DeSci Labs / Nodes':{github:['desci-labs/nodes'],site:['https://desci.com/blog']},
+  'OpenReview':{github:['openreview/openreview'],site:['https://openreview.net']},
+  'OpenAlex':{github:['ourresearch/openalex-guts'],site:['https://blog.ourresearch.org','https://openalex.org']},
+  'LabDAO':{github:['labdao/plex'],site:['https://labdao.xyz/blog','https://labdao.xyz']},
+  'PREreview':{github:['PREreview/PREreview.org'],site:['https://prereview.org/blog','https://prereview.org']},
+  'OpenCitations':{github:['opencitations/meta'],site:['https://opencitations.net']},
+  'Orvium':{site:['https://orvium.io/blog','https://orvium.io']},
+  'ResearchHub':{site:['https://researchhub.com','https://docs.researchhub.com']},
+  'Molecule':{site:['https://molecule.xyz/blog','https://molecule.xyz']},
+  'VitaDAO':{site:['https://www.vitadao.com/blog','https://www.vitadao.com']}
+};
 OPPORTUNITIES.push(
   {
     id:'hei_ideas_2026',
@@ -2053,8 +2095,11 @@ function render(){
   const tLeft=m.querySelector('.toggle-left');
   const tRight=m.querySelector('.toggle-right');
   const hideToggles=HIDDEN_GLOBAL_VIEWS.has(view);
+  const edgeToggles=!hideToggles;
   if(tLeft)tLeft.style.display=hideToggles?'none':'flex';
   if(tRight)tRight.style.display=hideToggles?'none':'flex';
+  if(tLeft)tLeft.classList.toggle('edge-toggle',edgeToggles);
+  if(tRight)tRight.classList.toggle('edge-toggle',edgeToggles);
   if(sim)sim.stop();
   if(view==='home')renderHome();
   else if(view==='graph')buildGraph();
@@ -3294,11 +3339,16 @@ function keySignalNodes(limit){
     return bs-as;
   }).slice(0,limit||8);
 }
+function nodeSourceOverride(node){
+  const name=cleanMojibakeString(node&&node.name||'');
+  return NODE_SOURCE_OVERRIDES[name]||null;
+}
 function keyNodeDataSources(limit){
   const rows=[];
   keySignalNodes(limit||8).forEach(n=>{
     const nName=cleanMojibakeString(n.name||'Node');
-    const web=normalizeHttpUrl(n.wp||n.web||'');
+    const over=nodeSourceOverride(n);
+    const web=normalizeHttpUrl((over&&over.site&&over.site[0])||n.wp||n.web||'');
     if(web){
       rows.push({
         title:`${nName}: official site/blog`,
@@ -3338,12 +3388,21 @@ function siteFeedCandidates(raw){
     return out;
   }catch(e){return []}
 }
+function githubAtomCandidates(repo){
+  const r=String(repo||'').trim().replace(/^https?:\/\/github\.com\//i,'').replace(/\/+$/,'');
+  if(!/^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(r))return [];
+  return [
+    `https://github.com/${r}/commits.atom`,
+    `https://github.com/${r}/releases.atom`
+  ];
+}
 async function fetchNodeWebsiteUpdates(limit){
-  const nodes=keySignalNodes(limit||5).filter(n=>normalizeHttpUrl(n.wp||n.web||n.website||n.url||''));
+  const nodes=keySignalNodes(limit||7).filter(n=>normalizeHttpUrl(((nodeSourceOverride(n)||{}).site||[])[0]||n.wp||n.web||n.website||n.url||''));
   const rows=await Promise.allSettled(nodes.map(async n=>{
-    const site=normalizeHttpUrl(n.wp||n.web||n.website||n.url||'');
+    const over=nodeSourceOverride(n);
+    const site=normalizeHttpUrl((over&&over.site&&over.site[0])||n.wp||n.web||n.website||n.url||'');
     const sourceName=cleanMojibakeString(n.name||'Node');
-    const candidates=siteFeedCandidates(site).slice(0,4);
+    const candidates=[...new Set([...(over&&over.site||[]).flatMap(siteFeedCandidates),...siteFeedCandidates(site)])].slice(0,6);
     if(!candidates.length)return [];
     try{
       const items=await Promise.any(candidates.map(url=>
@@ -3356,6 +3415,42 @@ async function fetchNodeWebsiteUpdates(limit){
     }catch(e){return []}
   }));
   return rows.flatMap(r=>(r.status==='fulfilled'&&Array.isArray(r.value))?r.value:[]);
+}
+async function fetchNodeGitUpdates(limit){
+  const nodes=keySignalNodes(limit||6).filter(n=>{
+    const over=nodeSourceOverride(n);
+    return !!(over&&Array.isArray(over.github)&&over.github.length);
+  });
+  const rows=await Promise.allSettled(nodes.map(async n=>{
+    const over=nodeSourceOverride(n);
+    const sourceName=cleanMojibakeString(n.name||'Node');
+    const repos=(over&&over.github||[]).slice(0,2);
+    if(!repos.length)return [];
+    try{
+      const items=await Promise.any(repos.flatMap(repo=>githubAtomCandidates(repo)).map(url=>
+        fetchRssFeed(url,'github',sourceName,3).then(feed=>{
+          if(!feed.length)throw new Error('empty');
+          return feed.map(item=>({...item,topic:`${sourceName} github`,source:'github'}));
+        })
+      ));
+      return items;
+    }catch(e){return []}
+  }));
+  return rows.flatMap(r=>(r.status==='fulfilled'&&Array.isArray(r.value))?r.value:[]);
+}
+function nodeSpecificQueries(limit){
+  return keySignalNodes(limit||8).flatMap(n=>{
+    const over=nodeSourceOverride(n);
+    const name=cleanMojibakeString(n.name||'').trim();
+    const web=normalizeHttpUrl((over&&over.site&&over.site[0])||n.wp||n.web||n.website||n.url||'');
+    let domain='';
+    try{ if(web) domain=new URL(web).hostname.replace(/^www\./,''); }catch(e){}
+    const q=[`"${name}" decentralized science`,`"${name}" open science`,`"${name}" update`];
+    if(domain)q.push(`site:${domain} ${name}`,`site:${domain} blog`,`site:${domain} update`);
+    const h=normalizeTwitterHandle(n.twitter||'');
+    if(h)q.push(`site:x.com/${h}`,`site:x.com ${name}`);
+    return q;
+  });
 }
 function keyTwitterHandles(limit){
   return [...new Set(keySignalNodes(limit||10).map(n=>normalizeTwitterHandle(n.twitter||'')).filter(Boolean))].slice(0,limit||6);
@@ -3834,7 +3929,19 @@ function saveHomeFeedCache(){
 }
 function combinedHomeFeedIntents(){
   const nodeNames=relationWatchNames().slice(0,10);
-  return [...new Set([...HOME_GENERAL_QUERIES,...projectKeywords().slice(0,4),...nodeNames,...desciTwitterKeywords(4),'open science','decentralized science'])];
+  return [...new Set([
+    ...HOME_GENERAL_QUERIES,
+    ...projectKeywords().slice(0,5),
+    ...nodeNames,
+    ...desciTwitterKeywords(6),
+    'open science',
+    'decentralized science',
+    'science publishing',
+    'metascience',
+    'research integrity',
+    'peer review',
+    'reproducibility'
+  ])];
 }
 function renderHomeFeeds(){
   if(homeTickerTimer){clearInterval(homeTickerTimer);homeTickerTimer=null;}
@@ -3880,33 +3987,35 @@ async function refreshHomeFeeds(force){
     if(view==='home')renderHomeFeeds();
     return;
   }
-  const keyNodes=keySignalNodes(10);
+  const keyNodes=keySignalNodes(12);
   const nodeNames=[...new Set(keyNodes.map(n=>String(n.name||'').trim()).filter(Boolean))];
-  const generalQueries=[...new Set([...HOME_GENERAL_QUERIES,...projectKeywords().slice(0,3)])].slice(0,7);
-  const nodeQueries=[...new Set([...nodeNames.map(n=>`"${n}"`),...relationWatchNames().slice(0,4).map(n=>`"${n}"`)])].slice(0,8);
-  const socialKeywords=[...new Set([...desciTwitterKeywords(4),'science publishing','peer review reform'])].slice(0,5);
-  const twHandles=keyTwitterHandles(6);
+  const generalQueries=[...new Set([...HOME_GENERAL_QUERIES,...projectKeywords().slice(0,4),'science credibility crisis','open access publishing'])].slice(0,9);
+  const nodeQueries=[...new Set([...nodeNames.map(n=>`"${n}"`),...relationWatchNames().slice(0,6).map(n=>`"${n}"`),...nodeSpecificQueries(8)])].slice(0,18);
+  const socialKeywords=[...new Set([...desciTwitterKeywords(6),'science publishing','peer review reform','research integrity','open access'])].slice(0,8);
+  const twHandles=keyTwitterHandles(10);
   const xNewsQueries=[
     ...socialKeywords.map(q=>`site:x.com ${q}`),
     ...twHandles.map(h=>`site:x.com/${h}`)
-  ].slice(0,6);
-  const redditQueries=[...new Set([...socialKeywords,'decentralized science'])].slice(0,4);
-  const [curatedNews,generalNews,nodeNews,nodeBlogs,twitterHandles,twitterKeywords,redditSubs,redditSearch,xNews]=await Promise.all([
-    fetchCuratedNews(3),
-    fetchGoogleNewsBatch(generalQueries,6,2),
-    fetchGoogleNewsBatch(nodeQueries,7,2),
-    fetchNodeWebsiteUpdates(5),
-    fetchTwitterHandleBatch(twHandles,5,2),
-    fetchTwitterKeywordBatch(socialKeywords,4,2),
-    fetchRedditSubredditBatch(HOME_SOCIAL_SUBREDDITS,4,2),
-    fetchRedditSearchBatch(redditQueries,4,2),
-    fetchGoogleNewsBatch(xNewsQueries,6,2)
+  ].slice(0,12);
+  const redditQueries=[...new Set([...socialKeywords,'decentralized science','researchhub','openreview'])].slice(0,6);
+  const [curatedNews,generalNews,nodeNews,nodeBlogs,nodeGit,twitterHandles,twitterKeywords,redditSubs,redditSearch,xNews]=await Promise.all([
+    fetchCuratedNews(4),
+    fetchGoogleNewsBatch(generalQueries,8,3),
+    fetchGoogleNewsBatch(nodeQueries,12,2),
+    fetchNodeWebsiteUpdates(7),
+    fetchNodeGitUpdates(6),
+    fetchTwitterHandleBatch(twHandles,8,2),
+    fetchTwitterKeywordBatch(socialKeywords,6,2),
+    fetchRedditSubredditBatch(HOME_SOCIAL_SUBREDDITS,4,3),
+    fetchRedditSearchBatch(redditQueries,6,2),
+    fetchGoogleNewsBatch(xNewsQueries,10,2)
   ]);
   const combinedPool=[
     ...curatedNews,
     ...generalNews,
     ...nodeNews,
     ...nodeBlogs,
+    ...nodeGit,
     ...twitterHandles,
     ...twitterKeywords,
     ...redditSubs,
@@ -3939,39 +4048,71 @@ function asciiSignalBackdrop(cols,rows,phase){
     if(y<0||y>=h)return;
     [...String(text||'')].forEach((ch,i)=>put(x+i,y,ch));
   };
-  for(let y=2;y<h-2;y+=5){
-    for(let x=(y%10===2?3:10);x<w-3;x+=11){
-      const dot=((x+y+p)%3===0)?'o':'.';
-      put(x,y,dot);
-    }
+  const skyLimit=Math.max(9,Math.floor(h*0.46));
+  const starCount=Math.max(42,Math.floor(w*0.55));
+  for(let i=0;i<starCount;i++){
+    const x=2+((i*17)+(p*5))%(w-4);
+    const y=1+((i*7)+(i%11))%Math.max(6,skyLimit-1);
+    const glyph=((i+p)%19===0)?'*':(((i+p)%7===0)?'o':'.');
+    put(x,y,glyph);
   }
-  const bands=Math.max(4,Math.floor(h/7));
-  for(let b=0;b<bands;b++){
-    const amp=1+(b%3);
-    const baseY=5+b*5;
-    for(let x=2;x<w-2;x++){
-      const yy=Math.round(baseY+Math.sin((x*0.085)+(b*0.8)+(p*0.45))*amp);
-      if(yy>1 && yy<h-2){
-        const glyph=((x+b+p)%9===0)?'o':'.';
-        put(x,yy,glyph);
-      }
-    }
+  const moonX=Math.max(8,Math.floor(w*0.11));
+  const moonY=Math.max(3,Math.floor(h*0.1));
+  [
+    "      _..._      ",
+    "   .::     ::.   ",
+    "  .:   .-.   :.  ",
+    "  :   (   )   :  ",
+    "  :    `-`   .:  ",
+    "   :.       .:   ",
+    "     `-...-'     "
+  ].forEach((line,i)=>place(moonX,moonY+i,line));
+  const cloud=["    .--.      .--.    "," .-(    ).--.(    )-. ","(___.__)    (___.__)  "];
+  cloud.forEach((line,i)=>place(Math.max(24,Math.floor(w*0.34)+(p%2)),Math.max(4,Math.floor(h*0.14))+i,line));
+  cloud.forEach((line,i)=>place(Math.max(18,Math.floor(w*0.64)-(p%2)),Math.max(7,Math.floor(h*0.21))+i,line));
+  const ridge=(x,base,a,b,c)=>Math.round(base+Math.sin(x*a+0.8)*b+Math.sin(x*c+1.7));
+  for(let x=0;x<w;x++){
+    const far=ridge(x,h*0.55,0.045,2.2,0.11);
+    const mid=ridge(x,h*0.66,0.038,2.8,0.09);
+    const near=ridge(x,h*0.77,0.03,1.9,0.08);
+    put(x,Math.min(h-3,far),x%5===0?'^':'.');
+    put(x,Math.min(h-2,mid),'_');
+    put(x,Math.min(h-1,near),x%3===0?'~':'_');
+    if(x%8===0 && far>2){put(x,far-1,'/');put(x+1,far-1,'\\');}
   }
-  const boxes=[
-    {x:Math.max(4,Math.floor(w*0.08)),y:Math.max(3,Math.floor(h*0.18)),w:20,h:4,label:'signal'},
-    {x:Math.max(28,Math.floor(w*0.42)),y:Math.max(8,Math.floor(h*0.42)),w:24,h:4,label:'articles'},
-    {x:Math.max(16,Math.floor(w*0.72)),y:Math.max(5,Math.floor(h*0.22)),w:18,h:4,label:'nodes'}
-  ];
-  boxes.forEach(box=>{
-    const x0=Math.min(w-box.w-2,box.x);
-    const y0=Math.min(h-box.h-2,box.y);
-    for(let x=x0+1;x<x0+box.w-1;x++){put(x,y0,'-');put(x,y0+box.h-1,'-')}
-    for(let y=y0+1;y<y0+box.h-1;y++){put(x0,y,'|');put(x0+box.w-1,y,'|')}
-    put(x0,y0,'+');put(x0+box.w-1,y0,'+');put(x0,y0+box.h-1,'+');put(x0+box.w-1,y0+box.h-1,'+');
-    place(x0+2,y0+2,box.label);
-  });
-  place(4,2,'desci map // live surface');
-  place(Math.max(4,w-30),h-3,'social / articles feed');
+  const waterY=Math.min(h-4,Math.floor(h*0.82));
+  for(let x=0;x<w;x++){
+    const wave=((x+p)%9===0)?'~':(((x+p)%5===0)?'.':' ');
+    if(wave!==' ')put(x,waterY+(x%17===0?1:0),wave);
+  }
+  const cabinX=Math.max(8,Math.floor(w*0.14));
+  const cabinY=Math.max(11,Math.floor(h*0.61));
+  [
+    "       (  )      ",
+    "        )(       ",
+    "       (  )      ",
+    "      /\\         ",
+    "     /  \\___     ",
+    "    /______/\\    ",
+    "    | []  | |    ",
+    "    |  _  | |    ",
+    "    |_____|_/    "
+  ].forEach((line,i)=>place(cabinX,cabinY+i,line));
+  const treeA=["   /\\   ","  /**\\  "," /****\\ ","   ||   "];
+  const treeB=["   /\\   ","  /++\\  "," /++++\\ ","   ||   "];
+  treeA.forEach((line,i)=>place(Math.max(4,cabinX-10),cabinY+3+i,line));
+  treeB.forEach((line,i)=>place(Math.min(w-12,cabinX+22),cabinY+4+i,line));
+  const catX=Math.max(18,Math.floor(w*0.57));
+  const catY=Math.max(12,Math.floor(h*0.76));
+  [" /\\_/\\\\ ","( =.= )"," /   \\\\ "].forEach((line,i)=>place(catX,catY+i,line));
+  const lanternX=Math.max(22,Math.floor(w*0.8));
+  const lanternY=Math.max(10,Math.floor(h*0.58));
+  ["   .-.   ","  ( * )  ","   \\|/   ","    |    ","   / \\   "].forEach((line,i)=>place(lanternX,lanternY+i,line));
+  for(let i=0;i<10;i++){
+    const x=Math.max(4,Math.floor(w*0.18)+((i*11+p*2)%(Math.max(18,Math.floor(w*0.56)))));
+    const y=Math.max(8,Math.floor(h*0.52)+((i*5+p)%7));
+    put(x,y,(i+p)%4===0?'*':'o');
+  }
   return g.map(row=>row.join('')).join('\n');
 }
 function renderHomeHeroChips(){
@@ -4097,9 +4238,11 @@ function grantTags(){
   return [...new Set(OPPORTUNITIES.flatMap(op=>op.tags||[]))].sort((a,b)=>a.localeCompare(b)).slice(0,30);
 }
 function nextUpcomingOpportunities(limit){
-  return OPPORTUNITIES.filter(op=>['announced','opening_soon'].includes(op.status) && opportunityIsUpcoming(op))
-    .sort((a,b)=>(opportunityDateValue(a)||0)-(opportunityDateValue(b)||0))
-    .slice(0,limit||4);
+  const lim=limit||4;
+  const dated=OPPORTUNITIES.filter(op=>['announced','opening_soon'].includes(op.status) && opportunityIsUpcoming(op))
+    .sort((a,b)=>(opportunityDateValue(a)||0)-(opportunityDateValue(b)||0));
+  const rolling=OPPORTUNITIES.filter(op=>op.status==='rolling');
+  return [...dated,...rolling].slice(0,lim);
 }
 function openGrantOpportunity(id){
   grantState.selected=id;
@@ -4288,21 +4431,21 @@ function renderHome(){
   wrap.className='home-wrap';
   wrap.innerHTML=`
     <pre class="ascii-map" id="asciiMap"></pre>
-    <div class="home-overlay-top">
-      <section class="home-journal" id="homeDeadlines"></section>
-      <section class="home-feed-panel unified">
+    <div class="home-shell">
+      <div class="home-main-col">
+        <section class="home-feed-panel unified feed-left">
         <div class="ticker-head">Social / Articles</div>
         <div class="ticker-main" id="homeLeadAll">Loading live feed...</div>
         <div class="ticker-meta" id="homeMetaAll"></div>
         <div class="home-updated" id="homeLastUpdated" style="pointer-events:auto;margin:0 0 8px 0">Last update: pending</div>
         <div class="feed-list" id="homeFeedAll"></div>
-      </section>
-    </div>
-    <div class="home-overlay-bottom">
-      <div class="home-bottom-left">
-        <section class="home-journal" id="homeLastJournal"></section>
+        </section>
       </div>
-      <section class="home-kanban" id="homeKanban"></section>
+      <div class="home-side-col">
+        <section class="home-journal" id="homeDeadlines"></section>
+        <section class="home-journal" id="homeLastJournal"></section>
+        <section class="home-kanban" id="homeKanban"></section>
+      </div>
     </div>
   `;
   m.appendChild(wrap);
@@ -4320,6 +4463,7 @@ function renderHome(){
     phase=(phase+1)%24;
     draw();
   },12000);
+  renderHomeDeadlines();
   renderHomeLastJournal();
   renderHomeKanban();
   renderHomeFeeds();
