@@ -374,9 +374,15 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
 .feed-list{display:flex;flex-direction:column;gap:8px;max-height:13vh;overflow:auto;padding-right:3px}
 .feed-item{border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:8px 10px;background:rgba(255,255,255,.03)}
 .feed-item a{font-size:.76rem;font-weight:600;line-height:1.34;color:#efefef}
+.feed-snippet{font-size:.7rem;color:#c8c8c8;line-height:1.45;margin-top:6px}
 .feed-item .meta{font-size:.66rem;color:#989898;margin-top:4px}
 .feed-item.empty{border-style:dashed;background:rgba(255,255,255,.02)}
 .feed-item.empty .meta{margin-top:0}
+.home-feed-panel.unified{max-height:74vh;display:flex;flex-direction:column}
+.home-feed-panel.unified .feed-list{max-height:none;flex:1;overflow:auto;padding-right:4px}
+.home-feed-panel.unified .ticker-main{min-height:54px}
+.home-feed-panel.unified .ticker-meta{margin-bottom:8px}
+.home-hero-meta{margin-top:14px;font-family:var(--mono);font-size:.68rem;color:#b8b8b8}
 .yt-add-wrap{display:flex;align-items:center;justify-content:space-between;gap:8px;position:relative}
 .yt-add-btn{width:18px;height:18px;border-radius:50%;border:1px solid rgba(255,255,255,.28);background:rgba(24,24,24,.9);color:#d8d8d8;font-size:.78rem;line-height:1;cursor:pointer}
 .yt-add-btn:hover{border-color:var(--gold);color:var(--gold)}
@@ -455,7 +461,7 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
   z-index:1;
   height:100%;
   display:grid;
-  grid-template-rows:auto 1fr;
+  grid-template-rows:auto auto 1fr;
   gap:14px;
   padding:18px;
   pointer-events:none;
@@ -548,6 +554,340 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
 }
 .home-stage .feed-item.empty{border-style:dashed;background:rgba(255,255,255,.015)}
 .home-stage .feed-item.empty .meta{margin-top:0}
+.home-deadlines{
+  pointer-events:auto;
+  display:grid;
+  grid-template-columns:220px 1fr;
+  gap:14px;
+  align-items:start;
+}
+.deadline-head{
+  border:1px solid rgba(126,217,255,.16);
+  border-radius:12px;
+  background:rgba(2,6,5,.86);
+  padding:12px 14px;
+}
+.deadline-head .k{
+  font-family:var(--mono);
+  font-size:.68rem;
+  color:var(--gold);
+  letter-spacing:1.2px;
+  text-transform:uppercase;
+}
+.deadline-head .v{
+  margin-top:6px;
+  font-size:.76rem;
+  color:var(--text-2);
+  line-height:1.5;
+}
+.deadline-list{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:10px;
+}
+.deadline-card{
+  border:1px solid rgba(126,217,255,.14);
+  border-radius:12px;
+  background:linear-gradient(180deg, rgba(4,9,8,.92), rgba(2,4,4,.94));
+  padding:11px 12px;
+  cursor:pointer;
+  transition:border-color .15s,transform .15s,background .15s;
+}
+.deadline-card:hover{
+  border-color:rgba(240,195,107,.45);
+  transform:translateY(-1px);
+}
+.deadline-date{
+  font-family:var(--mono);
+  font-size:.66rem;
+  color:var(--gold);
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+.deadline-name{
+  margin-top:7px;
+  font-size:.8rem;
+  font-weight:700;
+  line-height:1.35;
+  color:var(--text);
+}
+.deadline-meta{
+  margin-top:6px;
+  font-size:.69rem;
+  color:var(--text-3);
+  line-height:1.45;
+}
+.grants-wrap{
+  height:100%;
+  display:grid;
+  grid-template-columns:280px minmax(0,1fr) 360px;
+  gap:16px;
+  padding:16px;
+  overflow:hidden;
+}
+.grants-pane{
+  min-height:0;
+  border:1px solid rgba(118,234,176,.14);
+  border-radius:14px;
+  background:linear-gradient(180deg, rgba(6,12,10,.96), rgba(4,8,6,.98));
+  box-shadow:inset 0 0 0 1px rgba(118,234,176,.04);
+}
+.grants-filters{
+  padding:16px 14px;
+  overflow:auto;
+}
+.grants-table-pane{
+  padding:14px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  overflow:hidden;
+}
+.grants-detail{
+  padding:18px 18px 22px 18px;
+  overflow:auto;
+}
+.grants-title{
+  font-family:var(--mono);
+  font-size:.72rem;
+  color:var(--gold);
+  letter-spacing:1.6px;
+  text-transform:uppercase;
+  margin-bottom:10px;
+}
+.grants-hero{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:16px;
+  padding:14px 16px;
+  border:1px solid rgba(126,217,255,.12);
+  border-radius:12px;
+  background:rgba(255,255,255,.02);
+}
+.grants-hero h2{
+  font-family:var(--display);
+  font-size:1.2rem;
+  line-height:1.2;
+  color:var(--text);
+}
+.grants-hero p{
+  margin-top:5px;
+  max-width:68ch;
+  font-size:.8rem;
+  color:var(--text-2);
+  line-height:1.55;
+}
+.grants-summary{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+.grants-summary .tag-chip{
+  background:rgba(255,255,255,.02);
+}
+.grants-search{
+  width:100%;
+  margin-bottom:12px;
+}
+.grant-select{
+  width:100%;
+  margin-bottom:10px;
+}
+.filter-group{
+  margin-bottom:14px;
+}
+.filter-group:last-child{
+  margin-bottom:0;
+}
+.filter-group .sb-label{
+  margin-bottom:7px;
+}
+.grants-pills{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+}
+.grants-pills .pill{
+  font-size:.68rem;
+  padding:5px 9px;
+}
+.grants-table-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.grants-table-note{
+  font-size:.74rem;
+  color:var(--text-3);
+}
+.grants-table-wrap{
+  min-height:0;
+  overflow:auto;
+  border:1px solid rgba(126,217,255,.1);
+  border-radius:12px;
+}
+.grants-table{
+  width:100%;
+  border-collapse:separate;
+  border-spacing:0;
+  font-size:.8rem;
+}
+.grants-table th{
+  position:sticky;
+  top:0;
+  z-index:1;
+  background:rgba(7,13,11,.98);
+  color:var(--text-3);
+  font-family:var(--mono);
+  font-size:.66rem;
+  letter-spacing:.8px;
+  text-transform:uppercase;
+  padding:11px 10px;
+  border-bottom:1px solid rgba(126,217,255,.14);
+  cursor:pointer;
+  white-space:nowrap;
+}
+.grants-table th:hover{
+  color:var(--gold);
+}
+.grants-table td{
+  padding:10px;
+  border-bottom:1px solid rgba(126,217,255,.08);
+  vertical-align:top;
+  color:var(--text-2);
+}
+.grants-table tbody tr{
+  cursor:pointer;
+  transition:background .12s;
+}
+.grants-table tbody tr:hover{
+  background:rgba(255,255,255,.02);
+}
+.grants-table tbody tr.sel{
+  background:rgba(240,195,107,.07);
+}
+.grant-name{
+  color:var(--text);
+  font-weight:700;
+  line-height:1.35;
+}
+.grant-sub{
+  margin-top:4px;
+  font-size:.7rem;
+  color:var(--text-3);
+  line-height:1.45;
+}
+.grant-track{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  font-family:var(--mono);
+  font-size:.64rem;
+  text-transform:uppercase;
+  letter-spacing:.8px;
+  color:var(--gold);
+}
+.grant-status{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  border-radius:999px;
+  padding:4px 9px;
+  font-family:var(--mono);
+  font-size:.62rem;
+  text-transform:uppercase;
+  letter-spacing:.8px;
+  border:1px solid rgba(126,217,255,.14);
+}
+.grant-status.announced,.grant-status.cutoff,.grant-status.deadline{color:var(--sage);border-color:rgba(118,234,176,.22);background:rgba(118,234,176,.06)}
+.grant-status.opening_soon{color:var(--gold);border-color:rgba(240,195,107,.25);background:rgba(240,195,107,.06)}
+.grant-status.rolling{color:var(--teal);border-color:rgba(103,216,245,.25);background:rgba(103,216,245,.06)}
+.grant-status.last_cycle{color:var(--text-3);border-color:rgba(255,255,255,.1);background:rgba(255,255,255,.02)}
+.grant-detail-name{
+  font-family:var(--display);
+  font-size:1.3rem;
+  line-height:1.18;
+  color:var(--text);
+}
+.grant-detail-meta{
+  margin-top:8px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.grant-detail-blurb{
+  margin-top:14px;
+  font-size:.83rem;
+  color:var(--text-2);
+  line-height:1.6;
+}
+.grant-section{
+  margin-top:18px;
+}
+.grant-section h3{
+  font-family:var(--mono);
+  font-size:.68rem;
+  color:var(--gold);
+  letter-spacing:1.2px;
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+.grant-section p{
+  font-size:.8rem;
+  color:var(--text-2);
+  line-height:1.58;
+}
+.grant-kv{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:8px;
+}
+.grant-kv .score-cell{
+  text-align:left;
+  padding:9px 10px;
+}
+.grant-kv .score-cell .k{
+  margin-bottom:5px;
+}
+.grant-sources{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.grant-source{
+  display:block;
+  padding:10px 11px;
+  border:1px solid rgba(126,217,255,.12);
+  border-radius:10px;
+  background:rgba(255,255,255,.02);
+}
+.grant-source strong{
+  display:block;
+  font-size:.76rem;
+  color:var(--link);
+}
+.grant-source span{
+  display:block;
+  margin-top:4px;
+  font-size:.72rem;
+  color:var(--text-3);
+  line-height:1.45;
+}
+.grant-empty{
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:var(--text-3);
+  font-size:.8rem;
+  line-height:1.5;
+  padding:18px;
+}
 .info-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .info-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:13px}
 .info-card h3{font-size:.88rem;color:var(--gold);font-family:var(--mono);margin-bottom:6px}
@@ -590,7 +930,11 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
   .home-kanban{max-height:36vh}
   .feed-list{max-height:11vh}
   .home-grid{grid-template-columns:1fr}
+  .home-deadlines{grid-template-columns:1fr}
+  .deadline-list{grid-template-columns:repeat(2,minmax(0,1fr))}
   .stream-lead{min-height:0}
+  .grants-wrap{grid-template-columns:1fr;overflow:auto}
+  .grants-detail{min-height:340px}
 }
 @media(max-width:1150px){.journal-shell{grid-template-columns:1fr}.info-grid{grid-template-columns:1fr}}
 @media(max-width:980px){.kan-grid{grid-template-columns:1fr}}
@@ -607,6 +951,9 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
   .actions .btn:nth-child(n+4){display:none}
   .main{grid-column:1;grid-row:2}
   .legend{bottom:6px;left:6px;font-size:.6rem}
+  .deadline-list{grid-template-columns:1fr}
+  .grants-hero{flex-direction:column}
+  .grant-kv{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -622,6 +969,7 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
       <button class="tab" onclick="setView('people',this)">People</button>
       <button class="tab" onclick="setView('journal',this)">Journal</button>
       <button class="tab" onclick="setView('lit',this)">Literature</button>
+      <button class="tab" onclick="setView('grants',this)">Grants</button>
     </nav>
     <div class="actions">
       <button class="btn" onclick="addOrgM()">+ Org</button>
@@ -714,12 +1062,14 @@ let bizLabelDetail='metrics';
 let auditRowsByKey=new Map();
 let bizTipPinned=false;
 let bizTipPinnedNodeId=null;
-let homeFeedState={items:[],sections:{general:[],ecosystem:[],social:[]},lastUpdated:''};
+let homeFeedState={items:[],sections:{all:[]},lastUpdated:''};
 let homeTickerTimer=null;
 let homeRefreshTimer=null;
 let homeAsciiTimer=null;
 let homeFeedLastFetchMs=0;
 let litQuery='';
+let panelPrefs={leftHidden:false,rightHidden:false};
+let grantState={query:'',track:'all',region:'all',status:'all',tag:'all',sortKey:'deadline',sortDir:'asc',selected:''};
 
 const SC={infrastructure:'var(--sage)',application:'var(--rose)',governance:'var(--teal)'};
 const SBG={infrastructure:'rgba(110,200,155,.12)',application:'rgba(232,126,154,.12)',governance:'rgba(90,184,179,.12)'};
@@ -728,6 +1078,619 @@ const SL=['S1\nData','S2\nLedger','S3\nAI','S4\nProof','S5\nGov'];
 const EC={'funder':'var(--edge-funder)','ecosystem':'var(--edge-ecosystem)','partner':'var(--edge-partner)','overlap':'var(--edge-overlap)'};
 const RB={funder:{b:'rgba(92,184,122,.2)',c:'var(--sage)'},ecosystem:{b:'rgba(92,170,184,.2)',c:'var(--teal)'},partner:{b:'rgba(155,126,212,.2)',c:'#9b7ed4'},overlap:{b:'rgba(227,190,77,.22)',c:'var(--gold)'}};
 const OV_LABELS={"publishing":"Publishing","peer-review":"Peer Review","reputation":"Reputation","dao-gov":"DAO Gov","compute":"Compute","ai-ml":"AI/ML","citation-graph":"Citations","scicomm":"SciComm","citizen-sci":"Citizen Sci","smart-contracts":"Contracts/NFT","data-sovereignty":"Data Sov","ip-nft":"IP-NFT"};
+const HIDDEN_GLOBAL_VIEWS=new Set(['home','journal','lit','grants']);
+const OPPORTUNITIES=[];
+OPPORTUNITIES.push(
+  {
+    id:'hei_ideas_2026',
+    name:'hei_INNOVATION Ideas Competition 2026',
+    track:'competition',
+    region:['Germany','Heidelberg'],
+    status:'announced',
+    dateType:'deadline',
+    deadline:'2026-03-30T23:59:00+02:00',
+    deadlineLabel:'March 30, 2026',
+    amountText:'Prize money per category + non-cash prizes',
+    amountSort:null,
+    scaleText:'Three best ideas in two categories + audience prize',
+    scaleSort:7,
+    niche:'Heidelberg University ideas with commercialization or societal impact; strong fit for AI, health, robotics, diagnostics, education, climate, and social innovation.',
+    eligibility:'Open to Heidelberg University students, researchers, staff, and recent alumni; teams allowed if one member belongs to the university.',
+    why:'Best local option if you want warm institutional support before a formal spinout. It is especially good for early AI-for-science or impact-heavy concepts that are not yet company-shaped.',
+    mapContext:'Strong local fit for a Heidelberg-based DeSci or research tooling project that still needs validation, story, and first public proof.',
+    tags:['local','heidelberg','university','ai','health','impact','competition'],
+    sources:[
+      {label:'Heidelberg official competition page',url:'https://www.uni-heidelberg.de/en/transfer/heiinnovation/ideas-competition-2026',note:'Primary 2026 timeline, categories, and eligibility.'},
+      {label:'Heidelberg newsroom',url:'https://www.uni-heidelberg.de/en/newsroom/ideas-competition-2026-for-research-results-with-potential-for-application?overlay=menu',note:'Prize framing and university context.'}
+    ]
+  },
+  {
+    id:'catalyst_ger_2026',
+    name:'Catalyst GER',
+    track:'incubator',
+    region:['Germany','Heidelberg'],
+    status:'opening_soon',
+    dateType:'kickoff',
+    deadline:'2026-04-24T10:00:00+02:00',
+    deadlineLabel:'April 24, 2026 kickoff',
+    amountText:'Coaching, workshops, validation support, network access',
+    amountSort:null,
+    scaleText:'Multi-stage pilot: Discover, Launch, Validate',
+    scaleSort:null,
+    niche:'Impact-oriented transfer from social sciences, humanities, arts, and adjacent interdisciplinary research without requiring a VC-style startup path.',
+    eligibility:'Researchers from partner universities, including Heidelberg University; especially relevant for projects with civic, cultural, or nonprofit impact.',
+    why:'Useful if parts of your work lean nonprofit, public-interest infrastructure, or institutional change rather than a pure venture-backed startup.',
+    mapContext:'Good complement if DeSci Map evolves into a mission-driven nonprofit or public-interest knowledge infrastructure layer.',
+    tags:['local','heidelberg','impact','nonprofit','incubator','research-transfer'],
+    sources:[
+      {label:'Catalyst GER official page',url:'https://www.uni-heidelberg.de/de/transfer/heiinnovation/catalyst-ger',note:'Program structure, stages, and participant profile.'},
+      {label:'Catalyst GER Heidelberg kickoff',url:'https://www.uni-heidelberg.de/de/veranstaltungen/catalyst-ger-kick-off-heidelberg-2026-04-24',note:'Local 2026 kickoff details and positioning.'}
+    ]
+  },
+  {
+    id:'exist_startup',
+    name:'EXIST Start-up Grant',
+    track:'grant',
+    region:['Germany'],
+    status:'rolling',
+    dateType:'rolling',
+    deadline:'',
+    deadlineLabel:'Rolling through host institution',
+    amountText:'12-month founder stipend + coaching + materials budget via host institution',
+    amountSort:null,
+    scaleText:'Typical teams of up to three founders',
+    scaleSort:3,
+    niche:'Research-based or knowledge-based startups emerging from universities and non-university research institutions.',
+    eligibility:'Applications are submitted by the university or research institution together with the founder team and mentor.',
+    why:'One of the most practical non-dilutive routes for a Germany-based science or AI spinout before you take outside capital.',
+    mapContext:'A strong fit if DeSci Map turns into a formal German university spinout around research infrastructure, analytics, or open science tooling.',
+    tags:['germany','startup','grant','research-spinout','non-dilutive'],
+    sources:[
+      {label:'EXIST application guide',url:'https://exist.de/en/programm/exist-gruendungsstipendium/foerderantrag-stellen/',note:'Official application steps and host-institution process.'},
+      {label:'EXIST downloads',url:'https://exist.de/en/downloads/',note:'Current program materials and handbook links.'}
+    ]
+  },
+  {
+    id:'exist_women_2026',
+    name:'EXIST Women 2026',
+    track:'fellowship',
+    region:['Germany'],
+    status:'announced',
+    dateType:'deadline',
+    deadline:'2026-02-15T23:59:00+01:00',
+    deadlineLabel:'February 15, 2026',
+    amountText:'Up to EUR 2,000 materials support; selected scholarships up to EUR 9,000',
+    amountSort:9000,
+    scaleText:'Up to 15 participants; 10 materials grants; 5 scholarships',
+    scaleSort:15,
+    niche:'Female founders from academic environments who need structured startup preparation before larger programs like EXIST or local incubators.',
+    eligibility:'Women connected to a participating university; exact local criteria depend on the coordinating startup office.',
+    why:'Worth tracking if your team expands or collaborates with women founders who want a softer ramp into science entrepreneurship.',
+    mapContext:'Relevant for building a local founder pipeline around DeSci-related projects in Germany.',
+    tags:['germany','women-founders','fellowship','grant','university'],
+    sources:[
+      {label:'Freiburg EXIST Women 2026',url:'https://www.gruenden.uni-freiburg.de/wordpress/en/angebote/foerderung/exist-women/',note:'2026 dates, participant counts, and support levels.'}
+    ]
+  },
+  {
+    id:'innovationspreis_bw_2026',
+    name:'Innovationspreis Baden-Wurttemberg 2026',
+    track:'award',
+    region:['Germany','Baden-Wurttemberg'],
+    status:'announced',
+    dateType:'deadline',
+    deadline:'2026-05-31T23:59:00+02:00',
+    deadlineLabel:'May 31, 2026',
+    amountText:'EUR 50,000 total + EUR 7,500 young-company special prize',
+    amountSort:57500,
+    scaleText:'State award for SMEs and startups',
+    scaleSort:null,
+    niche:'Technology-open innovation prize for Baden-Wurttemberg SMEs and startups with innovative products, processes, or services.',
+    eligibility:'Companies in Baden-Wurttemberg with up to 500 employees and annual revenue up to EUR 100M.',
+    why:'A strong signal prize if you want state-level credibility in Baden-Wurttemberg without reshaping the company around a grant mandate.',
+    mapContext:'Useful if DeSci Map becomes a Baden-Wurttemberg startup selling a novel AI or research workflow product.',
+    tags:['germany','baden-wurttemberg','award','startup','innovation'],
+    sources:[
+      {label:'Start-up BW announcement',url:'https://www.startupbw.de/ueber-the-start-up-laend/news/meldungen/jetzt-fuer-den-innovationspreis-baden-wuerttemberg-2026-bewerben',note:'2026 deadline, award amount, and SME criteria.'}
+    ]
+  },
+  {
+    id:'landespreis_bw_2026',
+    name:'Landespreis fur junge Unternehmen 2026',
+    track:'competition',
+    region:['Germany','Baden-Wurttemberg'],
+    status:'announced',
+    dateType:'deadline',
+    deadline:'2026-02-06T23:59:00+01:00',
+    deadlineLabel:'February 6, 2026',
+    amountText:'EUR 90,000 total prize fund',
+    amountSort:90000,
+    scaleText:'Top 10 finalists highlighted',
+    scaleSort:10,
+    niche:'Young companies in Baden-Wurttemberg that have moved beyond raw startup phase and can show traction, leadership, and responsible company-building.',
+    eligibility:'Companies founded or acquired from January 1, 2016 onward, with at least three years of balance-sheet figures and HQ in Baden-Wurttemberg.',
+    why:'Better for a later-stage operating company than a raw concept, but valuable as a prestige marker if the project matures quickly.',
+    mapContext:'Fits a future Baden-Wurttemberg operating company more than an early research collective.',
+    tags:['germany','baden-wurttemberg','competition','prestige','later-stage'],
+    sources:[
+      {label:'Landespreis fur junge Unternehmen 2026',url:'https://www.junge-unternehmen.de/en/about-the-competition',note:'Official competition overview and 2026 applicant profile.'}
+    ]
+  }
+);
+OPPORTUNITIES.push(
+  {
+    id:'openai_safety_fellowship_2026',
+    name:'OpenAI Safety Fellowship',
+    track:'fellowship',
+    region:['Global','Remote or Berkeley'],
+    status:'announced',
+    dateType:'deadline',
+    deadline:'2026-05-03T23:59:00-07:00',
+    deadlineLabel:'May 3, 2026',
+    amountText:'Monthly stipend + compute support + mentorship',
+    amountSort:null,
+    scaleText:'Cohort runs September 14, 2026 to February 5, 2027',
+    scaleSort:null,
+    niche:'AI safety, alignment, evaluations, ethics, robustness, privacy-preserving safety, agent oversight, and misuse prevention.',
+    eligibility:'External researchers, engineers, and practitioners with strong proposed safety work.',
+    why:'High-quality option if your AI or science work includes evaluation, governance, misuse, or responsible deployment research.',
+    mapContext:'Useful for the project if you want deeper technical grounding on safe AI systems rather than only product execution.',
+    tags:['ai','fellowship','safety','research','global'],
+    sources:[
+      {label:'OpenAI Safety Fellowship',url:'https://openai.com/index/introducing-openai-safety-fellowship/',note:'Official 2026 announcement and deadline.'}
+    ]
+  },
+  {
+    id:'ukri_flf_lastcycle',
+    name:'UKRI Future Leaders Fellowships (last cycle reference)',
+    track:'fellowship',
+    region:['UK'],
+    status:'last_cycle',
+    dateType:'last_cycle',
+    deadline:'2025-06-18T16:00:00+01:00',
+    deadlineLabel:'Last academic-hosted deadline: June 18, 2025; non-academic: November 5, 2025',
+    amountText:'No minimum or maximum project cost; up to 7 years support',
+    amountSort:null,
+    scaleText:'Round 10 decisions in June 2026',
+    scaleSort:null,
+    niche:'Ambitious early-career researchers and innovators building independent research or innovation agendas in the UK.',
+    eligibility:'UK-hosted academic or non-academic applicants; 2026 round 11 not yet verified in current source set.',
+    why:'Very relevant if the project develops a UK research or innovation arm and someone needs multi-year independence funding.',
+    mapContext:'Best for a UK-based research lead rather than the main dashboard product itself.',
+    tags:['uk','fellowship','research','innovation','last-cycle'],
+    sources:[
+      {label:'UKRI Future Leaders Fellowships round 10',url:'https://www.ukri.org/opportunity/future-leaders-fellowships-round-10/',note:'Last verified round and timeline.'}
+    ]
+  },
+  {
+    id:'gsoc_2026',
+    name:'Google Summer of Code 2026',
+    track:'hackathon',
+    region:['Global'],
+    status:'announced',
+    dateType:'deadline',
+    deadline:'2026-03-31T18:00:00Z',
+    deadlineLabel:'March 31, 2026, 18:00 UTC',
+    amountText:'Google-funded open-source stipend; amount varies by project size and region',
+    amountSort:null,
+    scaleText:'Contributor applications open March 16-31, 2026',
+    scaleSort:null,
+    niche:'Open-source contributors working with accepted mentoring organizations on real code, docs, or community infrastructure.',
+    eligibility:'Open to contributors worldwide through accepted mentoring organizations.',
+    why:'Useful if you want to shape DeSci-adjacent open-source infrastructure and recruit contributors through a recognized channel.',
+    mapContext:'Could matter if parts of DeSci Map or related tooling become open-source and mentor-friendly.',
+    tags:['global','open-source','hackathon','student-friendly','engineering'],
+    sources:[
+      {label:'Google Summer of Code timeline',url:'https://developers.google.com/open-source/gsoc/timeline',note:'Official 2026 timeline.'}
+    ]
+  },
+  {
+    id:'falling_walls_2026',
+    name:'Falling Walls Global Call for Science Breakthroughs 2026',
+    track:'competition',
+    region:['Global','Germany'],
+    status:'announced',
+    dateType:'deadline',
+    deadline:'2026-04-15T23:59:00+02:00',
+    deadlineLabel:'April 15, 2026',
+    amountText:'Global recognition, summit stage, and category awards',
+    amountSort:null,
+    scaleText:'Global call from February 2 to April 15, 2026',
+    scaleSort:null,
+    niche:'Breakthrough science, research translation, and high-visibility scientific work addressing major global problems.',
+    eligibility:'Researchers, innovators, institutions, companies, and teams worldwide.',
+    why:'A strong visibility route if you want credibility with the science and innovation ecosystem, not just startup circles.',
+    mapContext:'Strong cultural fit for a mission-led science or metascience project with a compelling narrative.',
+    tags:['global','competition','science','visibility','germany'],
+    sources:[
+      {label:'Falling Walls global call',url:'https://falling-walls.com/call-for-nominations/',note:'Official 2026 call window and positioning.'}
+    ]
+  },
+  {
+    id:'mit_solve_10for10_2026',
+    name:'MIT Solve 10th Anniversary Global Challenge',
+    track:'competition',
+    region:['Global'],
+    status:'announced',
+    dateType:'deadline',
+    deadline:'2026-05-21T23:59:00-04:00',
+    deadlineLabel:'May 21, 2026',
+    amountText:'Prize funding to be announced + access to Solve network',
+    amountSort:null,
+    scaleText:'10 selected winners',
+    scaleSort:10,
+    niche:'High-impact, scalable solutions across global challenges, especially where systems change, equity, AI, climate, and public benefit overlap.',
+    eligibility:'Global solution teams ready for scale.',
+    why:'Good if you want mission-driven visibility and partner access without pretending to be a traditional grant-seeking lab.',
+    mapContext:'Fits the broader mission narrative if DeSci Map becomes a platform for science-system improvement with real-world adoption.',
+    tags:['global','competition','impact','ai','nonprofit'],
+    sources:[
+      {label:'MIT Solve 10 for 10',url:'https://solve.mit.edu/challenges/10-for-10-challenge',note:'Official 2026 timeline and winner count.'}
+    ]
+  },
+  {
+    id:'mit_future_health_2026',
+    name:'MIT Solve Future Health Challenge 2026',
+    track:'competition',
+    region:['Global'],
+    status:'announced',
+    dateType:'deadline',
+    deadline:'2026-02-23T12:00:00-05:00',
+    deadlineLabel:'February 23, 2026, 12:00 PM EST',
+    amountText:'USD 300,000 total: USD 200,000 grand prize + two USD 50,000 runner-up prizes',
+    amountSort:300000,
+    scaleText:'3 winners + summit invites for semifinalists',
+    scaleSort:3,
+    niche:'Population sensing, anticipatory health systems, surveillance, public-health AI, and digital health infrastructure.',
+    eligibility:'Global tech-enabled health solution teams.',
+    why:'Very relevant if your science or AI work leans into health data, forecasting, sensing, or public-health infrastructure.',
+    mapContext:'Could fit if the project moves from ecosystem mapping toward health-system intelligence or anticipatory research tooling.',
+    tags:['global','competition','health','ai','research'],
+    sources:[
+      {label:'MIT Solve Future Health Challenge',url:'https://solve.mit.edu/challenges/future-health-challenge',note:'Official 2026 amount and timeline.'}
+    ]
+  },
+  {
+    id:'hello_tomorrow_2026',
+    name:'Hello Tomorrow Global Challenge 2026',
+    track:'competition',
+    region:['Global'],
+    status:'announced',
+    dateType:'deadline',
+    deadline:'2026-01-05T23:59:00+01:00',
+    deadlineLabel:'January 5, 2026',
+    amountText:'Deep-tech challenge; prize and investor visibility',
+    amountSort:null,
+    scaleText:'Deep Tech Pioneers selected in February 2026',
+    scaleSort:null,
+    niche:'Deep tech startups with defensible science, engineering, or industrial innovation.',
+    eligibility:'Global deep-tech startups.',
+    why:'More relevant if you pivot hard into deep-tech commercialization rather than ecosystem tooling.',
+    mapContext:'Useful benchmark for how far the project would need to evolve to be seen as a deep-tech venture rather than a platform or network.',
+    tags:['global','competition','deep-tech','startup'],
+    sources:[
+      {label:'Hello Tomorrow Global Challenge',url:'https://hello-tomorrow.org/global-challenge/',note:'Official 2026 timeline.'}
+    ]
+  }
+);
+OPPORTUNITIES.push(
+  {
+    id:'ef_london_2026',
+    name:'Entrepreneurs First London Program (Fall 2026)',
+    track:'accelerator',
+    region:['UK','Europe'],
+    status:'announced',
+    dateType:'deadline',
+    deadline:'2026-05-10T23:59:00+01:00',
+    deadlineLabel:'May 10, 2026 (early deadline)',
+    amountText:'Founder-first backing; investment terms handled after selection',
+    amountSort:null,
+    scaleText:'Full-time, in-person cohort in London, then San Francisco',
+    scaleSort:null,
+    niche:'Ambitious technical founders pre-idea or pre-company; especially strong for deep tech, AI, and frontier research founders.',
+    eligibility:'Individuals rather than finished companies; best for solo operators or teams still testing cofounder fit.',
+    why:'One of the best UK options if you want founder formation, cofounder matching, and deep-tech ambition more than grant compliance.',
+    mapContext:'Good if you want to spin out a UK-facing founder journey around AI and science infrastructure.',
+    tags:['uk','accelerator','ai','founders','deep-tech'],
+    sources:[
+      {label:'EF application hub',url:'https://apply.joinef.com/',note:'Official London Fall 2026 early deadline.'}
+    ]
+  },
+  {
+    id:'ef_bangalore_2026',
+    name:'Entrepreneurs First Bangalore Program (Fall 2026)',
+    track:'accelerator',
+    region:['India'],
+    status:'announced',
+    dateType:'deadline',
+    deadline:'2026-05-01T23:59:00+05:30',
+    deadlineLabel:'May 1, 2026 (early deadline)',
+    amountText:'Founder-first backing; investment terms handled after selection',
+    amountSort:null,
+    scaleText:'Full-time, in-person cohort in Bangalore, then San Francisco',
+    scaleSort:null,
+    niche:'India-based ambitious technical founders, especially AI or deep-tech builders who are still shaping company and cofounder structure.',
+    eligibility:'India-based applicants; early deadline is for the second selection round.',
+    why:'One of the clearest founder programs for Indian nationals if you want a frontier-tech company rather than only grant-funded research.',
+    mapContext:'Relevant if you want to recruit or build a founder path for Indian collaborators around DeSci, AI, or research tooling.',
+    tags:['india','accelerator','ai','founders','deep-tech'],
+    sources:[
+      {label:'EF application hub',url:'https://apply.joinef.com/',note:'Official Bangalore Fall 2026 early deadline.'}
+    ]
+  },
+  {
+    id:'birac_bio_ai_2026',
+    name:'DBT-BIRAC Bio-AI Call 2026',
+    track:'grant',
+    region:['India'],
+    status:'announced',
+    dateType:'deadline',
+    deadline:'2026-06-30T23:59:00+05:30',
+    deadlineLabel:'June 30, 2026',
+    amountText:'Grant support under BioE3 policy; call-specific amount in proposal documentation',
+    amountSort:null,
+    scaleText:'Current official call for proposals',
+    scaleSort:null,
+    niche:'Bio-AI, high-performance biomanufacturing, and research-to-commercialization projects in biotechnology and adjacent AI-enabled domains.',
+    eligibility:'India-focused applicants under the DBT-BIRAC program framework.',
+    why:'High relevance if you want an India-based science or biotech-AI lane rather than a pure software accelerator lane.',
+    mapContext:'Useful for Indian collaborators or if the product develops a biotech, lab intelligence, or biomanufacturing research direction.',
+    tags:['india','grant','ai','biotech','research'],
+    sources:[
+      {label:'BIRAC call portal',url:'https://www.birac.nic.in/cfp.php/bionest.php',note:'Current Bio-AI call with June 30, 2026 deadline.'}
+    ]
+  },
+  {
+    id:'birac_big',
+    name:'BIRAC Biotechnology Ignition Grant (BIG)',
+    track:'grant',
+    region:['India'],
+    status:'last_cycle',
+    dateType:'last_cycle',
+    deadline:'2025-11-30T23:59:00+05:30',
+    deadlineLabel:'Last verified call deadline: November 30, 2025',
+    amountText:'Up to INR 50 lakh grant-in-aid for 18 months',
+    amountSort:5000000,
+    scaleText:'Calls typically open twice a year via 8 BIG partners',
+    scaleSort:8,
+    niche:'Early-stage biotech and translational science ideas moving toward proof of concept and startup formation.',
+    eligibility:'India-focused early-stage startups or teams with commercialization potential in biotech.',
+    why:'Still one of the cleanest non-dilutive India routes if the work becomes biotech or wet-lab adjacent rather than pure dashboard software.',
+    mapContext:'Relevant for any India-linked translational science venture lane around your broader project.',
+    tags:['india','grant','early-stage','biotech','last-cycle'],
+    sources:[
+      {label:'BIG scheme page',url:'https://www.birac.nic.in/big.php',note:'Official scheme amount, cadence, and purpose.'},
+      {label:'BIRAC call history',url:'https://www.birac.nic.in/cfp.php/bionest.php',note:'Last verified 25th call timing.'}
+    ]
+  },
+  {
+    id:'einstein_award_2026',
+    name:'Einstein Foundation Award for Promoting Quality in Research 2026',
+    track:'award',
+    region:['Germany','Global'],
+    status:'announced',
+    dateType:'deadline',
+    deadline:'2026-04-30T22:00:00Z',
+    deadlineLabel:'April 30, 2026, 22:00 UTC',
+    amountText:'EUR 350,000 total',
+    amountSort:350000,
+    scaleText:'Individual, institutional, and early-career categories',
+    scaleSort:3,
+    niche:'Research quality, reproducibility, methodological rigor, and institutional incentives that improve science.',
+    eligibility:'Researchers and institutions worldwide working on quality in research and reproducibility.',
+    why:'This is philosophically one of the best matches for the open-science and metascience side of your project.',
+    mapContext:'A natural fit if DeSci Map grows a metascience, reproducibility, or research-quality mission rather than only a startup product.',
+    tags:['metascience','award','research-quality','open-science','global'],
+    sources:[
+      {label:'Einstein Foundation Award',url:'https://www.einsteinfoundation.de/award',note:'Official 2026 call, deadline, and prize amount.'}
+    ]
+  },
+  {
+    id:'msca_pf_2026',
+    name:'MSCA Postdoctoral Fellowships 2026',
+    track:'fellowship',
+    region:['EU','Global mobility'],
+    status:'announced',
+    dateType:'deadline',
+    deadline:'2026-09-09T17:00:00+02:00',
+    deadlineLabel:'September 9, 2026, 17:00 CEST',
+    amountText:'EU fellowship funding package via MSCA',
+    amountSort:null,
+    scaleText:'Major EU mobility fellowship',
+    scaleSort:null,
+    niche:'Postdoctoral researchers seeking mobility, training, and project support in academia or non-academic hosts across Europe.',
+    eligibility:'Postdocs meeting MSCA mobility and experience rules.',
+    why:'Less startup-like, but strong if someone on the team wants to anchor rigorous open-science or metascience research in Europe.',
+    mapContext:'Most relevant for a research arm or affiliated scholar working on the science-of-science side of the project.',
+    tags:['eu','fellowship','research','mobility','postdoc'],
+    sources:[
+      {label:'MSCA Postdoctoral Fellowships 2026',url:'https://marie-sklodowska-curie-actions.ec.europa.eu/actions/postdoctoral-fellowships/6-steps-to-prepare-your-application-postdoctoral-fellowships-call',note:'Official 2026 opening and deadline.'}
+    ]
+  },
+  {
+    id:'erc_poc_2026',
+    name:'ERC Proof of Concept 2026',
+    track:'grant',
+    region:['EU'],
+    status:'announced',
+    dateType:'cutoff',
+    deadline:'2026-09-17T17:00:00+02:00',
+    deadlineLabel:'Next cut-off: September 17, 2026, 17:00 Brussels time',
+    amountText:'EUR 150,000 lump sum over 18 months',
+    amountSort:150000,
+    scaleText:'Two 2026 cut-offs: March 17 and September 17',
+    scaleSort:2,
+    niche:'Commercial or social innovation proof-of-concept work from existing ERC-funded frontier research.',
+    eligibility:'Only ERC principal investigators on eligible main grants.',
+    why:'Narrow eligibility, but strategically important if you collaborate with ERC-backed labs or want academic commercialization pathways.',
+    mapContext:'Strong bridge option if the project partners with ERC-funded research teams moving toward real-world applications.',
+    tags:['eu','grant','research-commercialization','proof-of-concept'],
+    sources:[
+      {label:'ERC Proof of Concept',url:'https://erc.europa.eu/apply-grant/proof-concept',note:'Official amount and September 17, 2026 cut-off.'},
+      {label:'ERC timeframe reference',url:'https://erc.europa.eu/apply-grant/timeframe-proof-concept-2025-evaluation',note:'Most recent official timeframe page published by ERC for Proof of Concept evaluation cadence.'}
+    ]
+  }
+);
+OPPORTUNITIES.push(
+  {
+    id:'vitadao_research',
+    name:'VitaDAO Research Funding',
+    track:'grant',
+    region:['Global','DeSci'],
+    status:'rolling',
+    dateType:'rolling',
+    deadline:'',
+    deadlineLabel:'Rolling via proposals and governance',
+    amountText:'Project-specific community funding; VitaDAO reports USD 4.7M deployed across 31 projects',
+    amountSort:4700000,
+    scaleText:'31 funded projects reported',
+    scaleSort:31,
+    niche:'Longevity and aging research, IP-backed translational science, biotech projects, and related infrastructure that the VitaDAO community can evaluate and fund.',
+    eligibility:'Proposal-driven and governance-mediated; fit is strongest for aging or longevity research with a clear commercialization or translational path.',
+    why:'One of the few real DeSci-native capital routes if your work touches longevity, tokenized IP, or community-governed biotech.',
+    mapContext:'Directly relevant because VitaDAO and Molecule already sit in your landscape map.',
+    tags:['desci','grant','longevity','biotech','dao'],
+    sources:[
+      {label:'VitaDAO research overview',url:'https://www.vitadao.com/contributors',note:'Funding model and deployed capital overview.'},
+      {label:'VitaDAO governance proposals',url:'https://gov.vitadao.com/c/proposals/11',note:'Current and passed proposal pipeline.'}
+    ]
+  },
+  {
+    id:'gitcoin_desci_lastcycle',
+    name:'Gitcoin DeSci Round',
+    track:'grant',
+    region:['Global','DeSci','Ethereum'],
+    status:'last_cycle',
+    dateType:'last_cycle',
+    deadline:'2024-08-21T23:59:00Z',
+    deadlineLabel:'Last cycle: August 7-21, 2024',
+    amountText:'GG21 DeSci distributed USD 39,000; case study cites an USD 85,000 matching pool context',
+    amountSort:39000,
+    scaleText:'49 projects funded in GG21',
+    scaleSort:49,
+    niche:'Open science, public infrastructure, research funding, review, credit, storage, and dissemination projects using web3 rails.',
+    eligibility:'2026 specific DeSci round not yet confirmed; use the last verified round as a watch item and prep materials early.',
+    why:'Historically one of the clearest ecosystem-specific funding paths for early DeSci public goods.',
+    mapContext:'Especially relevant because your graph already links Gitcoin DeSci Rounds to DeSci Labs / Nodes and LabDAO.',
+    tags:['desci','grant','ethereum','public-goods','last-cycle'],
+    sources:[
+      {label:'Gitcoin GG21 DeSci retrospective',url:'https://gitcoin.co/case-studies/gg21-desci-round-retrospective',note:'Verified last cycle timing and funded-project count.'},
+      {label:'Gitcoin Grants 21 overview',url:'https://gitcoin.co/campaigns/gitcoin-grants-21-gg21',note:'Broader GG21 timing and funding context.'}
+    ]
+  },
+  {
+    id:'ethereum_esp',
+    name:'Ethereum Foundation Ecosystem Support Program',
+    track:'grant',
+    region:['Global','Blockchain'],
+    status:'rolling',
+    dateType:'rolling',
+    deadline:'',
+    deadlineLabel:'Rolling; wishlist and office hours model',
+    amountText:'Request-driven support; award sizes vary by proposal',
+    amountSort:null,
+    scaleText:'Rolling ecosystem support, RFPs, and wishlists',
+    scaleSort:null,
+    niche:'Ethereum ecosystem infrastructure, open-source tooling, privacy, coordination, and technically grounded public-goods work.',
+    eligibility:'Best fit for open infrastructure or protocol-adjacent tooling, not generic web3 branding.',
+    why:'Strong option for open-source DeSci infrastructure if your product depends on Ethereum-native coordination, identity, grants, or provenance rails.',
+    mapContext:'Relevant for infrastructure-heavy nodes in your map, especially anything touching public goods, review, identity, or open data rails.',
+    tags:['blockchain','grant','open-source','infrastructure','rolling'],
+    sources:[
+      {label:'Ethereum Foundation ESP apply flow',url:'https://esp.ethereum.foundation/applicants/wishlist/privacy_preserving_relayers/apply',note:'Current ESP application entry point and rolling model.'}
+    ]
+  },
+  {
+    id:'unicef_climate_2026',
+    name:'UNICEF Climate Ventures 2026',
+    track:'grant',
+    region:['Global','Emerging Markets'],
+    status:'announced',
+    dateType:'deadline',
+    deadline:'2026-05-17T23:59:00Z',
+    deadlineLabel:'May 17, 2026',
+    amountText:'Up to USD 100,000 equity-free',
+    amountSort:100000,
+    scaleText:'Cohort-based venture funding',
+    scaleSort:null,
+    niche:'Open-source frontier-tech startups working on climate x child health, including AI, ML, blockchain, forecasting, sensors, and public-health infrastructure.',
+    eligibility:'Startups in UNICEF-program countries with working prototypes and an open-source commitment.',
+    why:'Especially interesting if your science or AI work has public-health, climate, data, or humanitarian relevance and you want non-dilutive capital.',
+    mapContext:'Useful if DeSci Map expands toward climate-health, forecasting, or civic data infrastructure rather than pure research SaaS.',
+    tags:['nonprofit','grant','ai','blockchain','health','climate'],
+    sources:[
+      {label:'UNICEF Climate Ventures 2026',url:'https://www.unicef.org/innovation/call-for-application-climate-and-health-2026',note:'Official 2026 climate-health open call.'},
+      {label:'UNICEF Venture Fund apply page',url:'https://www.unicefventurefund.org/apply-funding',note:'Program-level funding and application overview.'}
+    ]
+  },
+  {
+    id:'openai_emea_grant_2026',
+    name:'OpenAI EMEA Youth & Wellbeing Grant',
+    track:'grant',
+    region:['EMEA'],
+    status:'announced',
+    dateType:'deadline',
+    deadline:'2026-02-28T12:00:00-08:00',
+    deadlineLabel:'February 28, 2026, 12:00 PM PST',
+    amountText:'EUR 500,000 program pool',
+    amountSort:500000,
+    scaleText:'Multiple NGO and research grantees expected',
+    scaleSort:null,
+    niche:'NGOs and research organizations working on youth wellbeing, safety, and responsible AI use in the real world.',
+    eligibility:'EMEA-based NGOs and research organizations; not a standard venture program.',
+    why:'Good benchmark if you choose a nonprofit or research-charity track for responsible AI and science communication work.',
+    mapContext:'Most relevant if part of the project evolves into independent research or public-interest programming rather than a startup entity.',
+    tags:['emea','nonprofit','grant','ai','research'],
+    sources:[
+      {label:'OpenAI grants portal',url:'https://grants.openai.com/prog/emea_youth_wellbeing_grant/',note:'Official deadline and program description.'}
+    ]
+  },
+  {
+    id:'yc_s2026',
+    name:'Y Combinator Summer 2026',
+    track:'accelerator',
+    region:['Global','US'],
+    status:'announced',
+    dateType:'deadline',
+    deadline:'2026-05-04T20:00:00-07:00',
+    deadlineLabel:'May 4, 2026, 8:00 PM PT',
+    amountText:'Funding on acceptance; amount not listed on current apply page',
+    amountSort:null,
+    scaleText:'On-time applicants hear back by June 5',
+    scaleSort:null,
+    niche:'High-velocity startups across software, AI, biotech, hardware, and infrastructure; strongest fit for fast-scaling venture paths.',
+    eligibility:'Global founders; Summer 2026 batch runs July-September in San Francisco.',
+    why:'Best if you want to push DeSci Map into a venture-scale company instead of a slower grant-first path.',
+    mapContext:'A sensible route if the product becomes AI infrastructure, analytics, or research workflow software with large upside.',
+    tags:['startup','accelerator','ai','global','venture'],
+    sources:[
+      {label:'YC apply page',url:'https://www.ycombinator.com/apply',note:'Official Summer 2026 deadline and decision timing.'}
+    ]
+  },
+  {
+    id:'eic_accelerator_2026',
+    name:'EIC Accelerator 2026',
+    track:'grant',
+    region:['EU','UK grant-only'],
+    status:'announced',
+    dateType:'cutoff',
+    deadline:'2026-05-06T17:00:00+02:00',
+    deadlineLabel:'Next 2026 full-proposal cut-off: May 6, 2026, 5:00 PM Brussels time',
+    amountText:'Grant below EUR 2.5M + EUR 1M-10M equity; 2026 Open budget EUR 414M, Challenges EUR 220M',
+    amountSort:12500000,
+    scaleText:'2026 cut-offs: May 6, Jul 8, Sep 2, Nov 4',
+    scaleSort:4,
+    niche:'Deep-tech startups and SMEs with market-creating or market-disrupting innovation at later TRL and strong scale potential.',
+    eligibility:'EU and associated-country startups and SMEs; UK applicants can apply only for grant-only scheme.',
+    why:'One of the biggest non-dilutive-plus-equity routes if your product becomes genuine deep tech instead of a lightweight data tool.',
+    mapContext:'Especially strong if DeSci Map becomes a hard-tech platform, infrastructure layer, or research-grade product with defensible technology.',
+    tags:['eu','grant','equity','deep-tech','startup'],
+    sources:[
+      {label:'EIC Accelerator',url:'https://eic.ec.europa.eu/eic-funding-opportunities/eic-accelerator_en',note:'Official eligibility, budgets, and 2026 cut-off dates.'},
+      {label:'EIC Accelerator Challenges 2026',url:'https://eic.ec.europa.eu/eic-funding-opportunities/eic-accelerator/eic-accelerator-challenges-2026_en',note:'Challenge topics and 2026 challenge budget.'}
+    ]
+  }
+);
 
 const MOJIBAKE_FIXES=[
   ['â‰¥','>='],['â‰¤','<='],['â—€','<'],['â–¶','>'],
@@ -912,7 +1875,12 @@ function updateStats(){const s=el('stats');if(s)s.textContent=''}
 // ===== PANELS =====
 function togglePanel(p){
   const a=el('app');
-  a.classList.toggle(p==='left'?'hide-left':'hide-right');
+  const cls=(p==='left'?'hide-left':'hide-right');
+  a.classList.toggle(cls);
+  panelPrefs={
+    leftHidden:a.classList.contains('hide-left'),
+    rightHidden:a.classList.contains('hide-right')
+  };
   requestAnimationFrame(()=>requestAnimationFrame(()=>{
     if(view==='graph') resizeGraphViewport();
     else if(view==='pgraph') render();
@@ -928,12 +1896,12 @@ function setView(v,b){
   }
   if(active)active.classList.add('on');
   const app=el('app');
-  if(v==='home'||v==='journal'||v==='lit'){
+  if(HIDDEN_GLOBAL_VIEWS.has(v)){
     app.classList.add('hide-right');
     app.classList.add('hide-left');
   }else{
-    app.classList.remove('hide-left');
-    app.classList.remove('hide-right');
+    app.classList.toggle('hide-left',!!panelPrefs.leftHidden);
+    app.classList.toggle('hide-right',!!panelPrefs.rightHidden);
   }
   render();
 }
@@ -1076,7 +2044,7 @@ function resizeGraphViewport(){
 
 // ===== RENDER =====
 function render(){
-  const m=el('main');m.querySelectorAll('svg,.table-wrap,.people-grid,.lit-panel,.legend,.biz-wrap,.home-wrap,.info-wrap,.journal-wrap,.lit-wrap').forEach(e=>e.remove());
+  const m=el('main');m.querySelectorAll('svg,.table-wrap,.people-grid,.lit-panel,.legend,.biz-wrap,.home-wrap,.info-wrap,.journal-wrap,.lit-wrap,.grants-wrap').forEach(e=>e.remove());
   if(homeTickerTimer){clearInterval(homeTickerTimer);homeTickerTimer=null;}
   if(homeRefreshTimer){clearInterval(homeRefreshTimer);homeRefreshTimer=null;}
   if(homeAsciiTimer){clearInterval(homeAsciiTimer);homeAsciiTimer=null;}
@@ -1084,7 +2052,7 @@ function render(){
   const tip=el('tip'); if(tip){tip.classList.remove('vis');tip.classList.toggle('interactive',view==='biz');}
   const tLeft=m.querySelector('.toggle-left');
   const tRight=m.querySelector('.toggle-right');
-  const hideToggles=(view==='home'||view==='journal'||view==='lit');
+  const hideToggles=HIDDEN_GLOBAL_VIEWS.has(view);
   if(tLeft)tLeft.style.display=hideToggles?'none':'flex';
   if(tRight)tRight.style.display=hideToggles?'none':'flex';
   if(sim)sim.stop();
@@ -1096,6 +2064,7 @@ function render(){
   else if(view==='lit')renderLit();
   else if(view==='biz')renderBiz();
   else if(view==='journal')renderJournal();
+  else if(view==='grants')renderGrants();
   else buildGraph();
   sanitizeVisibleText(m);
 }
@@ -2124,8 +3093,8 @@ function renderJournal(){
   sanitizeVisibleText(wrap);
 }
 
-const HOME_FEED_CACHE_KEY='home-feed-cache-v5';
-const HOME_FEED_CACHE_VERSION=5;
+const HOME_FEED_CACHE_KEY='home-feed-cache-v6';
+const HOME_FEED_CACHE_VERSION=6;
 const HOME_FEED_MIN_FETCH_GAP_MS=4*60*1000;
 const HOME_FEED_STALE_MS=20*60*60*1000;
 async function fetchTextWithTimeout(url,ms){
@@ -2148,6 +3117,12 @@ function unwrapRssProxyPayload(text){
     }catch(e){}
   }
   return raw;
+}
+function plainFeedText(raw,max){
+  const txt=cleanMojibakeString(String(raw||'').replace(/<[^>]+>/g,' ').replace(/&nbsp;/gi,' ').replace(/\s+/g,' ').trim());
+  if(!txt)return '';
+  const cap=max||220;
+  return txt.length>cap?txt.slice(0,cap-1).trim()+'...':txt;
 }
 async function fetchRssText(url){
   const clean=String(url||'').trim();
@@ -2174,7 +3149,8 @@ async function fetchViaRss2Json(url,source,max,topic){
       link:(it.link||'').trim(),
       pubDate:it.pubDate||'',
       source:source||'news',
-      topic:topic||''
+      topic:topic||'',
+      summary:plainFeedText(it.description||it.content||it.content_encoded||'',220)
     })).filter(it=>it.title&&it.link);
     return rows;
   }catch(e){return []}
@@ -2195,7 +3171,9 @@ function parseRssItems(xmlText,source,max){
       const linkNode=fromRel||links[0]||null;
       const link=(linkNode?.getAttribute('href')||linkNode?.textContent||n.querySelector('id')?.textContent||'').trim();
       const pub=(n.querySelector('pubDate,updated,published')?.textContent||'').trim();
-      return {title,link,pubDate:pub,source:source||'rss'};
+      const summaryNode=n.querySelector('description,summary,content,content\\:encoded');
+      const summary=plainFeedText(summaryNode?.textContent||'',220);
+      return {title,link,pubDate:pub,source:source||'rss',summary};
     }).filter(x=>x.title&&/^https?:\/\//i.test(x.link));
   }catch(e){return []}
 }
@@ -2317,6 +3295,44 @@ function keyNodeDataSources(limit){
     }
   });
   return uniqByLink(rows);
+}
+function siteFeedCandidates(raw){
+  const src=normalizeHttpUrl(raw);
+  if(!src)return [];
+  try{
+    const u=new URL(src);
+    const path=u.pathname.replace(/\/+$/,'');
+    const stems=[u.origin];
+    if(path && !/\.[a-z0-9]{2,6}$/i.test(path))stems.unshift(u.origin+path);
+    const suffixes=['/feed','/rss','/rss.xml','/feed.xml','/atom.xml','/blog/feed','/blog/rss.xml','/news/feed','/news/rss.xml','/updates/feed'];
+    const out=[];
+    stems.forEach(stem=>{
+      suffixes.forEach(s=>{
+        const url=(stem.replace(/\/+$/,'')+s).replace(/([^:]\/)\/+/g,'$1');
+        if(!out.includes(url))out.push(url);
+      });
+    });
+    return out;
+  }catch(e){return []}
+}
+async function fetchNodeWebsiteUpdates(limit){
+  const nodes=keySignalNodes(limit||5).filter(n=>normalizeHttpUrl(n.wp||n.web||n.website||n.url||''));
+  const rows=await Promise.allSettled(nodes.map(async n=>{
+    const site=normalizeHttpUrl(n.wp||n.web||n.website||n.url||'');
+    const sourceName=cleanMojibakeString(n.name||'Node');
+    const candidates=siteFeedCandidates(site).slice(0,4);
+    if(!candidates.length)return [];
+    try{
+      const items=await Promise.any(candidates.map(url=>
+        fetchRssFeed(url,`${sourceName} blog`,sourceName,3).then(feed=>{
+          if(!feed.length)throw new Error('empty');
+          return feed.map(item=>({...item,topic:sourceName,source:item.source||`${sourceName} blog`}));
+        })
+      ));
+      return items;
+    }catch(e){return []}
+  }));
+  return rows.flatMap(r=>(r.status==='fulfilled'&&Array.isArray(r.value))?r.value:[]);
 }
 function keyTwitterHandles(limit){
   return [...new Set(keySignalNodes(limit||10).map(n=>normalizeTwitterHandle(n.twitter||'')).filter(Boolean))].slice(0,limit||6);
@@ -2655,9 +3671,10 @@ function relevanceHits(item,intents){
   if(!toks.size)return 0;
   const title=String(item.title||'').toLowerCase();
   const topic=String(item.topic||'').toLowerCase();
+  const summary=String(item.summary||'').toLowerCase();
   let hits=0;
   toks.forEach(t=>{
-    if(title.includes(t) || topic.includes(t))hits++;
+    if(title.includes(t) || topic.includes(t) || summary.includes(t))hits++;
   });
   return hits;
 }
@@ -2665,6 +3682,7 @@ function scoreFeedItem(item,intents){
   let s=0;
   const title=String(item.title||'').toLowerCase();
   const topic=String(item.topic||'').toLowerCase();
+  const summary=String(item.summary||'').toLowerCase();
   const url=String(item.link||'').toLowerCase();
   const hits=relevanceHits(item,intents);
   s+=hits*2.1;
@@ -2672,7 +3690,7 @@ function scoreFeedItem(item,intents){
   if(/reddit\.com|openrss\.org/.test(url))s+=1.2;
   if(/youtube\.com|youtu\.be/.test(url))s+=1.4;
   if(/x\.com|twitter\.com|nitter\./.test(url))s+=1.2;
-  PURPOSE_TERMS.forEach(t=>{if(title.includes(t)||topic.includes(t))s+=1.8});
+  PURPOSE_TERMS.forEach(t=>{if(title.includes(t)||topic.includes(t)||summary.includes(t))s+=1.8});
   const ts=Date.parse(item.pubDate||'');
   if(!Number.isNaN(ts)){
     const ageDays=(Date.now()-ts)/86400000;
@@ -2771,13 +3789,10 @@ function loadHomeFeedCache(){
     if(Number(j.version||0)!==HOME_FEED_CACHE_VERSION)return;
     const fetchedAt=Number(j.fetchedAt||0)||0;
     if(!fetchedAt || (Date.now()-fetchedAt)>HOME_FEED_STALE_MS)return;
+    const allItems=(j.sections&&Array.isArray(j.sections.all))?j.sections.all:(Array.isArray(j.items)?j.items:[]);
     homeFeedState={
-      items:Array.isArray(j.items)?j.items:[],
-      sections:(j.sections&&typeof j.sections==='object')?{
-        general:Array.isArray(j.sections.general)?j.sections.general:[],
-        ecosystem:Array.isArray(j.sections.ecosystem)?j.sections.ecosystem:[],
-        social:Array.isArray(j.sections.social)?j.sections.social:[]
-      }:{general:[],ecosystem:[],social:[]},
+      items:Array.isArray(j.items)?j.items:allItems,
+      sections:{all:Array.isArray(allItems)?allItems:[]},
       lastUpdated:j.lastUpdated||''
     };
     homeFeedLastFetchMs=fetchedAt;
@@ -2788,55 +3803,51 @@ function saveHomeFeedCache(){
     localStorage.setItem(HOME_FEED_CACHE_KEY,JSON.stringify({
       version:HOME_FEED_CACHE_VERSION,
       items:homeFeedState.items||[],
-      sections:homeFeedState.sections||{},
+      sections:{all:(homeFeedState.sections&&homeFeedState.sections.all)||homeFeedState.items||[]},
       lastUpdated:homeFeedState.lastUpdated||'',
       fetchedAt:homeFeedLastFetchMs||Date.now()
     }));
   }catch(e){}
 }
+function combinedHomeFeedIntents(){
+  const nodeNames=relationWatchNames().slice(0,10);
+  return [...new Set([...HOME_GENERAL_QUERIES,...projectKeywords().slice(0,4),...nodeNames,...desciTwitterKeywords(4),'open science','decentralized science'])];
+}
 function renderHomeFeeds(){
-  const streams=[
-    {key:'general',lead:'homeLeadGeneral',meta:'homeMetaGeneral',list:'homeFeedGeneral'},
-    {key:'ecosystem',lead:'homeLeadEcosystem',meta:'homeMetaEcosystem',list:'homeFeedEcosystem'},
-    {key:'social',lead:'homeLeadSocial',meta:'homeMetaSocial',list:'homeFeedSocial'}
-  ];
   if(homeTickerTimer){clearInterval(homeTickerTimer);homeTickerTimer=null;}
-  const mount=(id,arr)=>{
-    const c=el(id);
-    if(!c)return;
-    c.innerHTML=(arr||[]).slice(0,7).map(it=>{
+  const items=(homeFeedState.sections&&homeFeedState.sections.all)||homeFeedState.items||[];
+  const lead=el('homeLeadAll');
+  const meta=el('homeMetaAll');
+  const list=el('homeFeedAll');
+  if(list){
+    list.innerHTML=items.slice(0,12).map(it=>{
       const title=escapeHtml(it.title||'Untitled');
-      const meta=`${escapeHtml(it.source||'news')} | ${escapeHtml(it.topic||'')}`;
-      if(it.disabled || !it.link || it.link==='#')return `<article class="feed-item empty"><div>${title}</div><div class="meta">${meta}</div></article>`;
-      return `<article class="feed-item"><a href="${escapeHtml(it.link)}" target="_blank" rel="noopener">${title}</a><div class="meta">${meta}</div></article>`;
-    }).join('') || '<div class="lite-note">No items yet.</div>';
-  };
-  const idx={general:0,ecosystem:0,social:0};
-  const paint=(cfg)=>{
-    const items=(homeFeedState.sections&&homeFeedState.sections[cfg.key])||[];
-    const lead=el(cfg.lead), meta=el(cfg.meta);
+      const metaLine=`${escapeHtml(it.source||'news')} | ${escapeHtml(it.topic||'')}${it.pubDate?` | ${escapeHtml(String(it.pubDate).slice(0,24))}`:''}`;
+      const summary=escapeHtml(plainFeedText(it.summary||'',170));
+      if(it.disabled || !it.link || it.link==='#')return `<article class="feed-item empty"><div>${title}</div><div class="meta">${metaLine}</div></article>`;
+      return `<article class="feed-item"><a href="${escapeHtml(it.link)}" target="_blank" rel="noopener">${title}</a>${summary?`<div class="feed-snippet">${summary}</div>`:''}<div class="meta">${metaLine}</div></article>`;
+    }).join('') || '<div class="lite-note">No live feed items yet.</div>';
+  }
+  let idx=0;
+  const paint=()=>{
     if(!lead||!meta)return;
     if(!items.length){
       lead.textContent='Feed standby';
-      meta.textContent='Waiting for sources to respond.';
+      meta.textContent='Waiting for live sources to respond.';
       return;
     }
-    const it=items[idx[cfg.key]%items.length];
+    const it=items[idx%items.length];
     if(it.disabled || !it.link || it.link==='#')lead.textContent=cleanMojibakeString(it.title||'Feed standby');
     else lead.innerHTML=`<a href="${escapeHtml(it.link)}" target="_blank" rel="noopener">${escapeHtml(it.title)}</a>`;
     meta.textContent=`${cleanMojibakeString(it.source||'news')} | ${cleanMojibakeString(it.topic||'general')}${it.pubDate?` | ${cleanMojibakeString(String(it.pubDate).slice(0,24))}`:''}`;
   };
-  streams.forEach(cfg=>{
-    mount(cfg.list,(homeFeedState.sections&&homeFeedState.sections[cfg.key])||[]);
-    paint(cfg);
-  });
+  paint();
   homeTickerTimer=setInterval(()=>{
-    streams.forEach(cfg=>{
-      const items=(homeFeedState.sections&&homeFeedState.sections[cfg.key])||[];
-      if(items.length>1)idx[cfg.key]=(idx[cfg.key]+1)%items.length;
-      paint(cfg);
-    });
-  },7200);
+    if(items.length>1){
+      idx=(idx+1)%items.length;
+      paint();
+    }
+  },7800);
   const lu=el('homeLastUpdated');
   if(lu)lu.textContent=homeFeedState.lastUpdated?`Last update: ${homeFeedState.lastUpdated}`:'Last update: pending';
 }
@@ -2846,111 +3857,410 @@ async function refreshHomeFeeds(force){
     if(view==='home')renderHomeFeeds();
     return;
   }
-  const generalQueries=[...new Set([...HOME_GENERAL_QUERIES,...projectKeywords().slice(0,2)])].slice(0,6);
-  const keyNodes=keySignalNodes(8);
-  const nodeNames=keyNodes.map(n=>String(n.name||'').trim()).filter(Boolean);
-  const ecosystemQueries=[...new Set([...nodeNames.map(n=>`"${n}"`),...weightedDatasetTerms(3)])].slice(0,7);
-  const socialKeywords=[...new Set([...desciTwitterKeywords(4),'science publishing','peer review'])].slice(0,5);
-  const twHandles=keyTwitterHandles(5);
+  const keyNodes=keySignalNodes(10);
+  const nodeNames=[...new Set(keyNodes.map(n=>String(n.name||'').trim()).filter(Boolean))];
+  const generalQueries=[...new Set([...HOME_GENERAL_QUERIES,...projectKeywords().slice(0,3)])].slice(0,7);
+  const nodeQueries=[...new Set([...nodeNames.map(n=>`"${n}"`),...relationWatchNames().slice(0,4).map(n=>`"${n}"`)])].slice(0,8);
+  const socialKeywords=[...new Set([...desciTwitterKeywords(4),'science publishing','peer review reform'])].slice(0,5);
+  const twHandles=keyTwitterHandles(6);
   const xNewsQueries=[
     ...socialKeywords.map(q=>`site:x.com ${q}`),
     ...twHandles.map(h=>`site:x.com/${h}`)
-  ].slice(0,5);
-  const redditQueries=[...new Set([...socialKeywords.slice(0,3),'decentralized science'])].slice(0,4);
-  const nodeSources=keyNodeDataSources(10);
-  const [generalFeedRes,generalNewsRes,ecosystemNewsRes,redditSubRes,redditSearchRes,xNewsRes]=await Promise.all([
-    fetchCuratedNews(4),
-    fetchGoogleNewsBatch(generalQueries,5,3),
-    fetchGoogleNewsBatch(ecosystemQueries,6,2),
+  ].slice(0,6);
+  const redditQueries=[...new Set([...socialKeywords,'decentralized science'])].slice(0,4);
+  const [curatedNews,generalNews,nodeNews,nodeBlogs,twitterHandles,twitterKeywords,redditSubs,redditSearch,xNews]=await Promise.all([
+    fetchCuratedNews(3),
+    fetchGoogleNewsBatch(generalQueries,6,2),
+    fetchGoogleNewsBatch(nodeQueries,7,2),
+    fetchNodeWebsiteUpdates(5),
+    fetchTwitterHandleBatch(twHandles,5,2),
+    fetchTwitterKeywordBatch(socialKeywords,4,2),
     fetchRedditSubredditBatch(HOME_SOCIAL_SUBREDDITS,4,2),
     fetchRedditSearchBatch(redditQueries,4,2),
-    fetchGoogleNewsBatch(xNewsQueries,5,2)
+    fetchGoogleNewsBatch(xNewsQueries,6,2)
   ]);
-  const generalPool=[...generalFeedRes,...generalNewsRes];
-  const ecosystemPool=[...ecosystemNewsRes,...nodeSources];
-  const socialFallback=[
-    ...HOME_SOCIAL_SUBREDDITS.map(redditFallbackItem).filter(Boolean),
-    ...socialKeywords.map(q=>twitterSearchItem(q,'X search')).filter(Boolean),
-    ...twHandles.map(h=>({title:`@${h} on X`,link:`https://x.com/${h}`,source:'x profile',topic:`@${h}`}))
+  const combinedPool=[
+    ...curatedNews,
+    ...generalNews,
+    ...nodeNews,
+    ...nodeBlogs,
+    ...twitterHandles,
+    ...twitterKeywords,
+    ...redditSubs,
+    ...redditSearch,
+    ...xNews
   ];
-  const socialPool=[...redditSubRes,...redditSearchRes,...xNewsRes,...socialFallback];
-  let general=rankFeedItems(generalPool,generalQueries,14,{minHits:0});
-  let ecosystem=rankFeedItems(ecosystemPool,[...nodeNames,...ecosystemQueries,'blog','update'],14,{minHits:0});
-  let social=rankFeedItems(socialPool,[...socialKeywords,...twHandles.map(h=>`@${h}`),...HOME_SOCIAL_SUBREDDITS],14,{minHits:0});
-  if(!general.length){
-    const queryLinks=generalQueries.map(q=>googleNewsQueryItem(q,'Topic')).filter(Boolean);
-    general=fallbackFeedSection('general',generalQueries,queryLinks);
-  }
-  if(!ecosystem.length){
-    const queryLinks=[
-      ...nodeNames.map(n=>googleNewsQueryItem(`"${n}"`,'Org')).filter(Boolean),
-      ...nodeSources
-    ];
-    ecosystem=fallbackFeedSection('ecosystem',[...nodeNames,...ecosystemQueries],queryLinks);
-  }
-  if(!social.length){
-    social=fallbackFeedSection('social',[...socialKeywords,...HOME_SOCIAL_SUBREDDITS],socialFallback);
-  }
-  homeFeedState.sections={
-    general,
-    ecosystem,
-    social
-  };
-  homeFeedState.items=rankFeedItems([
-    ...homeFeedState.sections.general,
-    ...homeFeedState.sections.ecosystem,
-    ...homeFeedState.sections.social
-  ],[...generalQueries,...nodeNames,...socialKeywords],40,{minHits:0});
-  if(!homeFeedState.items.length){
-    homeFeedState.items=makeFeedEmptyState('No remote feed items responded yet. Open the query links and retry.');
-  }
+  const intents=combinedHomeFeedIntents();
+  const combined=rankFeedItems(combinedPool,intents,18,{minHits:0}).map(it=>({
+    ...it,
+    source:cleanMojibakeString(it.source||feedSourceFromUrl(it.link,'news')),
+    topic:cleanMojibakeString(it.topic||'desci'),
+    summary:plainFeedText(it.summary||'',220)
+  }));
+  homeFeedState.sections={all:combined};
+  homeFeedState.items=combined.length?combined:makeFeedEmptyState('No live articles responded yet. Refresh again in a moment.');
   homeFeedLastFetchMs=Date.now();
   homeFeedState.lastUpdated=new Date().toLocaleString();
   saveHomeFeedCache();
   if(view==='home')renderHomeFeeds();
 }
-function asciiSignalBackdrop(cols,rows){
+function asciiSignalBackdrop(cols,rows,phase){
   const w=Math.max(120,cols||120);
   const h=Math.max(34,rows||34);
+  const p=Number(phase||0);
   const g=Array.from({length:h},()=>Array.from({length:w},()=> ' '));
+  const put=(x,y,ch)=>{
+    if(x>=0 && x<w && y>=0 && y<h)g[y][x]=ch;
+  };
   const place=(x,y,text)=>{
     if(y<0||y>=h)return;
-    [...String(text||'')].forEach((ch,i)=>{
-      const xx=x+i;
-      if(xx>=0&&xx<w)g[y][xx]=ch;
-    });
+    [...String(text||'')].forEach((ch,i)=>put(x+i,y,ch));
   };
-  for(let y=1;y<h;y+=4){
-    for(let x=(y%8===1?2:8);x<w-2;x+=9){
-      g[y][x]='.';
-      if(x+1<w)g[y][x+1]=':';
-      if(x+2<w)g[y][x+2]='.';
+  for(let y=2;y<h-2;y+=5){
+    for(let x=(y%10===2?3:10);x<w-3;x+=11){
+      const dot=((x+y+p)%3===0)?'o':'.';
+      put(x,y,dot);
     }
   }
-  const rails=[
-    '  +-----------+      +-------------+      +-------------+      +-----------+  ',
-    '  | evidence  | ---- | publishing  | ---- | ai for sci  | ---- | commons   |  ',
-    '  +-----------+      +-------------+      +-------------+      +-----------+  ',
-    '         \\\\                 //   \\\\                 //   \\\\                 // ',
-    '          \\\\               //     \\\\               //     \\\\               //  ',
-    '           +-------------+        +-------------+        +-------------+      ',
-    '           |  open data  | ------ | peer review | ------ | governance  |      ',
-    '           +-------------+        +-------------+        +-------------+      '
+  const bands=Math.max(4,Math.floor(h/7));
+  for(let b=0;b<bands;b++){
+    const amp=1+(b%3);
+    const baseY=5+b*5;
+    for(let x=2;x<w-2;x++){
+      const yy=Math.round(baseY+Math.sin((x*0.085)+(b*0.8)+(p*0.45))*amp);
+      if(yy>1 && yy<h-2){
+        const glyph=((x+b+p)%9===0)?'o':'.';
+        put(x,yy,glyph);
+      }
+    }
+  }
+  const boxes=[
+    {x:Math.max(4,Math.floor(w*0.08)),y:Math.max(3,Math.floor(h*0.18)),w:20,h:4,label:'signal'},
+    {x:Math.max(28,Math.floor(w*0.42)),y:Math.max(8,Math.floor(h*0.42)),w:24,h:4,label:'articles'},
+    {x:Math.max(16,Math.floor(w*0.72)),y:Math.max(5,Math.floor(h*0.22)),w:18,h:4,label:'nodes'}
   ];
-  const mid=Math.max(2,Math.floor(h*0.34));
-  rails.forEach((line,i)=>place(Math.max(2,Math.floor((w-line.length)/2)),mid+i,line));
-  const tags=[
-    '[ desci ]','[ science publishing ]','[ open access ]','[ research integrity ]',
-    '[ ai for science ]','[ metascience ]','[ reproducibility ]'
-  ];
-  tags.forEach((tag,i)=>{
-    const y=Math.max(2,h-10+(i%4));
-    const x=4+((i*17)%Math.max(20,w-20));
-    place(x,y,tag);
+  boxes.forEach(box=>{
+    const x0=Math.min(w-box.w-2,box.x);
+    const y0=Math.min(h-box.h-2,box.y);
+    for(let x=x0+1;x<x0+box.w-1;x++){put(x,y0,'-');put(x,y0+box.h-1,'-')}
+    for(let y=y0+1;y<y0+box.h-1;y++){put(x0,y,'|');put(x0+box.w-1,y,'|')}
+    put(x0,y0,'+');put(x0+box.w-1,y0,'+');put(x0,y0+box.h-1,'+');put(x0+box.w-1,y0+box.h-1,'+');
+    place(x0+2,y0+2,box.label);
   });
-  place(4,2,'desci map // signal board');
-  place(Math.max(4,w-34),h-3,'news | ecosystem | social');
+  place(4,2,'desci map // live surface');
+  place(Math.max(4,w-30),h-3,'social / articles feed');
   return g.map(row=>row.join('')).join('\n');
+}
+function renderHomeHeroChips(){
+  const rows=nextUpcomingOpportunities(3);
+  const chips=rows.map(op=>`<span class="home-chip">${escapeHtml(opportunityDateText(op).replace(/,.*$/,''))} | ${escapeHtml(op.name)}</span>`);
+  chips.push('<span class="home-chip">live node blogs + x + reddit + google news</span>');
+  return chips.join('');
+}
+function opportunityStatusLabel(status){
+  return ({
+    announced:'Announced',
+    opening_soon:'Opening soon',
+    rolling:'Rolling',
+    last_cycle:'Last cycle'
+  })[status]||'Announced';
+}
+function opportunityDateValue(op){
+  const raw=String((op&&op.deadline)||'').trim();
+  if(!raw)return null;
+  const ms=Date.parse(raw);
+  return Number.isFinite(ms)?ms:null;
+}
+function opportunityIsUpcoming(op){
+  const ms=opportunityDateValue(op);
+  if(ms===null)return false;
+  return ms>=Date.now();
+}
+function opportunityDateText(op){
+  return cleanMojibakeString(op&&op.deadlineLabel||'Rolling');
+}
+function opportunityMatch(op){
+  const q=String(grantState.query||'').trim().toLowerCase();
+  if(q){
+    const hay=[op.name,op.track,op.niche,op.eligibility,op.why,op.mapContext,(op.tags||[]).join(' '),(op.region||[]).join(' ')]
+      .filter(Boolean).join(' ').toLowerCase();
+    if(!hay.includes(q))return false;
+  }
+  if(grantState.track!=='all' && op.track!==grantState.track)return false;
+  if(grantState.region!=='all' && !(op.region||[]).includes(grantState.region))return false;
+  if(grantState.status!=='all' && op.status!==grantState.status)return false;
+  if(grantState.tag!=='all' && !(op.tags||[]).includes(grantState.tag))return false;
+  return true;
+}
+function opportunitySortValue(op,key){
+  if(key==='name')return String(op.name||'').toLowerCase();
+  if(key==='track')return String(op.track||'').toLowerCase();
+  if(key==='region')return String((op.region&&op.region[0])||'').toLowerCase();
+  if(key==='amount'){
+    const v=op.amountSort;
+    return v===null||v===undefined?-1:Number(v);
+  }
+  if(key==='scale'){
+    const v=op.scaleSort;
+    return v===null||v===undefined?-1:Number(v);
+  }
+  const ms=opportunityDateValue(op);
+  return ms===null?Number.POSITIVE_INFINITY:ms;
+}
+function compareOpportunities(a,b){
+  const key=grantState.sortKey||'deadline';
+  const dir=(grantState.sortDir==='desc'?-1:1);
+  const av=opportunitySortValue(a,key);
+  const bv=opportunitySortValue(b,key);
+  if(av===bv)return String(a.name||'').localeCompare(String(b.name||''));
+  if(typeof av==='string' || typeof bv==='string')return String(av).localeCompare(String(bv))*dir;
+  return ((av>bv)?1:-1)*dir;
+}
+function visibleOpportunities(){
+  return OPPORTUNITIES.filter(opportunityMatch).sort(compareOpportunities);
+}
+function ensureGrantSelection(rows){
+  const selected=rows.find(op=>op.id===grantState.selected);
+  if(selected)return selected;
+  const fallback=rows.find(op=>opportunityIsUpcoming(op))||rows[0]||null;
+  grantState.selected=fallback?fallback.id:'';
+  return fallback;
+}
+function setGrantQuery(v){
+  grantState.query=v||'';
+  render();
+  requestAnimationFrame(()=>{
+    const input=document.querySelector('.grants-search');
+    if(input){
+      input.focus();
+      const len=input.value.length;
+      input.setSelectionRange(len,len);
+    }
+  });
+}
+function setGrantTrack(v){grantState.track=v||'all';render()}
+function setGrantRegion(v){grantState.region=v||'all';render()}
+function setGrantStatus(v){grantState.status=v||'all';render()}
+function setGrantTag(v){grantState.tag=v||'all';render()}
+function setGrantSort(key,dir){
+  if(!key)return;
+  if(dir){
+    grantState.sortKey=key;
+    grantState.sortDir=dir;
+  }else if(grantState.sortKey===key){
+    grantState.sortDir=(grantState.sortDir==='asc'?'desc':'asc');
+  }else{
+    grantState.sortKey=key;
+    grantState.sortDir=(key==='amount'||key==='scale'?'desc':'asc');
+  }
+  render();
+}
+function selectGrant(id){
+  grantState.selected=id;
+  if(view==='grants'){
+    document.querySelectorAll('.grants-table tbody tr').forEach(tr=>tr.classList.remove('sel'));
+    const row=[...document.querySelectorAll('.grants-table tbody tr')].find(tr=>(tr.getAttribute('onclick')||'').includes(`'${id}'`));
+    if(row)row.classList.add('sel');
+    renderGrantDetail(el('grantsDetail'),OPPORTUNITIES.find(op=>op.id===id)||null);
+  }
+}
+function grantRegions(){
+  return [...new Set(OPPORTUNITIES.flatMap(op=>op.region||[]))].sort((a,b)=>a.localeCompare(b));
+}
+function grantTracks(){
+  return [...new Set(OPPORTUNITIES.map(op=>op.track).filter(Boolean))].sort((a,b)=>a.localeCompare(b));
+}
+function grantTags(){
+  return [...new Set(OPPORTUNITIES.flatMap(op=>op.tags||[]))].sort((a,b)=>a.localeCompare(b)).slice(0,30);
+}
+function nextUpcomingOpportunities(limit){
+  return OPPORTUNITIES.filter(op=>['announced','opening_soon'].includes(op.status) && opportunityIsUpcoming(op))
+    .sort((a,b)=>(opportunityDateValue(a)||0)-(opportunityDateValue(b)||0))
+    .slice(0,limit||4);
+}
+function openGrantOpportunity(id){
+  grantState.selected=id;
+  setView('grants');
+}
+function renderHomeDeadlines(){
+  const host=el('homeDeadlines');
+  if(!host)return;
+  const rows=nextUpcomingOpportunities(4);
+  if(!rows.length){
+    host.innerHTML='<div class="deadline-head"><div class="k">Upcoming Deadlines</div><div class="v">No verified upcoming 2026 deadlines in the tracker yet.</div></div>';
+    return;
+  }
+  host.innerHTML=`
+    <div class="deadline-head">
+      <div class="k">Upcoming Deadlines</div>
+      <div class="v">Closest verified 2026 calls across DeSci, startup, fellowship, and nonprofit tracks.</div>
+    </div>
+    <div class="deadline-list">
+      ${rows.map(op=>`
+        <article class="deadline-card" onclick="openGrantOpportunity('${op.id}')">
+          <div class="deadline-date">${escapeHtml(opportunityDateText(op))}</div>
+          <div class="deadline-name">${escapeHtml(op.name)}</div>
+          <div class="deadline-meta">${escapeHtml(op.track)} | ${escapeHtml((op.region||[]).slice(0,2).join(' / ')||'Global')}</div>
+        </article>
+      `).join('')}
+    </div>
+  `;
+}
+function renderGrantDetail(host,op){
+  if(!host)return;
+  if(!op){
+    host.innerHTML='<div class="grant-empty">No opportunities match the current filters.</div>';
+    return;
+  }
+  host.innerHTML=`
+    <div class="grant-detail-name">${escapeHtml(op.name)}</div>
+    <div class="grant-detail-meta">
+      <span class="grant-status ${escapeHtml(op.status)}">${escapeHtml(opportunityStatusLabel(op.status))}</span>
+      <span class="grant-track">${escapeHtml(op.track)}</span>
+      <span class="tag-chip">${escapeHtml((op.region||[]).join(' / '))}</span>
+    </div>
+    <div class="grant-detail-blurb">${escapeHtml(op.niche)}</div>
+    <div class="grant-section">
+      <h3>Key Info</h3>
+      <div class="grant-kv">
+        <div class="score-cell"><span class="k">Date</span><span class="v">${escapeHtml(opportunityDateText(op))}</span></div>
+        <div class="score-cell"><span class="k">Support</span><span class="v">${escapeHtml(op.amountText||'Varies')}</span></div>
+        <div class="score-cell"><span class="k">Scale / Slots</span><span class="v">${escapeHtml(op.scaleText||'Varies')}</span></div>
+        <div class="score-cell"><span class="k">Regions</span><span class="v">${escapeHtml((op.region||[]).join(' / '))}</span></div>
+      </div>
+    </div>
+    <div class="grant-section">
+      <h3>Why It Fits</h3>
+      <p>${escapeHtml(op.why||'')}</p>
+    </div>
+    <div class="grant-section">
+      <h3>Eligibility</h3>
+      <p>${escapeHtml(op.eligibility||'')}</p>
+    </div>
+    <div class="grant-section">
+      <h3>Map Context</h3>
+      <p>${escapeHtml(op.mapContext||'No direct graph link recorded yet.')}</p>
+    </div>
+    <div class="grant-section">
+      <h3>Sources</h3>
+      <div class="grant-sources">
+        ${(op.sources||[]).map(src=>`
+          <a class="grant-source" href="${escapeHtml(src.url)}" target="_blank" rel="noreferrer">
+            <strong>${escapeHtml(src.label||'Source')}</strong>
+            <span>${escapeHtml(src.note||src.url||'')}</span>
+          </a>
+        `).join('')}
+      </div>
+    </div>
+    <div class="grant-section">
+      <h3>Tags</h3>
+      <div class="tag-row">${(op.tags||[]).map(tag=>`<span class="tag-chip">${escapeHtml(tag)}</span>`).join('')}</div>
+    </div>
+  `;
+}
+function renderGrants(){
+  const m=el('main');
+  const rows=visibleOpportunities();
+  const selected=ensureGrantSelection(rows);
+  const wrap=document.createElement('div');
+  wrap.className='grants-wrap';
+  wrap.innerHTML=`
+    <aside class="grants-pane grants-filters">
+      <div class="grants-title">Opportunity Filters</div>
+      <input class="sb-search grants-search" placeholder="Search niche, region, or program..." value="${escapeHtml(grantState.query)}" oninput="setGrantQuery(this.value)">
+      <div class="filter-group">
+        <div class="sb-label">Sort</div>
+        <select class="finput grant-select" onchange="setGrantSort(this.value, this.value==='amount' || this.value==='scale' ? 'desc' : 'asc')">
+          <option value="deadline" ${grantState.sortKey==='deadline'?'selected':''}>Date</option>
+          <option value="amount" ${grantState.sortKey==='amount'?'selected':''}>Funding</option>
+          <option value="scale" ${grantState.sortKey==='scale'?'selected':''}>Scale / Slots</option>
+          <option value="name" ${grantState.sortKey==='name'?'selected':''}>Name</option>
+          <option value="region" ${grantState.sortKey==='region'?'selected':''}>Region</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <div class="sb-label">Track</div>
+        <div class="grants-pills">
+          <button class="pill ${grantState.track==='all'?'on':''}" onclick="setGrantTrack('all')">All</button>
+          ${grantTracks().map(track=>`<button class="pill ${grantState.track===track?'on':''}" onclick="setGrantTrack('${escapeHtml(track)}')">${escapeHtml(track)}</button>`).join('')}
+        </div>
+      </div>
+      <div class="filter-group">
+        <div class="sb-label">Region</div>
+        <div class="grants-pills">
+          <button class="pill ${grantState.region==='all'?'on':''}" onclick="setGrantRegion('all')">All</button>
+          ${grantRegions().map(region=>`<button class="pill ${grantState.region===region?'on':''}" onclick="setGrantRegion('${escapeHtml(region)}')">${escapeHtml(region)}</button>`).join('')}
+        </div>
+      </div>
+      <div class="filter-group">
+        <div class="sb-label">Status</div>
+        <div class="grants-pills">
+          <button class="pill ${grantState.status==='all'?'on':''}" onclick="setGrantStatus('all')">All</button>
+          ${['announced','opening_soon','rolling','last_cycle'].map(status=>`<button class="pill ${grantState.status===status?'on':''}" onclick="setGrantStatus('${status}')">${escapeHtml(opportunityStatusLabel(status))}</button>`).join('')}
+        </div>
+      </div>
+      <div class="filter-group">
+        <div class="sb-label">Tags</div>
+        <div class="grants-pills">
+          <button class="pill ${grantState.tag==='all'?'on':''}" onclick="setGrantTag('all')">All</button>
+          ${grantTags().map(tag=>`<button class="pill ${grantState.tag===tag?'on':''}" onclick="setGrantTag('${escapeHtml(tag)}')">${escapeHtml(tag)}</button>`).join('')}
+        </div>
+      </div>
+    </aside>
+    <section class="grants-pane grants-table-pane">
+      <div class="grants-hero">
+        <div>
+          <h2>Opportunities / Grant Tracker</h2>
+          <p>Verified 2026 calls first, then rolling programs and last-cycle references where 2026 pages are not posted yet. Use this as a living application queue, not a generic startup list.</p>
+        </div>
+        <div class="grants-summary">
+          <span class="tag-chip">${rows.length} visible</span>
+          <span class="tag-chip">${nextUpcomingOpportunities(6).length} upcoming</span>
+          <span class="tag-chip">sort: ${escapeHtml(grantState.sortKey)} ${escapeHtml(grantState.sortDir)}</span>
+        </div>
+      </div>
+      <div class="grants-table-head">
+        <div class="grants-title" style="margin:0">Tracked Calls</div>
+        <div class="grants-table-note">Amounts are mixed currencies and shown as reported by the source.</div>
+      </div>
+      <div class="grants-table-wrap">
+        <table class="grants-table">
+          <thead>
+            <tr>
+              <th onclick="setGrantSort('name')">Name</th>
+              <th onclick="setGrantSort('track')">Track</th>
+              <th onclick="setGrantSort('deadline')">Date</th>
+              <th onclick="setGrantSort('region')">Region</th>
+              <th onclick="setGrantSort('amount')">Funding</th>
+              <th onclick="setGrantSort('scale')">Scale / Slots</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${rows.map(op=>`
+              <tr class="${grantState.selected===op.id?'sel':''}" onclick="selectGrant('${op.id}')">
+                <td>
+                  <div class="grant-name">${escapeHtml(op.name)}</div>
+                  <div class="grant-sub">${escapeHtml(op.niche)}</div>
+                </td>
+                <td>
+                  <div class="grant-track">${escapeHtml(op.track)}</div>
+                  <div class="grant-sub"><span class="grant-status ${escapeHtml(op.status)}">${escapeHtml(opportunityStatusLabel(op.status))}</span></div>
+                </td>
+                <td>${escapeHtml(opportunityDateText(op))}</td>
+                <td>${escapeHtml((op.region||[]).join(' / '))}</td>
+                <td>${escapeHtml(op.amountText||'Varies')}</td>
+                <td>${escapeHtml(op.scaleText||'Varies')}</td>
+              </tr>
+            `).join('') || '<tr><td colspan="6"><div class="grant-empty">No opportunities match the current filters.</div></td></tr>'}
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <aside class="grants-pane grants-detail" id="grantsDetail"></aside>
+  `;
+  m.appendChild(wrap);
+  renderGrantDetail(el('grantsDetail'),selected);
+  sanitizeVisibleText(wrap);
 }
 function renderHome(){
   const m=el('main');
@@ -2958,47 +4268,49 @@ function renderHome(){
   wrap.className='home-wrap';
   wrap.innerHTML=`
     <pre class="ascii-map" id="asciiMap"></pre>
-    <div class="home-stage">
-      <div class="home-status">
-        <div class="k">Live Monitoring Surface</div>
-        <div class="v" id="homeLastUpdated">Last update: pending</div>
+    <div class="home-overlay-top">
+      <section class="home-hero">
+        <div class="home-kicker">daily motivation console</div>
+        <div class="home-title">DeSci\nMap</div>
+        <div class="home-sub">Keep the landscape visible while you build: one live stream for node updates, X or Reddit signal, and real articles on decentralized science, publishing, open science, and science x AI.</div>
+        <div class="home-chip-row">${renderHomeHeroChips()}</div>
+        <div class="home-hero-meta" id="homeLastUpdated">Last update: pending</div>
+      </section>
+      <section class="home-feed-panel unified">
+        <div class="ticker-head">Social / Articles</div>
+        <div class="ticker-main" id="homeLeadAll">Loading live feed...</div>
+        <div class="ticker-meta" id="homeMetaAll"></div>
+        <div class="feed-list" id="homeFeedAll"></div>
+      </section>
+    </div>
+    <div class="home-overlay-bottom">
+      <div class="home-bottom-left">
+        <section class="home-journal" id="homeLastJournal"></section>
       </div>
-      <div class="home-grid">
-        <section class="home-stream">
-          <div class="stream-head">General Briefing</div>
-          <div class="stream-lead" id="homeLeadGeneral">Loading feed...</div>
-          <div class="stream-meta" id="homeMetaGeneral"></div>
-          <div class="stream-list" id="homeFeedGeneral"></div>
-        </section>
-        <section class="home-stream">
-          <div class="stream-head">Ecosystem Watch</div>
-          <div class="stream-lead" id="homeLeadEcosystem">Loading feed...</div>
-          <div class="stream-meta" id="homeMetaEcosystem"></div>
-          <div class="stream-list" id="homeFeedEcosystem"></div>
-        </section>
-        <section class="home-stream">
-          <div class="stream-head">Social Pulse</div>
-          <div class="stream-lead" id="homeLeadSocial">Loading feed...</div>
-          <div class="stream-meta" id="homeMetaSocial"></div>
-          <div class="stream-list" id="homeFeedSocial"></div>
-        </section>
-      </div>
+      <section class="home-kanban" id="homeKanban"></section>
     </div>
   `;
   m.appendChild(wrap);
+  let phase=0;
   const draw=()=>{
     const p=el('asciiMap');
     if(!p)return;
     const cols=Math.floor((p.clientWidth||m.clientWidth)/7.2);
     const rows=Math.floor((p.clientHeight||m.clientHeight)/12.2);
-    p.textContent=asciiSignalBackdrop(cols,rows);
+    p.textContent=asciiSignalBackdrop(cols,rows,phase);
   };
   draw();
   requestAnimationFrame(draw);
+  homeAsciiTimer=setInterval(()=>{
+    phase=(phase+1)%24;
+    draw();
+  },12000);
+  renderHomeLastJournal();
+  renderHomeKanban();
   renderHomeFeeds();
   const shouldForceFetch=!homeFeedState.items.length || (Date.now()-homeFeedLastFetchMs)>(7*60*1000);
   refreshHomeFeeds(shouldForceFetch);
-  homeRefreshTimer=setInterval(()=>refreshHomeFeeds(true),15*60*1000);
+  homeRefreshTimer=setInterval(()=>refreshHomeFeeds(true),12*60*1000);
   sanitizeVisibleText(wrap);
 }
 
