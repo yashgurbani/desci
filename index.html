@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -124,6 +124,22 @@ select.finput{appearance:none;cursor:pointer}
 .rel-item{display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid var(--border);font-size:.82rem}
 .rel-badge{font-size:.6rem;font-weight:600;padding:2px 8px;border-radius:10px;white-space:nowrap}
 .stack-chip{font-family:var(--mono);font-size:.6rem;font-weight:600;padding:3px 8px;border-radius:4px;display:inline-block}
+.detail-actions{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
+.detail-link-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:8px 12px;border-radius:999px;border:1px solid var(--border);background:var(--card);color:var(--link);font-size:.74rem;font-weight:600}
+.detail-link-btn:hover{border-color:var(--gold);color:var(--link-h)}
+.detail-grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.detail-section-note{font-size:.8rem;color:var(--text-2);line-height:1.5}
+.detail-empty-note{font-size:.8rem;color:var(--text-3);line-height:1.5;padding:10px 12px;border:1px dashed var(--border);border-radius:var(--radius-sm);background:rgba(255,255,255,.01)}
+.detail-inline-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.detail-micro{font-size:.74rem;color:var(--text-3);line-height:1.5;margin-top:6px}
+.detail-statline{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:.8rem;color:var(--text-2);line-height:1.45}
+.detail-box-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px}
+.detail-legacy-list{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.detail-legacy-chip{font-size:.68rem;padding:4px 8px;border-radius:999px;background:var(--raised);border:1px solid var(--border);color:var(--text-2)}
+.detail-danger{display:flex;justify-content:flex-end;margin-top:12px}
+.detail-doc-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.detail-links-row{display:flex;flex-wrap:wrap;gap:8px}
+.detail-spacer-sm{height:2px}
 /* Overlap box */
 .overlap-box{background:var(--card);padding:14px;border-radius:var(--radius);margin-bottom:16px}
 .overlap-bar-wrap{display:flex;align-items:center;gap:10px;margin:6px 0}
@@ -1339,7 +1355,7 @@ let literatureSignalCache={terms:[],fetchedAt:0};
 const SC={infrastructure:'var(--sage)',application:'var(--rose)',governance:'var(--teal)'};
 const SBG={infrastructure:'rgba(110,200,155,.12)',application:'rgba(232,126,154,.12)',governance:'rgba(90,184,179,.12)'};
 const SS={0:'.',1:'o',2:'O',3:'@'};
-const SL=['S1\nData','S2\nLedger','S3\nAI','S4\nProof','S5\nGov'];
+const SL=['S1\nProv','S2\nValue','S3\nAgent','S4\nVerif','S5\nGov Plan'];
 const EC={'funder':'var(--edge-funder)','ecosystem':'var(--edge-ecosystem)','partner':'var(--edge-partner)','overlap':'var(--edge-overlap)'};
 const RB={funder:{b:'rgba(92,184,122,.2)',c:'var(--sage)'},ecosystem:{b:'rgba(92,170,184,.2)',c:'var(--teal)'},partner:{b:'rgba(155,126,212,.2)',c:'#9b7ed4'},overlap:{b:'rgba(227,190,77,.22)',c:'var(--gold)'}};
 const OV_LABELS={"publishing":"Publishing","peer-review":"Peer Review","reputation":"Reputation","dao-gov":"DAO Gov","compute":"Compute","ai-ml":"AI/ML","citation-graph":"Citations","scicomm":"SciComm","citizen-sci":"Citizen Sci","smart-contracts":"Contracts/NFT","data-sovereignty":"Data Sov","ip-nft":"IP-NFT"};
@@ -2067,6 +2083,7 @@ async function init(){
   D.journal=D.journal||[];
   D.litProgress=D.litProgress||{};
   D.homeWatch=D.homeWatch||{videos:[],playlists:[]};
+  D.signalCollectorUrl=D.signalCollectorUrl||'signals_feed.json';
   if(!Array.isArray(D.homeWatch.videos))D.homeWatch.videos=[];
   if(!Array.isArray(D.homeWatch.playlists))D.homeWatch.playlists=[];
   D.kanban=D.kanban||seedKanbanFromData();
@@ -4737,48 +4754,66 @@ async function refreshHomeFeeds(force){
     ...peopleNames.slice(0,4).map(n=>`site:x.com "${n}"`)
   ].slice(0,16);
   const redditQueries=[...new Set([...socialKeywords,'decentralized science','open science','metascience','research integrity','researchhub','openreview','openalex',...keyRedditQueries(6),...peopleNames.slice(0,3)])].slice(0,10);
-  const [collectorSections,curatedNews,generalNews,nodeNews,peopleNews,nodeBlogs,nodeGit,twitterHandles,twitterKeywords,redditSubs,redditSearch,xNews]=await Promise.all([
-    fetchSignalCollectorFeed(),
-    fetchCuratedNews(4),
-    fetchGoogleNewsBatch(generalQueries,8,3),
-    fetchGoogleNewsBatch(nodeQueries,12,2),
-    fetchGoogleNewsBatch(peopleQueries,6,2),
-    fetchNodeWebsiteUpdates(10),
-    fetchNodeGitUpdates(10),
-    fetchTwitterHandleBatch(twHandles,8,2),
-    fetchTwitterKeywordBatch(socialKeywords,8,2),
-    fetchRedditSubredditBatch(HOME_SOCIAL_SUBREDDITS,5,2),
-    fetchRedditSearchBatch(redditQueries,8,2),
-    fetchGoogleNewsBatch(xNewsQueries,10,2)
-  ]);
-  const newsPool=curateLiveFeedPool([...(collectorSections.news||[]),...curatedNews,...generalNews,...nodeNews,...peopleNews]);
-  const blogPool=curateLiveFeedPool([...(collectorSections.blogs||[]),...nodeBlogs]);
-  const xPool=curateLiveFeedPool([...(collectorSections.x||[]),...twitterHandles,...twitterKeywords,...xNews]);
-  const redditPool=curateLiveFeedPool([...(collectorSections.reddit||[]),...redditSubs,...redditSearch]);
-  const githubPool=curateLiveFeedPool([...(collectorSections.github||[]),...nodeGit]);
-  const combinedPool=curateLiveFeedPool([
-    ...(collectorSections.all||[]),
-    ...newsPool,
-    ...blogPool,
-    ...xPool,
-    ...redditPool,
-    ...githubPool
-  ]);
+  const collectorSections=await fetchSignalCollectorFeed();
+  const collectorReady=['all','news','blogs','x','reddit','github'].some(key=>Array.isArray(collectorSections[key]) && collectorSections[key].length);
+  let newsPool=[],blogPool=[],xPool=[],redditPool=[],githubPool=[],rankedPool=[];
+  if(collectorReady){
+    // Prefer the local collector whenever it has data; it is intentionally more curated than
+    // the browser-side fallbacks and keeps noisy web/social search results out of the dashboard.
+    newsPool=curateLiveFeedPool([...(collectorSections.news||[])]);
+    blogPool=curateLiveFeedPool([...(collectorSections.blogs||[])]);
+    xPool=curateLiveFeedPool([...(collectorSections.x||[])]);
+    redditPool=curateLiveFeedPool([...(collectorSections.reddit||[])]);
+    githubPool=curateLiveFeedPool([...(collectorSections.github||[])]);
+    rankedPool=curateLiveFeedPool([
+      ...(collectorSections.all||[]),
+      ...newsPool,
+      ...blogPool,
+      ...xPool,
+      ...redditPool,
+      ...githubPool
+    ]);
+  }else{
+    const [curatedNews,generalNews,nodeNews,peopleNews,nodeBlogs,nodeGit,twitterHandles,twitterKeywords,redditSubs,redditSearch,xNews]=await Promise.all([
+      fetchCuratedNews(4),
+      fetchGoogleNewsBatch(generalQueries,8,3),
+      fetchGoogleNewsBatch(nodeQueries,12,2),
+      fetchGoogleNewsBatch(peopleQueries,6,2),
+      fetchNodeWebsiteUpdates(10),
+      fetchNodeGitUpdates(10),
+      fetchTwitterHandleBatch(twHandles,8,2),
+      fetchTwitterKeywordBatch(socialKeywords,8,2),
+      fetchRedditSubredditBatch(HOME_SOCIAL_SUBREDDITS,5,2),
+      fetchRedditSearchBatch(redditQueries,8,2),
+      fetchGoogleNewsBatch(xNewsQueries,10,2)
+    ]);
+    newsPool=curateLiveFeedPool([...curatedNews,...generalNews,...nodeNews,...peopleNews]);
+    blogPool=curateLiveFeedPool([...nodeBlogs]);
+    xPool=curateLiveFeedPool([...twitterHandles,...twitterKeywords,...xNews]);
+    redditPool=curateLiveFeedPool([...redditSubs,...redditSearch]);
+    githubPool=curateLiveFeedPool([...nodeGit]);
+    const combinedPool=curateLiveFeedPool([
+      ...newsPool,
+      ...blogPool,
+      ...xPool,
+      ...redditPool,
+      ...githubPool
+    ]);
+    rankedPool=combinedPool.length?combinedPool:[
+      ...curatedNews,
+      ...generalNews,
+      ...nodeNews,
+      ...peopleNews,
+      ...nodeBlogs,
+      ...nodeGit,
+      ...twitterHandles,
+      ...twitterKeywords,
+      ...redditSubs,
+      ...redditSearch,
+      ...xNews
+    ];
+  }
   const intents=combinedHomeFeedIntents();
-  const rankedPool=combinedPool.length?combinedPool:[
-    ...(collectorSections.all||[]),
-    ...curatedNews,
-    ...generalNews,
-    ...nodeNews,
-    ...peopleNews,
-    ...nodeBlogs,
-    ...nodeGit,
-    ...twitterHandles,
-    ...twitterKeywords,
-    ...redditSubs,
-    ...redditSearch,
-    ...xNews
-  ];
   const decorate=(items)=>items.map(it=>({
     ...it,
     match:bestMatchingIntent(it,intents),
@@ -4786,8 +4821,11 @@ async function refreshHomeFeeds(force){
     topic:cleanMojibakeString(it.topic||'desci'),
     summary:plainFeedText(it.summary||'',220)
   }));
+  const allItems=collectorReady
+    ? (collectorSections.all||[]).slice(0,28)
+    : rankFeedItems(rankedPool,intents,28,{minHits:1});
   const sections={
-    all:decorate(rankFeedItems(rankedPool,intents,28,{minHits:1})),
+    all:decorate(allItems),
     news:decorate(rankFeedItems(newsPool,intents,18,{minHits:1})),
     blogs:decorate(rankFeedItems(blogPool,intents,18,{minHits:1})),
     x:decorate(rankFeedItems(xPool,intents,18,{minHits:1})),

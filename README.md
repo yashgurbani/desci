@@ -1,99 +1,172 @@
-# DeSci Landscape Mapper
+﻿# DeSci Map - README
 
-Interactive competitive intelligence tool mapping 78+ Decentralized Science projects, 33 key people, and 65 relationships.
+This map is a **research dataset + visualization** of DeSci, open-science, publishing, infrastructure, and adjacent entities. It mixes **factual fields** (legal form, funding disclosures, revenue model, sources) with **computed internal metrics** (commerciality, open-science fit, overlap with us).
 
-## Files
+## Most important rule
+Treat these as the source of truth, in this order:
+1. **`provenance.fieldSources`**
+2. **`provenance.materialClaims`**
+3. **`financialSummaryStrict`**
+4. Computed scores
 
-- `index.html` — App (single-file, loads data.json via fetch)
-- `data.json` — All landscape data (78 nodes, 65 edges, 33 people)
+If a score and a source-backed fact seem to conflict, **the source-backed fact wins**.
 
-## Features
+## Core node fields
+- **`name`, `id`**: Display name and internal identifier.
+- **`desc`**: One-line description.
+- **`type`**: High-level category, such as Publishing, BioDAO, Compute, HealthTech, Infrastructure.
+- **`stack`**: Main layer in the map:
+  - `infrastructure`
+  - `application`
+  - `governance`
+- **`stage`**: Rough maturity label, such as Early, Beta, Live.
+- **`tags`**: General topic tags.
+- **`overlapTags`**: Where the node overlaps with our platform thesis, such as publishing, peer-review, reputation, compute, AI, smart contracts, data sovereignty.
 
-- **Force-directed graph** with color-coded edges by relationship type
-- **Directory table** sortable by overlap %, credibility score, tech stack
-- **People cards + People Graph** showing person-organization network
-- **Literature tab** pulling from Zotero group 6075364
-- **Overlap filter** — filter by technology overlap with your platform (12 categories)
-- **Score sliders** — filter by Overlap %, Decentralization %, Credibility Score, Profit Score
-- **Credibility Score** — auto-calculated from website, GitHub, stage, funding signals
-- **Profit Score** — financial model assessment (0 = commons, 100 = profit-extraction)
-- **Legal Structure filter** — filter by nonprofit, foundation, DAO, hybrid, for-profit
-- **Tech term glossary** — hover DePIN, ZK, SBT, DAO etc. for definitions
-- **Edge hover tooltips** — see connection type and label on hover
-- **Collapsible legend** — click to minimize
-- **GitHub sync** — auto-detects GitHub Pages URL, debounced auto-push
+## Strategic/internal metrics
+These are **computed or analyst-assigned internal metrics**, not factual claims.
 
-## Collaboration
+- **`overlapScore` (0-100)**: How much the node overlaps with our own product direction.
+  - Higher = more direct strategic overlap, competition, adjacency, or partnership relevance.
+- **`decen` (0-100)**: How decentralized the system appears in practice.
+  - Higher = more distributed governance, infrastructure, access, or control.
+- **`credScore` (0-100)**: Relevance to scientific credibility, trust, verification, peer review, or reputation.
+  - Higher = more relevant to credibility infrastructure and trust workflows.
 
-First visit prompts for a GitHub Personal Access Token (fine-grained, Contents read+write). Edits auto-push after 2 seconds.
+## Architecture / stack-depth metrics
+The `s1`-`s5` fields describe how strongly a node participates in each layer of the stack.
 
-## Data Schema
+Scale:
+- `0` = absent
+- `1` = light
+- `2` = moderate
+- `3` = strong
 
-Each node has:
-- `overlapScore` (0-100): How much this project overlaps with your platform
-- `credScore` (0-100): Auto-calculated credibility from web presence, GitHub, funding, stage
-- `decen` (0-100): Decentralization level
-- `decentNote`: Qualitative explanation of decentralization
-- `compNote`: Strategic comparison to your platform
-- `techStack`: Core technologies
-- `overlapTags`: Technology categories for overlap filtering
+Dimensions:
+- **`s1`** = Data
+- **`s2`** = Ledger / on-chain layer
+- **`s3`** = AI / analysis / automation
+- **`s4`** = Proof / verification / cryptographic assurance
+- **`s5`** = Governance
 
-### Financial Model Fields (NEW)
+## Financial / business-model fields
+These aim to describe **how the entity is financed, who pays, and what incentives shape it**.
 
-Each node now includes financial model data:
+### Short summary fields
+- **`funding`**: Legacy shorthand.
+- **`fundingRaised`**: Human-readable funding summary. May refer to VC, grants, treasury, ICO proceeds, or disclosed capital. Always verify against sources.
+- **`finModel`**: Short business-model summary.
+- **`finNote`**: Analyst note on incentives and structure.
+- **`legalStructure`**: Short label such as nonprofit, foundation, DAO, hybrid, for-profit.
+- **`apc`**: Whether the model includes article processing charges.
 
-- `profitScore` (0-100): Financial model orientation score
-- `finModel`: Description of revenue sources and funding model
-- `legalStructure`: Legal entity type (nonprofit, foundation, DAO, hybrid, for-profit)
-- `apc`: Whether the organization charges Article Processing Charges
-- `finNote`: Detailed notes on values, incentives, and UNESCO alignment
-- `fundingRaised`: Total funding raised (if known)
+### Structured financial fields (`financials`)
+- **`revenueSources`**: Main revenue/capital sources, such as grants, memberships, services, subscriptions, APCs, token sales, treasury, licensing.
+- **`researcherPays`**: Whether researchers/authors/users pay directly.
+- **`institutionPays`**: Whether institutions pay directly.
+- **`apcAmountText`**: Human-readable APC or publication-fee note, if relevant.
+- **`annualRevenueText`**: Human-readable revenue note, when disclosed.
+- **`treasuryText`**: Human-readable treasury note, when relevant.
+- **`tokenRole`**: What the token does, if any, such as governance, incentives, access, speculation, protocol fees.
+- **`jurisdiction`**: Country / legal jurisdiction.
+- **`legalForm`**: More specific legal wrapper, such as 501(c)(3), GmbH, OU, SAS, foundation, association.
+- **`openScienceAlignment`**: Short qualitative read of business-model fit with open science.
+- **`openScienceAlignmentNote`**: Why that alignment call was made.
+- **`financialSummary`**: General summary.
+- **`financialSummaryStrict`**: **Conservative source-backed summary**. Prefer this one when presenting.
 
-### Profit Score Rubric
+## Computed score fields
+These are **internal composite metrics**, not direct facts.
 
-| Score | Profile | Description |
-|-------|---------|-------------|
-| 0-15 | **Pure Commons** | Nonprofit, no token, no APC, grant-funded. Strong UNESCO Open Science alignment. |
-| 15-35 | **Mission-Aligned** | DAO treasury, utility token with minimal speculation, grant + earned revenue mix. |
-| 35-55 | **Hybrid** | Token with some speculation, services revenue, mixed incentives. |
-| 55-75 | **Market-Driven** | VC-backed, token speculation, "public goods" rhetoric but commercial structure. |
-| 75-100 | **Profit-Extraction** | Series A+, APC model, shareholder value maximization. |
+- **`profitScore` (0-100)**: Commerciality / profit-orientation score.
+  - `0` = commons/nonprofit orientation
+  - `100` = strongly commercial, investor-, fee-, or market-driven
+- **`openScienceScore` (0-100)**: Open-science business-model compatibility.
+  - `0` = weak fit with open-science-compatible models
+  - `100` = strong fit with community/open-infrastructure norms
+- **`financials.openScienceCompatibilityBand`**: Broad band, such as weak, mixed, moderate, strong.
+- **`financials.openScienceCompatibilityReasons`**: Main drivers behind the open-science score.
+- **`financials.scoreBreakdown`**: Components of `profitScore`:
+  - `structure`
+  - `revenue`
+  - `capital`
+  - `total`
+- **`financials.scoreAudit`**: Audit trail for the latest score pass.
 
-### Scoring Methodology
+## Provenance / confidence fields
+These fields tell you **how safe it is to rely on the entry**.
 
-The score weights multiple factors:
+- **`provenance.confidence`**:
+  - `high` = key legal/financial facts verified from official or filing-grade sources
+  - `medium` = core model verified, but some details remain partial
+  - `low` = identity/product exists, but financial/legal specifics are unresolved
+- **`provenance.attributionStatus`**:
+  - `strict-source-clean`
+  - `source-backed-with-gaps`
+  - `low-confidence`
+- **`provenance.sources`**: Source URLs.
+- **`provenance.fieldSources`**: Best source mapping for specific fields. This is the most useful provenance object.
+- **`provenance.materialClaims`**: Short source-backed claims worth presenting.
+- **`provenance.fieldStatus`**: Per-field reliability / disclosure status.
+- **`provenance.hasUnverifiedClaims`**: Whether unresolved claims remain.
+- **`provenance.lastVerified`**: Last audit date.
+- **`sourceAsterisk`**: Visual warning flag for unresolved or weaker attribution.
 
-1. **Funding Source** (primary weight)
-   - Grants/donations → lower score
-   - Token sales → medium score  
-   - VC rounds → higher score
+## How to present this safely
+- Use **`financialSummaryStrict`** and **`provenance.materialClaims`** in slides or public summaries.
+- Use **`profitScore`** and **`openScienceScore`** as **interpretive lenses**, not as factual claims.
+- Do not compare treasury, VC raised, grant income, AUM, and revenue as if they were the same thing.
+- If a node is `source-backed-with-gaps` or `low-confidence`, present it as **partial** rather than settled.
 
-2. **Revenue Model**
-   - No fees for researchers → lower score
-   - Platform fees/services → medium score
-   - APCs or subscription paywalls → higher score
+## How to read the Values view
+- **X-axis** = `profitScore`
+- **Y-axis** = `openScienceScore`
+- **Point size** = `overlapScore`
+- **Outline strength** = `decen`
+- **Ring / confidence styling** = provenance confidence
+- **Color** = stack layer
 
-3. **Legal Structure**
-   - 501(c)(3) nonprofit → lower score
-   - Foundation/DAO → medium score
-   - For-profit C-Corp/GmbH → higher score
+This lets you quickly see:
+- commons-aligned infrastructure
+- hybrid/open-core models
+- commercially pressured models
+- nodes that matter most to us strategically
 
-4. **Incentive Alignment**
-   - Funds researchers, doesn't charge them → lower score
-   - Mixed (funds some, charges others) → medium score
-   - Extracts value from researcher labor → higher score
+## Final note
+This dataset is designed for **strategic clarity**, not for legal due diligence. It is strongest where public disclosures are good, and intentionally conservative where they are not.
 
-### UNESCO Open Science Alignment
+## Signals collector
+The dashboard now supports a local collector for targeted signals.
 
-Organizations scoring 0-30 generally align with UNESCO's Open Science Recommendation principles:
-- No financial barriers to participation
-- Open access to outputs
-- Community governance
-- Transparent operations
-- Non-extractive business models
+Files:
+- `signals_config.json`: hand-curated keywords, X handles, subreddits, and RSS/blog feeds
+- `signals_collector.py`: local collector that writes `signals_feed.json`
+- `signals_feed.json`: output consumed by the `Signals` tab and Home widget
 
-Organizations scoring 70+ typically conflict with these principles through:
-- APCs that exclude under-resourced researchers
-- Token speculation creating misaligned incentives
-- VC pressure for profit extraction
-- Proprietary lock-in strategies
+Basic usage:
+```bash
+python signals_collector.py
+```
+
+What it pulls:
+- Google News RSS for targeted DeSci / metascience / publishing queries
+- Reddit RSS for selected subreddits and keyword searches
+- best-effort X signals via public Nitter / RSSHub adapters plus X-focused news fallbacks
+- blog / RSS feeds from curated sources and top map entities
+- GitHub Atom feeds for tracked technical projects
+
+Hand-curation flow:
+- add or remove `general_keywords`, `x_keywords`, and `reddit_keywords`
+- add specific `x_handles`
+- add specific `reddit_subreddits`
+- add official blog feeds to `rss_feeds`
+- use `news_keywords` for the tighter news/web watchlist that should drive daily monitoring
+- keep `strict_curated_mode` on so only the sources you trust dominate the dashboard
+- leave `include_map_nodes` on if you want the collector to auto-follow key orgs from the map
+- leave `include_map_people` off unless you intentionally want named individuals auto-added
+- keep `enable_x_keyword_search` and `enable_reddit_search` off unless you want broader discovery with more noise
+- add junk phrases to `blocked_terms` when something keeps slipping through
+- add low-signal domains to `blocked_domains` when you want to permanently suppress them
+
+The frontend defaults to `signals_feed.json` when present via `signalCollectorUrl`.
+

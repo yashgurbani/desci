@@ -1,0 +1,158 @@
+{
+  "output_path": "signals_feed.json",
+  "timeout_seconds": 10,
+  "max_items_per_feed": 6,
+  "strict_curated_mode": true,
+  "include_map_entities": true,
+  "include_map_nodes": true,
+  "include_map_people": false,
+  "map_top_nodes": 12,
+  "map_top_people": 8,
+  "blocked_domains": [
+    "bitget.com"
+  ],
+  "blocked_terms": [
+    "bitget",
+    "please help us identify this woman",
+    "40 essential websites every phd student should know"
+  ],
+  "general_keywords": [
+    "desci",
+    "decentralized science",
+    "decentralized peer review",
+    "open science",
+    "open science infrastructure",
+    "scientific publishing",
+    "peer review reform",
+    "metascience",
+    "science of science",
+    "research integrity",
+    "reproducibility crisis",
+    "scientific credibility",
+    "ai for science",
+    "ai and science",
+    "decentralized epistemology",
+    "self-sovereign scientific agents",
+    "epistemic acceleration",
+    "cryptographically auditable trust",
+    "blockchain for science"
+  ],
+  "news_keywords": [
+    "desci",
+    "\"decentralized science\"",
+    "\"decentralized peer review\"",
+    "\"open science infrastructure\"",
+    "\"peer review reform\"",
+    "\"research integrity\"",
+    "\"metascience\"",
+    "\"ai for science\"",
+    "\"scientific publishing\"",
+    "\"open access publishing\""
+  ],
+  "x_keywords": [
+    "desci",
+    "decentralized science",
+    "decentralized peer review",
+    "metascience",
+    "research integrity",
+    "scientific publishing",
+    "peer review reform",
+    "ai for science"
+  ],
+  "enable_x_keyword_search": false,
+  "reddit_keywords": [
+    "decentralized science",
+    "decentralized peer review",
+    "metascience",
+    "open science",
+    "research integrity",
+    "peer review",
+    "scientific publishing",
+    "ai for science"
+  ],
+  "enable_reddit_search": false,
+  "reddit_subreddits": [
+    "deSci",
+    "Open_Science"
+  ],
+  "x_handles": [
+    "DeSciLabs",
+    "ResearchHub",
+    "OpenAlex_org",
+    "OpenReviewNet",
+    "PREreview",
+    "opencitations",
+    "lab_dao",
+    "molecule_dao",
+    "opsaboratory",
+    "talentDAO_",
+    "paulkhls",
+    "nrindtorff",
+    "saborsky",
+    "eperlste"
+  ],
+  "rss_feeds": [
+    {
+      "url": "https://retractionwatch.com/feed/",
+      "source": "Retraction Watch",
+      "topic": "research integrity",
+      "section": "news"
+    },
+    {
+      "url": "https://scholarlykitchen.sspnet.org/feed/",
+      "source": "The Scholarly Kitchen",
+      "topic": "science publishing",
+      "section": "news"
+    },
+    {
+      "url": "https://elifesciences.org/rss/current.xml",
+      "source": "eLife",
+      "topic": "open science",
+      "section": "news"
+    },
+    {
+      "url": "https://blog.openalex.org/feed/",
+      "source": "OpenAlex blog",
+      "topic": "open science infrastructure",
+      "section": "blogs"
+    },
+    {
+      "url": "https://www.crossref.org/blog/feed/",
+      "source": "Crossref blog",
+      "topic": "research infrastructure",
+      "section": "blogs"
+    },
+    {
+      "url": "https://content.prereview.org/feed.xml",
+      "source": "PREreview blog",
+      "topic": "preprint review",
+      "section": "blogs"
+    }
+  ],
+  "manual_entity_queries": [
+    "Ants-Review",
+    "Bianca Trovò",
+    "DeSci Labs",
+    "ResearchHub",
+    "OpenReview",
+    "OpenAlex",
+    "PREreview",
+    "Orvium",
+    "Peer Community In",
+    "Review Commons",
+    "LabDAO",
+    "Molecule",
+    "VitaDAO",
+    "F1000Research"
+  ],
+  "nitter_instances": [
+    "https://nitter.poast.org",
+    "https://nitter.moomoo.me",
+    "https://nitter.net"
+  ],
+  "rsshub_instances": [
+    "https://rsshub.app",
+    "https://rsshub.aturret.com",
+    "https://rss.detools.dev"
+  ]
+}

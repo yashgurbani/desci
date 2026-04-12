@@ -1,0 +1,1387 @@
+{
+  "generatedAt": "2026-04-12T22:50:33.910630+00:00",
+  "configPath": "signals_config.json",
+  "registry": {
+    "keywords": [
+      "desci",
+      "decentralized science",
+      "decentralized peer review",
+      "open science",
+      "open science infrastructure",
+      "scientific publishing",
+      "peer review reform",
+      "metascience",
+      "science of science",
+      "research integrity",
+      "reproducibility crisis",
+      "scientific credibility",
+      "ai for science",
+      "ai and science",
+      "decentralized epistemology",
+      "self-sovereign scientific agents",
+      "epistemic acceleration",
+      "cryptographically auditable trust",
+      "blockchain for science"
+    ],
+    "news_keywords": [
+      "desci",
+      "\"decentralized science\"",
+      "\"decentralized peer review\"",
+      "\"open science infrastructure\"",
+      "\"peer review reform\"",
+      "\"research integrity\"",
+      "\"metascience\"",
+      "\"ai for science\"",
+      "\"scientific publishing\"",
+      "\"open access publishing\""
+    ],
+    "x_keywords": [
+      "desci",
+      "decentralized science",
+      "decentralized peer review",
+      "metascience",
+      "research integrity",
+      "scientific publishing",
+      "peer review reform",
+      "ai for science"
+    ],
+    "reddit_keywords": [
+      "decentralized science",
+      "decentralized peer review",
+      "metascience",
+      "open science",
+      "research integrity",
+      "peer review",
+      "scientific publishing",
+      "ai for science"
+    ],
+    "x_handles": [
+      "CrossrefOrg",
+      "DeSciLabs",
+      "OpenAlex_org",
+      "OpenReviewNet",
+      "PREreview",
+      "PaboratoryIn",
+      "ResearchHub",
+      "eperlste",
+      "lab_dao",
+      "molecule_dao",
+      "nrindtorff",
+      "opencitations",
+      "opsaboratory",
+      "paulkhls",
+      "saborsky",
+      "talentDAO_"
+    ],
+    "reddit_subreddits": [
+      "deSci",
+      "Open_Science"
+    ],
+    "rss_feeds": [
+      {
+        "url": "https://retractionwatch.com/feed/",
+        "source": "Retraction Watch",
+        "topic": "research integrity",
+        "section": "news"
+      },
+      {
+        "url": "https://scholarlykitchen.sspnet.org/feed/",
+        "source": "The Scholarly Kitchen",
+        "topic": "science publishing",
+        "section": "news"
+      },
+      {
+        "url": "https://elifesciences.org/rss/current.xml",
+        "source": "eLife",
+        "topic": "open science",
+        "section": "news"
+      },
+      {
+        "url": "https://blog.openalex.org/feed/",
+        "source": "OpenAlex blog",
+        "topic": "open science infrastructure",
+        "section": "blogs"
+      },
+      {
+        "url": "https://www.crossref.org/blog/feed/",
+        "source": "Crossref blog",
+        "topic": "research infrastructure",
+        "section": "blogs"
+      },
+      {
+        "url": "https://content.prereview.org/feed.xml",
+        "source": "PREreview blog",
+        "topic": "preprint review",
+        "section": "blogs"
+      }
+    ],
+    "entity_queries": [
+      "Ants-Review",
+      "Bianca Trovò",
+      "Crossref",
+      "Crossref / DOI",
+      "DOI",
+      "DeSci Labs",
+      "DeSci Labs / Nodes",
+      "F1000Research",
+      "Holonym",
+      "LabDAO",
+      "Molecule",
+      "Nodes",
+      "OpScientia",
+      "OpScientia / Holonym",
+      "OpenAlex",
+      "OpenCitations",
+      "OpenReview",
+      "Orvium",
+      "PREreview",
+      "Peer Community In",
+      "Peer Community In (PCI)",
+      "ResearchHub",
+      "Review Commons",
+      "TalentDAO",
+      "VitaDAO"
+    ],
+    "site_urls": [
+      "https://blog.openalex.org/a-new-way-to-support-openalex-become-a-member",
+      "https://blog.openalex.org/arcadia-2021-grant",
+      "https://blog.openalex.org/openalex-2024-in-review",
+      "https://blog.openalex.org/ourresearch-receives-7-5m-grant-from-arcadia-to-establish-openalex-a-milestone-development-for-open-science",
+      "https://content.prereview.org/prereview-welcomes-funding",
+      "https://crossref.org",
+      "https://desci.com",
+      "https://fil.org/blog/case-study-opsci-how-an-open-science-commons-project-built-on-web3-infrastructure-empowers-community-discovery",
+      "https://gitcoin.co/program",
+      "https://help.openalex.org/hc/en-us/articles/24397762024087-Pricing",
+      "https://kt.cern/startups/orvium",
+      "https://labdao.xyz",
+      "https://openalex.org",
+      "https://opencitations.net",
+      "https://openreview.net",
+      "https://openreview.net/about",
+      "https://openreview.net/donate",
+      "https://opsci.io",
+      "https://orvium.io",
+      "https://peercommunityin.org",
+      "https://peercommunityin.org/endorse-and-financially-support-pci",
+      "https://peercommunityin.org/pci-finances",
+      "https://prereview.org",
+      "https://prereview.org/en-us/funding",
+      "https://researchhub.com",
+      "https://scoss.org/how-it-works/current-funding-calls",
+      "https://startupsmagazine.co.uk/article-desci-labs-raises-65m-transform-scientific-publishing",
+      "https://talentdao.io",
+      "https://talentdao.substack.com",
+      "https://www.coindesk.com/business/2023/05/23/labdao-raises-36m-to-decentralize-drug-discovery",
+      "https://www.crossref.org/fees",
+      "https://www.crossref.org/operations-and-sustainability/annual-report",
+      "https://www.crossref.org/operations-and-sustainability/financials",
+      "https://www.desci.com",
+      "https://www.desci.com/about",
+      "https://www.opsci.io",
+      "https://www.researchhub.com",
+      "https://www.researchhub.com/paper/819400/the-researchcoin-whitepaper",
+      "https://www.researchhub.com/post/979/researchhub-raises-5m-to-help-scientists-monetize-their-research"
+    ],
+    "site_domains": [
+      "blog.openalex.org",
+      "coindesk.com",
+      "content.prereview.org",
+      "crossref.org",
+      "desci.com",
+      "fil.org",
+      "gitcoin.co",
+      "help.openalex.org",
+      "kt.cern",
+      "labdao.xyz",
+      "openalex.org",
+      "opencitations.net",
+      "openreview.net",
+      "opsci.io",
+      "orvium.io",
+      "peercommunityin.org",
+      "prereview.org",
+      "researchhub.com",
+      "scoss.org",
+      "startupsmagazine.co.uk",
+      "talentdao.io",
+      "talentdao.substack.com"
+    ],
+    "github_repos": [
+      "ourresearch/openalex-guts"
+    ],
+    "key_nodes": [
+      "DeSci Labs / Nodes",
+      "ResearchHub",
+      "Orvium",
+      "OpenAlex",
+      "OpenReview",
+      "PREreview",
+      "OpenCitations",
+      "OpScientia / Holonym",
+      "Crossref / DOI",
+      "LabDAO",
+      "TalentDAO",
+      "Peer Community In (PCI)"
+    ],
+    "key_people": []
+  },
+  "sections": {
+    "news": [
+      {
+        "title": "Oncotarget editorial highlights advances in scientific integrity and publishing transparency - EurekAlert!",
+        "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9KREdHTVFWQWtGQW9abmN2Q1A4QmNhXzdxZFdEeWxwcXM2RW5VanlCZW1CYlhSY0hYbzRiLUlLazBJQzRabzFCbDVMXzdGOXYyd05MeExReTQzUlVD?oc=5",
+        "pubDate": "2026-04-10T17:22:01+00:00",
+        "source": "Google News",
+        "topic": "\"scientific publishing\"",
+        "summary": "Oncotarget editorial highlights advances in scientific integrity and publishing transparency EurekAlert!",
+        "section": "news"
+      },
+      {
+        "title": "AI meets science at speed: Inside Australia’s AI for science hackathon - Monash Lens",
+        "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOX1NSX3lDVU1DUXJLeE9sNXdfUXRUOENaT1BWa0ZlOTNhSzA2Rm5uVmFqa2N3bWNERmFBR2dFT0hQeE1RMG4walZNb2NqOUJEMVd2MjRSelh2SlFQVGRVdDBwSjRPV3UwQUVRYjVnRUtWMkdQMHdqRHRaeWxSYzJ4ZDFpczNhWWhxRkRfQTVQQUlycExadWZ3aw?oc=5",
+        "pubDate": "2026-04-10T02:12:48+00:00",
+        "source": "Google News",
+        "topic": "\"ai for science\"",
+        "summary": "AI meets science at speed: Inside Australia’s AI for science hackathon Monash Lens",
+        "section": "news"
+      },
+      {
+        "title": "Taylor & Francis summit highlights need for stronger research integrity practices in India - Taylor & Francis Newsroom",
+        "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNRFFvbENIVUdjWGV1SUhOUkxTbTFEUllvUzM3NmFGbWdMZEU5NUtrRk42S0xraEJTYzFfRVMtSWJobnZyUE1TNGxIVFkwQl9YYlJHLUdQNHRxMWJJckd2eWJWR3hSSE5rUzMxWHp3RGpZWHZXYkY4TXVYam5nOFdNSDlETUg4NXpNdXBmSDFrQmJwY1lic1IxakdqY2h5SUt5bGF5QW8wTnFuOVV0R3JJMWM0WFRucGl0ZG5uQjlMLXRFWEsxOW96bWFQU0Z2ZEZQcFE?oc=5",
+        "pubDate": "2026-04-10T00:00:00+00:00",
+        "source": "Google News",
+        "topic": "\"research integrity\"",
+        "summary": "Taylor & Francis summit highlights need for stronger research integrity practices in India Taylor & Francis Newsroom",
+        "section": "news"
+      },
+      {
+        "title": "Opinion: Scientific Journals Need Dedicated Fact-Checkers - Undark Magazine",
+        "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1KMWdrX3hJcmhKLWdtS0ZfOHE0dlJzbkNnZmpwLWtaRFZMY2p6bk9mdGt3Q2FqaUhEWWxsaW1hU1hWbDR4Sm1qLXkzT3pkeWdRVXBDbllFMS1mdGFjZ1NQdW80V1VZYnpjazU3eA?oc=5",
+        "pubDate": "2026-04-09T16:01:31+00:00",
+        "source": "Google News",
+        "topic": "\"scientific publishing\"",
+        "summary": "Opinion: Scientific Journals Need Dedicated Fact-Checkers Undark Magazine",
+        "section": "news"
+      },
+      {
+        "title": "Hedayah Center and Emirates Scholar Center review latest approaches to scientific publishing and research - ZAWYA",
+        "link": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxOOGtweHR1R0dfU0RDd1BOdnFrd3lGMjdlREVfdDRsOENvSUIyWnJKRHhPVkd0SGdDT1l4ZG16dU5RaXlPQTlWV1FEYkVpNmVWR241aDN5eFVQZUZPQjRfT25uR0FCdnlLRVhfQkhFbTBYQmxQYUg1Z3RzNWYtcUItTzU5bGJISV9wdVIxUElvMTVzSHpKeWt0MTdKSTRLVkdNYmxpZS1aSmpjdmluc1BIckZUTkh5WFhKaE1sMDFzNzg0QTl2Nm9xYmVnLTFuQm94R0d3MUo0TmtieFhJbFFGejI2M0RRNmdKN2lfZE0tcjNuc0pEOXNHLXJGako?oc=5",
+        "pubDate": "2026-04-09T08:19:02+00:00",
+        "source": "Google News",
+        "topic": "\"scientific publishing\"",
+        "summary": "Hedayah Center and Emirates Scholar Center review latest approaches to scientific publishing and research ZAWYA",
+        "section": "news"
+      },
+      {
+        "title": "Meet CAS Newton: Agentic AI built for science | Corporate - EQS News",
+        "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPamU4WTJpYWItRXhubk1HNTJBUnpiR25jNG9lQlo1d1NBbTVPU1dRWllaSXBURjgxcHhiVzladEk4NGVtRWFfMWtIZEhlV3I3SDVzeWo4UTRDdjdZRW9VSU9LN3NNcXVZOHRqR08tUXlfVWFXVE9GamtjQU13Y2pxWVZCTnhBSHBoWUFfazlBamFhOHBPM0NfUTFRYjN4ZTYtMzhqRHFqVi1hd2tOUFZ3MTVDS2xOZURyeFlvcEx5MjFYZw?oc=5",
+        "pubDate": "2026-04-08T12:07:19+00:00",
+        "source": "Google News",
+        "topic": "\"ai for science\"",
+        "summary": "Meet CAS Newton: Agentic AI built for science | Corporate EQS News",
+        "section": "news"
+      },
+      {
+        "title": "Genesis Mission Now Accepting Applications to Fund AI-for-Science Projects - HPCwire",
+        "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNaHNCMVU5TGg5U2VlZnBnSjQzWEZyemVwLUdRR2ZmZ1VVbDU5YWFmd2x6c0VMOGpmbEhZZ2ctOVd6OHNUczVMWXg3YTNyVVoyOUVOaGt1WTlpRmRNS0JVNUh5elVWcW44bHA1UkF0bUJjMzhabTBCTkdWZHdXdGJVR01oemtDbWdNX1lLSVZiNFZDQ21IdWVnX25tVjVxbW56X09tMjVqOGtlVTJhX3ZR?oc=5",
+        "pubDate": "2026-04-06T22:48:54+00:00",
+        "source": "Google News",
+        "topic": "\"ai for science\"",
+        "summary": "Genesis Mission Now Accepting Applications to Fund AI-for-Science Projects HPCwire",
+        "section": "news"
+      },
+      {
+        "title": "Trump administration proposes massive budget cuts to science - Scientific American",
+        "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPSWUyREtod3VzVWk2MGI2SWlDaVJfSUtPOFdBR0xMcUpGbGVHUGxYdXpTQ3hBSzZxS0Z1d0tKd3dWbTROcjI4LVk3clBwZDFnNElRcTBGdW8tdDRlem04UzlablpNdHFFOUxNTzdJbHk1cGtHV0xsRjRqWmw0eEt6bFVpdWQyeG5ydF8tMHdqUVNweldZRERrNG1VM2kzUXdZUHNGVUtrWQ?oc=5",
+        "pubDate": "2026-04-03T07:00:00+00:00",
+        "source": "Google News",
+        "topic": "\"scientific publishing\"",
+        "summary": "Trump administration proposes massive budget cuts to science Scientific American",
+        "section": "news"
+      },
+      {
+        "title": "Why journals are put on hold in Web of Science Core Collection – and how research integrity guides the process - Clarivate",
+        "link": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxQb1NMNjhTZkxhWE5WNEJ4QWhkVWt1UDNyQmJLSDRJWUpBZklrR21veHo1dXdrdGlwQ1VYTTZHc3AteVVrQ0JLblpFLVR3bmx2cmtHZDRjWENiLTdQSXZocWczdUgwMTNUZmNTN19EZ3BPRUIyNkdPbUd0ckFjWUZxMWh3ZkptWXJDeVk2MGVkdVBEN3FfOF9ZczZSZGQyYmE0TEdMODdhVXpTRU1zMXFITlhBYTdwY2pNaG9JMnRmMmJlYnNQYkU4anJDMzQta2FTY3cyYk90Y05TQkNTdVlZVFViQU5MUEtVdFo0cg?oc=5",
+        "pubDate": "2026-04-02T07:00:00+00:00",
+        "source": "Google News",
+        "topic": "\"research integrity\"",
+        "summary": "Why journals are put on hold in Web of Science Core Collection – and how research integrity guides the process Clarivate",
+        "section": "news"
+      },
+      {
+        "title": "AI turns electron microscopy into materials insights in minutes - Cornell Chronicle",
+        "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNUm9fZUZZT2dmai0wRV9EZUlhRXdQbVczS0hvRjhGaXpXckFEME1BNGs4cXRpVU4xUFJ3aW54NmNjT0JoR21INHJ6LTlUX25qNUZ0emNyRi03WTIyN2Jvb3hnSnRFeE96dTdNMjd0ZEtVcE4yVmI4VHlCaVB5T2pDSkh1WVZ1UC1YdGJpQnBTRWdwNFJqZlpwbUR0a1g?oc=5",
+        "pubDate": "2026-04-01T18:11:41+00:00",
+        "source": "Google News",
+        "topic": "\"ai for science\"",
+        "summary": "AI turns electron microscopy into materials insights in minutes Cornell Chronicle",
+        "section": "news"
+      },
+      {
+        "title": "Weekend reads: LLMs ‘are not the problem’; Cash for peer review ‘doesn’t work,’ project finds; ‘Many Flaws, Few Retractions’ in vaping literature",
+        "link": "https://retractionwatch.com/2026/04/11/weekend-reads-llms-are-not-the-problem-cash-for-peer-review-doesnt-work-project-finds-many-flaws-few-retractions-in-vaping-literatur/",
+        "pubDate": "2026-04-11T10:00:00+00:00",
+        "source": "Retraction Watch",
+        "topic": "research integrity",
+        "summary": "If your week flew by — we know ours did — catch up here with what you might have missed. The week at Retraction Watch featured: In case you missed the news, the Hijacked Journal Checker now has more than 400 entries....",
+        "section": "news"
+      },
+      {
+        "title": "Canadian panel seeks to add more teeth to research oversight",
+        "link": "https://retractionwatch.com/2026/04/10/canadian-panel-seeks-to-add-more-teeth-to-research-oversight/",
+        "pubDate": "2026-04-10T15:45:16+00:00",
+        "source": "Retraction Watch",
+        "topic": "research integrity",
+        "summary": "A Canadian panel is proposing several changes to its guidelines for responsible conduct of research, including a provision that effectively removes any statute of limitations on investigations into potential misconduc...",
+        "section": "news"
+      },
+      {
+        "title": "Could a national database of scientific misconduct rulings stop repeat offenders?",
+        "link": "https://retractionwatch.com/2026/04/09/could-a-national-database-of-scientific-misconduct-rulings-stop-repeat-offenders/",
+        "pubDate": "2026-04-09T18:00:00+00:00",
+        "source": "Retraction Watch",
+        "topic": "research integrity",
+        "summary": "In an editorial published today in Science, Michael Lauer and Mark Barnes call for greater transparency in investigations of scientific misconduct with an aim toward making sure prospective academic employers know of...",
+        "section": "news"
+      },
+      {
+        "title": "A journal named a sleuth in a correction. The sleuth says that was ‘ethical editorial malpractice’",
+        "link": "https://retractionwatch.com/2026/04/08/bmc-nephrology-journal-named-sleuth-correction-error/",
+        "pubDate": "2026-04-08T21:16:55+00:00",
+        "source": "Retraction Watch",
+        "topic": "research integrity",
+        "summary": "As the publishing community debates the merits of naming sleuths in retraction or correction notices, one journal did so without the sleuth’s permission — by publishing an email from the authors naming her as the corr...",
+        "section": "news"
+      },
+      {
+        "title": "This RNA Almost Self-Replicates, Which Could Explain Life's Origins - ScienceAlert",
+        "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPekFLWURzQjV4S1BFNE5aVGxDSmtLbmE2ekJKT19tN3E2bnl3QUdTd29zNnNObUYwVWVlUk5KTVhHVnpQR0NBUVNqN0E3NWFWRTdPZWRNNWFoTUdCVHMzWktPNDlFajlkMHRKUmw4WU52b25WRllEZXdyX00yNVJHWkJadWEwRVpla0RpZ29Jb2NfMzlraVVFWTZ3?oc=5",
+        "pubDate": "2026-04-12T12:04:32+00:00",
+        "source": "Google News",
+        "topic": "\"Molecule\"",
+        "summary": "This RNA Almost Self-Replicates, Which Could Explain Life's Origins ScienceAlert",
+        "section": "news"
+      },
+      {
+        "title": "Scientists Unveil Microscopy Breakthrough That Reveals “Invisible” Molecular States - SciTechDaily",
+        "link": "https://news.google.com/rss/articles/CBMiSkFVX3lxTE50aGJwVG5CZl9yU0VRcHBLWkpGdUhSZ1RPZktrZTJRamNpM3VhcERYZUNtVTB5VmMzRnhKb1N2TXdzMU5RWE1PVnN3?oc=5",
+        "pubDate": "2026-04-12T11:53:06+00:00",
+        "source": "Google News",
+        "topic": "\"Molecule\"",
+        "summary": "Scientists Unveil Microscopy Breakthrough That Reveals “Invisible” Molecular States SciTechDaily",
+        "section": "news"
+      },
+      {
+        "title": "A 67-year-old “crazy” theory about vitamin B1 has finally been proven - ScienceDaily",
+        "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBocnlRN0x1Vm1PUlNodWxYZ3ppUHRJa21MRlBMT3lkS0ZicS1OOF92TzRqLVlpQWpDcHFVN1l1dkJjQXN6a3pIbl82Y2ljTGVoSkhnN09IazNmU0prVXRwbUpvQ3VaSk5VZENfSkxOaw?oc=5",
+        "pubDate": "2026-04-11T12:35:15+00:00",
+        "source": "Google News",
+        "topic": "\"Molecule\"",
+        "summary": "A 67-year-old “crazy” theory about vitamin B1 has finally been proven ScienceDaily",
+        "section": "news"
+      },
+      {
+        "title": "Publisher changes citation, registration policies following Retraction Watch investigation",
+        "link": "https://retractionwatch.com/2026/04/07/wolters-kluwer-international-journal-surgery-changes-citation-registration-policies/",
+        "pubDate": "2026-04-07T12:12:17+00:00",
+        "source": "Retraction Watch",
+        "topic": "research integrity",
+        "summary": "The Dutch publisher Wolters Kluwer has scrapped some of its citation and study-registration requirements at a top-ranked surgery journal founded by the U.K. plastic surgeon Riaz Agha, Retraction Watch has learned. The...",
+        "section": "news"
+      },
+      {
+        "title": "Stefano Bertuzzi, CEO of ASM, Elected AAAS Fellow - American Society for Microbiology",
+        "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNVXVGZ2YzYjhVR3IwWG9aVUpvd3VXQS1Fd3FYN3l1QlBKbmtxQ0RzZ3ZUQkI3ZWsyTF8tUDhZdElPTDhfNloyNmQ1MkdGbVBoVFhSM2Vjbk45WU81STN1Q0UyVE5nTGhtNVlwMmRhNHFJN2lHODhQTlR5cUtfVWdpRlRQRzlKR28zTWMtLUQ2Y0tkX0F5cFE?oc=5",
+        "pubDate": "2026-03-26T07:00:00+00:00",
+        "source": "Google News",
+        "topic": "\"peer review reform\"",
+        "summary": "Stefano Bertuzzi, CEO of ASM, Elected AAAS Fellow American Society for Microbiology",
+        "section": "news"
+      },
+      {
+        "title": "Energy storage breakthrough traps sunlight in a molecule - New Atlas",
+        "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPcFlBclgyNDZmUGc3Rl9fbEw1dGVBV0U1R1RYUDVQaHBzclV0dVBfVGtIbkVnbVdTR2w4S3lITTZ6R1lqSEhGR1oza0JsdWJFMzBrTWs5TmZQQ3VPVlEzX0VQcUVSTV9zNlBEdjJkWlRfX3NGVWR0X19CeXFOR3N3Tg?oc=5",
+        "pubDate": "2026-04-11T05:10:10+00:00",
+        "source": "Google News",
+        "topic": "\"Molecule\"",
+        "summary": "Energy storage breakthrough traps sunlight in a molecule New Atlas",
+        "section": "news"
+      },
+      {
+        "title": "Bloodhound code sniffs out copied-and-pasted numerical data",
+        "link": "https://retractionwatch.com/2026/04/06/data-duplications-errors-open-repositories-markus-englund/",
+        "pubDate": "2026-04-06T12:00:00+00:00",
+        "source": "Retraction Watch",
+        "topic": "research integrity",
+        "summary": "Markus Englund, a software developer and sleuth based in the Netherlands, first hit paydirt with invasive plant species in China. After having scanned 12 other published scientific datasets with his novel detection so...",
+        "section": "news"
+      },
+      {
+        "title": "CERN to host flagship European open access publishing platform - Home | CERN",
+        "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNSGlGSTMtampZREROSl9hR25jOG95V1dISHdIb3FBdW1NSmpJUkVMZGthZXBHaFBUb3VDZWxTczhJaklYRFIwaWVjbTFDUWtMaGZkLXJLR2ZFODIzLWEyMVJNZUZJcFVhNk4tcmdhb1ozdVVBc0otUlNzYU1SVHZ6NG1OYUxCMDJia0RLX1VWOVB5NkpWdDM5MUJjcGJjZ29OblVhT3poQk0?oc=5",
+        "pubDate": "2026-03-25T07:00:00+00:00",
+        "source": "Google News",
+        "topic": "\"scientific publishing\"",
+        "summary": "CERN to host flagship European open access publishing platform Home | CERN",
+        "section": "news"
+      },
+      {
+        "title": "AI diffusion models tailor drug molecules to custom-fit protein targets, speeding drug development and evaluation - Phys.org",
+        "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE9yQWUzenFDVEdHY2JfT2t5M2tIMEdVMFVfaTV5d0lnX2x3TmhPUFctZ2wwNUgtZVkzc0JNalY3M1loN0EwQ1AxOVZ4S192VFFKLWZPb2RQVDZuNWZqQjQyZmd3cy0tU21NbWZnTkp3blI0bkdMbVVzOA?oc=5",
+        "pubDate": "2026-04-09T21:00:06+00:00",
+        "source": "Google News",
+        "topic": "\"Molecule\"",
+        "summary": "AI diffusion models tailor drug molecules to custom-fit protein targets, speeding drug development and evaluation Phys.org",
+        "section": "news"
+      },
+      {
+        "title": "'It’s going to be huge': The 'diabolical' molecule poised to become biotech's next gold rush - Fierce Biotech",
+        "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNdm1zNHY5YmoyZEtPRkR1WU5iMERvVEZWT0tCd2FMeFMzVTNPWUJXQkJvN0E3Zzk0WTJBS001SHZrWXk5dnFNOFk1dDhmYndYYXNEY0xXOHV5b2M1YUt6Ry1RR0JXZFJVZzVJNnJFdVg1OS02MjFETzlaV3d5OTNLd3J1ejFQWEJWYjNHZFVGb2JTZmpJcG9oNHZqVmZsS1FHZWlsbi1SLTBidTFmeUtCMWFwbw?oc=5",
+        "pubDate": "2026-04-09T12:00:00+00:00",
+        "source": "Google News",
+        "topic": "\"Molecule\"",
+        "summary": "'It’s going to be huge': The 'diabolical' molecule poised to become biotech's next gold rush Fierce Biotech",
+        "section": "news"
+      },
+      {
+        "title": "Spotify | Description, History, & Facts - Britannica",
+        "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5qUmE1cHJoeVlOSGREY05jOEhHS0pBcFBMV0p2SDg1NjdhSmRRbWdSeS11RDVJTWlfRkFEOU1lSlYzXy1xaXhKaUlwOXVKMXdJeUE?oc=5",
+        "pubDate": "2026-04-09T05:00:00+00:00",
+        "source": "Google News",
+        "topic": "desci",
+        "summary": "Spotify | Description, History, & Facts Britannica",
+        "section": "news"
+      },
+      {
+        "title": "Research integrity is locked into an arms race with agentic AI slop - The London School of Economics and Political Science",
+        "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNcVRRcFdjTWFRWWlVX3h2cy1PcjJ2dHluQUVaczlWQTJIdGpMZTR0dkk4TjhWNG5LeDZDeGdkLW5TWjZIalpLb2Nuc0xhOUF4TU9NX0lZc3oxc09qMlJsbVRqcy1meVZ4SC1rZ05pVDJ1aTIxZW12RTVoMW02Unl0MDdRVUE3X1dlbUNCWFBKTmJnVjc5ckduak1HREJLTzczSU1Wd29iWC1fZ0FOMmNIdG5OY2k0ZHFkNnRHN2lMcV9YYXI3?oc=5",
+        "pubDate": "2026-03-17T07:00:00+00:00",
+        "source": "Google News",
+        "topic": "\"research integrity\"",
+        "summary": "Research integrity is locked into an arms race with agentic AI slop The London School of Economics and Political Science",
+        "section": "news"
+      },
+      {
+        "title": "Recommitting to the Principles of Open Scholarly Infrastructure (POSI) - OpenAlex blog -",
+        "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQaEJ6Szl6ZThhZVNuVGE4WGdkYmd5a0ZOcWMwXzQ4Ukp2QWloQmtfVkk1WnU0SUNDc2owU056WGhNa0V5SU1UenEyX0JOY1VsT3Q0VUNXTHNuNzV0bHdQb0hXTEpNSGhxV2VzYl9Sd2JiZG42NGRNbmJnODJjODBFZXd1U2x0dkVyWFR4Tm1DcWpBdm93MU5GWWJ3SQ?oc=5",
+        "pubDate": "2026-03-30T17:07:55+00:00",
+        "source": "Google News",
+        "topic": "site:blog.openalex.org",
+        "summary": "Recommitting to the Principles of Open Scholarly Infrastructure (POSI) OpenAlex blog -",
+        "section": "news"
+      },
+      {
+        "title": "How AI use in scholarly publishing threatens research integrity, lessens trust, and invites misinformation - Bulletin of the Atomic Scientists",
+        "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxORGZJSjZjUjRGd0Z6VXVHV2JRem9SSk1zV19XTDQwWFpiWFhZajZOV3JMNHV2MVVxc05mdEs5WVJKby1aOXdWbkJWYXlzb0NWSTA2SmJJMXhvblpXZW90RE81YXZLZzd5WkItU211Zk10SEtVTzMwRlpFY0lFSUpVUVhqc21RUEhUc1lIczJvZnROUmNtaVh5TUZ4MlNnZjhuUDBhZGRxVl9vN1kxbXhTVS1UMW1kTmxSa1R6U1dXbmppV3JELXloQWZnYkRwa1laRk5NR2l3bGg5bWFRTXc?oc=5",
+        "pubDate": "2026-03-12T07:00:00+00:00",
+        "source": "Google News",
+        "topic": "\"research integrity\"",
+        "summary": "How AI use in scholarly publishing threatens research integrity, lessens trust, and invites misinformation Bulletin of the Atomic Scientists",
+        "section": "news"
+      },
+      {
+        "title": "Scientific sleuths come in from the cold - C&EN",
+        "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPaURYS0dwQ2tsbHlJUGhzYzA4MVRLVkpsYXVnb3ZKTjdKVVVLTWRXRXdhVXh3SUZYUURqbUR1X01lQ3k3M1NqWUQwRkpfZnFaQmY0MDRGZ0t3dnp5Z0hxdDFha0kzeFh1YW10cnRkbURlb2ZRdTdDS3RMUDU4VURMcE1OTDJLUTV1RWszeUFPZFhWTUJJM3NJ?oc=5",
+        "pubDate": "2026-03-11T07:00:00+00:00",
+        "source": "Google News",
+        "topic": "\"research integrity\"",
+        "summary": "Scientific sleuths come in from the cold C&EN",
+        "section": "news"
+      },
+      {
+        "title": "Description of a collaborative sperm whale birth and shifts in coda vocal styles during key events | Scientific Reports - Nature",
+        "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBMWTJ2RjNtN2xQN0lBWUVnM19sMFZCb18wSlEwNF9qNXpMOVlKY3g3NkJqQ2tFVTZraksybldqYk1nUnVjR0JmYzJzY2tOeDdjUVdKUHhvZ05YS3oycUpv?oc=5",
+        "pubDate": "2026-03-26T07:00:00+00:00",
+        "source": "Google News",
+        "topic": "desci",
+        "summary": "Description of a collaborative sperm whale birth and shifts in coda vocal styles during key events | Scientific Reports Nature",
+        "section": "news"
+      },
+      {
+        "title": "Accelerating science with AI and simulations - MIT News",
+        "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQazZiTUl4M0w3TGJ5YVpfOWpwc3pqQjlRUVZacWl4dGxidk9XajAzWmtYeFNrYjFQVG4ybGxfSmVWMnY1SXd5bWFraXRVZFh6cm9udlZfMDc4NzFtVmt0akNST055eGxJODd2OTlvZkxpX2NMWFFoeGtDSnJ3UFVwamlZbkJQQW5fcnNqMFluR2FEYlhwRlZPM2xB?oc=5",
+        "pubDate": "2026-02-12T08:00:00+00:00",
+        "source": "Google News",
+        "topic": "\"ai for science\"",
+        "summary": "Accelerating science with AI and simulations MIT News",
+        "section": "news"
+      },
+      {
+        "title": "Researcher to Reader 2026: structure, debate, and community - Research Information",
+        "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQTGg2VXBMQS1FTzdpdm1TNnU2Y3lFSDJNNXRZclVveDYwZ1pMVGk4UzN1czZnZzR5bHl5MjRGTzFDUk90RGlaSE11M0VncF9yeWlsdEk2bXh4UW95VnR5YlJtWUlZTzhCdFc0ajl5M3g4ZzdJNWZqWkh0ektBcHpfZUhuOGRNRDNKRDd2VUpKVkNUSjlBWmRlRFVGY242VXdf?oc=5",
+        "pubDate": "2026-01-26T08:00:00+00:00",
+        "source": "Google News",
+        "topic": "\"peer review reform\"",
+        "summary": "Researcher to Reader 2026: structure, debate, and community Research Information",
+        "section": "news"
+      },
+      {
+        "title": "We’re announcing the 12 recipients of our AI for Science fund - blog.google",
+        "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQem0xV3lJamxfVmlUc1dqcDFPU3VnRWtsa2VCdkM4c2tpbWpXWlY2UTRIV2hXZ0NGeTlHMHlSaXlVSzlodkxRSzk4T2t0RWc0bGhMcjZ6dDNYajRJNzNSMDhaWEhjekkwbExONGw2NU1ha0ZhVlRnZU81cThrYmFiaV82M0VUX3JSbHc5OVlHRDJJQklvbFJPR2JTYUZteHNIb0lWeXZOTQ?oc=5",
+        "pubDate": "2026-01-26T08:00:00+00:00",
+        "source": "Google News",
+        "topic": "\"ai for science\"",
+        "summary": "We’re announcing the 12 recipients of our AI for Science fund blog.google",
+        "section": "news"
+      },
+      {
+        "title": "Office of Research Integrity Releases 2024 Annual Report - Holland & Knight",
+        "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOUVFnc3JDSUZEaUY4UFV3MDBSVUJnLWFaNjBramFyN25MRENGMHRLQXlMcDVVNGpXd0xPcDlrX2pqWF95bHNkX0ZjTkFDWldjZk1ZaWxaQUFlbGRtN3Q2d0hlQXVIWTJfcFJWVnB5dlIxNUkzOElLNTVHdjJvWlQ1azBrUFEwZ3MyVlVCOGJYVWlTelIteElrcFROMG5PcDlnWDYxdkQxd0V3OUdUMEZJeA?oc=5",
+        "pubDate": "2026-01-13T08:00:00+00:00",
+        "source": "Google News",
+        "topic": "\"research integrity\"",
+        "summary": "Office of Research Integrity Releases 2024 Annual Report Holland & Knight",
+        "section": "news"
+      },
+      {
+        "title": "PREreview platform news, 13 February 2026 - PREreview",
+        "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1RSnozbFVDNkZ0c0VHZ3FYdjc3Um16QXE2eUltT0lRd0w0WGFBSDhQV1hDa3ZSc2cxRE9FUDVPSHFKVEpXU0hoNFlueTVsYU9tTHRBZWIwWnJJOUI1TEhOUTQ0UTRkUkI0ekszMFczay1YaXJKQS1WM3BHVQ?oc=5",
+        "pubDate": "2026-02-13T08:00:00+00:00",
+        "source": "Google News",
+        "topic": "site:content.prereview.org",
+        "summary": "PREreview platform news, 13 February 2026 PREreview",
+        "section": "news"
+      },
+      {
+        "title": "New year, new connections: PREreview February 2026 Newsletter - PREreview",
+        "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE14UXNPV3lVUDdyWDVic2EzN3RvZ29VWTl5Q3VjVUZoREhDSzFKclNoZC1uY2xSTGh4enE2WEZpQ3EwOW9iSU5TYXBNMFYzbHdHNDlrS3FORVVpSXVKeGhuejZJMHljYl9GVHRETUJ6a2NKbzA?oc=5",
+        "pubDate": "2026-02-05T08:00:00+00:00",
+        "source": "Google News",
+        "topic": "site:content.prereview.org",
+        "summary": "New year, new connections: PREreview February 2026 Newsletter PREreview",
+        "section": "news"
+      },
+      {
+        "title": "A dataset of scientific citations in U.S. patent Office Actions - Nature",
+        "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE00VHR5cV9Cb2RsUnVVYnkyYmtpQ21xVS1CcExLNnBEYlFFSVJfUEl1R1hZVFF0d3JGem5POHBhN2VmZGl4RWJFX1ZFNHFJaWpDbnk3UmlEM3dfUzNJLUI4?oc=5",
+        "pubDate": "2026-01-31T08:00:00+00:00",
+        "source": "Google News",
+        "topic": "\"OpenAlex\"",
+        "summary": "A dataset of scientific citations in U.S. patent Office Actions Nature",
+        "section": "news"
+      },
+      {
+        "title": "Funding metadata in OpenAlex - OpenAlex blog -",
+        "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBYbFBVRUFaeEJwbVlUR0FESkc2a0kzTTVybF9oMDRpeHlHYXVpZG4wajhvSm5HUWR1Wlg3YUU3RVFMakJIdWxGeE9TRzRvV3dzVXg3YU9SRDloVlF1dFdfNml2YnppQQ?oc=5",
+        "pubDate": "2026-01-26T08:00:00+00:00",
+        "source": "Google News",
+        "topic": "site:blog.openalex.org",
+        "summary": "Funding metadata in OpenAlex OpenAlex blog -",
+        "section": "news"
+      },
+      {
+        "title": "Great grant writing or great science, metascience returns, what’s in the contract? - Research Professional News",
+        "link": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxOTVJSZlhldTlicmFWTzRsZU93aVlQcjh6YzNuRGNxdHVOblpQbjVENVEzSXQ0Z2JZSlRBMHFsTktkVkFuTFhTN1hWYlJpa2FuQ3N6ZmpNMDE3bUp3dHY1RElaSmNHMnZrOUNPeC0xdUpTaVdTMHBkWXpIV0hWUjg1blFrdUwySmVQNVlfa0NkTjdpVU9maUpDWG1qeGJjNG8wMF9OckFmTDdIRlA2c2JhV1RIMWxRbl9xeDlYSFNNT3BVbXZZckpWVWVSQXRucTgyRlU1OVA1Z05icTFha3FTQlNobUxEeUpoZDJIR2VqVHE4M00w?oc=5",
+        "pubDate": "2026-01-23T08:00:00+00:00",
+        "source": "Google News",
+        "topic": "\"metascience\"",
+        "summary": "Great grant writing or great science, metascience returns, what’s in the contract? Research Professional News",
+        "section": "news"
+      },
+      {
+        "title": "OpenAlex and NORA Collaborate to connect publications to the OECD FORD Taxonomy - OpenAlex blog -",
+        "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOT1lDSHlDWWlKVmh3Sl9FaUNwVE82c3lINUxWdktIeUFIWGczR3ZQd1phc1ZGTkZxMXhFZzVMS2xrZGRuZmlTcHkwb3lSa3AzdWhDdTZ1NXhrQkU5Y0hVcUhUbUhKdEVldllvMmZMbnZpalpfbFZuLWx2VXBtdlhxZkhnTHFvUzgyUFMwZ3BUX0VNTXJHMzg5NENwTTYzdE9XSklvNnRmcDBpQQ?oc=5",
+        "pubDate": "2026-01-16T08:00:00+00:00",
+        "source": "Google News",
+        "topic": "site:blog.openalex.org",
+        "summary": "OpenAlex and NORA Collaborate to connect publications to the OECD FORD Taxonomy OpenAlex blog -",
+        "section": "news"
+      }
+    ],
+    "blogs": [
+      {
+        "title": "Recommitting to the Principles of Open Scholarly Infrastructure (POSI)",
+        "link": "https://blog.openalex.org/recommitting-to-the-principles-of-open-scholarly-infrastructure-posi/",
+        "pubDate": "2026-03-30T17:07:55+00:00",
+        "source": "OpenAlex blog",
+        "topic": "open science infrastructure",
+        "summary": "We’re excited to reconfirm our commitment to the Principles of Open Scholarly Infrastructure (POSI). Back in 2021, when we were still called OurResearch, we published a blog post assessing our fit to POSI and making a...",
+        "section": "blogs"
+      },
+      {
+        "title": "New Features and Usage-Based Pricing",
+        "link": "https://blog.openalex.org/openalex-api-new-features-and-usage-based-pricing/",
+        "pubDate": "2026-02-25T02:44:20+00:00",
+        "source": "OpenAlex blog",
+        "topic": "open science infrastructure",
+        "summary": "Today we’re adding some features to the OpenAlex API: better search, content download, and new docs. Most importantly, we’re also introducing usage-based pricing. New features Advanced search at last We’ve had lots of...",
+        "section": "blogs"
+      },
+      {
+        "title": "Affiliation curation is coming to OpenAlex",
+        "link": "https://blog.openalex.org/affiliation-curation-is-coming-to-openalex/",
+        "pubDate": "2026-02-19T23:00:37+00:00",
+        "source": "OpenAlex blog",
+        "topic": "open science infrastructure",
+        "summary": "Algorithmic matching of affiliation text to real institutions is one of those things that only really becomes visible when it’s wrong. For institutions adopting open research metadata, accurate affiliation matching is...",
+        "section": "blogs"
+      },
+      {
+        "title": "A new way to support OpenAlex: become a Member!",
+        "link": "https://blog.openalex.org/a-new-way-to-support-openalex-become-a-member/",
+        "pubDate": "2026-02-10T22:59:05+00:00",
+        "source": "OpenAlex blog",
+        "topic": "open science infrastructure",
+        "summary": "Starting today, institutions can now support OpenAlex as a Member for $5,000 USD/year—a lightweight way to help sustain fully-open research metadata for institutions who don’t need the services provided by our existin...",
+        "section": "blogs"
+      },
+      {
+        "title": "Funding metadata in OpenAlex",
+        "link": "https://blog.openalex.org/funding-metadata-in-openalex/",
+        "pubDate": "2026-01-26T15:02:13+00:00",
+        "source": "OpenAlex blog",
+        "topic": "open science infrastructure",
+        "summary": "With the Walden launch behind us, 2026 promises to be an exciting year for OpenAlex. And thanks to a transformative grant from Wellcome of $3.6M over three years, funding metadata will be a major focus of that develop...",
+        "section": "blogs"
+      },
+      {
+        "title": "OpenAlex 2026 Roadmap",
+        "link": "https://blog.openalex.org/openalex-2026-roadmap/",
+        "pubDate": "2026-01-17T03:11:24+00:00",
+        "source": "OpenAlex blog",
+        "topic": "open science infrastructure",
+        "summary": "We just wrapped up our Q1 2026 Town Hall. You can watch the full recording here, but this post covers the highlights: what we shipped last quarter, what’s coming this quarter, and why we think 2026 is a pivotal year f...",
+        "section": "blogs"
+      },
+      {
+        "title": "DOI resolution and deposit outage on 17 March 2026",
+        "link": "https://www.crossref.org/blog/doi-resolution-and-deposit-outage-on-17-march-2026/",
+        "pubDate": "2026-03-30T00:00:00+00:00",
+        "source": "crossref.org",
+        "topic": "https://crossref.org",
+        "summary": "On 17 March 2026, we experienced an outage that affected DOI resolution for Crossref DOIs and the deposit of metadata records by Crossref members. In this summary, we outline what happened, the impact on our community...",
+        "section": "blogs"
+      },
+      {
+        "title": "Reflections from Bangkok",
+        "link": "https://www.crossref.org/blog/reflections-from-bangkok/",
+        "pubDate": "2026-04-01T00:00:00+00:00",
+        "source": "crossref.org",
+        "topic": "https://crossref.org",
+        "summary": "Each organization in the global community of Crossref members (that’s currently over 24k organizations in 166 different countries) plays a key role in building the Research Nexus. Any opportunity we have to meet with...",
+        "section": "blogs"
+      },
+      {
+        "title": "Voices from Crossref Metadata Sprint in São Paulo",
+        "link": "https://www.crossref.org/blog/voices-from-crossref-metadata-sprint-in-s%C3%A3o-paulo/",
+        "pubDate": "2026-03-31T00:00:00+00:00",
+        "source": "crossref.org",
+        "topic": "https://crossref.org",
+        "summary": "This year, we placed a spotlight on the Latin American community, hosting the second Crossref Metadata Sprint in São Paulo, Brazil from 4 - 6 March 2026. In our first tri-lingual event, we brought together 31 particip...",
+        "section": "blogs"
+      }
+    ],
+    "x": [
+      {
+        "title": "If you deposit $RSC onto @ResearchHub - you'll start earning yield to deploy towards funding research projects. Re-imagining how endowments operate! - x.com",
+        "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE4yanFqbmNyd1JZZnUzSXhIRnpuMnR4R2NacmQ5eHUzWGh3MkRRTC1FWlktV1dJeEFsM2F5cXRGeUQ1X0c3SXdqbkNaLXZGcE5wNTBHckl2aXh6d050RzBVOQ?oc=5",
+        "pubDate": "2026-04-10T17:24:19+00:00",
+        "source": "Google News",
+        "topic": "site:x.com \"@ResearchHub\"",
+        "summary": "If you deposit $RSC onto @ResearchHub - you'll start earning yield to deploy towards funding research projects. Re-imagining how endowments operate! x.com",
+        "section": "x"
+      },
+      {
+        "title": "Minor nudge for @openreviewnet @icmlconf: if a reader is mandatory, just turn on the box by default. If I cannot send an AC message without including someone, it should not be needed to add them to the list. This is minor but would save serious time across p - x.com",
+        "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9GT0JzNDRkYVpsY3FpZGcxQk9tZkVrd3BfcV9Zb2dnWS1KS0U1cHJ3Yi1oV29tckswMHV5UmRNbW01SkU1aFZuSnY1TERKUDAxeTVMbEJaeDZhR3g5cVhRWGRn?oc=5",
+        "pubDate": "2026-04-10T14:47:33+00:00",
+        "source": "Google News",
+        "topic": "site:x.com \"@OpenReviewNet\"",
+        "summary": "Minor nudge for @openreviewnet @icmlconf: if a reader is mandatory, just turn on the box by default. If I cannot send an AC message without including someone, it should not be needed to add them to the list. This is m...",
+        "section": "x"
+      },
+      {
+        "title": "1,401 peer reviews were completed on @ResearchHub in Q1 🚀 On ResearchHub, experts earn $150 in $RSC for reviewing preprints and preregistered proposals. Reviewers shouldn't have to work for free. Get paid for your expertise. - x.com",
+        "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBhY1FrR0JWTkFkQmR2YVRSeTFmdVhOc3o4ZWVESnJhd3JBVWFYcVpiRGdISkJsTERhOU1PTXg3R2N6OG04RGFzSVA0LWFyLXRNMXdYQTV5Ylk1czVSLThkSjJpSQ?oc=5",
+        "pubDate": "2026-04-09T16:00:15+00:00",
+        "source": "Google News",
+        "topic": "site:x.com \"@ResearchHub\"",
+        "summary": "1,401 peer reviews were completed on @ResearchHub in Q1 🚀 On ResearchHub, experts earn $150 in $RSC for reviewing preprints and preregistered proposals. Reviewers shouldn't have to work for free. Get paid for your exp...",
+        "section": "x"
+      },
+      {
+        "title": "🧬 New funding opportunity now open on @ResearchHub: Next-Gen Human Enhancement — Muscle, Cognition, and Mood. We're looking for high-impact research into compounds and strategies for human enhancement across three domains: muscle perform - x.com",
+        "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBnVE1STXdIS0dYWW83T2hHWkNlMFI4RktwX1AwSjBoMGhkcmJwWHcyNDFiZVVGS01yb3BPSEhtbEQ2Q3hmaHVxN2RlekhiQXBRZGNmTE5lRW1NLTVURWd2a21hRQ?oc=5",
+        "pubDate": "2026-04-08T17:00:07+00:00",
+        "source": "Google News",
+        "topic": "site:x.com \"@ResearchHub\"",
+        "summary": "🧬 New funding opportunity now open on @ResearchHub: Next-Gen Human Enhancement — Muscle, Cognition, and Mood. We're looking for high-impact research into compounds and strategies for human enhancement across three dom...",
+        "section": "x"
+      },
+      {
+        "title": "We're opening a funding opportunity on @ResearchHub to support one of these developing areas. You get to choose which. Voting is open for the next 24 hours on our profile 🧬 - x.com",
+        "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5kRUYyS0xpNjJEOVFqdW9xZS16djdlZXdiekh3dXRYLWM3Q1F5NFdjZ1UyRGFTQTJmb29ZMU9CSUFadEwtaDB1UkYwb2t0eFVzekYxbDhGNzRrTERpemFlSnhZOA?oc=5",
+        "pubDate": "2026-04-06T15:42:40+00:00",
+        "source": "Google News",
+        "topic": "site:x.com \"@ResearchHub\"",
+        "summary": "We're opening a funding opportunity on @ResearchHub to support one of these developing areas. You get to choose which. Voting is open for the next 24 hours on our profile 🧬 x.com",
+        "section": "x"
+      }
+    ],
+    "reddit": [],
+    "github": [
+      {
+        "title": "Update documentation URLs from docs.openalex.org to developers.openal…",
+        "link": "https://github.com/ourresearch/openalex-guts/commit/8b0e87d0589abb75e03b66dbc7e6b6a00896688f",
+        "pubDate": "2026-03-06T03:01:56+00:00",
+        "source": "github",
+        "topic": "ourresearch/openalex-guts",
+        "summary": "Update documentation URLs from docs.openalex.org to developers.openalex.org Co-Authored-By: Claude Opus 4.6",
+        "section": "github"
+      },
+      {
+        "title": "update release notes",
+        "link": "https://github.com/ourresearch/openalex-guts/commit/0bbf6cb97bd3a2e28aed38d16c10de232b517859",
+        "pubDate": "2026-02-03T20:07:44+00:00",
+        "source": "github",
+        "topic": "ourresearch/openalex-guts",
+        "summary": "update release notes Co-Authored-By: Claude Opus 4.5",
+        "section": "github"
+      },
+      {
+        "title": "add logging for distinct dates in export",
+        "link": "https://github.com/ourresearch/openalex-guts/commit/d9bf4fed624d0b9ab5281b0242d139abf4765713",
+        "pubDate": "2026-02-03T19:05:37+00:00",
+        "source": "github",
+        "topic": "ourresearch/openalex-guts",
+        "summary": "add logging for distinct dates in export Co-Authored-By: Claude Opus 4.5",
+        "section": "github"
+      }
+    ],
+    "all": [
+      {
+        "title": "Oncotarget editorial highlights advances in scientific integrity and publishing transparency - EurekAlert!",
+        "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9KREdHTVFWQWtGQW9abmN2Q1A4QmNhXzdxZFdEeWxwcXM2RW5VanlCZW1CYlhSY0hYbzRiLUlLazBJQzRabzFCbDVMXzdGOXYyd05MeExReTQzUlVD?oc=5",
+        "pubDate": "2026-04-10T17:22:01+00:00",
+        "source": "Google News",
+        "topic": "\"scientific publishing\"",
+        "summary": "Oncotarget editorial highlights advances in scientific integrity and publishing transparency EurekAlert!",
+        "section": "news"
+      },
+      {
+        "title": "If you deposit $RSC onto @ResearchHub - you'll start earning yield to deploy towards funding research projects. Re-imagining how endowments operate! - x.com",
+        "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE4yanFqbmNyd1JZZnUzSXhIRnpuMnR4R2NacmQ5eHUzWGh3MkRRTC1FWlktV1dJeEFsM2F5cXRGeUQ1X0c3SXdqbkNaLXZGcE5wNTBHckl2aXh6d050RzBVOQ?oc=5",
+        "pubDate": "2026-04-10T17:24:19+00:00",
+        "source": "Google News",
+        "topic": "site:x.com \"@ResearchHub\"",
+        "summary": "If you deposit $RSC onto @ResearchHub - you'll start earning yield to deploy towards funding research projects. Re-imagining how endowments operate! x.com",
+        "section": "x"
+      },
+      {
+        "title": "Recommitting to the Principles of Open Scholarly Infrastructure (POSI)",
+        "link": "https://blog.openalex.org/recommitting-to-the-principles-of-open-scholarly-infrastructure-posi/",
+        "pubDate": "2026-03-30T17:07:55+00:00",
+        "source": "OpenAlex blog",
+        "topic": "open science infrastructure",
+        "summary": "We’re excited to reconfirm our commitment to the Principles of Open Scholarly Infrastructure (POSI). Back in 2021, when we were still called OurResearch, we published a blog post assessing our fit to POSI and making a...",
+        "section": "blogs"
+      },
+      {
+        "title": "Update documentation URLs from docs.openalex.org to developers.openal…",
+        "link": "https://github.com/ourresearch/openalex-guts/commit/8b0e87d0589abb75e03b66dbc7e6b6a00896688f",
+        "pubDate": "2026-03-06T03:01:56+00:00",
+        "source": "github",
+        "topic": "ourresearch/openalex-guts",
+        "summary": "Update documentation URLs from docs.openalex.org to developers.openalex.org Co-Authored-By: Claude Opus 4.6",
+        "section": "github"
+      },
+      {
+        "title": "AI meets science at speed: Inside Australia’s AI for science hackathon - Monash Lens",
+        "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOX1NSX3lDVU1DUXJLeE9sNXdfUXRUOENaT1BWa0ZlOTNhSzA2Rm5uVmFqa2N3bWNERmFBR2dFT0hQeE1RMG4walZNb2NqOUJEMVd2MjRSelh2SlFQVGRVdDBwSjRPV3UwQUVRYjVnRUtWMkdQMHdqRHRaeWxSYzJ4ZDFpczNhWWhxRkRfQTVQQUlycExadWZ3aw?oc=5",
+        "pubDate": "2026-04-10T02:12:48+00:00",
+        "source": "Google News",
+        "topic": "\"ai for science\"",
+        "summary": "AI meets science at speed: Inside Australia’s AI for science hackathon Monash Lens",
+        "section": "news"
+      },
+      {
+        "title": "Minor nudge for @openreviewnet @icmlconf: if a reader is mandatory, just turn on the box by default. If I cannot send an AC message without including someone, it should not be needed to add them to the list. This is minor but would save serious time across p - x.com",
+        "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9GT0JzNDRkYVpsY3FpZGcxQk9tZkVrd3BfcV9Zb2dnWS1KS0U1cHJ3Yi1oV29tckswMHV5UmRNbW01SkU1aFZuSnY1TERKUDAxeTVMbEJaeDZhR3g5cVhRWGRn?oc=5",
+        "pubDate": "2026-04-10T14:47:33+00:00",
+        "source": "Google News",
+        "topic": "site:x.com \"@OpenReviewNet\"",
+        "summary": "Minor nudge for @openreviewnet @icmlconf: if a reader is mandatory, just turn on the box by default. If I cannot send an AC message without including someone, it should not be needed to add them to the list. This is m...",
+        "section": "x"
+      },
+      {
+        "title": "New Features and Usage-Based Pricing",
+        "link": "https://blog.openalex.org/openalex-api-new-features-and-usage-based-pricing/",
+        "pubDate": "2026-02-25T02:44:20+00:00",
+        "source": "OpenAlex blog",
+        "topic": "open science infrastructure",
+        "summary": "Today we’re adding some features to the OpenAlex API: better search, content download, and new docs. Most importantly, we’re also introducing usage-based pricing. New features Advanced search at last We’ve had lots of...",
+        "section": "blogs"
+      },
+      {
+        "title": "update release notes",
+        "link": "https://github.com/ourresearch/openalex-guts/commit/0bbf6cb97bd3a2e28aed38d16c10de232b517859",
+        "pubDate": "2026-02-03T20:07:44+00:00",
+        "source": "github",
+        "topic": "ourresearch/openalex-guts",
+        "summary": "update release notes Co-Authored-By: Claude Opus 4.5",
+        "section": "github"
+      },
+      {
+        "title": "Taylor & Francis summit highlights need for stronger research integrity practices in India - Taylor & Francis Newsroom",
+        "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNRFFvbENIVUdjWGV1SUhOUkxTbTFEUllvUzM3NmFGbWdMZEU5NUtrRk42S0xraEJTYzFfRVMtSWJobnZyUE1TNGxIVFkwQl9YYlJHLUdQNHRxMWJJckd2eWJWR3hSSE5rUzMxWHp3RGpZWHZXYkY4TXVYam5nOFdNSDlETUg4NXpNdXBmSDFrQmJwY1lic1IxakdqY2h5SUt5bGF5QW8wTnFuOVV0R3JJMWM0WFRucGl0ZG5uQjlMLXRFWEsxOW96bWFQU0Z2ZEZQcFE?oc=5",
+        "pubDate": "2026-04-10T00:00:00+00:00",
+        "source": "Google News",
+        "topic": "\"research integrity\"",
+        "summary": "Taylor & Francis summit highlights need for stronger research integrity practices in India Taylor & Francis Newsroom",
+        "section": "news"
+      },
+      {
+        "title": "1,401 peer reviews were completed on @ResearchHub in Q1 🚀 On ResearchHub, experts earn $150 in $RSC for reviewing preprints and preregistered proposals. Reviewers shouldn't have to work for free. Get paid for your expertise. - x.com",
+        "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBhY1FrR0JWTkFkQmR2YVRSeTFmdVhOc3o4ZWVESnJhd3JBVWFYcVpiRGdISkJsTERhOU1PTXg3R2N6OG04RGFzSVA0LWFyLXRNMXdYQTV5Ylk1czVSLThkSjJpSQ?oc=5",
+        "pubDate": "2026-04-09T16:00:15+00:00",
+        "source": "Google News",
+        "topic": "site:x.com \"@ResearchHub\"",
+        "summary": "1,401 peer reviews were completed on @ResearchHub in Q1 🚀 On ResearchHub, experts earn $150 in $RSC for reviewing preprints and preregistered proposals. Reviewers shouldn't have to work for free. Get paid for your exp...",
+        "section": "x"
+      },
+      {
+        "title": "Affiliation curation is coming to OpenAlex",
+        "link": "https://blog.openalex.org/affiliation-curation-is-coming-to-openalex/",
+        "pubDate": "2026-02-19T23:00:37+00:00",
+        "source": "OpenAlex blog",
+        "topic": "open science infrastructure",
+        "summary": "Algorithmic matching of affiliation text to real institutions is one of those things that only really becomes visible when it’s wrong. For institutions adopting open research metadata, accurate affiliation matching is...",
+        "section": "blogs"
+      },
+      {
+        "title": "add logging for distinct dates in export",
+        "link": "https://github.com/ourresearch/openalex-guts/commit/d9bf4fed624d0b9ab5281b0242d139abf4765713",
+        "pubDate": "2026-02-03T19:05:37+00:00",
+        "source": "github",
+        "topic": "ourresearch/openalex-guts",
+        "summary": "add logging for distinct dates in export Co-Authored-By: Claude Opus 4.5",
+        "section": "github"
+      },
+      {
+        "title": "Opinion: Scientific Journals Need Dedicated Fact-Checkers - Undark Magazine",
+        "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1KMWdrX3hJcmhKLWdtS0ZfOHE0dlJzbkNnZmpwLWtaRFZMY2p6bk9mdGt3Q2FqaUhEWWxsaW1hU1hWbDR4Sm1qLXkzT3pkeWdRVXBDbllFMS1mdGFjZ1NQdW80V1VZYnpjazU3eA?oc=5",
+        "pubDate": "2026-04-09T16:01:31+00:00",
+        "source": "Google News",
+        "topic": "\"scientific publishing\"",
+        "summary": "Opinion: Scientific Journals Need Dedicated Fact-Checkers Undark Magazine",
+        "section": "news"
+      },
+      {
+        "title": "🧬 New funding opportunity now open on @ResearchHub: Next-Gen Human Enhancement — Muscle, Cognition, and Mood. We're looking for high-impact research into compounds and strategies for human enhancement across three domains: muscle perform - x.com",
+        "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBnVE1STXdIS0dYWW83T2hHWkNlMFI4RktwX1AwSjBoMGhkcmJwWHcyNDFiZVVGS01yb3BPSEhtbEQ2Q3hmaHVxN2RlekhiQXBRZGNmTE5lRW1NLTVURWd2a21hRQ?oc=5",
+        "pubDate": "2026-04-08T17:00:07+00:00",
+        "source": "Google News",
+        "topic": "site:x.com \"@ResearchHub\"",
+        "summary": "🧬 New funding opportunity now open on @ResearchHub: Next-Gen Human Enhancement — Muscle, Cognition, and Mood. We're looking for high-impact research into compounds and strategies for human enhancement across three dom...",
+        "section": "x"
+      },
+      {
+        "title": "A new way to support OpenAlex: become a Member!",
+        "link": "https://blog.openalex.org/a-new-way-to-support-openalex-become-a-member/",
+        "pubDate": "2026-02-10T22:59:05+00:00",
+        "source": "OpenAlex blog",
+        "topic": "open science infrastructure",
+        "summary": "Starting today, institutions can now support OpenAlex as a Member for $5,000 USD/year—a lightweight way to help sustain fully-open research metadata for institutions who don’t need the services provided by our existin...",
+        "section": "blogs"
+      },
+      {
+        "title": "Hedayah Center and Emirates Scholar Center review latest approaches to scientific publishing and research - ZAWYA",
+        "link": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxOOGtweHR1R0dfU0RDd1BOdnFrd3lGMjdlREVfdDRsOENvSUIyWnJKRHhPVkd0SGdDT1l4ZG16dU5RaXlPQTlWV1FEYkVpNmVWR241aDN5eFVQZUZPQjRfT25uR0FCdnlLRVhfQkhFbTBYQmxQYUg1Z3RzNWYtcUItTzU5bGJISV9wdVIxUElvMTVzSHpKeWt0MTdKSTRLVkdNYmxpZS1aSmpjdmluc1BIckZUTkh5WFhKaE1sMDFzNzg0QTl2Nm9xYmVnLTFuQm94R0d3MUo0TmtieFhJbFFGejI2M0RRNmdKN2lfZE0tcjNuc0pEOXNHLXJGako?oc=5",
+        "pubDate": "2026-04-09T08:19:02+00:00",
+        "source": "Google News",
+        "topic": "\"scientific publishing\"",
+        "summary": "Hedayah Center and Emirates Scholar Center review latest approaches to scientific publishing and research ZAWYA",
+        "section": "news"
+      },
+      {
+        "title": "We're opening a funding opportunity on @ResearchHub to support one of these developing areas. You get to choose which. Voting is open for the next 24 hours on our profile 🧬 - x.com",
+        "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5kRUYyS0xpNjJEOVFqdW9xZS16djdlZXdiekh3dXRYLWM3Q1F5NFdjZ1UyRGFTQTJmb29ZMU9CSUFadEwtaDB1UkYwb2t0eFVzekYxbDhGNzRrTERpemFlSnhZOA?oc=5",
+        "pubDate": "2026-04-06T15:42:40+00:00",
+        "source": "Google News",
+        "topic": "site:x.com \"@ResearchHub\"",
+        "summary": "We're opening a funding opportunity on @ResearchHub to support one of these developing areas. You get to choose which. Voting is open for the next 24 hours on our profile 🧬 x.com",
+        "section": "x"
+      },
+      {
+        "title": "Funding metadata in OpenAlex",
+        "link": "https://blog.openalex.org/funding-metadata-in-openalex/",
+        "pubDate": "2026-01-26T15:02:13+00:00",
+        "source": "OpenAlex blog",
+        "topic": "open science infrastructure",
+        "summary": "With the Walden launch behind us, 2026 promises to be an exciting year for OpenAlex. And thanks to a transformative grant from Wellcome of $3.6M over three years, funding metadata will be a major focus of that develop...",
+        "section": "blogs"
+      },
+      {
+        "title": "Meet CAS Newton: Agentic AI built for science | Corporate - EQS News",
+        "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPamU4WTJpYWItRXhubk1HNTJBUnpiR25jNG9lQlo1d1NBbTVPU1dRWllaSXBURjgxcHhiVzladEk4NGVtRWFfMWtIZEhlV3I3SDVzeWo4UTRDdjdZRW9VSU9LN3NNcXVZOHRqR08tUXlfVWFXVE9GamtjQU13Y2pxWVZCTnhBSHBoWUFfazlBamFhOHBPM0NfUTFRYjN4ZTYtMzhqRHFqVi1hd2tOUFZ3MTVDS2xOZURyeFlvcEx5MjFYZw?oc=5",
+        "pubDate": "2026-04-08T12:07:19+00:00",
+        "source": "Google News",
+        "topic": "\"ai for science\"",
+        "summary": "Meet CAS Newton: Agentic AI built for science | Corporate EQS News",
+        "section": "news"
+      },
+      {
+        "title": "OpenAlex 2026 Roadmap",
+        "link": "https://blog.openalex.org/openalex-2026-roadmap/",
+        "pubDate": "2026-01-17T03:11:24+00:00",
+        "source": "OpenAlex blog",
+        "topic": "open science infrastructure",
+        "summary": "We just wrapped up our Q1 2026 Town Hall. You can watch the full recording here, but this post covers the highlights: what we shipped last quarter, what’s coming this quarter, and why we think 2026 is a pivotal year f...",
+        "section": "blogs"
+      },
+      {
+        "title": "Genesis Mission Now Accepting Applications to Fund AI-for-Science Projects - HPCwire",
+        "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNaHNCMVU5TGg5U2VlZnBnSjQzWEZyemVwLUdRR2ZmZ1VVbDU5YWFmd2x6c0VMOGpmbEhZZ2ctOVd6OHNUczVMWXg3YTNyVVoyOUVOaGt1WTlpRmRNS0JVNUh5elVWcW44bHA1UkF0bUJjMzhabTBCTkdWZHdXdGJVR01oemtDbWdNX1lLSVZiNFZDQ21IdWVnX25tVjVxbW56X09tMjVqOGtlVTJhX3ZR?oc=5",
+        "pubDate": "2026-04-06T22:48:54+00:00",
+        "source": "Google News",
+        "topic": "\"ai for science\"",
+        "summary": "Genesis Mission Now Accepting Applications to Fund AI-for-Science Projects HPCwire",
+        "section": "news"
+      },
+      {
+        "title": "DOI resolution and deposit outage on 17 March 2026",
+        "link": "https://www.crossref.org/blog/doi-resolution-and-deposit-outage-on-17-march-2026/",
+        "pubDate": "2026-03-30T00:00:00+00:00",
+        "source": "crossref.org",
+        "topic": "https://crossref.org",
+        "summary": "On 17 March 2026, we experienced an outage that affected DOI resolution for Crossref DOIs and the deposit of metadata records by Crossref members. In this summary, we outline what happened, the impact on our community...",
+        "section": "blogs"
+      },
+      {
+        "title": "Trump administration proposes massive budget cuts to science - Scientific American",
+        "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPSWUyREtod3VzVWk2MGI2SWlDaVJfSUtPOFdBR0xMcUpGbGVHUGxYdXpTQ3hBSzZxS0Z1d0tKd3dWbTROcjI4LVk3clBwZDFnNElRcTBGdW8tdDRlem04UzlablpNdHFFOUxNTzdJbHk1cGtHV0xsRjRqWmw0eEt6bFVpdWQyeG5ydF8tMHdqUVNweldZRERrNG1VM2kzUXdZUHNGVUtrWQ?oc=5",
+        "pubDate": "2026-04-03T07:00:00+00:00",
+        "source": "Google News",
+        "topic": "\"scientific publishing\"",
+        "summary": "Trump administration proposes massive budget cuts to science Scientific American",
+        "section": "news"
+      },
+      {
+        "title": "Reflections from Bangkok",
+        "link": "https://www.crossref.org/blog/reflections-from-bangkok/",
+        "pubDate": "2026-04-01T00:00:00+00:00",
+        "source": "crossref.org",
+        "topic": "https://crossref.org",
+        "summary": "Each organization in the global community of Crossref members (that’s currently over 24k organizations in 166 different countries) plays a key role in building the Research Nexus. Any opportunity we have to meet with...",
+        "section": "blogs"
+      },
+      {
+        "title": "Why journals are put on hold in Web of Science Core Collection – and how research integrity guides the process - Clarivate",
+        "link": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxQb1NMNjhTZkxhWE5WNEJ4QWhkVWt1UDNyQmJLSDRJWUpBZklrR21veHo1dXdrdGlwQ1VYTTZHc3AteVVrQ0JLblpFLVR3bmx2cmtHZDRjWENiLTdQSXZocWczdUgwMTNUZmNTN19EZ3BPRUIyNkdPbUd0ckFjWUZxMWh3ZkptWXJDeVk2MGVkdVBEN3FfOF9ZczZSZGQyYmE0TEdMODdhVXpTRU1zMXFITlhBYTdwY2pNaG9JMnRmMmJlYnNQYkU4anJDMzQta2FTY3cyYk90Y05TQkNTdVlZVFViQU5MUEtVdFo0cg?oc=5",
+        "pubDate": "2026-04-02T07:00:00+00:00",
+        "source": "Google News",
+        "topic": "\"research integrity\"",
+        "summary": "Why journals are put on hold in Web of Science Core Collection – and how research integrity guides the process Clarivate",
+        "section": "news"
+      },
+      {
+        "title": "Voices from Crossref Metadata Sprint in São Paulo",
+        "link": "https://www.crossref.org/blog/voices-from-crossref-metadata-sprint-in-s%C3%A3o-paulo/",
+        "pubDate": "2026-03-31T00:00:00+00:00",
+        "source": "crossref.org",
+        "topic": "https://crossref.org",
+        "summary": "This year, we placed a spotlight on the Latin American community, hosting the second Crossref Metadata Sprint in São Paulo, Brazil from 4 - 6 March 2026. In our first tri-lingual event, we brought together 31 particip...",
+        "section": "blogs"
+      },
+      {
+        "title": "AI turns electron microscopy into materials insights in minutes - Cornell Chronicle",
+        "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNUm9fZUZZT2dmai0wRV9EZUlhRXdQbVczS0hvRjhGaXpXckFEME1BNGs4cXRpVU4xUFJ3aW54NmNjT0JoR21INHJ6LTlUX25qNUZ0emNyRi03WTIyN2Jvb3hnSnRFeE96dTdNMjd0ZEtVcE4yVmI4VHlCaVB5T2pDSkh1WVZ1UC1YdGJpQnBTRWdwNFJqZlpwbUR0a1g?oc=5",
+        "pubDate": "2026-04-01T18:11:41+00:00",
+        "source": "Google News",
+        "topic": "\"ai for science\"",
+        "summary": "AI turns electron microscopy into materials insights in minutes Cornell Chronicle",
+        "section": "news"
+      },
+      {
+        "title": "Weekend reads: LLMs ‘are not the problem’; Cash for peer review ‘doesn’t work,’ project finds; ‘Many Flaws, Few Retractions’ in vaping literature",
+        "link": "https://retractionwatch.com/2026/04/11/weekend-reads-llms-are-not-the-problem-cash-for-peer-review-doesnt-work-project-finds-many-flaws-few-retractions-in-vaping-literatur/",
+        "pubDate": "2026-04-11T10:00:00+00:00",
+        "source": "Retraction Watch",
+        "topic": "research integrity",
+        "summary": "If your week flew by — we know ours did — catch up here with what you might have missed. The week at Retraction Watch featured: In case you missed the news, the Hijacked Journal Checker now has more than 400 entries....",
+        "section": "news"
+      },
+      {
+        "title": "Canadian panel seeks to add more teeth to research oversight",
+        "link": "https://retractionwatch.com/2026/04/10/canadian-panel-seeks-to-add-more-teeth-to-research-oversight/",
+        "pubDate": "2026-04-10T15:45:16+00:00",
+        "source": "Retraction Watch",
+        "topic": "research integrity",
+        "summary": "A Canadian panel is proposing several changes to its guidelines for responsible conduct of research, including a provision that effectively removes any statute of limitations on investigations into potential misconduc...",
+        "section": "news"
+      },
+      {
+        "title": "Could a national database of scientific misconduct rulings stop repeat offenders?",
+        "link": "https://retractionwatch.com/2026/04/09/could-a-national-database-of-scientific-misconduct-rulings-stop-repeat-offenders/",
+        "pubDate": "2026-04-09T18:00:00+00:00",
+        "source": "Retraction Watch",
+        "topic": "research integrity",
+        "summary": "In an editorial published today in Science, Michael Lauer and Mark Barnes call for greater transparency in investigations of scientific misconduct with an aim toward making sure prospective academic employers know of...",
+        "section": "news"
+      },
+      {
+        "title": "A journal named a sleuth in a correction. The sleuth says that was ‘ethical editorial malpractice’",
+        "link": "https://retractionwatch.com/2026/04/08/bmc-nephrology-journal-named-sleuth-correction-error/",
+        "pubDate": "2026-04-08T21:16:55+00:00",
+        "source": "Retraction Watch",
+        "topic": "research integrity",
+        "summary": "As the publishing community debates the merits of naming sleuths in retraction or correction notices, one journal did so without the sleuth’s permission — by publishing an email from the authors naming her as the corr...",
+        "section": "news"
+      },
+      {
+        "title": "This RNA Almost Self-Replicates, Which Could Explain Life's Origins - ScienceAlert",
+        "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPekFLWURzQjV4S1BFNE5aVGxDSmtLbmE2ekJKT19tN3E2bnl3QUdTd29zNnNObUYwVWVlUk5KTVhHVnpQR0NBUVNqN0E3NWFWRTdPZWRNNWFoTUdCVHMzWktPNDlFajlkMHRKUmw4WU52b25WRllEZXdyX00yNVJHWkJadWEwRVpla0RpZ29Jb2NfMzlraVVFWTZ3?oc=5",
+        "pubDate": "2026-04-12T12:04:32+00:00",
+        "source": "Google News",
+        "topic": "\"Molecule\"",
+        "summary": "This RNA Almost Self-Replicates, Which Could Explain Life's Origins ScienceAlert",
+        "section": "news"
+      },
+      {
+        "title": "Scientists Unveil Microscopy Breakthrough That Reveals “Invisible” Molecular States - SciTechDaily",
+        "link": "https://news.google.com/rss/articles/CBMiSkFVX3lxTE50aGJwVG5CZl9yU0VRcHBLWkpGdUhSZ1RPZktrZTJRamNpM3VhcERYZUNtVTB5VmMzRnhKb1N2TXdzMU5RWE1PVnN3?oc=5",
+        "pubDate": "2026-04-12T11:53:06+00:00",
+        "source": "Google News",
+        "topic": "\"Molecule\"",
+        "summary": "Scientists Unveil Microscopy Breakthrough That Reveals “Invisible” Molecular States SciTechDaily",
+        "section": "news"
+      },
+      {
+        "title": "A 67-year-old “crazy” theory about vitamin B1 has finally been proven - ScienceDaily",
+        "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBocnlRN0x1Vm1PUlNodWxYZ3ppUHRJa21MRlBMT3lkS0ZicS1OOF92TzRqLVlpQWpDcHFVN1l1dkJjQXN6a3pIbl82Y2ljTGVoSkhnN09IazNmU0prVXRwbUpvQ3VaSk5VZENfSkxOaw?oc=5",
+        "pubDate": "2026-04-11T12:35:15+00:00",
+        "source": "Google News",
+        "topic": "\"Molecule\"",
+        "summary": "A 67-year-old “crazy” theory about vitamin B1 has finally been proven ScienceDaily",
+        "section": "news"
+      },
+      {
+        "title": "Publisher changes citation, registration policies following Retraction Watch investigation",
+        "link": "https://retractionwatch.com/2026/04/07/wolters-kluwer-international-journal-surgery-changes-citation-registration-policies/",
+        "pubDate": "2026-04-07T12:12:17+00:00",
+        "source": "Retraction Watch",
+        "topic": "research integrity",
+        "summary": "The Dutch publisher Wolters Kluwer has scrapped some of its citation and study-registration requirements at a top-ranked surgery journal founded by the U.K. plastic surgeon Riaz Agha, Retraction Watch has learned. The...",
+        "section": "news"
+      }
+    ]
+  },
+  "items": [
+    {
+      "title": "Oncotarget editorial highlights advances in scientific integrity and publishing transparency - EurekAlert!",
+      "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9KREdHTVFWQWtGQW9abmN2Q1A4QmNhXzdxZFdEeWxwcXM2RW5VanlCZW1CYlhSY0hYbzRiLUlLazBJQzRabzFCbDVMXzdGOXYyd05MeExReTQzUlVD?oc=5",
+      "pubDate": "2026-04-10T17:22:01+00:00",
+      "source": "Google News",
+      "topic": "\"scientific publishing\"",
+      "summary": "Oncotarget editorial highlights advances in scientific integrity and publishing transparency EurekAlert!",
+      "section": "news"
+    },
+    {
+      "title": "If you deposit $RSC onto @ResearchHub - you'll start earning yield to deploy towards funding research projects. Re-imagining how endowments operate! - x.com",
+      "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE4yanFqbmNyd1JZZnUzSXhIRnpuMnR4R2NacmQ5eHUzWGh3MkRRTC1FWlktV1dJeEFsM2F5cXRGeUQ1X0c3SXdqbkNaLXZGcE5wNTBHckl2aXh6d050RzBVOQ?oc=5",
+      "pubDate": "2026-04-10T17:24:19+00:00",
+      "source": "Google News",
+      "topic": "site:x.com \"@ResearchHub\"",
+      "summary": "If you deposit $RSC onto @ResearchHub - you'll start earning yield to deploy towards funding research projects. Re-imagining how endowments operate! x.com",
+      "section": "x"
+    },
+    {
+      "title": "Recommitting to the Principles of Open Scholarly Infrastructure (POSI)",
+      "link": "https://blog.openalex.org/recommitting-to-the-principles-of-open-scholarly-infrastructure-posi/",
+      "pubDate": "2026-03-30T17:07:55+00:00",
+      "source": "OpenAlex blog",
+      "topic": "open science infrastructure",
+      "summary": "We’re excited to reconfirm our commitment to the Principles of Open Scholarly Infrastructure (POSI). Back in 2021, when we were still called OurResearch, we published a blog post assessing our fit to POSI and making a...",
+      "section": "blogs"
+    },
+    {
+      "title": "Update documentation URLs from docs.openalex.org to developers.openal…",
+      "link": "https://github.com/ourresearch/openalex-guts/commit/8b0e87d0589abb75e03b66dbc7e6b6a00896688f",
+      "pubDate": "2026-03-06T03:01:56+00:00",
+      "source": "github",
+      "topic": "ourresearch/openalex-guts",
+      "summary": "Update documentation URLs from docs.openalex.org to developers.openalex.org Co-Authored-By: Claude Opus 4.6",
+      "section": "github"
+    },
+    {
+      "title": "AI meets science at speed: Inside Australia’s AI for science hackathon - Monash Lens",
+      "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOX1NSX3lDVU1DUXJLeE9sNXdfUXRUOENaT1BWa0ZlOTNhSzA2Rm5uVmFqa2N3bWNERmFBR2dFT0hQeE1RMG4walZNb2NqOUJEMVd2MjRSelh2SlFQVGRVdDBwSjRPV3UwQUVRYjVnRUtWMkdQMHdqRHRaeWxSYzJ4ZDFpczNhWWhxRkRfQTVQQUlycExadWZ3aw?oc=5",
+      "pubDate": "2026-04-10T02:12:48+00:00",
+      "source": "Google News",
+      "topic": "\"ai for science\"",
+      "summary": "AI meets science at speed: Inside Australia’s AI for science hackathon Monash Lens",
+      "section": "news"
+    },
+    {
+      "title": "Minor nudge for @openreviewnet @icmlconf: if a reader is mandatory, just turn on the box by default. If I cannot send an AC message without including someone, it should not be needed to add them to the list. This is minor but would save serious time across p - x.com",
+      "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9GT0JzNDRkYVpsY3FpZGcxQk9tZkVrd3BfcV9Zb2dnWS1KS0U1cHJ3Yi1oV29tckswMHV5UmRNbW01SkU1aFZuSnY1TERKUDAxeTVMbEJaeDZhR3g5cVhRWGRn?oc=5",
+      "pubDate": "2026-04-10T14:47:33+00:00",
+      "source": "Google News",
+      "topic": "site:x.com \"@OpenReviewNet\"",
+      "summary": "Minor nudge for @openreviewnet @icmlconf: if a reader is mandatory, just turn on the box by default. If I cannot send an AC message without including someone, it should not be needed to add them to the list. This is m...",
+      "section": "x"
+    },
+    {
+      "title": "New Features and Usage-Based Pricing",
+      "link": "https://blog.openalex.org/openalex-api-new-features-and-usage-based-pricing/",
+      "pubDate": "2026-02-25T02:44:20+00:00",
+      "source": "OpenAlex blog",
+      "topic": "open science infrastructure",
+      "summary": "Today we’re adding some features to the OpenAlex API: better search, content download, and new docs. Most importantly, we’re also introducing usage-based pricing. New features Advanced search at last We’ve had lots of...",
+      "section": "blogs"
+    },
+    {
+      "title": "update release notes",
+      "link": "https://github.com/ourresearch/openalex-guts/commit/0bbf6cb97bd3a2e28aed38d16c10de232b517859",
+      "pubDate": "2026-02-03T20:07:44+00:00",
+      "source": "github",
+      "topic": "ourresearch/openalex-guts",
+      "summary": "update release notes Co-Authored-By: Claude Opus 4.5",
+      "section": "github"
+    },
+    {
+      "title": "Taylor & Francis summit highlights need for stronger research integrity practices in India - Taylor & Francis Newsroom",
+      "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNRFFvbENIVUdjWGV1SUhOUkxTbTFEUllvUzM3NmFGbWdMZEU5NUtrRk42S0xraEJTYzFfRVMtSWJobnZyUE1TNGxIVFkwQl9YYlJHLUdQNHRxMWJJckd2eWJWR3hSSE5rUzMxWHp3RGpZWHZXYkY4TXVYam5nOFdNSDlETUg4NXpNdXBmSDFrQmJwY1lic1IxakdqY2h5SUt5bGF5QW8wTnFuOVV0R3JJMWM0WFRucGl0ZG5uQjlMLXRFWEsxOW96bWFQU0Z2ZEZQcFE?oc=5",
+      "pubDate": "2026-04-10T00:00:00+00:00",
+      "source": "Google News",
+      "topic": "\"research integrity\"",
+      "summary": "Taylor & Francis summit highlights need for stronger research integrity practices in India Taylor & Francis Newsroom",
+      "section": "news"
+    },
+    {
+      "title": "1,401 peer reviews were completed on @ResearchHub in Q1 🚀 On ResearchHub, experts earn $150 in $RSC for reviewing preprints and preregistered proposals. Reviewers shouldn't have to work for free. Get paid for your expertise. - x.com",
+      "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBhY1FrR0JWTkFkQmR2YVRSeTFmdVhOc3o4ZWVESnJhd3JBVWFYcVpiRGdISkJsTERhOU1PTXg3R2N6OG04RGFzSVA0LWFyLXRNMXdYQTV5Ylk1czVSLThkSjJpSQ?oc=5",
+      "pubDate": "2026-04-09T16:00:15+00:00",
+      "source": "Google News",
+      "topic": "site:x.com \"@ResearchHub\"",
+      "summary": "1,401 peer reviews were completed on @ResearchHub in Q1 🚀 On ResearchHub, experts earn $150 in $RSC for reviewing preprints and preregistered proposals. Reviewers shouldn't have to work for free. Get paid for your exp...",
+      "section": "x"
+    },
+    {
+      "title": "Affiliation curation is coming to OpenAlex",
+      "link": "https://blog.openalex.org/affiliation-curation-is-coming-to-openalex/",
+      "pubDate": "2026-02-19T23:00:37+00:00",
+      "source": "OpenAlex blog",
+      "topic": "open science infrastructure",
+      "summary": "Algorithmic matching of affiliation text to real institutions is one of those things that only really becomes visible when it’s wrong. For institutions adopting open research metadata, accurate affiliation matching is...",
+      "section": "blogs"
+    },
+    {
+      "title": "add logging for distinct dates in export",
+      "link": "https://github.com/ourresearch/openalex-guts/commit/d9bf4fed624d0b9ab5281b0242d139abf4765713",
+      "pubDate": "2026-02-03T19:05:37+00:00",
+      "source": "github",
+      "topic": "ourresearch/openalex-guts",
+      "summary": "add logging for distinct dates in export Co-Authored-By: Claude Opus 4.5",
+      "section": "github"
+    },
+    {
+      "title": "Opinion: Scientific Journals Need Dedicated Fact-Checkers - Undark Magazine",
+      "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1KMWdrX3hJcmhKLWdtS0ZfOHE0dlJzbkNnZmpwLWtaRFZMY2p6bk9mdGt3Q2FqaUhEWWxsaW1hU1hWbDR4Sm1qLXkzT3pkeWdRVXBDbllFMS1mdGFjZ1NQdW80V1VZYnpjazU3eA?oc=5",
+      "pubDate": "2026-04-09T16:01:31+00:00",
+      "source": "Google News",
+      "topic": "\"scientific publishing\"",
+      "summary": "Opinion: Scientific Journals Need Dedicated Fact-Checkers Undark Magazine",
+      "section": "news"
+    },
+    {
+      "title": "🧬 New funding opportunity now open on @ResearchHub: Next-Gen Human Enhancement — Muscle, Cognition, and Mood. We're looking for high-impact research into compounds and strategies for human enhancement across three domains: muscle perform - x.com",
+      "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBnVE1STXdIS0dYWW83T2hHWkNlMFI4RktwX1AwSjBoMGhkcmJwWHcyNDFiZVVGS01yb3BPSEhtbEQ2Q3hmaHVxN2RlekhiQXBRZGNmTE5lRW1NLTVURWd2a21hRQ?oc=5",
+      "pubDate": "2026-04-08T17:00:07+00:00",
+      "source": "Google News",
+      "topic": "site:x.com \"@ResearchHub\"",
+      "summary": "🧬 New funding opportunity now open on @ResearchHub: Next-Gen Human Enhancement — Muscle, Cognition, and Mood. We're looking for high-impact research into compounds and strategies for human enhancement across three dom...",
+      "section": "x"
+    },
+    {
+      "title": "A new way to support OpenAlex: become a Member!",
+      "link": "https://blog.openalex.org/a-new-way-to-support-openalex-become-a-member/",
+      "pubDate": "2026-02-10T22:59:05+00:00",
+      "source": "OpenAlex blog",
+      "topic": "open science infrastructure",
+      "summary": "Starting today, institutions can now support OpenAlex as a Member for $5,000 USD/year—a lightweight way to help sustain fully-open research metadata for institutions who don’t need the services provided by our existin...",
+      "section": "blogs"
+    },
+    {
+      "title": "Hedayah Center and Emirates Scholar Center review latest approaches to scientific publishing and research - ZAWYA",
+      "link": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxOOGtweHR1R0dfU0RDd1BOdnFrd3lGMjdlREVfdDRsOENvSUIyWnJKRHhPVkd0SGdDT1l4ZG16dU5RaXlPQTlWV1FEYkVpNmVWR241aDN5eFVQZUZPQjRfT25uR0FCdnlLRVhfQkhFbTBYQmxQYUg1Z3RzNWYtcUItTzU5bGJISV9wdVIxUElvMTVzSHpKeWt0MTdKSTRLVkdNYmxpZS1aSmpjdmluc1BIckZUTkh5WFhKaE1sMDFzNzg0QTl2Nm9xYmVnLTFuQm94R0d3MUo0TmtieFhJbFFGejI2M0RRNmdKN2lfZE0tcjNuc0pEOXNHLXJGako?oc=5",
+      "pubDate": "2026-04-09T08:19:02+00:00",
+      "source": "Google News",
+      "topic": "\"scientific publishing\"",
+      "summary": "Hedayah Center and Emirates Scholar Center review latest approaches to scientific publishing and research ZAWYA",
+      "section": "news"
+    },
+    {
+      "title": "We're opening a funding opportunity on @ResearchHub to support one of these developing areas. You get to choose which. Voting is open for the next 24 hours on our profile 🧬 - x.com",
+      "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5kRUYyS0xpNjJEOVFqdW9xZS16djdlZXdiekh3dXRYLWM3Q1F5NFdjZ1UyRGFTQTJmb29ZMU9CSUFadEwtaDB1UkYwb2t0eFVzekYxbDhGNzRrTERpemFlSnhZOA?oc=5",
+      "pubDate": "2026-04-06T15:42:40+00:00",
+      "source": "Google News",
+      "topic": "site:x.com \"@ResearchHub\"",
+      "summary": "We're opening a funding opportunity on @ResearchHub to support one of these developing areas. You get to choose which. Voting is open for the next 24 hours on our profile 🧬 x.com",
+      "section": "x"
+    },
+    {
+      "title": "Funding metadata in OpenAlex",
+      "link": "https://blog.openalex.org/funding-metadata-in-openalex/",
+      "pubDate": "2026-01-26T15:02:13+00:00",
+      "source": "OpenAlex blog",
+      "topic": "open science infrastructure",
+      "summary": "With the Walden launch behind us, 2026 promises to be an exciting year for OpenAlex. And thanks to a transformative grant from Wellcome of $3.6M over three years, funding metadata will be a major focus of that develop...",
+      "section": "blogs"
+    },
+    {
+      "title": "Meet CAS Newton: Agentic AI built for science | Corporate - EQS News",
+      "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPamU4WTJpYWItRXhubk1HNTJBUnpiR25jNG9lQlo1d1NBbTVPU1dRWllaSXBURjgxcHhiVzladEk4NGVtRWFfMWtIZEhlV3I3SDVzeWo4UTRDdjdZRW9VSU9LN3NNcXVZOHRqR08tUXlfVWFXVE9GamtjQU13Y2pxWVZCTnhBSHBoWUFfazlBamFhOHBPM0NfUTFRYjN4ZTYtMzhqRHFqVi1hd2tOUFZ3MTVDS2xOZURyeFlvcEx5MjFYZw?oc=5",
+      "pubDate": "2026-04-08T12:07:19+00:00",
+      "source": "Google News",
+      "topic": "\"ai for science\"",
+      "summary": "Meet CAS Newton: Agentic AI built for science | Corporate EQS News",
+      "section": "news"
+    },
+    {
+      "title": "OpenAlex 2026 Roadmap",
+      "link": "https://blog.openalex.org/openalex-2026-roadmap/",
+      "pubDate": "2026-01-17T03:11:24+00:00",
+      "source": "OpenAlex blog",
+      "topic": "open science infrastructure",
+      "summary": "We just wrapped up our Q1 2026 Town Hall. You can watch the full recording here, but this post covers the highlights: what we shipped last quarter, what’s coming this quarter, and why we think 2026 is a pivotal year f...",
+      "section": "blogs"
+    },
+    {
+      "title": "Genesis Mission Now Accepting Applications to Fund AI-for-Science Projects - HPCwire",
+      "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNaHNCMVU5TGg5U2VlZnBnSjQzWEZyemVwLUdRR2ZmZ1VVbDU5YWFmd2x6c0VMOGpmbEhZZ2ctOVd6OHNUczVMWXg3YTNyVVoyOUVOaGt1WTlpRmRNS0JVNUh5elVWcW44bHA1UkF0bUJjMzhabTBCTkdWZHdXdGJVR01oemtDbWdNX1lLSVZiNFZDQ21IdWVnX25tVjVxbW56X09tMjVqOGtlVTJhX3ZR?oc=5",
+      "pubDate": "2026-04-06T22:48:54+00:00",
+      "source": "Google News",
+      "topic": "\"ai for science\"",
+      "summary": "Genesis Mission Now Accepting Applications to Fund AI-for-Science Projects HPCwire",
+      "section": "news"
+    },
+    {
+      "title": "DOI resolution and deposit outage on 17 March 2026",
+      "link": "https://www.crossref.org/blog/doi-resolution-and-deposit-outage-on-17-march-2026/",
+      "pubDate": "2026-03-30T00:00:00+00:00",
+      "source": "crossref.org",
+      "topic": "https://crossref.org",
+      "summary": "On 17 March 2026, we experienced an outage that affected DOI resolution for Crossref DOIs and the deposit of metadata records by Crossref members. In this summary, we outline what happened, the impact on our community...",
+      "section": "blogs"
+    },
+    {
+      "title": "Trump administration proposes massive budget cuts to science - Scientific American",
+      "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPSWUyREtod3VzVWk2MGI2SWlDaVJfSUtPOFdBR0xMcUpGbGVHUGxYdXpTQ3hBSzZxS0Z1d0tKd3dWbTROcjI4LVk3clBwZDFnNElRcTBGdW8tdDRlem04UzlablpNdHFFOUxNTzdJbHk1cGtHV0xsRjRqWmw0eEt6bFVpdWQyeG5ydF8tMHdqUVNweldZRERrNG1VM2kzUXdZUHNGVUtrWQ?oc=5",
+      "pubDate": "2026-04-03T07:00:00+00:00",
+      "source": "Google News",
+      "topic": "\"scientific publishing\"",
+      "summary": "Trump administration proposes massive budget cuts to science Scientific American",
+      "section": "news"
+    },
+    {
+      "title": "Reflections from Bangkok",
+      "link": "https://www.crossref.org/blog/reflections-from-bangkok/",
+      "pubDate": "2026-04-01T00:00:00+00:00",
+      "source": "crossref.org",
+      "topic": "https://crossref.org",
+      "summary": "Each organization in the global community of Crossref members (that’s currently over 24k organizations in 166 different countries) plays a key role in building the Research Nexus. Any opportunity we have to meet with...",
+      "section": "blogs"
+    },
+    {
+      "title": "Why journals are put on hold in Web of Science Core Collection – and how research integrity guides the process - Clarivate",
+      "link": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxQb1NMNjhTZkxhWE5WNEJ4QWhkVWt1UDNyQmJLSDRJWUpBZklrR21veHo1dXdrdGlwQ1VYTTZHc3AteVVrQ0JLblpFLVR3bmx2cmtHZDRjWENiLTdQSXZocWczdUgwMTNUZmNTN19EZ3BPRUIyNkdPbUd0ckFjWUZxMWh3ZkptWXJDeVk2MGVkdVBEN3FfOF9ZczZSZGQyYmE0TEdMODdhVXpTRU1zMXFITlhBYTdwY2pNaG9JMnRmMmJlYnNQYkU4anJDMzQta2FTY3cyYk90Y05TQkNTdVlZVFViQU5MUEtVdFo0cg?oc=5",
+      "pubDate": "2026-04-02T07:00:00+00:00",
+      "source": "Google News",
+      "topic": "\"research integrity\"",
+      "summary": "Why journals are put on hold in Web of Science Core Collection – and how research integrity guides the process Clarivate",
+      "section": "news"
+    },
+    {
+      "title": "Voices from Crossref Metadata Sprint in São Paulo",
+      "link": "https://www.crossref.org/blog/voices-from-crossref-metadata-sprint-in-s%C3%A3o-paulo/",
+      "pubDate": "2026-03-31T00:00:00+00:00",
+      "source": "crossref.org",
+      "topic": "https://crossref.org",
+      "summary": "This year, we placed a spotlight on the Latin American community, hosting the second Crossref Metadata Sprint in São Paulo, Brazil from 4 - 6 March 2026. In our first tri-lingual event, we brought together 31 particip...",
+      "section": "blogs"
+    },
+    {
+      "title": "AI turns electron microscopy into materials insights in minutes - Cornell Chronicle",
+      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNUm9fZUZZT2dmai0wRV9EZUlhRXdQbVczS0hvRjhGaXpXckFEME1BNGs4cXRpVU4xUFJ3aW54NmNjT0JoR21INHJ6LTlUX25qNUZ0emNyRi03WTIyN2Jvb3hnSnRFeE96dTdNMjd0ZEtVcE4yVmI4VHlCaVB5T2pDSkh1WVZ1UC1YdGJpQnBTRWdwNFJqZlpwbUR0a1g?oc=5",
+      "pubDate": "2026-04-01T18:11:41+00:00",
+      "source": "Google News",
+      "topic": "\"ai for science\"",
+      "summary": "AI turns electron microscopy into materials insights in minutes Cornell Chronicle",
+      "section": "news"
+    },
+    {
+      "title": "Weekend reads: LLMs ‘are not the problem’; Cash for peer review ‘doesn’t work,’ project finds; ‘Many Flaws, Few Retractions’ in vaping literature",
+      "link": "https://retractionwatch.com/2026/04/11/weekend-reads-llms-are-not-the-problem-cash-for-peer-review-doesnt-work-project-finds-many-flaws-few-retractions-in-vaping-literatur/",
+      "pubDate": "2026-04-11T10:00:00+00:00",
+      "source": "Retraction Watch",
+      "topic": "research integrity",
+      "summary": "If your week flew by — we know ours did — catch up here with what you might have missed. The week at Retraction Watch featured: In case you missed the news, the Hijacked Journal Checker now has more than 400 entries....",
+      "section": "news"
+    },
+    {
+      "title": "Canadian panel seeks to add more teeth to research oversight",
+      "link": "https://retractionwatch.com/2026/04/10/canadian-panel-seeks-to-add-more-teeth-to-research-oversight/",
+      "pubDate": "2026-04-10T15:45:16+00:00",
+      "source": "Retraction Watch",
+      "topic": "research integrity",
+      "summary": "A Canadian panel is proposing several changes to its guidelines for responsible conduct of research, including a provision that effectively removes any statute of limitations on investigations into potential misconduc...",
+      "section": "news"
+    },
+    {
+      "title": "Could a national database of scientific misconduct rulings stop repeat offenders?",
+      "link": "https://retractionwatch.com/2026/04/09/could-a-national-database-of-scientific-misconduct-rulings-stop-repeat-offenders/",
+      "pubDate": "2026-04-09T18:00:00+00:00",
+      "source": "Retraction Watch",
+      "topic": "research integrity",
+      "summary": "In an editorial published today in Science, Michael Lauer and Mark Barnes call for greater transparency in investigations of scientific misconduct with an aim toward making sure prospective academic employers know of...",
+      "section": "news"
+    },
+    {
+      "title": "A journal named a sleuth in a correction. The sleuth says that was ‘ethical editorial malpractice’",
+      "link": "https://retractionwatch.com/2026/04/08/bmc-nephrology-journal-named-sleuth-correction-error/",
+      "pubDate": "2026-04-08T21:16:55+00:00",
+      "source": "Retraction Watch",
+      "topic": "research integrity",
+      "summary": "As the publishing community debates the merits of naming sleuths in retraction or correction notices, one journal did so without the sleuth’s permission — by publishing an email from the authors naming her as the corr...",
+      "section": "news"
+    },
+    {
+      "title": "This RNA Almost Self-Replicates, Which Could Explain Life's Origins - ScienceAlert",
+      "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPekFLWURzQjV4S1BFNE5aVGxDSmtLbmE2ekJKT19tN3E2bnl3QUdTd29zNnNObUYwVWVlUk5KTVhHVnpQR0NBUVNqN0E3NWFWRTdPZWRNNWFoTUdCVHMzWktPNDlFajlkMHRKUmw4WU52b25WRllEZXdyX00yNVJHWkJadWEwRVpla0RpZ29Jb2NfMzlraVVFWTZ3?oc=5",
+      "pubDate": "2026-04-12T12:04:32+00:00",
+      "source": "Google News",
+      "topic": "\"Molecule\"",
+      "summary": "This RNA Almost Self-Replicates, Which Could Explain Life's Origins ScienceAlert",
+      "section": "news"
+    },
+    {
+      "title": "Scientists Unveil Microscopy Breakthrough That Reveals “Invisible” Molecular States - SciTechDaily",
+      "link": "https://news.google.com/rss/articles/CBMiSkFVX3lxTE50aGJwVG5CZl9yU0VRcHBLWkpGdUhSZ1RPZktrZTJRamNpM3VhcERYZUNtVTB5VmMzRnhKb1N2TXdzMU5RWE1PVnN3?oc=5",
+      "pubDate": "2026-04-12T11:53:06+00:00",
+      "source": "Google News",
+      "topic": "\"Molecule\"",
+      "summary": "Scientists Unveil Microscopy Breakthrough That Reveals “Invisible” Molecular States SciTechDaily",
+      "section": "news"
+    },
+    {
+      "title": "A 67-year-old “crazy” theory about vitamin B1 has finally been proven - ScienceDaily",
+      "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBocnlRN0x1Vm1PUlNodWxYZ3ppUHRJa21MRlBMT3lkS0ZicS1OOF92TzRqLVlpQWpDcHFVN1l1dkJjQXN6a3pIbl82Y2ljTGVoSkhnN09IazNmU0prVXRwbUpvQ3VaSk5VZENfSkxOaw?oc=5",
+      "pubDate": "2026-04-11T12:35:15+00:00",
+      "source": "Google News",
+      "topic": "\"Molecule\"",
+      "summary": "A 67-year-old “crazy” theory about vitamin B1 has finally been proven ScienceDaily",
+      "section": "news"
+    },
+    {
+      "title": "Publisher changes citation, registration policies following Retraction Watch investigation",
+      "link": "https://retractionwatch.com/2026/04/07/wolters-kluwer-international-journal-surgery-changes-citation-registration-policies/",
+      "pubDate": "2026-04-07T12:12:17+00:00",
+      "source": "Retraction Watch",
+      "topic": "research integrity",
+      "summary": "The Dutch publisher Wolters Kluwer has scrapped some of its citation and study-registration requirements at a top-ranked surgery journal founded by the U.K. plastic surgeon Riaz Agha, Retraction Watch has learned. The...",
+      "section": "news"
+    }
+  ]
+}
