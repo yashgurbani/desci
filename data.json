@@ -217,7 +217,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 36/100 · Open-science compatibility 65/100 (moderate).",
       "openScienceScore": 65,
-      "financialSummaryStrict": "DAO / token-governed project. Revenue model: token, treasury. Capital/funding: Undisclosed; token/treasury funded. Community/DAO governance can align with openness, but incentives depend on token design and treasury structure. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "DAO / token-governed project. Revenue model: token, treasury. Capital/funding: Undisclosed; token/treasury funded. Community/DAO governance can align with openness, but incentives depend on token design and treasury structure. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "datalake",
@@ -475,7 +476,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 66/100 · Open-science compatibility 33/100 (weak).",
       "openScienceScore": 33,
-      "financialSummaryStrict": "SP. Z O.O.. Revenue model: EU funding, token ecosystem, consent management services, patient recruitment / data services. Capital/funding: Undisclosed total; official site says initial funding came from the European Union. Patient consent and research access are aligned with open-science goals, but the company and token stack remain commercially structured rather than public-commons infrastructure. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "SP. Z O.O.. Revenue model: EU funding, token ecosystem, consent management services, patient recruitment / data services. Capital/funding: Undisclosed total; official site says initial funding came from the European Union. Patient consent and research access are aligned with open-science goals, but the company and token stack remain commercially structured rather than public-commons infrastructure. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "elizaos",
@@ -711,7 +713,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 55/100 · Open-science compatibility 44/100 (mixed).",
       "openScienceScore": 44,
-      "financialSummaryStrict": "undisclosed operating company. Revenue model: token. Capital/funding: Undisclosed primary financing; token economics publicly documented. Insufficient evidence to score open-science alignment confidently. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "undisclosed operating company. Revenue model: token. Capital/funding: Undisclosed primary financing; token economics publicly documented. Insufficient evidence to score open-science alignment confidently. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "galeon",
@@ -943,7 +946,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 79/100 · Open-science compatibility 23/100 (weak).",
       "openScienceScore": 23,
-      "financialSummaryStrict": "French operating company. Revenue model: saas / ehr contracts, token. Capital/funding: ~$15M token/ICO financing + operating SaaS contracts. Useful public-health deployment, but commercial hospital software + token incentives are not an open-commons model. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "French operating company. Revenue model: saas / ehr contracts, token. Capital/funding: ~$15M token/ICO financing + operating SaaS contracts. Useful public-health deployment, but commercial hospital software + token incentives are not an open-commons model. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "hetu",
@@ -1149,7 +1153,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 42/100 · Open-science compatibility 60/100 (moderate).",
       "openScienceScore": 60,
-      "financialSummaryStrict": "protocol / company wrapper undisclosed. Revenue model: token incentives, network utility. Capital/funding: Undisclosed; grant/community model claimed. The protocol emphasizes verifiability and permissionless AI work, but it is not primarily framed as open scholarly infrastructure and lacks transparent nonprofit governance. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "protocol / company wrapper undisclosed. Revenue model: token incentives, network utility. Capital/funding: Undisclosed; grant/community model claimed. The protocol emphasizes verifiability and permissionless AI work, but it is not primarily framed as open scholarly infrastructure and lacks transparent nonprofit governance. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "labdao",
@@ -1350,7 +1355,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 27/100 · Open-science compatibility 79/100 (strong).",
       "openScienceScore": 79,
-      "financialSummaryStrict": "community / startup hybrid. Revenue model: grants, venture backing. Capital/funding: $3.6M seed financing. Explicit open-science tooling and non-APC model; operational sustainability still uncertain. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "community / startup hybrid. Revenue model: grants, venture backing. Capital/funding: $3.6M seed financing. Explicit open-science tooling and non-APC model; operational sustainability still uncertain. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "prime-intellect",
@@ -1556,7 +1562,8 @@
       "sourceAsterisk": false,
       "financialSummary": "Commerciality 76/100 · Open-science compatibility 46/100 (mixed).",
       "openScienceScore": 46,
-      "financialSummaryStrict": "for-profit startup. Revenue model: venture backing, services / compute platform. Capital/funding: Over $20M total; $15M announced Feb 2025. Open-stack rhetoric and infrastructure access, but clearly VC-backed commercial company."
+      "financialSummaryStrict": "for-profit startup. Revenue model: venture backing, services / compute platform. Capital/funding: Over $20M total; $15M announced Feb 2025. Open-stack rhetoric and infrastructure access, but clearly VC-backed commercial company.",
+      "notes": ""
     },
     {
       "id": "pump-science",
@@ -1764,7 +1771,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 89/100 · Open-science compatibility 11/100 (weak).",
       "openScienceScore": 11,
-      "financialSummaryStrict": "unknown. Revenue model: token, fees, venue fees, funding platform. Capital/funding: No clean venture total verified; revenue appears fee- and product-driven. Commercial incentives can still support openness, but mission drift and enclosure risk are structurally higher. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "unknown. Revenue model: token, fees, venue fees, funding platform. Capital/funding: No clean venture total verified; revenue appears fee- and product-driven. Commercial incentives can still support openness, but mission drift and enclosure risk are structurally higher. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "rare-compute",
@@ -1997,7 +2005,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 14/100 · Open-science compatibility 84/100 (strong).",
       "openScienceScore": 84,
-      "financialSummaryStrict": "non-profit consortium. Revenue model: ecosystem partnerships, compute credits, philanthropic / partner support. Capital/funding: Undisclosed; official site describes a non-profit consortium. The nonprofit-consortium framing and rare-disease compute support are more aligned with commons-style infrastructure than with extractive platform monetization. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "non-profit consortium. Revenue model: ecosystem partnerships, compute credits, philanthropic / partner support. Capital/funding: Undisclosed; official site describes a non-profit consortium. The nonprofit-consortium framing and rare-disease compute support are more aligned with commons-style infrastructure than with extractive platform monetization. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "researchhub",
@@ -2216,7 +2225,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 57/100 · Open-science compatibility 64/100 (moderate).",
       "openScienceScore": 64,
-      "financialSummaryStrict": "startup + foundation/token-governance arrangement. Revenue model: token, startup equity. Capital/funding: $5M officially announced seed round; later follow-on still secondary-sourced. Free-to-use open science goals, but token incentives and startup structure create mixed incentives. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "startup + foundation/token-governance arrangement. Revenue model: token, startup equity. Capital/funding: $5M officially announced seed round; later follow-on still secondary-sourced. Free-to-use open science goals, but token incentives and startup structure create mixed incentives. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "rejuve",
@@ -2468,7 +2478,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 75/100 · Open-science compatibility 28/100 (weak).",
       "openScienceScore": 28,
-      "financialSummaryStrict": "unknown. Revenue model: token, spinouts, venue fees, trading fees. Capital/funding: Token-funded ecosystem; exact primary raise total not confirmed in current pass. Insufficient evidence to score open-science alignment confidently. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "unknown. Revenue model: token, spinouts, venue fees, trading fees. Capital/funding: Token-funded ecosystem; exact primary raise total not confirmed in current pass. Insufficient evidence to score open-science alignment confidently. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "valleydao",
@@ -2729,7 +2740,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 38/100 · Open-science compatibility 63/100 (moderate).",
       "openScienceScore": 63,
-      "financialSummaryStrict": "unknown. Revenue model: token, funding platform. Capital/funding: Official site shows ~$4M treasury; cumulative raised capital not cleanly disclosed. Community/DAO governance can align with openness, but incentives depend on token design and treasury structure. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "unknown. Revenue model: token, funding platform. Capital/funding: Official site shows ~$4M treasury; cumulative raised capital not cleanly disclosed. Community/DAO governance can align with openness, but incentives depend on token design and treasury structure. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "vitadao",
@@ -2949,7 +2961,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 75/100 · Open-science compatibility 48/100 (mixed).",
       "openScienceScore": 48,
-      "financialSummaryStrict": "unknown. Revenue model: token, treasury, licensing, spinouts. Capital/funding: Officially documented $4.1M 2023 strategic round; wider treasury value fluctuates with token holdings. Insufficient evidence to score open-science alignment confidently. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "unknown. Revenue model: token, treasury, licensing, spinouts. Capital/funding: Officially documented $4.1M 2023 strategic round; wider treasury value fluctuates with token holdings. Insufficient evidence to score open-science alignment confidently. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "welshare",
@@ -3182,7 +3195,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 55/100 · Open-science compatibility 30/100 (weak).",
       "openScienceScore": 30,
-      "financialSummaryStrict": "protocol / startup wrapper undisclosed. Revenue model: token ecosystem, protocol access / matching, research tooling. Capital/funding: Undisclosed in primary sources reviewed. The user-controlled data model is pro-sovereignty, but the protocol is still a tokenized marketplace-style system rather than a plainly public, nonprofit research commons. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "protocol / startup wrapper undisclosed. Revenue model: token ecosystem, protocol access / matching, research tooling. Capital/funding: Undisclosed in primary sources reviewed. The user-controlled data model is pro-sovereignty, but the protocol is still a tokenized marketplace-style system rather than a plainly public, nonprofit research commons. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "molecule",
@@ -3382,7 +3396,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 90/100 · Open-science compatibility 18/100 (weak).",
       "openScienceScore": 18,
-      "financialSummaryStrict": "for-profit company. Revenue model: token, fees, venue fees. Capital/funding: $12.7M seed officially announced. Commercial incentives can still support openness, but mission drift and enclosure risk are structurally higher. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "for-profit company. Revenue model: token, fees, venue fees. Capital/funding: $12.7M seed officially announced. Commercial incentives can still support openness, but mission drift and enclosure risk are structurally higher. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "bio-protocol",
@@ -3596,7 +3611,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 67/100 · Open-science compatibility 44/100 (mixed).",
       "openScienceScore": 44,
-      "financialSummaryStrict": "unknown. Revenue model: grants, token, fees, venue fees. Capital/funding: Official public-auction rounds plus reported $6.9M seed; exact cumulative total depends on how auctions are counted. Insufficient evidence to score open-science alignment confidently. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "unknown. Revenue model: grants, token, fees, venue fees. Capital/funding: Official public-auction rounds plus reported $6.9M seed; exact cumulative total depends on how auctions are counted. Insufficient evidence to score open-science alignment confidently. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "episteme",
@@ -3835,7 +3851,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 59/100 · Open-science compatibility 46/100 (mixed).",
       "openScienceScore": 46,
-      "financialSummaryStrict": "unknown. Revenue model: token, venue fees, funding platform. Capital/funding: No disclosed financing found in current pass. Insufficient evidence to score open-science alignment confidently. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "unknown. Revenue model: token, venue fees, funding platform. Capital/funding: No disclosed financing found in current pass. Insufficient evidence to score open-science alignment confidently. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "ocean",
@@ -4062,7 +4079,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 38/100 · Open-science compatibility 74/100 (strong).",
       "openScienceScore": 74,
-      "financialSummaryStrict": "unknown. Revenue model: token, fees, marketplace fees. Capital/funding: Historic token-sale financing; official launch terms and protocol docs support token-led capitalization rather than classic equity disclosure. Nonprofit/foundation structure with open-access or community-support incentives. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "unknown. Revenue model: token, fees, marketplace fees. Capital/funding: Historic token-sale financing; official launch terms and protocol docs support token-led capitalization rather than classic equity disclosure. Nonprofit/foundation structure with open-access or community-support incentives. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "numerai",
@@ -4269,7 +4287,8 @@
       "sourceAsterisk": false,
       "financialSummary": "Commerciality 93/100 · Open-science compatibility 13/100 (weak).",
       "openScienceScore": 13,
-      "financialSummaryStrict": "for-profit company / hedge fund. Revenue model: management fees, token. Capital/funding: $30M Series C in 2025. Open-data / crowdsourced science rhetoric is secondary to commercial hedge-fund economics."
+      "financialSummaryStrict": "for-profit company / hedge fund. Revenue model: management fees, token. Capital/funding: $30M Series C in 2025. Open-data / crowdsourced science rhetoric is secondary to commercial hedge-fund economics.",
+      "notes": ""
     },
     {
       "id": "polymarket",
@@ -4465,7 +4484,8 @@
       "sourceAsterisk": false,
       "financialSummary": "Commerciality 95/100 · Open-science compatibility 8/100 (weak).",
       "openScienceScore": 8,
-      "financialSummaryStrict": "for-profit company. Revenue model: trading platform economics, venture / strategic capital. Capital/funding: ICE direct investment: $1.0B in Oct 2025 + new $600M in Mar 2026, plus up to $40M expected secondary purchases. Commercial prediction market rather than open science infrastructure."
+      "financialSummaryStrict": "for-profit company. Revenue model: trading platform economics, venture / strategic capital. Capital/funding: ICE direct investment: $1.0B in Oct 2025 + new $600M in Mar 2026, plus up to $40M expected secondary purchases. Commercial prediction market rather than open science infrastructure.",
+      "notes": ""
     },
     {
       "id": "hairdao",
@@ -4721,7 +4741,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 48/100 · Open-science compatibility 51/100 (moderate).",
       "openScienceScore": 51,
-      "financialSummaryStrict": "unknown. Revenue model: token, treasury, spinouts. Capital/funding: Official site shows $75k research funded; cumulative treasury/capital raised undisclosed. Community/DAO governance can align with openness, but incentives depend on token design and treasury structure. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "unknown. Revenue model: token, treasury, spinouts. Capital/funding: Official site shows $75k research funded; cumulative treasury/capital raised undisclosed. Community/DAO governance can align with openness, but incentives depend on token design and treasury structure. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "athenadao",
@@ -4961,7 +4982,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 47/100 · Open-science compatibility 55/100 (moderate).",
       "openScienceScore": 55,
-      "financialSummaryStrict": "unknown. Revenue model: token, treasury, licensing, funding platform. Capital/funding: No clean primary capital total found in current pass. Community/DAO governance can align with openness, but incentives depend on token design and treasury structure. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "unknown. Revenue model: token, treasury, licensing, funding platform. Capital/funding: No clean primary capital total found in current pass. Community/DAO governance can align with openness, but incentives depend on token design and treasury structure. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "cerebrumdao",
@@ -5188,7 +5210,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 40/100 · Open-science compatibility 69/100 (moderate).",
       "openScienceScore": 69,
-      "financialSummaryStrict": "DAO / token-governed community. Revenue model: public token sales, community treasury. Capital/funding: Funded through NEURON token sales; cumulative capital total undisclosed. Community funding of translational neuroscience aligns with DeSci ideals, but the tokenized governance model still introduces speculative and treasury-concentration risks. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "DAO / token-governed community. Revenue model: public token sales, community treasury. Capital/funding: Funded through NEURON token sales; cumulative capital total undisclosed. Community funding of translational neuroscience aligns with DeSci ideals, but the tokenized governance model still introduces speculative and treasury-concentration risks. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "psydao",
@@ -5436,7 +5459,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 35/100 · Open-science compatibility 68/100 (moderate).",
       "openScienceScore": 68,
-      "financialSummaryStrict": "unknown. Revenue model: grants, token, funding platform. Capital/funding: Official site shows $280k total funded across 6 grants/projects; total treasury/capital raised undisclosed. Community/DAO governance can align with openness, but incentives depend on token design and treasury structure. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "unknown. Revenue model: grants, token, funding platform. Capital/funding: Official site shows $280k total funded across 6 grants/projects; total treasury/capital raised undisclosed. Community/DAO governance can align with openness, but incentives depend on token design and treasury structure. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "cryodao",
@@ -5651,7 +5675,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 34/100 · Open-science compatibility 96/100 (very strong).",
       "openScienceScore": 96,
-      "financialSummaryStrict": "DAO / legal wrapper undisclosed. Revenue model: community treasury, token-governed fundraising. Capital/funding: Treasury size publicly shown; cumulative raises remain distinct from treasury mark-to-market. The mission is public-facing and research-funding oriented, though tokenized governance still leaves questions about long-term sustainability and concentration. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "DAO / legal wrapper undisclosed. Revenue model: community treasury, token-governed fundraising. Capital/funding: Treasury size publicly shown; cumulative raises remain distinct from treasury mark-to-market. The mission is public-facing and research-funding oriented, though tokenized governance still leaves questions about long-term sustainability and concentration. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "curetopia",
@@ -5885,7 +5910,8 @@
       "sourceAsterisk": false,
       "financialSummary": "Commerciality 42/100 · Open-science compatibility 86/100 (very strong).",
       "openScienceScore": 86,
-      "financialSummaryStrict": "Swiss non-profit association (verein) + DAO governance token. Revenue model: community auction, future token sales, treasury / community incentives. Capital/funding: $1.77M community auction (official/press-backed). Its nonprofit wrapper and patient/community-governance model are relatively aligned with open-science values, even though tokenization still adds market dynamics."
+      "financialSummaryStrict": "Swiss non-profit association (verein) + DAO governance token. Revenue model: community auction, future token sales, treasury / community incentives. Capital/funding: $1.77M community auction (official/press-backed). Its nonprofit wrapper and patient/community-governance model are relatively aligned with open-science values, even though tokenization still adds market dynamics.",
+      "notes": ""
     },
     {
       "id": "desci-labs",
@@ -6148,7 +6174,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 73/100 · Open-science compatibility 75/100 (strong).",
       "openScienceScore": 75,
-      "financialSummaryStrict": "unknown. Revenue model: grants, token. Capital/funding: $6.5M seed publicly stated on company about page. No-fee or open-data model aligns strongly with open science norms. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "unknown. Revenue model: grants, token. Capital/funding: $6.5M seed publicly stated on company about page. No-fee or open-data model aligns strongly with open science norms. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "orvium",
@@ -6348,7 +6375,8 @@
       "sourceAsterisk": false,
       "financialSummary": "Commerciality 58/100 · Open-science compatibility 53/100 (moderate).",
       "openScienceScore": 53,
-      "financialSummaryStrict": "OÜ (private company). Revenue model: services, grants, venture backing. Capital/funding: EU grant support + VC backing from CV VC. Open-science positioning is strong, but business model is commercial SaaS/services rather than commons infrastructure."
+      "financialSummaryStrict": "OÜ (private company). Revenue model: services, grants, venture backing. Capital/funding: EU grant support + VC backing from CV VC. Open-science positioning is strong, but business model is commercial SaaS/services rather than commons infrastructure.",
+      "notes": ""
     },
     {
       "id": "origintrail",
@@ -6570,7 +6598,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 65/100 · Open-science compatibility 47/100 (mixed).",
       "openScienceScore": 47,
-      "financialSummaryStrict": "unknown. Revenue model: grants, token, venue fees. Capital/funding: $22.5M ICO publicly announced; additional grant support also visible. Insufficient evidence to score open-science alignment confidently. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "unknown. Revenue model: grants, token, venue fees. Capital/funding: $22.5M ICO publicly announced; additional grant support also visible. Insufficient evidence to score open-science alignment confidently. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "genomesdao",
@@ -6804,7 +6833,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 63/100 · Open-science compatibility 54/100 (moderate).",
       "openScienceScore": 54,
-      "financialSummaryStrict": "hybrid startup / token project. Revenue model: token, data marketplace. Capital/funding: 2024 investment round officially announced; amount undisclosed. Strong privacy rhetoric, but monetization of genomic data and tokenization create mixed incentives. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "hybrid startup / token project. Revenue model: token, data marketplace. Capital/funding: 2024 investment round officially announced; amount undisclosed. Strong privacy rhetoric, but monetization of genomic data and tokenization create mixed incentives. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "hippocrat",
@@ -7040,7 +7070,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 63/100 · Open-science compatibility 48/100 (mixed).",
       "openScienceScore": 48,
-      "financialSummaryStrict": "unknown. Revenue model: token, marketplace fees. Capital/funding: No classic venture total disclosed in current pass. Insufficient evidence to score open-science alignment confidently. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "unknown. Revenue model: token, marketplace fees. Capital/funding: No classic venture total disclosed in current pass. Insufficient evidence to score open-science alignment confidently. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "desci-world",
@@ -7240,7 +7271,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 25/100 · Open-science compatibility 56/100 (moderate).",
       "openScienceScore": 56,
-      "financialSummaryStrict": "unknown. Revenue model: token. Capital/funding: Undisclosed / community supported. Community/DAO governance can align with openness, but incentives depend on token design and treasury structure. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "unknown. Revenue model: token. Capital/funding: Undisclosed / community supported. Community/DAO governance can align with openness, but incentives depend on token design and treasury structure. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "desci-berlin",
@@ -7437,7 +7469,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 14/100 · Open-science compatibility 51/100 (moderate).",
       "openScienceScore": 51,
-      "financialSummaryStrict": "unknown. Revenue model: fees, sponsorship. Capital/funding: Sponsors + registration; no disclosed capital raise. Insufficient evidence to score open-science alignment confidently. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "unknown. Revenue model: fees, sponsorship. Capital/funding: Sponsors + registration; no disclosed capital raise. Insufficient evidence to score open-science alignment confidently. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "desci-london",
@@ -7665,7 +7698,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 10/100 · Open-science compatibility 56/100 (moderate).",
       "openScienceScore": 56,
-      "financialSummaryStrict": "unknown. Revenue model: grants, fees, sponsorship. Capital/funding: Sponsors + registration; no disclosed capital raise. Insufficient evidence to score open-science alignment confidently. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "unknown. Revenue model: grants, fees, sponsorship. Capital/funding: Sponsors + registration; no disclosed capital raise. Insufficient evidence to score open-science alignment confidently. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "dynex",
@@ -7906,7 +7940,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 55/100 · Open-science compatibility 44/100 (mixed).",
       "openScienceScore": 44,
-      "financialSummaryStrict": "unknown. Revenue model: token. Capital/funding: No ICO / no premine claimed; community/self-funded launch. Insufficient evidence to score open-science alignment confidently. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "unknown. Revenue model: token. Capital/funding: No ICO / no premine claimed; community/self-funded launch. Insufficient evidence to score open-science alignment confidently. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "tig",
@@ -8145,7 +8180,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 46/100 · Open-science compatibility 56/100 (moderate).",
       "openScienceScore": 56,
-      "financialSummaryStrict": "foundation / protocol. Revenue model: token emissions, commercial license fees, challenge-owner deposits. Capital/funding: No clear outside raise found; token/protocol capitalization. It rewards open algorithm development, but the protocol clearly anticipates commercial licensing as part of the long-run value-accrual model. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "foundation / protocol. Revenue model: token emissions, commercial license fees, challenge-owner deposits. Capital/funding: No clear outside raise found; token/protocol capitalization. It rewards open algorithm development, but the protocol clearly anticipates commercial licensing as part of the long-run value-accrual model. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "pfizer-ventures",
@@ -8359,7 +8395,8 @@
       "sourceAsterisk": false,
       "financialSummary": "Commerciality 88/100 · Open-science compatibility 0/100 (weak).",
       "openScienceScore": 0,
-      "financialSummaryStrict": "corporate venture capital arm. Revenue model: corporate capital allocation, investment returns. Capital/funding: $900M current capital commitment; $1.6B AUM (official Pfizer page). Strategic pharma investing may support innovation, but it is not open-science infrastructure and is explicitly designed for strategic and financial return."
+      "financialSummaryStrict": "corporate venture capital arm. Revenue model: corporate capital allocation, investment returns. Capital/funding: $900M current capital commitment; $1.6B AUM (official Pfizer page). Strategic pharma investing may support innovation, but it is not open-science infrastructure and is explicitly designed for strategic and financial return.",
+      "notes": ""
     },
     {
       "id": "binance-labs",
@@ -8564,7 +8601,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 70/100 · Open-science compatibility 29/100 (weak).",
       "openScienceScore": 29,
-      "financialSummaryStrict": "unknown. Revenue model: funding platform. Capital/funding: Fund vehicle; 2025 official coverage references a $1B Builder Fund. Commercial incentives can still support openness, but mission drift and enclosure risk are structurally higher. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "unknown. Revenue model: funding platform. Capital/funding: Fund vehicle; 2025 official coverage references a $1B Builder Fund. Commercial incentives can still support openness, but mission drift and enclosure risk are structurally higher. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "singularitynet",
@@ -8805,7 +8843,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 38/100 · Open-science compatibility 74/100 (strong).",
       "openScienceScore": 74,
-      "financialSummaryStrict": "unknown. Revenue model: token, fees, marketplace fees. Capital/funding: Historic token-led capitalization; official materials highlight $1.25M and $1.5M+ Deep Funding grant rounds rather than classic equity rounds. Nonprofit/foundation structure with open-access or community-support incentives. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "unknown. Revenue model: token, fees, marketplace fees. Capital/funding: Historic token-led capitalization; official materials highlight $1.25M and $1.5M+ Deep Funding grant rounds rather than classic equity rounds. Nonprofit/foundation structure with open-access or community-support incentives. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "nobleblocks",
@@ -9044,7 +9083,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 55/100 · Open-science compatibility 44/100 (mixed).",
       "openScienceScore": 44,
-      "financialSummaryStrict": "unknown. Revenue model: token. Capital/funding: No public financing round located in current pass. Insufficient evidence to score open-science alignment confidently. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "unknown. Revenue model: token. Capital/funding: No public financing round located in current pass. Insufficient evidence to score open-science alignment confidently. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "yesnoerror",
@@ -9259,7 +9299,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 46/100 · Open-science compatibility 60/100 (moderate).",
       "openScienceScore": 60,
-      "financialSummaryStrict": "initiative / company wrapper undisclosed. Revenue model: token funding, AI audit tooling. Capital/funding: Undisclosed in primary sources reviewed. The mission is strongly pro-integrity and pro-audit, but the mechanism remains token-funded and lacks transparent nonprofit governance. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "initiative / company wrapper undisclosed. Revenue model: token funding, AI audit tooling. Capital/funding: Undisclosed in primary sources reviewed. The mission is strongly pro-integrity and pro-audit, but the mechanism remains token-funded and lacks transparent nonprofit governance. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "open-humans",
@@ -9493,7 +9534,8 @@
       "sourceAsterisk": false,
       "financialSummary": "Commerciality 3/100 · Open-science compatibility 100/100 (very strong).",
       "openScienceScore": 100,
-      "financialSummaryStrict": "501(c)(3) nonprofit. Revenue model: grants, donations. Capital/funding: Nonprofit grant and donation support. Participant-centered nonprofit data commons with public-benefit mission."
+      "financialSummaryStrict": "501(c)(3) nonprofit. Revenue model: grants, donations. Capital/funding: Nonprofit grant and donation support. Participant-centered nonprofit data commons with public-benefit mission.",
+      "notes": ""
     },
     {
       "id": "quantum-bio-dao",
@@ -9737,7 +9779,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 41/100 · Open-science compatibility 90/100 (very strong).",
       "openScienceScore": 90,
-      "financialSummaryStrict": "DAO plus affiliated nonprofit institute and for-profit incubator. Revenue model: community token auction, research grants, equity / IP development through incubator. Capital/funding: Community auction amount reported by secondary sources; primary ecosystem structure verified. The explicit nonprofit research institute improves alignment with open science, though the incubator/equity layer adds a commercialization pathway. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "DAO plus affiliated nonprofit institute and for-profit incubator. Revenue model: community token auction, research grants, equity / IP development through incubator. Capital/funding: Community auction amount reported by secondary sources; primary ecosystem structure verified. The explicit nonprofit research institute improves alignment with open science, though the incubator/equity layer adds a commercialization pathway. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "vibe-bio",
@@ -9960,7 +10003,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 70/100 · Open-science compatibility 56/100 (moderate).",
       "openScienceScore": 56,
-      "financialSummaryStrict": "for-profit biotech company/fund structure. Revenue model: venture backing, investment / portfolio economics. Capital/funding: $12M financing announced in 2022. Community-benefit narrative exists, but operating structure is conventional venture biotech. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "for-profit biotech company/fund structure. Revenue model: venture backing, investment / portfolio economics. Capital/funding: $12M financing announced in 2022. Community-benefit narrative exists, but operating structure is conventional venture biotech. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "hippo-protocol",
@@ -10179,7 +10223,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 53/100 · Open-science compatibility 44/100 (mixed).",
       "openScienceScore": 44,
-      "financialSummaryStrict": "cooperative protocol / legal wrapper undisclosed. Revenue model: token staking / validator economy, healthcare-data access, infrastructure usage. Capital/funding: Undisclosed. Patient sovereignty and open standards are positive, but the network is still a tokenized, infrastructure-for-sale model rather than a nonprofit scholarly commons. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "cooperative protocol / legal wrapper undisclosed. Revenue model: token staking / validator economy, healthcare-data access, infrastructure usage. Capital/funding: Undisclosed. Patient sovereignty and open standards are positive, but the network is still a tokenized, infrastructure-for-sale model rather than a nonprofit scholarly commons. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "aminochain",
@@ -10412,7 +10457,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 71/100 · Open-science compatibility 48/100 (mixed).",
       "openScienceScore": 48,
-      "financialSummaryStrict": "for-profit company. Revenue model: venture backing, marketplace fees. Capital/funding: $5M seed officially announced; $7M total with prior pre-seed widely reported. Improves sample/data logistics, but as a commercial infrastructure startup. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "for-profit company. Revenue model: venture backing, marketplace fees. Capital/funding: $5M seed officially announced; $7M total with prior pre-seed widely reported. Improves sample/data logistics, but as a commercial infrastructure startup. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "nanovita",
@@ -10631,7 +10677,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 50/100 · Open-science compatibility 60/100 (moderate).",
       "openScienceScore": 60,
-      "financialSummaryStrict": "startup / protocol wrapper undisclosed. Revenue model: AI health tooling, health-data infrastructure, possible device / app ecosystem. Capital/funding: Secondary reports mention a recent round and a $20M post-money valuation; amount raised remains undisclosed and low-confidence. The project markets open on-chain health research, but the commercial/venture structure is still too opaque to score with confidence. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "startup / protocol wrapper undisclosed. Revenue model: AI health tooling, health-data infrastructure, possible device / app ecosystem. Capital/funding: Secondary reports mention a recent round and a $20M post-money valuation; amount raised remains undisclosed and low-confidence. The project markets open on-chain health research, but the commercial/venture structure is still too opaque to score with confidence. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "genpulse",
@@ -10849,7 +10896,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 63/100 · Open-science compatibility 18/100 (weak).",
       "openScienceScore": 18,
-      "financialSummaryStrict": "commercial platform / startup. Revenue model: device sales, white-label enterprise AI, consumer app / marketplace. Capital/funding: At least small grant/incubator support visible; larger financing undisclosed. Optional data sharing and medical-AI tooling exist, but the current site reads as a commercial consumer/clinic platform rather than an open research commons. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "commercial platform / startup. Revenue model: device sales, white-label enterprise AI, consumer app / marketplace. Capital/funding: At least small grant/incubator support visible; larger financing undisclosed. Optional data sharing and medical-AI tooling exist, but the current site reads as a commercial consumer/clinic platform rather than an open research commons. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "stadium-science",
@@ -11082,7 +11130,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 58/100 · Open-science compatibility 48/100 (mixed).",
       "openScienceScore": 48,
-      "financialSummaryStrict": "unknown. Revenue model: token, funding platform. Capital/funding: At least one fundraising entry appears in secondary databases, but details remain sparse. Insufficient evidence to score open-science alignment confidently. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "unknown. Revenue model: token, funding platform. Capital/funding: At least one fundraising entry appears in secondary databases, but details remain sparse. Insufficient evidence to score open-science alignment confidently. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "ants-review",
@@ -11283,7 +11332,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 31/100 · Open-science compatibility 42/100 (mixed).",
       "openScienceScore": 42,
-      "financialSummaryStrict": "research prototype / smart-contract protocol. Revenue model: author-paid review bounties (proposed). Capital/funding: No verified institutional financing; hackathon / grant support only. It is explicitly aimed at open/incentivized peer review, but the protocol also relies on direct payment incentives rather than a nonprofit service model. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "research prototype / smart-contract protocol. Revenue model: author-paid review bounties (proposed). Capital/funding: No verified institutional financing; hackathon / grant support only. It is explicitly aimed at open/incentivized peer review, but the protocol also relies on direct payment incentives rather than a nonprofit service model. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "beerreview",
@@ -11474,7 +11524,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 15/100 · Open-science compatibility 55/100 (moderate).",
       "openScienceScore": 55,
-      "financialSummaryStrict": "academic prototype. Revenue model: undisclosed revenue model. Capital/funding: No disclosed financing. The prototype aims to improve peer review through blockchain tooling, but there is no disclosed sustainability model yet. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "academic prototype. Revenue model: undisclosed revenue model. Capital/funding: No disclosed financing. The prototype aims to improve peer review through blockchain tooling, but there is no disclosed sustainability model yet. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "bloxberg",
@@ -11692,7 +11743,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 24/100 · Open-science compatibility 67/100 (moderate).",
       "openScienceScore": 67,
-      "financialSummaryStrict": "unknown. Revenue model: token, institutional support. Capital/funding: Not a conventional startup raise; consortium/institutional support model. Community/DAO governance can align with openness, but incentives depend on token design and treasury structure. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "unknown. Revenue model: token, institutional support. Capital/funding: Not a conventional startup raise; consortium/institutional support model. Community/DAO governance can align with openness, but incentives depend on token design and treasury structure. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "opscientia",
@@ -11930,7 +11982,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 43/100 · Open-science compatibility 59/100 (moderate).",
       "openScienceScore": 59,
-      "financialSummaryStrict": "unknown. Revenue model: grants, funding platform. Capital/funding: Grant/ecosystem support visible; no clean venture round verified. Insufficient evidence to score open-science alignment confidently. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "unknown. Revenue model: grants, funding platform. Capital/funding: Grant/ecosystem support visible; no clean venture round verified. Insufficient evidence to score open-science alignment confidently. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "pci",
@@ -12145,7 +12198,8 @@
       "sourceAsterisk": false,
       "financialSummary": "Commerciality 3/100 · Open-science compatibility 100/100 (very strong).",
       "openScienceScore": 100,
-      "financialSummaryStrict": "association / nonprofit scientific organization. Revenue model: public funding, institutional support. Capital/funding: Public/institutional support; no consolidated total verified here. Explicitly nonprofit, no-cost, preprint-centric open science model."
+      "financialSummaryStrict": "association / nonprofit scientific organization. Revenue model: public funding, institutional support. Capital/funding: Public/institutional support; no consolidated total verified here. Explicitly nonprofit, no-cost, preprint-centric open science model.",
+      "notes": ""
     },
     {
       "id": "elife-new",
@@ -12372,7 +12426,8 @@
       "sourceAsterisk": false,
       "financialSummary": "Commerciality 28/100 · Open-science compatibility 34/100 (weak).",
       "openScienceScore": 34,
-      "financialSummaryStrict": "nonprofit publisher. Revenue model: publication fee, grants, institutional support. Capital/funding: Grant- and institutional-support model plus publication fee. Strongly open-review oriented, but fee-bearing model reduces alignment versus fee-free infrastructure."
+      "financialSummaryStrict": "nonprofit publisher. Revenue model: publication fee, grants, institutional support. Capital/funding: Grant- and institutional-support model plus publication fee. Strongly open-review oriented, but fee-bearing model reduces alignment versus fee-free infrastructure.",
+      "notes": ""
     },
     {
       "id": "review-commons",
@@ -12575,7 +12630,8 @@
       "sourceAsterisk": false,
       "financialSummary": "Commerciality 5/100 · Open-science compatibility 95/100 (very strong).",
       "openScienceScore": 95,
-      "financialSummaryStrict": "EMBO Press-operated nonprofit / mission project. Revenue model: affiliate publisher support, grants. Capital/funding: Grant / affiliate-publisher support. Free-to-author portable review service explicitly built to improve peer review efficiency and openness."
+      "financialSummaryStrict": "EMBO Press-operated nonprofit / mission project. Revenue model: affiliate publisher support, grants. Capital/funding: Grant / affiliate-publisher support. Free-to-author portable review service explicitly built to improve peer review efficiency and openness.",
+      "notes": ""
     },
     {
       "id": "prereview",
@@ -12785,7 +12841,8 @@
       "sourceAsterisk": false,
       "financialSummary": "Commerciality 3/100 · Open-science compatibility 100/100 (very strong).",
       "openScienceScore": 100,
-      "financialSummaryStrict": "fiscally sponsored 501(c)(3) project. Revenue model: grants, donations. Capital/funding: Grant-funded nonprofit project. Directly mission-aligned nonprofit peer review infrastructure."
+      "financialSummaryStrict": "fiscally sponsored 501(c)(3) project. Revenue model: grants, donations. Capital/funding: Grant-funded nonprofit project. Directly mission-aligned nonprofit peer review infrastructure.",
+      "notes": ""
     },
     {
       "id": "openreview",
@@ -12996,7 +13053,8 @@
       "sourceAsterisk": false,
       "financialSummary": "Commerciality 12/100 · Open-science compatibility 96/100 (very strong).",
       "openScienceScore": 96,
-      "financialSummaryStrict": "nonprofit foundation / project. Revenue model: sponsorship, donations, hosting, venue fees. Capital/funding: Sponsorships / donations / hosting revenue; exact totals undisclosed in current pass. Nonprofit peer-review infrastructure supported by sponsors and venues rather than APCs."
+      "financialSummaryStrict": "nonprofit foundation / project. Revenue model: sponsorship, donations, hosting, venue fees. Capital/funding: Sponsorships / donations / hosting revenue; exact totals undisclosed in current pass. Nonprofit peer-review infrastructure supported by sponsors and venues rather than APCs.",
+      "notes": ""
     },
     {
       "id": "jove",
@@ -13220,7 +13278,8 @@
       "sourceAsterisk": false,
       "financialSummary": "Commerciality 84/100 · Open-science compatibility 8/100 (weak).",
       "openScienceScore": 8,
-      "financialSummaryStrict": "for-profit company. Revenue model: subscription, apc, video production fees. Capital/funding: Commercial subscription and publication-fee business; historical outside funding not fully verified in this pass. Commercial subscription + publication-fee model."
+      "financialSummaryStrict": "for-profit company. Revenue model: subscription, apc, video production fees. Capital/funding: Commercial subscription and publication-fee business; historical outside funding not fully verified in this pass. Commercial subscription + publication-fee model.",
+      "notes": ""
     },
     {
       "id": "sapien-capital",
@@ -13434,7 +13493,8 @@
       "sourceAsterisk": false,
       "financialSummary": "Commerciality 75/100 · Open-science compatibility 58/100 (moderate).",
       "openScienceScore": 58,
-      "financialSummaryStrict": "venture fund / investment arm of Sei Foundation. Revenue model: foundation-backed investment fund, investment returns. Capital/funding: $65M Open Science Fund I backed by Sei Foundation. Sapien is explicitly science-facing and thesis-aligned with open innovation, but it is still a venture fund seeking investment outcomes rather than neutral public infrastructure."
+      "financialSummaryStrict": "venture fund / investment arm of Sei Foundation. Revenue model: foundation-backed investment fund, investment returns. Capital/funding: $65M Open Science Fund I backed by Sei Foundation. Sapien is explicitly science-facing and thesis-aligned with open innovation, but it is still a venture fund seeking investment outcomes rather than neutral public infrastructure.",
+      "notes": ""
     },
     {
       "id": "openax",
@@ -13700,7 +13760,8 @@
       "sourceAsterisk": false,
       "financialSummary": "Commerciality 12/100 · Open-science compatibility 90/100 (very strong).",
       "openScienceScore": 90,
-      "financialSummaryStrict": "501(c)(3) nonprofit (OurResearch). Revenue model: grants, subscription, consulting. Capital/funding: At least $12.688M verified grants plus paid service/member revenue. Free CC0 infrastructure supported by grants and optional value-add paid services."
+      "financialSummaryStrict": "501(c)(3) nonprofit (OurResearch). Revenue model: grants, subscription, consulting. Capital/funding: At least $12.688M verified grants plus paid service/member revenue. Free CC0 infrastructure supported by grants and optional value-add paid services.",
+      "notes": ""
     },
     {
       "id": "opencitations",
@@ -13896,7 +13957,8 @@
       "sourceAsterisk": false,
       "financialSummary": "Commerciality 2/100 · Open-science compatibility 98/100 (very strong).",
       "openScienceScore": 98,
-      "financialSummaryStrict": "independent research infrastructure within University of Bologna ecosystem. Revenue model: institutional pledges, public/open infrastructure support. Capital/funding: SCOSS fundraising target €1,530,198 for 3 years. Free CC0 infrastructure built explicitly as an alternative to proprietary citation databases."
+      "financialSummaryStrict": "independent research infrastructure within University of Bologna ecosystem. Revenue model: institutional pledges, public/open infrastructure support. Capital/funding: SCOSS fundraising target €1,530,198 for 3 years. Free CC0 infrastructure built explicitly as an alternative to proprietary citation databases.",
+      "notes": ""
     },
     {
       "id": "desci-foundation",
@@ -14111,7 +14173,8 @@
       "sourceAsterisk": false,
       "financialSummary": "Commerciality 6/100 · Open-science compatibility 100/100 (very strong).",
       "openScienceScore": 100,
-      "financialSummaryStrict": "Swiss tax-exempt foundation. Revenue model: grants, donations, foundation support. Capital/funding: Nonprofit foundation support; exact budget not publicly extracted here. Explicit public-good / nonprofit mission."
+      "financialSummaryStrict": "Swiss tax-exempt foundation. Revenue model: grants, donations, foundation support. Capital/funding: Nonprofit foundation support; exact budget not publicly extracted here. Explicit public-good / nonprofit mission.",
+      "notes": ""
     },
     {
       "id": "gitcoin-desci",
@@ -14324,7 +14387,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 28/100 · Open-science compatibility 78/100 (strong).",
       "openScienceScore": 78,
-      "financialSummaryStrict": "hybrid platform / protocol ecosystem. Revenue model: matching grants, funding platform. Capital/funding: Impact metric rather than corporate fundraising: Gitcoin reports $63M distributed across funding rounds. Strong public-goods mechanism, but still embedded in web3/protocol economics. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "hybrid platform / protocol ecosystem. Revenue model: matching grants, funding platform. Capital/funding: Impact metric rather than corporate fundraising: Gitcoin reports $63M distributed across funding rounds. Strong public-goods mechanism, but still embedded in web3/protocol economics. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "pubpeer",
@@ -14542,7 +14606,8 @@
       "sourceAsterisk": false,
       "financialSummary": "Commerciality 4/100 · Open-science compatibility 100/100 (very strong).",
       "openScienceScore": 100,
-      "financialSummaryStrict": "California public-benefit corporation with 501(c)(3) status. Revenue model: donations, grants / awards. Capital/funding: $308k revenue in 2024 + €200k Einstein Foundation award support. Nonprofit community platform for post-publication critique and correction."
+      "financialSummaryStrict": "California public-benefit corporation with 501(c)(3) status. Revenue model: donations, grants / awards. Capital/funding: $308k revenue in 2024 + €200k Einstein Foundation award support. Nonprofit community platform for post-publication critique and correction.",
+      "notes": ""
     },
     {
       "id": "seeds-of-science",
@@ -14790,7 +14855,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 4/100 · Open-science compatibility 100/100 (very strong).",
       "openScienceScore": 100,
-      "financialSummaryStrict": "community / journal project. Revenue model: funding platform. Capital/funding: No disclosed outside financing / effectively volunteer supported. Nonprofit/foundation structure with open-access or community-support incentives. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "community / journal project. Revenue model: funding platform. Capital/funding: No disclosed outside financing / effectively volunteer supported. Nonprofit/foundation structure with open-access or community-support incentives. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "f1000research",
@@ -14987,7 +15053,8 @@
       "sourceAsterisk": false,
       "financialSummary": "Commerciality 80/100 · Open-science compatibility 12/100 (weak).",
       "openScienceScore": 12,
-      "financialSummaryStrict": "commercial publisher platform. Revenue model: apc. Capital/funding: Commercial publisher-owned. Open review/publication model, but author-facing APCs and commercial ownership reduce alignment with commons-oriented infrastructure."
+      "financialSummaryStrict": "commercial publisher platform. Revenue model: apc. Capital/funding: Commercial publisher-owned. Open review/publication model, but author-facing APCs and commercial ownership reduce alignment with commons-oriented infrastructure.",
+      "notes": ""
     },
     {
       "id": "bacalhau",
@@ -15207,7 +15274,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 24/100 · Open-science compatibility 88/100 (very strong).",
       "openScienceScore": 88,
-      "financialSummaryStrict": "open-source project / ecosystem-backed. Revenue model: ecosystem support. Capital/funding: No standalone raise verified; ecosystem-supported open-source project. Open-source infrastructure with no evidence of APC-style extraction. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "open-source project / ecosystem-backed. Revenue model: ecosystem support. Capital/funding: No standalone raise verified; ecosystem-supported open-source project. Open-source infrastructure with no evidence of APC-style extraction. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "kudos",
@@ -15452,7 +15520,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 69/100 · Open-science compatibility 7/100 (weak).",
       "openScienceScore": 7,
-      "financialSummaryStrict": "for-profit company. Revenue model: subscription, saas / publisher contracts, premium researcher accounts. Capital/funding: Pricing verified; external fundraising totals still not strongly evidenced in primary sources. Research-support service, but fundamentally a commercial promotion/analytics platform. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "for-profit company. Revenue model: subscription, saas / publisher contracts, premium researcher accounts. Capital/funding: Pricing verified; external fundraising totals still not strongly evidenced in primary sources. Research-support service, but fundamentally a commercial promotion/analytics platform. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "etica",
@@ -15705,7 +15774,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 46/100 · Open-science compatibility 48/100 (mixed).",
       "openScienceScore": 48,
-      "financialSummaryStrict": "unknown. Revenue model: token, funding platform. Capital/funding: No ICO / no premine claimed; protocol emission model. Insufficient evidence to score open-science alignment confidently. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "unknown. Revenue model: token, funding platform. Capital/funding: No ICO / no premine claimed; protocol emission model. Insufficient evidence to score open-science alignment confidently. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "gridcoin",
@@ -15923,7 +15993,8 @@
       "sourceAsterisk": false,
       "financialSummary": "Commerciality 24/100 · Open-science compatibility 64/100 (moderate).",
       "openScienceScore": 64,
-      "financialSummaryStrict": "open-source protocol. Revenue model: token. Capital/funding: No ICO / fair-launch style community protocol. Rewards useful scientific compute, but still uses crypto-token incentive design."
+      "financialSummaryStrict": "open-source protocol. Revenue model: token. Capital/funding: No ICO / fair-launch style community protocol. Rewards useful scientific compute, but still uses crypto-token incentive design.",
+      "notes": ""
     },
     {
       "id": "scinet",
@@ -16128,7 +16199,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 23/100 · Open-science compatibility 88/100 (very strong).",
       "openScienceScore": 88,
-      "financialSummaryStrict": "community-owned DeSci project / DAO-like collective. Revenue model: impact certificates, project raises, ecosystem support. Capital/funding: Project-level ETH raises visible; organization-level funding undisclosed. The project explicitly presents itself as community-owned, open source, and oriented toward open-science commons rather than paywalled commercialization. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "community-owned DeSci project / DAO-like collective. Revenue model: impact certificates, project raises, ecosystem support. Capital/funding: Project-level ETH raises visible; organization-level funding undisclosed. The project explicitly presents itself as community-owned, open source, and oriented toward open-science commons rather than paywalled commercialization. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "talentdao",
@@ -16336,7 +16408,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 21/100 · Open-science compatibility 71/100 (strong).",
       "openScienceScore": 71,
-      "financialSummaryStrict": "unknown. Revenue model: grants, funding platform. Capital/funding: Gitcoin/public-goods support referenced; exact cumulative amount not verified. Community/DAO governance can align with openness, but incentives depend on token design and treasury structure. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "unknown. Revenue model: grants, funding platform. Capital/funding: Gitcoin/public-goods support referenced; exact cumulative amount not verified. Community/DAO governance can align with openness, but incentives depend on token design and treasury structure. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "orcid",
@@ -16537,7 +16610,8 @@
       "sourceAsterisk": false,
       "financialSummary": "Commerciality 1/100 · Open-science compatibility 100/100 (very strong).",
       "openScienceScore": 100,
-      "financialSummaryStrict": "501(c)(3) nonprofit. Revenue model: membership. Capital/funding: $6.81M revenue (2024). Member-funded nonprofit with free public registry / public APIs and explicit POSI self-assessment."
+      "financialSummaryStrict": "501(c)(3) nonprofit. Revenue model: membership. Capital/funding: $6.81M revenue (2024). Member-funded nonprofit with free public registry / public APIs and explicit POSI self-assessment.",
+      "notes": ""
     },
     {
       "id": "crossref",
@@ -16741,7 +16815,8 @@
       "sourceAsterisk": false,
       "financialSummary": "Commerciality 12/100 · Open-science compatibility 98/100 (very strong).",
       "openScienceScore": 98,
-      "financialSummaryStrict": "501(c)(6) nonprofit. Revenue model: membership, fees, services. Capital/funding: ~$14M annual budget. Mission-driven nonprofit charging members and service users rather than researchers directly."
+      "financialSummaryStrict": "501(c)(6) nonprofit. Revenue model: membership, fees, services. Capital/funding: ~$14M annual budget. Mission-driven nonprofit charging members and service users rather than researchers directly.",
+      "notes": ""
     },
     {
       "id": "maelstrom",
@@ -16980,7 +17055,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 85/100 · Open-science compatibility 8/100 (weak).",
       "openScienceScore": 8,
-      "financialSummaryStrict": "family office / investment firm. Revenue model: investment returns. Capital/funding: Own capital undisclosed; family office, not comparable to startup fundraising. This is a capital allocator, not open-science infrastructure; any alignment is indirect through portfolio choices. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "family office / investment firm. Revenue model: investment returns. Capital/funding: Own capital undisclosed; family office, not comparable to startup fundraising. This is a capital allocator, not open-science infrastructure; any alignment is indirect through portfolio choices. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "northpond",
@@ -17189,7 +17265,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 84/100 · Open-science compatibility 8/100 (weak).",
       "openScienceScore": 8,
-      "financialSummaryStrict": "venture capital firm. Revenue model: investment returns. Capital/funding: Public profile says over $1B in committed capital; exact current AUM still varies by source. Northpond is a traditional venture investor; any open-science alignment is incidental to portfolio choices rather than mission-locked commons governance. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "venture capital firm. Revenue model: investment returns. Capital/funding: Public profile says over $1B in committed capital; exact current AUM still varies by source. Northpond is a traditional venture investor; any open-science alignment is incidental to portfolio choices rather than mission-locked commons governance. Remaining gaps should be treated cautiously.",
+      "notes": ""
     },
     {
       "id": "oss-capital",
@@ -17392,7 +17469,8 @@
       "sourceAsterisk": true,
       "financialSummary": "Commerciality 81/100 · Open-science compatibility 48/100 (mixed).",
       "openScienceScore": 48,
-      "financialSummaryStrict": "venture capital firm. Revenue model: investment returns. Capital/funding: Fund size not disclosed on official site; investor in ResearchHub seed. Its investment thesis is pro-open-source, but it remains a for-profit VC fund rather than neutral open-science infrastructure. Remaining gaps should be treated cautiously."
+      "financialSummaryStrict": "venture capital firm. Revenue model: investment returns. Capital/funding: Fund size not disclosed on official site; investor in ResearchHub seed. Its investment thesis is pro-open-source, but it remains a for-profit VC fund rather than neutral open-science infrastructure. Remaining gaps should be treated cautiously.",
+      "notes": ""
     }
   ],
   "edges": [
@@ -18146,5 +18224,20 @@
       "low-confidence": 1
     },
     "attributionPolicy": "pass7-source-audit: every node now includes per-field source mapping, a source-backed strict summary, and conservative wording when financing, legal wrapper, or treasury figures are not explicitly disclosed in primary sources. Unsupported specifics were removed or downgraded."
+  },
+  "journal": [],
+  "litProgress": {},
+  "homeWatch": {
+    "videos": [],
+    "playlists": []
+  },
+  "kanban": {
+    "todo": [],
+    "doing": [
+      "understand DeSci labs"
+    ],
+    "done": [
+      "complete web dashboard"
+    ]
   }
 }
