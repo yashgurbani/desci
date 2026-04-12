@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DeSci Landscape</title>
+<title>DeSci Map</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 <style>
@@ -39,14 +39,14 @@ a:hover{color:var(--link-h)}
 .app.hide-left.hide-right{grid-template-columns:0px 1fr 0px}
 
 /* HEADER */
-.header{grid-column:1/-1;background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 16px;gap:14px;z-index:10}
-.logo{font-family:var(--display);font-size:1rem;font-weight:700;color:var(--gold);letter-spacing:2px;white-space:nowrap}
+.header{grid-column:1/-1;background:var(--surface);border-bottom:1px solid var(--border);display:grid;grid-template-columns:auto 1fr auto;align-items:center;padding:0 16px;gap:14px;z-index:10}
+.logo{font-family:var(--display);font-size:1rem;font-weight:700;color:var(--gold);letter-spacing:2px;white-space:nowrap;cursor:pointer}
 .stats{font-size:.72rem;color:var(--text-3);font-family:var(--mono);white-space:nowrap}
-.tabs{display:flex;gap:2px;margin-left:12px}
+.tabs{display:flex;gap:2px;justify-content:center;align-items:center}
 .tab{font-size:.75rem;font-weight:600;padding:7px 14px;border-radius:var(--radius-sm);background:transparent;border:1px solid transparent;color:var(--text-3);cursor:pointer;transition:all .15s;font-family:var(--body)}
 .tab:hover{color:var(--text-2);border-color:var(--border)}
 .tab.on{border-color:rgba(212,168,83,.3);color:var(--gold);background:var(--gold-glow)}
-.actions{margin-left:auto;display:flex;gap:6px;align-items:center}
+.actions{display:flex;gap:6px;align-items:center;justify-self:end}
 .btn{font-size:.72rem;font-weight:600;padding:6px 14px;border-radius:var(--radius-sm);border:1px solid var(--border);background:transparent;color:var(--text-2);cursor:pointer;font-family:var(--body);transition:all .15s;white-space:nowrap}
 .btn:hover{border-color:var(--gold);color:var(--gold)}
 .btn-fill{background:var(--gold);color:#000;border-color:var(--gold)}
@@ -166,10 +166,18 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
 .legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
 
 /* TOOLTIPS */
-.tip{position:absolute;z-index:20;pointer-events:none;background:var(--card);border:1px solid var(--border-h);border-radius:var(--radius-sm);padding:10px 14px;max-width:280px;font-size:.8rem;box-shadow:0 8px 30px rgba(0,0,0,.4);opacity:0;transition:opacity .12s}
+.tip{position:absolute;z-index:20;pointer-events:none;background:rgba(20,20,20,.94);border:1px solid var(--border-h);border-radius:var(--radius-sm);padding:10px 14px;max-width:380px;max-height:52vh;overflow:auto;font-size:.8rem;line-height:1.45;box-shadow:0 10px 38px rgba(0,0,0,.5);backdrop-filter:blur(4px);opacity:0;transition:opacity .12s}
+.tip.interactive{pointer-events:auto}
 .tip.vis{opacity:1}
-.tip h4{font-family:var(--display);font-size:.9rem;margin-bottom:3px}
-.tip .tm{font-size:.72rem;color:var(--text-2);line-height:1.4}
+.tip h4{font-family:var(--display);font-size:.96rem;margin-bottom:4px;line-height:1.2}
+.tip .tm{font-size:.74rem;color:var(--text-2);line-height:1.45}
+.tip-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.tip-pin-btn{font-size:.62rem;font-family:var(--mono);padding:3px 7px;border-radius:999px;border:1px solid var(--border);background:var(--raised);color:var(--text-2);cursor:pointer}
+.tip-pin-btn:hover{border-color:var(--gold);color:var(--gold)}
+.tip-src-title{margin-top:8px;font-family:var(--mono);font-size:.62rem;letter-spacing:1px;text-transform:uppercase;color:var(--text-3)}
+.tip-src-list{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.tip-src-link{font-size:.66rem;padding:3px 8px;border-radius:12px;background:var(--raised);border:1px solid var(--border);color:var(--link);display:inline-flex;align-items:center;gap:5px}
+.tip-src-link:hover{border-color:var(--gold);color:var(--link-h)}
 /* Glossary tooltip */
 .gloss-tip{position:fixed;z-index:99;background:var(--card);border:1px solid var(--gold);border-radius:var(--radius-sm);padding:8px 12px;max-width:260px;font-size:.78rem;color:var(--text-2);box-shadow:0 4px 20px rgba(0,0,0,.5);pointer-events:none;opacity:0;transition:opacity .15s}
 .gloss-tip.vis{opacity:1}
@@ -221,9 +229,11 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
 .biz-card .k{display:block;font-size:.62rem;color:var(--text-3);font-family:var(--mono);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
 .biz-card .v{display:block;font-size:1rem;color:var(--text);font-weight:700}
 .biz-card .s{display:block;font-size:.74rem;color:var(--text-2);margin-top:4px;line-height:1.4}
-.biz-main{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:14px;min-height:0;flex:1}
+.biz-main{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:14px;min-height:0;flex:1}
 .biz-panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px;min-height:0}
-.biz-svg{width:100%;height:100%;min-height:560px;display:block}
+.biz-panel-chart{position:relative;overflow:hidden;min-height:clamp(560px,72vh,920px)}
+.biz-panel-side{overflow-y:auto;padding-right:8px;max-height:clamp(560px,72vh,920px)}
+.biz-svg{width:100%;height:100%;min-height:640px;display:block}
 .biz-side-title{font-family:var(--mono);font-size:.66rem;color:var(--text-3);text-transform:uppercase;letter-spacing:1.4px;margin-bottom:8px}
 .biz-list{display:flex;flex-direction:column;gap:8px}
 .biz-item{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px;cursor:pointer;transition:all .15s}
@@ -240,59 +250,187 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
 .biz-mini-btn{font-size:.68rem;padding:4px 9px;border-radius:12px;background:var(--card);border:1px solid var(--border);color:var(--text-2);cursor:pointer;transition:all .15s}
 .biz-mini-btn:hover{border-color:var(--gold);color:var(--gold)}
 .biz-mini-btn.on{border-color:rgba(212,168,83,.35);color:var(--gold);background:var(--gold-glow)}
-@media(max-width:1050px){.biz-main{grid-template-columns:1fr}.biz-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.biz-floating-actions{position:absolute;top:10px;right:10px;z-index:3;display:flex;align-items:center;gap:6px}
+.biz-zoom-chip{font-family:var(--mono);font-size:.62rem;color:var(--text-3);padding:4px 8px;border-radius:999px;background:rgba(0,0,0,.35);border:1px solid var(--border)}
+.biz-label-link{stroke:rgba(255,255,255,.2);stroke-width:.7;stroke-dasharray:3,3}
+.biz-quad-hover{fill-opacity:.11}
+.biz-fit-line{stroke:rgba(127,207,255,.85);stroke-width:1.5;stroke-dasharray:6,5}
+.biz-fit-band{stroke:rgba(127,207,255,.22);stroke-width:10;fill:none}
+.biz-grid line{stroke:rgba(255,255,255,.06)}
+.biz-flag-outlier{stroke:rgba(224,92,92,.85);stroke-width:1.15;stroke-dasharray:2,2;fill:none}
+.biz-flag-sweet{stroke:rgba(138,232,186,.82);stroke-width:1.1;fill:none}
+.unesco-list{display:flex;flex-direction:column;gap:7px;margin-top:10px}
+.unesco-item{background:var(--raised);border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 9px}
+.unesco-item .t{font-size:.72rem;color:var(--text);font-weight:600;line-height:1.3}
+.unesco-item .d{font-size:.74rem;color:var(--text-2);line-height:1.45;margin-top:3px}
+.unesco-ref{font-size:.7rem;color:var(--link);margin-top:8px;display:inline-flex;align-items:center;gap:4px}
 
-
-/* HOME / PURPOSE FEEDS */
-.home-wrap{height:100%;overflow:auto;padding:18px;display:flex;flex-direction:column;gap:14px;background:radial-gradient(circle at top,rgba(116,221,215,.08),rgba(0,0,0,0) 32%),linear-gradient(180deg,#050505,#000)}
-.home-hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(340px,.85fr);gap:14px;align-items:stretch}
-.home-card{background:linear-gradient(180deg,rgba(16,16,16,.96),rgba(10,10,10,.98));border:1px solid var(--border);border-radius:14px;padding:16px 17px;box-shadow:0 10px 28px rgba(0,0,0,.26)}
-.home-card h1{font-family:var(--display);font-size:1.5rem;line-height:1.15;color:var(--gold);margin-bottom:6px}
-.home-card p{font-size:.84rem;color:var(--text-2);line-height:1.55}
-.home-mini-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:12px}
-.home-stat{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;padding:10px 11px}
-.home-stat .k{display:block;font-family:var(--mono);font-size:.6rem;letter-spacing:1px;text-transform:uppercase;color:var(--text-3);margin-bottom:4px}
-.home-stat .v{display:block;font-size:1rem;font-weight:700;color:var(--text)}
-.home-stat .s{display:block;margin-top:3px;font-size:.72rem;color:var(--text-2)}
-.home-ticker-head{font-family:var(--mono);font-size:.64rem;letter-spacing:1.2px;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
-.home-ticker-title{font-size:1.05rem;line-height:1.38;color:var(--text);font-weight:700}
-.home-ticker-title a{color:var(--text)}
-.home-ticker-title a:hover{color:#fff}
-.home-ticker-meta{font-size:.74rem;color:var(--text-2);margin-top:6px}
-.home-pill-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-.home-pill{font-size:.68rem;border:1px solid var(--border);padding:4px 9px;border-radius:999px;background:rgba(255,255,255,.03);color:var(--text-2)}
-.home-main{display:grid;grid-template-columns:minmax(520px,1.05fr) minmax(320px,.95fr);gap:14px;min-height:0}
-.home-map-card{position:relative;min-height:420px;overflow:hidden}
-.home-map-toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
-.home-map-title{font-family:var(--mono);font-size:.66rem;color:var(--text-3);letter-spacing:1.2px;text-transform:uppercase}
-.home-map-legend{display:flex;gap:6px;flex-wrap:wrap}
-.home-legend-chip{font-size:.66rem;padding:4px 8px;border-radius:999px;border:1px solid var(--border);background:rgba(255,255,255,.03);color:var(--text-2)}
-.ascii-map{margin:0;min-height:360px;width:100%;overflow:hidden;border:1px solid rgba(255,255,255,.08);border-radius:12px;background:#010101;padding:12px 14px;color:#ebebeb;font-family:var(--mono);font-size:clamp(.46rem,.66vw,.74rem);line-height:1.03;letter-spacing:.08em;white-space:pre;box-shadow:inset 0 0 0 1px rgba(255,255,255,.02)}
-.home-map-caption{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-top:10px}
-.home-map-caption .meta{font-size:.74rem;color:var(--text-2)}
-.home-side{display:flex;flex-direction:column;gap:14px;min-height:0}
-.home-list-card{min-height:0}
-.home-list-title{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}
-.home-list-title .h{font-family:var(--mono);font-size:.66rem;letter-spacing:1.2px;text-transform:uppercase;color:var(--gold)}
-.home-list-title .sub{font-size:.72rem;color:var(--text-3)}
-.home-feed-list{display:flex;flex-direction:column;gap:8px;max-height:260px;overflow:auto;padding-right:3px}
-.home-feed-item{border:1px solid rgba(255,255,255,.1);border-radius:10px;background:rgba(255,255,255,.025);padding:10px 11px;transition:all .15s}
-.home-feed-item:hover{border-color:rgba(212,168,83,.35);transform:translateY(-1px)}
-.home-feed-item a{font-size:.8rem;font-weight:700;line-height:1.35;color:#f0f0f0}
-.home-feed-item a:hover{color:#fff}
-.home-feed-meta{font-size:.67rem;color:#9f9f9f;margin-top:5px;line-height:1.45}
-.home-feed-note{font-size:.72rem;color:var(--text-2);margin-top:6px;line-height:1.45}
-.home-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-.home-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-.home-link-card{border:1px solid rgba(255,255,255,.1);border-radius:10px;background:rgba(255,255,255,.025);padding:10px 11px}
-.home-link-card a{display:block;font-size:.78rem;font-weight:700;color:var(--text)}
-.home-link-card a:hover{color:#fff}
-.home-link-card .meta{font-size:.68rem;color:var(--text-2);margin-top:4px;line-height:1.45}
-.home-empty{font-size:.75rem;color:var(--text-3);padding:10px 0}
-@media(max-width:1180px){
-  .home-hero,.home-main,.home-grid,.home-links{grid-template-columns:1fr}
-  .home-mini-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+/* HOME / INFO / JOURNAL / LITERATURE */
+.home-wrap,.info-wrap,.journal-wrap,.lit-wrap{height:100%;overflow:auto;padding:20px;display:flex;flex-direction:column;gap:14px}
+.home-wrap{padding:0;position:relative;overflow:hidden;background:#000}
+.hero{background:linear-gradient(130deg,rgba(116,221,215,.08),rgba(212,168,83,.06));border:1px solid var(--border);border-radius:12px;padding:16px 18px}
+.hero h1{font-family:var(--display);font-size:1.35rem;color:var(--gold);margin-bottom:4px}
+.hero p{font-size:.83rem;color:var(--text-2)}
+.ascii-map{
+  position:absolute;inset:0;margin:0;
+  font-family:var(--mono);
+  font-size:clamp(.44rem,.72vw,.78rem);
+  line-height:1.09;
+  letter-spacing:.2px;
+  font-weight:700;
+  color:#f4f4f4;
+  white-space:pre;
+  overflow:hidden;
+  background:#000;
+  padding:10px 8px 12px 8px;
+  text-shadow:0 0 5px rgba(255,255,255,.05);
 }
+.home-overlay-top{
+  position:absolute;top:10px;left:10px;right:10px;
+  display:grid;grid-template-columns:minmax(0,1fr) 460px;gap:10px;
+  align-items:start;pointer-events:none;
+}
+.home-overlay-bottom{
+  position:absolute;left:10px;right:10px;bottom:10px;
+  display:grid;grid-template-columns:minmax(0,1fr) 580px;gap:10px;
+  align-items:end;pointer-events:none;
+}
+.ticker{
+  pointer-events:auto;
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:11px;
+  background:rgba(6,6,6,.82);
+  padding:12px 14px;
+  backdrop-filter:blur(6px);
+}
+.ticker-head{font-family:var(--mono);font-size:.68rem;color:var(--gold);letter-spacing:1.2px;text-transform:uppercase}
+.ticker-main{font-size:1.05rem;color:#f3f3f3;line-height:1.36;margin-top:4px}
+.ticker-main a{color:#f3f3f3}
+.ticker-main a:hover{color:#fff}
+.ticker-meta{font-size:.74rem;color:#b8b8b8;margin-top:5px}
+.home-feed-panel{
+  pointer-events:auto;
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:11px;
+  background:rgba(8,8,8,.84);
+  padding:10px 11px;
+  max-height:68vh;
+  overflow:auto;
+  backdrop-filter:blur(6px);
+}
+.feed-title{font-family:var(--mono);font-size:.66rem;color:var(--text-3);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:7px}
+.feed-list{display:flex;flex-direction:column;gap:7px;max-height:13vh;overflow:auto;padding-right:3px}
+.feed-item{border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:7px 9px;background:rgba(20,20,20,.84)}
+.feed-item a{font-size:.75rem;font-weight:600;line-height:1.34;color:#efefef}
+.feed-item .meta{font-size:.66rem;color:#989898;margin-top:3px}
+.yt-add-wrap{display:flex;align-items:center;justify-content:space-between;gap:8px;position:relative}
+.yt-add-btn{width:18px;height:18px;border-radius:50%;border:1px solid rgba(255,255,255,.28);background:rgba(24,24,24,.9);color:#d8d8d8;font-size:.78rem;line-height:1;cursor:pointer}
+.yt-add-btn:hover{border-color:var(--gold);color:var(--gold)}
+.yt-pop{
+  display:none;
+  position:absolute;
+  right:0; top:22px;
+  width:min(360px,80vw);
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:9px;
+  background:rgba(10,10,10,.96);
+  padding:9px;
+  z-index:9;
+  box-shadow:0 10px 30px rgba(0,0,0,.45);
+}
+.yt-pop.open{display:block}
+.yt-pop-head{font-family:var(--mono);font-size:.62rem;color:#bdbdbd;text-transform:uppercase;letter-spacing:.9px;margin-bottom:6px}
+.watch-tools{border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:8px;background:rgba(16,16,16,.85);margin-top:4px}
+.watch-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px;margin-bottom:6px}
+.watch-row:last-child{margin-bottom:4px}
+.watch-input{font-size:.72rem;padding:7px 9px}
+.watch-btn{padding:6px 10px;font-size:.68rem}
+.watch-list{display:flex;flex-direction:column;gap:5px;max-height:9vh;overflow:auto}
+.watch-chip{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:5px 7px;border-radius:7px;border:1px solid rgba(255,255,255,.12);background:rgba(24,24,24,.88)}
+.watch-chip span{font-size:.66rem;color:#d7d7d7;line-height:1.3}
+.watch-x{font-size:.6rem;padding:2px 6px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:transparent;color:#b8b8b8;cursor:pointer}
+.watch-x:hover{border-color:var(--gold);color:var(--gold)}
+.home-bottom-left{display:flex;flex-direction:column;gap:8px}
+.home-updated{pointer-events:none;font-size:.72rem;color:#a9a9a9;font-family:var(--mono);text-shadow:0 0 6px rgba(0,0,0,.8)}
+.home-journal{
+  pointer-events:auto;
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:11px;
+  background:rgba(8,8,8,.84);
+  padding:10px;
+  backdrop-filter:blur(6px);
+  max-width:560px;
+}
+.home-journal .t{font-family:var(--mono);font-size:.66rem;color:var(--gold);text-transform:uppercase;letter-spacing:1.1px;margin-bottom:6px}
+.home-journal .d{font-family:var(--mono);font-size:.66rem;color:#b9b9b9;margin-bottom:5px}
+.home-journal .b{font-size:.73rem;line-height:1.42;color:#dfdfdf}
+.home-kanban{
+  pointer-events:auto;
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:11px;
+  background:rgba(8,8,8,.84);
+  padding:10px;
+  max-height:52vh;
+  overflow:auto;
+  backdrop-filter:blur(6px);
+}
+.kan-title{font-family:var(--mono);font-size:.66rem;color:var(--gold);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:8px}
+.kan-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.kan-col{border:1px solid rgba(255,255,255,.12);border-radius:8px;background:rgba(18,18,18,.84);padding:8px;min-height:120px}
+.kan-col-head{display:flex;align-items:center;justify-content:space-between;font-family:var(--mono);font-size:.63rem;color:#b9b9b9;letter-spacing:.6px;margin-bottom:6px;text-transform:uppercase}
+.kan-add{font-size:.65rem;padding:2px 6px;border-radius:999px;background:transparent;border:1px solid rgba(255,255,255,.2);color:#c9c9c9;cursor:pointer}
+.kan-add:hover{border-color:var(--gold);color:var(--gold)}
+.kan-list{display:flex;flex-direction:column;gap:6px;max-height:31vh;overflow:auto}
+.kan-card{border:1px solid rgba(255,255,255,.11);border-radius:7px;padding:6px 7px;background:rgba(24,24,24,.9)}
+.kan-text{font-size:.71rem;line-height:1.34;color:#e4e4e4}
+.kan-actions{display:flex;gap:5px;margin-top:6px}
+.kan-btn{font-size:.62rem;padding:2px 6px;border-radius:999px;border:1px solid rgba(255,255,255,.2);background:transparent;color:#b7b7b7;cursor:pointer}
+.kan-btn:hover{border-color:var(--gold);color:var(--gold)}
+.info-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.info-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:13px}
+.info-card h3{font-size:.88rem;color:var(--gold);font-family:var(--mono);margin-bottom:6px}
+.info-card p{font-size:.78rem;color:var(--text-2);line-height:1.5}
+.journal-shell{display:grid;grid-template-columns:minmax(0,1fr) 390px;gap:12px;min-height:0;flex:1}
+.journal-main,.journal-side{background:#070707;border:1px solid rgba(138,232,186,.26);border-radius:10px;min-height:0;overflow:auto;box-shadow:inset 0 0 0 1px rgba(138,232,186,.08)}
+.journal-main{padding:0}
+.journal-side{padding:0}
+.term-head{display:flex;align-items:center;gap:8px;padding:9px 12px;background:#101010;border-bottom:1px solid rgba(138,232,186,.2);font-family:var(--mono);font-size:.67rem;color:#9fefbf;text-transform:uppercase;letter-spacing:.9px}
+.term-dot{width:7px;height:7px;border-radius:50%;display:inline-block}
+.term-dot.red{background:#cc5b5b}.term-dot.yellow{background:#cda54b}.term-dot.green{background:#57b86b}
+.term-body{padding:12px 14px}
+.term-line{font-family:var(--mono);font-size:.72rem;color:#8ad4a7;line-height:1.45;margin:7px 0 5px}
+.term-prompt{color:#5ddf8f}
+.term-input,.term-area{background:#050505;border:1px solid rgba(138,232,186,.25);color:#baf7d3;font-family:var(--mono)}
+.term-input:focus,.term-area:focus{border-color:#6de39a}
+.term-area{min-height:76px}
+.terminal-tree{font-family:var(--mono);font-size:.7rem;line-height:1.35;color:#9de6ba;white-space:pre;background:#050505;border:1px solid rgba(138,232,186,.2);border-radius:7px;padding:9px;margin-bottom:10px}
+.j-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.j-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.journal-log{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.journal-entry{background:#060606;border:1px solid rgba(138,232,186,.2);border-radius:8px;padding:9px}
+.journal-entry .d{font-family:var(--mono);font-size:.66rem;color:#78e7a5}
+.journal-entry .t{font-size:.74rem;color:#b4eecb;line-height:1.45;margin-top:3px}
+.lit-toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.lit-search{flex:1;min-width:220px}
+.lit-table-wrap{border:1px solid var(--border);border-radius:10px;overflow:auto;max-height:70vh;background:var(--surface)}
+.lit-table{width:100%;border-collapse:separate;border-spacing:0;font-size:.79rem}
+.lit-table th{position:sticky;top:0;background:var(--surface);z-index:1;text-align:left;font-family:var(--mono);font-size:.64rem;color:var(--text-3);text-transform:uppercase;letter-spacing:.8px;padding:9px 8px;border-bottom:1px solid var(--border-h)}
+.lit-table td{padding:8px;border-bottom:1px solid var(--border);vertical-align:top}
+.lit-table tr:hover{background:var(--card)}
+.lit-pill{font-size:.66rem;padding:3px 8px;border-radius:999px;border:1px solid var(--border);background:var(--card);color:var(--text-2)}
+.lit-person{display:flex;align-items:center;gap:8px}
+.lit-person label{display:inline-flex;align-items:center;gap:4px;font-size:.68rem;color:var(--text-2)}
+.lite-note{font-size:.74rem;color:var(--text-3)}
+.status-inline{font-size:.7rem;color:var(--text-3)}
+@media(max-width:1250px){
+  .home-overlay-top,.home-overlay-bottom{grid-template-columns:1fr}
+  .home-feed-panel{max-height:50vh}
+  .home-kanban{max-height:36vh}
+  .feed-list{max-height:11vh}
+}
+@media(max-width:1150px){.journal-shell{grid-template-columns:1fr}.info-grid{grid-template-columns:1fr}}
+@media(max-width:980px){.kan-grid{grid-template-columns:1fr}}
+@media(max-width:1050px){.biz-main{grid-template-columns:1fr}.biz-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 /* RESPONSIVE */
 @media(max-width:768px){
@@ -309,19 +447,17 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
 </style>
 </head>
 <body>
-<div class="app hide-right" id="app">
+<div class="app hide-right hide-left" id="app">
   <header class="header">
-    <span class="logo" onclick="setView('home')">DeSci Landscape</span>
-    <span class="stats" id="stats"></span>
-    <span class="sync-status" id="syncStatus" onclick="onSyncClick()" title="Click to sync"><span class="sync-dot"></span><span id="syncText">local</span></span>
+    <span class="logo" onclick="setView('home',this)">DeSci Map</span>
     <nav class="tabs">
-      <button class="tab on" data-view="home" onclick="setView('home',this)">Home</button>
-      <button class="tab" data-view="graph" onclick="setView('graph',this)">Graph</button>
-      <button class="tab" data-view="table" onclick="setView('table',this)">Directory</button>
-      <button class="tab" data-view="people" onclick="setView('people',this)">People</button>
-      <button class="tab" data-view="pgraph" onclick="setView('pgraph',this)">People Graph</button>
-      <button class="tab" data-view="lit" onclick="setView('lit',this)">Literature</button>
-      <button class="tab" data-view="biz" onclick="setView('biz',this)">Business Models</button>
+      <button class="tab" onclick="setView('graph',this)">Graph</button>
+      <button class="tab" onclick="setView('pgraph',this)">Connections</button>
+      <button class="tab" onclick="setView('biz',this)">Values</button>
+      <button class="tab" onclick="setView('table',this)">Directory</button>
+      <button class="tab" onclick="setView('people',this)">People</button>
+      <button class="tab" onclick="setView('journal',this)">Journal</button>
+      <button class="tab" onclick="setView('lit',this)">Literature</button>
     </nav>
     <div class="actions">
       <button class="btn" onclick="addOrgM()">+ Org</button>
@@ -329,6 +465,7 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
       <button class="btn" onclick="expJSON()">Export</button>
       <button class="btn" onclick="el('imp').click()">Import</button>
       <input type="file" id="imp" hidden accept=".json,.csv" onchange="impFile(this)">
+      <span class="sync-status" id="syncStatus" onclick="onSyncClick()" title="Click to sync"><span class="sync-dot"></span><span id="syncText">local</span></span>
     </div>
   </header>
   <aside class="sidebar" id="sb">
@@ -336,11 +473,11 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
     <div class="sb-section"><div class="sb-label">Stack Layer</div><div class="pills" id="pStack"></div></div>
     <div class="sb-section"><div class="sb-label">Overlap with Us</div><div class="pills" id="pOverlap"></div></div>
     <div class="sb-section"><div class="sb-label">Sliders</div>
-      <div class="slider-filter"><div class="sf-label"><span>Overlap ≥</span><span id="slOvV">0%</span></div><input class="sf-range" type="range" min="0" max="100" value="0" id="slOv" oninput="el('slOvV').textContent=this.value+'%';af()"></div>
-      <div class="slider-filter"><div class="sf-label"><span>Decentralization ≥</span><span id="slDcV">0%</span></div><input class="sf-range" type="range" min="0" max="100" value="0" id="slDc" oninput="el('slDcV').textContent=this.value+'%';af()"></div>
-      <div class="slider-filter"><div class="sf-label"><span>Credibility ≥</span><span id="slCrV">0</span></div><input class="sf-range" type="range" min="0" max="100" value="0" id="slCr" oninput="el('slCrV').textContent=this.value;af()"></div>
-      <div class="slider-filter"><div class="sf-label"><span>Open-science fit ≥</span><span id="slOsV">0</span></div><input class="sf-range" type="range" min="0" max="100" value="0" id="slOs" oninput="el('slOsV').textContent=this.value;af()"></div>
-      <div class="slider-filter"><div class="sf-label"><span>Profit Score ≤</span><span id="slPrV">100</span></div><input class="sf-range" type="range" min="0" max="100" value="100" id="slPr" oninput="el('slPrV').textContent=this.value;af()"></div>
+      <div class="slider-filter"><div class="sf-label"><span>Overlap >=</span><span id="slOvV">0%</span></div><input class="sf-range" type="range" min="0" max="100" value="0" id="slOv" oninput="el('slOvV').textContent=this.value+'%';af()"></div>
+      <div class="slider-filter"><div class="sf-label"><span>Decentralization >=</span><span id="slDcV">0%</span></div><input class="sf-range" type="range" min="0" max="100" value="0" id="slDc" oninput="el('slDcV').textContent=this.value+'%';af()"></div>
+      <div class="slider-filter"><div class="sf-label"><span>Credibility >=</span><span id="slCrV">0</span></div><input class="sf-range" type="range" min="0" max="100" value="0" id="slCr" oninput="el('slCrV').textContent=this.value;af()"></div>
+      <div class="slider-filter"><div class="sf-label"><span>Open-science fit >=</span><span id="slOsV">0</span></div><input class="sf-range" type="range" min="0" max="100" value="0" id="slOs" oninput="el('slOsV').textContent=this.value;af()"></div>
+      <div class="slider-filter"><div class="sf-label"><span>Profit Score <=</span><span id="slPrV">100</span></div><input class="sf-range" type="range" min="0" max="100" value="100" id="slPr" oninput="el('slPrV').textContent=this.value;af()"></div>
     </div>
     <div class="sb-section"><div class="sb-label">Legal Structure</div><div class="pills" id="pLegal"></div></div>
     <div class="sb-section"><div class="sb-label">Evidence Confidence</div><div class="pills" id="pConf"></div></div>
@@ -348,8 +485,8 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
     <div class="sb-section"><div class="sb-label">Organizations <b id="nc">0</b></div><ul class="node-list" id="nlist"></ul></div>
   </aside>
   <main class="main" id="main">
-    <button class="toggle-left" onclick="togglePanel('left')">◀</button>
-    <button class="toggle-right" onclick="togglePanel('right')">▶</button>
+    <button class="toggle-left" onclick="togglePanel('left')">&lt;</button>
+    <button class="toggle-right" onclick="togglePanel('right')">&gt;</button>
     <div class="tip" id="tip"></div>
   </main>
   <aside class="detail" id="detP">
@@ -392,8 +529,8 @@ const GLOSS={
   'ICO':'Initial Coin Offering. Token sale to raise capital, often unregulated.',
   'SAFT':'Simple Agreement for Future Tokens. Legal framework for compliant token sales.',
   '501(c)(3)':'US tax-exempt nonprofit organization status.',
-  'GmbH':'German limited liability company (Gesellschaft mit beschränkter Haftung).',
-  'SAS':'French simplified joint-stock company (Société par Actions Simplifiée).',
+  'GmbH':'German limited liability company (Gesellschaft mit beschrankter Haftung).',
+  'SAS':'French simplified joint-stock company (Societe par Actions Simplifiee).',
   'Verein':'Swiss nonprofit association structure.',
   'Series A':'First major VC funding round after seed, typically $5-15M.',
   'AUM':'Assets Under Management. Total value managed by investment fund.',
@@ -405,22 +542,80 @@ const GLOSS={
 const el=id=>document.getElementById(id);
 let D={nodes:[],edges:[],people:[]};
 let view='home',selId=null,sim=null,zoomBehavior=null,svgG=null;
-let homeRecoState={items:[],channels:{featured:[],metascience:[],review:[],aiScience:[],scienceProblems:[]},lastUpdated:'',status:'idle'};
-let homeRecoFetchMs=0;
-let homeMapTimer=null;
 let flt={stack:[],type:[],overlap:[],legal:[],conf:[]};
 let sortC='overlapScore',sortA=false;
 let zoteroItems=null;
-let bizLabelSet='notable';
+let bizLabelSet='none';
 let bizLabelDetail='metrics';
+let auditRowsByKey=new Map();
+let bizTipPinned=false;
+let bizTipPinnedNodeId=null;
+let homeFeedState={items:[],sections:{keywords:[],nodes:[],youtube:[]},lastUpdated:''};
+let homeTickerTimer=null;
+let homeRefreshTimer=null;
+let homeAsciiTimer=null;
+let homeFeedLastFetchMs=0;
+let litQuery='';
 
 const SC={infrastructure:'var(--sage)',application:'var(--rose)',governance:'var(--teal)'};
 const SBG={infrastructure:'rgba(110,200,155,.12)',application:'rgba(232,126,154,.12)',governance:'rgba(90,184,179,.12)'};
-const SS={0:'·',1:'○',2:'◐',3:'●'};
+const SS={0:'.',1:'o',2:'O',3:'@'};
 const SL=['S1\nData','S2\nLedger','S3\nAI','S4\nProof','S5\nGov'];
 const EC={'funder':'var(--edge-funder)','ecosystem':'var(--edge-ecosystem)','partner':'var(--edge-partner)','overlap':'var(--edge-overlap)'};
 const RB={funder:{b:'rgba(92,184,122,.2)',c:'var(--sage)'},ecosystem:{b:'rgba(92,170,184,.2)',c:'var(--teal)'},partner:{b:'rgba(155,126,212,.2)',c:'#9b7ed4'},overlap:{b:'rgba(227,190,77,.22)',c:'var(--gold)'}};
 const OV_LABELS={"publishing":"Publishing","peer-review":"Peer Review","reputation":"Reputation","dao-gov":"DAO Gov","compute":"Compute","ai-ml":"AI/ML","citation-graph":"Citations","scicomm":"SciComm","citizen-sci":"Citizen Sci","smart-contracts":"Contracts/NFT","data-sovereignty":"Data Sov","ip-nft":"IP-NFT"};
+
+const MOJIBAKE_FIXES=[
+  ['â‰¥','>='],['â‰¤','<='],['â—€','<'],['â–¶','>'],
+  ['Â·',' | '],['â†’','->'],['â†—','->'],
+  ['â€”','-'],['â€“','-'],['â€¢','*'],['Ã—','x'],
+  ['â—‹','o'],['â—','O'],['â—','@'],
+  ['Ã¤','a'],['Ã¶','o'],['Ã¼','u'],['Ã©','e'],['Ã¨','e'],['ÃŸ','ss'],
+  ['â€œ','"'],['â€','"'],['â€˜',"'"],['â€™',"'"],
+  ['â',"'"],['â','"'],['â','"'],['â','-'],['â','-'],['â€¦','...'],
+  ['Â','']
+];
+function mojibakeScore(s){return (String(s).match(/[ÃÂâ]/g)||[]).length}
+function cleanMojibakeString(v){
+  let s=String(v??'');
+  if(!s)return s;
+  if(/[ÃÂâ]/.test(s)){
+    try{
+      const bytes=Uint8Array.from([...s].map(ch=>ch.charCodeAt(0)&0xff));
+      const dec=new TextDecoder('utf-8').decode(bytes);
+      if(mojibakeScore(dec)<mojibakeScore(s))s=dec;
+    }catch(e){}
+  }
+  for(const [bad,good] of MOJIBAKE_FIXES)s=s.split(bad).join(good);
+  return s.replace(/\s+\|\s+\|\s+/g,' | ');
+}
+function cleanMojibakeDeep(v,seen){
+  if(typeof v==='string')return cleanMojibakeString(v);
+  if(!v||typeof v!=='object')return v;
+  const memo=seen||new WeakSet();
+  if(memo.has(v))return v;
+  memo.add(v);
+  if(Array.isArray(v)){for(let i=0;i<v.length;i++)v[i]=cleanMojibakeDeep(v[i],memo);return v}
+  Object.keys(v).forEach(k=>{v[k]=cleanMojibakeDeep(v[k],memo)});
+  return v;
+}
+function sanitizeVisibleText(root){
+  const host=root||document.body;
+  if(!host)return;
+  const w=document.createTreeWalker(host,NodeFilter.SHOW_TEXT);
+  const list=[];
+  while(w.nextNode()){
+    const n=w.currentNode;
+    const p=n.parentElement;
+    if(p&&(p.tagName==='SCRIPT'||p.tagName==='STYLE'))continue;
+    list.push(n);
+  }
+  list.forEach(n=>{
+    const t=n.nodeValue||'';
+    const f=cleanMojibakeString(t);
+    if(f&&f!==t)n.nodeValue=f;
+  });
+}
 
 // Profit score color helpers (0=commons/green, 100=profit/red)
 function profitC(s){return s<=20?'var(--sage)':s<=40?'var(--teal)':s<=60?'var(--gold)':s<=80?'#e8a87c':'var(--red)'}
@@ -439,33 +634,62 @@ function setBizLabelDetail(v){bizLabelDetail=v;if(view==='biz')render()}
 
 // ===== INIT =====
 async function init(){
-  // Try loading data.json, fall back to localStorage
+  // Try loading bundled JSON files, then localStorage cache
   let loaded=false;
-  try{
-    const r=await fetch('data_codex_home_feeds_improved.json');
-    if(r.ok){D=await r.json();loaded=true}
-  }catch(e){}
+  const candidates=['data_researched_pass7_source_audited.json','data.json','desci-landscape.json'];
+  for(const file of candidates){
+    try{
+      const r=await fetch(file,{cache:'no-store'});
+      if(r.ok){D=await r.json();loaded=true;break}
+    }catch(e){}
+  }
   if(!loaded){
     let s=localStorage.getItem('desci6');
     if(s)try{D=JSON.parse(s)}catch(e){}
   }
+  D=cleanMojibakeDeep(D);
   if(!D.nodes||!D.nodes.length){D={nodes:[],edges:[],people:[]}; return}
+  await loadAuditRows();
   D.nodes.forEach(n=>{n.wp=n.wp||'';n.git=n.git||'';n.twitter=n.twitter||'';n.cf=n.cf||{};n.overlapTags=n.overlapTags||[];n.credScore=n.credScore||0;n.overlapScore=n.overlapScore||0;n.decentNote=n.decentNote||'';n.techStack=n.techStack||'';n.compNote=n.compNote||'';n.notes=n.notes||'';n.finModel=n.finModel||'';n.legalStructure=n.legalStructure||'unknown';n.apc=n.apc||false;n.profitScore=n.profitScore??50;n.openScienceScore=n.openScienceScore??((n.financials&&n.financials.openScienceCompatibilityScore)??50);n.finNote=n.finNote||'';n.fundingRaised=n.fundingRaised||'';n.provenance=n.provenance||{confidence:'low',hasUnverifiedClaims:true,sources:[],lastVerified:'',notes:''};n.financials=n.financials||{revenueSources:[],researcherPays:'unknown',institutionPays:'unknown',openScienceAlignment:'unknown',openScienceAlignmentNote:'',scoreBreakdown:{},openScienceCompatibilityScore:50,openScienceCompatibilityBand:'moderate',scoreAudit:{}};if(n.financials&&n.financials.openScienceCompatibilityScore==null)n.financials.openScienceCompatibilityScore=n.openScienceScore??50;n.sourceAsterisk=!!n.sourceAsterisk});
   D.edges=(D.edges||[]).map(e=>e.type==='collaborator'?({...e,type:'partner'}):e);
   if(!D.people)D.people=[];
-  loadHomeRecoCache();
+  D.journal=D.journal||[];
+  D.litProgress=D.litProgress||{};
+  D.homeWatch=D.homeWatch||{videos:[],playlists:[]};
+  if(!Array.isArray(D.homeWatch.videos))D.homeWatch.videos=[];
+  if(!Array.isArray(D.homeWatch.playlists))D.homeWatch.playlists=[];
+  D.kanban=D.kanban||seedKanbanFromData();
+  loadHomeFeedCache();
   buildPills();render();updateSB();updateStats();
   setTimeout(autoSync,500);
   initGlossary();
+  sanitizeVisibleText(document.body);
 }
 function save(skipPush){localStorage.setItem('desci6',JSON.stringify(D));if(!skipPush)debouncedPush()}
+
+async function loadAuditRows(){
+  auditRowsByKey=new Map();
+  try{
+    const r=await fetch('data_researched_pass7_audit_report.csv',{cache:'no-store'});
+    if(!r.ok)return;
+    const txt=await r.text();
+    const parsed=Papa.parse(txt,{header:true,skipEmptyLines:true});
+    parsed.data.forEach(row=>{
+      row=cleanMojibakeDeep(row);
+      const id=(row.id||'').trim().toLowerCase();
+      const name=(row.name||'').trim().toLowerCase();
+      if(id)auditRowsByKey.set(id,row);
+      if(name)auditRowsByKey.set(name,row);
+    });
+  }catch(e){}
+}
 
 // ===== GLOSSARY TOOLTIPS =====
 function initGlossary(){
   document.addEventListener('mouseover',e=>{
     const t=e.target;
     if(!t.classList||!t.classList.contains('pill')&&!t.classList.contains('tag-chip')&&!t.classList.contains('stack-chip'))return;
-    const txt=t.textContent.trim().replace('×','').trim();
+    const txt=cleanMojibakeString(t.textContent||'').replace(/[x\u00D7]/g,'').trim();
     const def=GLOSS[txt];
     if(!def)return;
     const gt=el('glossTip');
@@ -519,7 +743,7 @@ function updateSB(){
   const v=D.nodes.filter(vis);el('nc').textContent=v.length;
   el('nlist').innerHTML=v.sort((a,b)=>(b.overlapScore||0)-(a.overlapScore||0)).map(n=>`<li class="nli ${n.id===selId?'sel':''}" title="confidence: ${(n.provenance&&n.provenance.confidence)||'low'}" onclick="selNode('${n.id}')"><span class="nli-dot" style="background:${SC[n.stack]||'var(--text-3)'}"></span><span class="nli-name">${n.name}${n.sourceAsterisk?' *':''}</span></li>`).join('');
 }
-function updateStats(){const v=D.nodes.filter(vis);el('stats').innerHTML=`<b>${v.length}</b>/${D.nodes.length} orgs · <b>${D.edges.length}</b> edges · <b>${D.people.length}</b> people`}
+function updateStats(){const s=el('stats');if(s)s.textContent=''}
 
 // ===== PANELS =====
 function togglePanel(p){
@@ -532,12 +756,23 @@ function togglePanel(p){
 }
 function setView(v,b){
   view=v;
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
-  const btn=b||document.querySelector(`.tab[data-view="${v}"]`);
-  if(btn)btn.classList.add('on');
+  const tabs=[...document.querySelectorAll('.tab')];
+  tabs.forEach(t=>t.classList.remove('on'));
+  let active=(b&&b.classList&&b.classList.contains('tab'))?b:null;
+  if(!active){
+    active=tabs.find(t=>(t.getAttribute('onclick')||'').includes(`setView('${v}'`))||null;
+  }
+  if(active)active.classList.add('on');
+  const app=el('app');
+  if(v==='home'||v==='journal'||v==='lit'){
+    app.classList.add('hide-right');
+    app.classList.add('hide-left');
+  }else{
+    app.classList.remove('hide-left');
+    app.classList.remove('hide-right');
+  }
   render();
 }
-
 
 function computeComponents(nodes, links){
   const ids = nodes.map(n => n.id);
@@ -677,9 +912,17 @@ function resizeGraphViewport(){
 
 // ===== RENDER =====
 function render(){
-  const m=el('main');m.querySelectorAll('svg,.table-wrap,.people-grid,.lit-panel,.legend,.biz-wrap,.home-wrap').forEach(e=>e.remove());
-  if(homeMapTimer){clearInterval(homeMapTimer);homeMapTimer=null;}
-  if(window.__homeTickerTimer){clearInterval(window.__homeTickerTimer);window.__homeTickerTimer=null;}
+  const m=el('main');m.querySelectorAll('svg,.table-wrap,.people-grid,.lit-panel,.legend,.biz-wrap,.home-wrap,.info-wrap,.journal-wrap,.lit-wrap').forEach(e=>e.remove());
+  if(homeTickerTimer){clearInterval(homeTickerTimer);homeTickerTimer=null;}
+  if(homeRefreshTimer){clearInterval(homeRefreshTimer);homeRefreshTimer=null;}
+  if(homeAsciiTimer){clearInterval(homeAsciiTimer);homeAsciiTimer=null;}
+  if(view!=='biz'){bizTipPinned=false;bizTipPinnedNodeId=null;}
+  const tip=el('tip'); if(tip){tip.classList.remove('vis');tip.classList.toggle('interactive',view==='biz');}
+  const tLeft=m.querySelector('.toggle-left');
+  const tRight=m.querySelector('.toggle-right');
+  const hideToggles=(view==='home'||view==='journal'||view==='lit');
+  if(tLeft)tLeft.style.display=hideToggles?'none':'flex';
+  if(tRight)tRight.style.display=hideToggles?'none':'flex';
   if(sim)sim.stop();
   if(view==='home')renderHome();
   else if(view==='graph')buildGraph();
@@ -687,7 +930,10 @@ function render(){
   else if(view==='people')renderPeople();
   else if(view==='pgraph')renderPeopleGraph();
   else if(view==='lit')renderLit();
-  else renderBiz();
+  else if(view==='biz')renderBiz();
+  else if(view==='journal')renderJournal();
+  else buildGraph();
+  sanitizeVisibleText(m);
 }
 
 // ===== GRAPH =====
@@ -760,7 +1006,7 @@ function buildGraph(){
 
   const tip=el('tip');
   ns.on('mouseenter',(e,d)=>{
-    tip.innerHTML=`<h4>${d.name}</h4><div class="tm">${d.type||''} · ${d.stack||''} · ${(d.tags||[]).slice(0,3).join(', ')}</div>`;
+    tip.innerHTML=`<h4>${d.name}</h4><div class="tm">${d.type||''} | ${d.stack||''} | ${(d.tags||[]).slice(0,3).join(', ')}</div>`;
     tip.classList.add('vis');
   }).on('mousemove',e=>{
     const r=m.getBoundingClientRect();
@@ -771,7 +1017,7 @@ function buildGraph(){
   lines.on('mouseenter',(e,d)=>{
     const sName=typeof d.source==='object'?d.source.name:(D.nodes.find(n=>n.id===d.source)?.name||d.source);
     const tName=typeof d.target==='object'?d.target.name:(D.nodes.find(n=>n.id===d.target)?.name||d.target);
-    tip.innerHTML=`<h4>${sName} → ${tName}</h4><div class="tm">${d.type||'relation'}${d.l?` · ${d.l}`:''}</div>`;
+    tip.innerHTML=`<h4>${sName} -> ${tName}</h4><div class="tm">${d.type||'relation'}${d.l?` | ${d.l}`:''}</div>`;
     tip.classList.add('vis');
     d3.select(e.currentTarget).attr('opacity',.85).attr('stroke-width',d.type==='overlap'?1.4:1.9);
   }).on('mousemove',e=>{
@@ -812,7 +1058,7 @@ function renderTable(){
   const ovBar=(v)=>{const c=v>=60?'var(--gold)':v>=30?'var(--text-2)':'var(--text-3)';return `<div class="ob"><div class="ob-bar"><div class="ob-fill" style="width:${v}%;background:${c}"></div></div><span style="font-family:var(--mono);font-size:.68rem">${v}</span></div>`};
   const credBadge=(v)=>{const c=v>=60?'var(--sage)':v>=30?'var(--gold)':'var(--text-3)';const bg=v>=60?'rgba(110,200,155,.12)':v>=30?'rgba(212,168,83,.08)':'var(--raised)';return `<span class="cred-badge" style="background:${bg};color:${c}">${v}</span>`};
   const osBadge=(v)=>`<span class="profit-badge" style="background:${osBg(v)};color:${osC(v)}">${v}</span>`;
-  w.innerHTML=`<table class="dtbl"><thead><tr>${cols.map(c=>`<th onclick="doSort('${c.k}')">${c.l}${sortC===c.k?(sortA?' ↑':' ↓'):''}</th>`).join('')}</tr></thead><tbody>${ns.map(n=>`<tr class="${n.id===selId?'sel':''}" onclick="selNode('${n.id}');el('app').classList.remove('hide-right')"><td><strong>${n.name}${n.sourceAsterisk?' *':''}</strong></td><td>${n.type||''}</td><td><span class="stack-chip" style="background:${SBG[n.stack]||''};color:${SC[n.stack]||''}">${n.stack||''}</span></td><td>${ovBar(n.overlapScore||0)}</td><td>${credBadge(n.credScore||0)}</td><td><span class="profit-badge" style="background:${profitBg(n.profitScore)};color:${profitC(n.profitScore)}">${n.profitScore??50}</span></td><td>${osBadge(n.openScienceScore ?? ((n.financials&&n.financials.openScienceCompatibilityScore) || 0))}</td><td><span class="conf-badge ${confClass((n.provenance&&n.provenance.confidence)||'low')}">${(n.provenance&&n.provenance.confidence)||'low'}</span></td><td>${n.stage||''}</td><td title="${(n.compNote||'').replace(/"/g,'&quot;')}" style="max-width:220px;overflow:hidden;text-overflow:ellipsis;font-size:.75rem;color:var(--text-2)">${n.compNote||''}</td></tr>`).join('')}</tbody></table>`;
+  w.innerHTML=`<table class="dtbl"><thead><tr>${cols.map(c=>`<th onclick="doSort('${c.k}')">${c.l}${sortC===c.k?(sortA?' ^':' v'):''}</th>`).join('')}</tr></thead><tbody>${ns.map(n=>`<tr class="${n.id===selId?'sel':''}" onclick="selNode('${n.id}');el('app').classList.remove('hide-right')"><td><strong>${n.name}${n.sourceAsterisk?' *':''}</strong></td><td>${n.type||''}</td><td><span class="stack-chip" style="background:${SBG[n.stack]||''};color:${SC[n.stack]||''}">${n.stack||''}</span></td><td>${ovBar(n.overlapScore||0)}</td><td>${credBadge(n.credScore||0)}</td><td><span class="profit-badge" style="background:${profitBg(n.profitScore)};color:${profitC(n.profitScore)}">${n.profitScore??50}</span></td><td>${osBadge(n.openScienceScore ?? ((n.financials&&n.financials.openScienceCompatibilityScore) || 0))}</td><td><span class="conf-badge ${confClass((n.provenance&&n.provenance.confidence)||'low')}">${(n.provenance&&n.provenance.confidence)||'low'}</span></td><td>${n.stage||''}</td><td title="${(n.compNote||'').replace(/"/g,'&quot;')}" style="max-width:220px;overflow:hidden;text-overflow:ellipsis;font-size:.75rem;color:var(--text-2)">${n.compNote||''}</td></tr>`).join('')}</tbody></table>`;
   m.appendChild(w);
 }
 function doSort(c){if(sortC===c)sortA=!sortA;else{sortC=c;sortA=false}render()}
@@ -820,12 +1066,13 @@ function doSort(c){if(sortC===c)sortA=!sortA;else{sortC=c;sortA=false}render()}
 // ===== PEOPLE =====
 function renderPeople(){
   const m=el('main'),g=document.createElement('div');g.className='people-grid';
-  g.innerHTML=D.people.map(p=>{const on=p.orgs.map(id=>D.nodes.find(n=>n.id===id)?.name||id).join(', ');return`<div class="p-card" onclick="showPerson('${p.id}')"><div class="p-name">${p.name}</div><div class="p-role">${p.role||''}</div><div class="p-links">${p.linkedin?`<a href="${p.linkedin}" target="_blank" onclick="event.stopPropagation()">LinkedIn ↗</a>`:''}${p.twitter?`<a href="https://x.com/${p.twitter.replace('@','')}" target="_blank" onclick="event.stopPropagation()">${p.twitter}</a>`:''}</div>${on?`<div class="p-orgs">${on}</div>`:''}</div>`}).join('');
+  g.innerHTML=D.people.map(p=>{const on=p.orgs.map(id=>D.nodes.find(n=>n.id===id)?.name||id).join(', ');return`<div class="p-card" onclick="showPerson('${p.id}')"><div class="p-name">${p.name}</div><div class="p-role">${p.role||''}</div><div class="p-links">${p.linkedin?`<a href="${p.linkedin}" target="_blank" onclick="event.stopPropagation()">LinkedIn -></a>`:''}${p.twitter?`<a href="https://x.com/${p.twitter.replace('@','')}" target="_blank" onclick="event.stopPropagation()">${p.twitter}</a>`:''}</div>${on?`<div class="p-orgs">${on}</div>`:''}</div>`}).join('');
   m.appendChild(g);
 }
 function showPerson(pid){
   const p=D.people.find(x=>x.id===pid);if(!p)return;
-  el('detE').style.display='none';el('detC').innerHTML=`<div class="det-name">${p.name}</div><div class="det-sub">${p.role||''}</div>${p.linkedin?`<a href="${p.linkedin}" target="_blank" style="color:var(--link);font-size:.85rem">LinkedIn ↗</a> `:''} ${p.twitter?`<a href="https://x.com/${p.twitter.replace('@','')}" target="_blank" style="color:var(--link);font-size:.85rem">${p.twitter}</a>`:''}`;
+  el('detE').style.display='none';el('detC').innerHTML=`<div class="det-name">${p.name}</div><div class="det-sub">${p.role||''}</div>${p.linkedin?`<a href="${p.linkedin}" target="_blank" style="color:var(--link);font-size:.85rem">LinkedIn -></a> `:''} ${p.twitter?`<a href="https://x.com/${p.twitter.replace('@','')}" target="_blank" style="color:var(--link);font-size:.85rem">${p.twitter}</a>`:''}`;
+  sanitizeVisibleText(el('detC'));
   el('app').classList.remove('hide-right');
 }
 
@@ -915,66 +1162,226 @@ function quadrantOf(n){
   if(p<50 && o<50) return 'mission-fragile';
   return 'extractive-risk';
 }
+function escapeHtml(v){
+  return String(v??'').replace(/[&<>"']/g,ch=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[ch]));
+}
+function bizAuditRow(n){
+  const k1=(n.id||'').toLowerCase();
+  const k2=(n.name||'').toLowerCase();
+  return auditRowsByKey.get(k1)||auditRowsByKey.get(k2)||null;
+}
+function bizSources(n,max=6){
+  const seen=new Set(), out=[];
+  const add=(src)=>{
+    if(!src||!src.url)return;
+    const u=String(src.url).trim();
+    if(!u||seen.has(u))return;
+    seen.add(u);
+    let host=u;
+    try{host=new URL(u).hostname.replace(/^www\./,'')}catch(e){}
+    out.push({label:src.label||host,url:u,type:src.type||''});
+  };
+  const p=n.provenance||{};
+  (p.sources||[]).forEach(add);
+  Object.values(p.fieldSources||{}).forEach(arr=>(arr||[]).forEach(add));
+  (p.materialClaims||[]).forEach(c=>(c.sources||[]).forEach(add));
+  return out.slice(0,max);
+}
+function meanNum(arr){
+  if(!arr.length)return 0;
+  return arr.reduce((s,v)=>s+v,0)/arr.length;
+}
+function stdNum(arr){
+  if(arr.length<2)return 0;
+  const m=meanNum(arr);
+  return Math.sqrt(arr.reduce((s,v)=>s+Math.pow(v-m,2),0)/(arr.length-1));
+}
+function computeLinearFit(nodes){
+  if(nodes.length<2)return {slope:0,intercept:50,corr:0,r2:0,residuals:[]};
+  const xs=nodes.map(n=>n.profitScore??50);
+  const ys=nodes.map(n=>n.openScienceScore??50);
+  const mx=meanNum(xs), my=meanNum(ys);
+  let cov=0,varX=0,varY=0;
+  for(let i=0;i<xs.length;i++){
+    const dx=xs[i]-mx, dy=ys[i]-my;
+    cov+=dx*dy;
+    varX+=dx*dx;
+    varY+=dy*dy;
+  }
+  const slope=varX?cov/varX:0;
+  const intercept=my-slope*mx;
+  const corr=(varX&&varY)?(cov/Math.sqrt(varX*varY)):0;
+  const residuals=nodes.map(n=>{
+    const pred=intercept+slope*(n.profitScore??50);
+    const resid=(n.openScienceScore??50)-pred;
+    return {node:n,pred,resid};
+  });
+  const sd=stdNum(residuals.map(r=>r.resid))||1;
+  residuals.forEach(r=>{r.z=r.resid/sd;r.absZ=Math.abs(r.z)});
+  return {slope,intercept,corr,r2:corr*corr,residuals};
+}
+function dominatesBiz(a,b){
+  const aOv=a.overlapScore||0, bOv=b.overlapScore||0;
+  const betterOrEqual=(a.openScienceScore>=b.openScienceScore)&&(aOv>=bOv)&&((a.profitScore??50)<=(b.profitScore??50));
+  const strictlyBetter=(a.openScienceScore>b.openScienceScore)||(aOv>bOv)||((a.profitScore??50)<(b.profitScore??50));
+  return betterOrEqual&&strictlyBetter;
+}
+function paretoFrontier(nodes){
+  return nodes.filter(n=>!nodes.some(o=>o.id!==n.id&&dominatesBiz(o,n)));
+}
+function sweetSpotScore(n){
+  const p=n.profitScore??50;
+  const os=n.openScienceScore??50;
+  const ov=n.overlapScore||0;
+  const dc=n.decen||0;
+  const conf=((n.provenance&&n.provenance.confidence)||'low');
+  const confBonus=conf==='high'?8:conf==='medium'?4:0;
+  const profitBalance=100-Math.min(100,Math.abs(p-42)*1.8);
+  return (os*0.44)+(ov*0.28)+(profitBalance*0.2)+(dc*0.08)+confBonus;
+}
+function analyzeBizLandscape(nodes){
+  const fit=computeLinearFit(nodes);
+  const outliers=[...fit.residuals].sort((a,b)=>b.absZ-a.absZ);
+  const frontier=paretoFrontier(nodes).sort((a,b)=>((b.openScienceScore||0)+(b.overlapScore||0))-((a.openScienceScore||0)+(a.overlapScore||0)));
+  const sweet=[...nodes].map(n=>({node:n,score:sweetSpotScore(n)})).sort((a,b)=>b.score-a.score);
+  const pressure=[...nodes].map(n=>({node:n,pressure:(n.profitScore??50)-(n.openScienceScore??50)})).sort((a,b)=>b.pressure-a.pressure);
+  return {fit,outliers,frontier,sweet,pressure};
+}
+
+const UNESCO_OS_REFERENCE={
+  label:'UNESCO Recommendation on Open Science',
+  url:'https://www.unesco.org/en/natural-sciences/open-science'
+};
+const UNESCO_PRINCIPLES=[
+  {id:'knowledge',label:'Open scientific knowledge'},
+  {id:'infrastructure',label:'Open science infrastructures'},
+  {id:'engagement',label:'Open engagement of societal actors'},
+  {id:'equity',label:'Equity, fairness and inclusiveness'},
+  {id:'transparency',label:'Transparency, reproducibility and scrutiny'},
+  {id:'responsibility',label:'Responsibility and accountability'}
+];
+function inferUnescoPrinciples(n){
+  const fin=n.financials||{};
+  const text=[n.desc,n.finModel,n.finNote,n.techStack,n.type,n.legalStructure,fin.openScienceAlignment,fin.openScienceAlignmentNote,fin.financialSummary].join(' ').toLowerCase();
+  const tags=(n.tags||[]).map(t=>String(t).toLowerCase());
+  const overlap=(n.overlapTags||[]).map(t=>String(t).toLowerCase());
+  const reasons=[];
+  const push=(id,why)=>{
+    if(reasons.some(r=>r.id===id))return;
+    const meta=UNESCO_PRINCIPLES.find(p=>p.id===id);
+    reasons.push({id,label:meta?meta.label:id,why});
+  };
+
+  if(fin.researcherPays==='no' || !n.apc || /open access|diamond|public good|commons/.test(text) || overlap.includes('publishing') || overlap.includes('peer-review')){
+    push('knowledge','Signals of open dissemination or reduced paywalls for researchers.');
+  }
+  if(n.stack==='infrastructure' || /open source|repository|data|interoperab|ipfs|protocol|ledger/.test(text) || overlap.includes('data-sovereignty') || overlap.includes('compute')){
+    push('infrastructure','Evidence of shared technical infrastructure or interoperable research tooling.');
+  }
+  if(n.legalStructure==='DAO' || /community|citizen|dao|governance|participatory/.test(text) || overlap.includes('dao-gov') || overlap.includes('citizen-sci')){
+    push('engagement','Community governance or participatory science signals societal engagement.');
+  }
+  if(fin.researcherPays==='no' || /nonprofit|foundation|equity|inclusive|public interest/.test(text) || ['nonprofit','foundation','community','consortium'].includes((n.legalStructure||'').toLowerCase())){
+    push('equity','Cost-sharing, nonprofit structures, or public-interest framing supports equitable access.');
+  }
+  if((n.credScore||0)>=50 || /peer review|reproduc|transparent|audit|proof|verification|citation/.test(text) || overlap.includes('peer-review') || overlap.includes('citation-graph') || overlap.includes('reputation')){
+    push('transparency','Focus on verification, peer review, citations, or reproducibility improves scrutiny.');
+  }
+  if(((n.provenance&&n.provenance.sources)||[]).length>=2 || (n.provenance&&n.provenance.confidence==='high')){
+    push('responsibility','Traceable provenance and stronger source confidence improve accountability.');
+  }
+
+  const os=n.openScienceScore??fin.openScienceCompatibilityScore??50;
+  const riskNotes=[];
+  if(n.apc || fin.researcherPays==='yes')riskNotes.push('researcher-facing fees can constrain openness');
+  if((n.profitScore??50)>=70)riskNotes.push('high commercial pressure can reduce open-science alignment over time');
+  if((n.provenance&&n.provenance.confidence)==='low')riskNotes.push('low evidence confidence weakens certainty of alignment claims');
+
+  const summary=`Score ${os}/100 reflects ${reasons.length} UNESCO-aligned principle signal${reasons.length===1?'':'s'}${riskNotes.length?`; risk checks: ${riskNotes.join('; ')}`:''}.`;
+  return {score:os,principles:reasons.slice(0,6),summary,risks:riskNotes,reference:UNESCO_OS_REFERENCE};
+}
+function renderUnescoProfileBox(n){
+  const profile=inferUnescoPrinciples(n);
+  const chips=profile.principles.length
+    ? `<div class="unesco-list">${profile.principles.map(p=>`<div class="unesco-item"><div class="t">${escapeHtml(p.label)}</div><div class="d">${escapeHtml(p.why)}</div></div>`).join('')}</div>`
+    : '<div style="font-size:.76rem;color:var(--text-3);margin-top:8px">No explicit UNESCO-aligned principle evidence detected from current node fields.</div>';
+  return `<div class="prov-box"><div class="flabel">Open-science score justification</div><div style="font-size:.8rem;color:var(--text-2);line-height:1.45">${escapeHtml(profile.summary)}</div>${chips}<a class="unesco-ref" href="${profile.reference.url}" target="_blank" rel="noopener">${escapeHtml(profile.reference.label)} -></a></div>`;
+}
+
 function renderBiz(){
   const m=el('main');
+  bizTipPinned=false;
+  bizTipPinnedNodeId=null;
   const nodes=D.nodes.filter(vis).map(n=>({...n,profitScore:n.profitScore??50,openScienceScore:n.openScienceScore??((n.financials&&n.financials.openScienceCompatibilityScore)??50)}));
   const avg=(arr,fn)=>arr.length?Math.round(arr.reduce((s,x)=>s+fn(x),0)/arr.length):0;
   const qDefs={
     'commons':{label:'Commons-aligned',desc:'Lower commercial pressure, stronger open-science fit.'},
-    'hybrid-open':{label:'Open-core hybrid',desc:'Commercial or tokenized, but still relatively compatible with open science.'},
-    'mission-fragile':{label:'Low-profit / low-fit',desc:'Weak monetization and weak open-science fit, often unclear or immature models.'},
+    'hybrid-open':{label:'Open-core hybrid',desc:'Commercial but still relatively compatible with open-science incentives.'},
+    'mission-fragile':{label:'Low-profit / low-fit',desc:'Unclear monetization and weak open-science alignment.'},
     'extractive-risk':{label:'Commercial pressure',desc:'Higher commerciality with weaker open-science compatibility.'}
   };
   const counts=Object.fromEntries(Object.keys(qDefs).map(k=>[k,0]));
   nodes.forEach(n=>counts[quadrantOf(n)]++);
-  const hiRisk=[...nodes].filter(n=>n.profitScore>=65&&n.openScienceScore<50).sort((a,b)=>(b.profitScore-b.openScienceScore)-(a.profitScore-a.openScienceScore)).slice(0,6);
-  const bestAligned=[...nodes].filter(n=>n.openScienceScore>=70).sort((a,b)=>(b.openScienceScore-a.openScienceScore)||(a.profitScore-b.profitScore)).slice(0,6);
-  const interesting=[...nodes].filter(n=>n.profitScore>=50&&n.openScienceScore>=50).sort((a,b)=>(b.openScienceScore+b.profitScore)-(a.openScienceScore+a.profitScore)).slice(0,6);
-  const topOverlap=[...nodes].sort((a,b)=>(b.overlapScore||0)-(a.overlapScore||0)).slice(0,6);
-  const mostDec=[...nodes].sort((a,b)=>(b.decen||0)-(a.decen||0)).slice(0,6);
+
+  const analytics=analyzeBizLandscape(nodes);
+  const hiRisk=analytics.pressure.slice(0,8).map(x=>x.node).filter(n=>(n.profitScore??50)>=60);
+  const bestAligned=[...nodes].filter(n=>n.openScienceScore>=70).sort((a,b)=>(b.openScienceScore-a.openScienceScore)||(a.profitScore-b.profitScore)).slice(0,8);
+  const topOverlap=[...nodes].sort((a,b)=>(b.overlapScore||0)-(a.overlapScore||0)).slice(0,8);
+  const mostDec=[...nodes].sort((a,b)=>(b.decen||0)-(a.decen||0)).slice(0,8);
+  const outliers=analytics.outliers.slice(0,8);
+  const sweet=analytics.sweet.slice(0,8);
+  const frontier=analytics.frontier.slice(0,8);
 
   const wrap=d3.select(m).append('div').attr('class','biz-wrap');
   const head=wrap.append('div').attr('class','biz-head');
   const headLeft=head.append('div');
   headLeft.html(`
-    <div class="biz-title">Business models map</div>
-    <div class="biz-sub">Each point is an organization. The x-axis is <b>commerciality / profit score</b> and the y-axis is <b>open-science compatibility</b>. Point <b>size scales with overlap with us</b>, while <b>outline thickness scales with decentralization</b>. Use the label controls to surface overlap and decentralization directly on the plot.</div>
+    <div class="biz-title">Values map</div>
+    <div class="biz-sub">Interactive scatter for commercial pressure versus open-science fit. Hover points for evidence-backed notes and citation links, drag to pan, and scroll to zoom. Point size = overlap with your thesis, outline = decentralization, ring = evidence confidence.</div>
     <div class="biz-legend">
       <span class="biz-legend-chip">Color = stack layer</span>
-      <span class="biz-legend-chip">Ring color = evidence confidence</span>
-      <span class="biz-legend-chip">Point size = overlap with us</span>
-      <span class="biz-legend-chip">Outline thickness = decentralization</span>
+      <span class="biz-legend-chip">Ring = evidence confidence</span>
+      <span class="biz-legend-chip">Size = overlap with us</span>
+      <span class="biz-legend-chip">Outline = decentralization</span>
+      <span class="biz-legend-chip">Dashed blue line = linear fit</span>
     </div>
   `);
+
+  const currentLabelSet=(bizLabelSet==='decent'?'decen':bizLabelSet)||'none';
+  const currentLabelDetail=(bizLabelDetail==='decent'?'decen':bizLabelDetail)||'name';
+  bizLabelSet=currentLabelSet;
+  bizLabelDetail=currentLabelDetail;
+
   const controls=head.append('div').attr('class','biz-controls');
   const addControl=(label,vals,current,fn)=>{
     const g=controls.append('div').attr('class','biz-control-group');
     g.append('span').attr('class','biz-control-label').text(label);
-    vals.forEach(v=>g.append('button').attr('class','biz-mini-btn'+(current===v.value?' on':''))
-      .text(v.label).on('click',()=>fn(v.value)));
+    vals.forEach(v=>g.append('button').attr('class','biz-mini-btn'+(current===v.value?' on':'')).text(v.label).on('click',()=>fn(v.value)));
   };
   addControl('Label set',[
+    {value:'none',label:'None'},
     {value:'notable',label:'Notable'},
     {value:'overlap',label:'High overlap'},
-    {value:'decent',label:'High decentralization'},
-    {value:'competitors',label:'Competitors'},
+    {value:'decen',label:'High decentralization'},
     {value:'all',label:'All filtered'}
-  ],bizLabelSet,setBizLabelSet);
+  ],currentLabelSet,setBizLabelSet);
   addControl('Label detail',[
     {value:'name',label:'Name'},
     {value:'overlap',label:'+ Overlap'},
-    {value:'decent',label:'+ Decent'},
+    {value:'decen',label:'+ Decen'},
     {value:'metrics',label:'Full metrics'}
-  ],bizLabelDetail,setBizLabelDetail);
+  ],currentLabelDetail,setBizLabelDetail);
 
   const cards=wrap.append('div').attr('class','biz-cards');
   const cardData=[
-    {k:'Visible nodes',v:nodes.length,s:`${counts['commons']} commons-aligned · ${counts['hybrid-open']} open-core hybrid`},
-    {k:'Avg commerciality',v:avg(nodes,n=>n.profitScore),s:'Lower = more commons-oriented, higher = more commercial pressure'},
-    {k:'Avg OS fit',v:avg(nodes,n=>n.openScienceScore),s:'Higher = stronger compatibility with open-science-style business models'},
-    {k:'Avg overlap',v:avg(nodes,n=>n.overlapScore||0),s:'Higher = closer overlap with your platform thesis'},
-    {k:'Avg decentralization',v:avg(nodes,n=>n.decen||0),s:'Higher = more decentralized architecture/governance'},
-    {k:'High-risk count',v:hiRisk.length,s:'Nodes currently landing in high-profit / lower-fit territory'}
+    {k:'Visible nodes',v:nodes.length,s:`${counts['commons']} commons-aligned / ${counts['hybrid-open']} open-core hybrid`},
+    {k:'Avg commerciality',v:avg(nodes,n=>n.profitScore),s:'Lower = more commons-oriented'},
+    {k:'Avg OS fit',v:avg(nodes,n=>n.openScienceScore),s:'Higher = stronger open-science compatibility'},
+    {k:'Fit correlation',v:analytics.fit.corr.toFixed(2),s:'Pearson correlation between profit and OS fit'},
+    {k:'Fit R2',v:analytics.fit.r2.toFixed(2),s:'Linear fit explanatory strength'},
+    {k:'Outlier count',v:outliers.filter(o=>o.absZ>=1.2).length,s:'Nodes with largest residuals from fit line'},
+    {k:'Sweet-spot candidates',v:sweet.length,s:'High OS fit + strategic overlap + balanced commercial pressure'},
+    {k:'Pareto frontier',v:frontier.length,s:'Not dominated on OS fit + overlap while keeping lower profit pressure'}
   ];
   const c=cards.selectAll('div').data(cardData).enter().append('div').attr('class','biz-card');
   c.append('span').attr('class','k').text(d=>d.k);
@@ -982,10 +1389,10 @@ function renderBiz(){
   c.append('span').attr('class','s').text(d=>d.s);
 
   const main=wrap.append('div').attr('class','biz-main');
-  const chartPanel=main.append('div').attr('class','biz-panel');
-  const side=main.append('div').attr('class','biz-panel');
+  const chartPanel=main.append('div').attr('class','biz-panel biz-panel-chart');
+  const side=main.append('div').attr('class','biz-panel biz-panel-side');
 
-  const sideSection=(title,arr,fmt)=>{
+  const sideSectionNodes=(title,arr,fmt)=>{
     side.append('div').attr('class','biz-side-title').text(title);
     const list=side.append('div').attr('class','biz-list');
     if(!arr.length){list.append('div').attr('class','biz-note').text('No nodes in this bucket under the current filters.');return}
@@ -995,123 +1402,1235 @@ function renderBiz(){
       item.append('div').attr('class','biz-item-meta').html(fmt(n));
     });
   };
-  sideSection('Likely pressure points', hiRisk, n=>`Profit ${n.profitScore} · OS fit ${n.openScienceScore} · Overlap ${n.overlapScore||0} · Decent ${n.decen||0}`);
-  sideSection('Best aligned models', bestAligned, n=>`OS fit ${n.openScienceScore} · Profit ${n.profitScore} · ${(n.financials&&n.financials.openScienceCompatibilityBand)||osBand(n.openScienceScore)}`);
-  sideSection('Highest overlap with us', topOverlap, n=>`Overlap ${n.overlapScore||0} · Profit ${n.profitScore} · OS fit ${n.openScienceScore} · Decent ${n.decen||0}`);
-  sideSection('Most decentralized', mostDec, n=>`Decent ${n.decen||0} · Profit ${n.profitScore} · OS fit ${n.openScienceScore} · Overlap ${n.overlapScore||0}`);
-  sideSection('Hybrid but still open', interesting, n=>`Profit ${n.profitScore} · OS fit ${n.openScienceScore} · ${(n.financials&&n.financials.openScienceAlignment)||'mixed'}`);
-  side.append('div').attr('class','biz-note').html('Suggested reading of the quadrants:<br>• <b>Top-left</b>: commons/public-good infrastructure<br>• <b>Top-right</b>: hybrid or open-core commercialization<br>• <b>Bottom-right</b>: stronger extraction / enclosure risk<br>• <b>Bottom-left</b>: unclear, weak, or immature business-model fit');
+  const sideSectionDerived=(title,arr,fmt)=>{
+    side.append('div').attr('class','biz-side-title').text(title);
+    const list=side.append('div').attr('class','biz-list');
+    if(!arr.length){list.append('div').attr('class','biz-note').text('No nodes in this bucket under the current filters.');return}
+    arr.forEach(entry=>{
+      const n=entry.node;
+      const item=list.append('div').attr('class','biz-item').on('click',()=>{selNode(n.id);el('app').classList.remove('hide-right')});
+      item.append('div').attr('class','biz-item-name').text(n.name+(n.sourceAsterisk?' *':''));
+      item.append('div').attr('class','biz-item-meta').html(fmt(entry));
+    });
+  };
+  sideSectionNodes('Likely pressure points', hiRisk, n=>`Profit ${n.profitScore} / OS fit ${n.openScienceScore} / Overlap ${n.overlapScore||0} / Decen ${n.decen||0}`);
+  sideSectionDerived('Model outliers', outliers, e=>`Residual z ${e.z.toFixed(2)} / Predicted OS ${e.pred.toFixed(1)} / Actual ${e.node.openScienceScore}`);
+  sideSectionDerived('Sweet-spot candidates', sweet, e=>`Sweet score ${e.score.toFixed(1)} / Profit ${e.node.profitScore} / OS fit ${e.node.openScienceScore} / Overlap ${e.node.overlapScore||0}`);
+  sideSectionNodes('Pareto frontier', frontier, n=>`OS fit ${n.openScienceScore} / Overlap ${n.overlapScore||0} / Profit ${n.profitScore}`);
+  sideSectionNodes('Best aligned models', bestAligned, n=>`OS fit ${n.openScienceScore} / Profit ${n.profitScore} / ${(n.financials&&n.financials.openScienceCompatibilityBand)||osBand(n.openScienceScore)}`);
+  sideSectionNodes('Highest overlap with us', topOverlap, n=>`Overlap ${n.overlapScore||0} / Profit ${n.profitScore} / OS fit ${n.openScienceScore} / Decen ${n.decen||0}`);
+  sideSectionNodes('Most decentralized', mostDec, n=>`Decen ${n.decen||0} / Profit ${n.profitScore} / OS fit ${n.openScienceScore} / Overlap ${n.overlapScore||0}`);
+  side.append('div').attr('class','biz-note').html('Quadrant reading:<br>&bull; <b>Top-left</b>: commons/public-good infrastructure<br>&bull; <b>Top-right</b>: hybrid/open-core commercialization<br>&bull; <b>Bottom-right</b>: stronger extraction pressure<br>&bull; <b>Bottom-left</b>: weak or immature business-model fit');
 
   const bounds=chartPanel.node().getBoundingClientRect();
-  const w=Math.max(760,bounds.width-28), h=Math.max(560,Math.min(860,(m.clientHeight||720)-120));
-  const margin={top:28,right:36,bottom:58,left:64};
+  const w=Math.max(920,Math.floor((bounds.width||940)-20));
+  const h=Math.max(680,Math.floor((bounds.height||760)-18));
+  const margin={top:34,right:44,bottom:64,left:74};
   const innerW=w-margin.left-margin.right, innerH=h-margin.top-margin.bottom;
-  const svg=chartPanel.append('svg').attr('class','biz-svg').attr('viewBox',`0 0 ${w} ${h}`);
-  const g=svg.append('g').attr('transform',`translate(${margin.left},${margin.top})`);
+
+  const svg=chartPanel.append('svg').attr('class','biz-svg').attr('viewBox',`0 0 ${w} ${h}`).attr('preserveAspectRatio','xMidYMid meet');
+  const defs=svg.append('defs');
+  const grad=defs.append('linearGradient').attr('id','biz-bg-grad').attr('x1','0%').attr('y1','0%').attr('x2','100%').attr('y2','100%');
+  grad.append('stop').attr('offset','0%').attr('stop-color','rgba(116,221,215,.08)');
+  grad.append('stop').attr('offset','50%').attr('stop-color','rgba(212,168,83,.04)');
+  grad.append('stop').attr('offset','100%').attr('stop-color','rgba(224,92,92,.06)');
+
+  const root=svg.append('g').attr('transform',`translate(${margin.left},${margin.top})`);
+  const plotLayer=root.append('g').attr('class','biz-zoom-layer');
+  const axisLayer=root.append('g');
   const x=d3.scaleLinear().domain([0,100]).range([0,innerW]);
   const y=d3.scaleLinear().domain([0,100]).range([innerH,0]);
 
-  const quads=[
-    {x0:0,x1:50,y0:50,y1:100,fill:'rgba(110,200,155,.06)',label:'Commons-aligned',sub:`${counts['commons']} nodes`},
-    {x0:50,x1:100,y0:50,y1:100,fill:'rgba(116,221,215,.06)',label:'Open-core hybrid',sub:`${counts['hybrid-open']} nodes`},
-    {x0:0,x1:50,y0:0,y1:50,fill:'rgba(212,168,83,.05)',label:'Low-profit / low-fit',sub:`${counts['mission-fragile']} nodes`},
-    {x0:50,x1:100,y0:0,y1:50,fill:'rgba(224,92,92,.06)',label:'Commercial pressure',sub:`${counts['extractive-risk']} nodes`}
-  ];
-  g.selectAll('.quad').data(quads).enter().append('rect')
-    .attr('x',d=>x(d.x0)).attr('y',d=>y(d.y1)).attr('width',d=>x(d.x1)-x(d.x0)).attr('height',d=>y(d.y0)-y(d.y1))
-    .attr('fill',d=>d.fill).attr('stroke','rgba(255,255,255,.04)');
-  g.selectAll('.quad-label').data(quads).enter().append('text')
-    .attr('x',d=>x((d.x0+d.x1)/2)).attr('y',d=>y(d.y1)-8)
-    .attr('text-anchor','middle').attr('font-size',11).attr('font-family','Nunito Sans,sans-serif').attr('fill','var(--text-2)').text(d=>d.label);
-  g.selectAll('.quad-sub').data(quads).enter().append('text')
-    .attr('x',d=>x((d.x0+d.x1)/2)).attr('y',d=>y(d.y1)+8)
-    .attr('text-anchor','middle').attr('font-size',10).attr('font-family','Fira Code,monospace').attr('fill','var(--text-3)').text(d=>d.sub);
-
-  g.append('g').attr('transform',`translate(0,${innerH})`).call(d3.axisBottom(x).ticks(10)).call(g=>g.selectAll('text').attr('fill','var(--text-2)')).call(g=>g.selectAll('line,path').attr('stroke','var(--border-h)'));
-  g.append('g').call(d3.axisLeft(y).ticks(10)).call(g=>g.selectAll('text').attr('fill','var(--text-2)')).call(g=>g.selectAll('line,path').attr('stroke','var(--border-h)'));
-  g.append('line').attr('x1',x(50)).attr('x2',x(50)).attr('y1',0).attr('y2',innerH).attr('stroke','rgba(212,168,83,.35)').attr('stroke-dasharray','6,5');
-  g.append('line').attr('x1',0).attr('x2',innerW).attr('y1',y(50)).attr('y2',y(50)).attr('stroke','rgba(212,168,83,.35)').attr('stroke-dasharray','6,5');
-  g.append('text').attr('class','axis-label').attr('x',innerW/2).attr('y',innerH+42).attr('text-anchor','middle').text('Commerciality / Profit Score →');
-  g.append('text').attr('class','axis-label').attr('transform',`translate(${-46},${innerH/2}) rotate(-90)`).attr('text-anchor','middle').text('Open-science compatibility →');
-
-  const plot=nodes.map(n=>({...n,tx:x(n.profitScore),ty:y(n.openScienceScore)}));
-  const radius=n=>5 + Math.min(7,(n.overlapScore||0)/14);
-  const decStroke=n=>1 + Math.min(3.5,(n.decen||0)/32);
-  const sim=d3.forceSimulation(plot)
-    .force('x',d3.forceX(d=>d.tx).strength(1))
-    .force('y',d3.forceY(d=>d.ty).strength(1))
-    .force('collide',d3.forceCollide(d=>radius(d)+2.2))
-    .stop();
-  for(let i=0;i<140;i++) sim.tick();
+  plotLayer.append('rect').attr('x',0).attr('y',0).attr('width',innerW).attr('height',innerH).attr('fill','url(#biz-bg-grad)').attr('stroke','rgba(255,255,255,.04)');
+  const grid=plotLayer.append('g').attr('class','biz-grid');
+  const gridTicks=d3.range(0,101,10);
+  grid.selectAll('line.v').data(gridTicks).enter().append('line').attr('x1',d=>x(d)).attr('x2',d=>x(d)).attr('y1',0).attr('y2',innerH);
+  grid.selectAll('line.h').data(gridTicks).enter().append('line').attr('x1',0).attr('x2',innerW).attr('y1',d=>y(d)).attr('y2',d=>y(d));
 
   const tip=el('tip');
-  const points=g.selectAll('.biz-point').data(plot).enter().append('g').style('cursor','pointer')
-    .on('click',(e,d)=>{selNode(d.id);el('app').classList.remove('hide-right')})
-    .on('mouseenter',(e,d)=>{
-      const rev=((d.financials&&d.financials.revenueSources)||[]).slice(0,3).join(', ') || 'revenue model unclear';
-      tip.innerHTML=`<h4>${d.name}${d.sourceAsterisk?' *':''}</h4><div class="tm">Profit ${d.profitScore} · OS fit ${d.openScienceScore} · Overlap ${d.overlapScore||0} · Decent ${d.decen||0} · ${d.legalStructure||'unknown'} · ${rev}</div>`;
+  if(!tip.dataset.bizBound){
+    tip.addEventListener('mouseenter',()=>{clearTimeout(window._bizTipHideTimer)});
+    tip.addEventListener('mouseleave',()=>{if(!bizTipPinned)tip.classList.remove('vis')});
+    tip.addEventListener('click',evt=>{
+      const pinBtn=evt.target.closest('[data-tip-pin]');
+      if(pinBtn){
+        evt.stopPropagation();
+        const activeId=tip.dataset.nodeId||'';
+        if(!activeId)return;
+        if(bizTipPinned && bizTipPinnedNodeId===activeId){
+          bizTipPinned=false;
+          bizTipPinnedNodeId=null;
+          tip.classList.remove('vis');
+        }else{
+          bizTipPinned=true;
+          bizTipPinnedNodeId=activeId;
+          pinBtn.textContent='Unpin';
+          tip.classList.add('vis');
+        }
+      }
+    });
+    tip.dataset.bizBound='1';
+  }
+  const hideTipSoon=()=>{
+    if(bizTipPinned)return;
+    clearTimeout(window._bizTipHideTimer);
+    window._bizTipHideTimer=setTimeout(()=>tip.classList.remove('vis'),260);
+  };
+  const moveTip=(evt)=>{
+    const r=m.getBoundingClientRect();
+    const tw=tip.offsetWidth||320, th=tip.offsetHeight||120;
+    let left=evt.clientX-r.left+14, top=evt.clientY-r.top+14;
+    if(left+tw>r.width-8)left=evt.clientX-r.left-tw-14;
+    if(top+th>r.height-8)top=evt.clientY-r.top-th-14;
+    tip.style.left=Math.max(8,left)+'px';
+    tip.style.top=Math.max(8,top)+'px';
+  };
+  const showNodeTip=(evt,d,persist=false)=>{
+    if(bizTipPinned && !persist && bizTipPinnedNodeId!==d.id)return;
+    clearTimeout(window._bizTipHideTimer);
+    const rev=((d.financials&&d.financials.revenueSources)||[]).slice(0,3).join(', ') || 'revenue model unclear';
+    const srcs=bizSources(d,6);
+    const srcHtml=srcs.length
+      ? `<div class="tip-src-title">Citations</div><div class="tip-src-list">${srcs.map(s=>`<a class="tip-src-link" href="${escapeHtml(s.url)}" target="_blank" rel="noopener">${escapeHtml(s.label)}${s.type?` | ${escapeHtml(s.type)}`:''}</a>`).join('')}</div>`
+      : `<div class="tm" style="margin-top:8px">No source URLs attached on this node.</div>`;
+    const audit=bizAuditRow(d);
+    const auditHtml=audit
+      ? `<div class="tm" style="margin-top:6px">Audit CSV: confidence ${escapeHtml(audit.confidence||'n/a')} | source count ${escapeHtml(audit.sourceCount||'0')} | <a href="data_researched_pass7_audit_report.csv" target="_blank" rel="noopener">CSV</a></div>`
+      : '';
+    const osProfile=inferUnescoPrinciples(d);
+    const pList=osProfile.principles.slice(0,3).map(p=>escapeHtml(p.label)).join('; ');
+    const principleHtml=`<div class="tm" style="margin-top:6px">UNESCO principles: ${pList||'none surfaced'} | <a href="${osProfile.reference.url}" target="_blank" rel="noopener">guideline</a></div>`;
+    const pinnedNow=persist || (bizTipPinned && bizTipPinnedNodeId===d.id);
+    tip.dataset.nodeId=d.id;
+    tip.innerHTML=`<div class="tip-head"><h4>${escapeHtml(d.name)}${d.sourceAsterisk?' *':''}</h4><button class="tip-pin-btn" data-tip-pin>${pinnedNow?'Unpin':'Pin'}</button></div><div class="tm">Profit ${d.profitScore} | OS fit ${d.openScienceScore} | Overlap ${d.overlapScore||0} | Decen ${d.decen||0} | ${escapeHtml(d.legalStructure||'unknown')} | ${escapeHtml(rev)}</div>${principleHtml}${auditHtml}${srcHtml}`;
+    if(persist){bizTipPinned=true;bizTipPinnedNodeId=d.id;}
+    tip.classList.add('vis');
+    moveTip(evt);
+  };
+
+  const quads=[
+    {key:'commons',x0:0,x1:50,y0:50,y1:100,fill:'rgba(110,200,155,.05)',label:'Commons-aligned',sub:`${counts['commons']} nodes`,desc:qDefs['commons'].desc},
+    {key:'hybrid-open',x0:50,x1:100,y0:50,y1:100,fill:'rgba(116,221,215,.05)',label:'Open-core hybrid',sub:`${counts['hybrid-open']} nodes`,desc:qDefs['hybrid-open'].desc},
+    {key:'mission-fragile',x0:0,x1:50,y0:0,y1:50,fill:'rgba(212,168,83,.05)',label:'Low-profit / low-fit',sub:`${counts['mission-fragile']} nodes`,desc:qDefs['mission-fragile'].desc},
+    {key:'extractive-risk',x0:50,x1:100,y0:0,y1:50,fill:'rgba(224,92,92,.05)',label:'Commercial pressure',sub:`${counts['extractive-risk']} nodes`,desc:qDefs['extractive-risk'].desc}
+  ];
+  const quadG=plotLayer.append('g').attr('class','biz-quads');
+  const quadRects=quadG.selectAll('.biz-quad').data(quads).enter().append('rect')
+    .attr('class','biz-quad')
+    .attr('x',d=>x(d.x0)).attr('y',d=>y(d.y1)).attr('width',d=>x(d.x1)-x(d.x0)).attr('height',d=>y(d.y0)-y(d.y1))
+    .attr('fill',d=>d.fill).attr('stroke','rgba(255,255,255,.05)');
+  quadG.selectAll('.quad-label').data(quads).enter().append('text')
+    .attr('x',d=>x((d.x0+d.x1)/2)).attr('y',d=>y(d.y1)-8)
+    .attr('text-anchor','middle').attr('font-size',11).attr('font-family','Nunito Sans,sans-serif').attr('fill','var(--text-2)').text(d=>d.label);
+  quadG.selectAll('.quad-sub').data(quads).enter().append('text')
+    .attr('x',d=>x((d.x0+d.x1)/2)).attr('y',d=>y(d.y1)+8)
+    .attr('text-anchor','middle').attr('font-size',10).attr('font-family','Fira Code,monospace').attr('fill','var(--text-3)').text(d=>d.sub);
+  quadG.selectAll('.biz-quad-hit').data(quads).enter().append('rect')
+    .attr('class','biz-quad-hit')
+    .attr('x',d=>x(d.x0)).attr('y',d=>y(d.y1)).attr('width',d=>x(d.x1)-x(d.x0)).attr('height',d=>y(d.y0)-y(d.y1))
+    .attr('fill','transparent')
+    .style('cursor','help')
+    .on('mouseenter',(evt,d)=>{
+      quadRects.filter(q=>q.key===d.key).classed('biz-quad-hover',true);
+      tip.innerHTML=`<h4>${escapeHtml(d.label)}</h4><div class="tm">${escapeHtml(d.desc)}</div><div class="tm" style="margin-top:5px">${escapeHtml(d.sub)}</div>`;
       tip.classList.add('vis');
+      moveTip(evt);
     })
-    .on('mousemove',e=>{
-      const r=m.getBoundingClientRect();
-      tip.style.left=(e.clientX-r.left+12)+'px';
-      tip.style.top=(e.clientY-r.top-8)+'px';
+    .on('mousemove',moveTip)
+    .on('mouseleave',(evt,d)=>{
+      quadRects.filter(q=>q.key===d.key).classed('biz-quad-hover',false);
+      hideTipSoon();
+    });
+
+  const gx=axisLayer.append('g').attr('transform',`translate(0,${innerH})`).call(d3.axisBottom(x).ticks(10));
+  const gy=axisLayer.append('g').call(d3.axisLeft(y).ticks(10));
+  gx.selectAll('text').attr('fill','var(--text-2)');
+  gy.selectAll('text').attr('fill','var(--text-2)');
+  gx.selectAll('line,path').attr('stroke','var(--border-h)');
+  gy.selectAll('line,path').attr('stroke','var(--border-h)');
+  axisLayer.append('text').attr('class','axis-label').attr('x',innerW/2).attr('y',innerH+42).attr('text-anchor','middle').text('Commerciality / Profit Score ->');
+  axisLayer.append('text').attr('class','axis-label').attr('transform',`translate(${-50},${innerH/2}) rotate(-90)`).attr('text-anchor','middle').text('Open-science compatibility ->');
+  plotLayer.append('line').attr('x1',x(50)).attr('x2',x(50)).attr('y1',0).attr('y2',innerH).attr('stroke','rgba(212,168,83,.35)').attr('stroke-dasharray','6,5');
+  plotLayer.append('line').attr('x1',0).attr('x2',innerW).attr('y1',y(50)).attr('y2',y(50)).attr('stroke','rgba(212,168,83,.35)').attr('stroke-dasharray','6,5');
+
+  if(nodes.length>=2){
+    const y0=Math.max(0,Math.min(100,analytics.fit.intercept+(analytics.fit.slope*0)));
+    const y1=Math.max(0,Math.min(100,analytics.fit.intercept+(analytics.fit.slope*100)));
+    plotLayer.append('line').attr('class','biz-fit-band').attr('x1',x(0)).attr('y1',y(y0)).attr('x2',x(100)).attr('y2',y(y1));
+    plotLayer.append('line').attr('class','biz-fit-line').attr('x1',x(0)).attr('y1',y(y0)).attr('x2',x(100)).attr('y2',y(y1));
+  }
+
+  const floating=chartPanel.append('div').attr('class','biz-floating-actions');
+  floating.append('span').attr('class','biz-zoom-chip').text('Scroll = zoom, drag = pan');
+  floating.append('span').attr('class','biz-zoom-chip').text(`r ${analytics.fit.corr.toFixed(2)} / R2 ${analytics.fit.r2.toFixed(2)}`);
+
+  const radius=n=>6 + Math.min(8,(n.overlapScore||0)/11);
+  const decStroke=n=>1 + Math.min(3.8,(n.decen||0)/30);
+  const plot=nodes.map((n,i)=>({...n,tx:x(n.profitScore),ty:y(n.openScienceScore),x:x(n.profitScore)+((i%7)-3)*0.6,y:y(n.openScienceScore)+((Math.floor(i/7)%7)-3)*0.6}));
+
+  const outlierIds=new Set(outliers.slice(0,5).map(o=>o.node.id));
+  const sweetIds=new Set(sweet.slice(0,5).map(o=>o.node.id));
+
+  const pointLayer=plotLayer.append('g').attr('class','biz-points');
+  const points=pointLayer.selectAll('.biz-point').data(plot,d=>d.id).enter().append('g').attr('class','biz-point').style('cursor','pointer')
+    .on('click',(e,d)=>{
+      e.stopPropagation();
+      if(bizTipPinned && bizTipPinnedNodeId===d.id){
+        bizTipPinned=false;
+        bizTipPinnedNodeId=null;
+        tip.classList.remove('vis');
+      }else{
+        showNodeTip(e,d,true);
+      }
+      selNode(d.id);
+      el('app').classList.remove('hide-right');
     })
-    .on('mouseleave',()=>tip.classList.remove('vis'));
+    .on('mouseenter',(e,d)=>{showNodeTip(e,d,false);d3.select(e.currentTarget).raise()})
+    .on('mousemove',(e,d)=>{if(!bizTipPinned || bizTipPinnedNodeId===d.id)moveTip(e)})
+    .on('mouseleave',hideTipSoon);
 
   points.append('circle')
-    .attr('cx',d=>d.x).attr('cy',d=>d.y).attr('r',d=>radius(d)+1.6)
+    .attr('class','biz-ring')
+    .attr('r',d=>radius(d)+1.8)
     .attr('fill','none')
     .attr('stroke',d=>confColor((d.provenance&&d.provenance.confidence)||'low'))
-    .attr('stroke-width',1.2)
+    .attr('stroke-width',1.25)
     .attr('stroke-opacity',.95);
-
   points.append('circle')
-    .attr('cx',d=>d.x).attr('cy',d=>d.y).attr('r',d=>radius(d))
+    .attr('class','biz-core')
+    .attr('r',d=>radius(d))
     .attr('fill',d=>SC[d.stack]||'var(--text-3)')
-    .attr('fill-opacity',.22)
+    .attr('fill-opacity',.3)
     .attr('stroke',d=>SC[d.stack]||'var(--text-3)')
     .attr('stroke-width',d=>decStroke(d))
-    .attr('stroke-opacity',.9);
-
+    .attr('stroke-opacity',.92);
   points.append('circle')
-    .attr('cx',d=>d.x).attr('cy',d=>d.y).attr('r',2.5)
+    .attr('class','biz-dot')
+    .attr('r',2.6)
     .attr('fill',d=>SC[d.stack]||'var(--text-3)')
     .attr('fill-opacity',.95);
+  points.filter(d=>outlierIds.has(d.id)).append('circle').attr('class','biz-flag-outlier').attr('r',d=>radius(d)+4.6);
+  points.filter(d=>sweetIds.has(d.id)).append('circle').attr('class','biz-flag-sweet').attr('r',d=>radius(d)+3.2);
 
   const labelSetFns={
-    notable:d=>d.id===selId || (d.overlapScore||0)>=55 || (d.decen||0)>=75 || Math.abs((d.profitScore||50)-(d.openScienceScore||50))>=38,
-    overlap:d=>(d.overlapScore||0)>=45,
+    none:d=>false,
+    notable:d=>d.id===selId || (d.overlapScore||0)>=58 || (d.decen||0)>=78 || Math.abs((d.profitScore||50)-(d.openScienceScore||50))>=40,
+    overlap:d=>(d.overlapScore||0)>=48,
+    decen:d=>(d.decen||0)>=70,
     decent:d=>(d.decen||0)>=70,
-    competitors:d=>(d.overlapScore||0)>=55 || ((d.overlapTags||[]).includes('publishing') && (d.overlapTags||[]).includes('peer-review')),
     all:d=>true
   };
   const labelFmt=(d)=>{
-    if(bizLabelDetail==='name') return d.name;
-    if(bizLabelDetail==='overlap') return `${d.name} · Ov ${d.overlapScore||0}`;
-    if(bizLabelDetail==='decent') return `${d.name} · Dc ${d.decen||0}`;
-    return `${d.name} · Ov ${d.overlapScore||0} · Dc ${d.decen||0}`;
+    if(currentLabelDetail==='name') return d.name;
+    if(currentLabelDetail==='overlap') return `${d.name} | Ov ${d.overlapScore||0}`;
+    if(currentLabelDetail==='decen') return `${d.name} | Dc ${d.decen||0}`;
+    return `${d.name} | Ov ${d.overlapScore||0} | Dc ${d.decen||0}`;
   };
-  let labels=plot.filter(labelSetFns[bizLabelSet]||labelSetFns.notable);
-  if(bizLabelSet!=='all') labels=labels.slice(0,22);
-  else labels=labels.sort((a,b)=>((b.overlapScore||0)+(b.decen||0))-((a.overlapScore||0)+(a.decen||0))).slice(0,30);
-  g.selectAll('.biz-label').data(labels).enter().append('text')
-    .attr('x',d=>d.x+radius(d)+5).attr('y',d=>d.y-6)
-    .attr('font-size',10).attr('font-family','Nunito Sans,sans-serif').attr('fill','var(--graph-label)')
-    .attr('stroke','rgba(0,0,0,.82)').attr('stroke-width',1.5).attr('paint-order','stroke')
-    .text(d=>labelFmt(d));
+  let labels=plot.filter(labelSetFns[currentLabelSet]||labelSetFns.none)
+    .sort((a,b)=>((b.overlapScore||0)+(b.decen||0)+Math.abs((b.profitScore||50)-(b.openScienceScore||50))*0.42)-((a.overlapScore||0)+(a.decen||0)+Math.abs((a.profitScore||50)-(a.openScienceScore||50))*0.42));
+  const labelBudget=Math.max(8,Math.round(innerW/95));
+  const cap=currentLabelSet==='all'?Math.min(24,labelBudget+8):Math.min(16,labelBudget);
+  labels=labels.slice(0,cap);
+
+  const labelLayer=plotLayer.append('g').attr('class','biz-labels');
+  const labelNodes=labels.map(d=>({id:d.id,node:d,text:labelFmt(d),priority:(d.overlapScore||0)+(d.decen||0)}));
+  const labelLinks=labelLayer.selectAll('line').data(labelNodes,d=>d.id).enter().append('line').attr('class','biz-label-link');
+  const labelTexts=labelLayer.selectAll('text').data(labelNodes,d=>d.id).enter().append('text')
+    .attr('font-size',10).attr('font-family','Nunito Sans,sans-serif').attr('fill','rgba(245,245,245,.95)')
+    .attr('stroke','rgba(0,0,0,.9)').attr('stroke-width',1.9).attr('paint-order','stroke');
+
+  const placeLabels=()=>{
+    const placed=[];
+    labelNodes.sort((a,b)=>b.priority-a.priority);
+    labelNodes.forEach(lbl=>{
+      lbl.text=labelFmt(lbl.node);
+      lbl.w=Math.min(260,Math.max(52,lbl.text.length*6+12));
+      const r=radius(lbl.node);
+      const choices=[
+        {dx:r+8,dy:-8,anchor:'start'},
+        {dx:-r-8,dy:-8,anchor:'end'},
+        {dx:0,dy:r+14,anchor:'middle'},
+        {dx:0,dy:-r-14,anchor:'middle'}
+      ];
+      let best=null,bestPenalty=Infinity;
+      choices.forEach(c=>{
+        const x1=lbl.node.x+c.dx, y1=lbl.node.y+c.dy;
+        const x0=c.anchor==='start'?x1:(c.anchor==='end'?x1-lbl.w:x1-lbl.w/2);
+        const xx1=x0+lbl.w, y0=y1-11, yy1=y1+2;
+        let penalty=0;
+        if(x0<2||xx1>innerW-2||y0<2||yy1>innerH-2)penalty+=560;
+        for(const p of placed){if(!(xx1<p.x0||x0>p.x1||yy1<p.y0||y0>p.y1))penalty+=240;}
+        penalty+=Math.abs(c.dx)*0.8+Math.abs(c.dy)*0.35;
+        if(penalty<bestPenalty){bestPenalty=penalty;best={x:x1,y:y1,anchor:c.anchor,x0,x1:xx1,y0,y1:yy1};}
+      });
+      lbl.lx=best.x; lbl.ly=best.y; lbl.anchor=best.anchor;
+      lbl.linkX=lbl.node.x + Math.sign((best.x-lbl.node.x)||1)*(r+1);
+      lbl.linkY=lbl.node.y + (best.y>=lbl.node.y?2.8:-2.8);
+      placed.push(best);
+    });
+    labelTexts.text(d=>d.text).attr('x',d=>d.lx).attr('y',d=>d.ly).attr('text-anchor',d=>d.anchor);
+    labelLinks.attr('x1',d=>d.linkX).attr('y1',d=>d.linkY).attr('x2',d=>d.lx).attr('y2',d=>d.ly-4);
+  };
+
+  const clampNode=(d)=>{
+    const r=radius(d)+2;
+    d.x=Math.max(r,Math.min(innerW-r,d.x));
+    d.y=Math.max(r,Math.min(innerH-r,d.y));
+  };
+  let tickN=0;
+  const draw=()=>{
+    points.attr('transform',d=>`translate(${d.x},${d.y})`);
+    if(labelNodes.length&&(!tickN || tickN%2===0))placeLabels();
+    tickN++;
+  };
+  sim=d3.forceSimulation(plot)
+    .force('x',d3.forceX(d=>d.tx).strength(.22))
+    .force('y',d3.forceY(d=>d.ty).strength(.22))
+    .force('collide',d3.forceCollide(d=>radius(d)+2.8).iterations(3))
+    .alpha(1)
+    .alphaDecay(.048)
+    .velocityDecay(.35)
+    .on('tick',()=>{plot.forEach(clampNode);draw()})
+    .on('end',()=>{if(labelNodes.length)placeLabels();});
+
+  const zoom=d3.zoom().scaleExtent([0.75,8]).translateExtent([[-innerW*.65,-innerH*.65],[innerW*1.65,innerH*1.65]]).on('zoom',evt=>plotLayer.attr('transform',evt.transform));
+  svg.call(zoom).on('dblclick.zoom',null);
+  floating.append('button').attr('class','biz-mini-btn').text('Reset zoom').on('click',()=>svg.transition().duration(260).call(zoom.transform,d3.zoomIdentity));
+  floating.append('button').attr('class','biz-mini-btn').text('Fullscreen').on('click',()=>{
+    const fsTarget=el('main');
+    if(document.fullscreenElement===fsTarget){if(document.exitFullscreen)document.exitFullscreen();}
+    else if(fsTarget.requestFullscreen)fsTarget.requestFullscreen().catch(()=>{});
+  });
+  svg.on('click',evt=>{
+    if(evt.target===svg.node()){
+      bizTipPinned=false;
+      bizTipPinnedNodeId=null;
+      tip.classList.remove('vis');
+    }
+  });
+}
+
+function fmtDateISO(v){
+  const d=v?new Date(v):new Date();
+  if(Number.isNaN(d.getTime()))return new Date().toISOString().slice(0,10);
+  return d.toISOString().slice(0,10);
+}
+function fmtDateShort(v){
+  const d=v?new Date(v):new Date();
+  if(Number.isNaN(d.getTime()))return 'unknown';
+  return d.toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'});
+}
+function downloadTextFile(name,text){
+  const b=new Blob([text],{type:'text/markdown;charset=utf-8'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(b);
+  a.download=name;
+  a.click();
+}
+function journalEntriesSorted(){
+  return [...(D.journal||[])].sort((a,b)=>String(b.date||'').localeCompare(String(a.date||'')));
+}
+function journalStreak(entries){
+  if(!entries.length)return 0;
+  const days=new Set(entries.map(e=>String(e.date||'').slice(0,10)));
+  let n=0;
+  let d=new Date();
+  for(let i=0;i<400;i++){
+    const key=d.toISOString().slice(0,10);
+    if(days.has(key))n++;
+    else if(i===0){d.setDate(d.getDate()-1);continue;}
+    else break;
+    d.setDate(d.getDate()-1);
+  }
+  return n;
+}
+function journalPlantArt(streak){
+  if(streak>=45)return [
+    '              _--^^--_              ',
+    '           _-~  /\\ /\\  ~-_          ',
+    '        _-~    /  V  \\    ~-_       ',
+    '      _/   /\\_/  /\\  \\_/\\   \\_      ',
+    '     /   _/  /  /  \\  \\  \\_   \\     ',
+    '    /___/___/__/++++\\__\\___\\___\\    ',
+    '            /   ||||   \\            ',
+    '           /____||||____\\           ',
+    '          /_____||||_____\\          ',
+    '         /______||||______\\         ',
+    '          deep roots alive          '
+  ].join('\n');
+  if(streak>=24)return [
+    '             _-^^^^-_             ',
+    '          _-~  /\\ /\\  ~-_         ',
+    '        _/   _/  V  \\_   \\_       ',
+    '       /   _/  /\\ /\\  \\_   \\      ',
+    '      /___/___/++++\\___\\___\\      ',
+    '            /  ||||  \\            ',
+    '           /___||||___\\           ',
+    '              _||||_              ',
+    '             /_||||_\\             ',
+    '            forest mode           '
+  ].join('\n');
+  if(streak>=14)return [
+    '             _-^^-_              ',
+    '           _/ /\\ /\\ \\_            ',
+    '          /__/++++\\__\\           ',
+    '             / || \\              ',
+    '            /__||__\\             ',
+    '              _||_               ',
+    '             /_||_\\              ',
+    '             growing             '
+  ].join('\n');
+  if(streak>=7)return [
+    '               /\\                ',
+    '              /++\\               ',
+    '             /++++\\              ',
+    '               ||                ',
+    '              _||_               ',
+    '             /_||_\\              ',
+    '            rooted week          '
+  ].join('\n');
+  if(streak>=3)return [
+    '               .                 ',
+    '              /\\                 ',
+    '              ||                 ',
+    '             _||_                ',
+    '            /_||_\\               ',
+    '           tiny sprout           '
+  ].join('\n');
+  return [
+    '               .                 ',
+    '               |                 ',
+    '              / \\                ',
+    '             /___\\               ',
+    '            start today          '
+  ].join('\n');
+}
+function journalTreeSnapshot(streak){
+  return [
+    'yash@desci-map:~$ tree ./growth',
+    '.',
+    '|-- roots',
+    '|   |-- consistency.log',
+    '|   `-- focused-hours.txt',
+    '|-- trunk',
+    '|   |-- today.md',
+    '|   `-- blockers.md',
+    '`-- canopy',
+    '    |-- ideas.md',
+    '    `-- tomorrow.plan',
+    '',
+    journalPlantArt(streak)
+  ].join('\n');
+}
+function buildJournalMarkdown(entries){
+  const lines=[];
+  lines.push('# DeSci Map Journal');
+  lines.push('');
+  lines.push(`Last updated: ${new Date().toISOString()}`);
+  lines.push('');
+  entries.forEach(e=>{
+    lines.push(`## ${e.date}`);
+    lines.push(`- Hours worked: ${e.hours||0}`);
+    lines.push(`- What I did: ${e.did||''}`);
+    lines.push(`- Ideas / random thoughts: ${e.ideas||''}`);
+    lines.push(`- Blockers: ${e.blockers||''}`);
+    lines.push(`- Plan alive tomorrow: ${e.plan||''}`);
+    lines.push('');
+  });
+  ensureKanban();
+  lines.push('## Project Kanban Snapshot');
+  lines.push('');
+  [['todo','To Do'],['doing','In Progress'],['done','Done']].forEach(([k,label])=>{
+    lines.push(`### ${label}`);
+    const items=(D.kanban&&D.kanban[k])||[];
+    if(!items.length)lines.push('- (empty)');
+    else items.forEach(it=>lines.push(`- ${it}`));
+    lines.push('');
+  });
+  return lines.join('\n');
+}
+async function ghPutFile(pathKey,text,shaStoreKey,message){
+  if(!GH.ok)return false;
+  let sha=localStorage.getItem(shaStoreKey)||'';
+  if(!sha){
+    try{
+      const c=await fetch(`https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/${pathKey}`,{headers:{'Authorization':'Bearer '+GH.token,'Accept':'application/vnd.github.v3+json'}});
+      if(c.ok){const j=await c.json();sha=j.sha;localStorage.setItem(shaStoreKey,sha)}
+    }catch(e){}
+  }
+  const bytes=new TextEncoder().encode(text);
+  let bin='';
+  for(let i=0;i<bytes.length;i++)bin+=String.fromCharCode(bytes[i]);
+  const body={message:message||`Update ${pathKey}`,content:btoa(bin)};
+  if(sha)body.sha=sha;
+  const r=await fetch(`https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/${pathKey}`,{method:'PUT',headers:{'Authorization':'Bearer '+GH.token,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},body:JSON.stringify(body)});
+  if(!r.ok)return false;
+  const j=await r.json();
+  if(j&&j.content&&j.content.sha)localStorage.setItem(shaStoreKey,j.content.sha);
+  return true;
+}
+async function syncJournalMarkdown(showMessage){
+  const entries=journalEntriesSorted();
+  const md=buildJournalMarkdown(entries);
+  localStorage.setItem('journal-md-cache',md);
+  if(GH.ok){
+    const ok=await ghPutFile('JOURNAL.md',md,'gh-journal-sha',`Journal update ${new Date().toISOString().slice(0,16)}`);
+    if(showMessage){const s=el('jStatus');if(s)s.textContent=ok?'Saved JOURNAL.md to repo':'Saved locally (repo push failed)';}
+    return ok;
+  }
+  if(showMessage){const s=el('jStatus');if(s)s.textContent='Saved locally. Connect GitHub sync to push JOURNAL.md to repo.';}
+  return false;
+}
+function saveJournalEntry(){
+  const date=(el('jDate')?.value||fmtDateISO()).slice(0,10);
+  const entry={
+    date,
+    hours:Number(el('jHours')?.value||0),
+    did:(el('jDid')?.value||'').trim(),
+    ideas:(el('jIdeas')?.value||'').trim(),
+    blockers:(el('jBlockers')?.value||'').trim(),
+    plan:(el('jPlan')?.value||'').trim()
+  };
+  D.journal=(D.journal||[]).filter(e=>String(e.date||'').slice(0,10)!==date);
+  D.journal.push(entry);
+  save();
+  renderJournal();
+  syncJournalMarkdown(true);
+}
+function downloadJournalMarkdown(){
+  const md=buildJournalMarkdown(journalEntriesSorted());
+  downloadTextFile('JOURNAL.md',md);
+}
+function pushJournalMarkdown(){
+  syncJournalMarkdown(true);
+}
+function renderJournal(){
+  const m=el('main');
+  const entries=journalEntriesSorted();
+  const streak=journalStreak(entries);
+  const treeView=journalTreeSnapshot(streak);
+  const wrap=document.createElement('div');
+  wrap.className='journal-wrap';
+  wrap.innerHTML=`
+    <div class="journal-shell">
+      <section class="journal-main">
+        <div class="term-head"><span class="term-dot red"></span><span class="term-dot yellow"></span><span class="term-dot green"></span>Journal Terminal</div>
+        <div class="term-body">
+          <div class="term-line"><span class="term-prompt">yash@desci-map:~$</span> journal --date</div>
+          <input class="finput term-input" type="date" id="jDate" value="${fmtDateISO()}">
+          <div class="j-row">
+            <div>
+              <div class="term-line"><span class="term-prompt">yash@desci-map:~$</span> journal --hours-worked</div>
+              <input class="finput term-input" id="jHours" type="number" min="0" max="24" step="0.25" placeholder="e.g. 6.5">
+            </div>
+            <div>
+              <div class="term-line"><span class="term-prompt">yash@desci-map:~$</span> journal --sync-status</div>
+              <div class="status-inline" id="jStatus">${GH.ok?'GitHub sync ready for JOURNAL.md':'Local save mode; repo push needs GitHub sync'}</div>
+            </div>
+          </div>
+          <div class="term-line"><span class="term-prompt">yash@desci-map:~$</span> What did I do today?</div>
+          <textarea class="finput term-area" id="jDid" placeholder="Top outcomes, tasks moved, progress made"></textarea>
+          <div class="term-line"><span class="term-prompt">yash@desci-map:~$</span> Random thoughts / ideas?</div>
+          <textarea class="finput term-area" id="jIdeas" placeholder="Any sparks, hypotheses, product ideas"></textarea>
+          <div class="term-line"><span class="term-prompt">yash@desci-map:~$</span> Blockers?</div>
+          <textarea class="finput term-area" id="jBlockers" placeholder="What slowed me down and what I need"></textarea>
+          <div class="term-line"><span class="term-prompt">yash@desci-map:~$</span> Plan alive tomorrow?</div>
+          <textarea class="finput term-area" id="jPlan" placeholder="First concrete step tomorrow"></textarea>
+          <div class="j-actions">
+            <button class="btn btn-fill" onclick="saveJournalEntry()">Save Today</button>
+            <button class="btn" onclick="downloadJournalMarkdown()">Download JOURNAL.md</button>
+            <button class="btn" onclick="pushJournalMarkdown()">Push JOURNAL.md</button>
+          </div>
+        </div>
+      </section>
+      <aside class="journal-side">
+        <div class="term-head"><span class="term-dot red"></span><span class="term-dot yellow"></span><span class="term-dot green"></span>Growth Tree</div>
+        <div class="term-body">
+          <pre class="terminal-tree">${escapeHtml(treeView)}</pre>
+          <div class="term-line"><span class="term-prompt">yash@desci-map:~$</span> journal --streak</div>
+          <div class="lite-note">Current streak: <b>${streak}</b> day${streak===1?'':'s'}.</div>
+          <div class="term-line"><span class="term-prompt">yash@desci-map:~$</span> tail -n 20 journal.log</div>
+          <div class="journal-log">
+            ${entries.slice(0,28).map(e=>`<article class="journal-entry"><div class="d">${escapeHtml(e.date||'')}</div><div class="t"><b>Hours:</b> ${escapeHtml(e.hours??0)}<br><b>Did:</b> ${escapeHtml(e.did||'')}<br><b>Ideas:</b> ${escapeHtml(e.ideas||'')}</div></article>`).join('') || '<div class="lite-note">No entries yet. Add your first check-in today.</div>'}
+          </div>
+        </div>
+      </aside>
+    </div>`;
+  m.appendChild(wrap);
+  sanitizeVisibleText(wrap);
+}
+
+async function fetchTextWithTimeout(url,ms){
+  const t=ms||6000;
+  const ctrl=new AbortController();
+  const id=setTimeout(()=>ctrl.abort(),t);
+  try{const r=await fetch(url,{signal:ctrl.signal});if(!r.ok)throw new Error(String(r.status));return await r.text();}
+  finally{clearTimeout(id)}
+}
+async function fetchRssText(url){
+  const raw='https://api.allorigins.win/raw?url='+encodeURIComponent(url);
+  const get='https://api.allorigins.win/get?url='+encodeURIComponent(url);
+  try{
+    const t=await fetchTextWithTimeout(get,5200);
+    if(t){
+      const j=JSON.parse(t);
+      if(j&&j.contents&&j.contents.length>80)return j.contents;
+    }
+  }catch(e){}
+  const jina='https://r.jina.ai/http://'+url.replace(/^https?:\/\//,'');
+  const tries=[raw,jina,url];
+  for(const u of tries){
+    try{const txt=await fetchTextWithTimeout(u,4600);if(txt&&txt.length>80)return txt;}catch(e){}
+  }
+  return '';
+}
+async function fetchViaRss2Json(url,source,max,topic){
+  try{
+    const api='https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent(url)+'&count='+(max||8);
+    const txt=await fetchTextWithTimeout(api,6200);
+    const j=JSON.parse(txt||'{}');
+    const rows=(j.items||[]).slice(0,max||8).map(it=>({
+      title:cleanMojibakeString(it.title||''),
+      link:(it.link||'').trim(),
+      pubDate:it.pubDate||'',
+      source:source||'news',
+      topic:topic||''
+    })).filter(it=>it.title&&it.link);
+    return rows;
+  }catch(e){return []}
+}
+function parseRssItems(xmlText,source,max){
+  const cap=max||6;
+  if(!xmlText)return [];
+  try{
+    const doc=new DOMParser().parseFromString(xmlText,'text/xml');
+    const ns=[...doc.querySelectorAll('item,entry')].slice(0,cap);
+    return ns.map(n=>{
+      const t=n.querySelector('title')?.textContent||'';
+      const linkNode=n.querySelector('link');
+      const link=(linkNode?.getAttribute('href')||linkNode?.textContent||'').trim();
+      const pub=n.querySelector('pubDate,updated,published')?.textContent||'';
+      return {title:cleanMojibakeString(t),link:link,pubDate:pub,source:source};
+    }).filter(x=>x.title&&x.link);
+  }catch(e){return []}
+}
+const PURPOSE_TERMS=['metascience','peer review','reproducibility','research integrity','science of science','publication bias','ai for science','open science'];
+const QUALITY_DOMAIN_RE=/(arxiv\.org|nature\.com|science\.org|pnas\.org|cell\.com|thelancet\.com|nejm\.org|elifesciences\.org|plos\.org|biorxiv\.org|medrxiv\.org|pubmed\.ncbi\.nlm\.nih\.gov|crossref\.org|openalex\.org|orcid\.org|retractionwatch\.com|frontiersin\.org|peerj\.com)/i;
+function weightedDatasetTerms(limit){
+  const ban=new Set(['infrastructure','application','governance','desci','science','protocol','project']);
+  const map=new Map();
+  (D.nodes||[]).forEach(n=>{
+    const w=1+((n.overlapScore||0)/65)+((n.credScore||0)/95);
+    const terms=[n.type,n.stack,...(n.tags||[]),...(n.overlapTags||[])];
+    terms.forEach(t0=>{
+      const t=String(t0||'').toLowerCase().replace(/[_-]/g,' ').replace(/\s+/g,' ').trim();
+      if(!t||t.length<3||ban.has(t))return;
+      map.set(t,(map.get(t)||0)+w);
+    });
+  });
+  return [...map.entries()].sort((a,b)=>b[1]-a[1]).slice(0,limit||8).map(([k])=>k);
+}
+function projectKeywords(){
+  const dataTerms=weightedDatasetTerms(7);
+  const purposeSeeds=[
+    'open science infrastructure',
+    'metascience peer review reform',
+    'science of science metrics',
+    'reproducibility crisis',
+    'research integrity policy',
+    'ai for scientific discovery',
+    'problems in scientific publishing'
+  ];
+  const fromData=dataTerms.map(t=>`${t} open science`);
+  return [...new Set([...purposeSeeds,...fromData])].slice(0,10);
+}
+function paperKeywordQueries(){
+  const dataTerms=weightedDatasetTerms(6);
+  const seeds=[
+    'metascience',
+    'peer review quality',
+    'reproducibility crisis',
+    'science of science',
+    'research integrity',
+    'ai for science'
+  ];
+  const fromData=dataTerms.slice(0,4).map(t=>`${t} peer review`);
+  return [...new Set([...seeds,...fromData])].slice(0,8);
+}
+function relationWatchNames(){
+  const idToName=new Map((D.nodes||[]).map(n=>[n.id,n.name]));
+  const edgeNames=(D.edges||[]).filter(e=>['partner','ecosystem','funder','overlap'].includes(e.type)).flatMap(e=>[idToName.get(e.s)||e.s,idToName.get(e.t)||e.t]);
+  const topNodes=[...(D.nodes||[])].sort((a,b)=>((b.overlapScore||0)+(b.credScore||0)*0.7)-((a.overlapScore||0)+(a.credScore||0)*0.7)).slice(0,7).map(n=>n.name);
+  return [...new Set([...edgeNames,...topNodes].filter(Boolean))].slice(0,10);
+}
+async function fetchGoogleNews(query){
+  const url='https://news.google.com/rss/search?q='+encodeURIComponent(query)+'&hl=en-US&gl=US&ceid=US:en';
+  const j=await fetchViaRss2Json(url,'news',6,query);
+  if(j.length)return j;
+  const txt=await fetchRssText(url);
+  return parseRssItems(txt,'news',6).map(i=>({...i,topic:query}));
+}
+async function fetchYouTube(query){
+  const url='https://www.youtube.com/feeds/videos.xml?search_query='+encodeURIComponent(query);
+  const j=await fetchViaRss2Json(url,'youtube',5,query);
+  if(j.length)return j;
+  const txt=await fetchRssText(url);
+  return parseRssItems(txt,'youtube',5).map(i=>({...i,topic:query}));
+}
+async function fetchYouTubePlaylist(playlistId){
+  const url='https://www.youtube.com/feeds/videos.xml?playlist_id='+encodeURIComponent(playlistId);
+  const j=await fetchViaRss2Json(url,'youtube-playlist',6,`playlist:${playlistId}`);
+  if(j.length)return j;
+  const txt=await fetchRssText(url);
+  return parseRssItems(txt,'youtube-playlist',6).map(i=>({...i,topic:`playlist:${playlistId}`}));
+}
+async function fetchArxiv(query){
+  const url='https://export.arxiv.org/api/query?search_query=all:'+encodeURIComponent(query)+'&start=0&max_results=6&sortBy=lastUpdatedDate&sortOrder=descending';
+  const txt=await fetchRssText(url);
+  return parseRssItems(txt,'paper',6).map(i=>({...i,topic:query}));
+}
+function ensureHomeWatchConfig(){
+  D.homeWatch=D.homeWatch||{videos:[],playlists:[]};
+  if(!Array.isArray(D.homeWatch.videos))D.homeWatch.videos=[];
+  if(!Array.isArray(D.homeWatch.playlists))D.homeWatch.playlists=[];
+}
+function normalizeYouTubeVideoUrl(raw){
+  const s=String(raw||'').trim();
+  if(!s)return '';
+  const fallback=(id)=>id?`https://www.youtube.com/watch?v=${id}`:'';
+  try{
+    const u=new URL(s);
+    if(u.hostname.includes('youtu.be')){
+      const id=u.pathname.replace('/','').trim();
+      return /^[A-Za-z0-9_-]{11}$/.test(id)?fallback(id):'';
+    }
+    if(u.hostname.includes('youtube.com')){
+      const id=u.searchParams.get('v')||'';
+      return /^[A-Za-z0-9_-]{11}$/.test(id)?fallback(id):'';
+    }
+  }catch(e){
+    if(/^[A-Za-z0-9_-]{11}$/.test(s))return fallback(s);
+  }
+  return '';
+}
+function playlistIdFromInput(raw){
+  const s=String(raw||'').trim();
+  if(!s)return '';
+  try{
+    const u=new URL(s);
+    if(u.hostname.includes('youtube.com')){
+      const pid=u.searchParams.get('list')||'';
+      if(/^[A-Za-z0-9_-]{10,}$/.test(pid))return pid;
+    }
+  }catch(e){}
+  return /^[A-Za-z0-9_-]{10,}$/.test(s)?s:'';
+}
+function addHomeVideoWatch(){
+  ensureHomeWatchConfig();
+  const inp=el('homeVideoInput');
+  const raw=(inp&&inp.value||'').trim();
+  if(!raw)return;
+  const parts=raw.split('|');
+  const urlRaw=parts.pop().trim();
+  const url=normalizeYouTubeVideoUrl(urlRaw);
+  if(!url)return;
+  const title=cleanMojibakeString(parts.join('|').trim()||`Custom video ${D.homeWatch.videos.length+1}`);
+  if(!D.homeWatch.videos.some(v=>v.url===url))D.homeWatch.videos.push({title,url});
+  if(inp)inp.value='';
+  save();
+  renderHomeWatchConfig();
+}
+function removeHomeVideoWatch(idx){
+  ensureHomeWatchConfig();
+  if(idx<0||idx>=D.homeWatch.videos.length)return;
+  D.homeWatch.videos.splice(idx,1);
+  save();
+  renderHomeWatchConfig();
+}
+function addHomePlaylistWatch(){
+  ensureHomeWatchConfig();
+  const inp=el('homePlaylistInput');
+  const raw=(inp&&inp.value||'').trim();
+  if(!raw)return;
+  const pid=playlistIdFromInput(raw);
+  if(!pid)return;
+  if(!D.homeWatch.playlists.includes(pid))D.homeWatch.playlists.push(pid);
+  if(inp)inp.value='';
+  save();
+  renderHomeWatchConfig();
+  refreshHomeFeeds(true);
+}
+function removeHomePlaylistWatch(idx){
+  ensureHomeWatchConfig();
+  if(idx<0||idx>=D.homeWatch.playlists.length)return;
+  D.homeWatch.playlists.splice(idx,1);
+  save();
+  renderHomeWatchConfig();
+  refreshHomeFeeds(true);
+}
+function toggleHomeYtPop(evt){
+  if(evt)evt.stopPropagation();
+  const p=el('homeYtPop');
+  if(!p)return;
+  p.classList.toggle('open');
+  if(p.classList.contains('open'))renderHomeWatchConfig();
+}
+const K_COLS=['todo','doing','done'];
+const K_LABELS={todo:'To Do',doing:'In Progress',done:'Done'};
+function seedKanbanFromData(){
+  const ns=[...(D.nodes||[])];
+  const todo=ns.filter(n=>((n.provenance&&n.provenance.confidence)||'low')==='low').slice(0,4).map(n=>`Verify evidence: ${n.name}`);
+  const doing=ns.filter(n=>((n.provenance&&n.provenance.confidence)||'low')==='medium').slice(0,4).map(n=>`Refine values profile: ${n.name}`);
+  const done=ns.filter(n=>((n.provenance&&n.provenance.confidence)||'low')==='high').slice(0,4).map(n=>`Verified: ${n.name}`);
+  return {
+    todo:todo.length?todo:['Audit remaining low-confidence nodes','Add fresh source links for values outliers'],
+    doing:doing.length?doing:['Review open-science score justifications','Tune label density in Values map'],
+    done:done.length?done:['Interactive values scatter live','Journal + bibliography flows active']
+  };
+}
+function ensureKanban(){
+  if(!D.kanban||typeof D.kanban!=='object')D.kanban=seedKanbanFromData();
+  K_COLS.forEach(c=>{if(!Array.isArray(D.kanban[c]))D.kanban[c]=[]});
+}
+function addKanban(col){
+  ensureKanban();
+  const txt=prompt(`New card for ${K_LABELS[col]}:`);
+  if(!txt||!txt.trim())return;
+  D.kanban[col].push(cleanMojibakeString(txt.trim()));
+  save();
+  renderHomeKanban();
+  syncJournalMarkdown(false);
+}
+function deleteKanban(col,idx){
+  ensureKanban();
+  if(!D.kanban[col]||idx<0||idx>=D.kanban[col].length)return;
+  D.kanban[col].splice(idx,1);
+  save();
+  renderHomeKanban();
+  syncJournalMarkdown(false);
+}
+function moveKanban(col,idx,dir){
+  ensureKanban();
+  const ci=K_COLS.indexOf(col);
+  const ni=ci+dir;
+  if(ci<0||ni<0||ni>=K_COLS.length)return;
+  const list=D.kanban[col]||[];
+  if(idx<0||idx>=list.length)return;
+  const card=list.splice(idx,1)[0];
+  D.kanban[K_COLS[ni]].push(card);
+  save();
+  renderHomeKanban();
+  syncJournalMarkdown(false);
+}
+function renderHomeKanban(){
+  const host=el('homeKanban');
+  if(!host)return;
+  ensureKanban();
+  const cols=K_COLS.map((col,ci)=>{
+    const cards=(D.kanban[col]||[]).slice(0,12);
+    return `<div class="kan-col"><div class="kan-col-head"><span>${K_LABELS[col]}</span><button class="kan-add" onclick="addKanban('${col}')">+ add</button></div><div class="kan-list">${cards.map((card,i)=>`<article class="kan-card"><div class="kan-text">${escapeHtml(card)}</div><div class="kan-actions">${ci>0?`<button class="kan-btn" onclick="moveKanban('${col}',${i},-1)">&lt;</button>`:''}${ci<K_COLS.length-1?`<button class="kan-btn" onclick="moveKanban('${col}',${i},1)">&gt;</button>`:''}<button class="kan-btn" onclick="deleteKanban('${col}',${i})">x</button></div></article>`).join('') || '<div class="lite-note">No cards yet.</div>'}</div></div>`;
+  }).join('');
+  host.innerHTML=`<div class="kan-title">Project Kanban</div><div class="kan-grid">${cols}</div>`;
+}
+function uniqByLink(arr){
+  const seen=new Set();
+  return (arr||[]).filter(x=>{
+    const k=String((x&&x.link)||'').trim();
+    if(!k||seen.has(k))return false;
+    seen.add(k);
+    return true;
+  });
+}
+function scoreFeedItem(item,intents){
+  let s=0;
+  const title=String(item.title||'').toLowerCase();
+  const topic=String(item.topic||'').toLowerCase();
+  const url=String(item.link||'').toLowerCase();
+  if(QUALITY_DOMAIN_RE.test(url))s+=7;
+  if((item.source||'')==='paper'||(item.source||'')==='arxiv')s+=5;
+  PURPOSE_TERMS.forEach(t=>{if(title.includes(t)||topic.includes(t))s+=2.2});
+  (intents||[]).forEach(t=>{
+    const q=String(t||'').toLowerCase();
+    if(!q)return;
+    if(title.includes(q))s+=2.6;
+    if(topic.includes(q))s+=1.1;
+  });
+  const ts=Date.parse(item.pubDate||'');
+  if(!Number.isNaN(ts)){
+    const ageDays=(Date.now()-ts)/86400000;
+    s+=Math.max(0,2.6-(ageDays/24));
+  }
+  if(/opinion|sponsored|press release/i.test(title))s-=1.2;
+  return s;
+}
+function rankFeedItems(items,intents,limit){
+  return uniqByLink(items).map(it=>({it,score:scoreFeedItem(it,intents)})).sort((a,b)=>b.score-a.score).slice(0,limit||12).map(x=>x.it);
+}
+function zoteroPaperSuggestions(limit){
+  if(!zoteroItems||!zoteroItems.length)return [];
+  const out=[];
+  zoteroItems.forEach(it=>{
+    const d=it&&it.data;
+    if(!d||!d.title)return;
+    const key=(it.key||d.key||d.title);
+    const prog=litProgressFor(String(key));
+    const unread=!(prog&&prog.yash&&(prog.yash.read||prog.yash.reviewed));
+    if(!unread)return;
+    const link=d.url||(d.DOI?`https://doi.org/${d.DOI}`:'');
+    if(!link)return;
+    out.push({title:cleanMojibakeString(d.title),link,topic:'zotero unread',source:'paper',pubDate:d.date||''});
+  });
+  return out.slice(0,limit||8);
+}
+function renderHomeWatchConfig(){
+  const host=el('homeWatchConfig');
+  if(!host)return;
+  ensureHomeWatchConfig();
+  const vids=(D.homeWatch.videos||[]).map((v,i)=>`<div class="watch-chip"><span>${escapeHtml(v.title||'custom video')}</span><button class="watch-x" onclick="removeHomeVideoWatch(${i})">x</button></div>`).join('');
+  const pls=(D.homeWatch.playlists||[]).map((p,i)=>`<div class="watch-chip"><span>Playlist ${escapeHtml(p)}</span><button class="watch-x" onclick="removeHomePlaylistWatch(${i})">x</button></div>`).join('');
+  host.innerHTML=vids+pls || '<div class="lite-note">No custom watch items yet.</div>';
+}
+function renderHomeLastJournal(){
+  const host=el('homeLastJournal');
+  if(!host)return;
+  const e=journalEntriesSorted()[0];
+  if(!e){
+    host.innerHTML='<div class="t">Last Journal Entry</div><div class="b">No journal entries yet. Add one from the Journal tab.</div>';
+    return;
+  }
+  host.innerHTML=`<div class="t">Last Journal Entry</div><div class="d">${escapeHtml(e.date||'')}</div><div class="b"><b>Hours:</b> ${escapeHtml(e.hours??0)}<br><b>Did:</b> ${escapeHtml((e.did||'').slice(0,180) || '-')}<br><b>Plan:</b> ${escapeHtml((e.plan||'').slice(0,180) || '-')}</div>`;
+}
+function loadHomeFeedCache(){
+  try{
+    const raw=localStorage.getItem('home-feed-cache-v2');
+    if(!raw)return;
+    const j=JSON.parse(raw);
+    if(!j||typeof j!=='object')return;
+    homeFeedState={
+      items:Array.isArray(j.items)?j.items:[],
+      sections:(j.sections&&typeof j.sections==='object')?j.sections:{keywords:[],nodes:[],youtube:[]},
+      lastUpdated:j.lastUpdated||''
+    };
+    homeFeedLastFetchMs=Number(j.fetchedAt||0)||0;
+  }catch(e){}
+}
+function saveHomeFeedCache(){
+  try{
+    localStorage.setItem('home-feed-cache-v2',JSON.stringify({
+      items:homeFeedState.items||[],
+      sections:homeFeedState.sections||{},
+      lastUpdated:homeFeedState.lastUpdated||'',
+      fetchedAt:homeFeedLastFetchMs||Date.now()
+    }));
+  }catch(e){}
+}
+function renderHomeFeeds(){
+  const titleEl=el('homeTickerTitle');
+  const metaEl=el('homeTickerMeta');
+  const items=homeFeedState.items||[];
+  if(!titleEl||!metaEl)return;
+  if(!items.length){
+    titleEl.textContent='Feed loading...';
+    metaEl.textContent='Pulling purpose-driven updates.';
+  }else{
+    let idx=0;
+    const paint=()=>{
+      if(!items.length)return;
+      const it=items[idx%items.length];
+      titleEl.innerHTML=`<a href="${escapeHtml(it.link)}" target="_blank" rel="noopener">${escapeHtml(it.title)}</a>`;
+      metaEl.textContent=`${cleanMojibakeString(it.source||'news')} | ${cleanMojibakeString(it.topic||'general')}${it.pubDate?` | ${cleanMojibakeString(String(it.pubDate).slice(0,24))}`:''}`;
+      idx++;
+    };
+    paint();
+    homeTickerTimer=setInterval(paint,7600);
+  }
+
+  const mount=(id,arr)=>{
+    const c=el(id);
+    if(!c)return;
+    c.innerHTML=(arr||[]).slice(0,8).map(it=>`<article class="feed-item"><a href="${escapeHtml(it.link)}" target="_blank" rel="noopener">${escapeHtml(it.title)}</a><div class="meta">${escapeHtml(it.source||'news')} | ${escapeHtml(it.topic||'')}</div></article>`).join('') || '<div class="lite-note">No items yet.</div>';
+  };
+  mount('homeFeedKeywords',homeFeedState.sections.keywords||[]);
+  mount('homeFeedNodes',homeFeedState.sections.nodes||[]);
+  mount('homeFeedYoutube',homeFeedState.sections.youtube||[]);
+  const lu=el('homeLastUpdated');
+  if(lu)lu.textContent=homeFeedState.lastUpdated?`Last update: ${homeFeedState.lastUpdated}`:'Last update: pending';
+  renderHomeWatchConfig();
+  renderHomeLastJournal();
+}
+async function refreshHomeFeeds(force){
+  const now=Date.now();
+  if(!force && homeFeedLastFetchMs && (now-homeFeedLastFetchMs)<(8*60*1000)){
+    if(view==='home')renderHomeFeeds();
+    return;
+  }
+  ensureHomeWatchConfig();
+  const kw=projectKeywords().slice(0,3);
+  const nodeQs=relationWatchNames().slice(0,3);
+  const ytQ=[...new Set([...weightedDatasetTerms(3).map(t=>`${t} research`),...PURPOSE_TERMS.slice(0,2)])].slice(0,2);
+  const kwQuery=kw.join(' OR ')||'open science metascience';
+  const nodeQuery=nodeQs.join(' OR ')||'decentralized science';
+  const ytQuery=ytQ.join(' OR ')||'open science';
+  const playlistIds=(D.homeWatch.playlists||[]).slice(0,3);
+  const customVideos=(D.homeWatch.videos||[]).map(v=>({title:v.title||'Custom video',link:v.url,topic:'custom watchlist',source:'youtube'}));
+
+  try{
+    const [kwRes,nodeRes,ytRes,playlistRes]=await Promise.all([
+      fetchGoogleNews(kwQuery),
+      fetchGoogleNews(`${nodeQuery} open science`),
+      fetchYouTube(ytQuery),
+      Promise.all(playlistIds.map(pid=>fetchYouTubePlaylist(pid))).then(x=>x.flat())
+    ]);
+    homeFeedState.sections={
+      keywords:rankFeedItems(kwRes,kw,10),
+      nodes:rankFeedItems(nodeRes,nodeQs,10),
+      youtube:rankFeedItems([...ytRes,...playlistRes,...customVideos],ytQ,10)
+    };
+    homeFeedState.items=rankFeedItems([
+      ...homeFeedState.sections.keywords,
+      ...homeFeedState.sections.nodes,
+      ...homeFeedState.sections.youtube
+    ],[...kw,...nodeQs,...PURPOSE_TERMS],40);
+    saveHomeFeedCache();
+  }catch(e){
+    const fallbackNews=[
+      {title:'Open Science Headlines (Google News)',link:'https://news.google.com/search?q=open%20science',source:'news',topic:'open science'},
+      {title:'Metascience Headlines (Google News)',link:'https://news.google.com/search?q=metascience',source:'news',topic:'metascience'},
+      {title:'Retraction Watch',link:'https://retractionwatch.com/',source:'news',topic:'research integrity'},
+      {title:'Nature News',link:'https://www.nature.com/news',source:'news',topic:'science news'},
+      {title:'eLife News',link:'https://elifesciences.org/inside-elife',source:'news',topic:'open publishing'}
+    ];
+    homeFeedState.sections.keywords=fallbackNews.slice(0,5);
+    homeFeedState.sections.nodes=fallbackNews.slice(0,5);
+    homeFeedState.sections.youtube=(D.homeWatch&&D.homeWatch.videos||[]).map(v=>({title:v.title||'Custom video',link:v.url,topic:'custom watchlist',source:'youtube'}));
+    homeFeedState.items=[...homeFeedState.sections.keywords,...homeFeedState.sections.nodes,...homeFeedState.sections.youtube];
+    saveHomeFeedCache();
+  }
+  homeFeedLastFetchMs=Date.now();
+  homeFeedState.lastUpdated=new Date().toLocaleString();
+  saveHomeFeedCache();
+  if(view==='home')renderHomeFeeds();
+}
+function lerpStops(q,stops){
+  if(!stops||!stops.length)return 0;
+  if(q<=stops[0][0])return stops[0][1];
+  for(let i=1;i<stops.length;i++){
+    const a=stops[i-1], b=stops[i];
+    if(q<=b[0]){
+      const t=(q-a[0])/(b[0]-a[0]||1);
+      return a[1]+(b[1]-a[1])*t;
+    }
+  }
+  return stops[stops.length-1][1];
+}
+function subtractSegments(segs,cuts){
+  let out=(segs||[]).map(s=>[s[0],s[1]]);
+  (cuts||[]).forEach(cut=>{
+    const a=cut[0], b=cut[1];
+    const next=[];
+    out.forEach(seg=>{
+      const s=seg[0], e=seg[1];
+      if(e<=a || s>=b){next.push([s,e]);return;}
+      if(s<a)next.push([s,a]);
+      if(e>b)next.push([b,e]);
+    });
+    out=next;
+  });
+  return out.filter(seg=>(seg[1]-seg[0])>0.006);
+}
+const LEFT_MAIN_X0=[[0,0.12],[0.10,0.06],[0.22,0.02],[0.34,0.00],[0.48,0.00],[0.62,0.04],[0.74,0.11],[0.86,0.19],[1,0.25]];
+const LEFT_MAIN_X1=[[0,0.25],[0.10,0.34],[0.22,0.42],[0.34,0.49],[0.48,0.57],[0.62,0.60],[0.74,0.54],[0.86,0.46],[1,0.39]];
+const LEFT_SA_X0=[[0.44,0.27],[0.56,0.30],[0.70,0.33],[0.84,0.34],[1,0.33]];
+const LEFT_SA_X1=[[0.44,0.40],[0.56,0.44],[0.70,0.46],[0.84,0.43],[1,0.40]];
+const LEFT_TAIL_X0=[[0.82,0.35],[1,0.34]];
+const LEFT_TAIL_X1=[[0.82,0.39],[1,0.37]];
+const RIGHT_EU_X0=[[0,0.82],[0.10,0.76],[0.22,0.68],[0.36,0.58],[0.50,0.52],[0.62,0.56],[0.76,0.66],[0.88,0.77],[1,0.85]];
+const RIGHT_EU_X1=[[0,0.99],[0.10,0.99],[0.22,1.00],[0.36,1.00],[0.50,0.99],[0.62,0.98],[0.76,0.98],[0.88,0.99],[1,0.99]];
+const RIGHT_AF_X0=[[0.44,0.62],[0.58,0.60],[0.72,0.58],[0.86,0.58],[1,0.59]];
+const RIGHT_AF_X1=[[0.44,0.74],[0.58,0.71],[0.72,0.68],[0.86,0.66],[1,0.64]];
+function leftSegments(q){
+  const segs=[[lerpStops(q,LEFT_MAIN_X0),lerpStops(q,LEFT_MAIN_X1)]];
+  if(q>=0.44&&q<=1)segs.push([lerpStops(q,LEFT_SA_X0),lerpStops(q,LEFT_SA_X1)]);
+  if(q>=0.82)segs.push([lerpStops(q,LEFT_TAIL_X0),lerpStops(q,LEFT_TAIL_X1)]);
+  const cuts=[];
+  if(q>0.21&&q<0.40)cuts.push([0.16,0.30]);
+  if(q>0.38&&q<0.59)cuts.push([0.33,0.47]);
+  if(q>0.57&&q<0.69)cuts.push([0.00,0.09]);
+  return subtractSegments(segs,cuts);
+}
+function rightSegments(q){
+  const segs=[[lerpStops(q,RIGHT_EU_X0),lerpStops(q,RIGHT_EU_X1)]];
+  if(q>=0.44&&q<=0.88)segs.push([lerpStops(q,RIGHT_AF_X0),lerpStops(q,RIGHT_AF_X1)]);
+  const cuts=[];
+  if(q>0.33&&q<0.47)cuts.push([0.66,0.74]);
+  if(q>0.50&&q<0.72)cuts.push([0.75,0.88]);
+  return subtractSegments(segs,cuts);
+}
+function asciiFrame(nodes,tick,cols,rows){
+  const w=Math.max(128,cols||128);
+  const h=Math.max(36,rows||36);
+  const g=Array.from({length:h},()=>Array.from({length:w},()=> ' '));
+  const top=Math.max(2,Math.floor(h*0.13));
+  const bandH=Math.max(16,Math.floor(h*0.66));
+  const bandRows=Math.max(26,Math.min(42,bandH));
+
+  let lastY=-1;
+  for(let r=0;r<bandRows;r++){
+    const q=r/Math.max(1,bandRows-1);
+    const y=top+Math.round(q*bandH);
+    if(y<=lastY || y>=h)continue;
+    lastY=y;
+    const segs=[...leftSegments(q),...rightSegments(q)];
+    const phase=r%2;
+    segs.forEach(seg=>{
+      const x0=Math.max(0,Math.floor(seg[0]*w));
+      const x1=Math.min(w-1,Math.floor(seg[1]*w));
+      for(let x=x0;x<=x1;x++){
+        if(((x+phase)&1)!==0)continue;
+        g[y][x]='o';
+      }
+    });
+  }
+  return g.map(row=>row.join('')).join('\n');
+}
+function renderHome(){
+  const m=el('main');
+  const v=D.nodes.filter(vis);
+  const wrap=document.createElement('div');
+  wrap.className='home-wrap';
+  wrap.innerHTML=`
+    <pre class="ascii-map" id="asciiMap"></pre>
+    <div class="home-overlay-top">
+      <div class="ticker">
+        <div class="ticker-head">Live Intelligence Ticker</div>
+        <div class="ticker-main" id="homeTickerTitle">Loading feed...</div>
+        <div class="ticker-meta" id="homeTickerMeta"></div>
+      </div>
+      <aside class="home-feed-panel">
+        <div class="feed-title">Keyword Feed</div>
+        <div class="feed-list" id="homeFeedKeywords"></div>
+        <div class="feed-title" style="margin-top:10px">Nodes Feed</div>
+        <div class="feed-list" id="homeFeedNodes"></div>
+        <div class="feed-title yt-add-wrap" style="margin-top:10px">
+          <span>YouTube Watch</span>
+          <button class="yt-add-btn" id="homeYtPopBtn" onclick="toggleHomeYtPop(event)">+</button>
+          <div class="yt-pop" id="homeYtPop">
+            <div class="yt-pop-head">YouTube Watchlist</div>
+            <div class="watch-tools">
+              <div class="watch-row"><input class="finput watch-input" id="homeVideoInput" placeholder="Custom video: Title | URL"><button class="btn watch-btn" onclick="addHomeVideoWatch()">Add Video</button></div>
+              <div class="watch-row"><input class="finput watch-input" id="homePlaylistInput" placeholder="Public playlist URL or ID"><button class="btn watch-btn" onclick="addHomePlaylistWatch()">Add Playlist</button></div>
+              <div class="watch-list" id="homeWatchConfig"></div>
+            </div>
+          </div>
+        </div>
+        <div class="feed-list" id="homeFeedYoutube"></div>
+      </aside>
+    </div>
+    <div class="home-overlay-bottom">
+      <div class="home-bottom-left">
+        <div class="home-updated" id="homeLastUpdated">Last update: pending</div>
+        <section class="home-journal" id="homeLastJournal"></section>
+      </div>
+      <section class="home-kanban" id="homeKanban"></section>
+    </div>
+  `;
+  m.appendChild(wrap);
+  renderHomeKanban();
+  renderHomeWatchConfig();
+  renderHomeLastJournal();
+  if(!window._homePopBound){
+    document.addEventListener('click',evt=>{
+      const pop=el('homeYtPop');
+      const btn=el('homeYtPopBtn');
+      if(!pop||!btn)return;
+      if(pop.contains(evt.target)||btn.contains(evt.target))return;
+      pop.classList.remove('open');
+    });
+    window._homePopBound=1;
+  }
+
+  let tick=0;
+  const draw=()=>{
+    const p=el('asciiMap');
+    if(!p)return;
+    const cols=Math.floor((p.clientWidth||m.clientWidth)/7.2);
+    const rows=Math.floor((p.clientHeight||m.clientHeight)/12.3);
+    p.textContent=asciiFrame(v,tick++,cols,rows);
+  };
+  draw();
+  homeAsciiTimer=null;
+  renderHomeFeeds();
+  refreshHomeFeeds(false);
+  homeRefreshTimer=setInterval(()=>refreshHomeFeeds(false),12*60*1000);
+  sanitizeVisibleText(wrap);
+}
+
+function litProgressFor(key){
+  D.litProgress=D.litProgress||{};
+  if(!D.litProgress[key])D.litProgress[key]={yash:{read:false,reviewed:false},ruhi:{read:false,reviewed:false}};
+  return D.litProgress[key];
+}
+function toggleLitStatus(keyEnc,person,field,val){
+  const key=decodeURIComponent(keyEnc);
+  const p=litProgressFor(key);
+  if(!p[person])p[person]={read:false,reviewed:false};
+  p[person][field]=!!val;
+  save();
+}
+function renderLitTable(){
+  const c=el('zotC');
+  if(!c)return;
+  if(!zoteroItems||!zoteroItems.length){c.innerHTML='<div class="lite-note">No Zotero items loaded.</div>';return;}
+  const q=(litQuery||'').toLowerCase();
+  const rows=zoteroItems.filter(i=>i&&i.data&&i.data.title).filter(i=>{
+    if(!q)return true;
+    const d=i.data;
+    const txt=[d.title,d.abstractNote,(d.creators||[]).map(x=>x.lastName).join(' '),d.publicationTitle].join(' ').toLowerCase();
+    return txt.includes(q);
+  });
+  c.innerHTML=`<div class="lit-table-wrap"><table class="lit-table"><thead><tr><th style="min-width:280px">Title</th><th>Authors</th><th>Year</th><th>Source</th><th>Yash</th><th>Ruhi</th></tr></thead><tbody>${rows.map(it=>{
+    const d=it.data;
+    const key=encodeURIComponent(it.key||d.key||d.title);
+    const prog=litProgressFor(decodeURIComponent(key));
+    const authors=(d.creators||[]).map(a=>a.lastName||a.name).filter(Boolean).slice(0,4).join(', ');
+    const year=(String(d.date||'').match(/\d{4}/)||[''])[0];
+    const link=d.url|| (d.DOI?`https://doi.org/${d.DOI}`:'');
+    return `<tr><td><div style="font-weight:600;line-height:1.35">${escapeHtml(cleanMojibakeString(d.title||''))}</div>${link?`<div class="status-inline"><a href="${escapeHtml(link)}" target="_blank" rel="noopener">Open</a></div>`:''}</td><td>${escapeHtml(authors||'')}</td><td>${escapeHtml(year||'')}</td><td><span class="lit-pill">${escapeHtml(d.publicationTitle||d.itemType||'')}</span></td><td><div class="lit-person"><label><input type="checkbox" ${prog.yash.read?'checked':''} onchange="toggleLitStatus('${key}','yash','read',this.checked)">Read</label><label><input type="checkbox" ${prog.yash.reviewed?'checked':''} onchange="toggleLitStatus('${key}','yash','reviewed',this.checked)">Reviewed</label></div></td><td><div class="lit-person"><label><input type="checkbox" ${prog.ruhi.read?'checked':''} onchange="toggleLitStatus('${key}','ruhi','read',this.checked)">Read</label><label><input type="checkbox" ${prog.ruhi.reviewed?'checked':''} onchange="toggleLitStatus('${key}','ruhi','reviewed',this.checked)">Reviewed</label></div></td></tr>`;
+  }).join('')}</tbody></table></div>`;
 }
 
 function renderLit(){
-  const m=el('main'),p=document.createElement('div');p.className='lit-panel';
-  p.innerHTML=`<div class="lit-title">Literature & References</div><div id="zotC"><p style="color:var(--text-3)">Loading from Zotero...</p></div><p style="margin-top:16px"><a href="https://www.zotero.org/groups/6075364/descai/library" target="_blank" style="color:var(--link)">View full Zotero library ↗</a></p>`;
+  const m=el('main');
+  const p=document.createElement('div');
+  p.className='lit-wrap';
+  p.innerHTML=`
+    <div class="hero"><h1>Bibliography</h1><p>Clean Zotero bibliography with reading/review tracking for Yash and Ruhi.</p></div>
+    <div class="lit-toolbar">
+      <input class="finput lit-search" id="litSearch" placeholder="Search title, author, or keyword" value="${escapeHtml(litQuery)}">
+      <button class="btn" id="litRefresh">Refresh Zotero</button>
+      <a class="btn" href="https://www.zotero.org/groups/6075364/descai/library" target="_blank" rel="noopener">Open Zotero</a>
+    </div>
+    <div id="zotC"><div class="lite-note">Loading bibliography...</div></div>`;
   m.appendChild(p);
-  if(zoteroItems)displayZ();else fetchZotero();
+  el('litSearch').addEventListener('input',e=>{litQuery=e.target.value||'';renderLitTable();});
+  el('litRefresh').addEventListener('click',()=>fetchZotero(true));
+  if(zoteroItems&&zoteroItems.length)renderLitTable();
+  else fetchZotero(false);
+  sanitizeVisibleText(p);
 }
-async function fetchZotero(){
-  try{const r=await fetch('https://api.zotero.org/groups/6075364/items?format=json&limit=50&sort=dateModified&direction=desc');if(!r.ok)throw new Error();zoteroItems=await r.json();displayZ()}catch(e){const c=document.getElementById('zotC');if(c)c.innerHTML='<p style="color:var(--text-3)">Could not load from Zotero. Check group visibility.</p>'}
+async function fetchZotero(force){
+  try{
+    if(force)zoteroItems=null;
+    const r=await fetch('https://api.zotero.org/groups/6075364/items?format=json&limit=120&sort=dateModified&direction=desc');
+    if(!r.ok)throw new Error('zotero fetch failed');
+    zoteroItems=cleanMojibakeDeep(await r.json());
+    renderLitTable();
+  }catch(e){
+    const c=el('zotC');
+    if(c)c.innerHTML='<div class="lite-note">Could not load Zotero right now. Check network/group visibility and try refresh.</div>';
+  }
 }
-function displayZ(){const c=document.getElementById('zotC');if(!c||!zoteroItems)return;c.innerHTML=zoteroItems.filter(i=>i.data.title).map(i=>{const d=i.data;return`<div class="paper"><div class="paper-t">${d.title}</div><div class="paper-a">${(d.creators||[]).map(c=>c.lastName).join(', ')} ${d.date||''} ${d.DOI?`<a href="https://doi.org/${d.DOI}" target="_blank" style="color:var(--link)">DOI↗</a>`:''}</div></div>`}).join('')}
+function displayZ(){renderLitTable()}
 
 // ===== DETAIL PANEL =====
 function selNode(id){
@@ -1124,10 +2643,10 @@ function selNode(id){
   const ppl=D.people.filter(pp=>pp.orgs.includes(id));
   const credC=n.credScore>=60?'var(--sage)':n.credScore>=30?'var(--gold)':'var(--text-3)';
   const ovC=(n.overlapScore||0)>=60?'var(--gold)':(n.overlapScore||0)>=30?'var(--text-2)':'var(--text-3)';
-  const srcHtml=(prov.sources||[]).map(s=>`<a class="src-chip" href="${s.url}" target="_blank" rel="noopener">${s.label}${s.type?` · ${s.type}`:''}</a>`).join('');
+  const srcHtml=(prov.sources||[]).map(s=>`<a class="src-chip" href="${s.url}" target="_blank" rel="noopener">${s.label}${s.type?` | ${s.type}`:''}</a>`).join('');
   const osScore=n.openScienceScore??fin.openScienceCompatibilityScore??50;
   const audit=fin.scoreAudit||{};
-  p.innerHTML=`<div class="det-name">${n.name}${n.sourceAsterisk?' *':''}</div><div class="det-sub">${n.type} · ${n.stage} · <span class="cred-badge" style="background:rgba(110,200,155,.08);color:${credC}">Cred ${n.credScore||0}</span> · <span class="profit-badge" style="background:${profitBg(n.profitScore)};color:${profitC(n.profitScore)}">Profit ${n.profitScore??50}</span> · <span class="profit-badge" style="background:${osBg(osScore)};color:${osC(osScore)}">OS Fit ${osScore}</span> · <span class="conf-badge ${confCls}">${conf}</span>${n.twitter?` · <a href="https://x.com/${n.twitter.replace('@','')}" target="_blank" style="color:var(--link)">${n.twitter}</a>`:''}</div>
+  p.innerHTML=`<div class="det-name">${n.name}${n.sourceAsterisk?' *':''}</div><div class="det-sub">${n.type} | ${n.stage} | <span class="cred-badge" style="background:rgba(110,200,155,.08);color:${credC}">Cred ${n.credScore||0}</span> | <span class="profit-badge" style="background:${profitBg(n.profitScore)};color:${profitC(n.profitScore)}">Profit ${n.profitScore??50}</span> | <span class="profit-badge" style="background:${osBg(osScore)};color:${osC(osScore)}">OS Fit ${osScore}</span> | <span class="conf-badge ${confCls}">${conf}</span>${n.twitter?` | <a href="https://x.com/${n.twitter.replace('@','')}" target="_blank" style="color:var(--link)">${n.twitter}</a>`:''}</div>
   <div class="field"><div class="flabel">Description</div><textarea class="finput" onchange="upd('${id}','desc',this.value)">${n.desc||''}</textarea></div>
   ${(n.overlapScore||n.compNote)?`<div class="overlap-box" style="border:1px solid ${(n.overlapScore||0)>=50?'rgba(212,168,83,.25)':'var(--border)'}">
     <div class="flabel" style="color:var(--gold)">Overlap with our platform <span style="font-weight:700">${n.overlapScore||0}%</span></div>
@@ -1135,9 +2654,9 @@ function selNode(id){
     <div style="font-size:.82rem;color:var(--text-2);line-height:1.5">${n.compNote||''}</div>
   </div>`:''}
   ${(n.finModel||n.finNote)?`<div class="fin-box ${finBoxClass(n.profitScore)}">
-    <div class="flabel" style="color:${profitC(n.profitScore)}">Commerciality score <span style="font-weight:700">${n.profitScore??50}/100</span> ${n.legalStructure!=='unknown'?`· <span style="text-transform:capitalize">${n.legalStructure}</span>`:''} ${n.apc?'· <span style="color:var(--red)">Has fee/APC</span>':''}</div>
+    <div class="flabel" style="color:${profitC(n.profitScore)}">Commerciality score <span style="font-weight:700">${n.profitScore??50}/100</span> ${n.legalStructure!=='unknown'?`| <span style="text-transform:capitalize">${n.legalStructure}</span>`:''} ${n.apc?'| <span style="color:var(--red)">Has fee/APC</span>':''}</div>
     <div class="fin-bar-wrap"><div class="fin-bar-bg"><div class="fin-bar-fill" style="width:${n.profitScore??50}%;background:${profitBarC(n.profitScore)}"></div></div></div>
-    <div class="flabel" style="margin-top:10px;color:${osC(osScore)}">Open-science compatibility <span style="font-weight:700">${osScore}/100</span> ${fin.openScienceCompatibilityBand?`· <span style="text-transform:capitalize">${fin.openScienceCompatibilityBand}</span>`:''}</div>
+    <div class="flabel" style="margin-top:10px;color:${osC(osScore)}">Open-science compatibility <span style="font-weight:700">${osScore}/100</span> ${fin.openScienceCompatibilityBand?`| <span style="text-transform:capitalize">${fin.openScienceCompatibilityBand}</span>`:''}</div>
     <div class="fin-bar-wrap"><div class="fin-bar-bg"><div class="fin-bar-fill" style="width:${osScore}%;background:${osC(osScore)}"></div></div></div>
     ${n.fundingRaised?`<div style="font-size:.75rem;color:var(--text-3);margin-bottom:6px">Funding / scale: ${n.fundingRaised}</div>`:''}
     ${fin.revenueSources&&fin.revenueSources.length?`<div style="font-size:.75rem;color:var(--text-3);margin-bottom:6px">Revenue sources: ${fin.revenueSources.join(', ')}</div>`:''}
@@ -1148,428 +2667,33 @@ function selNode(id){
     <div style="font-size:.82rem;color:var(--text-2);line-height:1.5">${n.finModel||''}</div>
     ${n.finNote?`<div style="font-size:.8rem;color:var(--text-3);line-height:1.5;margin-top:8px">${n.finNote}</div>`:''}
     ${(bdg&&Object.keys(bdg).length)?`<div class="score-grid">
-      <div class="score-cell"><span class="k">Structure</span><span class="v">${bdg.structure??'—'}</span></div>
-      <div class="score-cell"><span class="k">Revenue</span><span class="v">${bdg.revenue??'—'}</span></div>
-      <div class="score-cell"><span class="k">Capital</span><span class="v">${bdg.capital??'—'}</span></div>
-      <div class="score-cell"><span class="k">Total</span><span class="v">${bdg.total??(n.profitScore??'—')}</span></div>
+      <div class="score-cell"><span class="k">Structure</span><span class="v">${bdg.structure??'-'}</span></div>
+      <div class="score-cell"><span class="k">Revenue</span><span class="v">${bdg.revenue??'-'}</span></div>
+      <div class="score-cell"><span class="k">Capital</span><span class="v">${bdg.capital??'-'}</span></div>
+      <div class="score-cell"><span class="k">Total</span><span class="v">${bdg.total??(n.profitScore??'-')}</span></div>
     </div>`:''}
     ${audit&&audit.previousProfitScore!=null?`<div style="font-size:.76rem;color:var(--text-3);line-height:1.5;margin-top:8px">Score audit: was ${audit.previousProfitScore}, now ${audit.auditedProfitScore} (${audit.delta>=0?'+':''}${audit.delta}). ${audit.reasons&&audit.reasons.length?`Main drivers: ${audit.reasons.join('; ')}.`:''}</div>`:''}
   </div>`:''}
   <div class="prov-box">
-    <div class="flabel">Provenance ${prov.hasUnverifiedClaims?'<span style="color:var(--red)">· * inferred / unresolved fields remain</span>':''}</div>
-    <div style="font-size:.8rem;color:var(--text-2);line-height:1.45">Confidence: <span class="conf-badge ${confCls}">${conf}</span>${prov.lastVerified?` · Last verified: ${prov.lastVerified}`:''}</div>
+    <div class="flabel">Provenance ${prov.hasUnverifiedClaims?'<span style="color:var(--red)">| * inferred / unresolved fields remain</span>':''}</div>
+    <div style="font-size:.8rem;color:var(--text-2);line-height:1.45">Confidence: <span class="conf-badge ${confCls}">${conf}</span>${prov.lastVerified?` | Last verified: ${prov.lastVerified}`:''}</div>
     ${fin.openScienceAlignment&&fin.openScienceAlignment!=='unknown'?`<div style="font-size:.8rem;color:var(--text-2);line-height:1.45;margin-top:6px">Open-science alignment: <strong style="color:${osC(osScore)};text-transform:capitalize">${fin.openScienceAlignment}</strong></div>`:''}
     ${fin.openScienceCompatibilityReasons&&fin.openScienceCompatibilityReasons.length?`<div style="font-size:.78rem;color:var(--text-3);line-height:1.5;margin-top:6px">Compatibility drivers: ${fin.openScienceCompatibilityReasons.join('; ')}.</div>`:''}
     ${fin.openScienceAlignmentNote?`<div style="font-size:.8rem;color:var(--text-3);line-height:1.5;margin-top:6px">${fin.openScienceAlignmentNote}</div>`:''}
     ${prov.notes?`<div style="font-size:.8rem;color:var(--text-3);line-height:1.5;margin-top:8px">${prov.notes}</div>`:''}
     ${srcHtml?`<div class="src-list">${srcHtml}</div>`:'<div style="font-size:.78rem;color:var(--text-3);margin-top:8px">No external source links attached yet.</div>'}
   </div>
+  ${renderUnescoProfileBox(n)}
   <div class="field"><div class="flabel">Type</div><input class="finput" value="${n.type||''}" onchange="upd('${id}','type',this.value)"></div>
   <div class="field"><div class="flabel">Stage</div><input class="finput" value="${n.stage||''}" onchange="upd('${id}','stage',this.value)"></div>
   <div class="field"><div class="flabel">Website</div><input class="finput" value="${n.web||''}" onchange="upd('${id}','web',this.value)"></div>
   <div class="field"><div class="flabel">Tech Stack</div><textarea class="finput" onchange="upd('${id}','techStack',this.value)">${n.techStack||''}</textarea></div>
   <div class="field"><div class="flabel">Notes</div><textarea class="finput" onchange="upd('${id}','notes',this.value)">${n.notes||''}</textarea></div>
   ${ppl.length?`<div class="field"><div class="flabel">People</div><ul class="rel-list">${ppl.map(pp=>`<li class="rel-item"><span>${pp.name}</span></li>`).join('')}</ul></div>`:''}
-  ${rels.length?`<div class="field"><div class="flabel">Relations</div><ul class="rel-list">${rels.map(r=>{const other=r.s===id?r.t:r.s;const on=D.nodes.find(x=>x.id===other)?.name||other;const c=RB[r.type]||{b:'var(--raised)',c:'var(--text-3)'};return`<li class="rel-item"><span class="rel-badge" style="background:${c.b};color:${c.c}">${r.type}</span><span>${on}</span>${r.l?`<span style="color:var(--text-3);font-size:.72rem">· ${r.l}</span>`:''}</li>`}).join('')}</ul></div>`:''}`;
+  ${rels.length?`<div class="field"><div class="flabel">Relations</div><ul class="rel-list">${rels.map(r=>{const other=r.s===id?r.t:r.s;const on=D.nodes.find(x=>x.id===other)?.name||other;const c=RB[r.type]||{b:'var(--raised)',c:'var(--text-3)'};return`<li class="rel-item"><span class="rel-badge" style="background:${c.b};color:${c.c}">${r.type}</span><span>${on}</span>${r.l?`<span style="color:var(--text-3);font-size:.72rem">| ${r.l}</span>`:''}</li>`}).join('')}</ul></div>`:''}`;
+  sanitizeVisibleText(p);
   el('app').classList.remove('hide-right');
 }
-
-// ===== HOME / PURPOSE FEEDS =====
-const HOME_RECO_CACHE_KEY='desci-home-purpose-feed-v2';
-const PURPOSE_TERMS=['metascience','peer review','reproducibility','research integrity','science of science','open science','ai for science','publication bias','paper mills','scientific publishing'];
-const TRUSTED_HOME_LINKS=[
-  {title:'OpenAlex blog',link:'https://blog.openalex.org/',meta:'Open infrastructure, metadata, scholarly graph updates.'},
-  {title:'Crossref blog',link:'https://www.crossref.org/blog/',meta:'Metadata, retractions, funding links, research integrity.'},
-  {title:'PREreview',link:'https://prereview.org/en-us',meta:'Open preprint review platform and community resources.'},
-  {title:'PREreview blog',link:'https://content.prereview.org/',meta:'Open science sustainability, peer review, community practice.'},
-  {title:'Retraction Watch',link:'https://retractionwatch.com/',meta:'Retractions, paper mills, oversight, research integrity.'},
-  {title:'arXiv RSS help',link:'https://info.arxiv.org/help/rss.html',meta:'Official arXiv RSS and Atom feeds for subject areas.'},
-  {title:'OpenAlex API docs',link:'https://docs.openalex.org/',meta:'Structured open scholarly data for recommendations and search.'},
-  {title:'OpenAlex open-science posts',link:'https://blog.openalex.org/category/open-science/',meta:'Open science infrastructure and policy context.'}
-];
-const HOME_CHANNELS=[
-  {key:'featured',label:'For you now',description:'Highest-signal papers matched to your dataset and purpose terms.'},
-  {key:'metascience',label:'Metascience & publishing',description:'Peer review reform, evaluation, publishing systems, open infrastructure.'},
-  {key:'review',label:'Peer review & integrity',description:'Review quality, retractions, publishing fraud, reproducibility, trust.'},
-  {key:'aiScience',label:'AI for science',description:'Foundation models, scientific discovery, automation, tooling for research.'},
-  {key:'scienceProblems',label:'Problems with science',description:'Bias, incentives, paper mills, fragile metrics, and systemic failure modes.'}
-];
-function clamp01(x){return Math.max(0,Math.min(1,x));}
-function escapeAttr(s){return escapeHtml(String(s==null?'':s)).replace(/"/g,'&quot;');}
-function cleanText(s){return String(s||'').replace(/[_-]/g,' ').replace(/\s+/g,' ').trim();}
-function loadHomeRecoCache(){
-  try{
-    const raw=localStorage.getItem(HOME_RECO_CACHE_KEY);
-    if(!raw)return;
-    const parsed=JSON.parse(raw);
-    if(parsed && parsed.channels)homeRecoState=parsed;
-  }catch(e){}
-}
-function saveHomeRecoCache(){
-  try{localStorage.setItem(HOME_RECO_CACHE_KEY,JSON.stringify(homeRecoState));}catch(e){}
-}
-function weightedDatasetTerms(limit){
-  const ban=new Set(['infrastructure','application','governance','desci','science','protocol','project','dao','foundation','community','publishing']);
-  const map=new Map();
-  (D.nodes||[]).forEach(n=>{
-    const w=1+((n.overlapScore||0)/55)+((n.credScore||0)/80)+((n.openScienceScore||0)/130);
-    const terms=[n.type,n.stack,n.legalStructure,...(n.tags||[]),...(n.overlapTags||[])];
-    terms.forEach(t0=>{
-      const t=cleanText(String(t0||'').toLowerCase());
-      if(!t||t.length<3||ban.has(t))return;
-      map.set(t,(map.get(t)||0)+w);
-    });
-  });
-  return [...map.entries()].sort((a,b)=>b[1]-a[1]).slice(0,limit||10).map(([k])=>k);
-}
-function relationWatchNames(){
-  const idToName=new Map((D.nodes||[]).map(n=>[n.id,n.name]));
-  const edgeNames=(D.edges||[]).filter(e=>['partner','ecosystem','funder','overlap'].includes(e.type)).flatMap(e=>[idToName.get(e.s)||e.s,idToName.get(e.t)||e.t]);
-  const topNodes=[...(D.nodes||[])].sort((a,b)=>((b.overlapScore||0)+(b.credScore||0)*0.7)-((a.overlapScore||0)+(a.credScore||0)*0.7)).slice(0,8).map(n=>n.name);
-  return [...new Set([...edgeNames,...topNodes].filter(Boolean))].slice(0,10);
-}
-function buildHomeQueries(){
-  const terms=weightedDatasetTerms(8);
-  const nodeNames=relationWatchNames().slice(0,5);
-  return {
-    featured:[
-      `open science ${terms.slice(0,2).join(' ')}`.trim(),
-      `science of science ${terms.slice(2,4).join(' ')}`.trim(),
-      `peer review ${terms.slice(0,1).join(' ')}`.trim()
-    ],
-    metascience:[
-      'metascience peer review reform',
-      'science of science research evaluation',
-      `open science infrastructure ${terms.slice(0,3).join(' ')}`.trim()
-    ],
-    review:[
-      'peer review quality open science',
-      'research integrity reproducibility publishing',
-      'retractions paper mills scientific publishing'
-    ],
-    aiScience:[
-      'ai for scientific discovery',
-      'foundation models scientific research',
-      `machine learning ${terms.filter(t=>/ai|compute|data|reputation|peer review/.test(t)).slice(0,2).join(' ')}`.trim()
-    ],
-    scienceProblems:[
-      'reproducibility crisis science',
-      'publication bias scientific publishing',
-      `research integrity ${nodeNames.slice(0,2).join(' ')}`.trim()
-    ]
-  };
-}
-function openAlexSelect(){
-  return ['id','doi','display_name','publication_year','publication_date','type','cited_by_count','primary_location','host_venue','open_access','authorships','concepts'].join(',');
-}
-async function fetchOpenAlexWorks(query, perPage){
-  const recentYear=new Date().getFullYear()-3;
-  const url='https://api.openalex.org/works?search='+encodeURIComponent(query)+'&per-page='+(perPage||10)+'&filter=from_publication_date:'+recentYear+'-01-01,is_retracted:false&sort=relevance_score:desc&select='+encodeURIComponent(openAlexSelect());
-  const r=await fetch(url,{mode:'cors'});
-  if(!r.ok)throw new Error('OpenAlex '+r.status);
-  const j=await r.json();
-  return (j.results||[]).map(w=>({
-    id:w.id||'',
-    title:w.display_name||'Untitled',
-    link:w.id||w.doi||'',
-    source:(((w.primary_location||{}).source||{}).display_name)||(((w.host_venue||{})||{}).display_name)||'OpenAlex',
-    topic:query,
-    year:w.publication_year||'',
-    pubDate:w.publication_date||'',
-    citedBy:w.cited_by_count||0,
-    type:w.type||'',
-    isOA:!!(w.open_access&&w.open_access.is_oa),
-    authors:(w.authorships||[]).slice(0,3).map(a=>((a.author||{}).display_name||'')).filter(Boolean),
-    concepts:(w.concepts||[]).slice(0,6).map(c=>c.display_name||'').filter(Boolean)
-  })).filter(x=>x.title&&x.link);
-}
-function normalizeVenueBoost(source){
-  const s=String(source||'').toLowerCase();
-  if(/nature|science|cell|pnas|nejm|lancet/.test(s))return .22;
-  if(/arxiv|biorxiv|medrxiv|crossref|openalex|elif|plos|peerj|frontiers/.test(s))return .16;
-  return .08;
-}
-function rankHomeItem(item, channelKey, datasetTerms){
-  const title=(item.title||'').toLowerCase();
-  const topic=(item.topic||'').toLowerCase();
-  const source=(item.source||'').toLowerCase();
-  const concepts=(item.concepts||[]).map(c=>String(c).toLowerCase());
-  const authors=(item.authors||[]).join(', ');
-  const text=[title,topic,source,concepts.join(' ')].join(' ');
-  const termHits=datasetTerms.reduce((s,t)=>s+(text.includes(String(t).toLowerCase())?1:0),0);
-  const purposeHits=PURPOSE_TERMS.reduce((s,t)=>s+(text.includes(t)?1:0),0);
-  const citedScore=clamp01(Math.log10(1+(item.citedBy||0))/2.8);
-  const year=(item.year||0);
-  const recency=year?clamp01(1-((new Date().getFullYear()-year)/6)):.35;
-  const oaBonus=item.isOA?.08:0;
-  const venueBonus=normalizeVenueBoost(source);
-  const channelBonus=(channelKey==='aiScience'&&/ai|machine learning|foundation model|language model/.test(text))?0.18:
-    (channelKey==='review'&&/peer review|integrity|retraction|reproducibility|paper mill/.test(text))?0.18:
-    (channelKey==='scienceProblems'&&/bias|crisis|retraction|fraud|integrity|publication/.test(text))?0.18:
-    (channelKey==='metascience'&&/metascience|science of science|evaluation|publishing|open science/.test(text))?0.18:0.08;
-  const score=(termHits*0.13)+(purposeHits*0.17)+(citedScore*0.2)+(recency*0.14)+venueBonus+oaBonus+channelBonus;
-  item.rankScore=score;
-  item.metaLine=[item.source, authors?authors:'', item.year?String(item.year):'', item.citedBy?`${item.citedBy} cites`:item.isOA?'open access':''].filter(Boolean).slice(0,3).join(' · ');
-  item.note=[
-    termHits?`${termHits} dataset-term match${termHits>1?'es':''}`:'',
-    purposeHits?`${purposeHits} purpose-term match${purposeHits>1?'es':''}`:'',
-    item.isOA?'open access':''
-  ].filter(Boolean).join(' | ');
-  return item;
-}
-function dedupeItems(items){
-  const seen=new Set();
-  const out=[];
-  items.forEach(it=>{
-    const key=((it.link||'')+'|'+(it.title||'')).toLowerCase();
-    if(!key||seen.has(key))return;
-    seen.add(key); out.push(it);
-  });
-  return out;
-}
-function homeFallbackLinks(){
-  const q=buildHomeQueries();
-  const mk=(label,query,meta)=>({title:label,link:'https://api.openalex.org/works?search='+encodeURIComponent(query),source:'OpenAlex search',topic:query,metaLine:meta,note:'Fallback generated from your dataset and purpose keywords.'});
-  return {
-    featured:[mk('OpenAlex search: open science infrastructure',q.featured[0],'Fallback, structured scholarly search')],
-    metascience:[mk('OpenAlex search: metascience and publishing',q.metascience[0],'Fallback, metascience channel')],
-    review:[mk('OpenAlex search: peer review and integrity',q.review[0],'Fallback, integrity channel')],
-    aiScience:[mk('OpenAlex search: AI for science',q.aiScience[0],'Fallback, AI-for-science channel')],
-    scienceProblems:[mk('OpenAlex search: reproducibility and publishing problems',q.scienceProblems[0],'Fallback, system problems channel')]
-  };
-}
-function computeHomeStats(nodes){
-  const v=nodes.filter(vis);
-  const hiOverlap=[...v].filter(n=>(n.overlapScore||0)>=60).length;
-  const highFit=[...v].filter(n=>(n.openScienceScore||0)>=70).length;
-  const avgProfit=v.length?Math.round(v.reduce((s,n)=>s+(n.profitScore||0),0)/v.length):0;
-  const avgFit=v.length?Math.round(v.reduce((s,n)=>s+(n.openScienceScore||0),0)/v.length):0;
-  return {count:v.length,hiOverlap,highFit,avgProfit,avgFit};
-}
-function jurisdictionCoords(label){
-  const s=String(label||'').toLowerCase();
-  const map=[
-    [/united states|usa|delaware|virginia|new york|north carolina|california/,[-98,39]],
-    [/canada/,[-106,56]],
-    [/united kingdom|england|wales|uk/,[-2,54]],
-    [/germany/, [10,51]],
-    [/switzerland|zug|schaffhausen/, [8,47]],
-    [/france/, [2,46]],
-    [/spain/, [-3,40]],
-    [/italy/, [12,42]],
-    [/greece/, [22,39]],
-    [/estonia|tallinn/, [25,59]],
-    [/netherlands/, [5,52]],
-    [/belgium/, [4,50]],
-    [/hong kong/, [114,22]],
-    [/singapore/, [104,1]],
-    [/south korea|korea/, [127,36]],
-    [/japan/, [138,36]],
-    [/china/, [105,35]],
-    [/india/, [78,22]],
-    [/australia/, [134,-25]],
-    [/brazil/, [-51,-10]],
-    [/argentina/, [-64,-34]],
-    [/nigeria/, [8,9]],
-    [/south africa/, [24,-29]],
-    [/europe/, [13,50]]
-  ];
-  for(const [re,coords] of map){ if(re.test(s)) return coords; }
-  return null;
-}
-const HOME_LAND_POLYS=[
-  [[-170,10],[-150,20],[-130,52],[-110,70],[-85,72],[-55,54],[-52,25],[-80,10],[-100,6],[-125,12]],
-  [[-82,10],[-70,4],[-62,-8],[-56,-18],[-60,-36],[-68,-52],[-78,-45],[-82,-20]],
-  [[-12,36],[0,44],[12,52],[26,58],[40,58],[46,44],[32,36],[14,34]],
-  [[-18,33],[6,34],[24,28],[34,12],[28,-6],[20,-21],[10,-34],[-2,-34],[-12,-8]],
-  [[32,8],[50,18],[74,30],[100,48],[128,56],[150,52],[166,34],[150,16],[124,8],[112,-6],[96,-2],[78,6],[58,0],[42,2]],
-  [[112,-12],[132,-18],[150,-28],[146,-42],[126,-44],[112,-30]],
-  [[-52,60],[-42,70],[-28,76],[-18,70],[-28,58],[-40,56]]
-];
-function pointInPoly(x,y,poly){
-  let inside=false;
-  for(let i=0,j=poly.length-1;i<poly.length;j=i++){
-    const xi=poly[i][0], yi=poly[i][1], xj=poly[j][0], yj=poly[j][1];
-    const intersect=((yi>y)!==(yj>y)) && (x < (xj-xi)*(y-yi)/((yj-yi)||1e-9)+xi);
-    if(intersect)inside=!inside;
-  }
-  return inside;
-}
-function plotAsciiWorld(nodes,cols,rows,tick){
-  const w=Math.max(118,cols||132), h=Math.max(34,rows||40);
-  const grid=Array.from({length:h},()=>Array.from({length:w},()=> ' '));
-  for(let y=0;y<h;y++){
-    for(let x=0;x<w;x++){
-      if(y===0||y===h-1||x===0||x===w-1) grid[y][x]=' ';
-      else if(y%6===0 || x%18===0) grid[y][x]='·';
-    }
-  }
-  const toLon=(x)=> (x/(w-1))*360-180;
-  const toLat=(y)=> 90-(y/(h-1))*180;
-  for(let y=1;y<h-1;y++){
-    for(let x=1;x<w-1;x++){
-      const lon=toLon(x), lat=toLat(y);
-      let inside=false;
-      for(const poly of HOME_LAND_POLYS){ if(pointInPoly(lon,lat,poly)){ inside=true; break; } }
-      if(inside) grid[y][x] = ((x+y+tick)%3===0)?'▓':'▒';
-    }
-  }
-  const pulse=['*','✦','+','•'][tick%4];
-  const seen=new Set();
-  nodes.forEach((n,idx)=>{
-    const j=(n.financials&&n.financials.jurisdiction)||n.legalStructure||'';
-    const coords=jurisdictionCoords(j);
-    if(!coords)return;
-    let [lon,lat]=coords;
-    lon += ((idx%5)-2)*2.5;
-    lat += ((idx%4)-1.5)*1.4;
-    const x=Math.round(((lon+180)/360)*(w-1));
-    const y=Math.round(((90-lat)/180)*(h-1));
-    const key=`${x},${y}`;
-    if(x<1||x>=w-1||y<1||y>=h-1||seen.has(key))return;
-    seen.add(key);
-    grid[y][x]=pulse;
-  });
-  return grid.map(r=>r.join('')).join('\n');
-}
-function renderHomeFeedList(items){
-  if(!items||!items.length)return '<div class="home-empty">No items yet.</div>';
-  return items.slice(0,6).map(it=>`<article class="home-feed-item"><a href="${escapeAttr(it.link||'#')}" target="_blank" rel="noopener">${escapeHtml(it.title||'Untitled')}</a><div class="home-feed-meta">${escapeHtml(it.metaLine||[it.source,it.topic].filter(Boolean).join(' · '))}</div>${it.note?`<div class="home-feed-note">${escapeHtml(it.note)}</div>`:''}</article>`).join('');
-}
-function renderTrustedLinks(){
-  return TRUSTED_HOME_LINKS.map(it=>`<div class="home-link-card"><a href="${escapeAttr(it.link)}" target="_blank" rel="noopener">${escapeHtml(it.title)}</a><div class="meta">${escapeHtml(it.meta)}</div></div>`).join('');
-}
-function renderHome(){
-  const m=el('main');
-  const nodes=D.nodes.filter(vis);
-  const stats=computeHomeStats(nodes);
-  const wrap=document.createElement('div');
-  wrap.className='home-wrap';
-  const featured=(homeRecoState.channels&&homeRecoState.channels.featured)||[];
-  const ticker=featured[0]||homeFallbackLinks().featured[0];
-  wrap.innerHTML=`
-    <section class="home-hero">
-      <div class="home-card">
-        <h1>Purpose-driven intelligence for DeSci</h1>
-        <p>Instead of raw hype feeds, this home view ranks papers and signals against your audited dataset: overlap with your thesis, credibility relevance, open-science fit, decentralization, and the problems in science you actually care about.</p>
-        <div class="home-mini-stats">
-          <div class="home-stat"><span class="k">Visible nodes</span><span class="v">${stats.count}</span><span class="s">Filtered from current map state</span></div>
-          <div class="home-stat"><span class="k">High overlap</span><span class="v">${stats.hiOverlap}</span><span class="s">Strategically closest to you</span></div>
-          <div class="home-stat"><span class="k">Avg commerciality</span><span class="v">${stats.avgProfit}</span><span class="s">Lower is more commons-like</span></div>
-          <div class="home-stat"><span class="k">Avg open-science fit</span><span class="v">${stats.avgFit}</span><span class="s">Higher is more values-aligned</span></div>
-        </div>
-        <div class="home-pill-row">
-          ${weightedDatasetTerms(6).map(t=>`<span class="home-pill">${escapeHtml(t)}</span>`).join('')}
-        </div>
-      </div>
-      <div class="home-card">
-        <div class="home-ticker-head">Live intelligence ticker</div>
-        <div class="home-ticker-title" id="homeTickerTitle">${ticker&&ticker.link?`<a href="${escapeAttr(ticker.link)}" target="_blank" rel="noopener">${escapeHtml(ticker.title)}</a>`:'Loading purpose-driven content...'}</div>
-        <div class="home-ticker-meta" id="homeTickerMeta">${escapeHtml((ticker&&ticker.metaLine)||homeRecoState.status||'Building recommendations from your dataset.')}</div>
-        <div class="home-pill-row">
-          <span class="home-pill">Scored by dataset relevance</span>
-          <span class="home-pill">Bias toward open and scholarly sources</span>
-          <span class="home-pill">Fails gracefully when remote feeds are blocked</span>
-        </div>
-      </div>
-    </section>
-    <section class="home-main">
-      <div class="home-card home-map-card">
-        <div class="home-map-toolbar">
-          <div class="home-map-title">ASCII world map · mapscii-inspired hotspot view</div>
-          <div class="home-map-legend">
-            <span class="home-legend-chip">▒ land</span>
-            <span class="home-legend-chip">· graticule</span>
-            <span class="home-legend-chip">✦ node hotspots by jurisdiction</span>
-          </div>
-        </div>
-        <pre class="ascii-map" id="asciiMap"></pre>
-        <div class="home-map-caption"><div class="meta">Jurisdiction-aware hotspots are approximate, intended for visual orientation rather than cartographic precision.</div><div class="meta" id="homeLastUpdated">${homeRecoState.lastUpdated?`Last update: ${escapeHtml(homeRecoState.lastUpdated)}`:'Last update: pending'}</div></div>
-      </div>
-      <div class="home-side">
-        <div class="home-card home-list-card">
-          <div class="home-list-title"><div class="h">For you now</div><div class="sub">Top ranked recommendations</div></div>
-          <div class="home-feed-list" id="homeFeedFeatured">${renderHomeFeedList(featured)}</div>
-        </div>
-        <div class="home-card home-list-card">
-          <div class="home-list-title"><div class="h">Trusted sources</div><div class="sub">High-signal places to keep open</div></div>
-          <div class="home-links">${renderTrustedLinks()}</div>
-        </div>
-      </div>
-    </section>
-    <section class="home-grid">
-      ${HOME_CHANNELS.filter(c=>c.key!=='featured').map(ch=>`<div class="home-card home-list-card"><div class="home-list-title"><div><div class="h">${escapeHtml(ch.label)}</div><div class="sub">${escapeHtml(ch.description)}</div></div></div><div class="home-feed-list" id="homeFeed_${escapeAttr(ch.key)}">${renderHomeFeedList((homeRecoState.channels&&homeRecoState.channels[ch.key])||[])}</div></div>`).join('')}
-    </section>
-  `;
-  m.appendChild(wrap);
-  const paint=()=>{
-    const pre=el('asciiMap');
-    if(!pre)return;
-    const cols=Math.max(120,Math.floor((pre.clientWidth||pre.parentElement.clientWidth||900)/7.2));
-    const rows=Math.max(34,Math.floor((pre.clientHeight||380)/11));
-    pre.textContent=plotAsciiWorld(nodes,cols,rows,Math.floor(Date.now()/1600)%16);
-  };
-  paint();
-  homeMapTimer=setInterval(paint,2200);
-  rotateHomeTicker();
-  refreshHomePurposeFeeds(false);
-}
-function rotateHomeTicker(){
-  const titleEl=el('homeTickerTitle'), metaEl=el('homeTickerMeta');
-  const items=(homeRecoState.channels&&homeRecoState.channels.featured)||[];
-  if(!titleEl||!metaEl)return;
-  if(!items.length)return;
-  let idx=0;
-  clearInterval(window.__homeTickerTimer||0);
-  const paint=()=>{
-    const it=items[idx%items.length];
-    titleEl.innerHTML=`<a href="${escapeAttr(it.link||'#')}" target="_blank" rel="noopener">${escapeHtml(it.title||'Untitled')}</a>`;
-    metaEl.textContent=(it.metaLine||[it.source,it.topic].filter(Boolean).join(' · '));
-    idx++;
-  };
-  paint();
-  window.__homeTickerTimer=setInterval(paint,7600);
-}
-async function refreshHomePurposeFeeds(force){
-  const now=Date.now();
-  if(!force && homeRecoFetchMs && (now-homeRecoFetchMs)<(25*60*1000))return;
-  homeRecoFetchMs=now;
-  const q=buildHomeQueries();
-  const datasetTerms=weightedDatasetTerms(10);
-  const fallback=homeFallbackLinks();
-  homeRecoState.status='Refreshing purpose-driven papers…';
-  if(view==='home'){
-    const meta=el('homeTickerMeta'); if(meta) meta.textContent=homeRecoState.status;
-  }
-  try{
-    const channelPromises=HOME_CHANNELS.map(async ch=>{
-      const queries=(q[ch.key]||[]).slice(0,3);
-      const batches=await Promise.allSettled(queries.map(query=>fetchOpenAlexWorks(query,10)));
-      const merged=[];
-      batches.forEach((res,idx)=>{
-        if(res.status!=='fulfilled')return;
-        (res.value||[]).forEach(item=>merged.push(rankHomeItem(item,ch.key,datasetTerms)));
-      });
-      const picked=dedupeItems(merged).sort((a,b)=>(b.rankScore||0)-(a.rankScore||0)).slice(0,8);
-      return [ch.key, picked.length?picked:(fallback[ch.key]||[])];
-    });
-    const entries=await Promise.all(channelPromises);
-    homeRecoState.channels=Object.fromEntries(entries);
-    homeRecoState.channels.featured=(homeRecoState.channels.featured||[]).slice(0,8);
-    homeRecoState.items=HOME_CHANNELS.flatMap(ch=>homeRecoState.channels[ch.key]||[]).sort((a,b)=>(b.rankScore||0)-(a.rankScore||0));
-    homeRecoState.lastUpdated=new Date().toLocaleString();
-    homeRecoState.status='Updated from structured scholarly sources.';
-    saveHomeRecoCache();
-  }catch(e){
-    homeRecoState.channels=fallback;
-    homeRecoState.items=Object.values(fallback).flat();
-    homeRecoState.lastUpdated=new Date().toLocaleString();
-    homeRecoState.status='Remote feeds blocked; showing resilient fallback links.';
-    saveHomeRecoCache();
-  }
-  if(view==='home')render();
-}
-
 // ===== MODALS =====
 function clM(){el('mo').style.display='none'}
 function addOrgM(){
@@ -1604,8 +2728,9 @@ function impFile(inp){
   const f=inp.files[0];if(!f)return;
   const r=new FileReader();r.onload=e=>{
     try{
-      if(f.name.endsWith('.json')){D=JSON.parse(e.target.result);D.nodes.forEach(n=>{n.overlapTags=n.overlapTags||[];n.credScore=n.credScore||0;n.finModel=n.finModel||'';n.legalStructure=n.legalStructure||'unknown';n.apc=n.apc||false;n.profitScore=n.profitScore??50;n.openScienceScore=n.openScienceScore??((n.financials&&n.financials.openScienceCompatibilityScore)??50);n.finNote=n.finNote||'';n.fundingRaised=n.fundingRaised||'';n.provenance=n.provenance||{confidence:'low',hasUnverifiedClaims:true,sources:[],lastVerified:'',notes:''};n.financials=n.financials||{revenueSources:[],researcherPays:'unknown',institutionPays:'unknown',openScienceAlignment:'unknown',openScienceAlignmentNote:'',scoreBreakdown:{},openScienceCompatibilityScore:50,openScienceCompatibilityBand:'moderate',scoreAudit:{}};if(n.financials&&n.financials.openScienceCompatibilityScore==null)n.financials.openScienceCompatibilityScore=n.openScienceScore??50;n.sourceAsterisk=!!n.sourceAsterisk})}
-      else if(f.name.endsWith('.csv')){const p=Papa.parse(e.target.result,{header:true});p.data.forEach(row=>{if(!row.id)return;const ex=D.nodes.find(n=>n.id===row.id);if(ex)Object.assign(ex,row);else D.nodes.push({...row,tags:(row.tags||'').split(','),s1:+row.s1||0,s2:+row.s2||0,s3:+row.s3||0,s4:+row.s4||0,s5:+row.s5||0,decen:+row.decen||50,cf:{},overlapTags:[],credScore:0,profitScore:50})})}
+      if(f.name.endsWith('.json')){D=cleanMojibakeDeep(JSON.parse(e.target.result));D.nodes.forEach(n=>{n.overlapTags=n.overlapTags||[];n.credScore=n.credScore||0;n.finModel=n.finModel||'';n.legalStructure=n.legalStructure||'unknown';n.apc=n.apc||false;n.profitScore=n.profitScore??50;n.openScienceScore=n.openScienceScore??((n.financials&&n.financials.openScienceCompatibilityScore)??50);n.finNote=n.finNote||'';n.fundingRaised=n.fundingRaised||'';n.provenance=n.provenance||{confidence:'low',hasUnverifiedClaims:true,sources:[],lastVerified:'',notes:''};n.financials=n.financials||{revenueSources:[],researcherPays:'unknown',institutionPays:'unknown',openScienceAlignment:'unknown',openScienceAlignmentNote:'',scoreBreakdown:{},openScienceCompatibilityScore:50,openScienceCompatibilityBand:'moderate',scoreAudit:{}};if(n.financials&&n.financials.openScienceCompatibilityScore==null)n.financials.openScienceCompatibilityScore=n.openScienceScore??50;n.sourceAsterisk=!!n.sourceAsterisk})}
+      else if(f.name.endsWith('.csv')){const p=Papa.parse(e.target.result,{header:true});p.data.forEach(row=>{row=cleanMojibakeDeep(row);if(!row.id)return;const ex=D.nodes.find(n=>n.id===row.id);if(ex)Object.assign(ex,row);else D.nodes.push({...row,tags:(row.tags||'').split(','),s1:+row.s1||0,s2:+row.s2||0,s3:+row.s3||0,s4:+row.s4||0,s5:+row.s5||0,decen:+row.decen||50,cf:{},overlapTags:[],credScore:0,profitScore:50})})}
+      D=cleanMojibakeDeep(D);
       save();render();updateSB();updateStats();buildPills();
     }catch(err){alert('Import error: '+err.message)}
   };r.readAsText(f);inp.value='';
@@ -1618,14 +2743,40 @@ function promptToken(){if(GH.token)return true;const t=prompt('GitHub PAT (fine-
 function setSyncUI(state,msg){const s=el('syncStatus'),t=el('syncText');s.className='sync-status'+(state==='ok'?' synced':state==='err'?' error':'');t.textContent=msg}
 let pushTimer=null;
 function debouncedPush(){if(!GH.ok)return;clearTimeout(pushTimer);setSyncUI('','saving...');pushTimer=setTimeout(()=>ghPush(),2000)}
-async function ghPull(){if(!GH.ok){detectGHPages();if(!promptToken())return}if(!GH.ok)return;setSyncUI('','pulling...');try{const r=await fetch(`https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/${GH.path}`,{headers:{'Authorization':'Bearer '+GH.token,'Accept':'application/vnd.github.v3+json'}});if(r.status===404){setSyncUI('ok','no remote');return}if(r.status===401||r.status===403){localStorage.removeItem('gh-token');setSyncUI('err','bad token');return}if(!r.ok)throw new Error('HTTP '+r.status);const j=await r.json();const raw=atob(j.content.replace(/\n/g,''));D=JSON.parse(raw);localStorage.setItem('gh-sha',j.sha);D.nodes.forEach(n=>{n.overlapTags=n.overlapTags||[];n.credScore=n.credScore||0;n.notes=n.notes||''});save(true);render();updateSB();updateStats();buildPills();setSyncUI('ok','synced')}catch(e){setSyncUI('err',e.message)}}
+async function ghPull(){
+  if(!GH.ok){detectGHPages();if(!promptToken())return}
+  if(!GH.ok)return;
+  setSyncUI('','pulling...');
+  try{
+    const r=await fetch(`https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/${GH.path}`,{headers:{'Authorization':'Bearer '+GH.token,'Accept':'application/vnd.github.v3+json'}});
+    if(r.status===404){setSyncUI('ok','no remote');return}
+    if(r.status===401||r.status===403){localStorage.removeItem('gh-token');setSyncUI('err','bad token');return}
+    if(!r.ok)throw new Error('HTTP '+r.status);
+    const j=await r.json();
+    const raw=atob(j.content.replace(/\n/g,''));
+    D=cleanMojibakeDeep(JSON.parse(raw));
+    localStorage.setItem('gh-sha',j.sha);
+    D.nodes.forEach(n=>{n.overlapTags=n.overlapTags||[];n.credScore=n.credScore||0;n.notes=n.notes||''});
+    D.journal=D.journal||[];
+    D.litProgress=D.litProgress||{};
+    D.homeWatch=D.homeWatch||{videos:[],playlists:[]};
+    if(!Array.isArray(D.homeWatch.videos))D.homeWatch.videos=[];
+    if(!Array.isArray(D.homeWatch.playlists))D.homeWatch.playlists=[];
+    D.kanban=D.kanban||seedKanbanFromData();
+    save(true);
+    render();updateSB();updateStats();buildPills();
+    setSyncUI('ok','synced');
+  }catch(e){setSyncUI('err',e.message)}
+}
 async function ghPush(){if(!GH.ok)return;setSyncUI('','pushing...');try{let sha=localStorage.getItem('gh-sha')||'';if(!sha){try{const c=await fetch(`https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/${GH.path}`,{headers:{'Authorization':'Bearer '+GH.token,'Accept':'application/vnd.github.v3+json'}});if(c.ok){const j=await c.json();sha=j.sha}}catch(e){}}const text=JSON.stringify(D,null,2);const bytes=new TextEncoder().encode(text);let bin='';for(let i=0;i<bytes.length;i++)bin+=String.fromCharCode(bytes[i]);const body={message:'Update '+new Date().toISOString().slice(0,16),content:btoa(bin)};if(sha)body.sha=sha;const r=await fetch(`https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/${GH.path}`,{method:'PUT',headers:{'Authorization':'Bearer '+GH.token,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},body:JSON.stringify(body)});if(r.status===409){setSyncUI('','conflict...');await ghPull();await ghPush();return}if(!r.ok){const e=await r.json();throw new Error(e.message||'HTTP '+r.status)}const result=await r.json();localStorage.setItem('gh-sha',result.content.sha);setSyncUI('ok','saved')}catch(e){setSyncUI('err',e.message)}}
 function autoSync(){detectGHPages();if(GH.ok)ghPull()}
 function onSyncClick(){if(!GH.ok){detectGHPages();if(promptToken())ghPull()}else ghPush()}
 
 // ===== BOOT =====
 init();
-window.addEventListener('resize',()=>{clearTimeout(window._rt);window._rt=setTimeout(()=>{if(view==='graph'||view==='pgraph'||view==='home')render()},300)});
+window.addEventListener('resize',()=>{clearTimeout(window._rt);window._rt=setTimeout(()=>{render()},300)});
 </script>
 </body>
 </html>
+
+
