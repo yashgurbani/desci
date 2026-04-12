@@ -300,7 +300,7 @@ table.dtbl{width:100%;min-width:980px;border-collapse:separate;border-spacing:0;
   position:absolute;
   inset:16px 18px 18px 18px;
   display:grid;
-  grid-template-columns:minmax(0,600px) minmax(372px,430px);
+  grid-template-columns:minmax(0,580px) minmax(408px,470px);
   gap:18px;
   align-items:stretch;
   justify-content:space-between;
@@ -313,8 +313,8 @@ table.dtbl{width:100%;min-width:980px;border-collapse:separate;border-spacing:0;
   flex-direction:column;
   gap:16px;
 }
-.home-main-col{min-width:0;align-items:stretch;max-width:600px;height:100%;justify-content:space-between}
-.home-side-col{min-width:340px;justify-self:end;width:min(100%,430px);height:100%;justify-content:space-between}
+.home-main-col{min-width:0;align-items:stretch;max-width:580px;height:100%;justify-content:space-between}
+.home-side-col{min-width:380px;justify-self:end;width:min(100%,470px);height:100%;justify-content:flex-start;gap:22px}
 .home-overlay-top{
   position:absolute;top:14px;left:14px;right:14px;
   display:grid;grid-template-columns:260px minmax(0,1fr);gap:10px;
@@ -439,42 +439,49 @@ table.dtbl{width:100%;min-width:980px;border-collapse:separate;border-spacing:0;
 .home-updated{pointer-events:none;font-size:.72rem;color:#a9a9a9;font-family:var(--mono);text-shadow:0 0 6px rgba(0,0,0,.8)}
 .home-journal{
   pointer-events:auto;
-  border:1px solid rgba(255,255,255,.16);
+  border:1px solid rgba(255,255,255,.12);
   border-radius:10px;
-  background:rgba(8,8,8,.9);
+  background:rgba(8,8,8,.72);
   padding:12px;
   max-width:560px;
   overflow:auto;
   box-shadow:none;
+  backdrop-filter:blur(2px);
 }
 .home-journal .t{font-family:var(--mono);font-size:.66rem;color:var(--gold);text-transform:uppercase;letter-spacing:1.1px;margin-bottom:6px}
 .home-journal .d{font-family:var(--mono);font-size:.66rem;color:#b9b9b9;margin-bottom:5px}
 .home-journal .b{font-size:.73rem;line-height:1.42;color:#dfdfdf}
-#homeDeadlines{flex:0 0 auto;max-height:24vh;max-width:none;width:100%}
+#homeDeadlines{flex:0 0 auto;max-height:16vh;max-width:none;width:100%;margin-top:auto;background:rgba(8,8,8,.62);border-color:rgba(255,255,255,.1);padding:10px 11px}
 #homeLastJournal{flex:0 0 auto;min-height:110px;max-height:18vh;max-width:none;width:100%;align-self:stretch;margin-top:auto}
 #homeDeadlines .feed-list{max-height:none}
+.home-journal#homeDeadlines .feed-list{gap:6px}
+.home-journal#homeDeadlines .feed-item{padding:7px 8px;border-radius:8px;background:rgba(255,255,255,.02)}
+.home-journal#homeDeadlines .deadline-date{font-size:.6rem}
+.home-journal#homeDeadlines .deadline-name{font-size:.76rem;line-height:1.28}
+.home-journal#homeDeadlines .deadline-meta{margin-top:4px;font-size:.64rem}
 .home-kanban{
   pointer-events:auto;
-  border:1px solid rgba(255,255,255,.16);
+  border:1px solid rgba(255,255,255,.12);
   border-radius:10px;
-  background:rgba(8,8,8,.9);
+  background:rgba(8,8,8,.7);
   padding:12px;
-  max-height:240px;
+  max-height:380px;
   flex:0 0 auto;
   overflow:auto;
   box-shadow:none;
-  min-height:220px;
+  min-height:340px;
   width:100%;
   align-self:stretch;
+  backdrop-filter:blur(2px);
 }
 .kan-title{font-family:var(--mono);font-size:.66rem;color:var(--gold);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:8px}
 .kan-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-.kan-col{border:1px solid rgba(255,255,255,.12);border-radius:8px;background:rgba(18,18,18,.84);padding:8px;min-height:92px}
+.kan-col{border:1px solid rgba(255,255,255,.1);border-radius:8px;background:rgba(18,18,18,.7);padding:8px;min-height:156px}
 .kan-col-head{display:flex;align-items:center;justify-content:space-between;font-family:var(--mono);font-size:.63rem;color:#b9b9b9;letter-spacing:.6px;margin-bottom:6px;text-transform:uppercase}
 .kan-add{font-size:.65rem;padding:2px 6px;border-radius:999px;background:transparent;border:1px solid rgba(255,255,255,.2);color:#c9c9c9;cursor:pointer}
 .kan-add:hover{border-color:var(--gold);color:var(--gold)}
-.kan-list{display:flex;flex-direction:column;gap:6px;max-height:132px;overflow:auto}
-.kan-card{border:1px solid rgba(255,255,255,.11);border-radius:7px;padding:6px 7px;background:rgba(24,24,24,.9)}
+.kan-list{display:flex;flex-direction:column;gap:6px;max-height:258px;overflow:auto}
+.kan-card{border:1px solid rgba(255,255,255,.1);border-radius:7px;padding:6px 7px;background:rgba(24,24,24,.74)}
 .kan-text{font-size:.71rem;line-height:1.34;color:#e4e4e4}
 .kan-actions{display:flex;gap:5px;margin-top:6px}
 .kan-btn{font-size:.62rem;padding:2px 6px;border-radius:999px;border:1px solid rgba(255,255,255,.2);background:transparent;color:#b7b7b7;cursor:pointer}
@@ -4747,8 +4754,8 @@ function renderHome(){
         <section class="home-journal" id="homeLastJournal"></section>
       </div>
       <div class="home-side-col">
-        <section class="home-journal" id="homeDeadlines"></section>
         <section class="home-kanban" id="homeKanban"></section>
+        <section class="home-journal" id="homeDeadlines"></section>
       </div>
     </div>
   `;
