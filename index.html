@@ -267,41 +267,99 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
 
 /* HOME / INFO / JOURNAL / LITERATURE */
 .home-wrap,.info-wrap,.journal-wrap,.lit-wrap{height:100%;overflow:auto;padding:20px;display:flex;flex-direction:column;gap:14px}
-.home-wrap{padding:0;position:relative;overflow:hidden;background:#000}
+.home-wrap{
+  padding:0;
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 18% 20%, rgba(116,221,215,.12), transparent 28%),
+    radial-gradient(circle at 82% 24%, rgba(212,168,83,.13), transparent 26%),
+    radial-gradient(circle at 50% 84%, rgba(138,232,186,.08), transparent 34%),
+    linear-gradient(180deg, #030303 0%, #000 52%, #050505 100%);
+}
 .hero{background:linear-gradient(130deg,rgba(116,221,215,.08),rgba(212,168,83,.06));border:1px solid var(--border);border-radius:12px;padding:16px 18px}
 .hero h1{font-family:var(--display);font-size:1.35rem;color:var(--gold);margin-bottom:4px}
 .hero p{font-size:.83rem;color:var(--text-2)}
 .ascii-map{
   position:absolute;inset:0;margin:0;
   font-family:var(--mono);
-  font-size:clamp(.44rem,.72vw,.78rem);
-  line-height:1.09;
-  letter-spacing:.2px;
+  font-size:clamp(.48rem,.74vw,.82rem);
+  line-height:1.04;
+  letter-spacing:.18px;
   font-weight:700;
-  color:#f4f4f4;
+  color:#f1efe7;
   white-space:pre;
   overflow:hidden;
-  background:#000;
-  padding:10px 8px 12px 8px;
-  text-shadow:0 0 5px rgba(255,255,255,.05);
+  background:linear-gradient(180deg, rgba(5,8,10,.9) 0%, rgba(0,0,0,.88) 100%);
+  padding:20px 18px 18px 18px;
+  text-shadow:0 0 7px rgba(255,255,255,.06);
+  opacity:.9;
 }
 .home-overlay-top{
-  position:absolute;top:10px;left:10px;right:10px;
-  display:grid;grid-template-columns:minmax(0,1fr) 460px;gap:10px;
+  position:absolute;top:14px;left:14px;right:14px;
+  display:grid;grid-template-columns:minmax(0,1fr) 430px;gap:14px;
   align-items:start;pointer-events:none;
 }
 .home-overlay-bottom{
-  position:absolute;left:10px;right:10px;bottom:10px;
-  display:grid;grid-template-columns:minmax(0,1fr) 580px;gap:10px;
+  position:absolute;left:14px;right:14px;bottom:14px;
+  display:grid;grid-template-columns:minmax(0,1fr) 600px;gap:14px;
   align-items:end;pointer-events:none;
+}
+.home-hero{
+  pointer-events:auto;
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:16px;
+  background:linear-gradient(180deg, rgba(6,10,12,.78), rgba(8,8,8,.58));
+  padding:16px 18px;
+  backdrop-filter:blur(10px);
+  box-shadow:0 18px 50px rgba(0,0,0,.28);
+}
+.home-kicker{
+  font-family:var(--mono);
+  font-size:.67rem;
+  color:var(--gold);
+  text-transform:uppercase;
+  letter-spacing:1.3px;
+}
+.home-title{
+  margin-top:8px;
+  font-family:var(--mono);
+  font-size:clamp(1.8rem, 4.1vw, 3.45rem);
+  line-height:.95;
+  color:#f2efe6;
+  white-space:pre-line;
+  text-transform:uppercase;
+}
+.home-sub{
+  margin-top:10px;
+  max-width:52ch;
+  font-size:.84rem;
+  line-height:1.55;
+  color:#d4d4d4;
+}
+.home-chip-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:14px;
+}
+.home-chip{
+  font-family:var(--mono);
+  font-size:.66rem;
+  color:#cbcbcb;
+  padding:5px 9px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.15);
+  background:rgba(255,255,255,.04);
 }
 .ticker{
   pointer-events:auto;
-  border:1px solid rgba(255,255,255,.22);
-  border-radius:11px;
-  background:rgba(6,6,6,.82);
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:14px;
+  background:linear-gradient(180deg, rgba(8,10,12,.88), rgba(8,8,8,.72));
   padding:12px 14px;
-  backdrop-filter:blur(6px);
+  backdrop-filter:blur(8px);
+  box-shadow:0 16px 38px rgba(0,0,0,.24);
 }
 .ticker-head{font-family:var(--mono);font-size:.68rem;color:var(--gold);letter-spacing:1.2px;text-transform:uppercase}
 .ticker-main{font-size:1.05rem;color:#f3f3f3;line-height:1.36;margin-top:4px}
@@ -310,19 +368,22 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
 .ticker-meta{font-size:.74rem;color:#b8b8b8;margin-top:5px}
 .home-feed-panel{
   pointer-events:auto;
-  border:1px solid rgba(255,255,255,.22);
-  border-radius:11px;
-  background:rgba(8,8,8,.84);
-  padding:10px 11px;
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:14px;
+  background:linear-gradient(180deg, rgba(8,10,12,.88), rgba(7,7,7,.74));
+  padding:12px;
   max-height:68vh;
   overflow:auto;
-  backdrop-filter:blur(6px);
+  backdrop-filter:blur(8px);
+  box-shadow:0 16px 38px rgba(0,0,0,.24);
 }
-.feed-title{font-family:var(--mono);font-size:.66rem;color:var(--text-3);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:7px}
-.feed-list{display:flex;flex-direction:column;gap:7px;max-height:13vh;overflow:auto;padding-right:3px}
-.feed-item{border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:7px 9px;background:rgba(20,20,20,.84)}
-.feed-item a{font-size:.75rem;font-weight:600;line-height:1.34;color:#efefef}
-.feed-item .meta{font-size:.66rem;color:#989898;margin-top:3px}
+.feed-title{font-family:var(--mono);font-size:.66rem;color:#979797;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:8px}
+.feed-list{display:flex;flex-direction:column;gap:8px;max-height:16vh;overflow:auto;padding-right:3px}
+.feed-item{border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:8px 10px;background:rgba(255,255,255,.03)}
+.feed-item a{font-size:.76rem;font-weight:600;line-height:1.34;color:#efefef}
+.feed-item .meta{font-size:.66rem;color:#989898;margin-top:4px}
+.feed-item.empty{border-style:dashed;background:rgba(255,255,255,.02)}
+.feed-item.empty .meta{margin-top:0}
 .yt-add-wrap{display:flex;align-items:center;justify-content:space-between;gap:8px;position:relative}
 .yt-add-btn{width:18px;height:18px;border-radius:50%;border:1px solid rgba(255,255,255,.28);background:rgba(24,24,24,.9);color:#d8d8d8;font-size:.78rem;line-height:1;cursor:pointer}
 .yt-add-btn:hover{border-color:var(--gold);color:var(--gold)}
@@ -354,25 +415,27 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
 .home-updated{pointer-events:none;font-size:.72rem;color:#a9a9a9;font-family:var(--mono);text-shadow:0 0 6px rgba(0,0,0,.8)}
 .home-journal{
   pointer-events:auto;
-  border:1px solid rgba(255,255,255,.22);
-  border-radius:11px;
-  background:rgba(8,8,8,.84);
-  padding:10px;
-  backdrop-filter:blur(6px);
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:14px;
+  background:linear-gradient(180deg, rgba(8,10,12,.88), rgba(7,7,7,.72));
+  padding:12px;
+  backdrop-filter:blur(8px);
   max-width:560px;
+  box-shadow:0 16px 38px rgba(0,0,0,.24);
 }
 .home-journal .t{font-family:var(--mono);font-size:.66rem;color:var(--gold);text-transform:uppercase;letter-spacing:1.1px;margin-bottom:6px}
 .home-journal .d{font-family:var(--mono);font-size:.66rem;color:#b9b9b9;margin-bottom:5px}
 .home-journal .b{font-size:.73rem;line-height:1.42;color:#dfdfdf}
 .home-kanban{
   pointer-events:auto;
-  border:1px solid rgba(255,255,255,.22);
-  border-radius:11px;
-  background:rgba(8,8,8,.84);
-  padding:10px;
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:14px;
+  background:linear-gradient(180deg, rgba(8,10,12,.88), rgba(7,7,7,.72));
+  padding:12px;
   max-height:52vh;
   overflow:auto;
-  backdrop-filter:blur(6px);
+  backdrop-filter:blur(8px);
+  box-shadow:0 16px 38px rgba(0,0,0,.24);
 }
 .kan-title{font-family:var(--mono);font-size:.66rem;color:var(--gold);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:8px}
 .kan-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
@@ -386,6 +449,16 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
 .kan-actions{display:flex;gap:5px;margin-top:6px}
 .kan-btn{font-size:.62rem;padding:2px 6px;border-radius:999px;border:1px solid rgba(255,255,255,.2);background:transparent;color:#b7b7b7;cursor:pointer}
 .kan-btn:hover{border-color:var(--gold);color:var(--gold)}
+.home-map-footer{
+  position:absolute;
+  left:18px;
+  bottom:14px;
+  font-family:var(--mono);
+  font-size:.67rem;
+  color:rgba(255,255,255,.45);
+  letter-spacing:.8px;
+  text-transform:uppercase;
+}
 .info-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .info-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:13px}
 .info-card h3{font-size:.88rem;color:var(--gold);font-family:var(--mono);margin-bottom:6px}
@@ -2241,6 +2314,11 @@ function uniqByLink(arr){
     return true;
   });
 }
+function hashCode(str){
+  let h=0;
+  for(let i=0;i<String(str).length;i++)h=((h<<5)-h)+String(str).charCodeAt(i)|0;
+  return h;
+}
 function scoreFeedItem(item,intents){
   let s=0;
   const title=String(item.title||'').toLowerCase();
@@ -2265,6 +2343,34 @@ function scoreFeedItem(item,intents){
 }
 function rankFeedItems(items,intents,limit){
   return uniqByLink(items).map(it=>({it,score:scoreFeedItem(it,intents)})).sort((a,b)=>b.score-a.score).slice(0,limit||12).map(x=>x.it);
+}
+const HOME_STATIC_FEEDS={
+  keywords:[
+    {title:'Open Science Headlines',link:'https://news.google.com/search?q=open%20science&hl=en-US&gl=US&ceid=US:en',source:'fallback',topic:'open science'},
+    {title:'Metascience Headlines',link:'https://news.google.com/search?q=metascience&hl=en-US&gl=US&ceid=US:en',source:'fallback',topic:'metascience'},
+    {title:'Research Integrity Updates',link:'https://retractionwatch.com/',source:'fallback',topic:'research integrity'},
+    {title:'eLife Inside eLife',link:'https://elifesciences.org/inside-elife',source:'fallback',topic:'open publishing'}
+  ],
+  nodes:[
+    {title:'Nature News',link:'https://www.nature.com/news',source:'fallback',topic:'science news'},
+    {title:'PLOS Blog Network',link:'https://theplosblog.plos.org/',source:'fallback',topic:'open publishing'},
+    {title:'bioRxiv Latest',link:'https://www.biorxiv.org/',source:'fallback',topic:'preprints'},
+    {title:'OpenAlex',link:'https://openalex.org/',source:'fallback',topic:'scholarly infrastructure'}
+  ],
+  youtube:[
+    {title:'MIT Center for Collective Intelligence',link:'https://www.youtube.com/results?search_query=metascience+open+science',source:'fallback',topic:'video search'},
+    {title:'Open Science Playlist Search',link:'https://www.youtube.com/results?search_query=open+science+research',source:'fallback',topic:'video search'}
+  ]
+};
+function settleFeed(res){
+  return (res&&res.status==='fulfilled'&&Array.isArray(res.value))?res.value:[];
+}
+function fallbackFeedSection(section,extra){
+  const base=(HOME_STATIC_FEEDS[section]||[]).map(it=>({...it}));
+  return uniqByLink([...(extra||[]),...base]).slice(0,10);
+}
+function makeFeedEmptyState(msg){
+  return [{title:msg||'No items available right now.',link:'#',source:'status',topic:'waiting',disabled:true}];
 }
 function zoteroPaperSuggestions(limit){
   if(!zoteroItems||!zoteroItems.length)return [];
@@ -2329,15 +2435,20 @@ function renderHomeFeeds(){
   const metaEl=el('homeTickerMeta');
   const items=homeFeedState.items||[];
   if(!titleEl||!metaEl)return;
+  if(homeTickerTimer){clearInterval(homeTickerTimer);homeTickerTimer=null;}
   if(!items.length){
-    titleEl.textContent='Feed loading...';
-    metaEl.textContent='Pulling purpose-driven updates.';
+    titleEl.textContent='Feed standby';
+    metaEl.textContent='Using local watchlists until remote sources respond.';
   }else{
     let idx=0;
     const paint=()=>{
       if(!items.length)return;
       const it=items[idx%items.length];
-      titleEl.innerHTML=`<a href="${escapeHtml(it.link)}" target="_blank" rel="noopener">${escapeHtml(it.title)}</a>`;
+      if(it.disabled || !it.link || it.link==='#'){
+        titleEl.textContent=cleanMojibakeString(it.title||'Feed standby');
+      }else{
+        titleEl.innerHTML=`<a href="${escapeHtml(it.link)}" target="_blank" rel="noopener">${escapeHtml(it.title)}</a>`;
+      }
       metaEl.textContent=`${cleanMojibakeString(it.source||'news')} | ${cleanMojibakeString(it.topic||'general')}${it.pubDate?` | ${cleanMojibakeString(String(it.pubDate).slice(0,24))}`:''}`;
       idx++;
     };
@@ -2348,7 +2459,12 @@ function renderHomeFeeds(){
   const mount=(id,arr)=>{
     const c=el(id);
     if(!c)return;
-    c.innerHTML=(arr||[]).slice(0,8).map(it=>`<article class="feed-item"><a href="${escapeHtml(it.link)}" target="_blank" rel="noopener">${escapeHtml(it.title)}</a><div class="meta">${escapeHtml(it.source||'news')} | ${escapeHtml(it.topic||'')}</div></article>`).join('') || '<div class="lite-note">No items yet.</div>';
+    c.innerHTML=(arr||[]).slice(0,8).map(it=>{
+      const title=escapeHtml(it.title||'Untitled');
+      const meta=`${escapeHtml(it.source||'news')} | ${escapeHtml(it.topic||'')}`;
+      if(it.disabled || !it.link || it.link==='#')return `<article class="feed-item empty"><div>${title}</div><div class="meta">${meta}</div></article>`;
+      return `<article class="feed-item"><a href="${escapeHtml(it.link)}" target="_blank" rel="noopener">${title}</a><div class="meta">${meta}</div></article>`;
+    }).join('') || '<div class="lite-note">No items yet.</div>';
   };
   mount('homeFeedKeywords',homeFeedState.sections.keywords||[]);
   mount('homeFeedNodes',homeFeedState.sections.nodes||[]);
@@ -2373,38 +2489,33 @@ async function refreshHomeFeeds(force){
   const ytQuery=ytQ.join(' OR ')||'open science';
   const playlistIds=(D.homeWatch.playlists||[]).slice(0,3);
   const customVideos=(D.homeWatch.videos||[]).map(v=>({title:v.title||'Custom video',link:v.url,topic:'custom watchlist',source:'youtube'}));
+  const results=await Promise.allSettled([
+    fetchGoogleNews(kwQuery),
+    fetchGoogleNews(`${nodeQuery} open science`),
+    fetchYouTube(ytQuery),
+    Promise.allSettled(playlistIds.map(pid=>fetchYouTubePlaylist(pid))).then(rows=>rows.flatMap(r=>settleFeed(r)))
+  ]);
+  const kwRes=settleFeed(results[0]);
+  const nodeRes=settleFeed(results[1]);
+  const ytRes=settleFeed(results[2]);
+  const playlistRes=settleFeed(results[3]);
+  const keywords=rankFeedItems(kwRes,kw,10);
+  const nodes=rankFeedItems(nodeRes,nodeQs,10);
+  const youtube=rankFeedItems([...ytRes,...playlistRes,...customVideos],ytQ,10);
 
-  try{
-    const [kwRes,nodeRes,ytRes,playlistRes]=await Promise.all([
-      fetchGoogleNews(kwQuery),
-      fetchGoogleNews(`${nodeQuery} open science`),
-      fetchYouTube(ytQuery),
-      Promise.all(playlistIds.map(pid=>fetchYouTubePlaylist(pid))).then(x=>x.flat())
-    ]);
-    homeFeedState.sections={
-      keywords:rankFeedItems(kwRes,kw,10),
-      nodes:rankFeedItems(nodeRes,nodeQs,10),
-      youtube:rankFeedItems([...ytRes,...playlistRes,...customVideos],ytQ,10)
-    };
-    homeFeedState.items=rankFeedItems([
-      ...homeFeedState.sections.keywords,
-      ...homeFeedState.sections.nodes,
-      ...homeFeedState.sections.youtube
-    ],[...kw,...nodeQs,...PURPOSE_TERMS],40);
-    saveHomeFeedCache();
-  }catch(e){
-    const fallbackNews=[
-      {title:'Open Science Headlines (Google News)',link:'https://news.google.com/search?q=open%20science',source:'news',topic:'open science'},
-      {title:'Metascience Headlines (Google News)',link:'https://news.google.com/search?q=metascience',source:'news',topic:'metascience'},
-      {title:'Retraction Watch',link:'https://retractionwatch.com/',source:'news',topic:'research integrity'},
-      {title:'Nature News',link:'https://www.nature.com/news',source:'news',topic:'science news'},
-      {title:'eLife News',link:'https://elifesciences.org/inside-elife',source:'news',topic:'open publishing'}
-    ];
-    homeFeedState.sections.keywords=fallbackNews.slice(0,5);
-    homeFeedState.sections.nodes=fallbackNews.slice(0,5);
-    homeFeedState.sections.youtube=(D.homeWatch&&D.homeWatch.videos||[]).map(v=>({title:v.title||'Custom video',link:v.url,topic:'custom watchlist',source:'youtube'}));
-    homeFeedState.items=[...homeFeedState.sections.keywords,...homeFeedState.sections.nodes,...homeFeedState.sections.youtube];
-    saveHomeFeedCache();
+  homeFeedState.sections={
+    keywords:keywords.length?keywords:fallbackFeedSection('keywords'),
+    nodes:nodes.length?nodes:fallbackFeedSection('nodes'),
+    youtube:youtube.length?youtube:fallbackFeedSection('youtube',customVideos)
+  };
+  homeFeedState.items=rankFeedItems([
+    ...homeFeedState.sections.keywords,
+    ...homeFeedState.sections.nodes,
+    ...homeFeedState.sections.youtube,
+    ...zoteroPaperSuggestions(5)
+  ],[...kw,...nodeQs,...PURPOSE_TERMS],40);
+  if(!homeFeedState.items.length){
+    homeFeedState.items=makeFeedEmptyState('No remote feed items responded. Open the fallback links at right.');
   }
   homeFeedLastFetchMs=Date.now();
   homeFeedState.lastUpdated=new Date().toLocaleString();
@@ -2491,16 +2602,49 @@ function asciiFrame(nodes,tick,cols,rows){
       }
     });
   }
+  const labels=[
+    {x:0.08,y:0.25,text:'N. AMERICA'},
+    {x:0.19,y:0.63,text:'S. AMERICA'},
+    {x:0.52,y:0.24,text:'EUROPE'},
+    {x:0.56,y:0.47,text:'AFRICA'},
+    {x:0.71,y:0.27,text:'ASIA'},
+    {x:0.84,y:0.67,text:'OCEANIA'}
+  ];
+  labels.forEach(label=>{
+    const x=Math.max(0,Math.min(w-1,Math.floor(label.x*w)));
+    const y=Math.max(0,Math.min(h-1,Math.floor(label.y*h)));
+    [...label.text].forEach((ch,i)=>{
+      if(x+i<w)g[y][x+i]=ch;
+    });
+  });
+  const pulse=(tick||0)%6;
+  const nodeMarks=(nodes||[]).slice(0,18);
+  nodeMarks.forEach((n,i)=>{
+    const seed=Math.abs(hashCode(String(n.id||n.name||i)));
+    const x=Math.floor((0.10 + ((seed%78)/100))*w);
+    const y=Math.floor((0.16 + (((seed>>3)%58)/100))*h);
+    if(y>=0&&y<h&&x>=0&&x<w)g[y][x]=i%3===pulse%3?'@':'*';
+  });
   return g.map(row=>row.join('')).join('\n');
 }
 function renderHome(){
   const m=el('main');
   const v=D.nodes.filter(vis);
+  const topStacks=[...new Set(v.map(n=>String(n.stack||'').trim()).filter(Boolean))].slice(0,3);
+  const topTypes=[...new Set(v.map(n=>String(n.type||'').trim()).filter(Boolean))].slice(0,3);
+  const chips=[`${v.length} visible nodes`,...topStacks,...topTypes].slice(0,6);
   const wrap=document.createElement('div');
   wrap.className='home-wrap';
   wrap.innerHTML=`
     <pre class="ascii-map" id="asciiMap"></pre>
     <div class="home-overlay-top">
+      <section class="home-hero">
+        <div class="home-kicker">DeSci map / live workspace</div>
+        <div class="home-title">ASCII WORLD
+SCIENCE TERRAIN</div>
+        <div class="home-sub">A stripped-down command-center view for feed triage, watchlists, and project context. The map is static enough to read and lightweight enough to keep the home screen fast.</div>
+        <div class="home-chip-row">${chips.map(ch=>`<span class="home-chip">${escapeHtml(ch)}</span>`).join('')}</div>
+      </section>
       <div class="ticker">
         <div class="ticker-head">Live Intelligence Ticker</div>
         <div class="ticker-main" id="homeTickerTitle">Loading feed...</div>
@@ -2533,6 +2677,7 @@ function renderHome(){
       </div>
       <section class="home-kanban" id="homeKanban"></section>
     </div>
+    <div class="home-map-footer">mapscii-inspired world map / desci watch surface</div>
   `;
   m.appendChild(wrap);
   renderHomeKanban();
@@ -2558,7 +2703,7 @@ function renderHome(){
     p.textContent=asciiFrame(v,tick++,cols,rows);
   };
   draw();
-  homeAsciiTimer=null;
+  homeAsciiTimer=setInterval(draw,2600);
   renderHomeFeeds();
   refreshHomeFeeds(false);
   homeRefreshTimer=setInterval(()=>refreshHomeFeeds(false),12*60*1000);
@@ -2778,5 +2923,6 @@ window.addEventListener('resize',()=>{clearTimeout(window._rt);window._rt=setTim
 </script>
 </body>
 </html>
+
 
 
