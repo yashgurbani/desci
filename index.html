@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DeSci Landscape</title>
+<title>DeSci Map</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 <style>
@@ -264,6 +264,55 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
 .unesco-item .t{font-size:.72rem;color:var(--text);font-weight:600;line-height:1.3}
 .unesco-item .d{font-size:.74rem;color:var(--text-2);line-height:1.45;margin-top:3px}
 .unesco-ref{font-size:.7rem;color:var(--link);margin-top:8px;display:inline-flex;align-items:center;gap:4px}
+
+/* HOME / INFO / JOURNAL / LITERATURE */
+.home-wrap,.info-wrap,.journal-wrap,.lit-wrap{height:100%;overflow:auto;padding:20px;display:flex;flex-direction:column;gap:14px}
+.hero{background:linear-gradient(130deg,rgba(116,221,215,.08),rgba(212,168,83,.06));border:1px solid var(--border);border-radius:12px;padding:16px 18px}
+.hero h1{font-family:var(--display);font-size:1.35rem;color:var(--gold);margin-bottom:4px}
+.hero p{font-size:.83rem;color:var(--text-2)}
+.home-grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:14px;min-height:0;flex:1}
+.ascii-panel,.feed-panel{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px;min-height:0}
+.ascii-map{font-family:var(--mono);font-size:.66rem;line-height:1.25;color:var(--sage);white-space:pre;overflow:auto;background:radial-gradient(circle at 20% 10%,rgba(116,221,215,.08),transparent 45%);border:1px solid var(--border);border-radius:8px;padding:12px;min-height:420px;max-height:68vh}
+.ticker{border:1px solid var(--border);border-radius:8px;background:var(--card);padding:8px 10px;font-size:.74rem;color:var(--text-2)}
+.ticker strong{color:var(--gold);margin-right:8px}
+.ticker-item{color:var(--text)}
+.feed-title{font-family:var(--mono);font-size:.68rem;color:var(--text-3);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:8px}
+.feed-list{display:flex;flex-direction:column;gap:8px;max-height:48vh;overflow:auto;padding-right:4px}
+.feed-item{border:1px solid var(--border);border-radius:8px;padding:8px 10px;background:var(--card)}
+.feed-item a{font-size:.76rem;font-weight:600;line-height:1.35;color:var(--text)}
+.feed-item .meta{font-size:.68rem;color:var(--text-3);margin-top:3px}
+.home-foot{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.mini-kpi{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:10px}
+.mini-kpi .k{font-size:.62rem;color:var(--text-3);font-family:var(--mono);text-transform:uppercase;letter-spacing:1px}
+.mini-kpi .v{font-size:1rem;color:var(--text);font-weight:700;margin-top:2px}
+.info-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.info-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:13px}
+.info-card h3{font-size:.88rem;color:var(--gold);font-family:var(--mono);margin-bottom:6px}
+.info-card p{font-size:.78rem;color:var(--text-2);line-height:1.5}
+.journal-shell{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:14px;min-height:0;flex:1}
+.journal-main,.journal-side{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px;min-height:0}
+.journal-main{overflow:auto}
+.journal-side{overflow:auto}
+.plant-stage{font-family:var(--mono);font-size:.75rem;line-height:1.35;white-space:pre;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px;color:var(--sage);margin-bottom:10px}
+.j-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.j-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.journal-log{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.journal-entry{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:9px}
+.journal-entry .d{font-family:var(--mono);font-size:.68rem;color:var(--gold)}
+.journal-entry .t{font-size:.76rem;color:var(--text-2);line-height:1.45;margin-top:3px}
+.lit-toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.lit-search{flex:1;min-width:220px}
+.lit-table-wrap{border:1px solid var(--border);border-radius:10px;overflow:auto;max-height:70vh;background:var(--surface)}
+.lit-table{width:100%;border-collapse:separate;border-spacing:0;font-size:.79rem}
+.lit-table th{position:sticky;top:0;background:var(--surface);z-index:1;text-align:left;font-family:var(--mono);font-size:.64rem;color:var(--text-3);text-transform:uppercase;letter-spacing:.8px;padding:9px 8px;border-bottom:1px solid var(--border-h)}
+.lit-table td{padding:8px;border-bottom:1px solid var(--border);vertical-align:top}
+.lit-table tr:hover{background:var(--card)}
+.lit-pill{font-size:.66rem;padding:3px 8px;border-radius:999px;border:1px solid var(--border);background:var(--card);color:var(--text-2)}
+.lit-person{display:flex;align-items:center;gap:8px}
+.lit-person label{display:inline-flex;align-items:center;gap:4px;font-size:.68rem;color:var(--text-2)}
+.lite-note{font-size:.74rem;color:var(--text-3)}
+.status-inline{font-size:.7rem;color:var(--text-3)}
+@media(max-width:1150px){.home-grid,.journal-shell{grid-template-columns:1fr}.home-foot{grid-template-columns:1fr 1fr}.info-grid{grid-template-columns:1fr}}
 @media(max-width:1050px){.biz-main{grid-template-columns:1fr}.biz-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 /* RESPONSIVE */
@@ -281,18 +330,21 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
 </style>
 </head>
 <body>
-<div class="app hide-right" id="app">
+<div class="app hide-right hide-left" id="app">
   <header class="header">
-    <span class="logo">DeSci Landscape</span>
+    <span class="logo">DeSci Map</span>
     <span class="stats" id="stats"></span>
     <span class="sync-status" id="syncStatus" onclick="onSyncClick()" title="Click to sync"><span class="sync-dot"></span><span id="syncText">local</span></span>
     <nav class="tabs">
-      <button class="tab on" onclick="setView('graph',this)">Graph</button>
+      <button class="tab on" onclick="setView('home',this)">Home</button>
+      <button class="tab" onclick="setView('graph',this)">Graph</button>
       <button class="tab" onclick="setView('table',this)">Directory</button>
       <button class="tab" onclick="setView('people',this)">People</button>
       <button class="tab" onclick="setView('pgraph',this)">People Graph</button>
       <button class="tab" onclick="setView('lit',this)">Literature</button>
-      <button class="tab" onclick="setView('biz',this)">Business Models</button>
+      <button class="tab" onclick="setView('biz',this)">Values</button>
+      <button class="tab" onclick="setView('journal',this)">Journal</button>
+      <button class="tab" onclick="setView('info',this)">Metrics</button>
     </nav>
     <div class="actions">
       <button class="btn" onclick="addOrgM()">+ Org</button>
@@ -375,7 +427,7 @@ const GLOSS={
 // ===== GLOBALS =====
 const el=id=>document.getElementById(id);
 let D={nodes:[],edges:[],people:[]};
-let view='graph',selId=null,sim=null,zoomBehavior=null,svgG=null;
+let view='home',selId=null,sim=null,zoomBehavior=null,svgG=null;
 let flt={stack:[],type:[],overlap:[],legal:[],conf:[]};
 let sortC='overlapScore',sortA=false;
 let zoteroItems=null;
@@ -384,6 +436,11 @@ let bizLabelDetail='metrics';
 let auditRowsByKey=new Map();
 let bizTipPinned=false;
 let bizTipPinnedNodeId=null;
+let homeFeedState={items:[],sections:{keywords:[],relations:[],youtube:[]},lastUpdated:''};
+let homeTickerTimer=null;
+let homeRefreshTimer=null;
+let homeAsciiTimer=null;
+let litQuery='';
 
 const SC={infrastructure:'var(--sage)',application:'var(--rose)',governance:'var(--teal)'};
 const SBG={infrastructure:'rgba(110,200,155,.12)',application:'rgba(232,126,154,.12)',governance:'rgba(90,184,179,.12)'};
@@ -481,6 +538,8 @@ async function init(){
   D.nodes.forEach(n=>{n.wp=n.wp||'';n.git=n.git||'';n.twitter=n.twitter||'';n.cf=n.cf||{};n.overlapTags=n.overlapTags||[];n.credScore=n.credScore||0;n.overlapScore=n.overlapScore||0;n.decentNote=n.decentNote||'';n.techStack=n.techStack||'';n.compNote=n.compNote||'';n.notes=n.notes||'';n.finModel=n.finModel||'';n.legalStructure=n.legalStructure||'unknown';n.apc=n.apc||false;n.profitScore=n.profitScore??50;n.openScienceScore=n.openScienceScore??((n.financials&&n.financials.openScienceCompatibilityScore)??50);n.finNote=n.finNote||'';n.fundingRaised=n.fundingRaised||'';n.provenance=n.provenance||{confidence:'low',hasUnverifiedClaims:true,sources:[],lastVerified:'',notes:''};n.financials=n.financials||{revenueSources:[],researcherPays:'unknown',institutionPays:'unknown',openScienceAlignment:'unknown',openScienceAlignmentNote:'',scoreBreakdown:{},openScienceCompatibilityScore:50,openScienceCompatibilityBand:'moderate',scoreAudit:{}};if(n.financials&&n.financials.openScienceCompatibilityScore==null)n.financials.openScienceCompatibilityScore=n.openScienceScore??50;n.sourceAsterisk=!!n.sourceAsterisk});
   D.edges=(D.edges||[]).map(e=>e.type==='collaborator'?({...e,type:'partner'}):e);
   if(!D.people)D.people=[];
+  D.journal=D.journal||[];
+  D.litProgress=D.litProgress||{};
   buildPills();render();updateSB();updateStats();
   setTimeout(autoSync,500);
   initGlossary();
@@ -510,7 +569,7 @@ function initGlossary(){
   document.addEventListener('mouseover',e=>{
     const t=e.target;
     if(!t.classList||!t.classList.contains('pill')&&!t.classList.contains('tag-chip')&&!t.classList.contains('stack-chip'))return;
-    const txt=cleanMojibakeString(t.textContent||'').replace(/[x×]/g,'').trim();
+    const txt=cleanMojibakeString(t.textContent||'').replace(/[x\u00D7]/g,'').trim();
     const def=GLOSS[txt];
     if(!def)return;
     const gt=el('glossTip');
@@ -575,7 +634,20 @@ function togglePanel(p){
     else if(view==='pgraph') render();
   }));
 }
-function setView(v,b){view=v;document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));b.classList.add('on');render()}
+function setView(v,b){
+  view=v;
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+  b.classList.add('on');
+  if(v==='home'){
+    el('app').classList.add('hide-right');
+    el('app').classList.add('hide-left');
+  }else{
+    el('app').classList.remove('hide-left');
+    if(v==='info'||v==='journal'||v==='lit')el('app').classList.add('hide-right');
+    else el('app').classList.remove('hide-right');
+  }
+  render();
+}
 
 function computeComponents(nodes, links){
   const ids = nodes.map(n => n.id);
@@ -715,16 +787,22 @@ function resizeGraphViewport(){
 
 // ===== RENDER =====
 function render(){
-  const m=el('main');m.querySelectorAll('svg,.table-wrap,.people-grid,.lit-panel,.legend,.biz-wrap').forEach(e=>e.remove());
+  const m=el('main');m.querySelectorAll('svg,.table-wrap,.people-grid,.lit-panel,.legend,.biz-wrap,.home-wrap,.info-wrap,.journal-wrap,.lit-wrap').forEach(e=>e.remove());
+  if(homeTickerTimer){clearInterval(homeTickerTimer);homeTickerTimer=null;}
+  if(homeRefreshTimer){clearInterval(homeRefreshTimer);homeRefreshTimer=null;}
+  if(homeAsciiTimer){clearInterval(homeAsciiTimer);homeAsciiTimer=null;}
   if(view!=='biz'){bizTipPinned=false;bizTipPinnedNodeId=null;}
   const tip=el('tip'); if(tip){tip.classList.remove('vis');tip.classList.toggle('interactive',view==='biz');}
   if(sim)sim.stop();
-  if(view==='graph')buildGraph();
+  if(view==='home')renderHome();
+  else if(view==='graph')buildGraph();
   else if(view==='table')renderTable();
   else if(view==='people')renderPeople();
   else if(view==='pgraph')renderPeopleGraph();
   else if(view==='lit')renderLit();
-  else renderBiz();
+  else if(view==='biz')renderBiz();
+  else if(view==='journal')renderJournal();
+  else renderInfo();
   sanitizeVisibleText(m);
 }
 
@@ -850,7 +928,7 @@ function renderTable(){
   const ovBar=(v)=>{const c=v>=60?'var(--gold)':v>=30?'var(--text-2)':'var(--text-3)';return `<div class="ob"><div class="ob-bar"><div class="ob-fill" style="width:${v}%;background:${c}"></div></div><span style="font-family:var(--mono);font-size:.68rem">${v}</span></div>`};
   const credBadge=(v)=>{const c=v>=60?'var(--sage)':v>=30?'var(--gold)':'var(--text-3)';const bg=v>=60?'rgba(110,200,155,.12)':v>=30?'rgba(212,168,83,.08)':'var(--raised)';return `<span class="cred-badge" style="background:${bg};color:${c}">${v}</span>`};
   const osBadge=(v)=>`<span class="profit-badge" style="background:${osBg(v)};color:${osC(v)}">${v}</span>`;
-  w.innerHTML=`<table class="dtbl"><thead><tr>${cols.map(c=>`<th onclick="doSort('${c.k}')">${c.l}${sortC===c.k?(sortA?' ↑':' ↓'):''}</th>`).join('')}</tr></thead><tbody>${ns.map(n=>`<tr class="${n.id===selId?'sel':''}" onclick="selNode('${n.id}');el('app').classList.remove('hide-right')"><td><strong>${n.name}${n.sourceAsterisk?' *':''}</strong></td><td>${n.type||''}</td><td><span class="stack-chip" style="background:${SBG[n.stack]||''};color:${SC[n.stack]||''}">${n.stack||''}</span></td><td>${ovBar(n.overlapScore||0)}</td><td>${credBadge(n.credScore||0)}</td><td><span class="profit-badge" style="background:${profitBg(n.profitScore)};color:${profitC(n.profitScore)}">${n.profitScore??50}</span></td><td>${osBadge(n.openScienceScore ?? ((n.financials&&n.financials.openScienceCompatibilityScore) || 0))}</td><td><span class="conf-badge ${confClass((n.provenance&&n.provenance.confidence)||'low')}">${(n.provenance&&n.provenance.confidence)||'low'}</span></td><td>${n.stage||''}</td><td title="${(n.compNote||'').replace(/"/g,'&quot;')}" style="max-width:220px;overflow:hidden;text-overflow:ellipsis;font-size:.75rem;color:var(--text-2)">${n.compNote||''}</td></tr>`).join('')}</tbody></table>`;
+  w.innerHTML=`<table class="dtbl"><thead><tr>${cols.map(c=>`<th onclick="doSort('${c.k}')">${c.l}${sortC===c.k?(sortA?' ^':' v'):''}</th>`).join('')}</tr></thead><tbody>${ns.map(n=>`<tr class="${n.id===selId?'sel':''}" onclick="selNode('${n.id}');el('app').classList.remove('hide-right')"><td><strong>${n.name}${n.sourceAsterisk?' *':''}</strong></td><td>${n.type||''}</td><td><span class="stack-chip" style="background:${SBG[n.stack]||''};color:${SC[n.stack]||''}">${n.stack||''}</span></td><td>${ovBar(n.overlapScore||0)}</td><td>${credBadge(n.credScore||0)}</td><td><span class="profit-badge" style="background:${profitBg(n.profitScore)};color:${profitC(n.profitScore)}">${n.profitScore??50}</span></td><td>${osBadge(n.openScienceScore ?? ((n.financials&&n.financials.openScienceCompatibilityScore) || 0))}</td><td><span class="conf-badge ${confClass((n.provenance&&n.provenance.confidence)||'low')}">${(n.provenance&&n.provenance.confidence)||'low'}</span></td><td>${n.stage||''}</td><td title="${(n.compNote||'').replace(/"/g,'&quot;')}" style="max-width:220px;overflow:hidden;text-overflow:ellipsis;font-size:.75rem;color:var(--text-2)">${n.compNote||''}</td></tr>`).join('')}</tbody></table>`;
   m.appendChild(w);
 }
 function doSort(c){if(sortC===c)sortA=!sortA;else{sortC=c;sortA=false}render()}
@@ -1128,7 +1206,7 @@ function renderBiz(){
   const head=wrap.append('div').attr('class','biz-head');
   const headLeft=head.append('div');
   headLeft.html(`
-    <div class="biz-title">Business models map</div>
+    <div class="biz-title">Values map</div>
     <div class="biz-sub">Interactive scatter for commercial pressure versus open-science fit. Hover points for evidence-backed notes and citation links, drag to pan, and scroll to zoom. Point size = overlap with your thesis, outline = decentralization, ring = evidence confidence.</div>
     <div class="biz-legend">
       <span class="biz-legend-chip">Color = stack layer</span>
@@ -1246,9 +1324,19 @@ function renderBiz(){
     tip.addEventListener('click',evt=>{
       const pinBtn=evt.target.closest('[data-tip-pin]');
       if(pinBtn){
-        bizTipPinned=false;
-        bizTipPinnedNodeId=null;
-        tip.classList.remove('vis');
+        evt.stopPropagation();
+        const activeId=tip.dataset.nodeId||'';
+        if(!activeId)return;
+        if(bizTipPinned && bizTipPinnedNodeId===activeId){
+          bizTipPinned=false;
+          bizTipPinnedNodeId=null;
+          tip.classList.remove('vis');
+        }else{
+          bizTipPinned=true;
+          bizTipPinnedNodeId=activeId;
+          pinBtn.textContent='Unpin';
+          tip.classList.add('vis');
+        }
       }
     });
     tip.dataset.bizBound='1';
@@ -1256,7 +1344,7 @@ function renderBiz(){
   const hideTipSoon=()=>{
     if(bizTipPinned)return;
     clearTimeout(window._bizTipHideTimer);
-    window._bizTipHideTimer=setTimeout(()=>tip.classList.remove('vis'),140);
+    window._bizTipHideTimer=setTimeout(()=>tip.classList.remove('vis'),260);
   };
   const moveTip=(evt)=>{
     const r=m.getBoundingClientRect();
@@ -1282,7 +1370,9 @@ function renderBiz(){
     const osProfile=inferUnescoPrinciples(d);
     const pList=osProfile.principles.slice(0,3).map(p=>escapeHtml(p.label)).join('; ');
     const principleHtml=`<div class="tm" style="margin-top:6px">UNESCO principles: ${pList||'none surfaced'} | <a href="${osProfile.reference.url}" target="_blank" rel="noopener">guideline</a></div>`;
-    tip.innerHTML=`<div class="tip-head"><h4>${escapeHtml(d.name)}${d.sourceAsterisk?' *':''}</h4><button class="tip-pin-btn" data-tip-pin>${persist?'Unpin':'Close'}</button></div><div class="tm">Profit ${d.profitScore} | OS fit ${d.openScienceScore} | Overlap ${d.overlapScore||0} | Decen ${d.decen||0} | ${escapeHtml(d.legalStructure||'unknown')} | ${escapeHtml(rev)}</div>${principleHtml}${auditHtml}${srcHtml}`;
+    const pinnedNow=persist || (bizTipPinned && bizTipPinnedNodeId===d.id);
+    tip.dataset.nodeId=d.id;
+    tip.innerHTML=`<div class="tip-head"><h4>${escapeHtml(d.name)}${d.sourceAsterisk?' *':''}</h4><button class="tip-pin-btn" data-tip-pin>${pinnedNow?'Unpin':'Pin'}</button></div><div class="tm">Profit ${d.profitScore} | OS fit ${d.openScienceScore} | Overlap ${d.overlapScore||0} | Decen ${d.decen||0} | ${escapeHtml(d.legalStructure||'unknown')} | ${escapeHtml(rev)}</div>${principleHtml}${auditHtml}${srcHtml}`;
     if(persist){bizTipPinned=true;bizTipPinnedNodeId=d.id;}
     tip.classList.add('vis');
     moveTip(evt);
@@ -1402,9 +1492,9 @@ function renderBiz(){
   };
   const labelFmt=(d)=>{
     if(currentLabelDetail==='name') return d.name;
-    if(currentLabelDetail==='overlap') return `${d.name} · Ov ${d.overlapScore||0}`;
-    if(currentLabelDetail==='decen') return `${d.name} · Dc ${d.decen||0}`;
-    return `${d.name} · Ov ${d.overlapScore||0} · Dc ${d.decen||0}`;
+    if(currentLabelDetail==='overlap') return `${d.name} | Ov ${d.overlapScore||0}`;
+    if(currentLabelDetail==='decen') return `${d.name} | Dc ${d.decen||0}`;
+    return `${d.name} | Ov ${d.overlapScore||0} | Dc ${d.decen||0}`;
   };
   let labels=plot.filter(labelSetFns[currentLabelSet]||labelSetFns.none)
     .sort((a,b)=>((b.overlapScore||0)+(b.decen||0)+Math.abs((b.profitScore||50)-(b.openScienceScore||50))*0.42)-((a.overlapScore||0)+(a.decen||0)+Math.abs((a.profitScore||50)-(a.openScienceScore||50))*0.42));
@@ -1477,9 +1567,9 @@ function renderBiz(){
   svg.call(zoom).on('dblclick.zoom',null);
   floating.append('button').attr('class','biz-mini-btn').text('Reset zoom').on('click',()=>svg.transition().duration(260).call(zoom.transform,d3.zoomIdentity));
   floating.append('button').attr('class','biz-mini-btn').text('Fullscreen').on('click',()=>{
-    const node=chartPanel.node();
-    if(document.fullscreenElement===node){if(document.exitFullscreen)document.exitFullscreen();}
-    else if(node.requestFullscreen)node.requestFullscreen().catch(()=>{});
+    const fsTarget=el('main');
+    if(document.fullscreenElement===fsTarget){if(document.exitFullscreen)document.exitFullscreen();}
+    else if(fsTarget.requestFullscreen)fsTarget.requestFullscreen().catch(()=>{});
   });
   svg.on('click',evt=>{
     if(evt.target===svg.node()){
@@ -1490,16 +1580,413 @@ function renderBiz(){
   });
 }
 
+function fmtDateISO(v){
+  const d=v?new Date(v):new Date();
+  if(Number.isNaN(d.getTime()))return new Date().toISOString().slice(0,10);
+  return d.toISOString().slice(0,10);
+}
+function fmtDateShort(v){
+  const d=v?new Date(v):new Date();
+  if(Number.isNaN(d.getTime()))return 'unknown';
+  return d.toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'});
+}
+function downloadTextFile(name,text){
+  const b=new Blob([text],{type:'text/markdown;charset=utf-8'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(b);
+  a.download=name;
+  a.click();
+}
+function journalEntriesSorted(){
+  return [...(D.journal||[])].sort((a,b)=>String(b.date||'').localeCompare(String(a.date||'')));
+}
+function journalStreak(entries){
+  if(!entries.length)return 0;
+  const days=new Set(entries.map(e=>String(e.date||'').slice(0,10)));
+  let n=0;
+  let d=new Date();
+  for(let i=0;i<400;i++){
+    const key=d.toISOString().slice(0,10);
+    if(days.has(key))n++;
+    else if(i===0){d.setDate(d.getDate()-1);continue;}
+    else break;
+    d.setDate(d.getDate()-1);
+  }
+  return n;
+}
+function journalPlantArt(streak){
+  if(streak>=30)return ['      /\\\\      ','     /**\\\\     ','    /****\\\\    ','      ||||      ','   __/||||\\__  ','  forest alive  '].join('\n');
+  if(streak>=14)return ['      /\\      ','     /**\\     ','    /****\\    ','      ||      ','     _||_     ','   growing...  '].join('\n');
+  if(streak>=7)return ['      /\\      ','     /..\\     ','      ||      ','      ||      ','     _||_     ','   rooted week '].join('\n');
+  if(streak>=3)return ['      ..       ','      ||       ','      ||       ','     _||_      ','   tiny sprout '].join('\n');
+  return ['      .        ','      |        ','     _|_       ','   start today '].join('\n');
+}
+function buildJournalMarkdown(entries){
+  const lines=[];
+  lines.push('# DeSci Map Journal');
+  lines.push('');
+  lines.push(`Last updated: ${new Date().toISOString()}`);
+  lines.push('');
+  entries.forEach(e=>{
+    lines.push(`## ${e.date}`);
+    lines.push(`- Hours worked: ${e.hours||0}`);
+    lines.push(`- What I did: ${e.did||''}`);
+    lines.push(`- Ideas / random thoughts: ${e.ideas||''}`);
+    lines.push(`- Blockers: ${e.blockers||''}`);
+    lines.push(`- Plan alive tomorrow: ${e.plan||''}`);
+    lines.push('');
+  });
+  return lines.join('\n');
+}
+async function ghPutFile(pathKey,text,shaStoreKey,message){
+  if(!GH.ok)return false;
+  let sha=localStorage.getItem(shaStoreKey)||'';
+  if(!sha){
+    try{
+      const c=await fetch(`https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/${pathKey}`,{headers:{'Authorization':'Bearer '+GH.token,'Accept':'application/vnd.github.v3+json'}});
+      if(c.ok){const j=await c.json();sha=j.sha;localStorage.setItem(shaStoreKey,sha)}
+    }catch(e){}
+  }
+  const bytes=new TextEncoder().encode(text);
+  let bin='';
+  for(let i=0;i<bytes.length;i++)bin+=String.fromCharCode(bytes[i]);
+  const body={message:message||`Update ${pathKey}`,content:btoa(bin)};
+  if(sha)body.sha=sha;
+  const r=await fetch(`https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/${pathKey}`,{method:'PUT',headers:{'Authorization':'Bearer '+GH.token,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},body:JSON.stringify(body)});
+  if(!r.ok)return false;
+  const j=await r.json();
+  if(j&&j.content&&j.content.sha)localStorage.setItem(shaStoreKey,j.content.sha);
+  return true;
+}
+async function syncJournalMarkdown(showMessage){
+  const entries=journalEntriesSorted();
+  const md=buildJournalMarkdown(entries);
+  localStorage.setItem('journal-md-cache',md);
+  if(GH.ok){
+    const ok=await ghPutFile('JOURNAL.md',md,'gh-journal-sha',`Journal update ${new Date().toISOString().slice(0,16)}`);
+    if(showMessage){const s=el('jStatus');if(s)s.textContent=ok?'Saved JOURNAL.md to repo':'Saved locally (repo push failed)';}
+    return ok;
+  }
+  if(showMessage){const s=el('jStatus');if(s)s.textContent='Saved locally. Connect GitHub sync to push JOURNAL.md to repo.';}
+  return false;
+}
+function saveJournalEntry(){
+  const date=(el('jDate')?.value||fmtDateISO()).slice(0,10);
+  const entry={
+    date,
+    hours:Number(el('jHours')?.value||0),
+    did:(el('jDid')?.value||'').trim(),
+    ideas:(el('jIdeas')?.value||'').trim(),
+    blockers:(el('jBlockers')?.value||'').trim(),
+    plan:(el('jPlan')?.value||'').trim()
+  };
+  D.journal=(D.journal||[]).filter(e=>String(e.date||'').slice(0,10)!==date);
+  D.journal.push(entry);
+  save();
+  renderJournal();
+  syncJournalMarkdown(true);
+}
+function downloadJournalMarkdown(){
+  const md=buildJournalMarkdown(journalEntriesSorted());
+  downloadTextFile('JOURNAL.md',md);
+}
+function pushJournalMarkdown(){
+  syncJournalMarkdown(true);
+}
+function renderJournal(){
+  const m=el('main');
+  const entries=journalEntriesSorted();
+  const streak=journalStreak(entries);
+  const wrap=document.createElement('div');
+  wrap.className='journal-wrap';
+  wrap.innerHTML=`
+    <div class="hero"><h1>Forest Journal</h1><p>Quick daily check-in keeps your plan alive. One entry a day grows your streak and updates <code>JOURNAL.md</code>.</p></div>
+    <div class="journal-shell">
+      <section class="journal-main">
+        <div class="field"><div class="flabel">Date</div><input class="finput" type="date" id="jDate" value="${fmtDateISO()}"></div>
+        <div class="j-row">
+          <div class="field"><div class="flabel">Hours Worked</div><input class="finput" id="jHours" type="number" min="0" max="24" step="0.25" placeholder="e.g. 6.5"></div>
+          <div class="field"><div class="flabel">Status</div><div class="status-inline" id="jStatus">${GH.ok?'GitHub sync ready for JOURNAL.md':'Local save mode; repo push needs GitHub sync'}</div></div>
+        </div>
+        <div class="field"><div class="flabel">What did I do today?</div><textarea class="finput" id="jDid" placeholder="Top outcomes, tasks moved, progress made"></textarea></div>
+        <div class="field"><div class="flabel">Random thoughts / ideas</div><textarea class="finput" id="jIdeas" placeholder="Any sparks, hypotheses, product ideas"></textarea></div>
+        <div class="field"><div class="flabel">Blockers</div><textarea class="finput" id="jBlockers" placeholder="What slowed me down and what I need"></textarea></div>
+        <div class="field"><div class="flabel">Plan alive tomorrow</div><textarea class="finput" id="jPlan" placeholder="First concrete step tomorrow"></textarea></div>
+        <div class="j-actions">
+          <button class="btn btn-fill" onclick="saveJournalEntry()">Save Today</button>
+          <button class="btn" onclick="downloadJournalMarkdown()">Download JOURNAL.md</button>
+          <button class="btn" onclick="pushJournalMarkdown()">Push JOURNAL.md</button>
+        </div>
+      </section>
+      <aside class="journal-side">
+        <div class="plant-stage">${journalPlantArt(streak)}</div>
+        <div class="lite-note">Current streak: <b>${streak}</b> day${streak===1?'':'s'}.</div>
+        <div class="journal-log">
+          ${entries.slice(0,28).map(e=>`<article class="journal-entry"><div class="d">${escapeHtml(e.date||'')}</div><div class="t"><b>Hours:</b> ${escapeHtml(e.hours??0)}<br><b>Did:</b> ${escapeHtml(e.did||'')}<br><b>Ideas:</b> ${escapeHtml(e.ideas||'')}</div></article>`).join('') || '<div class="lite-note">No entries yet. Add your first check-in today.</div>'}
+        </div>
+      </aside>
+    </div>`;
+  m.appendChild(wrap);
+  sanitizeVisibleText(wrap);
+}
+
+function renderInfo(){
+  const m=el('main');
+  const w=document.createElement('div');
+  w.className='info-wrap';
+  w.innerHTML=`
+    <div class="hero"><h1>Score Metrics</h1><p>Reference guide for internal scoring lenses. Facts come from provenance sources; scores are strategic interpretations.</p></div>
+    <div class="info-grid">
+      <article class="info-card"><h3>Cred</h3><p><b>Credibility relevance score (0-100).</b> Definition follows the project rubric in prior Claude handoff + README: how strongly a node contributes to trust, verification, peer review, reproducibility, reputation, and scientific integrity workflows. High Cred means high relevance to credibility infrastructure; it is an internal strategic lens, not a direct factual claim.</p></article>
+      <article class="info-card"><h3>Profit</h3><p><b>Commerciality / profit-orientation score (0-100).</b> 0 means commons/nonprofit orientation, 100 means strongly investor-, fee-, or market-pressure driven. This is interpreted from legal structure, revenue model, capital pressure, and fee exposure.</p></article>
+      <article class="info-card"><h3>OS Fit</h3><p><b>Open-science compatibility score (0-100).</b> Higher values reflect stronger alignment with open access, community-oriented infrastructure, transparent governance, and equitable participation. Each node is now justified against UNESCO open-science principles in its detail and tooltip context.</p></article>
+      <article class="info-card"><h3>Evidence</h3><p><b>Source confidence:</b> high / medium / low. High means key legal/financial claims are directly verified with stronger sources; medium means partial verification; low means unresolved claims remain. Evidence governs trust: source-backed facts override score interpretations.</p></article>
+      <article class="info-card"><h3>How To Read Together</h3><p>Use Profit + OS Fit as a two-axis values lens, Cred for trust relevance, and Evidence to judge certainty. A high score with low evidence should be treated as provisional until sourcing improves.</p></article>
+      <article class="info-card"><h3>Scoring Discipline</h3><p>Keep scores editable only through auditable fields and notes. Surface supporting claims in provenance/material claims and avoid presenting internal scores as factual financial disclosures. Suggested reading order: Evidence -> Profit/OS Fit -> Cred.</p></article>
+    </div>`;
+  m.appendChild(w);
+  sanitizeVisibleText(w);
+}
+
+async function fetchTextWithTimeout(url,ms){
+  const t=ms||8000;
+  const ctrl=new AbortController();
+  const id=setTimeout(()=>ctrl.abort(),t);
+  try{const r=await fetch(url,{signal:ctrl.signal});if(!r.ok)throw new Error(String(r.status));return await r.text();}
+  finally{clearTimeout(id)}
+}
+async function fetchRssText(url){
+  const raw='https://api.allorigins.win/raw?url='+encodeURIComponent(url);
+  const jina='https://r.jina.ai/http://'+url.replace(/^https?:\/\//,'');
+  const tries=[raw,jina,url];
+  for(const u of tries){
+    try{const txt=await fetchTextWithTimeout(u,9000);if(txt&&txt.length>80)return txt;}catch(e){}
+  }
+  return '';
+}
+function parseRssItems(xmlText,source,max){
+  const cap=max||6;
+  if(!xmlText)return [];
+  try{
+    const doc=new DOMParser().parseFromString(xmlText,'text/xml');
+    const ns=[...doc.querySelectorAll('item,entry')].slice(0,cap);
+    return ns.map(n=>{
+      const t=n.querySelector('title')?.textContent||'';
+      const linkNode=n.querySelector('link');
+      const link=(linkNode?.getAttribute('href')||linkNode?.textContent||'').trim();
+      const pub=n.querySelector('pubDate,updated,published')?.textContent||'';
+      return {title:cleanMojibakeString(t),link:link,pubDate:pub,source:source};
+    }).filter(x=>x.title&&x.link);
+  }catch(e){return []}
+}
+function projectKeywords(){
+  const fromTags=[...new Set(D.nodes.flatMap(n=>[...(n.tags||[]),...(n.overlapTags||[])].map(x=>String(x).replace(/[-_]/g,' '))))];
+  const seeds=['decentralized science','open science publishing','peer review','scientific credibility','bioDAO','research data commons','decentralized compute'];
+  return [...new Set([...seeds,...fromTags])].filter(Boolean).slice(0,9);
+}
+function relationWatchNames(){
+  const idToName=new Map((D.nodes||[]).map(n=>[n.id,n.name]));
+  const ids=(D.edges||[]).filter(e=>['partner','ecosystem','funder','overlap'].includes(e.type)).flatMap(e=>[e.s,e.t]);
+  return [...new Set(ids.map(id=>idToName.get(id)||id).filter(Boolean))].slice(0,9);
+}
+async function fetchGoogleNews(query){
+  const url='https://news.google.com/rss/search?q='+encodeURIComponent(query)+'&hl=en-US&gl=US&ceid=US:en';
+  const txt=await fetchRssText(url);
+  return parseRssItems(txt,'news',5).map(i=>({...i,topic:query}));
+}
+async function fetchYouTube(query){
+  const url='https://www.youtube.com/feeds/videos.xml?search_query='+encodeURIComponent(query);
+  const txt=await fetchRssText(url);
+  return parseRssItems(txt,'youtube',4).map(i=>({...i,topic:query}));
+}
+function renderHomeFeeds(){
+  const t=el('homeTickerText');
+  const items=homeFeedState.items||[];
+  if(!t)return;
+  if(!items.length){t.textContent='Feed loading...';return;}
+  let idx=0;
+  const paint=()=>{
+    if(!items.length)return;
+    const it=items[idx%items.length];
+    t.innerHTML=`<a href="${escapeHtml(it.link)}" target="_blank" rel="noopener">${escapeHtml(it.title)}</a> <span class="status-inline">(${escapeHtml(it.source)} | ${escapeHtml(it.topic||'general')})</span>`;
+    idx++;
+  };
+  paint();
+  homeTickerTimer=setInterval(paint,5200);
+
+  const mount=(id,arr)=>{
+    const c=el(id); if(!c)return;
+    c.innerHTML=arr.slice(0,10).map(it=>`<article class="feed-item"><a href="${escapeHtml(it.link)}" target="_blank" rel="noopener">${escapeHtml(it.title)}</a><div class="meta">${escapeHtml(it.source)} | ${escapeHtml(it.topic||'')}</div></article>`).join('') || '<div class="lite-note">No items yet.</div>';
+  };
+  mount('homeFeedKeywords',homeFeedState.sections.keywords||[]);
+  mount('homeFeedRelations',homeFeedState.sections.relations||[]);
+  mount('homeFeedYoutube',homeFeedState.sections.youtube||[]);
+  const lu=el('homeLastUpdated');
+  if(lu)lu.textContent=homeFeedState.lastUpdated?`Last update: ${homeFeedState.lastUpdated}`:'Last update: pending';
+}
+async function refreshHomeFeeds(){
+  const kw=projectKeywords().slice(0,8);
+  const rel=relationWatchNames().slice(0,12);
+  const yk=projectKeywords().slice(0,6);
+  const [kwRes,relRes,ytRes]=await Promise.all([
+    Promise.all(kw.map(k=>fetchGoogleNews(k))).then(a=>a.flat()),
+    Promise.all(rel.map(k=>fetchGoogleNews(k+' open science'))).then(a=>a.flat()),
+    Promise.all(yk.map(k=>fetchYouTube(k))).then(a=>a.flat())
+  ]);
+  const uniq=(arr)=>{
+    const seen=new Set();
+    return arr.filter(x=>{if(!x.link||seen.has(x.link))return false;seen.add(x.link);return true;});
+  };
+  homeFeedState.sections={
+    keywords:uniq(kwRes),
+    relations:uniq(relRes),
+    youtube:uniq(ytRes)
+  };
+  homeFeedState.items=uniq([...homeFeedState.sections.keywords,...homeFeedState.sections.relations,...homeFeedState.sections.youtube]);
+  if(!homeFeedState.items.length){
+    const fallback=(D.nodes||[]).slice(0,10).map(n=>({title:`Watch: ${n.name} updates`,link:n.web||'#',source:'local',topic:n.type||'node'}));
+    homeFeedState.items=fallback;
+    homeFeedState.sections.keywords=fallback.slice(0,6);
+  }
+  homeFeedState.lastUpdated=new Date().toLocaleString();
+  if(view==='home')renderHomeFeeds();
+}
+function seeded(v){
+  const x=Math.sin(v*12.9898+78.233)*43758.5453;
+  return x-Math.floor(x);
+}
+function asciiFrame(nodes,tick){
+  const w=80,h=28;
+  const g=Array.from({length:h},()=>Array.from({length:w},()=> ' '));
+  for(let x=0;x<w;x++){g[0][x]='-';g[h-1][x]='-';}
+  for(let y=0;y<h;y++){g[y][0]='|';g[y][w-1]='|';}
+  g[0][0]='+';g[0][w-1]='+';g[h-1][0]='+';g[h-1][w-1]='+';
+  for(let i=0;i<240;i++){
+    const rx=1+Math.floor(seeded(i+tick*0.07)*(w-2));
+    const ry=1+Math.floor(seeded(i*1.77+tick*0.11)*(h-2));
+    g[ry][rx]=(i%11===0)?'*':'.';
+  }
+  nodes.slice(0,65).forEach((n,idx)=>{
+    const px=1+Math.floor(((n.profitScore??50)/100)*(w-3));
+    const py=1+Math.floor((1-((n.openScienceScore??50)/100))*(h-3));
+    g[py][px]=(n.name||'N').charAt(0).toUpperCase();
+    if(idx%7===0&&px+2<w-1){
+      const tag=((n.overlapScore||0)>=60?'#':(n.decen||0)>=70?'+':'o');
+      g[py][Math.min(w-2,px+1)]=tag;
+    }
+  });
+  const title='DESCI MAP VALUES SKY';
+  for(let i=0;i<title.length&&i<w-4;i++)g[1][2+i]=title[i];
+  return g.map(r=>r.join('')).join('\n');
+}
+function renderHome(){
+  const m=el('main');
+  const v=D.nodes.filter(vis);
+  const highOverlap=v.filter(n=>(n.overlapScore||0)>=60).length;
+  const hiEvidence=v.filter(n=>((n.provenance&&n.provenance.confidence)||'low')==='high').length;
+  const wrap=document.createElement('div');
+  wrap.className='home-wrap';
+  wrap.innerHTML=`
+    <div class="hero"><h1>DeSci Map</h1><p>Keep this dashboard open as your daily motivation console: values landscape, watch feeds, and project pulse.</p></div>
+    <div class="ticker"><strong>Live Watch</strong><span class="ticker-item" id="homeTickerText">Loading feed...</span></div>
+    <div class="home-grid">
+      <section class="ascii-panel">
+        <div class="feed-title">ASCII Values Map</div>
+        <pre class="ascii-map" id="asciiMap"></pre>
+      </section>
+      <aside class="feed-panel">
+        <div class="feed-title">Keyword Feed</div>
+        <div class="feed-list" id="homeFeedKeywords"></div>
+        <div class="feed-title" style="margin-top:10px">Competitors / Collaborators / Partners</div>
+        <div class="feed-list" id="homeFeedRelations"></div>
+        <div class="feed-title" style="margin-top:10px">YouTube Watch</div>
+        <div class="feed-list" id="homeFeedYoutube"></div>
+      </aside>
+    </div>
+    <div class="home-foot">
+      <div class="mini-kpi"><div class="k">Visible Nodes</div><div class="v">${v.length}</div></div>
+      <div class="mini-kpi"><div class="k">High Overlap</div><div class="v">${highOverlap}</div></div>
+      <div class="mini-kpi"><div class="k">High Evidence</div><div class="v">${hiEvidence}</div></div>
+    </div>
+    <div class="lite-note" id="homeLastUpdated">Last update: pending</div>`;
+  m.appendChild(wrap);
+
+  let tick=0;
+  const draw=()=>{const p=el('asciiMap');if(p)p.textContent=asciiFrame(v,tick++);};
+  draw();
+  homeAsciiTimer=setInterval(draw,2600);
+  renderHomeFeeds();
+  refreshHomeFeeds();
+  homeRefreshTimer=setInterval(()=>refreshHomeFeeds(),12*60*1000);
+  sanitizeVisibleText(wrap);
+}
+
+function litProgressFor(key){
+  D.litProgress=D.litProgress||{};
+  if(!D.litProgress[key])D.litProgress[key]={yash:{read:false,reviewed:false},ruhi:{read:false,reviewed:false}};
+  return D.litProgress[key];
+}
+function toggleLitStatus(keyEnc,person,field,val){
+  const key=decodeURIComponent(keyEnc);
+  const p=litProgressFor(key);
+  if(!p[person])p[person]={read:false,reviewed:false};
+  p[person][field]=!!val;
+  save();
+}
+function renderLitTable(){
+  const c=el('zotC');
+  if(!c)return;
+  if(!zoteroItems||!zoteroItems.length){c.innerHTML='<div class="lite-note">No Zotero items loaded.</div>';return;}
+  const q=(litQuery||'').toLowerCase();
+  const rows=zoteroItems.filter(i=>i&&i.data&&i.data.title).filter(i=>{
+    if(!q)return true;
+    const d=i.data;
+    const txt=[d.title,d.abstractNote,(d.creators||[]).map(x=>x.lastName).join(' '),d.publicationTitle].join(' ').toLowerCase();
+    return txt.includes(q);
+  });
+  c.innerHTML=`<div class="lit-table-wrap"><table class="lit-table"><thead><tr><th style="min-width:280px">Title</th><th>Authors</th><th>Year</th><th>Source</th><th>Yash</th><th>Ruhi</th></tr></thead><tbody>${rows.map(it=>{
+    const d=it.data;
+    const key=encodeURIComponent(it.key||d.key||d.title);
+    const prog=litProgressFor(decodeURIComponent(key));
+    const authors=(d.creators||[]).map(a=>a.lastName||a.name).filter(Boolean).slice(0,4).join(', ');
+    const year=(String(d.date||'').match(/\d{4}/)||[''])[0];
+    const link=d.url|| (d.DOI?`https://doi.org/${d.DOI}`:'');
+    return `<tr><td><div style="font-weight:600;line-height:1.35">${escapeHtml(cleanMojibakeString(d.title||''))}</div>${link?`<div class="status-inline"><a href="${escapeHtml(link)}" target="_blank" rel="noopener">Open</a></div>`:''}</td><td>${escapeHtml(authors||'')}</td><td>${escapeHtml(year||'')}</td><td><span class="lit-pill">${escapeHtml(d.publicationTitle||d.itemType||'')}</span></td><td><div class="lit-person"><label><input type="checkbox" ${prog.yash.read?'checked':''} onchange="toggleLitStatus('${key}','yash','read',this.checked)">Read</label><label><input type="checkbox" ${prog.yash.reviewed?'checked':''} onchange="toggleLitStatus('${key}','yash','reviewed',this.checked)">Reviewed</label></div></td><td><div class="lit-person"><label><input type="checkbox" ${prog.ruhi.read?'checked':''} onchange="toggleLitStatus('${key}','ruhi','read',this.checked)">Read</label><label><input type="checkbox" ${prog.ruhi.reviewed?'checked':''} onchange="toggleLitStatus('${key}','ruhi','reviewed',this.checked)">Reviewed</label></div></td></tr>`;
+  }).join('')}</tbody></table></div>`;
+}
+
 function renderLit(){
-  const m=el('main'),p=document.createElement('div');p.className='lit-panel';
-  p.innerHTML=`<div class="lit-title">Literature & References</div><div id="zotC"><p style="color:var(--text-3)">Loading from Zotero...</p></div><p style="margin-top:16px"><a href="https://www.zotero.org/groups/6075364/descai/library" target="_blank" style="color:var(--link)">View full Zotero library -></a></p>`;
+  const m=el('main');
+  const p=document.createElement('div');
+  p.className='lit-wrap';
+  p.innerHTML=`
+    <div class="hero"><h1>Bibliography</h1><p>Clean Zotero bibliography with reading/review tracking for Yash and Ruhi.</p></div>
+    <div class="lit-toolbar">
+      <input class="finput lit-search" id="litSearch" placeholder="Search title, author, or keyword" value="${escapeHtml(litQuery)}">
+      <button class="btn" id="litRefresh">Refresh Zotero</button>
+      <a class="btn" href="https://www.zotero.org/groups/6075364/descai/library" target="_blank" rel="noopener">Open Zotero</a>
+    </div>
+    <div id="zotC"><div class="lite-note">Loading bibliography...</div></div>`;
   m.appendChild(p);
-  if(zoteroItems)displayZ();else fetchZotero();
+  el('litSearch').addEventListener('input',e=>{litQuery=e.target.value||'';renderLitTable();});
+  el('litRefresh').addEventListener('click',()=>fetchZotero(true));
+  if(zoteroItems&&zoteroItems.length)renderLitTable();
+  else fetchZotero(false);
+  sanitizeVisibleText(p);
 }
-async function fetchZotero(){
-  try{const r=await fetch('https://api.zotero.org/groups/6075364/items?format=json&limit=50&sort=dateModified&direction=desc');if(!r.ok)throw new Error();zoteroItems=await r.json();displayZ()}catch(e){const c=document.getElementById('zotC');if(c)c.innerHTML='<p style="color:var(--text-3)">Could not load from Zotero. Check group visibility.</p>'}
+async function fetchZotero(force){
+  try{
+    if(force)zoteroItems=null;
+    const r=await fetch('https://api.zotero.org/groups/6075364/items?format=json&limit=120&sort=dateModified&direction=desc');
+    if(!r.ok)throw new Error('zotero fetch failed');
+    zoteroItems=cleanMojibakeDeep(await r.json());
+    renderLitTable();
+  }catch(e){
+    const c=el('zotC');
+    if(c)c.innerHTML='<div class="lite-note">Could not load Zotero right now. Check network/group visibility and try refresh.</div>';
+  }
 }
-function displayZ(){const c=document.getElementById('zotC');if(!c||!zoteroItems)return;c.innerHTML=zoteroItems.filter(i=>i.data.title).map(i=>{const d=i.data;return`<div class="paper"><div class="paper-t">${d.title}</div><div class="paper-a">${(d.creators||[]).map(c=>c.lastName).join(', ')} ${d.date||''} ${d.DOI?`<a href="https://doi.org/${d.DOI}" target="_blank" style="color:var(--link)">DOI -></a>`:''}</div></div>`}).join('')}
+function displayZ(){renderLitTable()}
 
 // ===== DETAIL PANEL =====
 function selNode(id){
@@ -1619,9 +2106,10 @@ function onSyncClick(){if(!GH.ok){detectGHPages();if(promptToken())ghPull()}else
 
 // ===== BOOT =====
 init();
-window.addEventListener('resize',()=>{clearTimeout(window._rt);window._rt=setTimeout(()=>{if(view==='graph'||view==='pgraph'||view==='biz')render()},300)});
+window.addEventListener('resize',()=>{clearTimeout(window._rt);window._rt=setTimeout(()=>{render()},300)});
 </script>
 </body>
 </html>
+
 
 
