@@ -39,14 +39,14 @@ a:hover{color:var(--link-h)}
 .app.hide-left.hide-right{grid-template-columns:0px 1fr 0px}
 
 /* HEADER */
-.header{grid-column:1/-1;background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 16px;gap:14px;z-index:10}
-.logo{font-family:var(--display);font-size:1rem;font-weight:700;color:var(--gold);letter-spacing:2px;white-space:nowrap}
+.header{grid-column:1/-1;background:var(--surface);border-bottom:1px solid var(--border);display:grid;grid-template-columns:auto 1fr auto;align-items:center;padding:0 16px;gap:14px;z-index:10}
+.logo{font-family:var(--display);font-size:1rem;font-weight:700;color:var(--gold);letter-spacing:2px;white-space:nowrap;cursor:pointer}
 .stats{font-size:.72rem;color:var(--text-3);font-family:var(--mono);white-space:nowrap}
-.tabs{display:flex;gap:2px;margin-left:12px}
+.tabs{display:flex;gap:2px;justify-content:center;align-items:center}
 .tab{font-size:.75rem;font-weight:600;padding:7px 14px;border-radius:var(--radius-sm);background:transparent;border:1px solid transparent;color:var(--text-3);cursor:pointer;transition:all .15s;font-family:var(--body)}
 .tab:hover{color:var(--text-2);border-color:var(--border)}
 .tab.on{border-color:rgba(212,168,83,.3);color:var(--gold);background:var(--gold-glow)}
-.actions{margin-left:auto;display:flex;gap:6px;align-items:center}
+.actions{display:flex;gap:6px;align-items:center;justify-self:end}
 .btn{font-size:.72rem;font-weight:600;padding:6px 14px;border-radius:var(--radius-sm);border:1px solid var(--border);background:transparent;color:var(--text-2);cursor:pointer;font-family:var(--body);transition:all .15s;white-space:nowrap}
 .btn:hover{border-color:var(--gold);color:var(--gold)}
 .btn-fill{background:var(--gold);color:#000;border-color:var(--gold)}
@@ -390,17 +390,26 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
 .info-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:13px}
 .info-card h3{font-size:.88rem;color:var(--gold);font-family:var(--mono);margin-bottom:6px}
 .info-card p{font-size:.78rem;color:var(--text-2);line-height:1.5}
-.journal-shell{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:14px;min-height:0;flex:1}
-.journal-main,.journal-side{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px;min-height:0}
-.journal-main{overflow:auto}
-.journal-side{overflow:auto}
-.plant-stage{font-family:var(--mono);font-size:.75rem;line-height:1.35;white-space:pre;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px;color:var(--sage);margin-bottom:10px}
+.journal-shell{display:grid;grid-template-columns:minmax(0,1fr) 390px;gap:12px;min-height:0;flex:1}
+.journal-main,.journal-side{background:#070707;border:1px solid rgba(138,232,186,.26);border-radius:10px;min-height:0;overflow:auto;box-shadow:inset 0 0 0 1px rgba(138,232,186,.08)}
+.journal-main{padding:0}
+.journal-side{padding:0}
+.term-head{display:flex;align-items:center;gap:8px;padding:9px 12px;background:#101010;border-bottom:1px solid rgba(138,232,186,.2);font-family:var(--mono);font-size:.67rem;color:#9fefbf;text-transform:uppercase;letter-spacing:.9px}
+.term-dot{width:7px;height:7px;border-radius:50%;display:inline-block}
+.term-dot.red{background:#cc5b5b}.term-dot.yellow{background:#cda54b}.term-dot.green{background:#57b86b}
+.term-body{padding:12px 14px}
+.term-line{font-family:var(--mono);font-size:.72rem;color:#8ad4a7;line-height:1.45;margin:7px 0 5px}
+.term-prompt{color:#5ddf8f}
+.term-input,.term-area{background:#050505;border:1px solid rgba(138,232,186,.25);color:#baf7d3;font-family:var(--mono)}
+.term-input:focus,.term-area:focus{border-color:#6de39a}
+.term-area{min-height:76px}
+.terminal-tree{font-family:var(--mono);font-size:.7rem;line-height:1.35;color:#9de6ba;white-space:pre;background:#050505;border:1px solid rgba(138,232,186,.2);border-radius:7px;padding:9px;margin-bottom:10px}
 .j-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .j-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
 .journal-log{display:flex;flex-direction:column;gap:8px;margin-top:10px}
-.journal-entry{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:9px}
-.journal-entry .d{font-family:var(--mono);font-size:.68rem;color:var(--gold)}
-.journal-entry .t{font-size:.76rem;color:var(--text-2);line-height:1.45;margin-top:3px}
+.journal-entry{background:#060606;border:1px solid rgba(138,232,186,.2);border-radius:8px;padding:9px}
+.journal-entry .d{font-family:var(--mono);font-size:.66rem;color:#78e7a5}
+.journal-entry .t{font-size:.74rem;color:#b4eecb;line-height:1.45;margin-top:3px}
 .lit-toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .lit-search{flex:1;min-width:220px}
 .lit-table-wrap{border:1px solid var(--border);border-radius:10px;overflow:auto;max-height:70vh;background:var(--surface)}
@@ -440,18 +449,15 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
 <body>
 <div class="app hide-right hide-left" id="app">
   <header class="header">
-    <span class="logo">DeSci Map</span>
-    <span class="stats" id="stats"></span>
-    <span class="sync-status" id="syncStatus" onclick="onSyncClick()" title="Click to sync"><span class="sync-dot"></span><span id="syncText">local</span></span>
+    <span class="logo" onclick="setView('home',this)">DeSci Map</span>
     <nav class="tabs">
-      <button class="tab on" onclick="setView('home',this)">Home</button>
       <button class="tab" onclick="setView('graph',this)">Graph</button>
+      <button class="tab" onclick="setView('pgraph',this)">Connections</button>
+      <button class="tab" onclick="setView('biz',this)">Values</button>
       <button class="tab" onclick="setView('table',this)">Directory</button>
       <button class="tab" onclick="setView('people',this)">People</button>
-      <button class="tab" onclick="setView('pgraph',this)">People Graph</button>
-      <button class="tab" onclick="setView('lit',this)">Literature</button>
-      <button class="tab" onclick="setView('biz',this)">Values</button>
       <button class="tab" onclick="setView('journal',this)">Journal</button>
+      <button class="tab" onclick="setView('lit',this)">Literature</button>
     </nav>
     <div class="actions">
       <button class="btn" onclick="addOrgM()">+ Org</button>
@@ -459,6 +465,7 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
       <button class="btn" onclick="expJSON()">Export</button>
       <button class="btn" onclick="el('imp').click()">Import</button>
       <input type="file" id="imp" hidden accept=".json,.csv" onchange="impFile(this)">
+      <span class="sync-status" id="syncStatus" onclick="onSyncClick()" title="Click to sync"><span class="sync-dot"></span><span id="syncText">local</span></span>
     </div>
   </header>
   <aside class="sidebar" id="sb">
@@ -736,7 +743,7 @@ function updateSB(){
   const v=D.nodes.filter(vis);el('nc').textContent=v.length;
   el('nlist').innerHTML=v.sort((a,b)=>(b.overlapScore||0)-(a.overlapScore||0)).map(n=>`<li class="nli ${n.id===selId?'sel':''}" title="confidence: ${(n.provenance&&n.provenance.confidence)||'low'}" onclick="selNode('${n.id}')"><span class="nli-dot" style="background:${SC[n.stack]||'var(--text-3)'}"></span><span class="nli-name">${n.name}${n.sourceAsterisk?' *':''}</span></li>`).join('');
 }
-function updateStats(){const v=D.nodes.filter(vis);el('stats').innerHTML=`<b>${v.length}</b>/${D.nodes.length} orgs | <b>${D.edges.length}</b> edges | <b>${D.people.length}</b> people`}
+function updateStats(){const s=el('stats');if(s)s.textContent=''}
 
 // ===== PANELS =====
 function togglePanel(p){
@@ -749,15 +756,20 @@ function togglePanel(p){
 }
 function setView(v,b){
   view=v;
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
-  b.classList.add('on');
-  if(v==='home'){
-    el('app').classList.add('hide-right');
-    el('app').classList.add('hide-left');
+  const tabs=[...document.querySelectorAll('.tab')];
+  tabs.forEach(t=>t.classList.remove('on'));
+  let active=(b&&b.classList&&b.classList.contains('tab'))?b:null;
+  if(!active){
+    active=tabs.find(t=>(t.getAttribute('onclick')||'').includes(`setView('${v}'`))||null;
+  }
+  if(active)active.classList.add('on');
+  const app=el('app');
+  if(v==='home'||v==='journal'||v==='lit'){
+    app.classList.add('hide-right');
+    app.classList.add('hide-left');
   }else{
-    el('app').classList.remove('hide-left');
-    if(v==='journal'||v==='lit')el('app').classList.add('hide-right');
-    else el('app').classList.remove('hide-right');
+    app.classList.remove('hide-left');
+    app.classList.remove('hide-right');
   }
   render();
 }
@@ -908,8 +920,9 @@ function render(){
   const tip=el('tip'); if(tip){tip.classList.remove('vis');tip.classList.toggle('interactive',view==='biz');}
   const tLeft=m.querySelector('.toggle-left');
   const tRight=m.querySelector('.toggle-right');
-  if(tLeft)tLeft.style.display=view==='home'?'none':'flex';
-  if(tRight)tRight.style.display=view==='home'?'none':'flex';
+  const hideToggles=(view==='home'||view==='journal'||view==='lit');
+  if(tLeft)tLeft.style.display=hideToggles?'none':'flex';
+  if(tRight)tRight.style.display=hideToggles?'none':'flex';
   if(sim)sim.stop();
   if(view==='home')renderHome();
   else if(view==='graph')buildGraph();
@@ -1792,6 +1805,23 @@ function journalPlantArt(streak){
     '            start today          '
   ].join('\n');
 }
+function journalTreeSnapshot(streak){
+  return [
+    'yash@desci-map:~$ tree ./growth',
+    '.',
+    '|-- roots',
+    '|   |-- consistency.log',
+    '|   `-- focused-hours.txt',
+    '|-- trunk',
+    '|   |-- today.md',
+    '|   `-- blockers.md',
+    '`-- canopy',
+    '    |-- ideas.md',
+    '    `-- tomorrow.plan',
+    '',
+    journalPlantArt(streak)
+  ].join('\n');
+}
 function buildJournalMarkdown(entries){
   const lines=[];
   lines.push('# DeSci Map Journal');
@@ -1805,6 +1835,16 @@ function buildJournalMarkdown(entries){
     lines.push(`- Ideas / random thoughts: ${e.ideas||''}`);
     lines.push(`- Blockers: ${e.blockers||''}`);
     lines.push(`- Plan alive tomorrow: ${e.plan||''}`);
+    lines.push('');
+  });
+  ensureKanban();
+  lines.push('## Project Kanban Snapshot');
+  lines.push('');
+  [['todo','To Do'],['doing','In Progress'],['done','Done']].forEach(([k,label])=>{
+    lines.push(`### ${label}`);
+    const items=(D.kanban&&D.kanban[k])||[];
+    if(!items.length)lines.push('- (empty)');
+    else items.forEach(it=>lines.push(`- ${it}`));
     lines.push('');
   });
   return lines.join('\n');
@@ -1868,32 +1908,51 @@ function renderJournal(){
   const m=el('main');
   const entries=journalEntriesSorted();
   const streak=journalStreak(entries);
+  const treeView=journalTreeSnapshot(streak);
   const wrap=document.createElement('div');
   wrap.className='journal-wrap';
   wrap.innerHTML=`
-    <div class="hero"><h1>Forest Journal</h1><p>Quick daily check-in keeps your plan alive. One entry a day grows your streak and updates <code>JOURNAL.md</code>.</p></div>
     <div class="journal-shell">
       <section class="journal-main">
-        <div class="field"><div class="flabel">Date</div><input class="finput" type="date" id="jDate" value="${fmtDateISO()}"></div>
-        <div class="j-row">
-          <div class="field"><div class="flabel">Hours Worked</div><input class="finput" id="jHours" type="number" min="0" max="24" step="0.25" placeholder="e.g. 6.5"></div>
-          <div class="field"><div class="flabel">Status</div><div class="status-inline" id="jStatus">${GH.ok?'GitHub sync ready for JOURNAL.md':'Local save mode; repo push needs GitHub sync'}</div></div>
-        </div>
-        <div class="field"><div class="flabel">What did I do today?</div><textarea class="finput" id="jDid" placeholder="Top outcomes, tasks moved, progress made"></textarea></div>
-        <div class="field"><div class="flabel">Random thoughts / ideas</div><textarea class="finput" id="jIdeas" placeholder="Any sparks, hypotheses, product ideas"></textarea></div>
-        <div class="field"><div class="flabel">Blockers</div><textarea class="finput" id="jBlockers" placeholder="What slowed me down and what I need"></textarea></div>
-        <div class="field"><div class="flabel">Plan alive tomorrow</div><textarea class="finput" id="jPlan" placeholder="First concrete step tomorrow"></textarea></div>
-        <div class="j-actions">
-          <button class="btn btn-fill" onclick="saveJournalEntry()">Save Today</button>
-          <button class="btn" onclick="downloadJournalMarkdown()">Download JOURNAL.md</button>
-          <button class="btn" onclick="pushJournalMarkdown()">Push JOURNAL.md</button>
+        <div class="term-head"><span class="term-dot red"></span><span class="term-dot yellow"></span><span class="term-dot green"></span>Journal Terminal</div>
+        <div class="term-body">
+          <div class="term-line"><span class="term-prompt">yash@desci-map:~$</span> journal --date</div>
+          <input class="finput term-input" type="date" id="jDate" value="${fmtDateISO()}">
+          <div class="j-row">
+            <div>
+              <div class="term-line"><span class="term-prompt">yash@desci-map:~$</span> journal --hours-worked</div>
+              <input class="finput term-input" id="jHours" type="number" min="0" max="24" step="0.25" placeholder="e.g. 6.5">
+            </div>
+            <div>
+              <div class="term-line"><span class="term-prompt">yash@desci-map:~$</span> journal --sync-status</div>
+              <div class="status-inline" id="jStatus">${GH.ok?'GitHub sync ready for JOURNAL.md':'Local save mode; repo push needs GitHub sync'}</div>
+            </div>
+          </div>
+          <div class="term-line"><span class="term-prompt">yash@desci-map:~$</span> What did I do today?</div>
+          <textarea class="finput term-area" id="jDid" placeholder="Top outcomes, tasks moved, progress made"></textarea>
+          <div class="term-line"><span class="term-prompt">yash@desci-map:~$</span> Random thoughts / ideas?</div>
+          <textarea class="finput term-area" id="jIdeas" placeholder="Any sparks, hypotheses, product ideas"></textarea>
+          <div class="term-line"><span class="term-prompt">yash@desci-map:~$</span> Blockers?</div>
+          <textarea class="finput term-area" id="jBlockers" placeholder="What slowed me down and what I need"></textarea>
+          <div class="term-line"><span class="term-prompt">yash@desci-map:~$</span> Plan alive tomorrow?</div>
+          <textarea class="finput term-area" id="jPlan" placeholder="First concrete step tomorrow"></textarea>
+          <div class="j-actions">
+            <button class="btn btn-fill" onclick="saveJournalEntry()">Save Today</button>
+            <button class="btn" onclick="downloadJournalMarkdown()">Download JOURNAL.md</button>
+            <button class="btn" onclick="pushJournalMarkdown()">Push JOURNAL.md</button>
+          </div>
         </div>
       </section>
       <aside class="journal-side">
-        <div class="plant-stage">${journalPlantArt(streak)}</div>
-        <div class="lite-note">Current streak: <b>${streak}</b> day${streak===1?'':'s'}.</div>
-        <div class="journal-log">
-          ${entries.slice(0,28).map(e=>`<article class="journal-entry"><div class="d">${escapeHtml(e.date||'')}</div><div class="t"><b>Hours:</b> ${escapeHtml(e.hours??0)}<br><b>Did:</b> ${escapeHtml(e.did||'')}<br><b>Ideas:</b> ${escapeHtml(e.ideas||'')}</div></article>`).join('') || '<div class="lite-note">No entries yet. Add your first check-in today.</div>'}
+        <div class="term-head"><span class="term-dot red"></span><span class="term-dot yellow"></span><span class="term-dot green"></span>Growth Tree</div>
+        <div class="term-body">
+          <pre class="terminal-tree">${escapeHtml(treeView)}</pre>
+          <div class="term-line"><span class="term-prompt">yash@desci-map:~$</span> journal --streak</div>
+          <div class="lite-note">Current streak: <b>${streak}</b> day${streak===1?'':'s'}.</div>
+          <div class="term-line"><span class="term-prompt">yash@desci-map:~$</span> tail -n 20 journal.log</div>
+          <div class="journal-log">
+            ${entries.slice(0,28).map(e=>`<article class="journal-entry"><div class="d">${escapeHtml(e.date||'')}</div><div class="t"><b>Hours:</b> ${escapeHtml(e.hours??0)}<br><b>Did:</b> ${escapeHtml(e.did||'')}<br><b>Ideas:</b> ${escapeHtml(e.ideas||'')}</div></article>`).join('') || '<div class="lite-note">No entries yet. Add your first check-in today.</div>'}
+          </div>
         </div>
       </aside>
     </div>`;
@@ -2140,6 +2199,7 @@ function addKanban(col){
   D.kanban[col].push(cleanMojibakeString(txt.trim()));
   save();
   renderHomeKanban();
+  syncJournalMarkdown(false);
 }
 function deleteKanban(col,idx){
   ensureKanban();
@@ -2147,6 +2207,7 @@ function deleteKanban(col,idx){
   D.kanban[col].splice(idx,1);
   save();
   renderHomeKanban();
+  syncJournalMarkdown(false);
 }
 function moveKanban(col,idx,dir){
   ensureKanban();
@@ -2159,6 +2220,7 @@ function moveKanban(col,idx,dir){
   D.kanban[K_COLS[ni]].push(card);
   save();
   renderHomeKanban();
+  syncJournalMarkdown(false);
 }
 function renderHomeKanban(){
   const host=el('homeKanban');
