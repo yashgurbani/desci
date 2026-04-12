@@ -1,6 +1,6 @@
 # DeSci Map Journal
 
-Last updated: 2026-04-12T23:02:28.198Z
+Last updated: 2026-04-12T23:02:29.338Z
 
 ## Project Kanban Snapshot
 
@@ -11,7 +11,6 @@ Last updated: 2026-04-12T23:02:28.198Z
 - (empty)
 
 ### Done
-- Verified: Galeon Care
 - Verified: LabDAO
 - Verified: Prime Intellect
 - Verified: ResearchHub
