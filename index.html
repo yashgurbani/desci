@@ -286,12 +286,12 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
 }
 .home-overlay-top{
   position:absolute;top:10px;left:10px;right:10px;
-  display:grid;grid-template-columns:minmax(0,1fr) 430px;gap:10px;
+  display:grid;grid-template-columns:minmax(0,1fr) 460px;gap:10px;
   align-items:start;pointer-events:none;
 }
 .home-overlay-bottom{
   position:absolute;left:10px;right:10px;bottom:10px;
-  display:grid;grid-template-columns:minmax(0,1fr) 560px;gap:10px;
+  display:grid;grid-template-columns:minmax(0,1fr) 580px;gap:10px;
   align-items:end;pointer-events:none;
 }
 .ticker{
@@ -303,33 +303,56 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
   backdrop-filter:blur(6px);
 }
 .ticker-head{font-family:var(--mono);font-size:.68rem;color:var(--gold);letter-spacing:1.2px;text-transform:uppercase}
-.ticker-main{font-size:1rem;color:#f3f3f3;line-height:1.35;margin-top:4px}
+.ticker-main{font-size:1.05rem;color:#f3f3f3;line-height:1.36;margin-top:4px}
 .ticker-main a{color:#f3f3f3}
 .ticker-main a:hover{color:#fff}
-.ticker-meta{font-size:.72rem;color:#b8b8b8;margin-top:5px}
+.ticker-meta{font-size:.74rem;color:#b8b8b8;margin-top:5px}
 .home-feed-panel{
   pointer-events:auto;
   border:1px solid rgba(255,255,255,.22);
   border-radius:11px;
   background:rgba(8,8,8,.84);
   padding:10px 11px;
-  max-height:42vh;
+  max-height:68vh;
   overflow:auto;
   backdrop-filter:blur(6px);
 }
 .feed-title{font-family:var(--mono);font-size:.66rem;color:var(--text-3);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:7px}
-.feed-list{display:flex;flex-direction:column;gap:7px;max-height:20vh;overflow:auto;padding-right:3px}
+.feed-list{display:flex;flex-direction:column;gap:7px;max-height:13vh;overflow:auto;padding-right:3px}
 .feed-item{border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:7px 9px;background:rgba(20,20,20,.84)}
 .feed-item a{font-size:.75rem;font-weight:600;line-height:1.34;color:#efefef}
 .feed-item .meta{font-size:.66rem;color:#989898;margin-top:3px}
+.watch-tools{border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:8px;background:rgba(16,16,16,.85);margin-top:9px}
+.watch-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px;margin-bottom:6px}
+.watch-row:last-child{margin-bottom:4px}
+.watch-input{font-size:.72rem;padding:7px 9px}
+.watch-btn{padding:6px 10px;font-size:.68rem}
+.watch-list{display:flex;flex-direction:column;gap:5px;max-height:9vh;overflow:auto}
+.watch-chip{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:5px 7px;border-radius:7px;border:1px solid rgba(255,255,255,.12);background:rgba(24,24,24,.88)}
+.watch-chip span{font-size:.66rem;color:#d7d7d7;line-height:1.3}
+.watch-x{font-size:.6rem;padding:2px 6px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:transparent;color:#b8b8b8;cursor:pointer}
+.watch-x:hover{border-color:var(--gold);color:var(--gold)}
+.home-bottom-left{display:flex;flex-direction:column;gap:8px}
 .home-updated{pointer-events:none;font-size:.72rem;color:#a9a9a9;font-family:var(--mono);text-shadow:0 0 6px rgba(0,0,0,.8)}
+.home-journal{
+  pointer-events:auto;
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:11px;
+  background:rgba(8,8,8,.84);
+  padding:10px;
+  backdrop-filter:blur(6px);
+  max-width:560px;
+}
+.home-journal .t{font-family:var(--mono);font-size:.66rem;color:var(--gold);text-transform:uppercase;letter-spacing:1.1px;margin-bottom:6px}
+.home-journal .d{font-family:var(--mono);font-size:.66rem;color:#b9b9b9;margin-bottom:5px}
+.home-journal .b{font-size:.73rem;line-height:1.42;color:#dfdfdf}
 .home-kanban{
   pointer-events:auto;
   border:1px solid rgba(255,255,255,.22);
   border-radius:11px;
   background:rgba(8,8,8,.84);
   padding:10px;
-  max-height:45vh;
+  max-height:52vh;
   overflow:auto;
   backdrop-filter:blur(6px);
 }
@@ -374,8 +397,9 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
 .status-inline{font-size:.7rem;color:var(--text-3)}
 @media(max-width:1250px){
   .home-overlay-top,.home-overlay-bottom{grid-template-columns:1fr}
-  .home-feed-panel{max-height:33vh}
+  .home-feed-panel{max-height:50vh}
   .home-kanban{max-height:36vh}
+  .feed-list{max-height:11vh}
 }
 @media(max-width:1150px){.journal-shell{grid-template-columns:1fr}.info-grid{grid-template-columns:1fr}}
 @media(max-width:980px){.kan-grid{grid-template-columns:1fr}}
@@ -501,10 +525,11 @@ let bizLabelDetail='metrics';
 let auditRowsByKey=new Map();
 let bizTipPinned=false;
 let bizTipPinnedNodeId=null;
-let homeFeedState={items:[],sections:{keywords:[],youtube:[]},lastUpdated:''};
+let homeFeedState={items:[],sections:{keywords:[],nodes:[],papers:[],youtube:[]},lastUpdated:''};
 let homeTickerTimer=null;
 let homeRefreshTimer=null;
 let homeAsciiTimer=null;
+let homeFeedLastFetchMs=0;
 let litQuery='';
 
 const SC={infrastructure:'var(--sage)',application:'var(--rose)',governance:'var(--teal)'};
@@ -605,6 +630,9 @@ async function init(){
   if(!D.people)D.people=[];
   D.journal=D.journal||[];
   D.litProgress=D.litProgress||{};
+  D.homeWatch=D.homeWatch||{videos:[],playlists:[]};
+  if(!Array.isArray(D.homeWatch.videos))D.homeWatch.videos=[];
+  if(!Array.isArray(D.homeWatch.playlists))D.homeWatch.playlists=[];
   D.kanban=D.kanban||seedKanbanFromData();
   buildPills();render();updateSB();updateStats();
   setTimeout(autoSync,500);
@@ -1881,25 +1909,153 @@ function parseRssItems(xmlText,source,max){
     }).filter(x=>x.title&&x.link);
   }catch(e){return []}
 }
+const PURPOSE_TERMS=['metascience','peer review','reproducibility','research integrity','science of science','publication bias','ai for science','open science'];
+const QUALITY_DOMAIN_RE=/(arxiv\.org|nature\.com|science\.org|pnas\.org|cell\.com|thelancet\.com|nejm\.org|elifesciences\.org|plos\.org|biorxiv\.org|medrxiv\.org|pubmed\.ncbi\.nlm\.nih\.gov|crossref\.org|openalex\.org|orcid\.org|retractionwatch\.com|frontiersin\.org|peerj\.com)/i;
+function weightedDatasetTerms(limit){
+  const ban=new Set(['infrastructure','application','governance','desci','science','protocol','project']);
+  const map=new Map();
+  (D.nodes||[]).forEach(n=>{
+    const w=1+((n.overlapScore||0)/65)+((n.credScore||0)/95);
+    const terms=[n.type,n.stack,...(n.tags||[]),...(n.overlapTags||[])];
+    terms.forEach(t0=>{
+      const t=String(t0||'').toLowerCase().replace(/[_-]/g,' ').replace(/\s+/g,' ').trim();
+      if(!t||t.length<3||ban.has(t))return;
+      map.set(t,(map.get(t)||0)+w);
+    });
+  });
+  return [...map.entries()].sort((a,b)=>b[1]-a[1]).slice(0,limit||8).map(([k])=>k);
+}
 function projectKeywords(){
-  const fromTags=[...new Set(D.nodes.flatMap(n=>[...(n.tags||[]),...(n.overlapTags||[])].map(x=>String(x).replace(/[-_]/g,' '))))];
-  const seeds=['decentralized science','open science publishing','peer review','scientific credibility','bioDAO','research data commons','decentralized compute'];
-  return [...new Set([...seeds,...fromTags])].filter(Boolean).slice(0,9);
+  const dataTerms=weightedDatasetTerms(7);
+  const purposeSeeds=[
+    'open science infrastructure',
+    'metascience peer review reform',
+    'science of science metrics',
+    'reproducibility crisis',
+    'research integrity policy',
+    'ai for scientific discovery',
+    'problems in scientific publishing'
+  ];
+  const fromData=dataTerms.map(t=>`${t} open science`);
+  return [...new Set([...purposeSeeds,...fromData])].slice(0,10);
+}
+function paperKeywordQueries(){
+  const dataTerms=weightedDatasetTerms(6);
+  const seeds=[
+    'metascience',
+    'peer review quality',
+    'reproducibility crisis',
+    'science of science',
+    'research integrity',
+    'ai for science'
+  ];
+  const fromData=dataTerms.slice(0,4).map(t=>`${t} peer review`);
+  return [...new Set([...seeds,...fromData])].slice(0,8);
 }
 function relationWatchNames(){
   const idToName=new Map((D.nodes||[]).map(n=>[n.id,n.name]));
-  const ids=(D.edges||[]).filter(e=>['partner','ecosystem','funder','overlap'].includes(e.type)).flatMap(e=>[e.s,e.t]);
-  return [...new Set(ids.map(id=>idToName.get(id)||id).filter(Boolean))].slice(0,9);
+  const edgeNames=(D.edges||[]).filter(e=>['partner','ecosystem','funder','overlap'].includes(e.type)).flatMap(e=>[idToName.get(e.s)||e.s,idToName.get(e.t)||e.t]);
+  const topNodes=[...(D.nodes||[])].sort((a,b)=>((b.overlapScore||0)+(b.credScore||0)*0.7)-((a.overlapScore||0)+(a.credScore||0)*0.7)).slice(0,7).map(n=>n.name);
+  return [...new Set([...edgeNames,...topNodes].filter(Boolean))].slice(0,10);
 }
 async function fetchGoogleNews(query){
   const url='https://news.google.com/rss/search?q='+encodeURIComponent(query)+'&hl=en-US&gl=US&ceid=US:en';
   const txt=await fetchRssText(url);
-  return parseRssItems(txt,'news',5).map(i=>({...i,topic:query}));
+  return parseRssItems(txt,'news',6).map(i=>({...i,topic:query}));
 }
 async function fetchYouTube(query){
   const url='https://www.youtube.com/feeds/videos.xml?search_query='+encodeURIComponent(query);
   const txt=await fetchRssText(url);
-  return parseRssItems(txt,'youtube',4).map(i=>({...i,topic:query}));
+  return parseRssItems(txt,'youtube',5).map(i=>({...i,topic:query}));
+}
+async function fetchYouTubePlaylist(playlistId){
+  const url='https://www.youtube.com/feeds/videos.xml?playlist_id='+encodeURIComponent(playlistId);
+  const txt=await fetchRssText(url);
+  return parseRssItems(txt,'youtube-playlist',6).map(i=>({...i,topic:`playlist:${playlistId}`}));
+}
+async function fetchArxiv(query){
+  const url='https://export.arxiv.org/api/query?search_query=all:'+encodeURIComponent(query)+'&start=0&max_results=6&sortBy=lastUpdatedDate&sortOrder=descending';
+  const txt=await fetchRssText(url);
+  return parseRssItems(txt,'paper',6).map(i=>({...i,topic:query}));
+}
+function ensureHomeWatchConfig(){
+  D.homeWatch=D.homeWatch||{videos:[],playlists:[]};
+  if(!Array.isArray(D.homeWatch.videos))D.homeWatch.videos=[];
+  if(!Array.isArray(D.homeWatch.playlists))D.homeWatch.playlists=[];
+}
+function normalizeYouTubeVideoUrl(raw){
+  const s=String(raw||'').trim();
+  if(!s)return '';
+  const fallback=(id)=>id?`https://www.youtube.com/watch?v=${id}`:'';
+  try{
+    const u=new URL(s);
+    if(u.hostname.includes('youtu.be')){
+      const id=u.pathname.replace('/','').trim();
+      return /^[A-Za-z0-9_-]{11}$/.test(id)?fallback(id):'';
+    }
+    if(u.hostname.includes('youtube.com')){
+      const id=u.searchParams.get('v')||'';
+      return /^[A-Za-z0-9_-]{11}$/.test(id)?fallback(id):'';
+    }
+  }catch(e){
+    if(/^[A-Za-z0-9_-]{11}$/.test(s))return fallback(s);
+  }
+  return '';
+}
+function playlistIdFromInput(raw){
+  const s=String(raw||'').trim();
+  if(!s)return '';
+  try{
+    const u=new URL(s);
+    if(u.hostname.includes('youtube.com')){
+      const pid=u.searchParams.get('list')||'';
+      if(/^[A-Za-z0-9_-]{10,}$/.test(pid))return pid;
+    }
+  }catch(e){}
+  return /^[A-Za-z0-9_-]{10,}$/.test(s)?s:'';
+}
+function addHomeVideoWatch(){
+  ensureHomeWatchConfig();
+  const inp=el('homeVideoInput');
+  const raw=(inp&&inp.value||'').trim();
+  if(!raw)return;
+  const parts=raw.split('|');
+  const urlRaw=parts.pop().trim();
+  const url=normalizeYouTubeVideoUrl(urlRaw);
+  if(!url)return;
+  const title=cleanMojibakeString(parts.join('|').trim()||`Custom video ${D.homeWatch.videos.length+1}`);
+  if(!D.homeWatch.videos.some(v=>v.url===url))D.homeWatch.videos.push({title,url});
+  if(inp)inp.value='';
+  save();
+  renderHomeWatchConfig();
+}
+function removeHomeVideoWatch(idx){
+  ensureHomeWatchConfig();
+  if(idx<0||idx>=D.homeWatch.videos.length)return;
+  D.homeWatch.videos.splice(idx,1);
+  save();
+  renderHomeWatchConfig();
+}
+function addHomePlaylistWatch(){
+  ensureHomeWatchConfig();
+  const inp=el('homePlaylistInput');
+  const raw=(inp&&inp.value||'').trim();
+  if(!raw)return;
+  const pid=playlistIdFromInput(raw);
+  if(!pid)return;
+  if(!D.homeWatch.playlists.includes(pid))D.homeWatch.playlists.push(pid);
+  if(inp)inp.value='';
+  save();
+  renderHomeWatchConfig();
+  refreshHomeFeeds(true);
+}
+function removeHomePlaylistWatch(idx){
+  ensureHomeWatchConfig();
+  if(idx<0||idx>=D.homeWatch.playlists.length)return;
+  D.homeWatch.playlists.splice(idx,1);
+  save();
+  renderHomeWatchConfig();
+  refreshHomeFeeds(true);
 }
 const K_COLS=['todo','doing','done'];
 const K_LABELS={todo:'To Do',doing:'In Progress',done:'Done'};
@@ -1955,6 +2111,74 @@ function renderHomeKanban(){
   }).join('');
   host.innerHTML=`<div class="kan-title">Project Kanban</div><div class="kan-grid">${cols}</div>`;
 }
+function uniqByLink(arr){
+  const seen=new Set();
+  return (arr||[]).filter(x=>{
+    const k=String((x&&x.link)||'').trim();
+    if(!k||seen.has(k))return false;
+    seen.add(k);
+    return true;
+  });
+}
+function scoreFeedItem(item,intents){
+  let s=0;
+  const title=String(item.title||'').toLowerCase();
+  const topic=String(item.topic||'').toLowerCase();
+  const url=String(item.link||'').toLowerCase();
+  if(QUALITY_DOMAIN_RE.test(url))s+=7;
+  if((item.source||'')==='paper'||(item.source||'')==='arxiv')s+=5;
+  PURPOSE_TERMS.forEach(t=>{if(title.includes(t)||topic.includes(t))s+=2.2});
+  (intents||[]).forEach(t=>{
+    const q=String(t||'').toLowerCase();
+    if(!q)return;
+    if(title.includes(q))s+=2.6;
+    if(topic.includes(q))s+=1.1;
+  });
+  const ts=Date.parse(item.pubDate||'');
+  if(!Number.isNaN(ts)){
+    const ageDays=(Date.now()-ts)/86400000;
+    s+=Math.max(0,2.6-(ageDays/24));
+  }
+  if(/opinion|sponsored|press release/i.test(title))s-=1.2;
+  return s;
+}
+function rankFeedItems(items,intents,limit){
+  return uniqByLink(items).map(it=>({it,score:scoreFeedItem(it,intents)})).sort((a,b)=>b.score-a.score).slice(0,limit||12).map(x=>x.it);
+}
+function zoteroPaperSuggestions(limit){
+  if(!zoteroItems||!zoteroItems.length)return [];
+  const out=[];
+  zoteroItems.forEach(it=>{
+    const d=it&&it.data;
+    if(!d||!d.title)return;
+    const key=(it.key||d.key||d.title);
+    const prog=litProgressFor(String(key));
+    const unread=!(prog&&prog.yash&&(prog.yash.read||prog.yash.reviewed));
+    if(!unread)return;
+    const link=d.url||(d.DOI?`https://doi.org/${d.DOI}`:'');
+    if(!link)return;
+    out.push({title:cleanMojibakeString(d.title),link,topic:'zotero unread',source:'paper',pubDate:d.date||''});
+  });
+  return out.slice(0,limit||8);
+}
+function renderHomeWatchConfig(){
+  const host=el('homeWatchConfig');
+  if(!host)return;
+  ensureHomeWatchConfig();
+  const vids=(D.homeWatch.videos||[]).map((v,i)=>`<div class="watch-chip"><span>${escapeHtml(v.title||'custom video')}</span><button class="watch-x" onclick="removeHomeVideoWatch(${i})">x</button></div>`).join('');
+  const pls=(D.homeWatch.playlists||[]).map((p,i)=>`<div class="watch-chip"><span>Playlist ${escapeHtml(p)}</span><button class="watch-x" onclick="removeHomePlaylistWatch(${i})">x</button></div>`).join('');
+  host.innerHTML=vids+pls || '<div class="lite-note">No custom watch items yet.</div>';
+}
+function renderHomeLastJournal(){
+  const host=el('homeLastJournal');
+  if(!host)return;
+  const e=journalEntriesSorted()[0];
+  if(!e){
+    host.innerHTML='<div class="t">Last Journal Entry</div><div class="b">No journal entries yet. Add one from the Journal tab.</div>';
+    return;
+  }
+  host.innerHTML=`<div class="t">Last Journal Entry</div><div class="d">${escapeHtml(e.date||'')}</div><div class="b"><b>Hours:</b> ${escapeHtml(e.hours??0)}<br><b>Did:</b> ${escapeHtml((e.did||'').slice(0,180) || '-')}<br><b>Plan:</b> ${escapeHtml((e.plan||'').slice(0,180) || '-')}</div>`;
+}
 function renderHomeFeeds(){
   const titleEl=el('homeTickerTitle');
   const metaEl=el('homeTickerMeta');
@@ -1962,50 +2186,70 @@ function renderHomeFeeds(){
   if(!titleEl||!metaEl)return;
   if(!items.length){
     titleEl.textContent='Feed loading...';
-    metaEl.textContent='Pulling keyword and video updates.';
-    return;
+    metaEl.textContent='Pulling purpose-driven updates.';
+  }else{
+    let idx=0;
+    const paint=()=>{
+      if(!items.length)return;
+      const it=items[idx%items.length];
+      titleEl.innerHTML=`<a href="${escapeHtml(it.link)}" target="_blank" rel="noopener">${escapeHtml(it.title)}</a>`;
+      metaEl.textContent=`${cleanMojibakeString(it.source||'news')} | ${cleanMojibakeString(it.topic||'general')}${it.pubDate?` | ${cleanMojibakeString(String(it.pubDate).slice(0,24))}`:''}`;
+      idx++;
+    };
+    paint();
+    homeTickerTimer=setInterval(paint,7600);
   }
-  let idx=0;
-  const paint=()=>{
-    if(!items.length)return;
-    const it=items[idx%items.length];
-    titleEl.innerHTML=`<a href="${escapeHtml(it.link)}" target="_blank" rel="noopener">${escapeHtml(it.title)}</a>`;
-    metaEl.textContent=`${cleanMojibakeString(it.source||'news')} | ${cleanMojibakeString(it.topic||'general')}${it.pubDate?` | ${cleanMojibakeString(String(it.pubDate).slice(0,24))}`:''}`;
-    idx++;
-  };
-  paint();
-  homeTickerTimer=setInterval(paint,6800);
 
   const mount=(id,arr)=>{
     const c=el(id);
     if(!c)return;
-    c.innerHTML=arr.slice(0,8).map(it=>`<article class="feed-item"><a href="${escapeHtml(it.link)}" target="_blank" rel="noopener">${escapeHtml(it.title)}</a><div class="meta">${escapeHtml(it.source)} | ${escapeHtml(it.topic||'')}</div></article>`).join('') || '<div class="lite-note">No items yet.</div>';
+    c.innerHTML=(arr||[]).slice(0,8).map(it=>`<article class="feed-item"><a href="${escapeHtml(it.link)}" target="_blank" rel="noopener">${escapeHtml(it.title)}</a><div class="meta">${escapeHtml(it.source||'news')} | ${escapeHtml(it.topic||'')}</div></article>`).join('') || '<div class="lite-note">No items yet.</div>';
   };
   mount('homeFeedKeywords',homeFeedState.sections.keywords||[]);
+  mount('homeFeedNodes',homeFeedState.sections.nodes||[]);
+  mount('homeFeedPapers',homeFeedState.sections.papers||[]);
   mount('homeFeedYoutube',homeFeedState.sections.youtube||[]);
   const lu=el('homeLastUpdated');
   if(lu)lu.textContent=homeFeedState.lastUpdated?`Last update: ${homeFeedState.lastUpdated}`:'Last update: pending';
+  renderHomeWatchConfig();
+  renderHomeLastJournal();
 }
 async function refreshHomeFeeds(){
-  const kw=projectKeywords().slice(0,10);
-  const yk=projectKeywords().slice(0,8);
-  const [kwRes,ytRes]=await Promise.all([
-    Promise.all(kw.map(k=>fetchGoogleNews(k))).then(a=>a.flat()),
-    Promise.all(yk.map(k=>fetchYouTube(k))).then(a=>a.flat())
+  ensureHomeWatchConfig();
+  const kw=projectKeywords().slice(0,8);
+  const nodeQs=relationWatchNames().slice(0,8);
+  const paperQs=paperKeywordQueries().slice(0,6);
+  const ytQ=projectKeywords().slice(0,6);
+  const playlistIds=(D.homeWatch.playlists||[]).slice(0,4);
+  const customVideos=(D.homeWatch.videos||[]).map(v=>({title:v.title||'Custom video',link:v.url,topic:'custom watchlist',source:'youtube'}));
+
+  const [kwRes,nodeRes,ytRes,paperRes,playlistRes]=await Promise.all([
+    Promise.all(kw.map(q=>fetchGoogleNews(q))).then(x=>x.flat()),
+    Promise.all(nodeQs.map(q=>fetchGoogleNews(`${q} open science`))).then(x=>x.flat()),
+    Promise.all(ytQ.map(q=>fetchYouTube(q))).then(x=>x.flat()),
+    Promise.all(paperQs.map(q=>fetchArxiv(q))).then(x=>x.flat()),
+    Promise.all(playlistIds.map(pid=>fetchYouTubePlaylist(pid))).then(x=>x.flat())
   ]);
-  const uniq=(arr)=>{
-    const seen=new Set();
-    return arr.filter(x=>{if(!x.link||seen.has(x.link))return false;seen.add(x.link);return true;});
-  };
+
+  const zoteroPapers=zoteroPaperSuggestions(8);
   homeFeedState.sections={
-    keywords:uniq(kwRes),
-    youtube:uniq(ytRes)
+    keywords:rankFeedItems(kwRes,kw,10),
+    nodes:rankFeedItems(nodeRes,nodeQs,10),
+    papers:rankFeedItems([...paperRes,...zoteroPapers],paperQs,10),
+    youtube:rankFeedItems([...ytRes,...playlistRes,...customVideos],ytQ,10)
   };
-  homeFeedState.items=uniq([...homeFeedState.sections.keywords,...homeFeedState.sections.youtube]);
+  homeFeedState.items=rankFeedItems([
+    ...homeFeedState.sections.keywords,
+    ...homeFeedState.sections.nodes,
+    ...homeFeedState.sections.papers,
+    ...homeFeedState.sections.youtube
+  ],[...kw,...nodeQs,...paperQs],40);
+
   if(!homeFeedState.items.length){
     const fallback=(D.nodes||[]).filter(n=>n.web).slice(0,14).map(n=>({title:`Watch ${n.name} updates`,link:n.web||'#',source:'local',topic:n.type||'node'}));
     homeFeedState.items=fallback;
     homeFeedState.sections.keywords=fallback.slice(0,8);
+    homeFeedState.sections.nodes=fallback.slice(0,8);
   }
   homeFeedState.lastUpdated=new Date().toLocaleString();
   if(view==='home')renderHomeFeeds();
@@ -2020,38 +2264,43 @@ function inEllipse(x,y,cx,cy,rx,ry){
   return (dx*dx+dy*dy)<=1;
 }
 function mapMask(u,v){
-  const leftLand=(inEllipse(u,v,0.23,0.39,0.23,0.21)||inEllipse(u,v,0.31,0.51,0.11,0.16)||inEllipse(u,v,0.10,0.58,0.11,0.15))&&!inEllipse(u,v,0.17,0.51,0.08,0.10);
-  const rightLand=(inEllipse(u,v,0.78,0.42,0.25,0.18)||inEllipse(u,v,0.89,0.33,0.13,0.14)||inEllipse(u,v,0.71,0.62,0.09,0.17))&&!inEllipse(u,v,0.76,0.50,0.08,0.08);
-  return leftLand||rightLand;
+  const yy=(v-0.10)/0.62;
+  if(yy<0||yy>1)return false;
+  const x=u;
+  const na=inEllipse(x,yy,0.17,0.28,0.18,0.17)||inEllipse(x,yy,0.25,0.37,0.23,0.17)||inEllipse(x,yy,0.34,0.50,0.13,0.12)||inEllipse(x,yy,0.07,0.56,0.10,0.14);
+  const sa=inEllipse(x,yy,0.33,0.63,0.09,0.15)||inEllipse(x,yy,0.35,0.80,0.04,0.09);
+  const left=(na||sa)&&!inEllipse(x,yy,0.17,0.52,0.10,0.10)&&!inEllipse(x,yy,0.34,0.43,0.10,0.08)&&!inEllipse(x,yy,0.05,0.33,0.04,0.05);
+
+  const eu=inEllipse(x,yy,0.79,0.34,0.28,0.13)||inEllipse(x,yy,0.90,0.27,0.12,0.11)||inEllipse(x,yy,0.68,0.42,0.14,0.10);
+  const af=inEllipse(x,yy,0.69,0.61,0.09,0.16)||inEllipse(x,yy,0.69,0.80,0.04,0.08);
+  const right=(eu||af)&&!inEllipse(x,yy,0.77,0.45,0.10,0.06)&&!inEllipse(x,yy,0.70,0.72,0.03,0.04)&&!inEllipse(x,yy,0.97,0.48,0.05,0.05);
+  return left||right;
 }
 function asciiFrame(nodes,tick,cols,rows){
-  const w=Math.max(120,cols||120);
-  const h=Math.max(34,rows||34);
+  const w=Math.max(130,cols||130);
+  const h=Math.max(38,rows||38);
   const g=Array.from({length:h},()=>Array.from({length:w},()=> ' '));
   const du=1/Math.max(1,w-1);
   const dv=1/Math.max(1,h-1);
+  const drift=((Math.floor(tick)%5)-2)*0.0013;
+
   for(let y=0;y<h;y++){
+    const v=y/Math.max(1,h-1);
+    const stripeBand=Math.floor(((v-0.10)/0.62)*52);
     for(let x=0;x<w;x++){
-      const u=x/Math.max(1,w-1);
-      const v=y/Math.max(1,h-1);
-      const jitter=(seeded((x+1)*2.17+(y+1)*1.41)-0.5)*0.045;
-      const inLand=mapMask(u+jitter,v+jitter*0.75);
-      if(!inLand){
-        if(seeded((x+7)*13.1+(y+3)*7.7+tick*0.03)>0.997)g[y][x]='*';
-        continue;
-      }
+      const u=(x/Math.max(1,w-1))+drift;
+      if(!mapMask(u,v))continue;
+      if(stripeBand<0||stripeBand>52)continue;
+      const rowOn=(stripeBand%2===0)||seeded((x+3)*5.9+(y+7)*3.1)>0.996;
+      if(!rowOn)continue;
+      const colShift=(stripeBand%4===0)?0:1;
+      if(((x+colShift)%2)!==0)continue;
       const edge=!mapMask(u+du,v)||!mapMask(u-du,v)||!mapMask(u,v+dv)||!mapMask(u,v-dv);
-      const tw=seeded((x+1)*0.97+(y+1)*1.71+tick*0.085);
-      g[y][x]=edge?'o':(tw>0.88?'o':'.');
+      const gapNoise=seeded((x+11)*1.31+(y+3)*1.73+tick*0.04);
+      if(!edge && gapNoise<0.08)continue;
+      g[y][x]='o';
     }
   }
-  const markers=[...nodes].sort((a,b)=>(b.overlapScore||0)-(a.overlapScore||0)).slice(0,10);
-  markers.forEach((n,i)=>{
-    const side=i%2===0?0.19:0.78;
-    const px=Math.max(1,Math.min(w-2,Math.round(side*w + ((seeded(i*3.1)-0.5)*0.16*w))));
-    const py=Math.max(1,Math.min(h-2,Math.round((0.34+seeded(i*5.7)*0.32)*h)));
-    g[py][px]='+';
-  });
   return g.map(r=>r.join('')).join('\n');
 }
 function renderHome(){
@@ -2070,17 +2319,31 @@ function renderHome(){
       <aside class="home-feed-panel">
         <div class="feed-title">Keyword Feed</div>
         <div class="feed-list" id="homeFeedKeywords"></div>
+        <div class="feed-title" style="margin-top:10px">Nodes Feed</div>
+        <div class="feed-list" id="homeFeedNodes"></div>
+        <div class="feed-title" style="margin-top:10px">Research Papers</div>
+        <div class="feed-list" id="homeFeedPapers"></div>
         <div class="feed-title" style="margin-top:10px">YouTube Watch</div>
         <div class="feed-list" id="homeFeedYoutube"></div>
+        <div class="watch-tools">
+          <div class="watch-row"><input class="finput watch-input" id="homeVideoInput" placeholder="Custom video: Title | URL"><button class="btn watch-btn" onclick="addHomeVideoWatch()">Add Video</button></div>
+          <div class="watch-row"><input class="finput watch-input" id="homePlaylistInput" placeholder="Public playlist URL or ID"><button class="btn watch-btn" onclick="addHomePlaylistWatch()">Add Playlist</button></div>
+          <div class="watch-list" id="homeWatchConfig"></div>
+        </div>
       </aside>
     </div>
     <div class="home-overlay-bottom">
-      <div class="home-updated" id="homeLastUpdated">Last update: pending</div>
+      <div class="home-bottom-left">
+        <div class="home-updated" id="homeLastUpdated">Last update: pending</div>
+        <section class="home-journal" id="homeLastJournal"></section>
+      </div>
       <section class="home-kanban" id="homeKanban"></section>
     </div>
   `;
   m.appendChild(wrap);
   renderHomeKanban();
+  renderHomeWatchConfig();
+  renderHomeLastJournal();
 
   let tick=0;
   const draw=()=>{
@@ -2091,7 +2354,7 @@ function renderHome(){
     p.textContent=asciiFrame(v,tick++,cols,rows);
   };
   draw();
-  homeAsciiTimer=setInterval(draw,2200);
+  homeAsciiTimer=setInterval(draw,15000);
   renderHomeFeeds();
   refreshHomeFeeds();
   homeRefreshTimer=setInterval(()=>refreshHomeFeeds(),10*60*1000);
@@ -2276,7 +2539,31 @@ function promptToken(){if(GH.token)return true;const t=prompt('GitHub PAT (fine-
 function setSyncUI(state,msg){const s=el('syncStatus'),t=el('syncText');s.className='sync-status'+(state==='ok'?' synced':state==='err'?' error':'');t.textContent=msg}
 let pushTimer=null;
 function debouncedPush(){if(!GH.ok)return;clearTimeout(pushTimer);setSyncUI('','saving...');pushTimer=setTimeout(()=>ghPush(),2000)}
-async function ghPull(){if(!GH.ok){detectGHPages();if(!promptToken())return}if(!GH.ok)return;setSyncUI('','pulling...');try{const r=await fetch(`https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/${GH.path}`,{headers:{'Authorization':'Bearer '+GH.token,'Accept':'application/vnd.github.v3+json'}});if(r.status===404){setSyncUI('ok','no remote');return}if(r.status===401||r.status===403){localStorage.removeItem('gh-token');setSyncUI('err','bad token');return}if(!r.ok)throw new Error('HTTP '+r.status);const j=await r.json();const raw=atob(j.content.replace(/\n/g,''));D=cleanMojibakeDeep(JSON.parse(raw));localStorage.setItem('gh-sha',j.sha);D.nodes.forEach(n=>{n.overlapTags=n.overlapTags||[];n.credScore=n.credScore||0;n.notes=n.notes||''});save(true);render();updateSB();updateStats();buildPills();setSyncUI('ok','synced')}catch(e){setSyncUI('err',e.message)}}
+async function ghPull(){
+  if(!GH.ok){detectGHPages();if(!promptToken())return}
+  if(!GH.ok)return;
+  setSyncUI('','pulling...');
+  try{
+    const r=await fetch(`https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/${GH.path}`,{headers:{'Authorization':'Bearer '+GH.token,'Accept':'application/vnd.github.v3+json'}});
+    if(r.status===404){setSyncUI('ok','no remote');return}
+    if(r.status===401||r.status===403){localStorage.removeItem('gh-token');setSyncUI('err','bad token');return}
+    if(!r.ok)throw new Error('HTTP '+r.status);
+    const j=await r.json();
+    const raw=atob(j.content.replace(/\n/g,''));
+    D=cleanMojibakeDeep(JSON.parse(raw));
+    localStorage.setItem('gh-sha',j.sha);
+    D.nodes.forEach(n=>{n.overlapTags=n.overlapTags||[];n.credScore=n.credScore||0;n.notes=n.notes||''});
+    D.journal=D.journal||[];
+    D.litProgress=D.litProgress||{};
+    D.homeWatch=D.homeWatch||{videos:[],playlists:[]};
+    if(!Array.isArray(D.homeWatch.videos))D.homeWatch.videos=[];
+    if(!Array.isArray(D.homeWatch.playlists))D.homeWatch.playlists=[];
+    D.kanban=D.kanban||seedKanbanFromData();
+    save(true);
+    render();updateSB();updateStats();buildPills();
+    setSyncUI('ok','synced');
+  }catch(e){setSyncUI('err',e.message)}
+}
 async function ghPush(){if(!GH.ok)return;setSyncUI('','pushing...');try{let sha=localStorage.getItem('gh-sha')||'';if(!sha){try{const c=await fetch(`https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/${GH.path}`,{headers:{'Authorization':'Bearer '+GH.token,'Accept':'application/vnd.github.v3+json'}});if(c.ok){const j=await c.json();sha=j.sha}}catch(e){}}const text=JSON.stringify(D,null,2);const bytes=new TextEncoder().encode(text);let bin='';for(let i=0;i<bytes.length;i++)bin+=String.fromCharCode(bytes[i]);const body={message:'Update '+new Date().toISOString().slice(0,16),content:btoa(bin)};if(sha)body.sha=sha;const r=await fetch(`https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/${GH.path}`,{method:'PUT',headers:{'Authorization':'Bearer '+GH.token,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},body:JSON.stringify(body)});if(r.status===409){setSyncUI('','conflict...');await ghPull();await ghPush();return}if(!r.ok){const e=await r.json();throw new Error(e.message||'HTTP '+r.status)}const result=await r.json();localStorage.setItem('gh-sha',result.content.sha);setSyncUI('ok','saved')}catch(e){setSyncUI('err',e.message)}}
 function autoSync(){detectGHPages();if(GH.ok)ghPull()}
 function onSyncClick(){if(!GH.ok){detectGHPages();if(promptToken())ghPull()}else ghPush()}
