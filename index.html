@@ -1091,7 +1091,7 @@ table.dtbl{width:100%;min-width:980px;border-collapse:separate;border-spacing:0;
   .biz-panel-side{max-height:none}
   .score-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .grant-kv,.j-row{grid-template-columns:1fr}
-  .signals-grid,.signals-row{grid-template-columns:1fr}
+  .signals-grid,.signals-row,.detail-grid-2,.detail-doc-grid{grid-template-columns:1fr}
   .strata{grid-template-columns:repeat(3,1fr)}
 }
 @media(max-width:900px){
@@ -2077,7 +2077,7 @@ async function init(){
   D=cleanMojibakeDeep(D);
   if(!D.nodes||!D.nodes.length){D={nodes:[],edges:[],people:[]}; return}
   await loadAuditRows();
-  D.nodes.forEach(n=>{n.wp=n.wp||'';n.git=n.git||'';n.twitter=n.twitter||'';n.cf=n.cf||{};n.overlapTags=n.overlapTags||[];n.credScore=n.credScore||0;n.overlapScore=n.overlapScore||0;n.decentNote=n.decentNote||'';n.techStack=n.techStack||'';n.compNote=n.compNote||'';n.notes=n.notes||'';n.finModel=n.finModel||'';n.legalStructure=n.legalStructure||'unknown';n.apc=n.apc||false;n.profitScore=n.profitScore??50;n.openScienceScore=n.openScienceScore??((n.financials&&n.financials.openScienceCompatibilityScore)??50);n.finNote=n.finNote||'';n.fundingRaised=n.fundingRaised||'';n.provenance=n.provenance||{confidence:'low',hasUnverifiedClaims:true,sources:[],lastVerified:'',notes:''};n.financials=n.financials||{revenueSources:[],researcherPays:'unknown',institutionPays:'unknown',openScienceAlignment:'unknown',openScienceAlignmentNote:'',scoreBreakdown:{},openScienceCompatibilityScore:50,openScienceCompatibilityBand:'moderate',scoreAudit:{}};if(n.financials&&n.financials.openScienceCompatibilityScore==null)n.financials.openScienceCompatibilityScore=n.openScienceScore??50;n.sourceAsterisk=!!n.sourceAsterisk});
+  D.nodes.forEach(n=>{n.wp=n.wp||'';n.paper=n.paper||'';n.git=n.git||'';n.twitter=n.twitter||'';n.cf=n.cf||{};n.tags=Array.isArray(n.tags)?n.tags:String(n.tags||'').split(',').map(x=>cleanMojibakeString(x).trim()).filter(Boolean);n.overlapTags=Array.isArray(n.overlapTags)?n.overlapTags:String(n.overlapTags||'').split(',').map(x=>cleanMojibakeString(x).trim()).filter(Boolean);n.credScore=n.credScore||0;n.overlapScore=n.overlapScore||0;n.decentNote=n.decentNote||'';n.techStack=n.techStack||'';n.compNote=n.compNote||'';n.notes=n.notes||'';n.finModel=n.finModel||'';n.legalStructure=n.legalStructure||'unknown';n.apc=n.apc||false;n.profitScore=n.profitScore??50;n.openScienceScore=n.openScienceScore??((n.financials&&n.financials.openScienceCompatibilityScore)??50);n.finNote=n.finNote||'';n.fundingRaised=n.fundingRaised||'';n.people=n.people||'';n.provenance=n.provenance||{confidence:'low',hasUnverifiedClaims:true,sources:[],lastVerified:'',notes:''};n.financials=n.financials||{revenueSources:[],researcherPays:'unknown',institutionPays:'unknown',openScienceAlignment:'unknown',openScienceAlignmentNote:'',scoreBreakdown:{},openScienceCompatibilityScore:50,openScienceCompatibilityBand:'moderate',scoreAudit:{}};if(n.financials&&n.financials.openScienceCompatibilityScore==null)n.financials.openScienceCompatibilityScore=n.openScienceScore??50;n.sourceAsterisk=!!n.sourceAsterisk});
   D.edges=(D.edges||[]).map(e=>e.type==='collaborator'?({...e,type:'partner'}):e);
   if(!D.people)D.people=[];
   D.journal=D.journal||[];
@@ -2744,6 +2744,94 @@ function renderUnescoProfileBox(n){
     ? `<div class="unesco-list">${profile.principles.map(p=>`<div class="unesco-item"><div class="t">${escapeHtml(p.label)}</div><div class="d">${escapeHtml(p.why)}</div></div>`).join('')}</div>`
     : '<div style="font-size:.76rem;color:var(--text-3);margin-top:8px">No explicit UNESCO-aligned principle evidence detected from current node fields.</div>';
   return `<div class="prov-box"><div class="flabel">Open-science score justification</div><div style="font-size:.8rem;color:var(--text-2);line-height:1.45">${escapeHtml(profile.summary)}</div>${chips}<a class="unesco-ref" href="${profile.reference.url}" target="_blank" rel="noopener">${escapeHtml(profile.reference.label)} -></a></div>`;
+}
+
+const STRATA_META=[
+  {key:'s1',label:'S1',sub:'Prov'},
+  {key:'s2',label:'S2',sub:'Value'},
+  {key:'s3',label:'S3',sub:'Agent'},
+  {key:'s4',label:'S4',sub:'Verif'},
+  {key:'s5',label:'S5',sub:'Gov Plan'}
+];
+const STRATA_LEVEL_LABEL={0:'—',1:'Low',2:'Med',3:'High'};
+function normList(val){
+  return (Array.isArray(val)?val:String(val||'').split(','))
+    .map(v=>cleanMojibakeString(v).trim())
+    .filter(Boolean);
+}
+function nodeTagList(n){return [...new Set(normList(n&&n.tags))]}
+function overlapTagList(n){return [...new Set(normList(n&&n.overlapTags))]}
+function legacyPeopleList(n,ppl){
+  const linked=new Set((ppl||[]).map(p=>String(p.name||'').trim().toLowerCase()).filter(Boolean));
+  return normList(n&&n.people).filter(name=>!linked.has(name.toLowerCase()));
+}
+function normalizeExternalUrl(raw,kind){
+  const s=cleanMojibakeString(raw||'').trim();
+  if(!s)return '';
+  if(/^https?:\/\//i.test(s))return s;
+  if(kind==='twitter'){
+    const handle=s.replace(/^@/,'').trim();
+    if(/^(x|twitter)\.com\//i.test(handle))return `https://${handle}`;
+    return handle?`https://x.com/${handle}`:'';
+  }
+  if(kind==='github'){
+    if(/^github\.com\//i.test(s))return `https://${s}`;
+    if(/^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(s))return `https://github.com/${s}`;
+  }
+  if(/^(www\.|(?!.*\s)[A-Za-z0-9.-]+\.[A-Za-z]{2,})(\/.*)?$/i.test(s))return `https://${s}`;
+  return '';
+}
+function detailLinkButton(label,url,cls){
+  const href=normalizeExternalUrl(url,cls==='twitter'?'twitter':cls==='github'?'github':'');
+  if(!href)return '';
+  return `<a class="detail-link-btn" href="${escapeHtml(href)}" target="_blank" rel="noopener">${escapeHtml(label)}</a>`;
+}
+function decenBand(v){
+  return v>=80?'highly decentralized':v>=60?'mixed but decentralized':v>=40?'partially centralized':'mostly centralized';
+}
+function renderStrataGrid(n){
+  return `<div class="strata">${STRATA_META.map(meta=>{
+    const val=Math.max(0,Math.min(3,+n[meta.key]||0));
+    return `<button type="button" class="stm" data-v="${val}" onclick="cycleStrata('${n.id}','${meta.key}')"><div>${meta.label}</div><div>${meta.sub}</div><div>${STRATA_LEVEL_LABEL[val]}</div></button>`;
+  }).join('')}</div>`;
+}
+function renderOpenScienceCompatibilityBox(n){
+  const fin=n.financials||{};
+  const profile=inferUnescoPrinciples(n);
+  const osScore=n.openScienceScore??fin.openScienceCompatibilityScore??50;
+  const reasons=(fin.openScienceCompatibilityReasons||[]).length
+    ? `<div class="detail-micro">Compatibility drivers: ${escapeHtml(fin.openScienceCompatibilityReasons.join('; '))}.</div>`
+    : '';
+  const chips=profile.principles.length
+    ? `<div class="unesco-list">${profile.principles.map(p=>`<div class="unesco-item"><div class="t">${escapeHtml(p.label)}</div><div class="d">${escapeHtml(p.why)}</div></div>`).join('')}</div>`
+    : `<div class="detail-empty-note" style="margin-top:10px">No UNESCO-aligned principle notes surfaced yet from the current node fields.</div>`;
+  const risks=profile.risks&&profile.risks.length
+    ? `<div class="detail-micro">Risk checks: ${escapeHtml(profile.risks.join('; '))}.</div>`
+    : '';
+  return `<div class="prov-box">
+    <div class="flabel">Open-science compatibility</div>
+    <div class="detail-statline"><span class="profit-badge" style="background:${osBg(osScore)};color:${osC(osScore)}">${osScore}/100</span><span>${escapeHtml((fin.openScienceCompatibilityBand||osBand(osScore)).toString())}</span>${fin.openScienceAlignment&&fin.openScienceAlignment!=='unknown'?`<span>Alignment: <strong style="color:${osC(osScore)};text-transform:capitalize">${escapeHtml(fin.openScienceAlignment)}</strong></span>`:''}</div>
+    <div class="fin-bar-wrap"><div class="fin-bar-bg"><div class="fin-bar-fill" style="width:${osScore}%;background:${osC(osScore)}"></div></div></div>
+    <div class="detail-section-note">${escapeHtml(profile.summary)}</div>
+    ${reasons}
+    ${fin.openScienceAlignmentNote?`<div class="detail-micro">${escapeHtml(fin.openScienceAlignmentNote)}</div>`:''}
+    ${chips}
+    ${risks}
+    <a class="unesco-ref" href="${profile.reference.url}" target="_blank" rel="noopener">${escapeHtml(profile.reference.label)} -></a>
+  </div>`;
+}
+function renderDecentralizationBox(n){
+  const dc=Math.max(0,Math.min(100,+n.decen||0));
+  return `<div class="prov-box">
+    <div class="flabel">Decentralization</div>
+    <div class="detail-statline"><span class="profit-badge" style="background:${osBg(dc)};color:${osC(dc)}">${dc}%</span><span>${escapeHtml(decenBand(dc))}</span></div>
+    <div class="fin-bar-wrap"><div class="fin-bar-bg"><div class="fin-bar-fill" style="width:${dc}%;background:${osC(dc)}"></div></div></div>
+    ${n.decentNote?`<div class="detail-section-note">${escapeHtml(n.decentNote)}</div>`:'<div class="detail-empty-note">No decentralization note attached yet.</div>'}
+    <div class="field" style="margin-top:12px;margin-bottom:0">
+      <div class="flabel">Strata (click to cycle)</div>
+      ${renderStrataGrid(n)}
+    </div>
+  </div>`;
 }
 
 function renderBiz(){
@@ -5411,65 +5499,231 @@ function displayZ(){renderLitTable()}
 
 // ===== DETAIL PANEL =====
 function selNode(id){
-  selId=id;const n=D.nodes.find(x=>x.id===id);if(!n)return;
+  selId=id;
+  const n=D.nodes.find(x=>x.id===id);
+  if(!n)return;
+  n.tags=nodeTagList(n);
+  n.overlapTags=overlapTagList(n);
   const prov=n.provenance||{}, fin=n.financials||{}, bdg=(fin.scoreBreakdown||{});
   const conf=prov.confidence||'low';
   const confCls=confClass(conf);
-  el('detE').style.display='none';
-  const p=el('detC'),rels=D.edges.filter(e=>e.s===id||e.t===id);
-  const ppl=D.people.filter(pp=>pp.orgs.includes(id));
+  const osScore=n.openScienceScore??fin.openScienceCompatibilityScore??50;
+  const p=el('detC');
+  const rels=D.edges.filter(e=>e.s===id||e.t===id);
+  const ppl=D.people.filter(pp=>(pp.orgs||[]).includes(id));
+  const legacyPpl=legacyPeopleList(n,ppl);
   const credC=n.credScore>=60?'var(--sage)':n.credScore>=30?'var(--gold)':'var(--text-3)';
   const ovC=(n.overlapScore||0)>=60?'var(--gold)':(n.overlapScore||0)>=30?'var(--text-2)':'var(--text-3)';
-  const srcHtml=(prov.sources||[]).map(s=>`<a class="src-chip" href="${s.url}" target="_blank" rel="noopener">${s.label}${s.type?` | ${s.type}`:''}</a>`).join('');
-  const osScore=n.openScienceScore??fin.openScienceCompatibilityScore??50;
-  const audit=fin.scoreAudit||{};
-  p.innerHTML=`<div class="det-name">${n.name}${n.sourceAsterisk?' *':''}</div><div class="det-sub">${n.type} | ${n.stage} | <span class="cred-badge" style="background:rgba(110,200,155,.08);color:${credC}">Cred ${n.credScore||0}</span> | <span class="profit-badge" style="background:${profitBg(n.profitScore)};color:${profitC(n.profitScore)}">Profit ${n.profitScore??50}</span> | <span class="profit-badge" style="background:${osBg(osScore)};color:${osC(osScore)}">OS Fit ${osScore}</span> | <span class="conf-badge ${confCls}">${conf}</span>${n.twitter?` | <a href="https://x.com/${n.twitter.replace('@','')}" target="_blank" style="color:var(--link)">${n.twitter}</a>`:''}</div>
-  <div class="field"><div class="flabel">Description</div><textarea class="finput" onchange="upd('${id}','desc',this.value)">${n.desc||''}</textarea></div>
+  const srcHtml=(prov.sources||[]).map(s=>`<a class="src-chip" href="${escapeHtml(s.url||'#')}" target="_blank" rel="noopener">${escapeHtml(s.label||'Source')}${s.type?` | ${escapeHtml(s.type)}`:''}</a>`).join('');
+  const detailLinks=[
+    detailLinkButton('Website',n.web,'web'),
+    detailLinkButton('GitHub',n.git,'github'),
+    detailLinkButton(n.twitter&&String(n.twitter).trim().startsWith('@')?n.twitter:'X / Twitter',n.twitter,'twitter'),
+    detailLinkButton('Whitepaper',n.wp,'web'),
+    detailLinkButton('Research paper',n.paper,'web')
+  ].filter(Boolean).join('');
+  const tagHtml=n.tags.length
+    ? `<div class="tag-row">${n.tags.map(tag=>`<span class="tag-chip">${escapeHtml(tag)}<span class="rm" onclick="removeNodeTag('${id}','${encodeURIComponent(tag)}')">x</span></span>`).join('')}</div>`
+    : '<div class="detail-empty-note">No tags yet.</div>';
+  const overlapTagHtml=n.overlapTags.length
+    ? `<div class="tag-row">${n.overlapTags.map(tag=>`<span class="tag-chip">${escapeHtml(OV_LABELS[tag]||tag)}</span>`).join('')}</div>`
+    : '<div class="detail-empty-note">No overlap tags attached yet.</div>';
+  const peopleHtml=ppl.length
+    ? `<ul class="rel-list">${ppl.map(pp=>`<li class="rel-item"><span><a href="#" onclick="showPerson('${pp.id}');return false;">${escapeHtml(pp.name)}</a>${pp.role?`<span style="color:var(--text-3)"> | ${escapeHtml(pp.role)}</span>`:''}</span><span style="margin-left:auto;display:flex;gap:8px;align-items:center">${pp.linkedin?`<a href="${escapeHtml(pp.linkedin)}" target="_blank" rel="noopener">LinkedIn</a>`:''}${pp.twitter?`<a href="${escapeHtml(normalizeExternalUrl(pp.twitter,'twitter'))}" target="_blank" rel="noopener">${escapeHtml(pp.twitter)}</a>`:''}<button class="btn" type="button" onclick="unlinkPersonFromOrg('${pp.id}','${id}')">Unlink</button></span></li>`).join('')}</ul>`
+    : '<div class="detail-empty-note">No linked people.</div>';
+  const legacyPeopleHtml=legacyPpl.length
+    ? `<div class="detail-legacy-list">${legacyPpl.map(name=>`<span class="detail-legacy-chip">${escapeHtml(name)}</span>`).join('')}</div><div class="detail-micro">Legacy names stored on this node before structured people links were added.</div>`
+    : '';
+  const relationHtml=rels.length
+    ? `<ul class="rel-list">${rels.map(r=>{const other=r.s===id?r.t:r.s;const on=D.nodes.find(x=>x.id===other)?.name||other;const c=RB[r.type]||{b:'var(--raised)',c:'var(--text-3)'};return`<li class="rel-item"><span class="rel-badge" style="background:${c.b};color:${c.c}">${escapeHtml(r.type)}</span><span>${escapeHtml(on)}</span>${r.l?`<span style="color:var(--text-3);font-size:.72rem">| ${escapeHtml(r.l)}</span>`:''}</li>`}).join('')}</ul>`
+    : '<div class="detail-empty-note">No relationships linked yet.</div>';
+  el('detE').style.display='none';
+  p.innerHTML=`<div class="det-name">${escapeHtml(n.name)}${n.sourceAsterisk?' *':''}</div>
+  <div class="det-sub">${escapeHtml(n.type||'Unknown')} | ${escapeHtml(n.stage||'Unknown')} | <span class="stack-chip" style="background:${SBG[n.stack]||'var(--raised)'};color:${SC[n.stack]||'var(--text-2)'}">${escapeHtml(n.stack||'unknown')}</span></div>
+  <div class="detail-statline" style="margin-bottom:14px"><span class="cred-badge" style="background:rgba(110,200,155,.08);color:${credC}">Cred ${n.credScore||0}</span><span class="profit-badge" style="background:${profitBg(n.profitScore)};color:${profitC(n.profitScore)}">Profit ${n.profitScore??50}</span><span class="profit-badge" style="background:${osBg(osScore)};color:${osC(osScore)}">OS Fit ${osScore}</span><span class="conf-badge ${confCls}">${escapeHtml(conf)}</span></div>
+  <div class="detail-actions">${detailLinks||'<div class="detail-empty-note" style="width:100%">No external links attached yet.</div>'}</div>
+  <div class="field"><div class="flabel">Description</div><textarea class="finput" onchange="upd('${id}','desc',this.value)">${escapeHtml(n.desc||'')}</textarea></div>
   ${(n.overlapScore||n.compNote)?`<div class="overlap-box" style="border:1px solid ${(n.overlapScore||0)>=50?'rgba(212,168,83,.25)':'var(--border)'}">
     <div class="flabel" style="color:var(--gold)">Overlap with our platform <span style="font-weight:700">${n.overlapScore||0}%</span></div>
     <div class="overlap-bar-wrap"><div class="overlap-bar-bg"><div class="overlap-bar-fill" style="width:${n.overlapScore||0}%;background:${ovC}"></div></div></div>
-    <div style="font-size:.82rem;color:var(--text-2);line-height:1.5">${n.compNote||''}</div>
+    <div class="detail-section-note">${escapeHtml(n.compNote||'No overlap note attached yet.')}</div>
   </div>`:''}
-  ${(n.finModel||n.finNote)?`<div class="fin-box ${finBoxClass(n.profitScore)}">
-    <div class="flabel" style="color:${profitC(n.profitScore)}">Commerciality score <span style="font-weight:700">${n.profitScore??50}/100</span> ${n.legalStructure!=='unknown'?`| <span style="text-transform:capitalize">${n.legalStructure}</span>`:''} ${n.apc?'| <span style="color:var(--red)">Has fee/APC</span>':''}</div>
+  ${(n.finModel||n.finNote||Object.keys(bdg).length||n.fundingRaised||fin.revenueSources?.length)?`<div class="fin-box ${finBoxClass(n.profitScore)}">
+    <div class="flabel" style="color:${profitC(n.profitScore)}">Commerciality score <span style="font-weight:700">${n.profitScore??50}/100</span> ${n.legalStructure!=='unknown'?`| <span style="text-transform:capitalize">${escapeHtml(n.legalStructure)}</span>`:''} ${n.apc?'| <span style="color:var(--red)">Has fee/APC</span>':''}</div>
     <div class="fin-bar-wrap"><div class="fin-bar-bg"><div class="fin-bar-fill" style="width:${n.profitScore??50}%;background:${profitBarC(n.profitScore)}"></div></div></div>
-    <div class="flabel" style="margin-top:10px;color:${osC(osScore)}">Open-science compatibility <span style="font-weight:700">${osScore}/100</span> ${fin.openScienceCompatibilityBand?`| <span style="text-transform:capitalize">${fin.openScienceCompatibilityBand}</span>`:''}</div>
-    <div class="fin-bar-wrap"><div class="fin-bar-bg"><div class="fin-bar-fill" style="width:${osScore}%;background:${osC(osScore)}"></div></div></div>
-    ${n.fundingRaised?`<div style="font-size:.75rem;color:var(--text-3);margin-bottom:6px">Funding / scale: ${n.fundingRaised}</div>`:''}
-    ${fin.revenueSources&&fin.revenueSources.length?`<div style="font-size:.75rem;color:var(--text-3);margin-bottom:6px">Revenue sources: ${fin.revenueSources.join(', ')}</div>`:''}
-    ${fin.researcherPays&&fin.researcherPays!=='unknown'?`<div style="font-size:.75rem;color:var(--text-3);margin-bottom:6px">Researcher pays: ${fin.researcherPays}</div>`:''}
-    ${fin.institutionPays&&fin.institutionPays!=='unknown'?`<div style="font-size:.75rem;color:var(--text-3);margin-bottom:6px">Institution pays: ${fin.institutionPays}</div>`:''}
-    ${fin.apcAmountText?`<div style="font-size:.75rem;color:var(--text-3);margin-bottom:6px">Fee detail: ${fin.apcAmountText}</div>`:''}
-    ${fin.financialSummary?`<div style="font-size:.8rem;color:var(--text-2);line-height:1.45">${fin.financialSummary}</div>`:''}
-    <div style="font-size:.82rem;color:var(--text-2);line-height:1.5">${n.finModel||''}</div>
-    ${n.finNote?`<div style="font-size:.8rem;color:var(--text-3);line-height:1.5;margin-top:8px">${n.finNote}</div>`:''}
+    ${n.fundingRaised?`<div class="detail-micro">Funding / scale: ${escapeHtml(n.fundingRaised)}</div>`:''}
+    ${fin.revenueSources&&fin.revenueSources.length?`<div class="detail-micro">Revenue sources: ${escapeHtml(fin.revenueSources.join(', '))}</div>`:''}
+    ${fin.researcherPays&&fin.researcherPays!=='unknown'?`<div class="detail-micro">Researcher pays: ${escapeHtml(fin.researcherPays)}</div>`:''}
+    ${fin.institutionPays&&fin.institutionPays!=='unknown'?`<div class="detail-micro">Institution pays: ${escapeHtml(fin.institutionPays)}</div>`:''}
+    ${fin.apcAmountText?`<div class="detail-micro">Fee detail: ${escapeHtml(fin.apcAmountText)}</div>`:''}
+    ${fin.financialSummary?`<div class="detail-section-note">${escapeHtml(fin.financialSummary)}</div>`:''}
+    ${n.finModel?`<div class="detail-section-note" style="margin-top:8px">${escapeHtml(n.finModel)}</div>`:''}
+    ${n.finNote?`<div class="detail-micro">${escapeHtml(n.finNote)}</div>`:''}
     ${(bdg&&Object.keys(bdg).length)?`<div class="score-grid">
       <div class="score-cell"><span class="k">Structure</span><span class="v">${bdg.structure??'-'}</span></div>
       <div class="score-cell"><span class="k">Revenue</span><span class="v">${bdg.revenue??'-'}</span></div>
       <div class="score-cell"><span class="k">Capital</span><span class="v">${bdg.capital??'-'}</span></div>
       <div class="score-cell"><span class="k">Total</span><span class="v">${bdg.total??(n.profitScore??'-')}</span></div>
     </div>`:''}
-    ${audit&&audit.previousProfitScore!=null?`<div style="font-size:.76rem;color:var(--text-3);line-height:1.5;margin-top:8px">Score audit: was ${audit.previousProfitScore}, now ${audit.auditedProfitScore} (${audit.delta>=0?'+':''}${audit.delta}). ${audit.reasons&&audit.reasons.length?`Main drivers: ${audit.reasons.join('; ')}.`:''}</div>`:''}
   </div>`:''}
+  ${renderOpenScienceCompatibilityBox(n)}
+  ${renderDecentralizationBox(n)}
   <div class="prov-box">
-    <div class="flabel">Provenance ${prov.hasUnverifiedClaims?'<span style="color:var(--red)">| * inferred / unresolved fields remain</span>':''}</div>
-    <div style="font-size:.8rem;color:var(--text-2);line-height:1.45">Confidence: <span class="conf-badge ${confCls}">${conf}</span>${prov.lastVerified?` | Last verified: ${prov.lastVerified}`:''}</div>
-    ${fin.openScienceAlignment&&fin.openScienceAlignment!=='unknown'?`<div style="font-size:.8rem;color:var(--text-2);line-height:1.45;margin-top:6px">Open-science alignment: <strong style="color:${osC(osScore)};text-transform:capitalize">${fin.openScienceAlignment}</strong></div>`:''}
-    ${fin.openScienceCompatibilityReasons&&fin.openScienceCompatibilityReasons.length?`<div style="font-size:.78rem;color:var(--text-3);line-height:1.5;margin-top:6px">Compatibility drivers: ${fin.openScienceCompatibilityReasons.join('; ')}.</div>`:''}
-    ${fin.openScienceAlignmentNote?`<div style="font-size:.8rem;color:var(--text-3);line-height:1.5;margin-top:6px">${fin.openScienceAlignmentNote}</div>`:''}
-    ${prov.notes?`<div style="font-size:.8rem;color:var(--text-3);line-height:1.5;margin-top:8px">${prov.notes}</div>`:''}
-    ${srcHtml?`<div class="src-list">${srcHtml}</div>`:'<div style="font-size:.78rem;color:var(--text-3);margin-top:8px">No external source links attached yet.</div>'}
+    <div class="flabel">Provenance ${prov.hasUnverifiedClaims?'<span style="color:var(--red)">| inferred / unresolved fields remain</span>':''}</div>
+    <div class="detail-statline">Confidence: <span class="conf-badge ${confCls}">${escapeHtml(conf)}</span>${prov.lastVerified?`<span>Last verified: ${escapeHtml(prov.lastVerified)}</span>`:''}</div>
+    ${prov.notes?`<div class="detail-section-note" style="margin-top:8px">${escapeHtml(prov.notes)}</div>`:''}
+    ${srcHtml?`<div class="src-list">${srcHtml}</div>`:'<div class="detail-empty-note" style="margin-top:10px">No external source links attached yet.</div>'}
   </div>
-  ${renderUnescoProfileBox(n)}
-  <div class="field"><div class="flabel">Type</div><input class="finput" value="${n.type||''}" onchange="upd('${id}','type',this.value)"></div>
-  <div class="field"><div class="flabel">Stage</div><input class="finput" value="${n.stage||''}" onchange="upd('${id}','stage',this.value)"></div>
-  <div class="field"><div class="flabel">Website</div><input class="finput" value="${n.web||''}" onchange="upd('${id}','web',this.value)"></div>
-  <div class="field"><div class="flabel">Tech Stack</div><textarea class="finput" onchange="upd('${id}','techStack',this.value)">${n.techStack||''}</textarea></div>
-  <div class="field"><div class="flabel">Notes</div><textarea class="finput" onchange="upd('${id}','notes',this.value)">${n.notes||''}</textarea></div>
-  ${ppl.length?`<div class="field"><div class="flabel">People</div><ul class="rel-list">${ppl.map(pp=>`<li class="rel-item"><span>${pp.name}</span></li>`).join('')}</ul></div>`:''}
-  ${rels.length?`<div class="field"><div class="flabel">Relations</div><ul class="rel-list">${rels.map(r=>{const other=r.s===id?r.t:r.s;const on=D.nodes.find(x=>x.id===other)?.name||other;const c=RB[r.type]||{b:'var(--raised)',c:'var(--text-3)'};return`<li class="rel-item"><span class="rel-badge" style="background:${c.b};color:${c.c}">${r.type}</span><span>${on}</span>${r.l?`<span style="color:var(--text-3);font-size:.72rem">| ${r.l}</span>`:''}</li>`}).join('')}</ul></div>`:''}`;
+  <div class="detail-grid-2 field" style="margin-bottom:12px">
+    <div><div class="flabel">Type</div><input class="finput" value="${escapeHtml(n.type||'')}" onchange="upd('${id}','type',this.value)"></div>
+    <div><div class="flabel">Stage</div><input class="finput" value="${escapeHtml(n.stage||'')}" onchange="upd('${id}','stage',this.value)"></div>
+    <div><div class="flabel">Stack</div><select class="finput" onchange="upd('${id}','stack',this.value)"><option value="infrastructure" ${n.stack==='infrastructure'?'selected':''}>Infrastructure</option><option value="application" ${n.stack==='application'?'selected':''}>Application</option><option value="governance" ${n.stack==='governance'?'selected':''}>Governance</option></select></div>
+    <div><div class="flabel">Legal structure</div><input class="finput" value="${escapeHtml(n.legalStructure||'')}" onchange="upd('${id}','legalStructure',this.value)"></div>
+    <div><div class="flabel">Decentralization %</div><input class="finput" type="number" min="0" max="100" value="${+n.decen||0}" onchange="updNum('${id}','decen',this.value,0,100)"></div>
+    <div><div class="flabel">Open-science fit</div><input class="finput" type="number" min="0" max="100" value="${+osScore||0}" onchange="updNum('${id}','openScienceScore',this.value,0,100)"></div>
+  </div>
+  <div class="field"><div class="flabel">Links</div><div class="detail-doc-grid">
+    <div><input class="finput" placeholder="Website URL" value="${escapeHtml(n.web||'')}" onchange="upd('${id}','web',this.value)"></div>
+    <div><input class="finput" placeholder="GitHub URL or owner/repo" value="${escapeHtml(n.git||'')}" onchange="upd('${id}','git',this.value)"></div>
+    <div><input class="finput" placeholder="@twitter handle or x.com URL" value="${escapeHtml(n.twitter||'')}" onchange="upd('${id}','twitter',this.value)"></div>
+    <div><input class="finput" placeholder="Legacy people text" value="${escapeHtml(n.people||'')}" onchange="upd('${id}','people',this.value)"></div>
+  </div></div>
+  <div class="field"><div class="flabel">Documents</div><div class="detail-doc-grid">
+    <div><input class="finput" placeholder="Whitepaper URL" value="${escapeHtml(n.wp||'')}" onchange="upd('${id}','wp',this.value)"></div>
+    <div><input class="finput" placeholder="Research paper URL" value="${escapeHtml(n.paper||'')}" onchange="upd('${id}','paper',this.value)"></div>
+  </div></div>
+  <div class="field"><div class="flabel">Tags</div>${tagHtml}<div class="detail-inline-actions"><input class="finput" placeholder="Add tag, press Enter" onkeydown="nodeTagEnter(event,'${id}',this)"></div></div>
+  <div class="field"><div class="flabel">Overlap tags</div>${overlapTagHtml}</div>
+  <div class="field"><div class="flabel">People</div>${peopleHtml}${legacyPeopleHtml}<div class="detail-inline-actions"><button class="btn" type="button" onclick="addNodePersonM('${id}')">+ New person</button><button class="btn" type="button" onclick="linkExistingPersonM('${id}')">Link existing</button></div></div>
+  <div class="field"><div class="flabel">Tech stack</div><textarea class="finput" onchange="upd('${id}','techStack',this.value)">${escapeHtml(n.techStack||'')}</textarea></div>
+  <div class="field"><div class="flabel">Decentralization notes</div><textarea class="finput" onchange="upd('${id}','decentNote',this.value)">${escapeHtml(n.decentNote||'')}</textarea></div>
+  <div class="field"><div class="flabel">Node notes</div><textarea class="finput" onchange="upd('${id}','notes',this.value)">${escapeHtml(n.notes||'')}</textarea></div>
+  <div class="field"><div class="flabel">Relations</div>${relationHtml}</div>
+  <div class="detail-danger"><button class="btn btn-x" type="button" onclick="deleteOrg('${id}')">Delete organization</button></div>`;
   sanitizeVisibleText(p);
   el('app').classList.remove('hide-right');
+}
+function rerenderAfterNodeEdit(id){
+  save();
+  buildPills();
+  render();
+  if(id && D.nodes.some(n=>n.id===id))selNode(id);
+}
+function upd(id,key,val){
+  const n=D.nodes.find(x=>x.id===id);
+  if(!n)return;
+  let next=cleanMojibakeString(val||'').trim();
+  if(key==='twitter' && next && !/^https?:\/\//i.test(next) && !next.startsWith('@'))next='@'+next;
+  n[key]=next;
+  rerenderAfterNodeEdit(id);
+}
+function updNum(id,key,val,min,max){
+  const n=D.nodes.find(x=>x.id===id);
+  if(!n)return;
+  let num=Number(val);
+  if(!Number.isFinite(num))num=0;
+  if(Number.isFinite(min))num=Math.max(min,num);
+  if(Number.isFinite(max))num=Math.min(max,num);
+  n[key]=Math.round(num);
+  if(key==='openScienceScore'){
+    n.financials=n.financials||{};
+    n.financials.openScienceCompatibilityScore=n[key];
+  }
+  rerenderAfterNodeEdit(id);
+}
+function cycleStrata(id,key){
+  const n=D.nodes.find(x=>x.id===id);
+  if(!n)return;
+  n[key]=((+n[key]||0)+1)%4;
+  rerenderAfterNodeEdit(id);
+}
+function addNodeTag(id,raw){
+  const n=D.nodes.find(x=>x.id===id);
+  if(!n)return;
+  const tag=cleanMojibakeString(raw||'').trim();
+  if(!tag)return;
+  n.tags=nodeTagList(n);
+  if(!n.tags.some(t=>t.toLowerCase()===tag.toLowerCase()))n.tags.push(tag);
+  rerenderAfterNodeEdit(id);
+}
+function nodeTagEnter(evt,id,input){
+  if(!evt || evt.key!=='Enter')return;
+  evt.preventDefault();
+  const host=input||evt.target;
+  const raw=(host&&host.value)||'';
+  addNodeTag(id,raw);
+  if(host)host.value='';
+}
+function removeNodeTag(id,enc){
+  const n=D.nodes.find(x=>x.id===id);
+  if(!n)return;
+  const tag=decodeURIComponent(enc||'');
+  n.tags=nodeTagList(n).filter(t=>t.toLowerCase()!==tag.toLowerCase());
+  rerenderAfterNodeEdit(id);
+}
+function unlinkPersonFromOrg(pid,orgId){
+  const person=D.people.find(p=>p.id===pid);
+  if(!person)return;
+  person.orgs=(person.orgs||[]).filter(id=>id!==orgId);
+  rerenderAfterNodeEdit(orgId);
+}
+function linkExistingPersonM(orgId){
+  const opts=D.people.filter(p=>!(p.orgs||[]).includes(orgId));
+  el('mo').style.display='flex';
+  el('mc').innerHTML=`<h2>Link Existing Person</h2>
+  ${opts.length?`<div class="field"><div class="flabel">Person</div><select class="finput" id="linkPersonSel">${opts.map(p=>`<option value="${p.id}">${escapeHtml(p.name)}${p.role?` | ${escapeHtml(p.role)}`:''}</option>`).join('')}</select></div>`:'<div class="detail-empty-note">Everyone in the directory is already linked to this organization.</div>'}
+  <div class="modal-foot"><button class="btn" onclick="clM()">Cancel</button>${opts.length?`<button class="btn btn-fill" onclick="doLinkExistingPerson('${orgId}')">Link</button>`:''}</div>`;
+}
+function doLinkExistingPerson(orgId){
+  const pid=el('linkPersonSel')&&el('linkPersonSel').value;
+  const person=D.people.find(p=>p.id===pid);
+  if(!person)return;
+  person.orgs=Array.isArray(person.orgs)?person.orgs:[];
+  if(!person.orgs.includes(orgId))person.orgs.push(orgId);
+  clM();
+  rerenderAfterNodeEdit(orgId);
+}
+function slugifyId(raw,prefix){
+  const core=String(raw||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,42)||Date.now().toString(36);
+  return `${prefix||'item'}-${core}`;
+}
+function addNodePersonM(orgId){
+  el('mo').style.display='flex';
+  el('mc').innerHTML=`<h2>Add Person</h2>
+  <div class="field"><div class="flabel">Name</div><input class="finput" id="pName"></div>
+  <div class="field"><div class="flabel">Role</div><input class="finput" id="pRole" placeholder="e.g. Founder, researcher, advisor"></div>
+  <div class="field"><div class="flabel">LinkedIn</div><input class="finput" id="pLinkedIn" placeholder="https://linkedin.com/in/..."></div>
+  <div class="field"><div class="flabel">Twitter / X</div><input class="finput" id="pTwitter" placeholder="@handle"></div>
+  <div class="modal-foot"><button class="btn" onclick="clM()">Cancel</button><button class="btn btn-fill" onclick="doAddNodePerson('${orgId}')">Add</button></div>`;
+}
+function doAddNodePerson(orgId){
+  const name=cleanMojibakeString(el('pName')&&el('pName').value).trim();
+  if(!name)return;
+  const role=cleanMojibakeString(el('pRole')&&el('pRole').value).trim();
+  const linkedin=cleanMojibakeString(el('pLinkedIn')&&el('pLinkedIn').value).trim();
+  let twitter=cleanMojibakeString(el('pTwitter')&&el('pTwitter').value).trim();
+  if(twitter && !/^https?:\/\//i.test(twitter) && !twitter.startsWith('@'))twitter='@'+twitter;
+  let pid=slugifyId(name,'p');
+  let i=2;
+  while(D.people.some(p=>p.id===pid)){pid=slugifyId(`${name}-${i}`,'p');i++}
+  D.people.push({id:pid,name,role,linkedin,twitter,orgs:[orgId]});
+  clM();
+  rerenderAfterNodeEdit(orgId);
+}
+function deleteOrg(id){
+  const n=D.nodes.find(x=>x.id===id);
+  if(!n)return;
+  if(!confirm(`Delete organization "${n.name}"? This will also remove its graph edges and unlink it from people.`))return;
+  D.nodes=D.nodes.filter(x=>x.id!==id);
+  D.edges=D.edges.filter(e=>e.s!==id && e.t!==id);
+  D.people.forEach(p=>{p.orgs=(p.orgs||[]).filter(org=>org!==id)});
+  if(selId===id)selId='';
+  save();
+  buildPills();
+  render();
+  const empty=el('detE'), body=el('detC');
+  if(body)body.innerHTML='';
+  if(empty)empty.style.display='flex';
 }
 // ===== MODALS =====
 function clM(){el('mo').style.display='none'}
@@ -5484,7 +5738,7 @@ function addOrgM(){
 }
 function doAddOrg(){
   const id=el('nId').value.trim(),name=el('nName').value.trim();if(!id||!name)return;
-  D.nodes.push({id,name,desc:'',type:el('nType').value.trim()||'Unknown',stack:el('nStack').value,stage:'Early',tags:[],s1:0,s2:0,s3:0,s4:0,s5:0,decen:50,chain:'',web:'',funding:'',source:'Manual',cf:{},wp:'',git:'',twitter:'',people:'',techStack:'',decentNote:'',overlapScore:0,compNote:'',notes:'',overlapTags:[],credScore:0,finModel:'',legalStructure:'unknown',apc:false,profitScore:50,finNote:'',fundingRaised:'',provenance:{confidence:'low',hasUnverifiedClaims:true,sources:[],lastVerified:'',notes:'Manual entry'},financials:{revenueSources:[],researcherPays:'unknown',institutionPays:'unknown',openScienceAlignment:'unknown',openScienceAlignmentNote:'',openScienceCompatibilityScore:50,openScienceCompatibilityBand:'moderate',scoreBreakdown:{},scoreAudit:{}},openScienceScore:50,sourceAsterisk:true});
+  D.nodes.push({id,name,desc:'',type:el('nType').value.trim()||'Unknown',stack:el('nStack').value,stage:'Early',tags:[],s1:0,s2:0,s3:0,s4:0,s5:0,decen:50,chain:'',web:'',funding:'',source:'Manual',cf:{},wp:'',paper:'',git:'',twitter:'',people:'',techStack:'',decentNote:'',overlapScore:0,compNote:'',notes:'',overlapTags:[],credScore:0,finModel:'',legalStructure:'unknown',apc:false,profitScore:50,finNote:'',fundingRaised:'',provenance:{confidence:'low',hasUnverifiedClaims:true,sources:[],lastVerified:'',notes:'Manual entry'},financials:{revenueSources:[],researcherPays:'unknown',institutionPays:'unknown',openScienceAlignment:'unknown',openScienceAlignmentNote:'',openScienceCompatibilityScore:50,openScienceCompatibilityBand:'moderate',scoreBreakdown:{},scoreAudit:{}},openScienceScore:50,sourceAsterisk:true});
   save();render();updateSB();updateStats();buildPills();clM();
 }
 function addEdgeM(){
@@ -5505,8 +5759,8 @@ function impFile(inp){
   const f=inp.files[0];if(!f)return;
   const r=new FileReader();r.onload=e=>{
     try{
-      if(f.name.endsWith('.json')){D=cleanMojibakeDeep(JSON.parse(e.target.result));D.nodes.forEach(n=>{n.overlapTags=n.overlapTags||[];n.credScore=n.credScore||0;n.finModel=n.finModel||'';n.legalStructure=n.legalStructure||'unknown';n.apc=n.apc||false;n.profitScore=n.profitScore??50;n.openScienceScore=n.openScienceScore??((n.financials&&n.financials.openScienceCompatibilityScore)??50);n.finNote=n.finNote||'';n.fundingRaised=n.fundingRaised||'';n.provenance=n.provenance||{confidence:'low',hasUnverifiedClaims:true,sources:[],lastVerified:'',notes:''};n.financials=n.financials||{revenueSources:[],researcherPays:'unknown',institutionPays:'unknown',openScienceAlignment:'unknown',openScienceAlignmentNote:'',scoreBreakdown:{},openScienceCompatibilityScore:50,openScienceCompatibilityBand:'moderate',scoreAudit:{}};if(n.financials&&n.financials.openScienceCompatibilityScore==null)n.financials.openScienceCompatibilityScore=n.openScienceScore??50;n.sourceAsterisk=!!n.sourceAsterisk})}
-      else if(f.name.endsWith('.csv')){const p=Papa.parse(e.target.result,{header:true});p.data.forEach(row=>{row=cleanMojibakeDeep(row);if(!row.id)return;const ex=D.nodes.find(n=>n.id===row.id);if(ex)Object.assign(ex,row);else D.nodes.push({...row,tags:(row.tags||'').split(','),s1:+row.s1||0,s2:+row.s2||0,s3:+row.s3||0,s4:+row.s4||0,s5:+row.s5||0,decen:+row.decen||50,cf:{},overlapTags:[],credScore:0,profitScore:50})})}
+      if(f.name.endsWith('.json')){D=cleanMojibakeDeep(JSON.parse(e.target.result));D.nodes.forEach(n=>{n.paper=n.paper||'';n.tags=Array.isArray(n.tags)?n.tags:String(n.tags||'').split(',').map(x=>cleanMojibakeString(x).trim()).filter(Boolean);n.overlapTags=Array.isArray(n.overlapTags)?n.overlapTags:String(n.overlapTags||'').split(',').map(x=>cleanMojibakeString(x).trim()).filter(Boolean);n.credScore=n.credScore||0;n.finModel=n.finModel||'';n.legalStructure=n.legalStructure||'unknown';n.apc=n.apc||false;n.profitScore=n.profitScore??50;n.openScienceScore=n.openScienceScore??((n.financials&&n.financials.openScienceCompatibilityScore)??50);n.finNote=n.finNote||'';n.fundingRaised=n.fundingRaised||'';n.provenance=n.provenance||{confidence:'low',hasUnverifiedClaims:true,sources:[],lastVerified:'',notes:''};n.financials=n.financials||{revenueSources:[],researcherPays:'unknown',institutionPays:'unknown',openScienceAlignment:'unknown',openScienceAlignmentNote:'',scoreBreakdown:{},openScienceCompatibilityScore:50,openScienceCompatibilityBand:'moderate',scoreAudit:{}};if(n.financials&&n.financials.openScienceCompatibilityScore==null)n.financials.openScienceCompatibilityScore=n.openScienceScore??50;n.sourceAsterisk=!!n.sourceAsterisk})}
+      else if(f.name.endsWith('.csv')){const p=Papa.parse(e.target.result,{header:true});p.data.forEach(row=>{row=cleanMojibakeDeep(row);if(!row.id)return;const ex=D.nodes.find(n=>n.id===row.id);if(ex)Object.assign(ex,row);else D.nodes.push({...row,tags:(row.tags||'').split(',').map(x=>cleanMojibakeString(x).trim()).filter(Boolean),s1:+row.s1||0,s2:+row.s2||0,s3:+row.s3||0,s4:+row.s4||0,s5:+row.s5||0,decen:+row.decen||50,paper:row.paper||'',cf:{},overlapTags:[],credScore:0,profitScore:50})})}
       D=cleanMojibakeDeep(D);
       save();render();updateSB();updateStats();buildPills();
     }catch(err){alert('Import error: '+err.message)}
@@ -5533,7 +5787,7 @@ async function ghPull(){
     const raw=atob(j.content.replace(/\n/g,''));
     D=cleanMojibakeDeep(JSON.parse(raw));
     localStorage.setItem('gh-sha',j.sha);
-    D.nodes.forEach(n=>{n.overlapTags=n.overlapTags||[];n.credScore=n.credScore||0;n.notes=n.notes||''});
+    D.nodes.forEach(n=>{n.paper=n.paper||'';n.tags=Array.isArray(n.tags)?n.tags:String(n.tags||'').split(',').map(x=>cleanMojibakeString(x).trim()).filter(Boolean);n.overlapTags=Array.isArray(n.overlapTags)?n.overlapTags:String(n.overlapTags||'').split(',').map(x=>cleanMojibakeString(x).trim()).filter(Boolean);n.credScore=n.credScore||0;n.notes=n.notes||''});
     D.journal=D.journal||[];
     D.litProgress=D.litProgress||{};
     D.homeWatch=D.homeWatch||{videos:[],playlists:[]};
