@@ -652,6 +652,7 @@ async function init(){
   if(!Array.isArray(D.homeWatch.videos))D.homeWatch.videos=[];
   if(!Array.isArray(D.homeWatch.playlists))D.homeWatch.playlists=[];
   D.kanban=D.kanban||seedKanbanFromData();
+  loadHomeFeedCache();
   buildPills();render();updateSB();updateStats();
   setTimeout(autoSync,500);
   initGlossary();
@@ -1901,7 +1902,7 @@ function renderJournal(){
 }
 
 async function fetchTextWithTimeout(url,ms){
-  const t=ms||8000;
+  const t=ms||6000;
   const ctrl=new AbortController();
   const id=setTimeout(()=>ctrl.abort(),t);
   try{const r=await fetch(url,{signal:ctrl.signal});if(!r.ok)throw new Error(String(r.status));return await r.text();}
@@ -1911,7 +1912,7 @@ async function fetchRssText(url){
   const raw='https://api.allorigins.win/raw?url='+encodeURIComponent(url);
   const get='https://api.allorigins.win/get?url='+encodeURIComponent(url);
   try{
-    const t=await fetchTextWithTimeout(get,9000);
+    const t=await fetchTextWithTimeout(get,5200);
     if(t){
       const j=JSON.parse(t);
       if(j&&j.contents&&j.contents.length>80)return j.contents;
@@ -1920,14 +1921,14 @@ async function fetchRssText(url){
   const jina='https://r.jina.ai/http://'+url.replace(/^https?:\/\//,'');
   const tries=[raw,jina,url];
   for(const u of tries){
-    try{const txt=await fetchTextWithTimeout(u,9000);if(txt&&txt.length>80)return txt;}catch(e){}
+    try{const txt=await fetchTextWithTimeout(u,4600);if(txt&&txt.length>80)return txt;}catch(e){}
   }
   return '';
 }
 async function fetchViaRss2Json(url,source,max,topic){
   try{
     const api='https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent(url)+'&count='+(max||8);
-    const txt=await fetchTextWithTimeout(api,10000);
+    const txt=await fetchTextWithTimeout(api,6200);
     const j=JSON.parse(txt||'{}');
     const rows=(j.items||[]).slice(0,max||8).map(it=>({
       title:cleanMojibakeString(it.title||''),
@@ -2237,6 +2238,30 @@ function renderHomeLastJournal(){
   }
   host.innerHTML=`<div class="t">Last Journal Entry</div><div class="d">${escapeHtml(e.date||'')}</div><div class="b"><b>Hours:</b> ${escapeHtml(e.hours??0)}<br><b>Did:</b> ${escapeHtml((e.did||'').slice(0,180) || '-')}<br><b>Plan:</b> ${escapeHtml((e.plan||'').slice(0,180) || '-')}</div>`;
 }
+function loadHomeFeedCache(){
+  try{
+    const raw=localStorage.getItem('home-feed-cache-v2');
+    if(!raw)return;
+    const j=JSON.parse(raw);
+    if(!j||typeof j!=='object')return;
+    homeFeedState={
+      items:Array.isArray(j.items)?j.items:[],
+      sections:(j.sections&&typeof j.sections==='object')?j.sections:{keywords:[],nodes:[],youtube:[]},
+      lastUpdated:j.lastUpdated||''
+    };
+    homeFeedLastFetchMs=Number(j.fetchedAt||0)||0;
+  }catch(e){}
+}
+function saveHomeFeedCache(){
+  try{
+    localStorage.setItem('home-feed-cache-v2',JSON.stringify({
+      items:homeFeedState.items||[],
+      sections:homeFeedState.sections||{},
+      lastUpdated:homeFeedState.lastUpdated||'',
+      fetchedAt:homeFeedLastFetchMs||Date.now()
+    }));
+  }catch(e){}
+}
 function renderHomeFeeds(){
   const titleEl=el('homeTickerTitle');
   const metaEl=el('homeTickerMeta');
@@ -2273,22 +2298,25 @@ function renderHomeFeeds(){
 }
 async function refreshHomeFeeds(force){
   const now=Date.now();
-  if(!force && homeFeedLastFetchMs && (now-homeFeedLastFetchMs)<(6*60*1000)){
+  if(!force && homeFeedLastFetchMs && (now-homeFeedLastFetchMs)<(8*60*1000)){
     if(view==='home')renderHomeFeeds();
     return;
   }
   ensureHomeWatchConfig();
-  const kw=projectKeywords().slice(0,6);
-  const nodeQs=relationWatchNames().slice(0,6);
-  const ytQ=[...new Set([...weightedDatasetTerms(3).map(t=>`${t} research`),...PURPOSE_TERMS.slice(0,3)])].slice(0,5);
+  const kw=projectKeywords().slice(0,3);
+  const nodeQs=relationWatchNames().slice(0,3);
+  const ytQ=[...new Set([...weightedDatasetTerms(3).map(t=>`${t} research`),...PURPOSE_TERMS.slice(0,2)])].slice(0,2);
+  const kwQuery=kw.join(' OR ')||'open science metascience';
+  const nodeQuery=nodeQs.join(' OR ')||'decentralized science';
+  const ytQuery=ytQ.join(' OR ')||'open science';
   const playlistIds=(D.homeWatch.playlists||[]).slice(0,3);
   const customVideos=(D.homeWatch.videos||[]).map(v=>({title:v.title||'Custom video',link:v.url,topic:'custom watchlist',source:'youtube'}));
 
   try{
     const [kwRes,nodeRes,ytRes,playlistRes]=await Promise.all([
-      Promise.all(kw.map(q=>fetchGoogleNews(q))).then(x=>x.flat()),
-      Promise.all(nodeQs.map(q=>fetchGoogleNews(`${q} open science`))).then(x=>x.flat()),
-      Promise.all(ytQ.map(q=>fetchYouTube(q))).then(x=>x.flat()),
+      fetchGoogleNews(kwQuery),
+      fetchGoogleNews(`${nodeQuery} open science`),
+      fetchYouTube(ytQuery),
       Promise.all(playlistIds.map(pid=>fetchYouTubePlaylist(pid))).then(x=>x.flat())
     ]);
     homeFeedState.sections={
@@ -2301,6 +2329,7 @@ async function refreshHomeFeeds(force){
       ...homeFeedState.sections.nodes,
       ...homeFeedState.sections.youtube
     ],[...kw,...nodeQs,...PURPOSE_TERMS],40);
+    saveHomeFeedCache();
   }catch(e){
     const fallbackNews=[
       {title:'Open Science Headlines (Google News)',link:'https://news.google.com/search?q=open%20science',source:'news',topic:'open science'},
@@ -2313,14 +2342,12 @@ async function refreshHomeFeeds(force){
     homeFeedState.sections.nodes=fallbackNews.slice(0,5);
     homeFeedState.sections.youtube=(D.homeWatch&&D.homeWatch.videos||[]).map(v=>({title:v.title||'Custom video',link:v.url,topic:'custom watchlist',source:'youtube'}));
     homeFeedState.items=[...homeFeedState.sections.keywords,...homeFeedState.sections.nodes,...homeFeedState.sections.youtube];
+    saveHomeFeedCache();
   }
   homeFeedLastFetchMs=Date.now();
   homeFeedState.lastUpdated=new Date().toLocaleString();
+  saveHomeFeedCache();
   if(view==='home')renderHomeFeeds();
-}
-function seeded(v){
-  const x=Math.sin(v*12.9898+78.233)*43758.5453;
-  return x-Math.floor(x);
 }
 function lerpStops(q,stops){
   if(!stops||!stops.length)return 0;
@@ -2371,11 +2398,10 @@ function leftSegments(q){
 }
 function rightSegments(q){
   const segs=[[lerpStops(q,RIGHT_EU_X0),lerpStops(q,RIGHT_EU_X1)]];
-  if(q>=0.44)segs.push([lerpStops(q,RIGHT_AF_X0),lerpStops(q,RIGHT_AF_X1)]);
+  if(q>=0.44&&q<=0.88)segs.push([lerpStops(q,RIGHT_AF_X0),lerpStops(q,RIGHT_AF_X1)]);
   const cuts=[];
   if(q>0.33&&q<0.47)cuts.push([0.66,0.74]);
-  if(q>0.50&&q<0.72)cuts.push([0.74,0.89]);
-  if(q>0.74)cuts.push([0.67,0.70]);
+  if(q>0.50&&q<0.72)cuts.push([0.75,0.88]);
   return subtractSegments(segs,cuts);
 }
 function asciiFrame(nodes,tick,cols,rows){
@@ -2399,7 +2425,6 @@ function asciiFrame(nodes,tick,cols,rows){
       const x1=Math.min(w-1,Math.floor(seg[1]*w));
       for(let x=x0;x<=x1;x++){
         if(((x+phase)&1)!==0)continue;
-        if(seeded((x+13)*1.113+(r+5)*3.771)<0.032)continue;
         g[y][x]='o';
       }
     });
