@@ -298,8 +298,8 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
   position:absolute;
   inset:16px 18px 18px 18px;
   display:grid;
-  grid-template-columns:minmax(0,1fr) minmax(312px,352px);
-  gap:16px;
+  grid-template-columns:minmax(0,600px) minmax(372px,430px);
+  gap:18px;
   align-items:stretch;
   justify-content:space-between;
   pointer-events:none;
@@ -309,10 +309,10 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
   min-height:0;
   display:flex;
   flex-direction:column;
-  gap:14px;
+  gap:16px;
 }
-.home-main-col{min-width:0;align-items:stretch;max-width:640px}
-.home-side-col{min-width:300px;justify-self:end;width:min(100%,348px)}
+.home-main-col{min-width:0;align-items:stretch;max-width:600px;height:100%;justify-content:space-between}
+.home-side-col{min-width:340px;justify-self:end;width:min(100%,430px);height:100%;justify-content:space-between}
 .home-overlay-top{
   position:absolute;top:14px;left:14px;right:14px;
   display:grid;grid-template-columns:260px minmax(0,1fr);gap:10px;
@@ -400,11 +400,11 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
 .feed-item .meta{font-size:.66rem;color:#989898;margin-top:4px}
 .feed-item.empty{border-style:dashed;background:rgba(255,255,255,.02)}
 .feed-item.empty .meta{margin-top:0}
-.home-feed-panel.unified{max-height:50vh;display:flex;flex-direction:column}
+.home-feed-panel.unified{max-height:43vh;display:flex;flex-direction:column}
 .home-feed-panel.unified .feed-list{max-height:none;flex:1;overflow:auto;padding-right:4px}
 .home-feed-panel.unified .ticker-main{min-height:54px}
 .home-feed-panel.unified .ticker-meta{margin-bottom:8px}
-.home-feed-panel.feed-left{flex:0 0 50vh;height:50vh;max-height:50vh;min-height:320px;width:100%;justify-self:start}
+.home-feed-panel.feed-left{flex:0 0 43vh;height:43vh;max-height:43vh;min-height:300px;width:100%;justify-self:start}
 .home-hero-meta{margin-top:14px;font-family:var(--mono);font-size:.68rem;color:#b8b8b8}
 .yt-add-wrap{display:flex;align-items:center;justify-content:space-between;gap:8px;position:relative}
 .yt-add-btn{width:18px;height:18px;border-radius:50%;border:1px solid rgba(255,255,255,.28);background:rgba(24,24,24,.9);color:#d8d8d8;font-size:.78rem;line-height:1;cursor:pointer}
@@ -448,8 +448,8 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
 .home-journal .t{font-family:var(--mono);font-size:.66rem;color:var(--gold);text-transform:uppercase;letter-spacing:1.1px;margin-bottom:6px}
 .home-journal .d{font-family:var(--mono);font-size:.66rem;color:#b9b9b9;margin-bottom:5px}
 .home-journal .b{font-size:.73rem;line-height:1.42;color:#dfdfdf}
-#homeDeadlines{flex:0 0 auto;max-height:32vh}
-#homeLastJournal{flex:0 0 auto;max-height:28vh;max-width:none;width:100%}
+#homeDeadlines{flex:0 0 auto;max-height:24vh;max-width:none;width:100%}
+#homeLastJournal{flex:0 0 auto;min-height:110px;max-height:18vh;max-width:none;width:100%;align-self:stretch;margin-top:auto}
 #homeDeadlines .feed-list{max-height:none}
 .home-kanban{
   pointer-events:auto;
@@ -457,19 +457,21 @@ table.dtbl{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem
   border-radius:10px;
   background:rgba(8,8,8,.9);
   padding:12px;
-  max-height:none;
-  flex:1;
+  max-height:240px;
+  flex:0 0 auto;
   overflow:auto;
   box-shadow:none;
-  min-height:260px;
+  min-height:220px;
+  width:100%;
+  align-self:stretch;
 }
 .kan-title{font-family:var(--mono);font-size:.66rem;color:var(--gold);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:8px}
-.kan-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
-.kan-col{border:1px solid rgba(255,255,255,.12);border-radius:8px;background:rgba(18,18,18,.84);padding:8px;min-height:120px}
+.kan-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.kan-col{border:1px solid rgba(255,255,255,.12);border-radius:8px;background:rgba(18,18,18,.84);padding:8px;min-height:92px}
 .kan-col-head{display:flex;align-items:center;justify-content:space-between;font-family:var(--mono);font-size:.63rem;color:#b9b9b9;letter-spacing:.6px;margin-bottom:6px;text-transform:uppercase}
 .kan-add{font-size:.65rem;padding:2px 6px;border-radius:999px;background:transparent;border:1px solid rgba(255,255,255,.2);color:#c9c9c9;cursor:pointer}
 .kan-add:hover{border-color:var(--gold);color:var(--gold)}
-.kan-list{display:flex;flex-direction:column;gap:6px;max-height:31vh;overflow:auto}
+.kan-list{display:flex;flex-direction:column;gap:6px;max-height:132px;overflow:auto}
 .kan-card{border:1px solid rgba(255,255,255,.11);border-radius:7px;padding:6px 7px;background:rgba(24,24,24,.9)}
 .kan-text{font-size:.71rem;line-height:1.34;color:#e4e4e4}
 .kan-actions{display:flex;gap:5px;margin-top:6px}
@@ -4097,10 +4099,10 @@ function renderHomeFeeds(){
   const meta=el('homeMetaAll');
   const list=el('homeFeedAll');
   if(list){
-    list.innerHTML=items.slice(0,9).map(it=>{
+    list.innerHTML=items.slice(0,8).map(it=>{
       const title=escapeHtml(it.title||'Untitled');
       const metaLine=`${escapeHtml(it.source||'news')} | ${escapeHtml(it.topic||'')}${it.pubDate?` | ${escapeHtml(String(it.pubDate).slice(0,24))}`:''}`;
-      const summary=escapeHtml(plainFeedText(it.summary||'',145));
+      const summary=escapeHtml(plainFeedText(it.summary||'',118));
       if(it.disabled || !it.link || it.link==='#')return `<article class="feed-item empty"><div>${title}</div><div class="meta">${metaLine}</div></article>`;
       return `<article class="feed-item"><a href="${escapeHtml(it.link)}" target="_blank" rel="noopener">${title}</a>${summary?`<div class="feed-snippet">${summary}</div>`:''}<div class="meta">${metaLine}</div></article>`;
     }).join('') || '<div class="lite-note">No live feed items yet.</div>';
