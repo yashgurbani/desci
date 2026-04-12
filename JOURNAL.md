@@ -1,6 +1,6 @@
 # DeSci Map Journal
 
-Last updated: 2026-04-12T23:02:29.338Z
+Last updated: 2026-04-12T23:02:33.101Z
 
 ## Project Kanban Snapshot
 
@@ -11,6 +11,4 @@ Last updated: 2026-04-12T23:02:29.338Z
 - (empty)
 
 ### Done
-- Verified: LabDAO
-- Verified: Prime Intellect
-- Verified: ResearchHub
+- (empty)
