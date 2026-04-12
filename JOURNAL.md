@@ -1,6 +1,6 @@
 # DeSci Map Journal
 
-Last updated: 2026-04-12T21:15:54.835Z
+Last updated: 2026-04-12T21:15:58.876Z
 
 ## Project Kanban Snapshot
 
@@ -9,8 +9,6 @@ Last updated: 2026-04-12T21:15:54.835Z
 
 ### In Progress
 - understanding desci labs
-- test
-- test
 
 ### Done
 - initial web dashboard
