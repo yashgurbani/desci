@@ -18227,7 +18227,9 @@
   },
   "kanban": {
     "todo": [],
-    "doing": [],
+    "doing": [
+      "understanding desci labs"
+    ],
     "done": [
       "initial web dashboard"
     ]
