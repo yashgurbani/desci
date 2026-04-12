@@ -18233,7 +18233,11 @@
   },
   "kanban": {
     "todo": [],
-    "doing": [],
-    "done": []
+    "doing": [
+      "understand DeSci labs"
+    ],
+    "done": [
+      "complete web dashboard"
+    ]
   }
 }
