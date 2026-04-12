@@ -3107,6 +3107,24 @@ async function fetchTextWithTimeout(url,ms){
     return await r.text();
   }finally{clearTimeout(id)}
 }
+async function fetchJsonp(url,cbParam,ms){
+  return new Promise((resolve,reject)=>{
+    const cb='__jsonp_'+Math.random().toString(36).slice(2);
+    const src=url+(url.includes('?')?'&':'?')+(cbParam||'callback')+'='+cb;
+    const s=document.createElement('script');
+    const done=(err,data)=>{
+      try{delete window[cb]}catch(e){}
+      if(s.parentNode)s.parentNode.removeChild(s);
+      clearTimeout(timer);
+      err?reject(err):resolve(data);
+    };
+    const timer=setTimeout(()=>done(new Error('timeout')),ms||6500);
+    window[cb]=(data)=>done(null,data);
+    s.onerror=()=>done(new Error('jsonp error'));
+    s.src=src;
+    document.head.appendChild(s);
+  });
+}
 function unwrapRssProxyPayload(text){
   const raw=String(text||'').trim();
   if(!raw)return '';
@@ -3141,9 +3159,14 @@ async function fetchRssText(url){
 }
 async function fetchViaRss2Json(url,source,max,topic){
   try{
-    const api='https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent(url)+'&count='+(max||8)+'&order_desc=true';
-    const txt=await fetchTextWithTimeout(api,4200);
-    const j=JSON.parse(txt||'{}');
+    const api='https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent(url);
+    let j=null;
+    try{
+      j=await fetchJsonp(api,'callback',5600);
+    }catch(e){
+      const txt=await fetchTextWithTimeout(api,4200);
+      j=JSON.parse(txt||'{}');
+    }
     const rows=(j.items||[]).slice(0,max||8).map(it=>({
       title:cleanMojibakeString(it.title||''),
       link:(it.link||'').trim(),
@@ -4087,17 +4110,14 @@ function renderHomeDeadlines(){
   if(!host)return;
   const rows=nextUpcomingOpportunities(4);
   if(!rows.length){
-    host.innerHTML='<div class="deadline-head"><div class="k">Upcoming Deadlines</div><div class="v">No verified upcoming 2026 deadlines in the tracker yet.</div></div>';
+    host.innerHTML='<div class="t">Next Deadlines</div><div class="b">No verified upcoming 2026 deadlines in the tracker yet.</div>';
     return;
   }
   host.innerHTML=`
-    <div class="deadline-head">
-      <div class="k">Upcoming Deadlines</div>
-      <div class="v">Closest verified 2026 calls across DeSci, startup, fellowship, and nonprofit tracks.</div>
-    </div>
-    <div class="deadline-list">
+    <div class="t">Next Deadlines</div>
+    <div class="feed-list" style="max-height:none">
       ${rows.map(op=>`
-        <article class="deadline-card" onclick="openGrantOpportunity('${op.id}')">
+        <article class="feed-item" onclick="openGrantOpportunity('${op.id}')">
           <div class="deadline-date">${escapeHtml(opportunityDateText(op))}</div>
           <div class="deadline-name">${escapeHtml(op.name)}</div>
           <div class="deadline-meta">${escapeHtml(op.track)} | ${escapeHtml((op.region||[]).slice(0,2).join(' / ')||'Global')}</div>
@@ -4269,17 +4289,12 @@ function renderHome(){
   wrap.innerHTML=`
     <pre class="ascii-map" id="asciiMap"></pre>
     <div class="home-overlay-top">
-      <section class="home-hero">
-        <div class="home-kicker">daily motivation console</div>
-        <div class="home-title">DeSci\nMap</div>
-        <div class="home-sub">Keep the landscape visible while you build: one live stream for node updates, X or Reddit signal, and real articles on decentralized science, publishing, open science, and science x AI.</div>
-        <div class="home-chip-row">${renderHomeHeroChips()}</div>
-        <div class="home-hero-meta" id="homeLastUpdated">Last update: pending</div>
-      </section>
+      <section class="home-journal" id="homeDeadlines"></section>
       <section class="home-feed-panel unified">
         <div class="ticker-head">Social / Articles</div>
         <div class="ticker-main" id="homeLeadAll">Loading live feed...</div>
         <div class="ticker-meta" id="homeMetaAll"></div>
+        <div class="home-updated" id="homeLastUpdated" style="pointer-events:auto;margin:0 0 8px 0">Last update: pending</div>
         <div class="feed-list" id="homeFeedAll"></div>
       </section>
     </div>
