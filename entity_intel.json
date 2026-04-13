@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-13T01:34:31.215117+00:00",
+  "generatedAt": "2026-04-13T04:29:02.595782+00:00",
   "registryPath": "source_registry.json",
   "organizations": [
     {
@@ -234,15 +234,6 @@
       "name": "OpenReview",
       "signals": [
         {
-          "title": "Pineau, Bengio join AI researchers jointly committing US$1M to OpenReview - The Logic",
-          "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNWmw1aVVrVEVzdTQxSDI5X1BFY0FTUUkxZzdSLWc1eVBjTWFIQzlYeUpYY2NWYVFiZlNJUUw5dkxjV3pBbzhEOTZRelZLTFhTUWhrb3Qwd1BlNWlCUlpwOFV1c1BRYmNGZWhVRmlxNmN4VmtQSW4wN0puX1hKLVQ1QmVSUDYyY2ZadlBGTlBnMk9kSk1oSGUzS1lJUkFJdkdpUU93?oc=5",
-          "pubDate": "2025-12-19T08:00:00+00:00",
-          "source": "Google News",
-          "topic": "\"OpenReview\"",
-          "summary": "Pineau, Bengio join AI researchers jointly committing US$1M to OpenReview The Logic",
-          "section": "news"
-        },
-        {
           "title": "Hack reveals reviewer identities for huge AI conference - Science | AAAS",
           "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNWlZIejRZVTVkQ0EwX3hJa3BFSlVLZkFnQ1pQWVRSNlZ2SUNIZjVZUzFLajdkbDRTaWJVRlg2VlNoUDJNQUo5VktjWEdjbzZ2WUxMTl80Sk9yV215MkJYU21PX0JlZEoxeHpzTVRPcHdvRUdjUlJyNklIeTNVLVRLazd5emZhaVE2NUtfR3VsNndjM3J3aGc?oc=5",
           "pubDate": "2025-12-15T08:00:00+00:00",
@@ -267,6 +258,15 @@
           "source": "Google News",
           "topic": "\"OpenReview\"",
           "summary": "OpenReview API Bug Exposed Thousands of Anonymous Peer Reviewers and Sparked Crisis Over Academic Publishing's Future CTOL Digital Solutions",
+          "section": "news"
+        },
+        {
+          "title": "Frustrated authors withdraw papers after realizing their reviewers are just lazy LLMs - the-decoder.com",
+          "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQWkdfaS1lUV9MX0hYX2Z5dl8tdXhuLW9td1pOclhlcWMxMUg3SC1IV19DWkRxTnAzWUFUSWkyekJnaDRhUGJULUxvWThVWDJPeHAxaW9rR210Q2pMTGJIUS1yeVByeHB4Y1Rya0k2SVdtQWtxVF82TGJHTTdQRU5JaWNlb3NfZWtFcnk0NENYS3lwOHhUTldvaHk5RGE5eVNwSGhHQndGeTE4MHd5bDZsMEVHX2R5RjV5QlVDY1dn?oc=5",
+          "pubDate": "2025-11-24T08:00:00+00:00",
+          "source": "Google News",
+          "topic": "\"OpenReview\"",
+          "summary": "Frustrated authors withdraw papers after realizing their reviewers are just lazy LLMs the-decoder.com",
           "section": "news"
         },
         {
@@ -460,12 +460,12 @@
       "name": "Peer Community In (PCI)",
       "signals": [
         {
-          "title": "How Academics Are Pushing Back On The For-Profit Academic Publishing Industry – OpEd - Eurasia Review",
-          "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQUlRCd3dfaHVsMnZyNjM1VHZQek9CbUpLNnJKUW5lMDNVRWdab0Z6QlUwWlo0WlV2MW5CMkJfVmRUSlpsSlFHSXJ0Z29xbUFxTTdLSnJYM2MzUU9HeVlqRGZLeVgxVkFSR1YtY2dNREtRZWtUaUNCVllfV01peGRIVnE5MVNfVWcxRXFlMFE0Q09ialEyQ0w4OC1FYlBLc1R6VWZEOE1TdUNjRDRIUGlHYnVvZVhXdTVWMWl0YXM2OA?oc=5",
+          "title": "How Academics Are Pushing Back on the For-Profit Academic Publishing Industry - resilience.org",
+          "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNZGpfQ2tZejR2U0Rha3hnNFBfc3BDM1JkWWdVVzhJWlRXM3Y5WkJLWUcwSnY2V09jWTA4bk9hbjcwcWhvZElvOHgwVHZnbkxMQm1LX2l2ZjNZbkYzRWNzQjJaem1ocG9vUXoxWUVaQkZnTFZKazJnQkFmMWZHRWRJYXN3aTR2UXFpQlcxUVB4aEEwRVNtcjg4WEpwWjl4Y2VJRUJ3ZEN3b1lPRmVNamJTVUIxN0hxQTVIY0pUN3NkN1NBZw?oc=5",
           "pubDate": "2025-06-24T07:00:00+00:00",
           "source": "Google News",
           "topic": "\"Peer Community In (PCI)\"",
-          "summary": "How Academics Are Pushing Back On The For-Profit Academic Publishing Industry – OpEd Eurasia Review",
+          "summary": "How Academics Are Pushing Back on the For-Profit Academic Publishing Industry resilience.org",
           "section": "news"
         },
         {
@@ -786,7 +786,7 @@
         },
         {
           "title": "Scientists Unveil Microscopy Breakthrough That Reveals “Invisible” Molecular States - SciTechDaily",
-          "link": "https://news.google.com/rss/articles/CBMiSkFVX3lxTE50aGJwVG5CZl9yU0VRcHBLWkpGdUhSZ1RPZktrZTJRamNpM3VhcERYZUNtVTB5VmMzRnhKb1N2TXdzMU5RWE1PVnN3?oc=5",
+          "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOZVp3dXdZeUE5OHVfdXgxc3BhajFDVFRGUVpTM2labDVFS1FQU1Mxbk1rQkhrdjNZNWNreVBJdkJvU3VScGw5TkZ2cks0S0dJTFJNS0RJQ2tkd1RIbV8tdmdEYXQ1Z1N1ejJSRHZDVWM4TENKbDhCRWNhenNHbnFVelBoQ1VncE13dDUyTTZHRTFWUF96YWw5RTZobTBQWWoyZWkwTzVfWENfNnc?oc=5",
           "pubDate": "2026-04-12T11:53:06+00:00",
           "source": "Google News",
           "topic": "\"Molecule\"",
@@ -803,12 +803,12 @@
           "section": "news"
         },
         {
-          "title": "Energy storage breakthrough traps sunlight in a molecule - New Atlas",
-          "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPcFlBclgyNDZmUGc3Rl9fbEw1dGVBV0U1R1RYUDVQaHBzclV0dVBfVGtIbkVnbVdTR2w4S3lITTZ6R1lqSEhGR1oza0JsdWJFMzBrTWs5TmZQQ3VPVlEzX0VQcUVSTV9zNlBEdjJkWlRfX3NGVWR0X19CeXFOR3N3Tg?oc=5",
-          "pubDate": "2026-04-11T05:10:10+00:00",
+          "title": "AI diffusion models tailor drug molecules to custom-fit protein targets, speeding drug development and evaluation - Phys.org",
+          "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE9yQWUzenFDVEdHY2JfT2t5M2tIMEdVMFVfaTV5d0lnX2x3TmhPUFctZ2wwNUgtZVkzc0JNalY3M1loN0EwQ1AxOVZ4S192VFFKLWZPb2RQVDZuNWZqQjQyZmd3cy0tU21NbWZnTkp3blI0bkdMbVVzOA?oc=5",
+          "pubDate": "2026-04-09T21:00:06+00:00",
           "source": "Google News",
           "topic": "\"Molecule\"",
-          "summary": "Energy storage breakthrough traps sunlight in a molecule New Atlas",
+          "summary": "AI diffusion models tailor drug molecules to custom-fit protein targets, speeding drug development and evaluation Phys.org",
           "section": "news"
         },
         {
@@ -923,15 +923,6 @@
           "section": "news"
         },
         {
-          "title": "Balaji’s viral post says Singapore-style order makes libertarianism work - Cryptonews.net",
-          "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5FaDJWZWI5QVctc0V6QmtPYVpGWUNmanc5c2lRV0ZVMDA1Zm9VZzRUZFlGMzJ3R2ZsYTU0SVFweVBLUkFmX2RZNDZxYmt1VWFxV3lfYkhB?oc=5",
-          "pubDate": "2026-03-24T18:45:25+00:00",
-          "source": "Google News",
-          "topic": "\"Balaji Srinivasan\"",
-          "summary": "Balaji’s viral post says Singapore-style order makes libertarianism work Cryptonews.net",
-          "section": "news"
-        },
-        {
           "title": "RT by @balajis: .@balajis says AI verification is much harder in the digital world than it is for the physical world: \"AI for the physical world is very verifiable because the thing is, the digital world is fundamentally decentralized in a way the physical world isn't.\" \"There's only one physical world. You can say: did the AI move this box from this pallet to that pallet? That is something where you can probably get it to 100% over time.\" \"By contrast, in the digital world, there are all these people who live in their own constructed environments.\" \"How do you know when you're done with your to-do list? That's harder. Those things are fuzzier.\"",
           "link": "https://nitter.net/a16z/status/2041557749230923910#m",
           "pubDate": "2026-04-07T16:44:32+00:00",
@@ -959,21 +950,30 @@
           "section": "x"
         },
         {
-          "title": "Balaji Srinivasan Says Block Firings Will Send 'Shockwaves,' Angel Investor Says Jack Dorsey Is Signallin - Benzinga",
-          "link": "https://news.google.com/rss/articles/CBMimwJBVV95cUxQQ2NFMzVfeWtCXzY1ckZUZGMxOU95bU5nWkdFYVY0ckJUdnFRZ2JXcl9GaWl1R1I1R19La3JvdVRtTUFwc1R6alR6NHROOExabEY3WFRKQ0JhZ2dfeF9XZ195UDl0Q0E1WXJ2VVdDcHAxdUluSVZxNHBpeGY4aE5IYW43Sk15WGQxM1dqaUlqVTZ1UmJIOW0zd3cwdjdadDF1dUJMWkkyYV9fNVNGQUdnalVsdVRyMWp1cTFXUXZ1a3VPbTZzWHlMWnF2RHJBdlRuVEpScGRrc1kyN1hIelk1V0ZwNk5XZlVWY1RidHhBb24tMzk1bWJBcno4QThQeFlVSnkxWWtWMFU0N1pNTnRvT1A2ekUtRDQzN0E4?oc=5",
-          "pubDate": "2026-02-27T08:00:00+00:00",
-          "source": "Google News",
-          "topic": "\"Balaji Srinivasan\"",
-          "summary": "Balaji Srinivasan Says Block Firings Will Send 'Shockwaves,' Angel Investor Says Jack Dorsey Is Signallin Benzinga",
-          "section": "news"
-        },
-        {
           "title": "‘I’ve Never Been More Bullish on Crypto’: Balaji Srinivasan on Why Today’s Price Doesn’t Reflect What’s Coming - Bitcoin.com News",
           "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPX2liWXRxaDR2aTBEQ3FqYnlfUXVKTmxTYVY3dHVfRWxYRGZXcE9UdU5ScGpEQ0RkYXpzajVrdkprXzBlV3BVSjlmd3lHcTFaZmpxMmozeUZJc3loUGJlUU4tRGRtMk95UEJpNzBMUHdyVjZQXzA1MWJJZWxjVE9kLXN0THZWTXhrYm9PYXZRVzF3T2txSGRTT08wZk0xOExiVU5tM3RnLUx1ZHpVcjktbDhmcXl6RmIzT0tSTERZdnBNVXJqZ1JuSw?oc=5",
           "pubDate": "2026-02-05T08:00:00+00:00",
           "source": "Google News",
           "topic": "\"Balaji Srinivasan\"",
           "summary": "‘I’ve Never Been More Bullish on Crypto’: Balaji Srinivasan on Why Today’s Price Doesn’t Reflect What’s Coming Bitcoin.com News",
+          "section": "news"
+        },
+        {
+          "title": "Balaji Srinivasan Backs Zcash Developers After Team Exits And Launches New Wallet - ZEC Price Gains - Stocktwits",
+          "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxOaFlhTm1lVXFTd1I0OVBEZmFsM3lyeGdqczBxeWEwMTgxdXE0enNEZjE3V2RFemtaZ0ZMVF9rc3VJVnVEWTdyZk94TWYxLVVlNVozVHpBd1Rya1VpM2E1Q3phbVVLcHdvMzR4bzJ6QUE4RlAydWlNalNSejNhSE9KZ0NCUGVZQVQ5eHZrOHRKeVpOQXdzUWlKMk1QbGFkajhtZEh2aVQ3U0tSeGExZW9WLUlxWWNFMlkwejJ1d1ZXRDJZaG1rVllKXzVkQ0Jjcmg1TGp4VkNtV2MxYzUyd0tkVmVmSQ?oc=5",
+          "pubDate": "2026-01-09T10:44:18+00:00",
+          "source": "Google News",
+          "topic": "\"Balaji Srinivasan\"",
+          "summary": "Balaji Srinivasan Backs Zcash Developers After Team Exits And Launches New Wallet - ZEC Price Gains Stocktwits",
+          "section": "news"
+        },
+        {
+          "title": "Network State, or a Network of States? - by Noah Smith - Noahpinion | Substack",
+          "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBlR1VlZ19uRFY0Ni1vTXZDUkVFR1BVT3ZHWXlMaFFrM2FLNEMxZUtDY09PTlV3NkNsLXZ6dHFHME1fdmluWWlxVTcwUmVQZUp3bzE5OUVuWkh6N05XZXdpeWZNSmhwaHQzSWlLbFJUTUdSVzEt?oc=5",
+          "pubDate": "2025-09-30T07:00:00+00:00",
+          "source": "Google News",
+          "topic": "\"Balaji Srinivasan\"",
+          "summary": "Network State, or a Network of States? - by Noah Smith Noahpinion | Substack",
           "section": "news"
         }
       ],
@@ -1078,12 +1078,12 @@
       "name": "Ben Goertzel",
       "signals": [
         {
-          "title": "'An attempt to cripple Anthropic': US judge questions Anthropic ban - Euronews.com",
+          "title": "'An attempt to cripple Anthropic': US judge questions Anthropic ban - Euronews",
           "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQcU1ad1Z0b214cUJ5RTBuanJHVXNfTC1WYjJYT0F0cEtwOHhQV01pUFpodm9vSlVDSkE5T2FRRzNzcWwtRFpWMVNPY09HbXprZmR1bkhabC1nUHQ2Ql9xWnBnNGhuNFNYa2lSVVF3eWZJUFdhbExXWDZ4alhVMGF5bDFTN1pKVDR6U1YzXzVqTEZaZHNHbEQ2ZVN3aGtpbllHc1BzeWFDSEthc1dKdjBpemtRd0ctZjctQUlGRF8zekdtdFRLN2NyWQ?oc=5",
           "pubDate": "2026-03-25T07:00:00+00:00",
           "source": "Google News",
           "topic": "\"Ben Goertzel\"",
-          "summary": "'An attempt to cripple Anthropic': US judge questions Anthropic ban Euronews.com",
+          "summary": "'An attempt to cripple Anthropic': US judge questions Anthropic ban Euronews",
           "section": "news"
         },
         {
@@ -1153,12 +1153,12 @@
       "name": "Brian Armstrong",
       "signals": [
         {
-          "title": "Brian Armstrong Killed The Clarity Act In January — But Now He's Changed His Mind - Benzinga",
-          "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxOaXNhdDlXbzdSRjA4WUVSeUl6aDBaemJoWmtqX1NHQ1E0QmVGQWZvMjl2RkxuR2hOeXpUMnRjVXNXUmxuSi1lN2hrVlYzQzFuSndTUU81dFplWU8xOVktOFl2bU44enZsVDJ1b094ZVJPdk5Rc1hFOWRTS2VYa1FiSUtCcDJ5Y0puRUFnc05QR25VNDc1VzF0VHF4TFNCQnlaRzE0UG15cnQxREc3dG9lSHhlZFNkZno3cmRTaU55MTRrU2Q1NFU2bGpPZFJtYTJDcVJoLTJ6MA?oc=5",
-          "pubDate": "2026-04-10T15:38:23+00:00",
+          "title": "Coinbase CEO Brian Armstrong Backs Treasury Secretary Scott Bessent's CLARITY Act Push - thedefiant.io",
+          "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNUTR3d1Ytby03eUY3QVQ3SE5MVHJaRkhFSl9INHgza0lfTThEWFA3S2xKUTB0QkFuOFJpNFh6THdJcU9PRlV6Q29mVjBWcmJrX3UwOEMwc0RiMEJ2cUZPaDZZbDZMNGdpb2hBTF9uR0V0aE5FQ0o5NU5hNUFLQWpwMFRpQnJxMVZF?oc=5",
+          "pubDate": "2026-04-10T15:51:06+00:00",
           "source": "Google News",
           "topic": "\"Brian Armstrong\"",
-          "summary": "Brian Armstrong Killed The Clarity Act In January — But Now He's Changed His Mind Benzinga",
+          "summary": "Coinbase CEO Brian Armstrong Backs Treasury Secretary Scott Bessent's CLARITY Act Push thedefiant.io",
           "section": "news"
         },
         {
@@ -1419,6 +1419,54 @@
       }
     },
     {
+      "id": "p-shaw",
+      "kind": "person",
+      "name": "Shaw",
+      "signals": [
+        {
+          "title": "Paul VI tops No. 18 Bishop Eustace in Ralph Shaw Classic final - Baseball recap - NJ.com",
+          "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPYWdOdlQtSEJRNDFSdmRpR3hUMXJLTm92TUZWaEY2a1FpWmRFclRFWkJRQzIyVjRfUWRsRXJiYjJ6cXlkRU9sWTJUNFlUbjc1ZWtnZzRRTjgzWDRxcVhxOWJ3TlQtcHFJRnBKaHFrbUZXNUdLXy1CNTltMEM3b2gzVktUYXl3ckNEcGNRWDVfWlNWQ3hBYmFnRV9CVVpzVFpaaDJkMk96dWw0RmlETVNOczJPN1M1cVJlc2c3eEtMZHY5aVE?oc=5",
+          "pubDate": "2026-04-13T03:37:00+00:00",
+          "source": "Google News",
+          "topic": "\"Shaw\"",
+          "summary": "Paul VI tops No. 18 Bishop Eustace in Ralph Shaw Classic final - Baseball recap NJ.com",
+          "section": "news"
+        },
+        {
+          "title": "Transfer Portal Intel: NC State, SMU build momentum; the latest with top prospects - On3",
+          "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNaDcxQm1zMXczMUtMQ2dmYWlHamlrOEZvMFJ4T2hlOUZELTFrUllHQWhyeDV2UzhvTHktZjZOTUZ0eFN0SzhhWE9lNE9BQkE1WFZGMS1pZmJGUmI0VFUxQWR4VFpNUXo4VDVnU3ZtUmRjd1VRZTRZVF9EUm9PclI2Sm5IR2lLanJpQnZtZXFEa1V5eXhvcnVXbVpwaVFZUmJIM0Y2dU9vd0J0aXJFdW5fM0U1QllzeWs0RjJMN2F3?oc=5",
+          "pubDate": "2026-04-12T20:16:31+00:00",
+          "source": "Google News",
+          "topic": "\"Shaw\"",
+          "summary": "Transfer Portal Intel: NC State, SMU build momentum; the latest with top prospects On3",
+          "section": "news"
+        },
+        {
+          "title": "Obituary for Berwyn Shaw - Davis-Oswald Funeral Home",
+          "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9UbDZWME1saGduSk9XZC1LSlJuQlVIeFNEcE1CUTFPWEJWZV9fZnRfa1dVanlJc1NlNzlUT19nSmtRUmRmaTkySUpIa1FrV2ZNbVRLam5ndWlRZjdrQlcyaXR3?oc=5",
+          "pubDate": "2026-04-12T13:45:16+00:00",
+          "source": "Google News",
+          "topic": "\"Shaw\"",
+          "summary": "Obituary for Berwyn Shaw Davis-Oswald Funeral Home",
+          "section": "news"
+        },
+        {
+          "title": "Biotech billionaire Kiran Mazumdar-Shaw: ‘I’ve always been very unconventional’ - Financial Times",
+          "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNM2cxUEstS1ZPVlZjdEF2MzhxeUxOSUNoVjFCZkZ2VnRjRlp0ZjA5UjFoT19xLWhyQzhralVBZWYzeHBOS1NDZWdHeHd0YmhEekdFZ0FRbGJwakQ0bW9BQnRIZHhGcFBqcWNBbFBRYlNLWEVwSTY4OHVBV0tkR28xRkhrd1c?oc=5",
+          "pubDate": "2026-04-10T11:30:01+00:00",
+          "source": "Google News",
+          "topic": "\"Shaw\"",
+          "summary": "Biotech billionaire Kiran Mazumdar-Shaw: ‘I’ve always been very unconventional’ Financial Times",
+          "section": "news"
+        }
+      ],
+      "counts": {
+        "x": 0,
+        "news": 4,
+        "total_ranked": 4
+      }
+    },
+    {
       "id": "p-golato",
       "kind": "person",
       "name": "Tyler Golato",
@@ -1557,6 +1605,17 @@
       }
     },
     {
+      "id": "p-nazzareno-massari",
+      "kind": "person",
+      "name": "Nazzareno Massari",
+      "signals": [],
+      "counts": {
+        "x": 0,
+        "news": 0,
+        "total_ranked": 0
+      }
+    },
+    {
       "id": "p-shilina",
       "kind": "person",
       "name": "Sasha Shilina",
@@ -1585,76 +1644,17 @@
         "news": 2,
         "total_ranked": 2
       }
-    },
-    {
-      "id": "p-benet",
-      "kind": "person",
-      "name": "Juan Benet",
-      "signals": [
-        {
-          "title": "RT by @juanbenet: omnifs: the universe, mounted on your filesystem (sound on 🔊) starting with github. cd into any repo. cat an issue. grep PRs. tail CI logs. everything is a file, for humans and agents. demo with the @NousResearch hermes repo below. bring your own provider. coming next: linear, hugging face, slack, arxiv plan 9 was right, just 40 years early. now we have WASM + FUSE + modern capabilities. repo goes public today 🫡",
-          "link": "https://nitter.net/raulvk/status/2043415858035499496#m",
-          "pubDate": "2026-04-12T19:48:00+00:00",
-          "source": "x",
-          "topic": "@juanbenet",
-          "summary": "omnifs: the universe, mounted on your filesystem (sound on 🔊) starting with github. cd into any repo. cat an issue. grep PRs. tail CI logs. everything is a file, for humans and agents. demo with the @NousResearch herm...",
-          "section": "x"
-        },
-        {
-          "title": "Links from the podcast: Science: https://science.xyz/ PRIMA: https://science.xyz/technologies/prima/ Biohybrid: https://science.xyz/technologies/biohybrid/ PL Neuro: http://plneuro.xyz Protocol Labs: http://protocol.ai Link to this podcast on Substack: https://www.juanbenetpodcast.com/p/2de6bf2c-9712-4c12-95dd-003c0fb8eade Accounts to follow: @maxhodak_ @ScienceCorp_ @protocollabs",
-          "link": "https://nitter.net/juanbenet/status/2041915374690578643#m",
-          "pubDate": "2026-04-08T16:25:36+00:00",
-          "source": "x",
-          "topic": "@juanbenet",
-          "summary": "Links from the podcast: Science: science.xyz/ PRIMA: science.xyz/technologies/pri… Biohybrid: science.xyz/technologies/bio… PL Neuro: plneuro.xyz Protocol Labs: protocol.ai Link to this podcast on Substack: juanbenetp...",
-          "section": "x"
-        },
-        {
-          "title": "Excited to launch a new podcast dedicated to conversations on the future of neurotech, computing, intelligence, and more. First guest: @maxhodak_ founder & CEO of @ScienceCorp_, which is building PRIMA, a retinal prosthetic that’s restoring meaningful vision for patients with blindness caused by age-related macular degeneration. Science is also developing a biohybrid brain implant that grows living neurons directly onto a silicon chip, then interfaces that system with the cortex. The possibility space here is vast and new. Imagine growing new areas of the brain. Sections 00:00 What counts as neurotech? 01:45 History of brain-computer interfaces and the smartphone dividend 07:25 PRIMA - How Science is restoring vision in blind patients 10:10 Why stimulating bipolar cells works when the optic nerve doesn't 30:30 Are we bottlenecked by biology or engineering? 32:40 Expanding the brain's bandwidth beyond 10 bits per second 37:00 Can we add new areas to the brain? 37:46 Biohybrid BCIs: neurons growing on a chip 39:20 What could neural augmentation look like? 01:13:20 How Science drives Fast R&D 01:44:00 How founders learn and level up This is the kind of discussion I’m excited to explore on this podcast. Enjoy! Full Episode 1 here and in links below.",
-          "link": "https://nitter.net/juanbenet/status/2041915044363976864#m",
-          "pubDate": "2026-04-08T16:24:18+00:00",
-          "source": "x",
-          "topic": "@juanbenet",
-          "summary": "Excited to launch a new podcast dedicated to conversations on the future of neurotech, computing, intelligence, and more. First guest: @maxhodak_ founder & CEO of @ScienceCorp_ , which is building PRIMA, a retinal pro...",
-          "section": "x"
-        },
-        {
-          "title": "Filecoin Foundation, FilOz unveil decentralized cloud to build more resilient and customizable apps - The Block",
-          "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxORlkzNmRpRkdmRDVCLUMxcG9VTVBwX2p0ellza01jVXA4ODRlblUtUTQ1WFFUQXBtaFZTREE1VjcwSVpib2k3X2l4S051OTVBM3JoQVJqRDg4eFdSSWozQnhPVXZoMmxyc3EyNTFVV1o1SkJqVTVwVVhwSlFFRWxMMWFyYnB2eEprUTFwSDlULUE0NjJOakFzVms4bGdWNmJOTVdYUXUwdV93YnpCcURqSlAyMjZDc1dRdUZUZXh5TQ?oc=5",
-          "pubDate": "2025-11-18T08:00:00+00:00",
-          "source": "Google News",
-          "topic": "\"Juan Benet\"",
-          "summary": "Filecoin Foundation, FilOz unveil decentralized cloud to build more resilient and customizable apps The Block",
-          "section": "news"
-        }
-      ],
-      "counts": {
-        "x": 3,
-        "news": 4,
-        "total_ranked": 4
-      }
-    },
-    {
-      "id": "p-tayi",
-      "kind": "person",
-      "name": "Alok Tayi",
-      "signals": [],
-      "counts": {
-        "x": 0,
-        "news": 4,
-        "total_ranked": 0
-      }
     }
   ],
   "analytics": {
     "top_sources": [
       {
         "source": "Google News",
-        "count": 62
+        "count": 65
       },
       {
         "source": "x",
-        "count": 52
+        "count": 49
       },
       {
         "source": "github",
@@ -1749,8 +1749,8 @@
         "signal_count": 4
       },
       {
-        "id": "p-benet",
-        "name": "Juan Benet",
+        "id": "p-shaw",
+        "name": "Shaw",
         "kind": "person",
         "signal_count": 4
       },

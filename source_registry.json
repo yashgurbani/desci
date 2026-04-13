@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-13T01:33:24.009924+00:00",
+  "generatedAt": "2026-04-13T04:28:12.506907+00:00",
   "dataPath": "data.json",
   "signalsConfigPath": "signals_config.json",
   "tracked_topics": [
@@ -1067,7 +1067,14 @@
         "elizaOS/eliza"
       ],
       "paper_urls": [],
-      "linked_people": [],
+      "linked_people": [
+        {
+          "id": "p-shaw",
+          "name": "Shaw",
+          "role": "",
+          "x_handle": ""
+        }
+      ],
       "provenance_urls": [
         "https://elizaos.ai",
         "https://www.elizaos.ai",
@@ -1652,6 +1659,12 @@
           "id": "p-trovo",
           "name": "Bianca TrovÃ²",
           "role": "Developer, Ants-Review. Sorbonne/CEA NeuroSpin researcher.",
+          "x_handle": ""
+        },
+        {
+          "id": "p-nazzareno-massari",
+          "name": "Nazzareno Massari",
+          "role": "",
           "x_handle": ""
         }
       ],
@@ -3303,7 +3316,14 @@
       "paper_urls": [
         "https://arxiv.org/abs/2405.20220"
       ],
-      "linked_people": [],
+      "linked_people": [
+        {
+          "id": "p-guodong-jin",
+          "name": "Guodong Jin",
+          "role": "",
+          "x_handle": ""
+        }
+      ],
       "provenance_urls": [
         "https://arxiv.org/abs/2405.20220",
         "https://arxiv.org/html/2405.20220v1"
@@ -4652,6 +4672,12 @@
           "name": "Justin Barlow",
           "role": "Head of BD, Sapien Capital. Ex-Solana Ventures. Deploying $65M DeSci fund.",
           "x_handle": ""
+        },
+        {
+          "id": "p-eleanor-davies",
+          "name": "Eleanor Davies",
+          "role": "",
+          "x_handle": ""
         }
       ],
       "provenance_urls": [
@@ -5307,6 +5333,33 @@
       ]
     },
     {
+      "id": "p-shaw",
+      "kind": "person",
+      "name": "Shaw",
+      "aliases": [
+        "Shaw"
+      ],
+      "role": "",
+      "watch_priority": 138.9,
+      "x_handles": [],
+      "github_repos": [],
+      "official_urls": [],
+      "orcid": "",
+      "notes": "Migrated from legacy node.people field on elizaOS (elizaos). Name preserved exactly as stored in the dataset; verify current role and identity from primary sources before external use.",
+      "open_source_info": "",
+      "org_ids": [
+        "elizaos"
+      ],
+      "organizations": [
+        {
+          "id": "elizaos",
+          "name": "elizaOS",
+          "stack": "infrastructure",
+          "type": "AI Framework"
+        }
+      ]
+    },
+    {
       "id": "p-golato",
       "kind": "person",
       "name": "Tyler Golato",
@@ -5452,6 +5505,33 @@
       ]
     },
     {
+      "id": "p-nazzareno-massari",
+      "kind": "person",
+      "name": "Nazzareno Massari",
+      "aliases": [
+        "Nazzareno Massari"
+      ],
+      "role": "",
+      "watch_priority": 132.0,
+      "x_handles": [],
+      "github_repos": [],
+      "official_urls": [],
+      "orcid": "",
+      "notes": "Migrated from legacy node.people field on Ants-Review (ants-review). Name preserved exactly as stored in the dataset; verify current role and identity from primary sources before external use.",
+      "open_source_info": "",
+      "org_ids": [
+        "ants-review"
+      ],
+      "organizations": [
+        {
+          "id": "ants-review",
+          "name": "Ants-Review",
+          "stack": "application",
+          "type": "Academic Prototype"
+        }
+      ]
+    },
+    {
       "id": "p-shilina",
       "kind": "person",
       "name": "Sasha Shilina",
@@ -5568,6 +5648,33 @@
           "name": "Polymarket",
           "stack": "application",
           "type": "Prediction Market"
+        }
+      ]
+    },
+    {
+      "id": "p-guodong-jin",
+      "kind": "person",
+      "name": "Guodong Jin",
+      "aliases": [
+        "Guodong Jin"
+      ],
+      "role": "",
+      "watch_priority": 96.8,
+      "x_handles": [],
+      "github_repos": [],
+      "official_urls": [],
+      "orcid": "",
+      "notes": "Migrated from legacy node.people field on BeerReview (beerreview). Name preserved exactly as stored in the dataset; verify current role and identity from primary sources before external use.",
+      "open_source_info": "",
+      "org_ids": [
+        "beerreview"
+      ],
+      "organizations": [
+        {
+          "id": "beerreview",
+          "name": "BeerReview",
+          "stack": "application",
+          "type": "Academic Prototype"
         }
       ]
     },
@@ -5780,6 +5887,33 @@
       ]
     },
     {
+      "id": "p-eleanor-davies",
+      "kind": "person",
+      "name": "Eleanor Davies",
+      "aliases": [
+        "Eleanor Davies"
+      ],
+      "role": "",
+      "watch_priority": 37.95,
+      "x_handles": [],
+      "github_repos": [],
+      "official_urls": [],
+      "orcid": "",
+      "notes": "Migrated from legacy node.people field on Sapien Capital (sapien-capital). Name preserved exactly as stored in the dataset; verify current role and identity from primary sources before external use.",
+      "open_source_info": "",
+      "org_ids": [
+        "sapien-capital"
+      ],
+      "organizations": [
+        {
+          "id": "sapien-capital",
+          "name": "Sapien Capital",
+          "stack": "governance",
+          "type": "Funder"
+        }
+      ]
+    },
+    {
       "id": "p-hamburg",
       "kind": "person",
       "name": "Sarah Hamburg",
@@ -5876,8 +6010,8 @@
   ],
   "summary": {
     "organization_count": 78,
-    "people_count": 33,
+    "people_count": 37,
     "high_priority_orgs": 31,
-    "high_priority_people": 23
+    "high_priority_people": 26
   }
 }

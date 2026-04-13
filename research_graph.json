@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-13T01:33:33.996098+00:00",
+  "generatedAt": "2026-04-13T04:28:24.278242+00:00",
   "registryPath": "source_registry.json",
   "people": [
     {
@@ -186,7 +186,77 @@
           ]
         }
       ],
-      "crossref_works": [],
+      "crossref_works": [
+        {
+          "doi": "10.24297/jac.v12i11.823",
+          "title": "Growth and Characterization of Anthranilic acid Crystals",
+          "url": "https://doi.org/10.24297/jac.v12i11.823",
+          "publisher": "CIRWOLRD",
+          "published": "2016-6-16",
+          "authors": [
+            "S. Dinagaran",
+            "P Srinivasan",
+            "P Srinivasan",
+            "S Vijayakumar",
+            "S Vijayakumar",
+            "J Balaji",
+            "J Balaji"
+          ],
+          "subjects": []
+        },
+        {
+          "doi": "10.1016/b978-0-12-818503-2.00016-2",
+          "title": "Dedication",
+          "url": "https://doi.org/10.1016/b978-0-12-818503-2.00016-2",
+          "publisher": "Elsevier",
+          "published": "2021",
+          "authors": [
+            "C. Balaji",
+            "Balaji Srinivasan",
+            "Sateesh Gedupudi"
+          ],
+          "subjects": []
+        },
+        {
+          "doi": "10.1016/b978-0-12-818503-2.00015-0",
+          "title": "Preface",
+          "url": "https://doi.org/10.1016/b978-0-12-818503-2.00015-0",
+          "publisher": "Elsevier",
+          "published": "2021",
+          "authors": [
+            "C. Balaji",
+            "Balaji Srinivasan",
+            "Sateesh Gedupudi"
+          ],
+          "subjects": []
+        },
+        {
+          "doi": "10.1016/b978-0-12-818503-2.00001-0",
+          "title": "Introduction",
+          "url": "https://doi.org/10.1016/b978-0-12-818503-2.00001-0",
+          "publisher": "Elsevier",
+          "published": "2021",
+          "authors": [
+            "C. Balaji",
+            "Balaji Srinivasan",
+            "Sateesh Gedupudi"
+          ],
+          "subjects": []
+        },
+        {
+          "doi": "10.1016/b978-0-12-818503-2.00006-x",
+          "title": "Natural convection",
+          "url": "https://doi.org/10.1016/b978-0-12-818503-2.00006-x",
+          "publisher": "Elsevier",
+          "published": "2021",
+          "authors": [
+            "C. Balaji",
+            "Balaji Srinivasan",
+            "Sateesh Gedupudi"
+          ],
+          "subjects": []
+        }
+      ],
       "orcid_search": [],
       "topics": [
         "State (computer science)",
@@ -205,7 +275,7 @@
       "provider_status": {
         "openalex_authors": true,
         "openalex_works": true,
-        "crossref": false,
+        "crossref": true,
         "orcid": false
       }
     },
@@ -841,63 +911,7 @@
           ]
         }
       ],
-      "crossref_works": [
-        {
-          "doi": "10.55277/researchhub.p2yqlk39.1",
-          "title": "RTY",
-          "url": "https://doi.org/10.55277/researchhub.p2yqlk39.1",
-          "publisher": "ResearchHub Technologies, Inc.",
-          "published": "2026-3-6",
-          "authors": [
-            "AI DeSci"
-          ],
-          "subjects": []
-        },
-        {
-          "doi": "10.55277/researchhub.bkik2w9r.1",
-          "title": "TG",
-          "url": "https://doi.org/10.55277/researchhub.bkik2w9r.1",
-          "publisher": "ResearchHub Technologies, Inc.",
-          "published": "2026-3-6",
-          "authors": [
-            "AI DeSci"
-          ],
-          "subjects": []
-        },
-        {
-          "doi": "10.55277/researchhub.j2igvc1q.1",
-          "title": "GH",
-          "url": "https://doi.org/10.55277/researchhub.j2igvc1q.1",
-          "publisher": "ResearchHub Technologies, Inc.",
-          "published": "2026-3-6",
-          "authors": [
-            "AI DeSci"
-          ],
-          "subjects": []
-        },
-        {
-          "doi": "10.55277/researchhub.cc5kya8v.1",
-          "title": "fsd",
-          "url": "https://doi.org/10.55277/researchhub.cc5kya8v.1",
-          "publisher": "ResearchHub Technologies, Inc.",
-          "published": "2026-3-24",
-          "authors": [
-            "AI DeSci"
-          ],
-          "subjects": []
-        },
-        {
-          "doi": "10.55277/researchhub.iiddzda6.1",
-          "title": "E4T",
-          "url": "https://doi.org/10.55277/researchhub.iiddzda6.1",
-          "publisher": "ResearchHub Technologies, Inc.",
-          "published": "2026-3-6",
-          "authors": [
-            "AI DeSci"
-          ],
-          "subjects": []
-        }
-      ],
+      "crossref_works": [],
       "orcid_search": [],
       "topics": [
         "Genome-wide association study",
@@ -916,7 +930,7 @@
       "provider_status": {
         "openalex_authors": true,
         "openalex_works": true,
-        "crossref": true,
+        "crossref": false,
         "orcid": false
       }
     },
@@ -1101,74 +1115,7 @@
           ]
         }
       ],
-      "crossref_works": [
-        {
-          "doi": "10.1086/419454",
-          "title": "<i>Linus Pauling: A Life in Science and Politics.</i>Ted Goertzel , Ben Goertzel , Mildred Goertzel , Victor Goertzel",
-          "url": "https://doi.org/10.1086/419454",
-          "publisher": "University of Chicago Press",
-          "published": "1996-9",
-          "authors": [
-            "Nathaniel C. Comfort"
-          ],
-          "subjects": []
-        },
-        {
-          "doi": "10.3233/978-1-60750-959-2-124",
-          "title": "Integrative General Intelligence for Controlling Game AI in a Minecraft-Like Environment",
-          "url": "https://doi.org/10.3233/978-1-60750-959-2-124",
-          "publisher": "IOS Press",
-          "published": "2011",
-          "authors": [
-            "Goertzel Ben",
-            "Pitt Joel",
-            "Cai Zhenhua",
-            "Wigmore Jared",
-            "Huang Deheng",
-            "Geisweiller Nil",
-            "Lian Ruiting",
-            "Yu Gino"
-          ],
-          "subjects": []
-        },
-        {
-          "doi": "10.1609/aimag.v31i3.2294",
-          "title": "Report on the Third Conference on Artificial General Intelligence",
-          "url": "https://doi.org/10.1609/aimag.v31i3.2294",
-          "publisher": "Wiley",
-          "published": "2010-9",
-          "authors": [
-            "Ben Goertzel",
-            "Marcus Hutter"
-          ],
-          "subjects": []
-        },
-        {
-          "doi": "10.1016/j.techfore.2010.09.006",
-          "title": "How long until human-level AI? Results from an expert assessment",
-          "url": "https://doi.org/10.1016/j.techfore.2010.09.006",
-          "publisher": "Elsevier BV",
-          "published": "2011-1",
-          "authors": [
-            "Seth D. Baum",
-            "Ben Goertzel",
-            "Ted G. Goertzel"
-          ],
-          "subjects": []
-        },
-        {
-          "doi": "10.1609/aimag.v30i1.2151",
-          "title": "Report on the First Conference on Artificial General Intelligence (AGI‐08)",
-          "url": "https://doi.org/10.1609/aimag.v30i1.2151",
-          "publisher": "Wiley",
-          "published": "2009-3",
-          "authors": [
-            "Hugo de Garis",
-            "Ben Goertzel"
-          ],
-          "subjects": []
-        }
-      ],
+      "crossref_works": [],
       "orcid_search": [],
       "topics": [
         "Computer science",
@@ -1187,7 +1134,7 @@
       "provider_status": {
         "openalex_authors": true,
         "openalex_works": true,
-        "crossref": true,
+        "crossref": false,
         "orcid": false
       }
     },
@@ -1385,7 +1332,63 @@
           ]
         }
       ],
-      "crossref_works": [],
+      "crossref_works": [
+        {
+          "doi": "10.55277/pvtglk9",
+          "title": "ResearchHub DOI Test",
+          "url": "https://doi.org/10.55277/pvtglk9",
+          "publisher": "ResearchHub Technologies, Inc.",
+          "published": "2022-1-1",
+          "authors": [
+            "John Doe"
+          ],
+          "subjects": []
+        },
+        {
+          "doi": "10.55277/researchhub.yejlk8jp",
+          "title": "BreathworkLab x ResearchHub",
+          "url": "https://doi.org/10.55277/researchhub.yejlk8jp",
+          "publisher": "ResearchHub Technologies, Inc.",
+          "published": "2024-9-20",
+          "authors": [
+            "Guy W. Fincham"
+          ],
+          "subjects": []
+        },
+        {
+          "doi": "10.55277/researchhub.djiip2m3",
+          "title": "ResearchHub product update - 8/23/22",
+          "url": "https://doi.org/10.55277/researchhub.djiip2m3",
+          "publisher": "ResearchHub Technologies, Inc.",
+          "published": "2022-8-24",
+          "authors": [
+            "Patrick Joyce"
+          ],
+          "subjects": []
+        },
+        {
+          "doi": "10.55277/researchhub.ex8am0zt",
+          "title": "ResearchHub Reputation Hackathon Resources Doc",
+          "url": "https://doi.org/10.55277/researchhub.ex8am0zt",
+          "publisher": "ResearchHub Technologies, Inc.",
+          "published": "2023-1-24",
+          "authors": [
+            "Riccardo Goldoni"
+          ],
+          "subjects": []
+        },
+        {
+          "doi": "10.55277/researchhub.sti79v0y",
+          "title": "ResearchHub product update — 5/8/2022",
+          "url": "https://doi.org/10.55277/researchhub.sti79v0y",
+          "publisher": "ResearchHub Technologies, Inc.",
+          "published": "2022-5-8",
+          "authors": [
+            "Patrick Joyce"
+          ],
+          "subjects": []
+        }
+      ],
       "orcid_search": [],
       "topics": [
         "Artificial intelligence",
@@ -1404,7 +1407,7 @@
       "provider_status": {
         "openalex_authors": true,
         "openalex_works": true,
-        "crossref": false,
+        "crossref": true,
         "orcid": false
       }
     },
@@ -1595,6 +1598,43 @@
           ]
         }
       ],
+      "crossref_works": [],
+      "orcid_search": [],
+      "topics": [
+        "Medicine",
+        "Geography",
+        "Psychology",
+        "Generative grammar",
+        "Computer science",
+        "Artificial intelligence",
+        "Human–computer interaction",
+        "Generative model",
+        "Hydroamination",
+        "Chemistry",
+        "Markovnikov's rule",
+        "Amination"
+      ],
+      "provider_status": {
+        "openalex_authors": true,
+        "openalex_works": true,
+        "crossref": false,
+        "orcid": false
+      }
+    },
+    {
+      "id": "p-jerschow",
+      "name": "Nikita Jerschow",
+      "role": "CEO, DeSci Labs / DeSci Publish.",
+      "organizations": [
+        {
+          "id": "desci-labs",
+          "name": "DeSci Labs / Nodes",
+          "stack": "infrastructure",
+          "type": "Publishing Infra"
+        }
+      ],
+      "openalex_authors": [],
+      "openalex_works": [],
       "crossref_works": [
         {
           "doi": "10.62891/a32c8cb6",
@@ -1647,100 +1687,6 @@
           "url": "https://doi.org/10.55277/researchhub.iiddzda6.1",
           "publisher": "ResearchHub Technologies, Inc.",
           "published": "2026-3-6",
-          "authors": [
-            "AI DeSci"
-          ],
-          "subjects": []
-        }
-      ],
-      "orcid_search": [],
-      "topics": [
-        "Medicine",
-        "Geography",
-        "Psychology",
-        "Generative grammar",
-        "Computer science",
-        "Artificial intelligence",
-        "Human–computer interaction",
-        "Generative model",
-        "Hydroamination",
-        "Chemistry",
-        "Markovnikov's rule",
-        "Amination"
-      ],
-      "provider_status": {
-        "openalex_authors": true,
-        "openalex_works": true,
-        "crossref": true,
-        "orcid": false
-      }
-    },
-    {
-      "id": "p-jerschow",
-      "name": "Nikita Jerschow",
-      "role": "CEO, DeSci Labs / DeSci Publish.",
-      "organizations": [
-        {
-          "id": "desci-labs",
-          "name": "DeSci Labs / Nodes",
-          "stack": "infrastructure",
-          "type": "Publishing Infra"
-        }
-      ],
-      "openalex_authors": [],
-      "openalex_works": [],
-      "crossref_works": [
-        {
-          "doi": "10.62891/a32c8cb6",
-          "title": "DeSci Nodes Publication -Open Access Research Space Medicine in Extreme Environments: Challenges, Innovations, and Future Directions for Deep-Space Exploration",
-          "url": "https://doi.org/10.62891/a32c8cb6",
-          "publisher": "DeSci Labs AG",
-          "published": "2026-1-24",
-          "authors": [
-            "Abdulrahman Shaheen",
-            "lamia shaheen"
-          ],
-          "subjects": []
-        },
-        {
-          "doi": "10.55277/researchhub.p2yqlk39.1",
-          "title": "RTY",
-          "url": "https://doi.org/10.55277/researchhub.p2yqlk39.1",
-          "publisher": "ResearchHub Technologies, Inc.",
-          "published": "2026-3-6",
-          "authors": [
-            "AI DeSci"
-          ],
-          "subjects": []
-        },
-        {
-          "doi": "10.55277/researchhub.bkik2w9r.1",
-          "title": "TG",
-          "url": "https://doi.org/10.55277/researchhub.bkik2w9r.1",
-          "publisher": "ResearchHub Technologies, Inc.",
-          "published": "2026-3-6",
-          "authors": [
-            "AI DeSci"
-          ],
-          "subjects": []
-        },
-        {
-          "doi": "10.55277/researchhub.j2igvc1q.1",
-          "title": "GH",
-          "url": "https://doi.org/10.55277/researchhub.j2igvc1q.1",
-          "publisher": "ResearchHub Technologies, Inc.",
-          "published": "2026-3-6",
-          "authors": [
-            "AI DeSci"
-          ],
-          "subjects": []
-        },
-        {
-          "doi": "10.55277/researchhub.cc5kya8v.1",
-          "title": "fsd",
-          "url": "https://doi.org/10.55277/researchhub.cc5kya8v.1",
-          "publisher": "ResearchHub Technologies, Inc.",
-          "published": "2026-3-24",
           "authors": [
             "AI DeSci"
           ],
@@ -1921,7 +1867,63 @@
           ]
         }
       ],
-      "crossref_works": [],
+      "crossref_works": [
+        {
+          "doi": "10.55277/researchhub.djiip2m3",
+          "title": "ResearchHub product update - 8/23/22",
+          "url": "https://doi.org/10.55277/researchhub.djiip2m3",
+          "publisher": "ResearchHub Technologies, Inc.",
+          "published": "2022-8-24",
+          "authors": [
+            "Patrick Joyce"
+          ],
+          "subjects": []
+        },
+        {
+          "doi": "10.55277/researchhub.nxiz02rn",
+          "title": "ResearchHub product update — 4/7/22",
+          "url": "https://doi.org/10.55277/researchhub.nxiz02rn",
+          "publisher": "ResearchHub Technologies, Inc.",
+          "published": "2022-4-7",
+          "authors": [
+            "Patrick Joyce"
+          ],
+          "subjects": []
+        },
+        {
+          "doi": "10.55277/researchhub.sti79v0y",
+          "title": "ResearchHub product update — 5/8/2022",
+          "url": "https://doi.org/10.55277/researchhub.sti79v0y",
+          "publisher": "ResearchHub Technologies, Inc.",
+          "published": "2022-5-8",
+          "authors": [
+            "Patrick Joyce"
+          ],
+          "subjects": []
+        },
+        {
+          "doi": "10.55277/researchhub.vb2h5jvp",
+          "title": "ResearchHub raises $5m to help scientists monetize their research",
+          "url": "https://doi.org/10.55277/researchhub.vb2h5jvp",
+          "publisher": "ResearchHub Technologies, Inc.",
+          "published": "2023-6-15",
+          "authors": [
+            "Patrick Joyce"
+          ],
+          "subjects": []
+        },
+        {
+          "doi": "10.55277/researchhub.sg587ogu",
+          "title": "7/17/24 - ResearchHub Product Review Notes&lt;br&gt;",
+          "url": "https://doi.org/10.55277/researchhub.sg587ogu",
+          "publisher": "ResearchHub Technologies, Inc.",
+          "published": "2024-7-22",
+          "authors": [
+            "Patrick Joyce"
+          ],
+          "subjects": []
+        }
+      ],
       "orcid_search": [],
       "topics": [
         "History",
@@ -1940,7 +1942,7 @@
       "provider_status": {
         "openalex_authors": true,
         "openalex_works": true,
-        "crossref": false,
+        "crossref": true,
         "orcid": false
       }
     },
@@ -2115,53 +2117,7 @@
           ]
         }
       ],
-      "crossref_works": [
-        {
-          "doi": "10.1093/benz/9780199773787.article.b00130757",
-          "title": "Niklas",
-          "url": "https://doi.org/10.1093/benz/9780199773787.article.b00130757",
-          "publisher": "Oxford University Press",
-          "published": "2011-10-31",
-          "authors": [],
-          "subjects": []
-        },
-        {
-          "doi": "10.1093/gao/9781884446054.article.t012836",
-          "title": "Byström, Johan Niklas",
-          "url": "https://doi.org/10.1093/gao/9781884446054.article.t012836",
-          "publisher": "Oxford University Press",
-          "published": "2003",
-          "authors": [],
-          "subjects": []
-        },
-        {
-          "doi": "10.1093/benz/9780199773787.article.b00134081",
-          "title": "Ottentaler, Niklas",
-          "url": "https://doi.org/10.1093/benz/9780199773787.article.b00134081",
-          "publisher": "Oxford University Press",
-          "published": "2011-10-31",
-          "authors": [],
-          "subjects": []
-        },
-        {
-          "doi": "10.1093/benz/9780199773787.article.b00162197",
-          "title": "Schaider, Niklas",
-          "url": "https://doi.org/10.1093/benz/9780199773787.article.b00162197",
-          "publisher": "Oxford University Press",
-          "published": "2011-10-31",
-          "authors": [],
-          "subjects": []
-        },
-        {
-          "doi": "10.1093/benz/9780199773787.article.b00147699",
-          "title": "Quirin, Niklas",
-          "url": "https://doi.org/10.1093/benz/9780199773787.article.b00147699",
-          "publisher": "Oxford University Press",
-          "published": "2011-10-31",
-          "authors": [],
-          "subjects": []
-        }
-      ],
+      "crossref_works": [],
       "orcid_search": [],
       "topics": [
         "Computer science",
@@ -2180,7 +2136,7 @@
       "provider_status": {
         "openalex_authors": true,
         "openalex_works": true,
-        "crossref": true,
+        "crossref": false,
         "orcid": false
       }
     },
@@ -2455,7 +2411,67 @@
           ]
         }
       ],
-      "crossref_works": [],
+      "crossref_works": [
+        {
+          "doi": "10.1007/978-3-031-07535-3_16",
+          "title": "Ocean Protocol: Tools for the Web3 Data Economy",
+          "url": "https://doi.org/10.1007/978-3-031-07535-3_16",
+          "publisher": "Springer International Publishing",
+          "published": "2022",
+          "authors": [
+            "Trent McConaghy"
+          ],
+          "subjects": []
+        },
+        {
+          "doi": "10.5176/2382-5669_ict-bdcs15.48",
+          "title": "A New Biometric ID-Based Cryptography Protocol and Security Analysis Using Petri Nets",
+          "url": "https://doi.org/10.5176/2382-5669_ict-bdcs15.48",
+          "publisher": "Global Science and Technology Forum (GSTF)",
+          "published": "2015-7-27",
+          "authors": [
+            "Dania Aljeaid",
+            "Xiaoqi Ma",
+            "Caroline Langensiepen"
+          ],
+          "subjects": []
+        },
+        {
+          "doi": "10.1038/520716a",
+          "title": "The archive personality protocol",
+          "url": "https://doi.org/10.1038/520716a",
+          "publisher": "Springer Science and Business Media LLC",
+          "published": "2015-4-30",
+          "authors": [
+            "Brian Trent"
+          ],
+          "subjects": []
+        },
+        {
+          "doi": "10.1163/9789004444287_015",
+          "title": "Afterword",
+          "url": "https://doi.org/10.1163/9789004444287_015",
+          "publisher": "BRILL",
+          "published": "2020-9-20",
+          "authors": [
+            "June McConaghy",
+            "Janet McConaghy"
+          ],
+          "subjects": []
+        },
+        {
+          "doi": "10.1136/bcr-2017-220384",
+          "title": "Use of optokinetics based OKCSIB protocol in restoring mobility in primary progressive MS",
+          "url": "https://doi.org/10.1136/bcr-2017-220384",
+          "publisher": "BMJ",
+          "published": "2017-10-4",
+          "authors": [
+            "Benjamin Chitambira",
+            "Ciara McConaghy"
+          ],
+          "subjects": []
+        }
+      ],
       "orcid_search": [],
       "topics": [
         "Computer science",
@@ -2474,7 +2490,300 @@
       "provider_status": {
         "openalex_authors": true,
         "openalex_works": true,
-        "crossref": false,
+        "crossref": true,
+        "orcid": false
+      }
+    },
+    {
+      "id": "p-shaw",
+      "name": "Shaw",
+      "role": "",
+      "organizations": [
+        {
+          "id": "elizaos",
+          "name": "elizaOS",
+          "stack": "infrastructure",
+          "type": "AI Framework"
+        }
+      ],
+      "openalex_authors": [
+        {
+          "id": "https://openalex.org/A5024475260",
+          "display_name": "Jonathan E. Shaw",
+          "orcid": "https://orcid.org/0000-0002-6187-2203",
+          "works_count": 864,
+          "cited_by_count": 127719,
+          "institutions": [
+            {
+              "id": "https://openalex.org/I129801699",
+              "display_name": "University of Tasmania"
+            },
+            {
+              "id": "https://openalex.org/I142471025",
+              "display_name": "Baker Heart and Diabetes Institute"
+            },
+            {
+              "id": "https://openalex.org/I196829312",
+              "display_name": "La Trobe University"
+            },
+            {
+              "id": "https://openalex.org/I2799452589",
+              "display_name": "Royal Devon & Exeter NHS Foundation Trust"
+            },
+            {
+              "id": "https://openalex.org/I2799803081",
+              "display_name": "Diabetes Australia"
+            },
+            {
+              "id": "https://openalex.org/I2801827564",
+              "display_name": "Herlev Hospital"
+            },
+            {
+              "id": "https://openalex.org/I2803209242",
+              "display_name": "University of California System"
+            },
+            {
+              "id": "https://openalex.org/I56590836",
+              "display_name": "Monash University"
+            }
+          ]
+        },
+        {
+          "id": "https://openalex.org/A5033386949",
+          "display_name": "Leslee J. Shaw",
+          "orcid": "https://orcid.org/0000-0003-1268-1491",
+          "works_count": 1349,
+          "cited_by_count": 100565,
+          "institutions": [
+            {
+              "id": "https://openalex.org/I4210102044",
+              "display_name": "Mount Sinai Hospital"
+            },
+            {
+              "id": "https://openalex.org/I98704320",
+              "display_name": "Icahn School of Medicine at Mount Sinai"
+            }
+          ]
+        },
+        {
+          "id": "https://openalex.org/A5080311196",
+          "display_name": "Alice T. Shaw",
+          "orcid": "https://orcid.org/0000-0001-6337-1093",
+          "works_count": 686,
+          "cited_by_count": 72014,
+          "institutions": [
+            {
+              "id": "https://openalex.org/I136199984",
+              "display_name": "Harvard University"
+            },
+            {
+              "id": "https://openalex.org/I4210114893",
+              "display_name": "Signum Biosciences (United States)"
+            },
+            {
+              "id": "https://openalex.org/I4210117453",
+              "display_name": "Dana-Farber Cancer Institute"
+            },
+            {
+              "id": "https://openalex.org/I4210117619",
+              "display_name": "Novartis (United States)"
+            },
+            {
+              "id": "https://openalex.org/I4210134579",
+              "display_name": "Dana-Farber/Harvard Cancer Center"
+            }
+          ]
+        }
+      ],
+      "openalex_works": [
+        {
+          "id": "https://openalex.org/W4389850537",
+          "title": "Convective mixing in porous media: a review of Darcy, pore-scale and Hele-Shaw studies",
+          "publication_date": "2023-12-01",
+          "publication_year": 2023,
+          "doi": "https://doi.org/10.1140/epje/s10189-023-00390-8",
+          "cited_by_count": 52,
+          "primary_location": "The European Physical Journal E",
+          "concepts": [
+            "Porous medium",
+            "Convection",
+            "Mechanics",
+            "Darcy's law",
+            "Mixing (physics)",
+            "Viscous fingering",
+            "Flow (mathematics)",
+            "Geology"
+          ],
+          "authors": [
+            "Marco De Paoli"
+          ]
+        },
+        {
+          "id": "https://openalex.org/W4313437301",
+          "title": "Circular bubbles in a Hele-Shaw channel: a Hele-Shaw Newton's cradle",
+          "publication_date": "2023-01-03",
+          "publication_year": 2023,
+          "doi": "https://doi.org/10.1017/jfm.2022.1008",
+          "cited_by_count": 11,
+          "primary_location": "Journal of Fluid Mechanics",
+          "concepts": [
+            "Hele-Shaw flow",
+            "Inviscid flow",
+            "Bubble",
+            "Physics",
+            "Mechanics",
+            "Dimensionless quantity",
+            "Pressure gradient",
+            "Drag"
+          ],
+          "authors": [
+            "D. J. Booth",
+            "Ian M. Griffiths",
+            "P. D. Howell"
+          ]
+        },
+        {
+          "id": "https://openalex.org/W4389719261",
+          "title": "Application of a time-fractal fractional derivative with a power-law kernel to the Burke-Shaw system based on Newton's interpolation polynomials",
+          "publication_date": "2023-12-14",
+          "publication_year": 2023,
+          "doi": "https://doi.org/10.1016/j.mex.2023.102510",
+          "cited_by_count": 30,
+          "primary_location": "MethodsX",
+          "concepts": [
+            "Fractal",
+            "Mathematics",
+            "Fractional calculus",
+            "Fractal derivative",
+            "Kernel (algebra)",
+            "Interpolation (computer graphics)",
+            "Numerical analysis",
+            "Uniqueness"
+          ],
+          "authors": [
+            "Najat Almutairi",
+            "Sayed Saber"
+          ]
+        },
+        {
+          "id": "https://openalex.org/W4389135175",
+          "title": "Compression-driven viscous fingering in a radial Hele-Shaw cell",
+          "publication_date": "2023-11-29",
+          "publication_year": 2023,
+          "doi": "https://doi.org/10.1103/physrevfluids.8.113904",
+          "cited_by_count": 14,
+          "primary_location": "Physical Review Fluids",
+          "concepts": [
+            "Viscous fingering",
+            "Compressibility",
+            "Dimensionless quantity",
+            "Mechanics",
+            "Rotational symmetry",
+            "Hele-Shaw flow",
+            "Compression (physics)",
+            "Capillary action"
+          ],
+          "authors": [
+            "Callum Cuttle",
+            "Liam C. Morrow",
+            "Christopher W. MacMinn"
+          ]
+        },
+        {
+          "id": "https://openalex.org/W4394064255",
+          "title": "Control of chaos in the Burke-Shaw system of fractal-fractional order in the sense of Caputo-Fabrizio",
+          "publication_date": "2024-03-01",
+          "publication_year": 2024,
+          "doi": "https://doi.org/10.17512/jamcm.2024.1.07",
+          "cited_by_count": 28,
+          "primary_location": "Journal of Applied Mathematics and Computational Mechanics",
+          "concepts": [
+            "Fractal",
+            "CHAOS (operating system)",
+            "Mathematics",
+            "Order (exchange)",
+            "Statistical physics",
+            "Applied mathematics",
+            "Mathematical economics",
+            "Calculus (dental)"
+          ],
+          "authors": [
+            "Sayed Saber"
+          ]
+        }
+      ],
+      "crossref_works": [
+        {
+          "doi": "10.1353/shaw.2010.0022",
+          "title": "International Shaw Society",
+          "url": "https://doi.org/10.1353/shaw.2010.0022",
+          "publisher": "Project MUSE",
+          "published": "2010",
+          "authors": [],
+          "subjects": []
+        },
+        {
+          "doi": "10.1353/shaw.2005.0001",
+          "title": "Shaw Responds to Shaw-Bashing",
+          "url": "https://doi.org/10.1353/shaw.2005.0001",
+          "publisher": "Project MUSE",
+          "published": "2005",
+          "authors": [
+            "John A. (John Anthony) Bertolini"
+          ],
+          "subjects": []
+        },
+        {
+          "doi": "10.1353/shaw.2006.0022",
+          "title": "Shaw Reinterpreted",
+          "url": "https://doi.org/10.1353/shaw.2006.0022",
+          "publisher": "Project MUSE",
+          "published": "2006",
+          "authors": [
+            "Nicholas Williams"
+          ],
+          "subjects": []
+        },
+        {
+          "doi": "10.1353/shaw.2002.0016",
+          "title": "The Drink Question",
+          "url": "https://doi.org/10.1353/shaw.2002.0016",
+          "publisher": "Project MUSE",
+          "published": "2002",
+          "authors": [
+            "Bernard Shaw"
+          ],
+          "subjects": []
+        },
+        {
+          "doi": "10.1353/shaw.2001.0020",
+          "title": "Some Principal Shaw Research Sources",
+          "url": "https://doi.org/10.1353/shaw.2001.0020",
+          "publisher": "Project MUSE",
+          "published": "2000",
+          "authors": [],
+          "subjects": []
+        }
+      ],
+      "orcid_search": [],
+      "topics": [
+        "Mechanics",
+        "Viscous fingering",
+        "Hele-Shaw flow",
+        "Dimensionless quantity",
+        "Fractal",
+        "Mathematics",
+        "Porous medium",
+        "Convection",
+        "Darcy's law",
+        "Mixing (physics)",
+        "Flow (mathematics)",
+        "Geology"
+      ],
+      "provider_status": {
+        "openalex_authors": true,
+        "openalex_works": true,
+        "crossref": true,
         "orcid": false
       }
     },
@@ -2617,68 +2926,7 @@
           ]
         }
       ],
-      "crossref_works": [
-        {
-          "doi": "10.1002/9781405198431.wbeal1100",
-          "title": "Speech Acts",
-          "url": "https://doi.org/10.1002/9781405198431.wbeal1100",
-          "publisher": "Wiley",
-          "published": "2012-11-5",
-          "authors": [
-            "Andrea Golato",
-            "Peter Golato"
-          ],
-          "subjects": []
-        },
-        {
-          "doi": "10.1002/9781405198431.wbeal0946.pub2",
-          "title": "Pragmatics Research Methods",
-          "url": "https://doi.org/10.1002/9781405198431.wbeal0946.pub2",
-          "publisher": "Wiley",
-          "published": "2019-12-22",
-          "authors": [
-            "Andrea Golato",
-            "Peter Golato"
-          ],
-          "subjects": []
-        },
-        {
-          "doi": "10.1002/9781405198431.wbeal0946",
-          "title": "Pragmatics Research Methods",
-          "url": "https://doi.org/10.1002/9781405198431.wbeal0946",
-          "publisher": "Wiley",
-          "published": "2012-11-5",
-          "authors": [
-            "Andrea Golato",
-            "Peter Golato"
-          ],
-          "subjects": []
-        },
-        {
-          "doi": "10.1515/9783110424928-015",
-          "title": "15. Ethnomethodology and conversation analysis",
-          "url": "https://doi.org/10.1515/9783110424928-015",
-          "publisher": "De Gruyter",
-          "published": "2018-6-25",
-          "authors": [
-            "Andrea Golato",
-            "Peter Golato"
-          ],
-          "subjects": []
-        },
-        {
-          "doi": "10.1002/9781405198431.wbeal1100.pub2",
-          "title": "Speech Acts and Grammar",
-          "url": "https://doi.org/10.1002/9781405198431.wbeal1100.pub2",
-          "publisher": "Wiley",
-          "published": "2025-1-7",
-          "authors": [
-            "Andrea Golato",
-            "Peter Golato"
-          ],
-          "subjects": []
-        }
-      ],
+      "crossref_works": [],
       "orcid_search": [],
       "topics": [
         "Computer science",
@@ -2697,7 +2945,7 @@
       "provider_status": {
         "openalex_authors": true,
         "openalex_works": true,
-        "crossref": true,
+        "crossref": false,
         "orcid": false
       }
     },
@@ -2791,9 +3039,9 @@
           "subjects": []
         },
         {
-          "doi": "10.24818/ida-ql/2019.57",
-          "title": "CrixCoin_Public_Private_Key",
-          "url": "https://doi.org/10.24818/ida-ql/2019.57",
+          "doi": "10.24818/ida-ql/2019.60",
+          "title": "CrixCoin_Branding",
+          "url": "https://doi.org/10.24818/ida-ql/2019.60",
           "publisher": "Bucharest University of Economic Studies",
           "published": "2019",
           "authors": [
@@ -2815,9 +3063,9 @@
           "subjects": []
         },
         {
-          "doi": "10.24818/ida-ql/2019.60",
-          "title": "CrixCoin_Branding",
-          "url": "https://doi.org/10.24818/ida-ql/2019.60",
+          "doi": "10.24818/ida-ql/2019.57",
+          "title": "CrixCoin_Public_Private_Key",
+          "url": "https://doi.org/10.24818/ida-ql/2019.57",
           "publisher": "Bucharest University of Economic Studies",
           "published": "2019",
           "authors": [
@@ -2982,57 +3230,7 @@
           ]
         }
       ],
-      "crossref_works": [
-        {
-          "doi": "10.5962/bhl.title.29757",
-          "title": "Contributions to the flora of Siam ... / by William Grant Craib",
-          "url": "https://doi.org/10.5962/bhl.title.29757",
-          "publisher": "Printed for the University of Aberdeen",
-          "published": "1912",
-          "authors": [
-            "William Grant Craib"
-          ],
-          "subjects": []
-        },
-        {
-          "doi": "10.32614/cran.package.damiann",
-          "title": "DamiaNN: Neural Network Numerai",
-          "url": "https://doi.org/10.32614/cran.package.damiann",
-          "publisher": "The R Foundation",
-          "published": "2016-9-14",
-          "authors": [],
-          "subjects": []
-        },
-        {
-          "doi": "10.5962/bhl.title.10996",
-          "title": "Contributions to the flora of Siam. by William Grant Craib. Dicotyledones",
-          "url": "https://doi.org/10.5962/bhl.title.10996",
-          "publisher": "Printed for the University of Aberdeen",
-          "published": "1912",
-          "authors": [
-            "William Grant Craib"
-          ],
-          "subjects": []
-        },
-        {
-          "doi": "10.32614/cran.package.rnumerai",
-          "title": "Rnumerai: Interface to the Numerai Machine Learning Tournament API",
-          "url": "https://doi.org/10.32614/cran.package.rnumerai",
-          "publisher": "The R Foundation",
-          "published": "2017-12-5",
-          "authors": [],
-          "subjects": []
-        },
-        {
-          "doi": "10.1007/springerreference_67954",
-          "title": "Acacia torta (Roxb.) Craib.",
-          "url": "https://doi.org/10.1007/springerreference_67954",
-          "publisher": "Springer-Verlag",
-          "published": "",
-          "authors": [],
-          "subjects": []
-        }
-      ],
+      "crossref_works": [],
       "orcid_search": [],
       "topics": [
         "Biology",
@@ -3051,237 +3249,7 @@
       "provider_status": {
         "openalex_authors": true,
         "openalex_works": true,
-        "crossref": true,
-        "orcid": false
-      }
-    },
-    {
-      "id": "p-pon",
-      "name": "Bruce Pon",
-      "role": "Co-founder, Ocean Protocol",
-      "organizations": [
-        {
-          "id": "ocean",
-          "name": "Ocean Protocol",
-          "stack": "infrastructure",
-          "type": "Data Platform"
-        }
-      ],
-      "openalex_authors": [],
-      "openalex_works": [
-        {
-          "id": "https://openalex.org/W4317436309",
-          "title": "Update on Prevalence of Pain in Patients with Cancer 2022: A Systematic Literature Review and Meta-Analysis",
-          "publication_date": "2023-01-18",
-          "publication_year": 2023,
-          "doi": "https://doi.org/10.3390/cancers15030591",
-          "cited_by_count": 338,
-          "primary_location": "Cancers",
-          "concepts": [
-            "Medicine",
-            "CINAHL",
-            "Meta-analysis",
-            "Cancer pain",
-            "Systematic review",
-            "MEDLINE",
-            "Physical therapy",
-            "Quality of life (healthcare)"
-          ],
-          "authors": [
-            "Rolf A. H. Snijders",
-            "Linda Brom",
-            "Maurice Theunissen",
-            "M.H.J. van den Beuken-van Everdingen"
-          ]
-        },
-        {
-          "id": "https://openalex.org/W4360983064",
-          "title": "Social determinants of multimorbidity patterns: A systematic review",
-          "publication_date": "2023-03-27",
-          "publication_year": 2023,
-          "doi": "https://doi.org/10.3389/fpubh.2023.1081518",
-          "cited_by_count": 136,
-          "primary_location": "Frontiers in Public Health",
-          "concepts": [
-            "CINAHL",
-            "PsycINFO",
-            "Socioeconomic status",
-            "Medicine",
-            "Ethnic group",
-            "Mental health",
-            "MEDLINE",
-            "Population"
-          ],
-          "authors": [
-            "Javier Álvarez‐Gálvez",
-            "Esther Ortega-Martín",
-            "Jesús Carretero-Bravo",
-            "Celia Pérez-Muñoz",
-            "Víctor Suárez-Lledó",
-            "Begoña Ramos-Fiol"
-          ]
-        },
-        {
-          "id": "https://openalex.org/W4320917748",
-          "title": "Complement as a Biomarker for Systemic Lupus Erythematosus",
-          "publication_date": "2023-02-15",
-          "publication_year": 2023,
-          "doi": "https://doi.org/10.3390/biom13020367",
-          "cited_by_count": 78,
-          "primary_location": "Biomolecules",
-          "concepts": [
-            "Complement (music)",
-            "Immunology",
-            "Complement system",
-            "Biomarker",
-            "Disease",
-            "Medicine",
-            "Systemic lupus erythematosus",
-            "Immune system"
-          ],
-          "authors": [
-            "Masahiro Ayano",
-            "Takahiko Horiuchi"
-          ]
-        },
-        {
-          "id": "https://openalex.org/W4390533546",
-          "title": "KDIGO 2024 Clinical Practice Guideline for the management of LUPUS NEPHRITIS",
-          "publication_date": "2024-01-01",
-          "publication_year": 2024,
-          "doi": "https://doi.org/10.1016/j.kint.2023.09.002",
-          "cited_by_count": 362,
-          "primary_location": "Kidney International",
-          "concepts": [
-            "Guideline",
-            "Lupus nephritis",
-            "Medicine",
-            "Intensive care medicine",
-            "Grading (engineering)",
-            "Randomized controlled trial",
-            "Clinical Practice",
-            "Clinical trial"
-          ],
-          "authors": [
-            "Brad H. Rovin",
-            "Isabelle Ayoub",
-            "Tak Mao Chan",
-            "Zhihong Liu",
-            "Juan M. Mejía‐Vilet",
-            "Jürgen Floege"
-          ]
-        },
-        {
-          "id": "https://openalex.org/W4387776183",
-          "title": "Peptides as Therapeutic Agents: Challenges and Opportunities in the Green Transition Era",
-          "publication_date": "2023-10-19",
-          "publication_year": 2023,
-          "doi": "https://doi.org/10.3390/molecules28207165",
-          "cited_by_count": 203,
-          "primary_location": "Molecules",
-          "concepts": [
-            "Environmentally friendly",
-            "Transformative learning",
-            "Biochemical engineering",
-            "Nanotechnology",
-            "Combinatorial chemistry",
-            "Computer science",
-            "Business",
-            "Chemistry"
-          ],
-          "authors": [
-            "Giacomo Rossino",
-            "Emanuela Marchese",
-            "Giovanni Galli",
-            "Francesca Verde",
-            "Matteo Finizio",
-            "Massimo Serra",
-            "Pasquale Linciano",
-            "Simona Collina"
-          ]
-        }
-      ],
-      "crossref_works": [
-        {
-          "doi": "10.1575/1912/bco-dmo.805324.1",
-          "title": "Bulk suspended PON d15N from several cruises conducted in the Southern Ocean south of Africa from 2012-2019",
-          "url": "https://doi.org/10.1575/1912/bco-dmo.805324.1",
-          "publisher": "Biological and Chemical Oceanography Data Management Office",
-          "published": "2020-3-12",
-          "authors": [
-            "Daniel Sigman"
-          ],
-          "subjects": []
-        },
-        {
-          "doi": "10.1163/221160085x00050",
-          "title": "Ocean Energy: Some Perspectives on Economic Viability",
-          "url": "https://doi.org/10.1163/221160085x00050",
-          "publisher": "Walter de Gruyter GmbH",
-          "published": "1985",
-          "authors": [
-            "Maxwell Bruce"
-          ],
-          "subjects": []
-        },
-        {
-          "doi": "10.1109/icc.2003.1204604",
-          "title": "A protocol to implement Ethernet over PON",
-          "url": "https://doi.org/10.1109/icc.2003.1204604",
-          "publisher": "IEEE",
-          "published": "",
-          "authors": [
-            "A. Gumaste",
-            "I. Chlamtac"
-          ],
-          "subjects": []
-        },
-        {
-          "doi": "10.5962/bhl.title.47872",
-          "title": "Variations in the thermal structure and wind field occurring in the Western Indian Ocean during the monsoons / John G. Bruce.",
-          "url": "https://doi.org/10.5962/bhl.title.47872",
-          "publisher": "United States. Naval Oceanographic Office.,",
-          "published": "1981",
-          "authors": [
-            "John G. Bruce"
-          ],
-          "subjects": []
-        },
-        {
-          "doi": "10.1109/oecc56963.2023.10209915",
-          "title": "PONizing Wi-Fi for Fiber-to-The-Room Scenario: A Unified PON and Wi-Fi Access Based on PON MAC Protocol",
-          "url": "https://doi.org/10.1109/oecc56963.2023.10209915",
-          "publisher": "IEEE",
-          "published": "2023-7-2",
-          "authors": [
-            "Gangxiang Shen",
-            "Jun Li",
-            "Yuxuan Chen",
-            "Jinhan Cai",
-            "Tianhai Chang"
-          ],
-          "subjects": []
-        }
-      ],
-      "orcid_search": [],
-      "topics": [
-        "Medicine",
-        "CINAHL",
-        "MEDLINE",
-        "Meta-analysis",
-        "Cancer pain",
-        "Systematic review",
-        "Physical therapy",
-        "Quality of life (healthcare)",
-        "PsycINFO",
-        "Socioeconomic status",
-        "Ethnic group",
-        "Mental health"
-      ],
-      "provider_status": {
-        "openalex_authors": true,
-        "openalex_works": true,
-        "crossref": true,
+        "crossref": false,
         "orcid": false
       }
     }
@@ -3537,7 +3505,63 @@
           ]
         }
       ],
-      "crossref_works": [],
+      "crossref_works": [
+        {
+          "doi": "10.55277/pvtglk9",
+          "title": "ResearchHub DOI Test",
+          "url": "https://doi.org/10.55277/pvtglk9",
+          "publisher": "ResearchHub Technologies, Inc.",
+          "published": "2022-1-1",
+          "authors": [
+            "John Doe"
+          ],
+          "subjects": []
+        },
+        {
+          "doi": "10.55277/researchhub.yejlk8jp",
+          "title": "BreathworkLab x ResearchHub",
+          "url": "https://doi.org/10.55277/researchhub.yejlk8jp",
+          "publisher": "ResearchHub Technologies, Inc.",
+          "published": "2024-9-20",
+          "authors": [
+            "Guy W. Fincham"
+          ],
+          "subjects": []
+        },
+        {
+          "doi": "10.55277/researchhub.djiip2m3",
+          "title": "ResearchHub product update - 8/23/22",
+          "url": "https://doi.org/10.55277/researchhub.djiip2m3",
+          "publisher": "ResearchHub Technologies, Inc.",
+          "published": "2022-8-24",
+          "authors": [
+            "Patrick Joyce"
+          ],
+          "subjects": []
+        },
+        {
+          "doi": "10.55277/researchhub.ex8am0zt",
+          "title": "ResearchHub Reputation Hackathon Resources Doc",
+          "url": "https://doi.org/10.55277/researchhub.ex8am0zt",
+          "publisher": "ResearchHub Technologies, Inc.",
+          "published": "2023-1-24",
+          "authors": [
+            "Riccardo Goldoni"
+          ],
+          "subjects": []
+        },
+        {
+          "doi": "10.55277/researchhub.nxiz02rn",
+          "title": "ResearchHub product update — 4/7/22",
+          "url": "https://doi.org/10.55277/researchhub.nxiz02rn",
+          "publisher": "ResearchHub Technologies, Inc.",
+          "published": "2022-4-7",
+          "authors": [
+            "Patrick Joyce"
+          ],
+          "subjects": []
+        }
+      ],
       "topics": [
         "Computer science",
         "Reputation",
@@ -3555,7 +3579,7 @@
       "provider_status": {
         "openalex_institutions": true,
         "openalex_works": true,
-        "crossref": false
+        "crossref": true
       }
     },
     {
@@ -3707,7 +3731,7 @@
       "provider_status": {
         "openalex_institutions": true,
         "openalex_works": true,
-        "crossref": true
+        "crossref": false
       }
     },
     {
@@ -3852,65 +3876,7 @@
           ]
         }
       ],
-      "crossref_works": [
-        {
-          "doi": "10.53731/sq5vs-mvv29",
-          "title": "Commonmeta understands OpenAlex",
-          "url": "https://doi.org/10.53731/sq5vs-mvv29",
-          "publisher": "Front Matter",
-          "published": "2025-5-19",
-          "authors": [
-            "Martin Fenner"
-          ],
-          "subjects": []
-        },
-        {
-          "doi": "10.53731/4ah0b-1gw94",
-          "title": "Commonmeta understands OpenAlex",
-          "url": "https://doi.org/10.53731/4ah0b-1gw94",
-          "publisher": "Front Matter",
-          "published": "2025-5-19",
-          "authors": [
-            "Martin Fenner"
-          ],
-          "subjects": []
-        },
-        {
-          "doi": "10.5195/biblios.2025.1268",
-          "title": "O uso do OpenAlex nos estudos de métricas bibliométricas",
-          "url": "https://doi.org/10.5195/biblios.2025.1268",
-          "publisher": "University Library System, University of Pittsburgh",
-          "published": "2025-12-11",
-          "authors": [
-            "Diego José Macêdo",
-            "Ingrid Torres Schiessl",
-            "Milton Shintaku"
-          ],
-          "subjects": []
-        },
-        {
-          "doi": "10.59350/wkase-hpa43",
-          "title": "Knowledge Graphs: Deep Dive into OpenAlex",
-          "url": "https://doi.org/10.59350/wkase-hpa43",
-          "publisher": "Front Matter",
-          "published": "2024-3-5",
-          "authors": [
-            "Dhruv Gupta"
-          ],
-          "subjects": []
-        },
-        {
-          "doi": "10.59350/g3zse-fdh02",
-          "title": "Knowledge Graphs: Deep Dive into OpenAlex",
-          "url": "https://doi.org/10.59350/g3zse-fdh02",
-          "publisher": "Front Matter",
-          "published": "2024-3-5",
-          "authors": [
-            "Dhruv Gupta"
-          ],
-          "subjects": []
-        }
-      ],
+      "crossref_works": [],
       "topics": [
         "Computer science",
         "Scopus",
@@ -3928,7 +3894,7 @@
       "provider_status": {
         "openalex_institutions": true,
         "openalex_works": true,
-        "crossref": true
+        "crossref": false
       }
     },
     {
@@ -4049,50 +4015,7 @@
           ]
         }
       ],
-      "crossref_works": [
-        {
-          "doi": "10.21203/rs.3.rs-1558902/v1",
-          "title": "What Have We Learned from OpenReview?",
-          "url": "https://doi.org/10.21203/rs.3.rs-1558902/v1",
-          "publisher": "Research Square Platform LLC",
-          "published": "2022-4-25",
-          "authors": [
-            "Gang Wang",
-            "Qi Peng",
-            "Yanfeng Zhang",
-            "Mingyang Zhang"
-          ],
-          "subjects": []
-        },
-        {
-          "doi": "10.1007/s11280-022-01109-z",
-          "title": "What have we learned from OpenReview?",
-          "url": "https://doi.org/10.1007/s11280-022-01109-z",
-          "publisher": "Springer Science and Business Media LLC",
-          "published": "2023-3",
-          "authors": [
-            "Gang Wang",
-            "Qi Peng",
-            "Yanfeng Zhang",
-            "Mingyang Zhang"
-          ],
-          "subjects": []
-        },
-        {
-          "doi": "10.1007/978-3-030-85896-4_6",
-          "title": "What Have We Learned from OpenReview?",
-          "url": "https://doi.org/10.1007/978-3-030-85896-4_6",
-          "publisher": "Springer International Publishing",
-          "published": "2021",
-          "authors": [
-            "Gang Wang",
-            "Qi Peng",
-            "Yanfeng Zhang",
-            "Mingyang Zhang"
-          ],
-          "subjects": []
-        }
-      ],
+      "crossref_works": [],
       "topics": [
         "Computer science",
         "Artificial intelligence",
@@ -4110,7 +4033,7 @@
       "provider_status": {
         "openalex_institutions": true,
         "openalex_works": true,
-        "crossref": true
+        "crossref": false
       }
     },
     {
@@ -4325,12 +4248,40 @@
       "type": "Identity",
       "openalex_institutions": [],
       "openalex_works": [],
-      "crossref_works": [],
+      "crossref_works": [
+        {
+          "doi": "10.5121/ijwest.2010.1201",
+          "title": "Ontology Matching Based on hypernym, hyponym, holonym, and meronym Sets in WordNet",
+          "url": "https://doi.org/10.5121/ijwest.2010.1201",
+          "publisher": "Academy and Industry Research Collaboration Center (AIRCC)",
+          "published": "2010-4-25",
+          "authors": [
+            "JungAe Kwak",
+            "Hwan-Seung Yong"
+          ],
+          "subjects": []
+        },
+        {
+          "doi": "10.1007/978-3-031-44067-0_25",
+          "title": "HOLMES: HOLonym-MEronym Based Semantic Inspection for Convolutional Image Classifiers",
+          "url": "https://doi.org/10.1007/978-3-031-44067-0_25",
+          "publisher": "Springer Nature Switzerland",
+          "published": "2023",
+          "authors": [
+            "Francesco Dibitonto",
+            "Fabio Garcea",
+            "André Panisson",
+            "Alan Perotti",
+            "Lia Morra"
+          ],
+          "subjects": []
+        }
+      ],
       "topics": [],
       "provider_status": {
         "openalex_institutions": true,
         "openalex_works": true,
-        "crossref": false
+        "crossref": true
       }
     },
     {
@@ -4653,7 +4604,7 @@
       "provider_status": {
         "openalex_institutions": true,
         "openalex_works": true,
-        "crossref": true
+        "crossref": false
       }
     },
     {
@@ -5042,7 +4993,7 @@
       "provider_status": {
         "openalex_institutions": true,
         "openalex_works": true,
-        "crossref": true
+        "crossref": false
       }
     },
     {
@@ -5198,7 +5149,7 @@
       "provider_status": {
         "openalex_institutions": true,
         "openalex_works": true,
-        "crossref": true
+        "crossref": false
       }
     },
     {
@@ -5245,7 +5196,7 @@
       "provider_status": {
         "openalex_institutions": true,
         "openalex_works": true,
-        "crossref": false
+        "crossref": true
       }
     },
     {
@@ -5386,7 +5337,7 @@
       "provider_status": {
         "openalex_institutions": true,
         "openalex_works": true,
-        "crossref": true
+        "crossref": false
       }
     },
     {
@@ -5696,55 +5647,7 @@
           ]
         }
       ],
-      "crossref_works": [
-        {
-          "doi": "10.5270/esa-ioq98vd",
-          "title": "MOLECULE",
-          "url": "https://doi.org/10.5270/esa-ioq98vd",
-          "publisher": "European Space Agency",
-          "published": "",
-          "authors": [],
-          "subjects": []
-        },
-        {
-          "doi": "10.5040/9781580813198",
-          "title": "The Undecided Molecule",
-          "url": "https://doi.org/10.5040/9781580813198",
-          "publisher": "Bloomsbury Publishing",
-          "published": "2015",
-          "authors": [],
-          "subjects": []
-        },
-        {
-          "doi": "10.5040/9781580813198.p01",
-          "title": "The Undecided Molecule",
-          "url": "https://doi.org/10.5040/9781580813198.p01",
-          "publisher": "LA Theatre Works",
-          "published": "",
-          "authors": [],
-          "subjects": []
-        },
-        {
-          "doi": "10.1007/978-1-4684-6988-2_12",
-          "title": "Discussion on Electron-Molecule Scattering",
-          "url": "https://doi.org/10.1007/978-1-4684-6988-2_12",
-          "publisher": "Springer US",
-          "published": "1979",
-          "authors": [
-            "Barry Schneider"
-          ],
-          "subjects": []
-        },
-        {
-          "doi": "10.1201/b18763-7",
-          "title": "- Controlling the Molecule–Electrode Contact in Single-Molecule Devices",
-          "url": "https://doi.org/10.1201/b18763-7",
-          "publisher": "Jenny Stanford Publishing",
-          "published": "2016-1-5",
-          "authors": [],
-          "subjects": []
-        }
-      ],
+      "crossref_works": [],
       "topics": [
         "Biology",
         "Cell biology",
@@ -5762,7 +5665,7 @@
       "provider_status": {
         "openalex_institutions": true,
         "openalex_works": true,
-        "crossref": true
+        "crossref": false
       }
     },
     {
@@ -6075,6 +5978,75 @@
       "authors": [
         "ALINA UTRATA"
       ]
+    },
+    {
+      "doi": "10.24297/jac.v12i11.823",
+      "title": "Growth and Characterization of Anthranilic acid Crystals",
+      "url": "https://doi.org/10.24297/jac.v12i11.823",
+      "publisher": "CIRWOLRD",
+      "published": "2016-6-16",
+      "authors": [
+        "S. Dinagaran",
+        "P Srinivasan",
+        "P Srinivasan",
+        "S Vijayakumar",
+        "S Vijayakumar",
+        "J Balaji",
+        "J Balaji"
+      ],
+      "subjects": []
+    },
+    {
+      "doi": "10.1016/b978-0-12-818503-2.00016-2",
+      "title": "Dedication",
+      "url": "https://doi.org/10.1016/b978-0-12-818503-2.00016-2",
+      "publisher": "Elsevier",
+      "published": "2021",
+      "authors": [
+        "C. Balaji",
+        "Balaji Srinivasan",
+        "Sateesh Gedupudi"
+      ],
+      "subjects": []
+    },
+    {
+      "doi": "10.1016/b978-0-12-818503-2.00015-0",
+      "title": "Preface",
+      "url": "https://doi.org/10.1016/b978-0-12-818503-2.00015-0",
+      "publisher": "Elsevier",
+      "published": "2021",
+      "authors": [
+        "C. Balaji",
+        "Balaji Srinivasan",
+        "Sateesh Gedupudi"
+      ],
+      "subjects": []
+    },
+    {
+      "doi": "10.1016/b978-0-12-818503-2.00001-0",
+      "title": "Introduction",
+      "url": "https://doi.org/10.1016/b978-0-12-818503-2.00001-0",
+      "publisher": "Elsevier",
+      "published": "2021",
+      "authors": [
+        "C. Balaji",
+        "Balaji Srinivasan",
+        "Sateesh Gedupudi"
+      ],
+      "subjects": []
+    },
+    {
+      "doi": "10.1016/b978-0-12-818503-2.00006-x",
+      "title": "Natural convection",
+      "url": "https://doi.org/10.1016/b978-0-12-818503-2.00006-x",
+      "publisher": "Elsevier",
+      "published": "2021",
+      "authors": [
+        "C. Balaji",
+        "Balaji Srinivasan",
+        "Sateesh Gedupudi"
+      ],
+      "subjects": []
     },
     {
       "id": "https://openalex.org/W4388523332",
@@ -6493,61 +6465,6 @@
       ]
     },
     {
-      "doi": "10.55277/researchhub.p2yqlk39.1",
-      "title": "RTY",
-      "url": "https://doi.org/10.55277/researchhub.p2yqlk39.1",
-      "publisher": "ResearchHub Technologies, Inc.",
-      "published": "2026-3-6",
-      "authors": [
-        "AI DeSci"
-      ],
-      "subjects": []
-    },
-    {
-      "doi": "10.55277/researchhub.bkik2w9r.1",
-      "title": "TG",
-      "url": "https://doi.org/10.55277/researchhub.bkik2w9r.1",
-      "publisher": "ResearchHub Technologies, Inc.",
-      "published": "2026-3-6",
-      "authors": [
-        "AI DeSci"
-      ],
-      "subjects": []
-    },
-    {
-      "doi": "10.55277/researchhub.j2igvc1q.1",
-      "title": "GH",
-      "url": "https://doi.org/10.55277/researchhub.j2igvc1q.1",
-      "publisher": "ResearchHub Technologies, Inc.",
-      "published": "2026-3-6",
-      "authors": [
-        "AI DeSci"
-      ],
-      "subjects": []
-    },
-    {
-      "doi": "10.55277/researchhub.cc5kya8v.1",
-      "title": "fsd",
-      "url": "https://doi.org/10.55277/researchhub.cc5kya8v.1",
-      "publisher": "ResearchHub Technologies, Inc.",
-      "published": "2026-3-24",
-      "authors": [
-        "AI DeSci"
-      ],
-      "subjects": []
-    },
-    {
-      "doi": "10.55277/researchhub.iiddzda6.1",
-      "title": "E4T",
-      "url": "https://doi.org/10.55277/researchhub.iiddzda6.1",
-      "publisher": "ResearchHub Technologies, Inc.",
-      "published": "2026-3-6",
-      "authors": [
-        "AI DeSci"
-      ],
-      "subjects": []
-    },
-    {
       "id": "https://openalex.org/W4316039892",
       "title": "Moral Space for Paraconsistent AGI",
       "publication_date": "2023-01-01",
@@ -6663,72 +6580,6 @@
       "authors": [
         "Jonas Schuett"
       ]
-    },
-    {
-      "doi": "10.1086/419454",
-      "title": "<i>Linus Pauling: A Life in Science and Politics.</i>Ted Goertzel , Ben Goertzel , Mildred Goertzel , Victor Goertzel",
-      "url": "https://doi.org/10.1086/419454",
-      "publisher": "University of Chicago Press",
-      "published": "1996-9",
-      "authors": [
-        "Nathaniel C. Comfort"
-      ],
-      "subjects": []
-    },
-    {
-      "doi": "10.3233/978-1-60750-959-2-124",
-      "title": "Integrative General Intelligence for Controlling Game AI in a Minecraft-Like Environment",
-      "url": "https://doi.org/10.3233/978-1-60750-959-2-124",
-      "publisher": "IOS Press",
-      "published": "2011",
-      "authors": [
-        "Goertzel Ben",
-        "Pitt Joel",
-        "Cai Zhenhua",
-        "Wigmore Jared",
-        "Huang Deheng",
-        "Geisweiller Nil",
-        "Lian Ruiting",
-        "Yu Gino"
-      ],
-      "subjects": []
-    },
-    {
-      "doi": "10.1609/aimag.v31i3.2294",
-      "title": "Report on the Third Conference on Artificial General Intelligence",
-      "url": "https://doi.org/10.1609/aimag.v31i3.2294",
-      "publisher": "Wiley",
-      "published": "2010-9",
-      "authors": [
-        "Ben Goertzel",
-        "Marcus Hutter"
-      ],
-      "subjects": []
-    },
-    {
-      "doi": "10.1016/j.techfore.2010.09.006",
-      "title": "How long until human-level AI? Results from an expert assessment",
-      "url": "https://doi.org/10.1016/j.techfore.2010.09.006",
-      "publisher": "Elsevier BV",
-      "published": "2011-1",
-      "authors": [
-        "Seth D. Baum",
-        "Ben Goertzel",
-        "Ted G. Goertzel"
-      ],
-      "subjects": []
-    },
-    {
-      "doi": "10.1609/aimag.v30i1.2151",
-      "title": "Report on the First Conference on Artificial General Intelligence (AGI‐08)",
-      "url": "https://doi.org/10.1609/aimag.v30i1.2151",
-      "publisher": "Wiley",
-      "published": "2009-3",
-      "authors": [
-        "Hugo de Garis",
-        "Ben Goertzel"
-      ],
-      "subjects": []
     },
     {
       "id": "https://openalex.org/W4386302153",
@@ -6860,6 +6711,61 @@
         "Bixin Wang",
         "Dustin E. Schones"
       ]
+    },
+    {
+      "doi": "10.55277/pvtglk9",
+      "title": "ResearchHub DOI Test",
+      "url": "https://doi.org/10.55277/pvtglk9",
+      "publisher": "ResearchHub Technologies, Inc.",
+      "published": "2022-1-1",
+      "authors": [
+        "John Doe"
+      ],
+      "subjects": []
+    },
+    {
+      "doi": "10.55277/researchhub.yejlk8jp",
+      "title": "BreathworkLab x ResearchHub",
+      "url": "https://doi.org/10.55277/researchhub.yejlk8jp",
+      "publisher": "ResearchHub Technologies, Inc.",
+      "published": "2024-9-20",
+      "authors": [
+        "Guy W. Fincham"
+      ],
+      "subjects": []
+    },
+    {
+      "doi": "10.55277/researchhub.djiip2m3",
+      "title": "ResearchHub product update - 8/23/22",
+      "url": "https://doi.org/10.55277/researchhub.djiip2m3",
+      "publisher": "ResearchHub Technologies, Inc.",
+      "published": "2022-8-24",
+      "authors": [
+        "Patrick Joyce"
+      ],
+      "subjects": []
+    },
+    {
+      "doi": "10.55277/researchhub.ex8am0zt",
+      "title": "ResearchHub Reputation Hackathon Resources Doc",
+      "url": "https://doi.org/10.55277/researchhub.ex8am0zt",
+      "publisher": "ResearchHub Technologies, Inc.",
+      "published": "2023-1-24",
+      "authors": [
+        "Riccardo Goldoni"
+      ],
+      "subjects": []
+    },
+    {
+      "doi": "10.55277/researchhub.sti79v0y",
+      "title": "ResearchHub product update — 5/8/2022",
+      "url": "https://doi.org/10.55277/researchhub.sti79v0y",
+      "publisher": "ResearchHub Technologies, Inc.",
+      "published": "2022-5-8",
+      "authors": [
+        "Patrick Joyce"
+      ],
+      "subjects": []
     },
     {
       "id": "https://openalex.org/W4412614698",
@@ -6995,6 +6901,50 @@
       "subjects": []
     },
     {
+      "doi": "10.55277/researchhub.bkik2w9r.1",
+      "title": "TG",
+      "url": "https://doi.org/10.55277/researchhub.bkik2w9r.1",
+      "publisher": "ResearchHub Technologies, Inc.",
+      "published": "2026-3-6",
+      "authors": [
+        "AI DeSci"
+      ],
+      "subjects": []
+    },
+    {
+      "doi": "10.55277/researchhub.j2igvc1q.1",
+      "title": "GH",
+      "url": "https://doi.org/10.55277/researchhub.j2igvc1q.1",
+      "publisher": "ResearchHub Technologies, Inc.",
+      "published": "2026-3-6",
+      "authors": [
+        "AI DeSci"
+      ],
+      "subjects": []
+    },
+    {
+      "doi": "10.55277/researchhub.p2yqlk39.1",
+      "title": "RTY",
+      "url": "https://doi.org/10.55277/researchhub.p2yqlk39.1",
+      "publisher": "ResearchHub Technologies, Inc.",
+      "published": "2026-3-6",
+      "authors": [
+        "AI DeSci"
+      ],
+      "subjects": []
+    },
+    {
+      "doi": "10.55277/researchhub.iiddzda6.1",
+      "title": "E4T",
+      "url": "https://doi.org/10.55277/researchhub.iiddzda6.1",
+      "publisher": "ResearchHub Technologies, Inc.",
+      "published": "2026-3-6",
+      "authors": [
+        "AI DeSci"
+      ],
+      "subjects": []
+    },
+    {
       "id": "https://openalex.org/W4402602303",
       "title": "Patrick Joyce",
       "publication_date": "2024-09-18",
@@ -7105,6 +7055,39 @@
         "Pankaj Kansal",
         "Olivia Wu"
       ]
+    },
+    {
+      "doi": "10.55277/researchhub.nxiz02rn",
+      "title": "ResearchHub product update — 4/7/22",
+      "url": "https://doi.org/10.55277/researchhub.nxiz02rn",
+      "publisher": "ResearchHub Technologies, Inc.",
+      "published": "2022-4-7",
+      "authors": [
+        "Patrick Joyce"
+      ],
+      "subjects": []
+    },
+    {
+      "doi": "10.55277/researchhub.vb2h5jvp",
+      "title": "ResearchHub raises $5m to help scientists monetize their research",
+      "url": "https://doi.org/10.55277/researchhub.vb2h5jvp",
+      "publisher": "ResearchHub Technologies, Inc.",
+      "published": "2023-6-15",
+      "authors": [
+        "Patrick Joyce"
+      ],
+      "subjects": []
+    },
+    {
+      "doi": "10.55277/researchhub.sg587ogu",
+      "title": "7/17/24 - ResearchHub Product Review Notes&lt;br&gt;",
+      "url": "https://doi.org/10.55277/researchhub.sg587ogu",
+      "publisher": "ResearchHub Technologies, Inc.",
+      "published": "2024-7-22",
+      "authors": [
+        "Patrick Joyce"
+      ],
+      "subjects": []
     },
     {
       "id": "https://openalex.org/W4386271735",
@@ -7247,51 +7230,6 @@
         "Sean A. Misek",
         "Maria Alimova"
       ]
-    },
-    {
-      "doi": "10.1093/benz/9780199773787.article.b00130757",
-      "title": "Niklas",
-      "url": "https://doi.org/10.1093/benz/9780199773787.article.b00130757",
-      "publisher": "Oxford University Press",
-      "published": "2011-10-31",
-      "authors": [],
-      "subjects": []
-    },
-    {
-      "doi": "10.1093/gao/9781884446054.article.t012836",
-      "title": "Byström, Johan Niklas",
-      "url": "https://doi.org/10.1093/gao/9781884446054.article.t012836",
-      "publisher": "Oxford University Press",
-      "published": "2003",
-      "authors": [],
-      "subjects": []
-    },
-    {
-      "doi": "10.1093/benz/9780199773787.article.b00134081",
-      "title": "Ottentaler, Niklas",
-      "url": "https://doi.org/10.1093/benz/9780199773787.article.b00134081",
-      "publisher": "Oxford University Press",
-      "published": "2011-10-31",
-      "authors": [],
-      "subjects": []
-    },
-    {
-      "doi": "10.1093/benz/9780199773787.article.b00162197",
-      "title": "Schaider, Niklas",
-      "url": "https://doi.org/10.1093/benz/9780199773787.article.b00162197",
-      "publisher": "Oxford University Press",
-      "published": "2011-10-31",
-      "authors": [],
-      "subjects": []
-    },
-    {
-      "doi": "10.1093/benz/9780199773787.article.b00147699",
-      "title": "Quirin, Niklas",
-      "url": "https://doi.org/10.1093/benz/9780199773787.article.b00147699",
-      "publisher": "Oxford University Press",
-      "published": "2011-10-31",
-      "authors": [],
-      "subjects": []
     },
     {
       "id": "https://openalex.org/W4401384274",
@@ -7441,6 +7379,231 @@
       ]
     },
     {
+      "doi": "10.1007/978-3-031-07535-3_16",
+      "title": "Ocean Protocol: Tools for the Web3 Data Economy",
+      "url": "https://doi.org/10.1007/978-3-031-07535-3_16",
+      "publisher": "Springer International Publishing",
+      "published": "2022",
+      "authors": [
+        "Trent McConaghy"
+      ],
+      "subjects": []
+    },
+    {
+      "doi": "10.5176/2382-5669_ict-bdcs15.48",
+      "title": "A New Biometric ID-Based Cryptography Protocol and Security Analysis Using Petri Nets",
+      "url": "https://doi.org/10.5176/2382-5669_ict-bdcs15.48",
+      "publisher": "Global Science and Technology Forum (GSTF)",
+      "published": "2015-7-27",
+      "authors": [
+        "Dania Aljeaid",
+        "Xiaoqi Ma",
+        "Caroline Langensiepen"
+      ],
+      "subjects": []
+    },
+    {
+      "doi": "10.1038/520716a",
+      "title": "The archive personality protocol",
+      "url": "https://doi.org/10.1038/520716a",
+      "publisher": "Springer Science and Business Media LLC",
+      "published": "2015-4-30",
+      "authors": [
+        "Brian Trent"
+      ],
+      "subjects": []
+    },
+    {
+      "doi": "10.1163/9789004444287_015",
+      "title": "Afterword",
+      "url": "https://doi.org/10.1163/9789004444287_015",
+      "publisher": "BRILL",
+      "published": "2020-9-20",
+      "authors": [
+        "June McConaghy",
+        "Janet McConaghy"
+      ],
+      "subjects": []
+    },
+    {
+      "doi": "10.1136/bcr-2017-220384",
+      "title": "Use of optokinetics based OKCSIB protocol in restoring mobility in primary progressive MS",
+      "url": "https://doi.org/10.1136/bcr-2017-220384",
+      "publisher": "BMJ",
+      "published": "2017-10-4",
+      "authors": [
+        "Benjamin Chitambira",
+        "Ciara McConaghy"
+      ],
+      "subjects": []
+    },
+    {
+      "id": "https://openalex.org/W4389850537",
+      "title": "Convective mixing in porous media: a review of Darcy, pore-scale and Hele-Shaw studies",
+      "publication_date": "2023-12-01",
+      "publication_year": 2023,
+      "doi": "https://doi.org/10.1140/epje/s10189-023-00390-8",
+      "cited_by_count": 52,
+      "primary_location": "The European Physical Journal E",
+      "concepts": [
+        "Porous medium",
+        "Convection",
+        "Mechanics",
+        "Darcy's law",
+        "Mixing (physics)",
+        "Viscous fingering",
+        "Flow (mathematics)",
+        "Geology"
+      ],
+      "authors": [
+        "Marco De Paoli"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4313437301",
+      "title": "Circular bubbles in a Hele-Shaw channel: a Hele-Shaw Newton's cradle",
+      "publication_date": "2023-01-03",
+      "publication_year": 2023,
+      "doi": "https://doi.org/10.1017/jfm.2022.1008",
+      "cited_by_count": 11,
+      "primary_location": "Journal of Fluid Mechanics",
+      "concepts": [
+        "Hele-Shaw flow",
+        "Inviscid flow",
+        "Bubble",
+        "Physics",
+        "Mechanics",
+        "Dimensionless quantity",
+        "Pressure gradient",
+        "Drag"
+      ],
+      "authors": [
+        "D. J. Booth",
+        "Ian M. Griffiths",
+        "P. D. Howell"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4389719261",
+      "title": "Application of a time-fractal fractional derivative with a power-law kernel to the Burke-Shaw system based on Newton's interpolation polynomials",
+      "publication_date": "2023-12-14",
+      "publication_year": 2023,
+      "doi": "https://doi.org/10.1016/j.mex.2023.102510",
+      "cited_by_count": 30,
+      "primary_location": "MethodsX",
+      "concepts": [
+        "Fractal",
+        "Mathematics",
+        "Fractional calculus",
+        "Fractal derivative",
+        "Kernel (algebra)",
+        "Interpolation (computer graphics)",
+        "Numerical analysis",
+        "Uniqueness"
+      ],
+      "authors": [
+        "Najat Almutairi",
+        "Sayed Saber"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4389135175",
+      "title": "Compression-driven viscous fingering in a radial Hele-Shaw cell",
+      "publication_date": "2023-11-29",
+      "publication_year": 2023,
+      "doi": "https://doi.org/10.1103/physrevfluids.8.113904",
+      "cited_by_count": 14,
+      "primary_location": "Physical Review Fluids",
+      "concepts": [
+        "Viscous fingering",
+        "Compressibility",
+        "Dimensionless quantity",
+        "Mechanics",
+        "Rotational symmetry",
+        "Hele-Shaw flow",
+        "Compression (physics)",
+        "Capillary action"
+      ],
+      "authors": [
+        "Callum Cuttle",
+        "Liam C. Morrow",
+        "Christopher W. MacMinn"
+      ]
+    },
+    {
+      "id": "https://openalex.org/W4394064255",
+      "title": "Control of chaos in the Burke-Shaw system of fractal-fractional order in the sense of Caputo-Fabrizio",
+      "publication_date": "2024-03-01",
+      "publication_year": 2024,
+      "doi": "https://doi.org/10.17512/jamcm.2024.1.07",
+      "cited_by_count": 28,
+      "primary_location": "Journal of Applied Mathematics and Computational Mechanics",
+      "concepts": [
+        "Fractal",
+        "CHAOS (operating system)",
+        "Mathematics",
+        "Order (exchange)",
+        "Statistical physics",
+        "Applied mathematics",
+        "Mathematical economics",
+        "Calculus (dental)"
+      ],
+      "authors": [
+        "Sayed Saber"
+      ]
+    },
+    {
+      "doi": "10.1353/shaw.2010.0022",
+      "title": "International Shaw Society",
+      "url": "https://doi.org/10.1353/shaw.2010.0022",
+      "publisher": "Project MUSE",
+      "published": "2010",
+      "authors": [],
+      "subjects": []
+    },
+    {
+      "doi": "10.1353/shaw.2005.0001",
+      "title": "Shaw Responds to Shaw-Bashing",
+      "url": "https://doi.org/10.1353/shaw.2005.0001",
+      "publisher": "Project MUSE",
+      "published": "2005",
+      "authors": [
+        "John A. (John Anthony) Bertolini"
+      ],
+      "subjects": []
+    },
+    {
+      "doi": "10.1353/shaw.2006.0022",
+      "title": "Shaw Reinterpreted",
+      "url": "https://doi.org/10.1353/shaw.2006.0022",
+      "publisher": "Project MUSE",
+      "published": "2006",
+      "authors": [
+        "Nicholas Williams"
+      ],
+      "subjects": []
+    },
+    {
+      "doi": "10.1353/shaw.2002.0016",
+      "title": "The Drink Question",
+      "url": "https://doi.org/10.1353/shaw.2002.0016",
+      "publisher": "Project MUSE",
+      "published": "2002",
+      "authors": [
+        "Bernard Shaw"
+      ],
+      "subjects": []
+    },
+    {
+      "doi": "10.1353/shaw.2001.0020",
+      "title": "Some Principal Shaw Research Sources",
+      "url": "https://doi.org/10.1353/shaw.2001.0020",
+      "publisher": "Project MUSE",
+      "published": "2000",
+      "authors": [],
+      "subjects": []
+    },
+    {
       "id": "https://openalex.org/W4386514831",
       "title": "Structurally Similar Formats Are Not Functionally Equivalent across Languages: Requests for Reconfirmation in Comparative Perspective",
       "publication_date": "2023-09-06",
@@ -7543,66 +7706,6 @@
       ]
     },
     {
-      "doi": "10.1002/9781405198431.wbeal1100",
-      "title": "Speech Acts",
-      "url": "https://doi.org/10.1002/9781405198431.wbeal1100",
-      "publisher": "Wiley",
-      "published": "2012-11-5",
-      "authors": [
-        "Andrea Golato",
-        "Peter Golato"
-      ],
-      "subjects": []
-    },
-    {
-      "doi": "10.1002/9781405198431.wbeal0946.pub2",
-      "title": "Pragmatics Research Methods",
-      "url": "https://doi.org/10.1002/9781405198431.wbeal0946.pub2",
-      "publisher": "Wiley",
-      "published": "2019-12-22",
-      "authors": [
-        "Andrea Golato",
-        "Peter Golato"
-      ],
-      "subjects": []
-    },
-    {
-      "doi": "10.1002/9781405198431.wbeal0946",
-      "title": "Pragmatics Research Methods",
-      "url": "https://doi.org/10.1002/9781405198431.wbeal0946",
-      "publisher": "Wiley",
-      "published": "2012-11-5",
-      "authors": [
-        "Andrea Golato",
-        "Peter Golato"
-      ],
-      "subjects": []
-    },
-    {
-      "doi": "10.1515/9783110424928-015",
-      "title": "15. Ethnomethodology and conversation analysis",
-      "url": "https://doi.org/10.1515/9783110424928-015",
-      "publisher": "De Gruyter",
-      "published": "2018-6-25",
-      "authors": [
-        "Andrea Golato",
-        "Peter Golato"
-      ],
-      "subjects": []
-    },
-    {
-      "doi": "10.1002/9781405198431.wbeal1100.pub2",
-      "title": "Speech Acts and Grammar",
-      "url": "https://doi.org/10.1002/9781405198431.wbeal1100.pub2",
-      "publisher": "Wiley",
-      "published": "2025-1-7",
-      "authors": [
-        "Andrea Golato",
-        "Peter Golato"
-      ],
-      "subjects": []
-    },
-    {
       "id": "https://openalex.org/W7138824770",
       "title": "Defensible Design for OpenClaw: Securing Autonomous Tool-Invoking Agents",
       "publication_date": "2026-03-13",
@@ -7651,9 +7754,9 @@
       "subjects": []
     },
     {
-      "doi": "10.24818/ida-ql/2019.57",
-      "title": "CrixCoin_Public_Private_Key",
-      "url": "https://doi.org/10.24818/ida-ql/2019.57",
+      "doi": "10.24818/ida-ql/2019.60",
+      "title": "CrixCoin_Branding",
+      "url": "https://doi.org/10.24818/ida-ql/2019.60",
       "publisher": "Bucharest University of Economic Studies",
       "published": "2019",
       "authors": [
@@ -7675,9 +7778,9 @@
       "subjects": []
     },
     {
-      "doi": "10.24818/ida-ql/2019.60",
-      "title": "CrixCoin_Branding",
-      "url": "https://doi.org/10.24818/ida-ql/2019.60",
+      "doi": "10.24818/ida-ql/2019.57",
+      "title": "CrixCoin_Public_Private_Key",
+      "url": "https://doi.org/10.24818/ida-ql/2019.57",
       "publisher": "Bucharest University of Economic Studies",
       "published": "2019",
       "authors": [
@@ -7785,246 +7888,6 @@
         "Siriluck Attrapadung",
         "Wandee Gritsanapan"
       ]
-    },
-    {
-      "doi": "10.5962/bhl.title.29757",
-      "title": "Contributions to the flora of Siam ... / by William Grant Craib",
-      "url": "https://doi.org/10.5962/bhl.title.29757",
-      "publisher": "Printed for the University of Aberdeen",
-      "published": "1912",
-      "authors": [
-        "William Grant Craib"
-      ],
-      "subjects": []
-    },
-    {
-      "doi": "10.32614/cran.package.damiann",
-      "title": "DamiaNN: Neural Network Numerai",
-      "url": "https://doi.org/10.32614/cran.package.damiann",
-      "publisher": "The R Foundation",
-      "published": "2016-9-14",
-      "authors": [],
-      "subjects": []
-    },
-    {
-      "doi": "10.5962/bhl.title.10996",
-      "title": "Contributions to the flora of Siam. by William Grant Craib. Dicotyledones",
-      "url": "https://doi.org/10.5962/bhl.title.10996",
-      "publisher": "Printed for the University of Aberdeen",
-      "published": "1912",
-      "authors": [
-        "William Grant Craib"
-      ],
-      "subjects": []
-    },
-    {
-      "doi": "10.32614/cran.package.rnumerai",
-      "title": "Rnumerai: Interface to the Numerai Machine Learning Tournament API",
-      "url": "https://doi.org/10.32614/cran.package.rnumerai",
-      "publisher": "The R Foundation",
-      "published": "2017-12-5",
-      "authors": [],
-      "subjects": []
-    },
-    {
-      "doi": "10.1007/springerreference_67954",
-      "title": "Acacia torta (Roxb.) Craib.",
-      "url": "https://doi.org/10.1007/springerreference_67954",
-      "publisher": "Springer-Verlag",
-      "published": "",
-      "authors": [],
-      "subjects": []
-    },
-    {
-      "id": "https://openalex.org/W4317436309",
-      "title": "Update on Prevalence of Pain in Patients with Cancer 2022: A Systematic Literature Review and Meta-Analysis",
-      "publication_date": "2023-01-18",
-      "publication_year": 2023,
-      "doi": "https://doi.org/10.3390/cancers15030591",
-      "cited_by_count": 338,
-      "primary_location": "Cancers",
-      "concepts": [
-        "Medicine",
-        "CINAHL",
-        "Meta-analysis",
-        "Cancer pain",
-        "Systematic review",
-        "MEDLINE",
-        "Physical therapy",
-        "Quality of life (healthcare)"
-      ],
-      "authors": [
-        "Rolf A. H. Snijders",
-        "Linda Brom",
-        "Maurice Theunissen",
-        "M.H.J. van den Beuken-van Everdingen"
-      ]
-    },
-    {
-      "id": "https://openalex.org/W4360983064",
-      "title": "Social determinants of multimorbidity patterns: A systematic review",
-      "publication_date": "2023-03-27",
-      "publication_year": 2023,
-      "doi": "https://doi.org/10.3389/fpubh.2023.1081518",
-      "cited_by_count": 136,
-      "primary_location": "Frontiers in Public Health",
-      "concepts": [
-        "CINAHL",
-        "PsycINFO",
-        "Socioeconomic status",
-        "Medicine",
-        "Ethnic group",
-        "Mental health",
-        "MEDLINE",
-        "Population"
-      ],
-      "authors": [
-        "Javier Álvarez‐Gálvez",
-        "Esther Ortega-Martín",
-        "Jesús Carretero-Bravo",
-        "Celia Pérez-Muñoz",
-        "Víctor Suárez-Lledó",
-        "Begoña Ramos-Fiol"
-      ]
-    },
-    {
-      "id": "https://openalex.org/W4320917748",
-      "title": "Complement as a Biomarker for Systemic Lupus Erythematosus",
-      "publication_date": "2023-02-15",
-      "publication_year": 2023,
-      "doi": "https://doi.org/10.3390/biom13020367",
-      "cited_by_count": 78,
-      "primary_location": "Biomolecules",
-      "concepts": [
-        "Complement (music)",
-        "Immunology",
-        "Complement system",
-        "Biomarker",
-        "Disease",
-        "Medicine",
-        "Systemic lupus erythematosus",
-        "Immune system"
-      ],
-      "authors": [
-        "Masahiro Ayano",
-        "Takahiko Horiuchi"
-      ]
-    },
-    {
-      "id": "https://openalex.org/W4390533546",
-      "title": "KDIGO 2024 Clinical Practice Guideline for the management of LUPUS NEPHRITIS",
-      "publication_date": "2024-01-01",
-      "publication_year": 2024,
-      "doi": "https://doi.org/10.1016/j.kint.2023.09.002",
-      "cited_by_count": 362,
-      "primary_location": "Kidney International",
-      "concepts": [
-        "Guideline",
-        "Lupus nephritis",
-        "Medicine",
-        "Intensive care medicine",
-        "Grading (engineering)",
-        "Randomized controlled trial",
-        "Clinical Practice",
-        "Clinical trial"
-      ],
-      "authors": [
-        "Brad H. Rovin",
-        "Isabelle Ayoub",
-        "Tak Mao Chan",
-        "Zhihong Liu",
-        "Juan M. Mejía‐Vilet",
-        "Jürgen Floege"
-      ]
-    },
-    {
-      "id": "https://openalex.org/W4387776183",
-      "title": "Peptides as Therapeutic Agents: Challenges and Opportunities in the Green Transition Era",
-      "publication_date": "2023-10-19",
-      "publication_year": 2023,
-      "doi": "https://doi.org/10.3390/molecules28207165",
-      "cited_by_count": 203,
-      "primary_location": "Molecules",
-      "concepts": [
-        "Environmentally friendly",
-        "Transformative learning",
-        "Biochemical engineering",
-        "Nanotechnology",
-        "Combinatorial chemistry",
-        "Computer science",
-        "Business",
-        "Chemistry"
-      ],
-      "authors": [
-        "Giacomo Rossino",
-        "Emanuela Marchese",
-        "Giovanni Galli",
-        "Francesca Verde",
-        "Matteo Finizio",
-        "Massimo Serra",
-        "Pasquale Linciano",
-        "Simona Collina"
-      ]
-    },
-    {
-      "doi": "10.1575/1912/bco-dmo.805324.1",
-      "title": "Bulk suspended PON d15N from several cruises conducted in the Southern Ocean south of Africa from 2012-2019",
-      "url": "https://doi.org/10.1575/1912/bco-dmo.805324.1",
-      "publisher": "Biological and Chemical Oceanography Data Management Office",
-      "published": "2020-3-12",
-      "authors": [
-        "Daniel Sigman"
-      ],
-      "subjects": []
-    },
-    {
-      "doi": "10.1163/221160085x00050",
-      "title": "Ocean Energy: Some Perspectives on Economic Viability",
-      "url": "https://doi.org/10.1163/221160085x00050",
-      "publisher": "Walter de Gruyter GmbH",
-      "published": "1985",
-      "authors": [
-        "Maxwell Bruce"
-      ],
-      "subjects": []
-    },
-    {
-      "doi": "10.1109/icc.2003.1204604",
-      "title": "A protocol to implement Ethernet over PON",
-      "url": "https://doi.org/10.1109/icc.2003.1204604",
-      "publisher": "IEEE",
-      "published": "",
-      "authors": [
-        "A. Gumaste",
-        "I. Chlamtac"
-      ],
-      "subjects": []
-    },
-    {
-      "doi": "10.5962/bhl.title.47872",
-      "title": "Variations in the thermal structure and wind field occurring in the Western Indian Ocean during the monsoons / John G. Bruce.",
-      "url": "https://doi.org/10.5962/bhl.title.47872",
-      "publisher": "United States. Naval Oceanographic Office.,",
-      "published": "1981",
-      "authors": [
-        "John G. Bruce"
-      ],
-      "subjects": []
-    },
-    {
-      "doi": "10.1109/oecc56963.2023.10209915",
-      "title": "PONizing Wi-Fi for Fiber-to-The-Room Scenario: A Unified PON and Wi-Fi Access Based on PON MAC Protocol",
-      "url": "https://doi.org/10.1109/oecc56963.2023.10209915",
-      "publisher": "IEEE",
-      "published": "2023-7-2",
-      "authors": [
-        "Gangxiang Shen",
-        "Jun Li",
-        "Yuxuan Chen",
-        "Jinhan Cai",
-        "Tianhai Chang"
-      ],
-      "subjects": []
     },
     {
       "id": "https://openalex.org/W4381741966",
@@ -8488,63 +8351,6 @@
       ]
     },
     {
-      "doi": "10.53731/sq5vs-mvv29",
-      "title": "Commonmeta understands OpenAlex",
-      "url": "https://doi.org/10.53731/sq5vs-mvv29",
-      "publisher": "Front Matter",
-      "published": "2025-5-19",
-      "authors": [
-        "Martin Fenner"
-      ],
-      "subjects": []
-    },
-    {
-      "doi": "10.53731/4ah0b-1gw94",
-      "title": "Commonmeta understands OpenAlex",
-      "url": "https://doi.org/10.53731/4ah0b-1gw94",
-      "publisher": "Front Matter",
-      "published": "2025-5-19",
-      "authors": [
-        "Martin Fenner"
-      ],
-      "subjects": []
-    },
-    {
-      "doi": "10.5195/biblios.2025.1268",
-      "title": "O uso do OpenAlex nos estudos de métricas bibliométricas",
-      "url": "https://doi.org/10.5195/biblios.2025.1268",
-      "publisher": "University Library System, University of Pittsburgh",
-      "published": "2025-12-11",
-      "authors": [
-        "Diego José Macêdo",
-        "Ingrid Torres Schiessl",
-        "Milton Shintaku"
-      ],
-      "subjects": []
-    },
-    {
-      "doi": "10.59350/wkase-hpa43",
-      "title": "Knowledge Graphs: Deep Dive into OpenAlex",
-      "url": "https://doi.org/10.59350/wkase-hpa43",
-      "publisher": "Front Matter",
-      "published": "2024-3-5",
-      "authors": [
-        "Dhruv Gupta"
-      ],
-      "subjects": []
-    },
-    {
-      "doi": "10.59350/g3zse-fdh02",
-      "title": "Knowledge Graphs: Deep Dive into OpenAlex",
-      "url": "https://doi.org/10.59350/g3zse-fdh02",
-      "publisher": "Front Matter",
-      "published": "2024-3-5",
-      "authors": [
-        "Dhruv Gupta"
-      ],
-      "subjects": []
-    },
-    {
       "id": "https://openalex.org/W4385245566",
       "title": "MizAR 60 for Mizar 50",
       "publication_date": "2023-01-01",
@@ -8653,48 +8459,6 @@
       "authors": [
         "Stiller"
       ]
-    },
-    {
-      "doi": "10.21203/rs.3.rs-1558902/v1",
-      "title": "What Have We Learned from OpenReview?",
-      "url": "https://doi.org/10.21203/rs.3.rs-1558902/v1",
-      "publisher": "Research Square Platform LLC",
-      "published": "2022-4-25",
-      "authors": [
-        "Gang Wang",
-        "Qi Peng",
-        "Yanfeng Zhang",
-        "Mingyang Zhang"
-      ],
-      "subjects": []
-    },
-    {
-      "doi": "10.1007/s11280-022-01109-z",
-      "title": "What have we learned from OpenReview?",
-      "url": "https://doi.org/10.1007/s11280-022-01109-z",
-      "publisher": "Springer Science and Business Media LLC",
-      "published": "2023-3",
-      "authors": [
-        "Gang Wang",
-        "Qi Peng",
-        "Yanfeng Zhang",
-        "Mingyang Zhang"
-      ],
-      "subjects": []
-    },
-    {
-      "doi": "10.1007/978-3-030-85896-4_6",
-      "title": "What Have We Learned from OpenReview?",
-      "url": "https://doi.org/10.1007/978-3-030-85896-4_6",
-      "publisher": "Springer International Publishing",
-      "published": "2021",
-      "authors": [
-        "Gang Wang",
-        "Qi Peng",
-        "Yanfeng Zhang",
-        "Mingyang Zhang"
-      ],
-      "subjects": []
     },
     {
       "id": "https://openalex.org/W7116090029",
@@ -8860,6 +8624,33 @@
       "publisher": "Wellcome",
       "published": "2020-10-1",
       "authors": [],
+      "subjects": []
+    },
+    {
+      "doi": "10.5121/ijwest.2010.1201",
+      "title": "Ontology Matching Based on hypernym, hyponym, holonym, and meronym Sets in WordNet",
+      "url": "https://doi.org/10.5121/ijwest.2010.1201",
+      "publisher": "Academy and Industry Research Collaboration Center (AIRCC)",
+      "published": "2010-4-25",
+      "authors": [
+        "JungAe Kwak",
+        "Hwan-Seung Yong"
+      ],
+      "subjects": []
+    },
+    {
+      "doi": "10.1007/978-3-031-44067-0_25",
+      "title": "HOLMES: HOLonym-MEronym Based Semantic Inspection for Convolutional Image Classifiers",
+      "url": "https://doi.org/10.1007/978-3-031-44067-0_25",
+      "publisher": "Springer Nature Switzerland",
+      "published": "2023",
+      "authors": [
+        "Francesco Dibitonto",
+        "Fabio Garcea",
+        "André Panisson",
+        "Alan Perotti",
+        "Lia Morra"
+      ],
       "subjects": []
     },
     {
@@ -9922,53 +9713,6 @@
       ]
     },
     {
-      "doi": "10.5270/esa-ioq98vd",
-      "title": "MOLECULE",
-      "url": "https://doi.org/10.5270/esa-ioq98vd",
-      "publisher": "European Space Agency",
-      "published": "",
-      "authors": [],
-      "subjects": []
-    },
-    {
-      "doi": "10.5040/9781580813198",
-      "title": "The Undecided Molecule",
-      "url": "https://doi.org/10.5040/9781580813198",
-      "publisher": "Bloomsbury Publishing",
-      "published": "2015",
-      "authors": [],
-      "subjects": []
-    },
-    {
-      "doi": "10.5040/9781580813198.p01",
-      "title": "The Undecided Molecule",
-      "url": "https://doi.org/10.5040/9781580813198.p01",
-      "publisher": "LA Theatre Works",
-      "published": "",
-      "authors": [],
-      "subjects": []
-    },
-    {
-      "doi": "10.1007/978-1-4684-6988-2_12",
-      "title": "Discussion on Electron-Molecule Scattering",
-      "url": "https://doi.org/10.1007/978-1-4684-6988-2_12",
-      "publisher": "Springer US",
-      "published": "1979",
-      "authors": [
-        "Barry Schneider"
-      ],
-      "subjects": []
-    },
-    {
-      "doi": "10.1201/b18763-7",
-      "title": "- Controlling the Molecule–Electrode Contact in Single-Molecule Devices",
-      "url": "https://doi.org/10.1201/b18763-7",
-      "publisher": "Jenny Stanford Publishing",
-      "published": "2016-1-5",
-      "authors": [],
-      "subjects": []
-    },
-    {
       "id": "https://openalex.org/W4306866868",
       "title": "Alexander of Aphrodisias and the Active Intellect as Final Cause",
       "publication_date": "2023-06-01",
@@ -10134,7 +9878,7 @@
       },
       {
         "topic": "Medicine",
-        "count": 12
+        "count": 11
       },
       {
         "topic": "Sociology",
@@ -10189,6 +9933,10 @@
         "count": 3
       },
       {
+        "topic": "Mathematics",
+        "count": 3
+      },
+      {
         "topic": "Field (mathematics)",
         "count": 3
       },
@@ -10202,10 +9950,6 @@
       },
       {
         "topic": "State (computer science)",
-        "count": 2
-      },
-      {
-        "topic": "Law",
         "count": 2
       }
     ],
@@ -10271,7 +10015,7 @@
         "count": 2
       }
     ],
-    "people_with_openalex_matches": 13,
+    "people_with_openalex_matches": 14,
     "orgs_with_openalex_matches": 5
   },
   "provider_status": {

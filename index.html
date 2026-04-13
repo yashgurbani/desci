@@ -2744,70 +2744,6 @@ function researchOrgById(id){return (researchGraphState.organizations||[]).find(
 function researchPersonById(id){return (researchGraphState.people||[]).find(x=>x.id===id)||null}
 function intelOrgById(id){return (entityIntelState.organizations||[]).find(x=>x.id===id)||null}
 function intelPersonById(id){return (entityIntelState.people||[]).find(x=>x.id===id)||null}
-const ENTITY_OPP_THEME_RULES=[
-  {theme:'desci',terms:['desci','decentralized science','decentralized peer review','dao publishing','research blockchain','biodao','bio dao']},
-  {theme:'open science',terms:['open science','open infrastructure','open data','open-source','open source','commons']},
-  {theme:'publishing',terms:['publishing','publisher','journal','overlay journal','preprint','publication']},
-  {theme:'peer review',terms:['peer review','review platform','review commons','prereview','ants-review','review']},
-  {theme:'metascience',terms:['metascience','reproducibility','research integrity','quality in research','science of science']},
-  {theme:'ai',terms:['ai','machine learning','ai audit','science x ai','ai for science']},
-  {theme:'blockchain',terms:['blockchain','ethereum','token','dao','smart contract','ip-nft','ledger']},
-  {theme:'infrastructure',terms:['infrastructure','identity','verification','compute','protocol','open infrastructure']},
-  {theme:'health',terms:['health','longevity','aging','biotech','bio']},
-  {theme:'research',terms:['research','scientific','science','academy','academic']}
-];
-function inferOpportunityThemesFromText(text){
-  const hay=String(text||'').toLowerCase();
-  const themes=[];
-  ENTITY_OPP_THEME_RULES.forEach(rule=>{
-    if(rule.terms.some(term=>hay.includes(term)))themes.push(rule.theme);
-  });
-  return [...new Set(themes)];
-}
-function entityOpportunityTerms(entity){
-  const raw=[
-    entity&&entity.name,
-    entity&&entity.subtitle,
-    ...((entity&&entity.tags)||[]),
-    ...((entity&&entity.orgNames)||[])
-  ].filter(Boolean).map(v=>String(v).toLowerCase());
-  return [...new Set(raw)];
-}
-function entityOpportunitySnapshot(entity){
-  const terms=entityOpportunityTerms(entity);
-  if(!terms.length)return {count:0,matches:[]};
-  const entityThemes=inferOpportunityThemesFromText(terms.join(' '));
-  const matches=(OPPORTUNITIES||[]).map(op=>{
-    const hay=[op.name,op.niche,op.why,op.mapContext,(op.tags||[]).join(' '),(op.region||[]).join(' ')].filter(Boolean).join(' ').toLowerCase();
-    const opThemes=inferOpportunityThemesFromText(hay);
-    const sharedThemes=entityThemes.filter(theme=>opThemes.includes(theme));
-    const mentionReasons=[];
-    const directTerms=terms.filter(term=>term.length>3 && hay.includes(term)).slice(0,2);
-    if(entity.kind==='organization' && directTerms.length)mentionReasons.push(`mentions ${directTerms.join(', ')}`);
-    if(entity.kind==='person'){
-      const orgMentions=((entity.orgNames)||[]).map(v=>String(v).toLowerCase()).filter(v=>v.length>3 && hay.includes(v)).slice(0,2);
-      if(orgMentions.length)mentionReasons.push(`linked org ${orgMentions.join(', ')}`);
-    }
-    const reasons=[];
-    if(sharedThemes.length)reasons.push(`theme: ${sharedThemes.slice(0,2).join(', ')}`);
-    mentionReasons.forEach(reason=>reasons.push(reason));
-    const score=sharedThemes.length*3 + mentionReasons.length*4;
-    return {op,score,reasons};
-  }).filter(row=>row.score>=3 && row.reasons.length)
-    .sort((a,b)=>b.score-a.score)
-    .slice(0,4)
-    .map(row=>({
-      id:row.op.id,
-      name:row.op.name,
-      track:row.op.track,
-      meta:opportunityDateText(row.op),
-      reasons:row.reasons
-    }));
-  return {count:matches.length,matches};
-}
-function entityOppCount(entity){
-  return entityOpportunitySnapshot(entity).count;
-}
 function signalListHtml(rows,emptyText){
   return rows && rows.length
     ? `<ul class="rel-list">${rows.map(sig=>`<li class="rel-item"><a href="${escapeHtml(sig.link||sig.url||'#')}" target="_blank" rel="noopener">${escapeHtml(sig.title||'Untitled')}</a><span style="margin-left:auto;color:var(--text-3)">${escapeHtml(sig.source||sig.topic||'signal')}</span></li>`).join('')}</ul>`
@@ -2832,11 +2768,6 @@ function registrySummaryHtml(registry,emptyText){
   ].join('');
   return `${lines.join('')}${linkButtons?`<div class="detail-link-grid" style="margin-top:10px">${linkButtons}</div>`:''}`;
 }
-function opportunitySummaryHtml(snapshot,emptyText){
-  if(!snapshot || !snapshot.count)return `<div class="detail-empty-note">${escapeHtml(emptyText)}</div>`;
-  return `<div class="detail-micro">Potential matches from your curated tracker, with explicit rationale.</div>
-    <ul class="rel-list">${(snapshot.matches||[]).map(hit=>`<li class="rel-item"><span><strong>${escapeHtml(hit.name)}</strong><span style="color:var(--text-3)"> | ${escapeHtml(hit.meta||'')}</span><div class="detail-micro">${escapeHtml((hit.reasons||[]).join('; '))}</div></span></li>`).join('')}</ul>`;
-}
 function mergedEntityRecords(){
   const orgs=(D.nodes||[]).map(n=>{
     const reg=registryOrgById(n.id);
@@ -2851,7 +2782,6 @@ function mergedEntityRecords(){
       watchPriority:(reg&&reg.watch_priority)||((n.overlapScore||0)*1.06+(n.credScore||0)*1.14),
       signalCount:((intel&&intel.signals)||[]).length,
       worksCount:(((research&&research.openalex_works)||[]).length+((research&&research.crossref_works)||[]).length),
-      oppCount:0,
       orgNames:[n.name],
       target:n
     };
@@ -2870,13 +2800,11 @@ function mergedEntityRecords(){
       watchPriority:(reg&&reg.watch_priority)||((normalizeTwitterHandle(p.twitter)?18:0)+orgNames.length*8),
       signalCount:((intel&&intel.signals)||[]).length,
       worksCount:(((research&&research.openalex_works)||[]).length+((research&&research.crossref_works)||[]).length),
-      oppCount:0,
       orgNames,
       target:p
     };
   });
   const rows=[...orgs,...people];
-  rows.forEach(row=>{row.oppCount=entityOppCount(row)});
   return rows.sort((a,b)=>((b.watchPriority||0)+(b.signalCount||0)*10+(b.worksCount||0)*4)-((a.watchPriority||0)+(a.signalCount||0)*10+(a.worksCount||0)*4));
 }
 function visibleEntities(){
@@ -2930,7 +2858,6 @@ function entityCardHtml(row){
       <span class="entity-badge">watch ${Math.round(row.watchPriority||0)}</span>
       <span class="entity-badge">signals ${row.signalCount||0}</span>
       <span class="entity-badge">works ${row.worksCount||0}</span>
-      <span class="entity-badge">opps ${row.oppCount||0}</span>
     </div>
     <div class="entity-tags">${(row.tags||[]).slice(0,6).map(tag=>`<span class="entity-tag">${escapeHtml(String(tag||''))}</span>`).join('') || '<span class="entity-tag">no tags yet</span>'}</div>
   </article>`;
@@ -2945,7 +2872,7 @@ function renderPeople(){
     <div class="entity-head">
       <div>
         <div class="entity-title">Entity Intelligence</div>
-        <div class="entity-sub">Merged people + organization watchlist powered by the map, source registry, research graph, entity signals, and opportunity intelligence. Click any entity to open the right sidebar.</div>
+        <div class="entity-sub">Merged people + organization watchlist powered by the map, source registry, research graph, and entity signals. Click any entity to open the right sidebar.</div>
       </div>
       <div class="entity-summary">
         <span class="tag-chip">${stats.total} visible</span>
@@ -3069,7 +2996,6 @@ function showPerson(pid){
   const intel=intelPersonById(pid)||{};
   const research=researchPersonById(pid)||{};
   const orgs=(p.orgs||[]).map(id=>D.nodes.find(n=>n.id===id)).filter(Boolean);
-  const oppSnapshot=entityOpportunitySnapshot({kind:'person',name:p.name,subtitle:p.role||'',tags:orgs.map(n=>n.type).filter(Boolean),orgNames:orgs.map(n=>n.name).filter(Boolean)});
   const orgHtml=orgs.length
     ? `<ul class="rel-list">${orgs.map(n=>`<li class="rel-item"><span><a href="#" onclick="selNode('${n.id}');return false;">${escapeHtml(n.name)}</a>${n.type?`<span style="color:var(--text-3)"> | ${escapeHtml(n.type)}</span>`:''}</span></li>`).join('')}</ul>`
     : '<div class="detail-empty-note">No linked organizations yet.</div>';
@@ -3082,7 +3008,6 @@ function showPerson(pid){
   const intelHtml=signalListHtml(intelSignals,'No person-specific live signals collected yet.');
   const worksHtml=workListHtml(researchWorks,'No research graph matches yet.');
   const registryHtml=registrySummaryHtml(registry,'No source-registry rows for this person yet.');
-  const oppHtml=opportunitySummaryHtml(oppSnapshot,'No clear opportunity matches yet.');
   el('detE').style.display='none';el('detC').innerHTML=`
     <div class="det-name">${escapeHtml(p.name||'')}</div>
     <div class="det-sub">${escapeHtml(p.role||'')}</div>
@@ -3102,13 +3027,11 @@ function showPerson(pid){
       <div class="score-cell"><span class="k">Signals</span><span class="v">${((intel&&intel.signals)||[]).length}</span></div>
       <div class="score-cell"><span class="k">Works</span><span class="v">${researchWorks.length}</span></div>
       <div class="score-cell"><span class="k">Linked orgs</span><span class="v">${orgs.length}</span></div>
-      <div class="score-cell"><span class="k">Opps</span><span class="v">${oppSnapshot.count}</span></div>
     </div>
     <div class="field"><div class="flabel">Organizations</div>${orgHtml}</div>
     <div class="field"><div class="flabel">Source registry</div>${registryHtml}</div>
     <div class="field"><div class="flabel">Latest signals</div>${intelHtml}</div>
     <div class="field"><div class="flabel">Research graph</div>${worksHtml}</div>
-    <div class="field"><div class="flabel">Relevant opportunities</div>${oppHtml}</div>
     <div class="field"><div class="flabel">Open-source context</div>${contextHtml}<div class="detail-empty-note" style="margin-top:8px">High-confidence context from linked organizations. Add your own person-specific notes below.</div></div>
     <div class="field"><div class="flabel">Name</div><input class="finput" value="${escapeHtml(p.name||'')}" onchange="updPerson('${pid}','name',this.value)"></div>
     <div class="field"><div class="flabel">Role</div><input class="finput" value="${escapeHtml(p.role||'')}" onchange="updPerson('${pid}','role',this.value)"></div>
@@ -6650,7 +6573,6 @@ function selNode(id){
   const legacyPpl=legacyPeopleList(n,ppl);
   const intel=intelOrgById(id)||{};
   const research=researchOrgById(id)||{};
-  const oppSnapshot=entityOpportunitySnapshot({kind:'organization',name:n.name,subtitle:n.type||'',tags:[...(n.tags||[]),...(n.overlapTags||[])]});
   const orgSignals=((intel&&intel.signals)||[]).slice(0,5);
   const orgWorks=[...((research&&research.openalex_works)||[]),...((research&&research.crossref_works)||[])].slice(0,5);
   const credC=n.credScore>=60?'var(--sage)':n.credScore>=30?'var(--gold)':'var(--text-3)';
@@ -6659,7 +6581,6 @@ function selNode(id){
   const registryHtml=registrySummaryHtml(registry,'No source-registry rows for this organization yet.');
   const intelHtml=signalListHtml(orgSignals,'No organization-specific live signals collected yet.');
   const worksHtml=workListHtml(orgWorks,'No research graph matches yet.');
-  const oppHtml=opportunitySummaryHtml(oppSnapshot,'No clear opportunity matches yet.');
   const detailLinks=[
     detailLinkButton('Website',n.web,'web'),
     detailLinkButton('GitHub',n.git,'github'),
@@ -6723,12 +6644,10 @@ function selNode(id){
     <div class="score-cell"><span class="k">Signals</span><span class="v">${((intel&&intel.signals)||[]).length}</span></div>
     <div class="score-cell"><span class="k">Works</span><span class="v">${orgWorks.length}</span></div>
     <div class="score-cell"><span class="k">People</span><span class="v">${ppl.length}</span></div>
-    <div class="score-cell"><span class="k">Opps</span><span class="v">${oppSnapshot.count}</span></div>
   </div>
   <div class="field"><div class="flabel">Source registry</div>${registryHtml}</div>
   <div class="field"><div class="flabel">Latest signals</div>${intelHtml}</div>
   <div class="field"><div class="flabel">Research graph</div>${worksHtml}</div>
-  <div class="field"><div class="flabel">Relevant opportunities</div>${oppHtml}</div>
   <div class="detail-grid-2 field" style="margin-bottom:12px">
     <div><div class="flabel">Type</div><input class="finput" value="${escapeHtml(n.type||'')}" onchange="upd('${id}','type',this.value)"></div>
     <div><div class="flabel">Stage</div><input class="finput" value="${escapeHtml(n.stage||'')}" onchange="upd('${id}','stage',this.value)"></div>
