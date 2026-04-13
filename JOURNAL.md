@@ -1,6 +1,6 @@
 # DeSci Map Journal
 
-Last updated: 2026-04-13T01:56:51.687Z
+Last updated: 2026-04-13T01:56:52.230Z
 
 ## Project Kanban Snapshot
 
@@ -8,7 +8,6 @@ Last updated: 2026-04-13T01:56:51.687Z
 - (empty)
 
 ### In Progress
-- Refine values profile: elizaOS
 - Refine values profile: Hetu Protocol
 
 ### Done
