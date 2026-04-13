@@ -2576,7 +2576,7 @@ function renderMainMessage(title,body){
 
 // ===== RENDER =====
 function render(){
-  const m=el('main');m.querySelectorAll('svg,.table-wrap,.people-grid,.lit-panel,.legend,.biz-wrap,.home-wrap,.info-wrap,.journal-wrap,.lit-wrap,.grants-wrap,.signals-wrap,.entity-shell,.graph-error').forEach(e=>e.remove());
+  const m=el('main');m.querySelectorAll('svg,.table-wrap,.people-grid,.lit-panel,.legend,.biz-wrap,.home-wrap,.info-wrap,.journal-wrap,.lit-wrap,.grants-wrap,.signals-wrap,.entity-shell,.pgraph-shell,.graph-error').forEach(e=>e.remove());
   if(homeTickerTimer){clearInterval(homeTickerTimer);homeTickerTimer=null;}
   if(homeRefreshTimer){clearInterval(homeRefreshTimer);homeRefreshTimer=null;}
   if(homeAsciiTimer){clearInterval(homeAsciiTimer);homeAsciiTimer=null;}
