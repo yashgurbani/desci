@@ -18625,7 +18625,10 @@
   "signalReadingList": [],
   "kanban": {
     "todo": [],
-    "doing": [],
+    "doing": [
+      "understand DeSci labs",
+      "\"give and get\" economic model feasibility"
+    ],
     "done": [
       "organization dashboard"
     ]
