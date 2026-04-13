@@ -1,6 +1,6 @@
 # DeSci Map Journal
 
-Last updated: 2026-04-13T04:31:40.145Z
+Last updated: 2026-04-13T04:31:54.834Z
 
 ## Project Kanban Snapshot
 
@@ -9,6 +9,7 @@ Last updated: 2026-04-13T04:31:40.145Z
 
 ### In Progress
 - understand DeSci labs
+- "give and get" economic model feasibility
 
 ### Done
 - organization dashboard
