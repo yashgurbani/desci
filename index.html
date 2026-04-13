@@ -155,6 +155,27 @@ select.finput{appearance:none;cursor:pointer}
 .p-links{display:flex;gap:10px;font-size:.75rem}
 .p-links a{color:var(--link);text-decoration:none}
 .p-orgs{font-family:var(--mono);font-size:.65rem;color:var(--text-3);margin-top:8px}
+.entity-shell{display:flex;flex-direction:column;height:100%;padding:18px 18px 20px;gap:14px}
+.entity-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap}
+.entity-title{font-family:var(--display);font-size:1.35rem;color:#f0efe8}
+.entity-sub{font-size:.8rem;color:var(--text-2);max-width:72ch;line-height:1.5}
+.entity-summary{display:flex;gap:8px;flex-wrap:wrap}
+.entity-toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.entity-search{max-width:300px;min-width:220px}
+.entity-pills{display:flex;gap:8px;flex-wrap:wrap}
+.entity-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px;overflow:auto;padding-right:4px;align-content:start;min-height:0}
+.entity-card{border:1px solid var(--border);border-radius:var(--radius);background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));padding:14px;cursor:pointer;transition:border-color .15s,transform .15s,background .15s;display:flex;flex-direction:column;gap:10px}
+.entity-card:hover{border-color:var(--gold);transform:translateY(-1px)}
+.entity-card.kind-org{box-shadow:inset 0 0 0 1px rgba(110,200,155,.08)}
+.entity-card.kind-person{box-shadow:inset 0 0 0 1px rgba(212,168,83,.08)}
+.entity-kind{font-family:var(--mono);font-size:.64rem;text-transform:uppercase;letter-spacing:1px;color:var(--text-3)}
+.entity-name{font-family:var(--display);font-size:1.02rem;line-height:1.35;color:#f0efe8}
+.entity-meta{font-size:.77rem;color:var(--text-2);line-height:1.5}
+.entity-badges{display:flex;gap:8px;flex-wrap:wrap}
+.entity-badge{padding:5px 8px;border-radius:999px;border:1px solid var(--border);font-family:var(--mono);font-size:.64rem;color:var(--text-2);background:rgba(255,255,255,.03)}
+.entity-tags{display:flex;gap:6px;flex-wrap:wrap}
+.entity-tag{padding:4px 7px;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);font-size:.67rem;color:var(--text-3)}
+.entity-empty{padding:18px;border:1px dashed var(--border);border-radius:var(--radius);color:var(--text-3);font-size:.82rem;background:rgba(255,255,255,.02)}
 
 /* TABLE */
 .table-wrap{overflow:auto;height:100%;padding:12px}
@@ -559,6 +580,7 @@ table.dtbl{width:100%;min-width:980px;border-collapse:separate;border-spacing:0;
   align-items:start;
 }
 .signals-main,.signals-side{display:flex;flex-direction:column;gap:14px;min-height:0}
+.signals-side{position:relative}
 .signals-row{
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
@@ -574,6 +596,24 @@ table.dtbl{width:100%;min-width:980px;border-collapse:separate;border-spacing:0;
 }
 .signals-panel .feed-list{max-height:none;overflow:auto}
 .signals-panel.primary .feed-list{max-height:50vh}
+.signals-toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
+.signals-toggle{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;border:1px solid var(--border);background:rgba(255,255,255,.02);color:var(--text-2);font-size:.74rem;cursor:pointer}
+.signals-toggle.on{border-color:rgba(212,168,83,.35);color:var(--gold);background:var(--gold-glow)}
+.signals-settings-panel{display:none}
+.signals-settings-panel.open{display:block}
+.signals-settings-grid{display:grid;grid-template-columns:1fr;gap:10px}
+.signals-settings-grid textarea{min-height:92px;font-family:var(--mono);font-size:.74rem}
+.signals-settings-grid .finput{background:rgba(255,255,255,.02)}
+.signals-reading-list{display:flex;flex-direction:column;gap:10px}
+.signals-reading-item{padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:rgba(255,255,255,.03)}
+.signals-reading-item.read{opacity:.72}
+.signals-reading-item a{font-weight:600;line-height:1.4}
+.signals-reading-meta{font-size:.72rem;color:var(--text-3);margin-top:6px}
+.signals-reading-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:8px}
+.signals-help{font-size:.74rem;color:var(--text-3);line-height:1.5}
+.feed-item-actions{display:flex;justify-content:flex-end;margin-top:8px}
+.feed-mini-btn{font-size:.64rem;padding:4px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.03);color:var(--text-2);cursor:pointer}
+.feed-mini-btn:hover{border-color:var(--gold);color:var(--gold)}
 .signals-watch-grid{display:flex;flex-direction:column;gap:12px}
 .signals-watch-group{display:flex;flex-direction:column;gap:7px}
 .signals-watch-label{font-family:var(--mono);font-size:.64rem;color:#b3b3b3;letter-spacing:.8px;text-transform:uppercase}
@@ -1092,6 +1132,7 @@ table.dtbl{width:100%;min-width:980px;border-collapse:separate;border-spacing:0;
   .score-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .grant-kv,.j-row{grid-template-columns:1fr}
   .signals-grid,.signals-row,.detail-grid-2,.detail-doc-grid{grid-template-columns:1fr}
+  .signals-side{order:-1}
   .strata{grid-template-columns:repeat(3,1fr)}
 }
 @media(max-width:900px){
@@ -1351,6 +1392,12 @@ let litQuery='';
 let panelPrefs={leftHidden:false,rightHidden:false};
 let grantState={query:'',track:'all',region:'all',status:'all',tag:'all',sortKey:'deadline',sortDir:'asc',selected:''};
 let literatureSignalCache={terms:[],fetchedAt:0};
+let signalViewState={settingsOpen:false,trustedOnly:false};
+let sourceRegistryState={organizations:[],people:[],tracked_topics:[],summary:{}};
+let researchGraphState={organizations:[],people:[],works:[],analytics:{},provider_status:{}};
+let entityIntelState={organizations:[],people:[],analytics:{}};
+let opportunityIntelState={queries:[],analytics:{},provider_status:{}};
+let entityDirState={kind:'all',search:'',focus:'all'};
 
 const SC={infrastructure:'var(--sage)',application:'var(--rose)',governance:'var(--teal)'};
 const SBG={infrastructure:'rgba(110,200,155,.12)',application:'rgba(232,126,154,.12)',governance:'rgba(90,184,179,.12)'};
@@ -2058,6 +2105,156 @@ function confClass(c){return c==='high'?'conf-high':c==='medium'?'conf-medium':'
 function confColor(c){return c==='high'?'var(--sage)':c==='medium'?'var(--gold)':'var(--red)'}
 function setBizLabelSet(v){bizLabelSet=v;if(view==='biz')render()}
 function setBizLabelDetail(v){bizLabelDetail=v;if(view==='biz')render()}
+function looksLikePaperUrl(raw){
+  const s=String(raw||'').trim().toLowerCase();
+  return !!s && /(arxiv\.org|doi\.org|frontiersin\.org|biorxiv\.org|medrxiv\.org|pubmed\.ncbi\.nlm\.nih\.gov|nature\.com|science\.org|pnas\.org|cell\.com|thelancet\.com|nejm\.org|jamanetwork\.com|bmj\.com|peerj\.com|osf\.io\/preprints)/i.test(s);
+}
+function autoMigrateNodeDocs(n){
+  if(!n)return;
+  n.wp=n.wp||'';
+  n.paper=n.paper||'';
+  if(!n.paper && looksLikePaperUrl(n.wp)){
+    n.paper=n.wp;
+    n.wp='';
+  }
+}
+function ensurePersonDefaults(p){
+  if(!p||typeof p!=='object')return p;
+  p.id=String(p.id||slugifyId(p.name||'person','p')).trim();
+  p.name=cleanMojibakeString(p.name||'').trim();
+  p.role=cleanMojibakeString(p.role||'').trim();
+  p.linkedin=String(p.linkedin||'').trim();
+  let tw=String(p.twitter||'').trim();
+  if(tw && !/^https?:\/\//i.test(tw) && !tw.startsWith('@'))tw='@'+tw;
+  p.twitter=tw;
+  p.website=String(p.website||'').trim();
+  p.github=String(p.github||'').trim();
+  p.orcid=String(p.orcid||'').trim();
+  p.openSourceInfo=cleanMojibakeString(p.openSourceInfo||'').trim();
+  p.notes=cleanMojibakeString(p.notes||'');
+  p.orgs=Array.isArray(p.orgs)?p.orgs.filter(Boolean):[];
+  return p;
+}
+function defaultSignalSettings(){
+  return {
+    x_handles:[
+      'DeSciLabs','ResearchHub','OpenAlex_org','OpenReviewNet','PREreview','opencitations','CrossrefOrg',
+      'lab_dao','molecule_dao','talentDAO_','opsaboratory','paulkhls','nrindtorff','saborsky','eperlste',
+      'vincentweisser','JocelynnPearl','ORCID_Org','sarahhamburg_'
+    ],
+    rss_feeds:[
+      {url:'https://retractionwatch.com/feed/',source:'Retraction Watch',topic:'research integrity',section:'news'},
+      {url:'https://scholarlykitchen.sspnet.org/feed/',source:'The Scholarly Kitchen',topic:'science publishing',section:'news'},
+      {url:'https://elifesciences.org/rss/current.xml',source:'eLife',topic:'open science',section:'news'},
+      {url:'https://blog.openalex.org/feed/',source:'OpenAlex blog',topic:'open science infrastructure',section:'blogs'},
+      {url:'https://www.crossref.org/blog/feed/',source:'Crossref blog',topic:'research infrastructure',section:'blogs'},
+      {url:'https://content.prereview.org/feed.xml',source:'PREreview blog',topic:'preprint review',section:'blogs'}
+    ],
+    manual_entity_queries:[
+      'Ants-Review','Bianca Trovo','DeSci Labs','ResearchHub','OpenReview','OpenAlex','PREreview',
+      'Orvium','Peer Community In','Review Commons','LabDAO','Molecule','VitaDAO','F1000Research',
+      'Crossref','ORCID','eLife'
+    ],
+    blocked_terms:[
+      'please help us identify this woman',
+      '40 essential websites every phd student should know'
+    ],
+    blocked_domains:['bitget.com']
+  };
+}
+function normalizeSignalFeedSpec(spec){
+  const raw=(typeof spec==='string')?{url:spec}:((spec&&typeof spec==='object')?spec:{});
+  const url=normalizeExternalUrl(raw.url||raw.link||'','');
+  if(!url)return null;
+  const section=String(raw.section||'blogs').trim().toLowerCase()==='news'?'news':'blogs';
+  return {
+    url,
+    source:cleanMojibakeString(raw.source||feedSourceFromUrl(url,'custom rss')).trim()||'custom rss',
+    topic:cleanMojibakeString(raw.topic||'').trim(),
+    section
+  };
+}
+function normalizeSignalSettings(raw){
+  const base=defaultSignalSettings();
+  const src=(raw&&typeof raw==='object')?raw:{};
+  const pick=(key)=>Array.isArray(src[key])?src[key]:base[key];
+  return {
+    x_handles:[...new Set(pick('x_handles').map(x=>normalizeTwitterHandle(x)).filter(Boolean))],
+    rss_feeds:[...new Map(pick('rss_feeds').map(normalizeSignalFeedSpec).filter(Boolean).map(spec=>[spec.url,spec])).values()],
+    manual_entity_queries:[...new Set(pick('manual_entity_queries').map(x=>cleanMojibakeString(x||'').trim()).filter(Boolean))],
+    blocked_terms:[...new Set(pick('blocked_terms').map(x=>cleanMojibakeString(x||'').trim().toLowerCase()).filter(Boolean))],
+    blocked_domains:[...new Set(pick('blocked_domains').map(x=>String(x||'').trim().toLowerCase().replace(/^https?:\/\//,'').replace(/^www\./,'').replace(/\/.*$/,'')).filter(Boolean))]
+  };
+}
+function ensureSignalSettings(){
+  D.signalSettings=normalizeSignalSettings(D.signalSettings||{});
+  return D.signalSettings;
+}
+function signalSettings(){
+  return ensureSignalSettings();
+}
+function ensureSignalReadingList(){
+  D.signalReadingList=Array.isArray(D.signalReadingList)?D.signalReadingList:[];
+  D.signalReadingList=D.signalReadingList.map(item=>{
+    const link=normalizeExternalUrl((item&&((item.link)||item.url))||'','');
+    if(!link)return null;
+    return {
+      title:cleanMojibakeString((item&&item.title)||'Untitled').trim()||'Untitled',
+      link,
+      source:cleanMojibakeString((item&&item.source)||'reading list').trim()||'reading list',
+      topic:cleanMojibakeString((item&&item.topic)||'').trim(),
+      notes:cleanMojibakeString((item&&item.notes)||'').trim(),
+      addedAt:String((item&&item.addedAt)||'').trim(),
+      read:!!(item&&item.read)
+    };
+  }).filter(Boolean);
+  return D.signalReadingList;
+}
+function normalizeDatasetState(){
+  D=cleanMojibakeDeep(D||{});
+  D.nodes=Array.isArray(D.nodes)?D.nodes:[];
+  D.edges=Array.isArray(D.edges)?D.edges:[];
+  D.people=Array.isArray(D.people)?D.people:[];
+  D.nodes.forEach(n=>{
+    n.wp=n.wp||'';
+    n.paper=n.paper||'';
+    autoMigrateNodeDocs(n);
+    n.git=n.git||'';
+    n.twitter=n.twitter||'';
+    n.cf=n.cf||{};
+    n.tags=Array.isArray(n.tags)?n.tags:String(n.tags||'').split(',').map(x=>cleanMojibakeString(x).trim()).filter(Boolean);
+    n.overlapTags=Array.isArray(n.overlapTags)?n.overlapTags:String(n.overlapTags||'').split(',').map(x=>cleanMojibakeString(x).trim()).filter(Boolean);
+    n.credScore=n.credScore||0;
+    n.overlapScore=n.overlapScore||0;
+    n.decentNote=n.decentNote||'';
+    n.techStack=n.techStack||'';
+    n.compNote=n.compNote||'';
+    n.notes=n.notes||'';
+    n.finModel=n.finModel||'';
+    n.legalStructure=n.legalStructure||'unknown';
+    n.apc=n.apc||false;
+    n.profitScore=n.profitScore??50;
+    n.openScienceScore=n.openScienceScore??((n.financials&&n.financials.openScienceCompatibilityScore)??50);
+    n.finNote=n.finNote||'';
+    n.fundingRaised=n.fundingRaised||'';
+    n.people=n.people||'';
+    n.provenance=n.provenance||{confidence:'low',hasUnverifiedClaims:true,sources:[],lastVerified:'',notes:''};
+    n.financials=n.financials||{revenueSources:[],researcherPays:'unknown',institutionPays:'unknown',openScienceAlignment:'unknown',openScienceAlignmentNote:'',scoreBreakdown:{},openScienceCompatibilityScore:50,openScienceCompatibilityBand:'moderate',scoreAudit:{}};
+    if(n.financials&&n.financials.openScienceCompatibilityScore==null)n.financials.openScienceCompatibilityScore=n.openScienceScore??50;
+    n.sourceAsterisk=!!n.sourceAsterisk;
+  });
+  D.edges=D.edges.map(e=>e.type==='collaborator'?({...e,type:'partner'}):e);
+  D.people=D.people.map(p=>ensurePersonDefaults(p));
+  D.journal=Array.isArray(D.journal)?D.journal:[];
+  D.litProgress=D.litProgress||{};
+  D.homeWatch=D.homeWatch||{videos:[],playlists:[]};
+  D.signalCollectorUrl=D.signalCollectorUrl||'signals_feed.json';
+  if(!Array.isArray(D.homeWatch.videos))D.homeWatch.videos=[];
+  if(!Array.isArray(D.homeWatch.playlists))D.homeWatch.playlists=[];
+  ensureSignalSettings();
+  ensureSignalReadingList();
+  D.kanban=D.kanban||seedKanbanFromData();
+}
 
 // ===== INIT =====
 async function init(){
@@ -2074,19 +2271,10 @@ async function init(){
     let s=localStorage.getItem('desci6');
     if(s)try{D=JSON.parse(s)}catch(e){}
   }
-  D=cleanMojibakeDeep(D);
   if(!D.nodes||!D.nodes.length){D={nodes:[],edges:[],people:[]}; return}
   await loadAuditRows();
-  D.nodes.forEach(n=>{n.wp=n.wp||'';n.paper=n.paper||'';n.git=n.git||'';n.twitter=n.twitter||'';n.cf=n.cf||{};n.tags=Array.isArray(n.tags)?n.tags:String(n.tags||'').split(',').map(x=>cleanMojibakeString(x).trim()).filter(Boolean);n.overlapTags=Array.isArray(n.overlapTags)?n.overlapTags:String(n.overlapTags||'').split(',').map(x=>cleanMojibakeString(x).trim()).filter(Boolean);n.credScore=n.credScore||0;n.overlapScore=n.overlapScore||0;n.decentNote=n.decentNote||'';n.techStack=n.techStack||'';n.compNote=n.compNote||'';n.notes=n.notes||'';n.finModel=n.finModel||'';n.legalStructure=n.legalStructure||'unknown';n.apc=n.apc||false;n.profitScore=n.profitScore??50;n.openScienceScore=n.openScienceScore??((n.financials&&n.financials.openScienceCompatibilityScore)??50);n.finNote=n.finNote||'';n.fundingRaised=n.fundingRaised||'';n.people=n.people||'';n.provenance=n.provenance||{confidence:'low',hasUnverifiedClaims:true,sources:[],lastVerified:'',notes:''};n.financials=n.financials||{revenueSources:[],researcherPays:'unknown',institutionPays:'unknown',openScienceAlignment:'unknown',openScienceAlignmentNote:'',scoreBreakdown:{},openScienceCompatibilityScore:50,openScienceCompatibilityBand:'moderate',scoreAudit:{}};if(n.financials&&n.financials.openScienceCompatibilityScore==null)n.financials.openScienceCompatibilityScore=n.openScienceScore??50;n.sourceAsterisk=!!n.sourceAsterisk});
-  D.edges=(D.edges||[]).map(e=>e.type==='collaborator'?({...e,type:'partner'}):e);
-  if(!D.people)D.people=[];
-  D.journal=D.journal||[];
-  D.litProgress=D.litProgress||{};
-  D.homeWatch=D.homeWatch||{videos:[],playlists:[]};
-  D.signalCollectorUrl=D.signalCollectorUrl||'signals_feed.json';
-  if(!Array.isArray(D.homeWatch.videos))D.homeWatch.videos=[];
-  if(!Array.isArray(D.homeWatch.playlists))D.homeWatch.playlists=[];
-  D.kanban=D.kanban||seedKanbanFromData();
+  normalizeDatasetState();
+  await loadOsintDatasets();
   loadHomeFeedCache();
   buildPills();render();updateSB();updateStats();
   setTimeout(autoSync,500);
@@ -2110,6 +2298,27 @@ async function loadAuditRows(){
       if(name)auditRowsByKey.set(name,row);
     });
   }catch(e){}
+}
+async function loadOptionalJsonFile(path,fallback){
+  try{
+    const r=await fetch(path,{cache:'no-store'});
+    if(!r.ok)return fallback;
+    return cleanMojibakeDeep(await r.json());
+  }catch(e){
+    return fallback;
+  }
+}
+async function loadOsintDatasets(){
+  const [registry,research,entityIntel,oppIntel]=await Promise.all([
+    loadOptionalJsonFile('source_registry.json',{organizations:[],people:[],tracked_topics:[],summary:{}}),
+    loadOptionalJsonFile('research_graph.json',{organizations:[],people:[],works:[],analytics:{},provider_status:{}}),
+    loadOptionalJsonFile('entity_intel.json',{organizations:[],people:[],analytics:{}}),
+    loadOptionalJsonFile('opportunity_intel.json',{queries:[],analytics:{},provider_status:{}})
+  ]);
+  sourceRegistryState=registry||{organizations:[],people:[],tracked_topics:[],summary:{}};
+  researchGraphState=research||{organizations:[],people:[],works:[],analytics:{},provider_status:{}};
+  entityIntelState=entityIntel||{organizations:[],people:[],analytics:{}};
+  opportunityIntelState=oppIntel||{queries:[],analytics:{},provider_status:{}};
 }
 
 // ===== GLOSSARY TOOLTIPS =====
@@ -2202,7 +2411,7 @@ function setView(v,b){
     app.classList.add('hide-left');
   }else{
     app.classList.toggle('hide-left',!!panelPrefs.leftHidden);
-    app.classList.toggle('hide-right',!!panelPrefs.rightHidden);
+    app.classList.toggle('hide-right',new Set(['graph','people','pgraph']).has(v) || !!panelPrefs.rightHidden);
   }
   render();
 }
@@ -2502,14 +2711,363 @@ function renderTable(){
 function doSort(c){if(sortC===c)sortA=!sortA;else{sortC=c;sortA=false}render()}
 
 // ===== PEOPLE =====
+function registryOrgById(id){return (sourceRegistryState.organizations||[]).find(x=>x.id===id)||null}
+function registryPersonById(id){return (sourceRegistryState.people||[]).find(x=>x.id===id)||null}
+function researchOrgById(id){return (researchGraphState.organizations||[]).find(x=>x.id===id)||null}
+function researchPersonById(id){return (researchGraphState.people||[]).find(x=>x.id===id)||null}
+function intelOrgById(id){return (entityIntelState.organizations||[]).find(x=>x.id===id)||null}
+function intelPersonById(id){return (entityIntelState.people||[]).find(x=>x.id===id)||null}
+function entityOpportunitySnapshot(entity){
+  const text=[entity&&entity.name,entity&&entity.subtitle,...(entity&&entity.tags||[])].filter(Boolean).join(' ').toLowerCase();
+  if(!text)return {count:0,staticHits:[],externalHits:[]};
+  const staticHits=[];
+  const externalHits=[];
+  let count=0;
+  (OPPORTUNITIES||[]).forEach(op=>{
+    const hay=[op.name,op.niche,op.why,op.mapContext,(op.tags||[]).join(' '),(op.region||[]).join(' ')].filter(Boolean).join(' ').toLowerCase();
+    const match=entity.kind==='organization'
+      ? (hay.includes((entity.name||'').toLowerCase()) || (entity.tags||[]).some(tag=>hay.includes(String(tag||'').toLowerCase())))
+      : (entity.orgNames||[]).some(name=>hay.includes(String(name||'').toLowerCase()));
+    if(match){
+      count++;
+      if(staticHits.length<5)staticHits.push({name:op.name,track:op.track,meta:opportunityDateText(op)});
+    }
+  });
+  (opportunityIntelState.queries||[]).forEach(row=>{
+    const key=String(row.keyword||'').toLowerCase();
+    const hitCount=(row.grants_gov||[]).length+(row.nih_projects||[]).length+(row.gdelt_news||[]).length;
+    if(key && text.includes(key) && hitCount){
+      count+=hitCount;
+      if(externalHits.length<5)externalHits.push({
+        keyword:row.keyword,
+        hits:hitCount,
+        grants:(row.grants_gov||[]).length,
+        nih:(row.nih_projects||[]).length,
+        news:(row.gdelt_news||[]).length
+      });
+    }
+  });
+  return {count,staticHits,externalHits};
+}
+function entityOppCount(entity){
+  return entityOpportunitySnapshot(entity).count;
+}
+function signalListHtml(rows,emptyText){
+  return rows && rows.length
+    ? `<ul class="rel-list">${rows.map(sig=>`<li class="rel-item"><a href="${escapeHtml(sig.link||sig.url||'#')}" target="_blank" rel="noopener">${escapeHtml(sig.title||'Untitled')}</a><span style="margin-left:auto;color:var(--text-3)">${escapeHtml(sig.source||sig.topic||'signal')}</span></li>`).join('')}</ul>`
+    : `<div class="detail-empty-note">${escapeHtml(emptyText)}</div>`;
+}
+function workListHtml(rows,emptyText){
+  return rows && rows.length
+    ? `<ul class="rel-list">${rows.map(work=>`<li class="rel-item"><span>${escapeHtml(work.title||'Untitled')}</span><span style="margin-left:auto;color:var(--text-3)">${escapeHtml(work.publication_year||work.published||work.publication_date||work.primary_location||'work')}</span></li>`).join('')}</ul>`
+    : `<div class="detail-empty-note">${escapeHtml(emptyText)}</div>`;
+}
+function registrySummaryHtml(registry,emptyText){
+  if(!registry || (!((registry.domains||[]).length) && !((registry.x_handles||[]).length) && !((registry.github_repos||[]).length) && !((registry.official_urls||[]).length))){
+    return `<div class="detail-empty-note">${escapeHtml(emptyText)}</div>`;
+  }
+  const lines=[];
+  if((registry.domains||[]).length)lines.push(`<div class="detail-micro">Domains: ${escapeHtml((registry.domains||[]).join(', '))}</div>`);
+  if((registry.x_handles||[]).length)lines.push(`<div class="detail-micro">X handles: ${escapeHtml((registry.x_handles||[]).map(h=>'@'+String(h).replace(/^@/,'')).join(', '))}</div>`);
+  if((registry.github_repos||[]).length)lines.push(`<div class="detail-micro">GitHub: ${escapeHtml((registry.github_repos||[]).join(', '))}</div>`);
+  const linkButtons=[
+    ...((registry.official_urls||[]).slice(0,4).map((url,idx)=>detailLinkButton(idx===0?'Primary source':`Source ${idx+1}`,url,'web')).filter(Boolean)),
+    ...((registry.paper_urls||[]).slice(0,2).map((url,idx)=>detailLinkButton(idx===0?'Paper / whitepaper':`Paper ${idx+1}`,url,'web')).filter(Boolean))
+  ].join('');
+  return `${lines.join('')}${linkButtons?`<div class="detail-link-grid" style="margin-top:10px">${linkButtons}</div>`:''}`;
+}
+function opportunitySummaryHtml(snapshot,emptyText){
+  if(!snapshot || !snapshot.count)return `<div class="detail-empty-note">${escapeHtml(emptyText)}</div>`;
+  const staticHtml=(snapshot.staticHits||[]).length
+    ? `<div class="detail-micro">Tracker matches: ${(snapshot.staticHits||[]).map(hit=>`${hit.name}${hit.meta?` (${hit.meta})`:''}`).join('; ')}</div>`
+    : '';
+  const liveHtml=(snapshot.externalHits||[]).length
+    ? `<ul class="rel-list">${snapshot.externalHits.map(hit=>`<li class="rel-item"><span>${escapeHtml(hit.keyword||'query')}</span><span style="margin-left:auto;color:var(--text-3)">${hit.hits} hits</span></li>`).join('')}</ul>`
+    : '';
+  return `<div class="detail-micro">Matched opportunity signals: ${snapshot.count}</div>${staticHtml}${liveHtml}`;
+}
+function mergedEntityRecords(){
+  const orgs=(D.nodes||[]).map(n=>{
+    const reg=registryOrgById(n.id);
+    const research=researchOrgById(n.id);
+    const intel=intelOrgById(n.id);
+    return {
+      kind:'organization',
+      id:n.id,
+      name:n.name,
+      subtitle:[n.type,n.stack&&n.stack[0].toUpperCase()+n.stack.slice(1)].filter(Boolean).join(' | '),
+      tags:[...(n.tags||[]),...(n.overlapTags||[])].filter(Boolean).slice(0,6),
+      watchPriority:(reg&&reg.watch_priority)||((n.overlapScore||0)*1.06+(n.credScore||0)*1.14),
+      signalCount:((intel&&intel.signals)||[]).length,
+      worksCount:(((research&&research.openalex_works)||[]).length+((research&&research.crossref_works)||[]).length),
+      oppCount:0,
+      orgNames:[n.name],
+      target:n
+    };
+  });
+  const people=(D.people||[]).map(p=>{
+    const reg=registryPersonById(p.id);
+    const research=researchPersonById(p.id);
+    const intel=intelPersonById(p.id);
+    const orgNames=(p.orgs||[]).map(id=>D.nodes.find(n=>n.id===id)?.name).filter(Boolean);
+    return {
+      kind:'person',
+      id:p.id,
+      name:p.name,
+      subtitle:p.role||'',
+      tags:orgNames.slice(0,5),
+      watchPriority:(reg&&reg.watch_priority)||((normalizeTwitterHandle(p.twitter)?18:0)+orgNames.length*8),
+      signalCount:((intel&&intel.signals)||[]).length,
+      worksCount:(((research&&research.openalex_works)||[]).length+((research&&research.crossref_works)||[]).length),
+      oppCount:0,
+      orgNames,
+      target:p
+    };
+  });
+  const rows=[...orgs,...people];
+  rows.forEach(row=>{row.oppCount=entityOppCount(row)});
+  return rows.sort((a,b)=>((b.watchPriority||0)+(b.signalCount||0)*10+(b.worksCount||0)*4)-((a.watchPriority||0)+(a.signalCount||0)*10+(a.worksCount||0)*4));
+}
+function visibleEntities(){
+  const q=String(entityDirState.search||'').trim().toLowerCase();
+  return mergedEntityRecords().filter(row=>{
+    if(entityDirState.kind==='people' && row.kind!=='person')return false;
+    if(entityDirState.kind==='organizations' && row.kind!=='organization')return false;
+    if(entityDirState.focus==='watchlist' && (row.watchPriority||0)<80)return false;
+    if(entityDirState.focus==='signals' && !(row.signalCount>0))return false;
+    if(entityDirState.focus==='research' && !(row.worksCount>0))return false;
+    if(q){
+      const hay=[row.name,row.subtitle,...(row.tags||[]),...(row.orgNames||[])].filter(Boolean).join(' ').toLowerCase();
+      if(!hay.includes(q))return false;
+    }
+    return true;
+  });
+}
+function setEntityKind(kind){entityDirState.kind=kind||'all';render()}
+function setEntityFocus(focus){entityDirState.focus=focus||'all';render()}
+function setEntitySearch(v){
+  entityDirState.search=v||'';
+  render();
+  requestAnimationFrame(()=>{
+    const input=document.querySelector('.entity-search');
+    if(input){
+      input.focus();
+      const len=input.value.length;
+      input.setSelectionRange(len,len);
+    }
+  });
+}
+function entitySummaryStats(rows){
+  return {
+    total:rows.length,
+    people:rows.filter(r=>r.kind==='person').length,
+    organizations:rows.filter(r=>r.kind==='organization').length,
+    signals:rows.reduce((sum,row)=>sum+(row.signalCount||0),0),
+    works:rows.reduce((sum,row)=>sum+(row.worksCount||0),0),
+    trackedTopics:(sourceRegistryState.tracked_topics||[]).length
+  };
+}
+function entityCardHtml(row){
+  const kindLabel=row.kind==='person'?'Person':'Organization';
+  const meta=row.subtitle || (row.kind==='person'?(row.orgNames||[]).join(' | '):'');
+  const click=row.kind==='person'?`showPerson('${row.id}')`:`selNode('${row.id}')`;
+  return `<article class="entity-card ${row.kind==='person'?'kind-person':'kind-org'}" onclick="${click}">
+    <div class="entity-kind">${kindLabel}</div>
+    <div class="entity-name">${escapeHtml(row.name||'')}</div>
+    <div class="entity-meta">${escapeHtml(meta||'')}</div>
+    <div class="entity-badges">
+      <span class="entity-badge">watch ${Math.round(row.watchPriority||0)}</span>
+      <span class="entity-badge">signals ${row.signalCount||0}</span>
+      <span class="entity-badge">works ${row.worksCount||0}</span>
+      <span class="entity-badge">opps ${row.oppCount||0}</span>
+    </div>
+    <div class="entity-tags">${(row.tags||[]).slice(0,6).map(tag=>`<span class="entity-tag">${escapeHtml(String(tag||''))}</span>`).join('') || '<span class="entity-tag">no tags yet</span>'}</div>
+  </article>`;
+}
 function renderPeople(){
-  const m=el('main'),g=document.createElement('div');g.className='people-grid';
-  g.innerHTML=D.people.map(p=>{const on=p.orgs.map(id=>D.nodes.find(n=>n.id===id)?.name||id).join(', ');return`<div class="p-card" onclick="showPerson('${p.id}')"><div class="p-name">${p.name}</div><div class="p-role">${p.role||''}</div><div class="p-links">${p.linkedin?`<a href="${p.linkedin}" target="_blank" onclick="event.stopPropagation()">LinkedIn -></a>`:''}${p.twitter?`<a href="https://x.com/${p.twitter.replace('@','')}" target="_blank" onclick="event.stopPropagation()">${p.twitter}</a>`:''}</div>${on?`<div class="p-orgs">${on}</div>`:''}</div>`}).join('');
-  m.appendChild(g);
+  const m=el('main');
+  const rows=visibleEntities();
+  const stats=entitySummaryStats(rows);
+  const wrap=document.createElement('div');
+  wrap.className='entity-shell';
+  wrap.innerHTML=`
+    <div class="entity-head">
+      <div>
+        <div class="entity-title">Entity Intelligence</div>
+        <div class="entity-sub">Merged people + organization watchlist powered by the map, source registry, research graph, entity signals, and opportunity intelligence. Click any entity to open the right sidebar.</div>
+      </div>
+      <div class="entity-summary">
+        <span class="tag-chip">${stats.total} visible</span>
+        <span class="tag-chip">${stats.organizations} orgs</span>
+        <span class="tag-chip">${stats.people} people</span>
+        <span class="tag-chip">${stats.signals} signals</span>
+        <span class="tag-chip">${stats.works} works</span>
+        <span class="tag-chip">${stats.trackedTopics} tracked topics</span>
+      </div>
+    </div>
+    <div class="entity-toolbar">
+      <input class="sb-search entity-search" placeholder="Search entities, orgs, roles, tags..." value="${escapeHtml(entityDirState.search)}" oninput="setEntitySearch(this.value)">
+      <div class="entity-pills">
+        <button class="pill ${entityDirState.kind==='all'?'on':''}" onclick="setEntityKind('all')">All</button>
+        <button class="pill ${entityDirState.kind==='people'?'on':''}" onclick="setEntityKind('people')">People</button>
+        <button class="pill ${entityDirState.kind==='organizations'?'on':''}" onclick="setEntityKind('organizations')">Organizations</button>
+        <button class="pill ${entityDirState.focus==='all'?'on':''}" onclick="setEntityFocus('all')">Everything</button>
+        <button class="pill ${entityDirState.focus==='watchlist'?'on':''}" onclick="setEntityFocus('watchlist')">Watchlist</button>
+        <button class="pill ${entityDirState.focus==='signals'?'on':''}" onclick="setEntityFocus('signals')">With Signals</button>
+        <button class="pill ${entityDirState.focus==='research'?'on':''}" onclick="setEntityFocus('research')">With Research</button>
+      </div>
+    </div>
+    <div class="entity-grid">${rows.length?rows.map(entityCardHtml).join(''):'<div class="entity-empty">No entities match the current filters yet.</div>'}</div>
+  `;
+  m.appendChild(wrap);
+  sanitizeVisibleText(wrap);
+}
+function personOrgContextLinks(p){
+  const seen=new Set();
+  return (p&&p.orgs||[]).flatMap(id=>{
+    const n=D.nodes.find(x=>x.id===id);
+    if(!n)return [];
+    return [
+      {label:`${n.name} site`,url:n.web,cls:'web'},
+      {label:`${n.name} GitHub`,url:n.git,cls:'github'},
+      {label:`${n.name} X`,url:n.twitter,cls:'twitter'}
+    ];
+  }).filter(row=>{
+    const href=normalizeExternalUrl(row.url,row.cls==='twitter'?'twitter':row.cls==='github'?'github':'');
+    if(!href || seen.has(href))return false;
+    seen.add(href);
+    row.href=href;
+    return true;
+  });
+}
+function personAllSourceLinks(p){
+  const seen=new Set();
+  const out=[];
+  const push=(label,url,kind)=>{
+    const href=normalizeExternalUrl(url,kind==='twitter'?'twitter':kind==='github'?'github':'');
+    if(!href || seen.has(href))return;
+    seen.add(href);
+    out.push({label,href});
+  };
+  if(!p)return out;
+  push('LinkedIn',p.linkedin,'web');
+  push('X / Twitter',p.twitter,'twitter');
+  push('Website',p.website,'web');
+  push('GitHub',p.github,'github');
+  push('ORCID',p.orcid,'web');
+  personOrgContextLinks(p).forEach(row=>push(row.label,row.href,'web'));
+  return out;
+}
+function rerenderAfterPersonEdit(pid){
+  save();
+  render();
+  if(pid && D.people.some(p=>p.id===pid))showPerson(pid);
+}
+function updPerson(pid,key,val){
+  const p=D.people.find(x=>x.id===pid);
+  if(!p)return;
+  let next=cleanMojibakeString(val||'').trim();
+  if(key==='twitter' && next && !/^https?:\/\//i.test(next) && !next.startsWith('@'))next='@'+next;
+  p[key]=next;
+  ensurePersonDefaults(p);
+  rerenderAfterPersonEdit(pid);
+}
+function focusPersonNotes(pid){
+  const ta=el(`personNotes-${pid}`);
+  if(!ta)return;
+  ta.focus();
+  const len=ta.value.length;
+  try{ta.setSelectionRange(len,len)}catch(e){}
+}
+function appendPersonNoteTemplate(pid){
+  const p=D.people.find(x=>x.id===pid);
+  if(!p)return;
+  const stamp=new Date().toLocaleString();
+  const line=`[${stamp}] `;
+  p.notes=(p.notes&&String(p.notes).trim())?`${String(p.notes).trim()}\n${line}`:line;
+  rerenderAfterPersonEdit(pid);
+  requestAnimationFrame(()=>focusPersonNotes(pid));
+}
+function openLinkedOrgForPerson(pid){
+  const p=D.people.find(x=>x.id===pid);
+  if(!p)return;
+  const orgs=(p.orgs||[]).map(id=>D.nodes.find(n=>n.id===id)).filter(Boolean);
+  if(!orgs.length)return;
+  if(orgs.length===1){
+    selNode(orgs[0].id);
+    return;
+  }
+  el('mo').style.display='flex';
+  el('mc').innerHTML=`<h2>Open Linked Organization</h2>
+    <div class="field"><div class="flabel">Select organization</div><div class="detail-link-grid">${orgs.map(n=>`<button class="btn" type="button" onclick="clM();selNode('${n.id}')">${escapeHtml(n.name)}</button>`).join('')}</div></div>
+    <div class="modal-foot"><button class="btn" onclick="clM()">Close</button></div>`;
+}
+function openAllPersonSources(pid){
+  const p=D.people.find(x=>x.id===pid);
+  if(!p)return;
+  const links=personAllSourceLinks(p);
+  if(!links.length)return;
+  links.slice(0,12).forEach((row,idx)=>{
+    setTimeout(()=>window.open(row.href,'_blank','noopener'),idx*120);
+  });
 }
 function showPerson(pid){
   const p=D.people.find(x=>x.id===pid);if(!p)return;
-  el('detE').style.display='none';el('detC').innerHTML=`<div class="det-name">${p.name}</div><div class="det-sub">${p.role||''}</div>${p.linkedin?`<a href="${p.linkedin}" target="_blank" style="color:var(--link);font-size:.85rem">LinkedIn -></a> `:''} ${p.twitter?`<a href="https://x.com/${p.twitter.replace('@','')}" target="_blank" style="color:var(--link);font-size:.85rem">${p.twitter}</a>`:''}`;
+  ensurePersonDefaults(p);
+  const registry=registryPersonById(pid)||{};
+  const intel=intelPersonById(pid)||{};
+  const research=researchPersonById(pid)||{};
+  const orgs=(p.orgs||[]).map(id=>D.nodes.find(n=>n.id===id)).filter(Boolean);
+  const oppSnapshot=entityOpportunitySnapshot({kind:'person',name:p.name,subtitle:p.role||'',tags:orgs.map(n=>n.type).filter(Boolean),orgNames:orgs.map(n=>n.name).filter(Boolean)});
+  const orgHtml=orgs.length
+    ? `<ul class="rel-list">${orgs.map(n=>`<li class="rel-item"><span><a href="#" onclick="selNode('${n.id}');return false;">${escapeHtml(n.name)}</a>${n.type?`<span style="color:var(--text-3)"> | ${escapeHtml(n.type)}</span>`:''}</span></li>`).join('')}</ul>`
+    : '<div class="detail-empty-note">No linked organizations yet.</div>';
+  const contextLinks=personOrgContextLinks(p);
+  const contextHtml=contextLinks.length
+    ? `<div class="detail-link-grid">${contextLinks.map(row=>`<a class="detail-link-btn" href="${escapeHtml(row.href)}" target="_blank" rel="noopener">${escapeHtml(row.label)}</a>`).join('')}</div>`
+    : '<div class="detail-empty-note">No linked org source context yet.</div>';
+  const intelSignals=((intel&&intel.signals)||[]).slice(0,4);
+  const researchWorks=[...((research&&research.openalex_works)||[]),...((research&&research.crossref_works)||[])].slice(0,4);
+  const intelHtml=signalListHtml(intelSignals,'No person-specific live signals collected yet.');
+  const worksHtml=workListHtml(researchWorks,'No research graph matches yet.');
+  const registryHtml=registrySummaryHtml(registry,'No source-registry rows for this person yet.');
+  const oppHtml=opportunitySummaryHtml(oppSnapshot,'No clear opportunity matches yet.');
+  el('detE').style.display='none';el('detC').innerHTML=`
+    <div class="det-name">${escapeHtml(p.name||'')}</div>
+    <div class="det-sub">${escapeHtml(p.role||'')}</div>
+    <div class="detail-link-grid">
+      ${detailLinkButton('LinkedIn',p.linkedin,'web')}
+      ${detailLinkButton(p.twitter&&String(p.twitter).trim().startsWith('@')?p.twitter:'X / Twitter',p.twitter,'twitter')}
+      ${detailLinkButton('Website',p.website,'web')}
+      ${detailLinkButton('GitHub',p.github,'github')}
+      ${detailLinkButton('ORCID',p.orcid,'web')}
+    </div>
+    <div class="detail-inline-actions">
+      <button class="btn" type="button" onclick="appendPersonNoteTemplate('${pid}')">+ New note</button>
+      <button class="btn" type="button" onclick="openLinkedOrgForPerson('${pid}')">Open linked org</button>
+      <button class="btn" type="button" onclick="openAllPersonSources('${pid}')">Open all sources</button>
+    </div>
+    <div class="score-grid">
+      <div class="score-cell"><span class="k">Signals</span><span class="v">${((intel&&intel.signals)||[]).length}</span></div>
+      <div class="score-cell"><span class="k">Works</span><span class="v">${researchWorks.length}</span></div>
+      <div class="score-cell"><span class="k">Linked orgs</span><span class="v">${orgs.length}</span></div>
+      <div class="score-cell"><span class="k">Opps</span><span class="v">${oppSnapshot.count}</span></div>
+    </div>
+    <div class="field"><div class="flabel">Organizations</div>${orgHtml}</div>
+    <div class="field"><div class="flabel">Source registry</div>${registryHtml}</div>
+    <div class="field"><div class="flabel">Latest signals</div>${intelHtml}</div>
+    <div class="field"><div class="flabel">Research graph</div>${worksHtml}</div>
+    <div class="field"><div class="flabel">Opportunity intelligence</div>${oppHtml}</div>
+    <div class="field"><div class="flabel">Open-source context</div>${contextHtml}<div class="detail-empty-note" style="margin-top:8px">High-confidence context from linked organizations. Add your own person-specific notes below.</div></div>
+    <div class="field"><div class="flabel">Name</div><input class="finput" value="${escapeHtml(p.name||'')}" onchange="updPerson('${pid}','name',this.value)"></div>
+    <div class="field"><div class="flabel">Role</div><input class="finput" value="${escapeHtml(p.role||'')}" onchange="updPerson('${pid}','role',this.value)"></div>
+    <div class="field"><div class="flabel">LinkedIn</div><input class="finput" value="${escapeHtml(p.linkedin||'')}" onchange="updPerson('${pid}','linkedin',this.value)"></div>
+    <div class="field"><div class="flabel">Twitter / X</div><input class="finput" value="${escapeHtml(p.twitter||'')}" onchange="updPerson('${pid}','twitter',this.value)"></div>
+    <div class="field"><div class="flabel">Website</div><input class="finput" value="${escapeHtml(p.website||'')}" onchange="updPerson('${pid}','website',this.value)"></div>
+    <div class="field"><div class="flabel">GitHub</div><input class="finput" value="${escapeHtml(p.github||'')}" onchange="updPerson('${pid}','github',this.value)"></div>
+    <div class="field"><div class="flabel">ORCID</div><input class="finput" value="${escapeHtml(p.orcid||'')}" onchange="updPerson('${pid}','orcid',this.value)"></div>
+    <div class="field"><div class="flabel">Open-source info</div><textarea class="finput" onchange="updPerson('${pid}','openSourceInfo',this.value)">${escapeHtml(p.openSourceInfo||'')}</textarea></div>
+    <div class="field"><div class="flabel">Notes</div><textarea class="finput" id="personNotes-${pid}" onchange="updPerson('${pid}','notes',this.value)">${escapeHtml(p.notes||'')}</textarea></div>`;
   sanitizeVisibleText(el('detC'));
   el('app').classList.remove('hide-right');
 }
@@ -4718,6 +5276,254 @@ function combinedHomeFeedIntents(){
 function feedSectionItems(key){
   return (homeFeedState.sections&&Array.isArray(homeFeedState.sections[key]))?homeFeedState.sections[key]:[];
 }
+function signalRssSpecLine(spec){
+  const row=normalizeSignalFeedSpec(spec);
+  if(!row)return '';
+  return [row.source||'',row.url||'',row.topic||'',row.section||'blogs'].join(' | ');
+}
+function signalSettingLines(key){
+  const settings=signalSettings();
+  if(key==='rss_feeds')return (settings.rss_feeds||[]).map(signalRssSpecLine).filter(Boolean).join('\n');
+  return (settings[key]||[]).join('\n');
+}
+function parseSignalListLines(text,formatter){
+  return String(text||'').split(/\r?\n/).map(x=>cleanMojibakeString(x||'').trim()).filter(Boolean).map(x=>formatter?formatter(x):x).filter(Boolean);
+}
+function parseSignalRssLines(text){
+  return String(text||'').split(/\r?\n/).map(line=>line.trim()).filter(Boolean).map(line=>{
+    const parts=line.split('|').map(x=>cleanMojibakeString(x||'').trim());
+    if(parts.length<=1)return normalizeSignalFeedSpec({url:parts[0]||''});
+    return normalizeSignalFeedSpec({
+      source:parts[0]||'',
+      url:parts[1]||'',
+      topic:parts[2]||'',
+      section:parts[3]||'blogs'
+    });
+  }).filter(Boolean);
+}
+function safeHostname(raw){
+  try{return new URL(String(raw||'').trim()).hostname.replace(/^www\./,'').toLowerCase()}catch(e){return ''}
+}
+function signalTrustedHandles(){
+  return new Set([...(signalSettings().x_handles||[]),...keyTwitterHandles(12)].map(h=>normalizeTwitterHandle(h)).filter(Boolean));
+}
+function signalTrustedDomains(){
+  const set=new Set();
+  (signalSettings().rss_feeds||[]).forEach(spec=>{
+    const host=safeHostname(spec&&spec.url||'');
+    if(host)set.add(host);
+  });
+  keySignalNodes(12).forEach(node=>nodeFeedSignals(node).domains.slice(0,3).forEach(domain=>set.add(domain)));
+  [
+    'retractionwatch.com','scholarlykitchen.sspnet.org','elifesciences.org','frontiersin.org','crossref.org',
+    'openalex.org','blog.openalex.org','prereview.org','content.prereview.org','openreview.net','researchhub.com',
+    'desci.com','orvium.io','peercommunityin.org','f1000research.com','opencitations.net','labdao.xyz','molecule.xyz'
+  ].forEach(domain=>set.add(domain));
+  return set;
+}
+function signalTrustedEntityTerms(){
+  return [...new Set([
+    ...(signalSettings().manual_entity_queries||[]),
+    ...keySignalNodes(12).flatMap(n=>entityAliases(n.name)),
+    ...keySignalPeople(10).flatMap(p=>entityAliases(p.name))
+  ].map(x=>cleanMojibakeString(x||'').toLowerCase()).filter(x=>x && x.length>=4))];
+}
+function signalTrustedTopicTerms(){
+  return [
+    'desci',
+    'decentralized science',
+    'decentralized peer review',
+    'open science',
+    'open science infrastructure',
+    'metascience',
+    'science of science',
+    'research integrity',
+    'peer review reform',
+    'scientific publishing',
+    'open access publishing',
+    'research credibility',
+    'reproducibility',
+    'ai for science',
+    'ai and science'
+  ];
+}
+function signalWatchTerms(){
+  return [...new Set([
+    ...(signalSettings().manual_entity_queries||[]),
+    ...relationWatchNames().slice(0,12),
+    ...keyPeopleNames(8),
+    ...signalVocabulary().slice(0,18)
+  ].map(x=>cleanMojibakeString(x||'').toLowerCase()).filter(Boolean))];
+}
+function signalItemText(item){
+  return [item&&item.title,item&&item.summary,item&&item.topic,item&&item.source].filter(Boolean).join(' ').toLowerCase();
+}
+function signalItemBlocked(item){
+  const settings=signalSettings();
+  const host=safeHostname(item&&item.link||'');
+  if(host && (settings.blocked_domains||[]).some(domain=>host===domain || host.endsWith('.'+domain)))return true;
+  const text=signalItemText(item);
+  return (settings.blocked_terms||[]).some(term=>term && text.includes(term));
+}
+function itemMentionsWatchTerms(item){
+  const text=signalItemText(item);
+  return signalWatchTerms().some(term=>term && text.includes(term));
+}
+function itemMentionsTrustedEntities(item){
+  const text=signalItemText(item);
+  return signalTrustedEntityTerms().some(term=>term && text.includes(term));
+}
+function itemMentionsTrustedTopics(item){
+  const text=signalItemText(item);
+  return signalTrustedTopicTerms().some(term=>term && text.includes(term));
+}
+function xHandleFromUrl(url){
+  return normalizeTwitterHandle(String(url||'').trim());
+}
+function subredditFromUrl(url){
+  try{
+    const u=new URL(String(url||'').trim());
+    const parts=u.pathname.replace(/^\/+/,'').split('/');
+    if(parts[0] && parts[0].toLowerCase()==='r' && parts[1])return parts[1].toLowerCase();
+  }catch(e){}
+  return '';
+}
+function isTrustedSignalItem(item){
+  if(signalItemBlocked(item))return false;
+  const kind=feedSourceKind(item);
+  const host=safeHostname(item&&item.link||'');
+  const trustedDomains=signalTrustedDomains();
+  const source=String(item&&item.source||'').toLowerCase();
+  const domainTrusted=!!host && ([...trustedDomains].some(domain=>host===domain || host.endsWith('.'+domain)) || QUALITY_DOMAIN_RE.test(host));
+  const entityMatch=itemMentionsTrustedEntities(item);
+  const topicMatch=itemMentionsTrustedTopics(item);
+  const viaTrustedNews=/google news|news|rss/.test(source);
+  if(kind==='github')return domainTrusted || entityMatch || topicMatch;
+  if(kind==='x'){
+    const handle=xHandleFromUrl(item&&item.link||'') || normalizeTwitterHandle(item&&item.topic||'');
+    return !!((handle && signalTrustedHandles().has(handle)) || (entityMatch && topicMatch));
+  }
+  if(kind==='reddit'){
+    const sub=subredditFromUrl(item&&item.link||'');
+    const trustedSubs=new Set(['desci','open_science','academia','science','bioinformatics','biotech']);
+    return trustedSubs.has(sub) && (entityMatch || topicMatch);
+  }
+  if(kind==='blog')return domainTrusted && (entityMatch || topicMatch);
+  if(kind==='news')return entityMatch || (topicMatch && (domainTrusted || viaTrustedNews));
+  return entityMatch || (domainTrusted && topicMatch);
+}
+function applySignalSettingsFilters(items,opt){
+  let rows=(items||[]).filter(it=>!signalItemBlocked(it));
+  if(opt&&opt.trustedOnly)rows=rows.filter(isTrustedSignalItem);
+  return rows;
+}
+function signalsSectionItems(key){
+  return applySignalSettingsFilters(feedSectionItems(key),{trustedOnly:!!signalViewState.trustedOnly});
+}
+function toggleSignalsSettings(){
+  signalViewState.settingsOpen=!signalViewState.settingsOpen;
+  if(view==='signals')render();
+}
+function toggleSignalsTrustedOnly(){
+  signalViewState.trustedOnly=!signalViewState.trustedOnly;
+  if(view==='signals')render();
+}
+function saveSignalsSettingsFromForm(){
+  D.signalSettings=normalizeSignalSettings({
+    x_handles:parseSignalListLines(el('signalsHandles')&&el('signalsHandles').value,normalizeTwitterHandle),
+    rss_feeds:parseSignalRssLines(el('signalsRssFeeds')&&el('signalsRssFeeds').value),
+    manual_entity_queries:parseSignalListLines(el('signalsEntities')&&el('signalsEntities').value),
+    blocked_terms:parseSignalListLines(el('signalsBlockedTerms')&&el('signalsBlockedTerms').value,x=>String(x||'').toLowerCase()),
+    blocked_domains:parseSignalListLines(el('signalsBlockedDomains')&&el('signalsBlockedDomains').value,x=>String(x||'').toLowerCase().replace(/^https?:\/\//,'').replace(/^www\./,'').replace(/\/.*$/,''))
+  });
+  save();
+  refreshHomeFeeds(true);
+  if(view==='signals')render();
+}
+function addSignalReadingItem(titleEnc,linkEnc,sourceEnc,topicEnc){
+  ensureSignalReadingList();
+  const link=normalizeExternalUrl(decodeURIComponent(linkEnc||''),'');
+  if(!link)return;
+  if(D.signalReadingList.some(item=>item.link===link))return;
+  D.signalReadingList.unshift({
+    title:cleanMojibakeString(decodeURIComponent(titleEnc||'')||'Untitled').trim()||'Untitled',
+    link,
+    source:cleanMojibakeString(decodeURIComponent(sourceEnc||'')||'reading list').trim()||'reading list',
+    topic:cleanMojibakeString(decodeURIComponent(topicEnc||'')||'').trim(),
+    notes:'',
+    addedAt:new Date().toISOString(),
+    read:false
+  });
+  save();
+  renderSignalsReadingList();
+}
+function addSignalReadingItemFromInputs(){
+  ensureSignalReadingList();
+  const title=cleanMojibakeString(el('signalsReadTitle')&&el('signalsReadTitle').value||'').trim()||'Manual link';
+  const link=normalizeExternalUrl(el('signalsReadUrl')&&el('signalsReadUrl').value||'','');
+  const notes=cleanMojibakeString(el('signalsReadNotes')&&el('signalsReadNotes').value||'').trim();
+  if(!link)return;
+  if(D.signalReadingList.some(item=>item.link===link))return;
+  D.signalReadingList.unshift({title,link,source:'manual',topic:'manual',notes,addedAt:new Date().toISOString(),read:false});
+  if(el('signalsReadTitle'))el('signalsReadTitle').value='';
+  if(el('signalsReadUrl'))el('signalsReadUrl').value='';
+  if(el('signalsReadNotes'))el('signalsReadNotes').value='';
+  save();
+  renderSignalsReadingList();
+}
+function toggleSignalReadingItem(idx){
+  ensureSignalReadingList();
+  if(idx<0 || idx>=D.signalReadingList.length)return;
+  D.signalReadingList[idx].read=!D.signalReadingList[idx].read;
+  save();
+  renderSignalsReadingList();
+}
+function removeSignalReadingItem(idx){
+  ensureSignalReadingList();
+  if(idx<0 || idx>=D.signalReadingList.length)return;
+  D.signalReadingList.splice(idx,1);
+  save();
+  renderSignalsReadingList();
+}
+function renderSignalsReadingList(){
+  const host=el('signalsReadingList');
+  if(!host)return;
+  ensureSignalReadingList();
+  host.innerHTML=D.signalReadingList.length
+    ? D.signalReadingList.map((item,idx)=>`
+      <article class="signals-reading-item ${item.read?'read':''}">
+        <a href="${escapeHtml(item.link)}" target="_blank" rel="noopener">${escapeHtml(item.title||'Untitled')}</a>
+        <div class="signals-reading-meta">${escapeHtml(item.source||'reading list')}${item.topic?` | ${escapeHtml(item.topic)}`:''}${item.addedAt?` | ${escapeHtml(String(item.addedAt).slice(0,10))}`:''}</div>
+        ${item.notes?`<div class="signals-help" style="margin-top:6px">${escapeHtml(item.notes)}</div>`:''}
+        <div class="signals-reading-actions">
+          <button class="btn" type="button" onclick="toggleSignalReadingItem(${idx})">${item.read?'Mark unread':'Mark read'}</button>
+          <button class="btn" type="button" onclick="removeSignalReadingItem(${idx})">Remove</button>
+        </div>
+      </article>
+    `).join('')
+    : '<div class="signals-empty">No saved reading items yet. Use + read on a signal card or add a manual link here.</div>';
+}
+async function fetchSignalSettingsSupplements(settings){
+  const cfg=settings||signalSettings();
+  const rssSpecs=(cfg.rss_feeds||[]).slice(0,6);
+  const xHandles=(cfg.x_handles||[]).slice(0,8);
+  const entityQueries=(cfg.manual_entity_queries||[]).slice(0,8);
+  const rssRows=await Promise.allSettled(rssSpecs.map(spec=>
+    fetchRssFeed(spec.url,spec.source||feedSourceFromUrl(spec.url,'custom rss'),spec.topic||spec.source||'custom',3)
+      .then(rows=>rows.map(row=>({...row,source:spec.source||row.source||'custom rss',topic:spec.topic||row.topic||spec.source||'custom',section:spec.section||'blogs'})))
+  ));
+  const [xRows,entityNews,entityX]=await Promise.all([
+    fetchTwitterHandleBatch(xHandles,8,2),
+    fetchGoogleNewsBatch(entityQueries.map(q=>`"${q}"`),8,2),
+    fetchGoogleNewsBatch(entityQueries.slice(0,5).map(q=>`site:x.com "${q}"`),5,1)
+  ]);
+  const rssFlat=rssRows.flatMap(r=>(r.status==='fulfilled'&&Array.isArray(r.value))?r.value:[]);
+  return {
+    news:[...entityNews,...rssFlat.filter(row=>String(row.section||'').toLowerCase()==='news')],
+    blogs:rssFlat.filter(row=>String(row.section||'').toLowerCase()!=='news'),
+    x:[...xRows,...entityX]
+  };
+}
 function renderFeedItemHtml(it,opt){
   const options=opt||{};
   const title=escapeHtml(it.title||'Untitled');
@@ -4728,7 +5534,10 @@ function renderFeedItemHtml(it,opt){
   const match=escapeHtml(it.match||it.topic||'');
   const date=it.pubDate?escapeHtml(String(it.pubDate).slice(0,24)):'';
   if(it.disabled || !it.link || it.link==='#')return `<article class="feed-item empty"><div>${title}</div></article>`;
-  return `<article class="feed-item"><a href="${escapeHtml(it.link)}" target="_blank" rel="noopener">${title}</a>${summary?`<div class="feed-snippet">${summary}</div>`:''}<div class="feed-meta-row"><span class="feed-badge ${kind}">${badge}</span><span class="feed-source-name">${sourceName}</span>${match?`<span class="feed-match">${match}</span>`:''}${date?`<span class="feed-date">${date}</span>`:''}</div></article>`;
+  const addBtn=options.addToReadingList
+    ? `<div class="feed-item-actions"><button class="feed-mini-btn" type="button" onclick="addSignalReadingItem('${encodeURIComponent(it.title||'Untitled')}','${encodeURIComponent(it.link||'')}','${encodeURIComponent(it.source||'news')}','${encodeURIComponent(it.topic||'')}')">+ read</button></div>`
+    : '';
+  return `<article class="feed-item"><a href="${escapeHtml(it.link)}" target="_blank" rel="noopener">${title}</a>${summary?`<div class="feed-snippet">${summary}</div>`:''}<div class="feed-meta-row"><span class="feed-badge ${kind}">${badge}</span><span class="feed-source-name">${sourceName}</span>${match?`<span class="feed-match">${match}</span>`:''}${date?`<span class="feed-date">${date}</span>`:''}</div>${addBtn}</article>`;
 }
 function renderFeedListHtml(items,opt){
   const rows=(items||[]).slice(0,(opt&&opt.limit)||8);
@@ -4768,28 +5577,36 @@ function renderHomeFeeds(){
   if(lu)lu.textContent=homeFeedState.lastUpdated?`Last update: ${homeFeedState.lastUpdated}`:'Last update: pending';
 }
 function renderSignalsWatchSummary(){
-  const nodeChips=keySignalNodes(10).map(n=>`<span class="signals-watch-chip">${escapeHtml(cleanMojibakeString(n.name||''))}</span>`).join('');
+  const settings=signalSettings();
+  const entityChips=[...new Set([...(settings.manual_entity_queries||[]).slice(0,8),...keySignalNodes(8).map(n=>cleanMojibakeString(n.name||''))])]
+    .filter(Boolean).map(name=>`<span class="signals-watch-chip">${escapeHtml(name)}</span>`).join('');
   const peopleChips=keySignalPeople(8).map(p=>`<span class="signals-watch-chip">${escapeHtml(cleanMojibakeString(p.name||''))}${p.twitter?` | ${escapeHtml(p.twitter)}`:''}</span>`).join('');
+  const handleChips=[...new Set([...(settings.x_handles||[]).slice(0,10),...keyPeopleHandles(5)])]
+    .map(h=>normalizeTwitterHandle(h)).filter(Boolean).map(h=>`<span class="signals-watch-chip">@${escapeHtml(h)}</span>`).join('');
   return `
     <div class="signals-watch-grid">
       <div class="signals-watch-group">
-        <div class="signals-watch-label">Key Organizations</div>
-        <div class="signals-watch-chips">${nodeChips || '<div class="signals-empty">No organizations in watchlist.</div>'}</div>
+        <div class="signals-watch-label">Tracked Entities</div>
+        <div class="signals-watch-chips">${entityChips || '<div class="signals-empty">No entities in watchlist.</div>'}</div>
       </div>
       <div class="signals-watch-group">
         <div class="signals-watch-label">Key People</div>
         <div class="signals-watch-chips">${peopleChips || '<div class="signals-empty">No people handles in watchlist.</div>'}</div>
       </div>
+      <div class="signals-watch-group">
+        <div class="signals-watch-label">Tracked X Handles</div>
+        <div class="signals-watch-chips">${handleChips || '<div class="signals-empty">No X handles configured.</div>'}</div>
+      </div>
     </div>
   `;
 }
 function renderSignalsPanels(){
-  const all=feedSectionItems('all');
-  const news=feedSectionItems('news');
-  const blogs=feedSectionItems('blogs');
-  const xRows=feedSectionItems('x');
-  const reddit=feedSectionItems('reddit');
-  const github=feedSectionItems('github');
+  const all=signalsSectionItems('all');
+  const news=signalsSectionItems('news');
+  const blogs=signalsSectionItems('blogs');
+  const xRows=signalsSectionItems('x');
+  const reddit=signalsSectionItems('reddit');
+  const github=signalsSectionItems('github');
   const lead=el('signalsLead');
   const meta=el('signalsMeta');
   const updated=el('signalsUpdated');
@@ -4805,12 +5622,12 @@ function renderSignalsPanels(){
   }
   if(updated)updated.textContent=homeFeedState.lastUpdated?`Last update: ${homeFeedState.lastUpdated}`:'Last update: pending';
   const map=[
-    ['signalsTopList',all,{limit:12,summaryMax:170,emptyText:'No ranked signals yet.'}],
-    ['signalsNews',news,{limit:14,summaryMax:165,emptyText:'No news / web signals yet.'}],
-    ['signalsBlogs',blogs,{limit:14,summaryMax:165,emptyText:'No blog / RSS items yet.'}],
-    ['signalsX',xRows,{limit:14,summaryMax:165,emptyText:'No X / Twitter signals yet.'}],
-    ['signalsReddit',reddit,{limit:14,summaryMax:165,emptyText:'No Reddit signals yet.'}],
-    ['signalsGithub',github,{limit:12,summaryMax:150,emptyText:'No GitHub updates yet.'}]
+    ['signalsTopList',all,{limit:12,summaryMax:170,emptyText:'No ranked signals yet.',addToReadingList:true}],
+    ['signalsNews',news,{limit:14,summaryMax:165,emptyText:'No news / web signals yet.',addToReadingList:true}],
+    ['signalsBlogs',blogs,{limit:14,summaryMax:165,emptyText:'No blog / RSS items yet.',addToReadingList:true}],
+    ['signalsX',xRows,{limit:14,summaryMax:165,emptyText:'No X / Twitter signals yet.',addToReadingList:true}],
+    ['signalsReddit',reddit,{limit:14,summaryMax:165,emptyText:'No Reddit signals yet.',addToReadingList:true}],
+    ['signalsGithub',github,{limit:12,summaryMax:150,emptyText:'No GitHub updates yet.',addToReadingList:true}]
   ];
   map.forEach(([id,items,opt])=>{
     const host=el(id);
@@ -4826,31 +5643,37 @@ async function refreshHomeFeeds(force){
     return;
   }
   await fetchLiteratureSignalTerms(false);
+  const settings=signalSettings();
   const keyNodes=keySignalNodes(12);
   const nodeNames=[...new Set(keyNodes.flatMap(n=>entityAliases(n.name)).filter(Boolean))];
   const peopleNames=keyPeopleNames(6);
   const peopleQueries=peopleSpecificQueries(5);
   const focusTerms=signalVocabulary();
+  const manualEntities=(settings.manual_entity_queries||[]).slice(0,10);
   const generalQueries=[...new Set([...HOME_GENERAL_QUERIES,...focusTerms.slice(0,7),...projectKeywords().slice(0,4),'science credibility crisis','open access publishing'])].slice(0,10);
-  const nodeQueries=[...new Set([...nodeNames.map(n=>`"${n}"`),...peopleQueries,...relationWatchNames().slice(0,8).map(n=>`"${n}"`),...nodeSpecificQueries(10)])].slice(0,16);
+  const nodeQueries=[...new Set([...nodeNames.map(n=>`"${n}"`),...peopleQueries,...manualEntities.map(n=>`"${n}"`),...relationWatchNames().slice(0,8).map(n=>`"${n}"`),...nodeSpecificQueries(10)])].slice(0,18);
   const socialKeywords=[...new Set([...desciTwitterKeywords(9),...focusTerms.slice(0,8),...projectKeywords().slice(0,3),'research integrity','peer review reform'])].slice(0,10);
-  const twHandles=keyTwitterHandles(10);
+  const twHandles=[...new Set([...keyTwitterHandles(10),...(settings.x_handles||[]).map(normalizeTwitterHandle).filter(Boolean)])].slice(0,12);
   const xNewsQueries=[
     ...socialKeywords.map(q=>`site:x.com ${q}`),
     ...twHandles.map(h=>`site:x.com/${h}`),
     ...nodeNames.slice(0,5).map(n=>`site:x.com "${n}"`),
-    ...peopleNames.slice(0,4).map(n=>`site:x.com "${n}"`)
-  ].slice(0,16);
-  const redditQueries=[...new Set([...socialKeywords,'decentralized science','open science','metascience','research integrity','researchhub','openreview','openalex',...keyRedditQueries(6),...peopleNames.slice(0,3)])].slice(0,10);
-  const collectorSections=await fetchSignalCollectorFeed();
+    ...peopleNames.slice(0,4).map(n=>`site:x.com "${n}"`),
+    ...manualEntities.slice(0,4).map(n=>`site:x.com "${n}"`)
+  ].slice(0,18);
+  const redditQueries=[...new Set([...socialKeywords,'decentralized science','open science','metascience','research integrity','researchhub','openreview','openalex',...manualEntities.slice(0,4),...keyRedditQueries(6),...peopleNames.slice(0,3)])].slice(0,10);
+  const [collectorSections,signalSupplements]=await Promise.all([
+    fetchSignalCollectorFeed(),
+    fetchSignalSettingsSupplements(settings)
+  ]);
   const collectorReady=['all','news','blogs','x','reddit','github'].some(key=>Array.isArray(collectorSections[key]) && collectorSections[key].length);
   let newsPool=[],blogPool=[],xPool=[],redditPool=[],githubPool=[],rankedPool=[];
   if(collectorReady){
     // Prefer the local collector whenever it has data; it is intentionally more curated than
     // the browser-side fallbacks and keeps noisy web/social search results out of the dashboard.
-    newsPool=curateLiveFeedPool([...(collectorSections.news||[])]);
-    blogPool=curateLiveFeedPool([...(collectorSections.blogs||[])]);
-    xPool=curateLiveFeedPool([...(collectorSections.x||[])]);
+    newsPool=curateLiveFeedPool([...(collectorSections.news||[]),...(signalSupplements.news||[])]);
+    blogPool=curateLiveFeedPool([...(collectorSections.blogs||[]),...(signalSupplements.blogs||[])]);
+    xPool=curateLiveFeedPool([...(collectorSections.x||[]),...(signalSupplements.x||[])]);
     redditPool=curateLiveFeedPool([...(collectorSections.reddit||[])]);
     githubPool=curateLiveFeedPool([...(collectorSections.github||[])]);
     rankedPool=curateLiveFeedPool([
@@ -4875,9 +5698,9 @@ async function refreshHomeFeeds(force){
       fetchRedditSearchBatch(redditQueries,8,2),
       fetchGoogleNewsBatch(xNewsQueries,10,2)
     ]);
-    newsPool=curateLiveFeedPool([...curatedNews,...generalNews,...nodeNews,...peopleNews]);
-    blogPool=curateLiveFeedPool([...nodeBlogs]);
-    xPool=curateLiveFeedPool([...twitterHandles,...twitterKeywords,...xNews]);
+    newsPool=curateLiveFeedPool([...curatedNews,...generalNews,...nodeNews,...peopleNews,...(signalSupplements.news||[])]);
+    blogPool=curateLiveFeedPool([...nodeBlogs,...(signalSupplements.blogs||[])]);
+    xPool=curateLiveFeedPool([...twitterHandles,...twitterKeywords,...xNews,...(signalSupplements.x||[])]);
     redditPool=curateLiveFeedPool([...redditSubs,...redditSearch]);
     githubPool=curateLiveFeedPool([...nodeGit]);
     const combinedPool=curateLiveFeedPool([
@@ -4913,12 +5736,12 @@ async function refreshHomeFeeds(force){
     ? (collectorSections.all||[]).slice(0,28)
     : rankFeedItems(rankedPool,intents,28,{minHits:1});
   const sections={
-    all:decorate(allItems),
-    news:decorate(rankFeedItems(newsPool,intents,18,{minHits:1})),
-    blogs:decorate(rankFeedItems(blogPool,intents,18,{minHits:1})),
-    x:decorate(rankFeedItems(xPool,intents,18,{minHits:1})),
-    reddit:decorate(rankFeedItems(redditPool,intents,18,{minHits:1})),
-    github:decorate(rankFeedItems(githubPool,intents,16,{minHits:1}))
+    all:decorate(applySignalSettingsFilters(allItems)),
+    news:decorate(applySignalSettingsFilters(rankFeedItems(newsPool,intents,18,{minHits:1}))),
+    blogs:decorate(applySignalSettingsFilters(rankFeedItems(blogPool,intents,18,{minHits:1}))),
+    x:decorate(applySignalSettingsFilters(rankFeedItems(xPool,intents,18,{minHits:1}))),
+    reddit:decorate(applySignalSettingsFilters(rankFeedItems(redditPool,intents,18,{minHits:1}))),
+    github:decorate(applySignalSettingsFilters(rankFeedItems(githubPool,intents,16,{minHits:1})))
   };
   homeFeedState.sections=sections;
   homeFeedState.items=sections.all.length?sections.all:makeFeedEmptyState('No live articles responded yet. Refresh again in a moment.');
@@ -5217,6 +6040,8 @@ function renderGrants(){
   const m=el('main');
   const rows=visibleOpportunities();
   const selected=ensureGrantSelection(rows);
+  const liveOpp=(opportunityIntelState&&opportunityIntelState.analytics)||{};
+  const provider=(opportunityIntelState&&opportunityIntelState.provider_status)||{};
   const wrap=document.createElement('div');
   wrap.className='grants-wrap';
   wrap.innerHTML=`
@@ -5271,12 +6096,15 @@ function renderGrants(){
         <div class="grants-summary">
           <span class="tag-chip">${rows.length} visible</span>
           <span class="tag-chip">${nextUpcomingOpportunities(6).length} upcoming</span>
+          <span class="tag-chip">live grants ${liveOpp.grants_gov_hits||0}</span>
+          <span class="tag-chip">nih ${liveOpp.nih_project_hits||0}</span>
+          <span class="tag-chip">web ${liveOpp.gdelt_hits||0}</span>
           <span class="tag-chip">sort: ${escapeHtml(grantState.sortKey)} ${escapeHtml(grantState.sortDir)}</span>
         </div>
       </div>
       <div class="grants-table-head">
         <div class="grants-title" style="margin:0">Tracked Calls</div>
-        <div class="grants-table-note">Amounts are mixed currencies and shown as reported by the source.</div>
+        <div class="grants-table-note">Amounts are mixed currencies and shown as reported by the source. Live collector status: Grants.gov ${provider.grants_gov?'on':'off'} | NIH ${provider.nih_reporter?'on':'off'} | GDELT ${provider.gdelt?'on':'off'}.</div>
       </div>
       <div class="grants-table-wrap">
         <table class="grants-table">
@@ -5366,6 +6194,7 @@ function renderHome(){
 }
 function renderSignals(){
   const m=el('main');
+  const settings=signalSettings();
   const wrap=document.createElement('div');
   wrap.className='signals-wrap';
   wrap.innerHTML=`
@@ -5374,6 +6203,10 @@ function renderSignals(){
       <div class="signals-title">Detailed Intelligence Stream</div>
       <div class="signals-sub">Expanded monitoring for DeSci, decentralized peer review, metascience, research integrity, science publishing, and the key organizations and people in your map. Home keeps the top-ranked summary; this view keeps the broader stream.</div>
       <div class="signals-updated" id="signalsUpdated">Last update: pending</div>
+      <div class="signals-toolbar">
+        <button class="signals-toggle ${signalViewState.trustedOnly?'on':''}" type="button" onclick="toggleSignalsTrustedOnly()">${signalViewState.trustedOnly?'Trusted only on':'Trusted sources only'}</button>
+        <button class="signals-toggle ${signalViewState.settingsOpen?'on':''}" type="button" onclick="toggleSignalsSettings()">${signalViewState.settingsOpen?'Close settings':'Open settings'}</button>
+      </div>
     </section>
     <div class="signals-grid">
       <div class="signals-main">
@@ -5409,10 +6242,38 @@ function renderSignals(){
         </div>
       </div>
       <div class="signals-side">
+        <section class="signals-panel signals-settings-panel ${signalViewState.settingsOpen?'open':''}">
+          <div class="ticker-head">Signals Settings</div>
+          <div class="signals-help">One entry per line. RSS format: source | https://feed.url | topic | news or blogs. These settings filter the live app immediately; rerun the collector when you want the file-backed feed to match them exactly.</div>
+          <div class="signals-settings-grid" style="margin-top:10px">
+            <div class="field"><div class="flabel">X handles</div><textarea class="finput" id="signalsHandles">${escapeHtml(signalSettingLines('x_handles'))}</textarea></div>
+            <div class="field"><div class="flabel">RSS feeds</div><textarea class="finput" id="signalsRssFeeds">${escapeHtml(signalSettingLines('rss_feeds'))}</textarea></div>
+            <div class="field"><div class="flabel">Manual entity queries</div><textarea class="finput" id="signalsEntities">${escapeHtml(signalSettingLines('manual_entity_queries'))}</textarea></div>
+            <div class="field"><div class="flabel">Blocked terms</div><textarea class="finput" id="signalsBlockedTerms">${escapeHtml(signalSettingLines('blocked_terms'))}</textarea></div>
+            <div class="field"><div class="flabel">Blocked domains</div><textarea class="finput" id="signalsBlockedDomains">${escapeHtml(signalSettingLines('blocked_domains'))}</textarea></div>
+          </div>
+          <div class="detail-inline-actions" style="margin-top:10px">
+            <button class="btn" type="button" onclick="toggleSignalsSettings()">Close</button>
+            <button class="btn btn-fill" type="button" onclick="saveSignalsSettingsFromForm()">Save settings</button>
+          </div>
+        </section>
         <section class="signals-panel">
           <div class="ticker-head">Monitoring Registry</div>
           <div class="signals-section-note">High-overlap and high-cred actors currently weighted most strongly in the ranking.</div>
           <div id="signalsWatch"></div>
+        </section>
+        <section class="signals-panel">
+          <div class="ticker-head">Reading List</div>
+          <div class="signals-section-note">Save anything worth returning to. Use + read on a signal card, or add a manual article / website here.</div>
+          <div class="signals-settings-grid" style="margin-top:10px">
+            <div class="field"><div class="flabel">Title</div><input class="finput" id="signalsReadTitle" placeholder="Optional title"></div>
+            <div class="field"><div class="flabel">URL</div><input class="finput" id="signalsReadUrl" placeholder="https://..."></div>
+            <div class="field"><div class="flabel">Notes</div><textarea class="finput" id="signalsReadNotes" placeholder="Why this matters, what to revisit, who mentioned it..."></textarea></div>
+          </div>
+          <div class="detail-inline-actions" style="margin-top:10px">
+            <button class="btn btn-fill" type="button" onclick="addSignalReadingItemFromInputs()">Add link</button>
+          </div>
+          <div id="signalsReadingList" class="signals-reading-list" style="margin-top:10px"></div>
         </section>
         <section class="signals-panel">
           <div class="ticker-head">GitHub / Releases</div>
@@ -5424,6 +6285,7 @@ function renderSignals(){
   `;
   m.appendChild(wrap);
   renderSignalsPanels();
+  renderSignalsReadingList();
   const shouldForceFetch=!homeFeedState.items.length || (Date.now()-homeFeedLastFetchMs)>(7*60*1000);
   refreshHomeFeeds(shouldForceFetch);
   homeRefreshTimer=setInterval(()=>refreshHomeFeeds(true),12*60*1000);
@@ -5504,6 +6366,7 @@ function selNode(id){
   if(!n)return;
   n.tags=nodeTagList(n);
   n.overlapTags=overlapTagList(n);
+  const registry=registryOrgById(id)||{};
   const prov=n.provenance||{}, fin=n.financials||{}, bdg=(fin.scoreBreakdown||{});
   const conf=prov.confidence||'low';
   const confCls=confClass(conf);
@@ -5512,9 +6375,18 @@ function selNode(id){
   const rels=D.edges.filter(e=>e.s===id||e.t===id);
   const ppl=D.people.filter(pp=>(pp.orgs||[]).includes(id));
   const legacyPpl=legacyPeopleList(n,ppl);
+  const intel=intelOrgById(id)||{};
+  const research=researchOrgById(id)||{};
+  const oppSnapshot=entityOpportunitySnapshot({kind:'organization',name:n.name,subtitle:n.type||'',tags:[...(n.tags||[]),...(n.overlapTags||[])]});
+  const orgSignals=((intel&&intel.signals)||[]).slice(0,5);
+  const orgWorks=[...((research&&research.openalex_works)||[]),...((research&&research.crossref_works)||[])].slice(0,5);
   const credC=n.credScore>=60?'var(--sage)':n.credScore>=30?'var(--gold)':'var(--text-3)';
   const ovC=(n.overlapScore||0)>=60?'var(--gold)':(n.overlapScore||0)>=30?'var(--text-2)':'var(--text-3)';
   const srcHtml=(prov.sources||[]).map(s=>`<a class="src-chip" href="${escapeHtml(s.url||'#')}" target="_blank" rel="noopener">${escapeHtml(s.label||'Source')}${s.type?` | ${escapeHtml(s.type)}`:''}</a>`).join('');
+  const registryHtml=registrySummaryHtml(registry,'No source-registry rows for this organization yet.');
+  const intelHtml=signalListHtml(orgSignals,'No organization-specific live signals collected yet.');
+  const worksHtml=workListHtml(orgWorks,'No research graph matches yet.');
+  const oppHtml=opportunitySummaryHtml(oppSnapshot,'No clear opportunity matches yet.');
   const detailLinks=[
     detailLinkButton('Website',n.web,'web'),
     detailLinkButton('GitHub',n.git,'github'),
@@ -5574,6 +6446,16 @@ function selNode(id){
     ${prov.notes?`<div class="detail-section-note" style="margin-top:8px">${escapeHtml(prov.notes)}</div>`:''}
     ${srcHtml?`<div class="src-list">${srcHtml}</div>`:'<div class="detail-empty-note" style="margin-top:10px">No external source links attached yet.</div>'}
   </div>
+  <div class="score-grid" style="margin-bottom:12px">
+    <div class="score-cell"><span class="k">Signals</span><span class="v">${((intel&&intel.signals)||[]).length}</span></div>
+    <div class="score-cell"><span class="k">Works</span><span class="v">${orgWorks.length}</span></div>
+    <div class="score-cell"><span class="k">People</span><span class="v">${ppl.length}</span></div>
+    <div class="score-cell"><span class="k">Opps</span><span class="v">${oppSnapshot.count}</span></div>
+  </div>
+  <div class="field"><div class="flabel">Source registry</div>${registryHtml}</div>
+  <div class="field"><div class="flabel">Latest signals</div>${intelHtml}</div>
+  <div class="field"><div class="flabel">Research graph</div>${worksHtml}</div>
+  <div class="field"><div class="flabel">Opportunity intelligence</div>${oppHtml}</div>
   <div class="detail-grid-2 field" style="margin-bottom:12px">
     <div><div class="flabel">Type</div><input class="finput" value="${escapeHtml(n.type||'')}" onchange="upd('${id}','type',this.value)"></div>
     <div><div class="flabel">Stage</div><input class="finput" value="${escapeHtml(n.stage||'')}" onchange="upd('${id}','stage',this.value)"></div>
@@ -5694,6 +6576,9 @@ function addNodePersonM(orgId){
   <div class="field"><div class="flabel">Role</div><input class="finput" id="pRole" placeholder="e.g. Founder, researcher, advisor"></div>
   <div class="field"><div class="flabel">LinkedIn</div><input class="finput" id="pLinkedIn" placeholder="https://linkedin.com/in/..."></div>
   <div class="field"><div class="flabel">Twitter / X</div><input class="finput" id="pTwitter" placeholder="@handle"></div>
+  <div class="field"><div class="flabel">Website</div><input class="finput" id="pWebsite" placeholder="https://..."></div>
+  <div class="field"><div class="flabel">GitHub</div><input class="finput" id="pGitHub" placeholder="github.com/..."></div>
+  <div class="field"><div class="flabel">ORCID</div><input class="finput" id="pOrcid" placeholder="https://orcid.org/..."></div>
   <div class="modal-foot"><button class="btn" onclick="clM()">Cancel</button><button class="btn btn-fill" onclick="doAddNodePerson('${orgId}')">Add</button></div>`;
 }
 function doAddNodePerson(orgId){
@@ -5702,11 +6587,14 @@ function doAddNodePerson(orgId){
   const role=cleanMojibakeString(el('pRole')&&el('pRole').value).trim();
   const linkedin=cleanMojibakeString(el('pLinkedIn')&&el('pLinkedIn').value).trim();
   let twitter=cleanMojibakeString(el('pTwitter')&&el('pTwitter').value).trim();
+  const website=cleanMojibakeString(el('pWebsite')&&el('pWebsite').value).trim();
+  const github=cleanMojibakeString(el('pGitHub')&&el('pGitHub').value).trim();
+  const orcid=cleanMojibakeString(el('pOrcid')&&el('pOrcid').value).trim();
   if(twitter && !/^https?:\/\//i.test(twitter) && !twitter.startsWith('@'))twitter='@'+twitter;
   let pid=slugifyId(name,'p');
   let i=2;
   while(D.people.some(p=>p.id===pid)){pid=slugifyId(`${name}-${i}`,'p');i++}
-  D.people.push({id:pid,name,role,linkedin,twitter,orgs:[orgId]});
+  D.people.push(ensurePersonDefaults({id:pid,name,role,linkedin,twitter,website,github,orcid,openSourceInfo:'',notes:'',orgs:[orgId]}));
   clM();
   rerenderAfterNodeEdit(orgId);
 }
@@ -5759,9 +6647,9 @@ function impFile(inp){
   const f=inp.files[0];if(!f)return;
   const r=new FileReader();r.onload=e=>{
     try{
-      if(f.name.endsWith('.json')){D=cleanMojibakeDeep(JSON.parse(e.target.result));D.nodes.forEach(n=>{n.paper=n.paper||'';n.tags=Array.isArray(n.tags)?n.tags:String(n.tags||'').split(',').map(x=>cleanMojibakeString(x).trim()).filter(Boolean);n.overlapTags=Array.isArray(n.overlapTags)?n.overlapTags:String(n.overlapTags||'').split(',').map(x=>cleanMojibakeString(x).trim()).filter(Boolean);n.credScore=n.credScore||0;n.finModel=n.finModel||'';n.legalStructure=n.legalStructure||'unknown';n.apc=n.apc||false;n.profitScore=n.profitScore??50;n.openScienceScore=n.openScienceScore??((n.financials&&n.financials.openScienceCompatibilityScore)??50);n.finNote=n.finNote||'';n.fundingRaised=n.fundingRaised||'';n.provenance=n.provenance||{confidence:'low',hasUnverifiedClaims:true,sources:[],lastVerified:'',notes:''};n.financials=n.financials||{revenueSources:[],researcherPays:'unknown',institutionPays:'unknown',openScienceAlignment:'unknown',openScienceAlignmentNote:'',scoreBreakdown:{},openScienceCompatibilityScore:50,openScienceCompatibilityBand:'moderate',scoreAudit:{}};if(n.financials&&n.financials.openScienceCompatibilityScore==null)n.financials.openScienceCompatibilityScore=n.openScienceScore??50;n.sourceAsterisk=!!n.sourceAsterisk})}
+      if(f.name.endsWith('.json')){D=cleanMojibakeDeep(JSON.parse(e.target.result));normalizeDatasetState()}
       else if(f.name.endsWith('.csv')){const p=Papa.parse(e.target.result,{header:true});p.data.forEach(row=>{row=cleanMojibakeDeep(row);if(!row.id)return;const ex=D.nodes.find(n=>n.id===row.id);if(ex)Object.assign(ex,row);else D.nodes.push({...row,tags:(row.tags||'').split(',').map(x=>cleanMojibakeString(x).trim()).filter(Boolean),s1:+row.s1||0,s2:+row.s2||0,s3:+row.s3||0,s4:+row.s4||0,s5:+row.s5||0,decen:+row.decen||50,paper:row.paper||'',cf:{},overlapTags:[],credScore:0,profitScore:50})})}
-      D=cleanMojibakeDeep(D);
+      normalizeDatasetState();
       save();render();updateSB();updateStats();buildPills();
     }catch(err){alert('Import error: '+err.message)}
   };r.readAsText(f);inp.value='';
@@ -5787,13 +6675,7 @@ async function ghPull(){
     const raw=atob(j.content.replace(/\n/g,''));
     D=cleanMojibakeDeep(JSON.parse(raw));
     localStorage.setItem('gh-sha',j.sha);
-    D.nodes.forEach(n=>{n.paper=n.paper||'';n.tags=Array.isArray(n.tags)?n.tags:String(n.tags||'').split(',').map(x=>cleanMojibakeString(x).trim()).filter(Boolean);n.overlapTags=Array.isArray(n.overlapTags)?n.overlapTags:String(n.overlapTags||'').split(',').map(x=>cleanMojibakeString(x).trim()).filter(Boolean);n.credScore=n.credScore||0;n.notes=n.notes||''});
-    D.journal=D.journal||[];
-    D.litProgress=D.litProgress||{};
-    D.homeWatch=D.homeWatch||{videos:[],playlists:[]};
-    if(!Array.isArray(D.homeWatch.videos))D.homeWatch.videos=[];
-    if(!Array.isArray(D.homeWatch.playlists))D.homeWatch.playlists=[];
-    D.kanban=D.kanban||seedKanbanFromData();
+    normalizeDatasetState();
     save(true);
     render();updateSB();updateStats();buildPills();
     setSyncUI('ok','synced');

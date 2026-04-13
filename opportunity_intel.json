@@ -1,0 +1,4184 @@
+{
+  "generatedAt": "2026-04-13T01:34:37.578947+00:00",
+  "registryPath": "source_registry.json",
+  "keywords": [
+    "desci",
+    "decentralized science",
+    "decentralized peer review",
+    "open science",
+    "open science infrastructure",
+    "science publishing",
+    "scientific publishing",
+    "metascience",
+    "research integrity",
+    "reproducibility"
+  ],
+  "queries": [
+    {
+      "keyword": "desci",
+      "grants_gov": [],
+      "nih_projects": [
+        {
+          "appl_id": 11195444,
+          "title": "Electrophilic Halogenated Fatty Aldehydes Target Erythrocytes to Mediate Halogen Toxicity",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "OD",
+              "name": "NIH Office of the Director",
+              "abbreviation": "OD",
+              "total_cost": 1377000.0,
+              "direct_cost_ic": 1120500.0,
+              "indirect_cost_ic": 256500.0
+            }
+          ],
+          "org_name": "SAINT LOUIS UNIVERSITY",
+          "org_city": "SAINT LOUIS",
+          "org_country": "UNITED STATES",
+          "project_num": "1R01ES036487-01A1",
+          "opportunity_number": "RFA-ES-24-005",
+          "award_amount": 1377000,
+          "project_start_date": "2026-04-11T00:00:00",
+          "project_end_date": "2029-04-10T00:00:00",
+          "keyword": "desci",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11267570,
+          "title": "Targeting Evasion Factors: Discovery of novel antibodies for durable suppression of HSV reactivation",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "AI",
+              "name": "National Institute of Allergy and Infectious Diseases",
+              "abbreviation": "NIAID",
+              "total_cost": 215758.0,
+              "direct_cost_ic": 136855.0,
+              "indirect_cost_ic": 78903.0
+            }
+          ],
+          "org_name": "DARTMOUTH COLLEGE",
+          "org_city": "HANOVER",
+          "org_country": "UNITED STATES",
+          "project_num": "1R21AI195395-01",
+          "opportunity_number": "RFA-AI-24-068",
+          "award_amount": 215758,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2028-03-31T00:00:00",
+          "keyword": "desci",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11281868,
+          "title": "A mouse model to analyze Foxp3+ TFH cells",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "AI",
+              "name": "National Institute of Allergy and Infectious Diseases",
+              "abbreviation": "NIAID",
+              "total_cost": 158500.0,
+              "direct_cost_ic": 100000.0,
+              "indirect_cost_ic": 58500.0
+            }
+          ],
+          "org_name": "INDIANA UNIVERSITY INDIANAPOLIS",
+          "org_city": "INDIANAPOLIS",
+          "org_country": "UNITED STATES",
+          "project_num": "1R03AI196415-01",
+          "opportunity_number": "PA-25-302",
+          "award_amount": 158500,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2028-03-31T00:00:00",
+          "keyword": "desci",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11283264,
+          "title": "Comparative vertebrate neural crest contribution to the hematopoietic stem cell specification niche",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "HL",
+              "name": "National Heart Lung and Blood Institute",
+              "abbreviation": "NHLBI",
+              "total_cost": 140809.0,
+              "direct_cost_ic": 130379.0,
+              "indirect_cost_ic": 10430.0
+            }
+          ],
+          "org_name": "ST. JUDE CHILDREN'S RESEARCH HOSPITAL",
+          "org_city": "MEMPHIS",
+          "org_country": "UNITED STATES",
+          "project_num": "1K99HL183751-01",
+          "opportunity_number": "PA-24-194",
+          "award_amount": 140809,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2028-03-31T00:00:00",
+          "keyword": "desci",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11285531,
+          "title": "Mechanisms of Macrophage Manipulation by pathogenic SFG Rickettsia: Role of Mitochondrial and Immune Pathways",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "AI",
+              "name": "National Institute of Allergy and Infectious Diseases",
+              "abbreviation": "NIAID",
+              "total_cost": 440949.0,
+              "direct_cost_ic": 354785.0,
+              "indirect_cost_ic": 86164.0
+            }
+          ],
+          "org_name": "OLD DOMINION UNIVERSITY",
+          "org_city": "NORFOLK",
+          "org_country": "UNITED STATES",
+          "project_num": "1R21AI196490-01",
+          "opportunity_number": "PA-25-304",
+          "award_amount": 440949,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2027-03-31T00:00:00",
+          "keyword": "desci",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11298702,
+          "title": "Cytosolic DNA sensing pathway regulation via non-canonical NF-kB signaling",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "AI",
+              "name": "National Institute of Allergy and Infectious Diseases",
+              "abbreviation": "NIAID",
+              "total_cost": 372997.0,
+              "direct_cost_ic": 250000.0,
+              "indirect_cost_ic": 122997.0
+            }
+          ],
+          "org_name": "FLORIDA STATE UNIVERSITY",
+          "org_city": "TALLAHASSEE",
+          "org_country": "UNITED STATES",
+          "project_num": "1R01AI190082-01A1",
+          "opportunity_number": "PA-25-301",
+          "award_amount": 372997,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2031-03-31T00:00:00",
+          "keyword": "desci",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11289234,
+          "title": "Faster MRI through portable Resonance Gradient Coils with seamless calibration and reconstruction",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "EB",
+              "name": "National Institute of Biomedical Imaging and Bioengineering",
+              "abbreviation": "NIBIB",
+              "total_cost": 217500.0,
+              "direct_cost_ic": 150000.0,
+              "indirect_cost_ic": 67500.0
+            }
+          ],
+          "org_name": "STANFORD UNIVERSITY",
+          "org_city": "STANFORD",
+          "org_country": "UNITED STATES",
+          "project_num": "1R21EB038677-01",
+          "opportunity_number": "PA-25-304",
+          "award_amount": 217500,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2028-03-31T00:00:00",
+          "keyword": "desci",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11282378,
+          "title": "Mapping Activated Microglia and Their Effect on Cognitive Deficits in Adults with Sickle Cell Disease",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "HL",
+              "name": "National Heart Lung and Blood Institute",
+              "abbreviation": "NHLBI",
+              "total_cost": 186613.0,
+              "direct_cost_ic": 172957.0,
+              "indirect_cost_ic": 13656.0
+            }
+          ],
+          "org_name": "UNIVERSITY OF CINCINNATI",
+          "org_city": "CINCINNATI",
+          "org_country": "UNITED STATES",
+          "project_num": "1K23HL183818-01",
+          "opportunity_number": "PA-24-185",
+          "award_amount": 186613,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2031-03-31T00:00:00",
+          "keyword": "desci",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11388061,
+          "title": "2026 Annual Meeting of the American Society for Investigative Pathology",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "CA",
+              "name": "National Cancer Institute",
+              "abbreviation": "NCI",
+              "total_cost": 10000.0,
+              "direct_cost_ic": 10000.0,
+              "indirect_cost_ic": 0.0
+            }
+          ],
+          "org_name": "AMERICAN SOCIETY/INVESTIGATIVE PATHOLOGY",
+          "org_city": "ROCKVILLE",
+          "org_country": "UNITED STATES",
+          "project_num": "1R13CA314160-01",
+          "opportunity_number": "PA-25-080",
+          "award_amount": 10000,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2027-03-31T00:00:00",
+          "keyword": "desci",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11390698,
+          "title": "Real-time, seconds-resolved measurements of amino acid homeostasis and its regulation",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "EB",
+              "name": "National Institute of Biomedical Imaging and Bioengineering",
+              "abbreviation": "NIBIB",
+              "total_cost": 594748.0,
+              "direct_cost_ic": 469500.0,
+              "indirect_cost_ic": 125248.0
+            }
+          ],
+          "org_name": "UNIVERSITY OF CALIFORNIA SANTA BARBARA",
+          "org_city": "SANTA BARBARA",
+          "org_country": "UNITED STATES",
+          "project_num": "1R01EB038757-01A1",
+          "opportunity_number": "PA-25-301",
+          "award_amount": 594748,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2030-01-31T00:00:00",
+          "keyword": "desci",
+          "source": "NIH RePORTER"
+        }
+      ],
+      "gdelt_news": [],
+      "cordis": [],
+      "provider_status": {
+        "grants_gov": true,
+        "nih_reporter": true,
+        "gdelt": false,
+        "cordis": false
+      },
+      "errors": {
+        "grants_gov": null,
+        "nih_reporter": null,
+        "gdelt": {
+          "error": "HTTP Error 429: Too Many Requests",
+          "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%22desci%22&mode=ArtList&maxrecords=10&format=json&sort=DateDesc"
+        },
+        "cordis": {
+          "error": "missing CORDIS credentials",
+          "query": "desci"
+        }
+      }
+    },
+    {
+      "keyword": "decentralized science",
+      "grants_gov": [
+        {
+          "id": "352741",
+          "number": "N00173-24-S-BA01",
+          "title": "NRL Long Range Broad Agency Announcement (BAA) for Basic and Applied Research",
+          "agency_code": "DOD-ONR-NRL",
+          "agency_name": null,
+          "open_date": "03/01/2024",
+          "close_date": "09/30/2026",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "decentralized science",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "358882",
+          "number": "PD-19-126Y",
+          "title": "Science of Science: Discovery, Communication and Impact",
+          "agency_code": "NSF",
+          "agency_name": null,
+          "open_date": "05/09/2025",
+          "close_date": "",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "decentralized science",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "254073",
+          "number": "PD-14-5720",
+          "title": "Ocean Drilling Program",
+          "agency_code": "NSF",
+          "agency_name": null,
+          "open_date": "04/18/2014",
+          "close_date": "",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "decentralized science",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "351715",
+          "number": "PD-24-110Z",
+          "title": "ECosystem for Leading Innovation in Plasma Science and Engineering",
+          "agency_code": "NSF",
+          "agency_name": null,
+          "open_date": "01/06/2024",
+          "close_date": "08/11/2026",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "decentralized science",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "359996",
+          "number": "NNH25ZDA001N-RRNES",
+          "title": "ROSES 2025: A.4 Rapid Response and Novel Research in Earth Science",
+          "agency_code": "NASA-HQ",
+          "agency_name": null,
+          "open_date": "07/11/2025",
+          "close_date": "08/31/2026",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "decentralized science",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "350018",
+          "number": "PD-23-1242",
+          "title": "Plasma Physics",
+          "agency_code": "NSF",
+          "agency_name": null,
+          "open_date": "08/29/2023",
+          "close_date": "11/16/2026",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "decentralized science",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "360003",
+          "number": "NNH25ZDA001N-INNOVATE",
+          "title": "ROSES 2025: A.10 INNOVATE",
+          "agency_code": "NASA-HQ",
+          "agency_name": null,
+          "open_date": "07/11/2025",
+          "close_date": "08/31/2026",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "decentralized science",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "356055",
+          "number": "PD-24-8084",
+          "title": "Computational and Data-Enabled Science and Engineering",
+          "agency_code": "NSF",
+          "agency_name": null,
+          "open_date": "08/15/2024",
+          "close_date": "",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "decentralized science",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "328573",
+          "number": "PD-20-1260",
+          "title": "Mathematical Sciences Infrastructure Program",
+          "agency_code": "NSF",
+          "agency_name": null,
+          "open_date": "08/07/2020",
+          "close_date": "08/04/2026",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "decentralized science",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "347026",
+          "number": "23-569",
+          "title": "A Science of Science Approach to Analyzing and Innovating the Biomedical Research Enterprise",
+          "agency_code": "NSF",
+          "agency_name": null,
+          "open_date": "03/21/2023",
+          "close_date": "09/09/2026",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "decentralized science",
+          "source": "Grants.gov"
+        }
+      ],
+      "nih_projects": [
+        {
+          "appl_id": 11195444,
+          "title": "Electrophilic Halogenated Fatty Aldehydes Target Erythrocytes to Mediate Halogen Toxicity",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "OD",
+              "name": "NIH Office of the Director",
+              "abbreviation": "OD",
+              "total_cost": 1377000.0,
+              "direct_cost_ic": 1120500.0,
+              "indirect_cost_ic": 256500.0
+            }
+          ],
+          "org_name": "SAINT LOUIS UNIVERSITY",
+          "org_city": "SAINT LOUIS",
+          "org_country": "UNITED STATES",
+          "project_num": "1R01ES036487-01A1",
+          "opportunity_number": "RFA-ES-24-005",
+          "award_amount": 1377000,
+          "project_start_date": "2026-04-11T00:00:00",
+          "project_end_date": "2029-04-10T00:00:00",
+          "keyword": "decentralized science",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11267570,
+          "title": "Targeting Evasion Factors: Discovery of novel antibodies for durable suppression of HSV reactivation",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "AI",
+              "name": "National Institute of Allergy and Infectious Diseases",
+              "abbreviation": "NIAID",
+              "total_cost": 215758.0,
+              "direct_cost_ic": 136855.0,
+              "indirect_cost_ic": 78903.0
+            }
+          ],
+          "org_name": "DARTMOUTH COLLEGE",
+          "org_city": "HANOVER",
+          "org_country": "UNITED STATES",
+          "project_num": "1R21AI195395-01",
+          "opportunity_number": "RFA-AI-24-068",
+          "award_amount": 215758,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2028-03-31T00:00:00",
+          "keyword": "decentralized science",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11281868,
+          "title": "A mouse model to analyze Foxp3+ TFH cells",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "AI",
+              "name": "National Institute of Allergy and Infectious Diseases",
+              "abbreviation": "NIAID",
+              "total_cost": 158500.0,
+              "direct_cost_ic": 100000.0,
+              "indirect_cost_ic": 58500.0
+            }
+          ],
+          "org_name": "INDIANA UNIVERSITY INDIANAPOLIS",
+          "org_city": "INDIANAPOLIS",
+          "org_country": "UNITED STATES",
+          "project_num": "1R03AI196415-01",
+          "opportunity_number": "PA-25-302",
+          "award_amount": 158500,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2028-03-31T00:00:00",
+          "keyword": "decentralized science",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11283264,
+          "title": "Comparative vertebrate neural crest contribution to the hematopoietic stem cell specification niche",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "HL",
+              "name": "National Heart Lung and Blood Institute",
+              "abbreviation": "NHLBI",
+              "total_cost": 140809.0,
+              "direct_cost_ic": 130379.0,
+              "indirect_cost_ic": 10430.0
+            }
+          ],
+          "org_name": "ST. JUDE CHILDREN'S RESEARCH HOSPITAL",
+          "org_city": "MEMPHIS",
+          "org_country": "UNITED STATES",
+          "project_num": "1K99HL183751-01",
+          "opportunity_number": "PA-24-194",
+          "award_amount": 140809,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2028-03-31T00:00:00",
+          "keyword": "decentralized science",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11285531,
+          "title": "Mechanisms of Macrophage Manipulation by pathogenic SFG Rickettsia: Role of Mitochondrial and Immune Pathways",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "AI",
+              "name": "National Institute of Allergy and Infectious Diseases",
+              "abbreviation": "NIAID",
+              "total_cost": 440949.0,
+              "direct_cost_ic": 354785.0,
+              "indirect_cost_ic": 86164.0
+            }
+          ],
+          "org_name": "OLD DOMINION UNIVERSITY",
+          "org_city": "NORFOLK",
+          "org_country": "UNITED STATES",
+          "project_num": "1R21AI196490-01",
+          "opportunity_number": "PA-25-304",
+          "award_amount": 440949,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2027-03-31T00:00:00",
+          "keyword": "decentralized science",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11298702,
+          "title": "Cytosolic DNA sensing pathway regulation via non-canonical NF-kB signaling",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "AI",
+              "name": "National Institute of Allergy and Infectious Diseases",
+              "abbreviation": "NIAID",
+              "total_cost": 372997.0,
+              "direct_cost_ic": 250000.0,
+              "indirect_cost_ic": 122997.0
+            }
+          ],
+          "org_name": "FLORIDA STATE UNIVERSITY",
+          "org_city": "TALLAHASSEE",
+          "org_country": "UNITED STATES",
+          "project_num": "1R01AI190082-01A1",
+          "opportunity_number": "PA-25-301",
+          "award_amount": 372997,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2031-03-31T00:00:00",
+          "keyword": "decentralized science",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11289234,
+          "title": "Faster MRI through portable Resonance Gradient Coils with seamless calibration and reconstruction",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "EB",
+              "name": "National Institute of Biomedical Imaging and Bioengineering",
+              "abbreviation": "NIBIB",
+              "total_cost": 217500.0,
+              "direct_cost_ic": 150000.0,
+              "indirect_cost_ic": 67500.0
+            }
+          ],
+          "org_name": "STANFORD UNIVERSITY",
+          "org_city": "STANFORD",
+          "org_country": "UNITED STATES",
+          "project_num": "1R21EB038677-01",
+          "opportunity_number": "PA-25-304",
+          "award_amount": 217500,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2028-03-31T00:00:00",
+          "keyword": "decentralized science",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11282378,
+          "title": "Mapping Activated Microglia and Their Effect on Cognitive Deficits in Adults with Sickle Cell Disease",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "HL",
+              "name": "National Heart Lung and Blood Institute",
+              "abbreviation": "NHLBI",
+              "total_cost": 186613.0,
+              "direct_cost_ic": 172957.0,
+              "indirect_cost_ic": 13656.0
+            }
+          ],
+          "org_name": "UNIVERSITY OF CINCINNATI",
+          "org_city": "CINCINNATI",
+          "org_country": "UNITED STATES",
+          "project_num": "1K23HL183818-01",
+          "opportunity_number": "PA-24-185",
+          "award_amount": 186613,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2031-03-31T00:00:00",
+          "keyword": "decentralized science",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11388061,
+          "title": "2026 Annual Meeting of the American Society for Investigative Pathology",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "CA",
+              "name": "National Cancer Institute",
+              "abbreviation": "NCI",
+              "total_cost": 10000.0,
+              "direct_cost_ic": 10000.0,
+              "indirect_cost_ic": 0.0
+            }
+          ],
+          "org_name": "AMERICAN SOCIETY/INVESTIGATIVE PATHOLOGY",
+          "org_city": "ROCKVILLE",
+          "org_country": "UNITED STATES",
+          "project_num": "1R13CA314160-01",
+          "opportunity_number": "PA-25-080",
+          "award_amount": 10000,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2027-03-31T00:00:00",
+          "keyword": "decentralized science",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11390698,
+          "title": "Real-time, seconds-resolved measurements of amino acid homeostasis and its regulation",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "EB",
+              "name": "National Institute of Biomedical Imaging and Bioengineering",
+              "abbreviation": "NIBIB",
+              "total_cost": 594748.0,
+              "direct_cost_ic": 469500.0,
+              "indirect_cost_ic": 125248.0
+            }
+          ],
+          "org_name": "UNIVERSITY OF CALIFORNIA SANTA BARBARA",
+          "org_city": "SANTA BARBARA",
+          "org_country": "UNITED STATES",
+          "project_num": "1R01EB038757-01A1",
+          "opportunity_number": "PA-25-301",
+          "award_amount": 594748,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2030-01-31T00:00:00",
+          "keyword": "decentralized science",
+          "source": "NIH RePORTER"
+        }
+      ],
+      "gdelt_news": [],
+      "cordis": [],
+      "provider_status": {
+        "grants_gov": true,
+        "nih_reporter": true,
+        "gdelt": false,
+        "cordis": false
+      },
+      "errors": {
+        "grants_gov": null,
+        "nih_reporter": null,
+        "gdelt": {
+          "error": "HTTP Error 429: Too Many Requests",
+          "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%22decentralized%20science%22&mode=ArtList&maxrecords=10&format=json&sort=DateDesc"
+        },
+        "cordis": {
+          "error": "missing CORDIS credentials",
+          "query": "decentralized science"
+        }
+      }
+    },
+    {
+      "keyword": "decentralized peer review",
+      "grants_gov": [
+        {
+          "id": "327185",
+          "number": "DOS-USEU-PD-2020-002",
+          "title": "Public Diplomacy Small Grants Program",
+          "agency_code": "DOS-USEU",
+          "agency_name": null,
+          "open_date": "05/20/2020",
+          "close_date": "",
+          "status": "forecasted",
+          "doc_type": "forecast",
+          "aln": [],
+          "keyword": "decentralized peer review",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "339728",
+          "number": "W911NF-22-S-0011",
+          "title": "Tactical Behaviors for Autonomous Maneuver",
+          "agency_code": "DOD-AMC",
+          "agency_name": null,
+          "open_date": "04/22/2022",
+          "close_date": "",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "decentralized peer review",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "355385",
+          "number": "ESP24NOFODEFENSAYYO5",
+          "title": "Mission Spain Public Diplomacy NOFO Defensa y Yo 5.0, 2024-2025",
+          "agency_code": "DOS-ESP",
+          "agency_name": null,
+          "open_date": "07/23/2024",
+          "close_date": "",
+          "status": "forecasted",
+          "doc_type": "forecast",
+          "aln": [],
+          "keyword": "decentralized peer review",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "351124",
+          "number": "PA-23-317",
+          "title": "Competing Revisions to Existing NIH Single Project Research Grants and Cooperative Agreements (Clinical Trial Optional)",
+          "agency_code": "HHS-NIH11",
+          "agency_name": null,
+          "open_date": "11/24/2023",
+          "close_date": "11/24/2026",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "decentralized peer review",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "352455",
+          "number": "24-544",
+          "title": "Developmental Sciences",
+          "agency_code": "NSF",
+          "agency_name": null,
+          "open_date": "02/15/2024",
+          "close_date": "07/30/2026",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "decentralized peer review",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "359026",
+          "number": "2025VE-002A",
+          "title": "Curriculum and University Partnerships (CUP)",
+          "agency_code": "DOS-VEN",
+          "agency_name": null,
+          "open_date": "05/16/2025",
+          "close_date": "",
+          "status": "forecasted",
+          "doc_type": "forecast",
+          "aln": [],
+          "keyword": "decentralized peer review",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "360526",
+          "number": "HHS-2026-ACL-NIDILRR-IFST-0205",
+          "title": "Field Initiated Projects Program: Minority-Serving Institutions (MSI) -Research",
+          "agency_code": "HHS-ACL",
+          "agency_name": null,
+          "open_date": "02/10/2026",
+          "close_date": "04/13/2026",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "decentralized peer review",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "360527",
+          "number": "HHS-2026-ACL-NIDILRR-IFST-0206",
+          "title": "Field Initiated Projects Program: Minority-Serving Institutions (MSI) - Development",
+          "agency_code": "HHS-ACL",
+          "agency_name": null,
+          "open_date": "02/10/2026",
+          "close_date": "04/13/2026",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "decentralized peer review",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "357256",
+          "number": "PAR-25-052",
+          "title": "NIH StrokeNet Clinical Trials and Biomarker Studies for Stroke Treatment, Recovery, and Prevention (UG3/UH3 Clinical Trial Optional)",
+          "agency_code": "HHS-NIH11",
+          "agency_name": null,
+          "open_date": "11/20/2024",
+          "close_date": "11/19/2026",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "decentralized peer review",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "360524",
+          "number": "HHS-2026-ACL-NIDILRR-IFDV-0204",
+          "title": "Field Initiated Projects Program (Development)",
+          "agency_code": "HHS-ACL",
+          "agency_name": null,
+          "open_date": "09/05/2025",
+          "close_date": "",
+          "status": "forecasted",
+          "doc_type": "forecast",
+          "aln": [],
+          "keyword": "decentralized peer review",
+          "source": "Grants.gov"
+        }
+      ],
+      "nih_projects": [
+        {
+          "appl_id": 11195444,
+          "title": "Electrophilic Halogenated Fatty Aldehydes Target Erythrocytes to Mediate Halogen Toxicity",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "OD",
+              "name": "NIH Office of the Director",
+              "abbreviation": "OD",
+              "total_cost": 1377000.0,
+              "direct_cost_ic": 1120500.0,
+              "indirect_cost_ic": 256500.0
+            }
+          ],
+          "org_name": "SAINT LOUIS UNIVERSITY",
+          "org_city": "SAINT LOUIS",
+          "org_country": "UNITED STATES",
+          "project_num": "1R01ES036487-01A1",
+          "opportunity_number": "RFA-ES-24-005",
+          "award_amount": 1377000,
+          "project_start_date": "2026-04-11T00:00:00",
+          "project_end_date": "2029-04-10T00:00:00",
+          "keyword": "decentralized peer review",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11267570,
+          "title": "Targeting Evasion Factors: Discovery of novel antibodies for durable suppression of HSV reactivation",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "AI",
+              "name": "National Institute of Allergy and Infectious Diseases",
+              "abbreviation": "NIAID",
+              "total_cost": 215758.0,
+              "direct_cost_ic": 136855.0,
+              "indirect_cost_ic": 78903.0
+            }
+          ],
+          "org_name": "DARTMOUTH COLLEGE",
+          "org_city": "HANOVER",
+          "org_country": "UNITED STATES",
+          "project_num": "1R21AI195395-01",
+          "opportunity_number": "RFA-AI-24-068",
+          "award_amount": 215758,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2028-03-31T00:00:00",
+          "keyword": "decentralized peer review",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11281868,
+          "title": "A mouse model to analyze Foxp3+ TFH cells",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "AI",
+              "name": "National Institute of Allergy and Infectious Diseases",
+              "abbreviation": "NIAID",
+              "total_cost": 158500.0,
+              "direct_cost_ic": 100000.0,
+              "indirect_cost_ic": 58500.0
+            }
+          ],
+          "org_name": "INDIANA UNIVERSITY INDIANAPOLIS",
+          "org_city": "INDIANAPOLIS",
+          "org_country": "UNITED STATES",
+          "project_num": "1R03AI196415-01",
+          "opportunity_number": "PA-25-302",
+          "award_amount": 158500,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2028-03-31T00:00:00",
+          "keyword": "decentralized peer review",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11283264,
+          "title": "Comparative vertebrate neural crest contribution to the hematopoietic stem cell specification niche",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "HL",
+              "name": "National Heart Lung and Blood Institute",
+              "abbreviation": "NHLBI",
+              "total_cost": 140809.0,
+              "direct_cost_ic": 130379.0,
+              "indirect_cost_ic": 10430.0
+            }
+          ],
+          "org_name": "ST. JUDE CHILDREN'S RESEARCH HOSPITAL",
+          "org_city": "MEMPHIS",
+          "org_country": "UNITED STATES",
+          "project_num": "1K99HL183751-01",
+          "opportunity_number": "PA-24-194",
+          "award_amount": 140809,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2028-03-31T00:00:00",
+          "keyword": "decentralized peer review",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11285531,
+          "title": "Mechanisms of Macrophage Manipulation by pathogenic SFG Rickettsia: Role of Mitochondrial and Immune Pathways",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "AI",
+              "name": "National Institute of Allergy and Infectious Diseases",
+              "abbreviation": "NIAID",
+              "total_cost": 440949.0,
+              "direct_cost_ic": 354785.0,
+              "indirect_cost_ic": 86164.0
+            }
+          ],
+          "org_name": "OLD DOMINION UNIVERSITY",
+          "org_city": "NORFOLK",
+          "org_country": "UNITED STATES",
+          "project_num": "1R21AI196490-01",
+          "opportunity_number": "PA-25-304",
+          "award_amount": 440949,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2027-03-31T00:00:00",
+          "keyword": "decentralized peer review",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11298702,
+          "title": "Cytosolic DNA sensing pathway regulation via non-canonical NF-kB signaling",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "AI",
+              "name": "National Institute of Allergy and Infectious Diseases",
+              "abbreviation": "NIAID",
+              "total_cost": 372997.0,
+              "direct_cost_ic": 250000.0,
+              "indirect_cost_ic": 122997.0
+            }
+          ],
+          "org_name": "FLORIDA STATE UNIVERSITY",
+          "org_city": "TALLAHASSEE",
+          "org_country": "UNITED STATES",
+          "project_num": "1R01AI190082-01A1",
+          "opportunity_number": "PA-25-301",
+          "award_amount": 372997,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2031-03-31T00:00:00",
+          "keyword": "decentralized peer review",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11289234,
+          "title": "Faster MRI through portable Resonance Gradient Coils with seamless calibration and reconstruction",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "EB",
+              "name": "National Institute of Biomedical Imaging and Bioengineering",
+              "abbreviation": "NIBIB",
+              "total_cost": 217500.0,
+              "direct_cost_ic": 150000.0,
+              "indirect_cost_ic": 67500.0
+            }
+          ],
+          "org_name": "STANFORD UNIVERSITY",
+          "org_city": "STANFORD",
+          "org_country": "UNITED STATES",
+          "project_num": "1R21EB038677-01",
+          "opportunity_number": "PA-25-304",
+          "award_amount": 217500,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2028-03-31T00:00:00",
+          "keyword": "decentralized peer review",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11282378,
+          "title": "Mapping Activated Microglia and Their Effect on Cognitive Deficits in Adults with Sickle Cell Disease",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "HL",
+              "name": "National Heart Lung and Blood Institute",
+              "abbreviation": "NHLBI",
+              "total_cost": 186613.0,
+              "direct_cost_ic": 172957.0,
+              "indirect_cost_ic": 13656.0
+            }
+          ],
+          "org_name": "UNIVERSITY OF CINCINNATI",
+          "org_city": "CINCINNATI",
+          "org_country": "UNITED STATES",
+          "project_num": "1K23HL183818-01",
+          "opportunity_number": "PA-24-185",
+          "award_amount": 186613,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2031-03-31T00:00:00",
+          "keyword": "decentralized peer review",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11388061,
+          "title": "2026 Annual Meeting of the American Society for Investigative Pathology",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "CA",
+              "name": "National Cancer Institute",
+              "abbreviation": "NCI",
+              "total_cost": 10000.0,
+              "direct_cost_ic": 10000.0,
+              "indirect_cost_ic": 0.0
+            }
+          ],
+          "org_name": "AMERICAN SOCIETY/INVESTIGATIVE PATHOLOGY",
+          "org_city": "ROCKVILLE",
+          "org_country": "UNITED STATES",
+          "project_num": "1R13CA314160-01",
+          "opportunity_number": "PA-25-080",
+          "award_amount": 10000,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2027-03-31T00:00:00",
+          "keyword": "decentralized peer review",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11390698,
+          "title": "Real-time, seconds-resolved measurements of amino acid homeostasis and its regulation",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "EB",
+              "name": "National Institute of Biomedical Imaging and Bioengineering",
+              "abbreviation": "NIBIB",
+              "total_cost": 594748.0,
+              "direct_cost_ic": 469500.0,
+              "indirect_cost_ic": 125248.0
+            }
+          ],
+          "org_name": "UNIVERSITY OF CALIFORNIA SANTA BARBARA",
+          "org_city": "SANTA BARBARA",
+          "org_country": "UNITED STATES",
+          "project_num": "1R01EB038757-01A1",
+          "opportunity_number": "PA-25-301",
+          "award_amount": 594748,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2030-01-31T00:00:00",
+          "keyword": "decentralized peer review",
+          "source": "NIH RePORTER"
+        }
+      ],
+      "gdelt_news": [],
+      "cordis": [],
+      "provider_status": {
+        "grants_gov": true,
+        "nih_reporter": true,
+        "gdelt": false,
+        "cordis": false
+      },
+      "errors": {
+        "grants_gov": null,
+        "nih_reporter": null,
+        "gdelt": {
+          "error": "HTTP Error 429: Too Many Requests",
+          "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%22decentralized%20peer%20review%22&mode=ArtList&maxrecords=10&format=json&sort=DateDesc"
+        },
+        "cordis": {
+          "error": "missing CORDIS credentials",
+          "query": "decentralized peer review"
+        }
+      }
+    },
+    {
+      "keyword": "open science",
+      "grants_gov": [
+        {
+          "id": "353475",
+          "number": "PD-24-7414",
+          "title": "Cyberinfrastructure for Public Access and Open Science",
+          "agency_code": "NSF",
+          "agency_name": null,
+          "open_date": "04/10/2024",
+          "close_date": "",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "open science",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "360678",
+          "number": "DE-FOA-0003600",
+          "title": "FY 2026 Continuation of Solicitation for the Office of Science Financial Assistance Program",
+          "agency_code": "PAMS-SC",
+          "agency_name": null,
+          "open_date": "09/30/2025",
+          "close_date": "09/30/2026",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "open science",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "361239",
+          "number": "RFA-OD-26-034",
+          "title": "Building Sustainable Software Tools for Open Science (R03 Clinical Trial Not Allowed)",
+          "agency_code": "HHS-NIH11",
+          "agency_name": null,
+          "open_date": "02/05/2026",
+          "close_date": "",
+          "status": "forecasted",
+          "doc_type": "forecast",
+          "aln": [],
+          "keyword": "open science",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "351404",
+          "number": "HM047623BAA0001",
+          "title": "Boosting Innovative GEOINT - Science &amp; Technology Broad Agency Announcement (BIG-ST BAA)",
+          "agency_code": "DOD-NGIA",
+          "agency_name": null,
+          "open_date": "12/15/2023",
+          "close_date": "12/14/2026",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "open science",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "359996",
+          "number": "NNH25ZDA001N-RRNES",
+          "title": "ROSES 2025: A.4 Rapid Response and Novel Research in Earth Science",
+          "agency_code": "NASA-HQ",
+          "agency_name": null,
+          "open_date": "07/11/2025",
+          "close_date": "08/31/2026",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "open science",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "360003",
+          "number": "NNH25ZDA001N-INNOVATE",
+          "title": "ROSES 2025: A.10 INNOVATE",
+          "agency_code": "NASA-HQ",
+          "agency_name": null,
+          "open_date": "07/11/2025",
+          "close_date": "08/31/2026",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "open science",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "350952",
+          "number": "DE-FOA-0003164",
+          "title": "SPURRING PROJECTS TO ADVANCE ENERGY RESEARCH AND KNOWLEDGE SWIFTLY (SPARKS)",
+          "agency_code": "DOE-ARPAE",
+          "agency_name": null,
+          "open_date": "11/09/2023",
+          "close_date": "09/30/2029",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "open science",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "344634",
+          "number": "PD-22-1332",
+          "title": "Social Psychology",
+          "agency_code": "NSF",
+          "agency_name": null,
+          "open_date": "11/22/2022",
+          "close_date": "07/15/2026",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "open science",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "361840",
+          "number": "PDS-HON-AEIF-FY26-01",
+          "title": "Alumni Engagement Innovation Fund (AEIF) 2026",
+          "agency_code": "DOS-HND",
+          "agency_name": null,
+          "open_date": "04/09/2026",
+          "close_date": "05/12/2026",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "open science",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "350002",
+          "number": "23-619",
+          "title": "Accelerating Research through International Network-to-Network Collaborations",
+          "agency_code": "NSF",
+          "agency_name": null,
+          "open_date": "08/26/2023",
+          "close_date": "09/21/2026",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "open science",
+          "source": "Grants.gov"
+        }
+      ],
+      "nih_projects": [
+        {
+          "appl_id": 11195444,
+          "title": "Electrophilic Halogenated Fatty Aldehydes Target Erythrocytes to Mediate Halogen Toxicity",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "OD",
+              "name": "NIH Office of the Director",
+              "abbreviation": "OD",
+              "total_cost": 1377000.0,
+              "direct_cost_ic": 1120500.0,
+              "indirect_cost_ic": 256500.0
+            }
+          ],
+          "org_name": "SAINT LOUIS UNIVERSITY",
+          "org_city": "SAINT LOUIS",
+          "org_country": "UNITED STATES",
+          "project_num": "1R01ES036487-01A1",
+          "opportunity_number": "RFA-ES-24-005",
+          "award_amount": 1377000,
+          "project_start_date": "2026-04-11T00:00:00",
+          "project_end_date": "2029-04-10T00:00:00",
+          "keyword": "open science",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11267570,
+          "title": "Targeting Evasion Factors: Discovery of novel antibodies for durable suppression of HSV reactivation",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "AI",
+              "name": "National Institute of Allergy and Infectious Diseases",
+              "abbreviation": "NIAID",
+              "total_cost": 215758.0,
+              "direct_cost_ic": 136855.0,
+              "indirect_cost_ic": 78903.0
+            }
+          ],
+          "org_name": "DARTMOUTH COLLEGE",
+          "org_city": "HANOVER",
+          "org_country": "UNITED STATES",
+          "project_num": "1R21AI195395-01",
+          "opportunity_number": "RFA-AI-24-068",
+          "award_amount": 215758,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2028-03-31T00:00:00",
+          "keyword": "open science",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11281868,
+          "title": "A mouse model to analyze Foxp3+ TFH cells",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "AI",
+              "name": "National Institute of Allergy and Infectious Diseases",
+              "abbreviation": "NIAID",
+              "total_cost": 158500.0,
+              "direct_cost_ic": 100000.0,
+              "indirect_cost_ic": 58500.0
+            }
+          ],
+          "org_name": "INDIANA UNIVERSITY INDIANAPOLIS",
+          "org_city": "INDIANAPOLIS",
+          "org_country": "UNITED STATES",
+          "project_num": "1R03AI196415-01",
+          "opportunity_number": "PA-25-302",
+          "award_amount": 158500,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2028-03-31T00:00:00",
+          "keyword": "open science",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11283264,
+          "title": "Comparative vertebrate neural crest contribution to the hematopoietic stem cell specification niche",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "HL",
+              "name": "National Heart Lung and Blood Institute",
+              "abbreviation": "NHLBI",
+              "total_cost": 140809.0,
+              "direct_cost_ic": 130379.0,
+              "indirect_cost_ic": 10430.0
+            }
+          ],
+          "org_name": "ST. JUDE CHILDREN'S RESEARCH HOSPITAL",
+          "org_city": "MEMPHIS",
+          "org_country": "UNITED STATES",
+          "project_num": "1K99HL183751-01",
+          "opportunity_number": "PA-24-194",
+          "award_amount": 140809,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2028-03-31T00:00:00",
+          "keyword": "open science",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11285531,
+          "title": "Mechanisms of Macrophage Manipulation by pathogenic SFG Rickettsia: Role of Mitochondrial and Immune Pathways",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "AI",
+              "name": "National Institute of Allergy and Infectious Diseases",
+              "abbreviation": "NIAID",
+              "total_cost": 440949.0,
+              "direct_cost_ic": 354785.0,
+              "indirect_cost_ic": 86164.0
+            }
+          ],
+          "org_name": "OLD DOMINION UNIVERSITY",
+          "org_city": "NORFOLK",
+          "org_country": "UNITED STATES",
+          "project_num": "1R21AI196490-01",
+          "opportunity_number": "PA-25-304",
+          "award_amount": 440949,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2027-03-31T00:00:00",
+          "keyword": "open science",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11298702,
+          "title": "Cytosolic DNA sensing pathway regulation via non-canonical NF-kB signaling",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "AI",
+              "name": "National Institute of Allergy and Infectious Diseases",
+              "abbreviation": "NIAID",
+              "total_cost": 372997.0,
+              "direct_cost_ic": 250000.0,
+              "indirect_cost_ic": 122997.0
+            }
+          ],
+          "org_name": "FLORIDA STATE UNIVERSITY",
+          "org_city": "TALLAHASSEE",
+          "org_country": "UNITED STATES",
+          "project_num": "1R01AI190082-01A1",
+          "opportunity_number": "PA-25-301",
+          "award_amount": 372997,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2031-03-31T00:00:00",
+          "keyword": "open science",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11289234,
+          "title": "Faster MRI through portable Resonance Gradient Coils with seamless calibration and reconstruction",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "EB",
+              "name": "National Institute of Biomedical Imaging and Bioengineering",
+              "abbreviation": "NIBIB",
+              "total_cost": 217500.0,
+              "direct_cost_ic": 150000.0,
+              "indirect_cost_ic": 67500.0
+            }
+          ],
+          "org_name": "STANFORD UNIVERSITY",
+          "org_city": "STANFORD",
+          "org_country": "UNITED STATES",
+          "project_num": "1R21EB038677-01",
+          "opportunity_number": "PA-25-304",
+          "award_amount": 217500,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2028-03-31T00:00:00",
+          "keyword": "open science",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11282378,
+          "title": "Mapping Activated Microglia and Their Effect on Cognitive Deficits in Adults with Sickle Cell Disease",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "HL",
+              "name": "National Heart Lung and Blood Institute",
+              "abbreviation": "NHLBI",
+              "total_cost": 186613.0,
+              "direct_cost_ic": 172957.0,
+              "indirect_cost_ic": 13656.0
+            }
+          ],
+          "org_name": "UNIVERSITY OF CINCINNATI",
+          "org_city": "CINCINNATI",
+          "org_country": "UNITED STATES",
+          "project_num": "1K23HL183818-01",
+          "opportunity_number": "PA-24-185",
+          "award_amount": 186613,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2031-03-31T00:00:00",
+          "keyword": "open science",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11388061,
+          "title": "2026 Annual Meeting of the American Society for Investigative Pathology",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "CA",
+              "name": "National Cancer Institute",
+              "abbreviation": "NCI",
+              "total_cost": 10000.0,
+              "direct_cost_ic": 10000.0,
+              "indirect_cost_ic": 0.0
+            }
+          ],
+          "org_name": "AMERICAN SOCIETY/INVESTIGATIVE PATHOLOGY",
+          "org_city": "ROCKVILLE",
+          "org_country": "UNITED STATES",
+          "project_num": "1R13CA314160-01",
+          "opportunity_number": "PA-25-080",
+          "award_amount": 10000,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2027-03-31T00:00:00",
+          "keyword": "open science",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11390698,
+          "title": "Real-time, seconds-resolved measurements of amino acid homeostasis and its regulation",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "EB",
+              "name": "National Institute of Biomedical Imaging and Bioengineering",
+              "abbreviation": "NIBIB",
+              "total_cost": 594748.0,
+              "direct_cost_ic": 469500.0,
+              "indirect_cost_ic": 125248.0
+            }
+          ],
+          "org_name": "UNIVERSITY OF CALIFORNIA SANTA BARBARA",
+          "org_city": "SANTA BARBARA",
+          "org_country": "UNITED STATES",
+          "project_num": "1R01EB038757-01A1",
+          "opportunity_number": "PA-25-301",
+          "award_amount": 594748,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2030-01-31T00:00:00",
+          "keyword": "open science",
+          "source": "NIH RePORTER"
+        }
+      ],
+      "gdelt_news": [
+        {
+          "title": "科学之家 ： 让我们组建一支 船队 。- 虎嗅网",
+          "url": "https://www.huxiu.com/article/4849850.html",
+          "domain": "huxiu.com",
+          "seendate": "20260412T124500Z",
+          "language": "Chinese",
+          "sourcecountry": "China",
+          "keyword": "open science",
+          "source": "GDELT"
+        },
+        {
+          "title": "University websites : Why are so many of them dysfunctional ?",
+          "url": "https://www.universityworldnews.com/post.php?story=20260407081719537",
+          "domain": "universityworldnews.com",
+          "seendate": "20260412T070000Z",
+          "language": "English",
+          "sourcecountry": "United States",
+          "keyword": "open science",
+          "source": "GDELT"
+        },
+        {
+          "title": "30分钟下线一台 ！ 全球首条万台级人形机器人自动化产线在广东启用 _ 南方网",
+          "url": "https://news.southcn.com/node_ac2b0b62a4/494e362040.shtml",
+          "domain": "news.southcn.com",
+          "seendate": "20260412T030000Z",
+          "language": "Chinese",
+          "sourcecountry": "China",
+          "keyword": "open science",
+          "source": "GDELT"
+        },
+        {
+          "title": "校园体育教育 ： 学校体育课时得到保障 广场舞 、 校园学校到2025年 - 奉若神明网",
+          "url": "http://www.nashfm923krst.com/html/94b55699349.html",
+          "domain": "nashfm923krst.com",
+          "seendate": "20260411T213000Z",
+          "language": "Chinese",
+          "sourcecountry": "United States",
+          "keyword": "open science",
+          "source": "GDELT"
+        },
+        {
+          "title": "人工智能赋能基础教育高质量发展暨 《 全民阅读促进条例 》 实施推进会在泰安召开",
+          "url": "https://baijiahao.baidu.com/s?id=1862182805835078510",
+          "domain": "baijiahao.baidu.com",
+          "seendate": "20260411T183000Z",
+          "language": "Chinese",
+          "sourcecountry": "China",
+          "keyword": "open science",
+          "source": "GDELT"
+        },
+        {
+          "title": "人民公园 、 花园路纬五路 、 郁香路交通改造完成 ！ 以后这么走",
+          "url": "https://baijiahao.baidu.com/s?id=1862085304203140954",
+          "domain": "baijiahao.baidu.com",
+          "seendate": "20260411T163000Z",
+          "language": "Chinese",
+          "sourcecountry": "China",
+          "keyword": "open science",
+          "source": "GDELT"
+        },
+        {
+          "title": "高端创新资源推动产业发展 北京科技大学技术成果转化对接活动在石举行",
+          "url": "https://baijiahao.baidu.com/s?id=1862126681815284637",
+          "domain": "baijiahao.baidu.com",
+          "seendate": "20260411T124500Z",
+          "language": "Chinese",
+          "sourcecountry": "China",
+          "keyword": "open science",
+          "source": "GDELT"
+        },
+        {
+          "title": "全国首单 ！ 城市更新+科技创新 REITs ， 来了",
+          "url": "https://www.stcn.com/article/detail/3742807.html",
+          "domain": "stcn.com",
+          "seendate": "20260411T111500Z",
+          "language": "Chinese",
+          "sourcecountry": "China",
+          "keyword": "open science",
+          "source": "GDELT"
+        },
+        {
+          "title": "低空经济起飞 ， 钱险链 三难 ？ 广州组建金融投资专委会",
+          "url": "https://m.mp.oeeee.com/a/BAAFRD0000202604111554897.html",
+          "domain": "m.mp.oeeee.com",
+          "seendate": "20260411T103000Z",
+          "language": "Chinese",
+          "sourcecountry": "China",
+          "keyword": "open science",
+          "source": "GDELT"
+        },
+        {
+          "title": "一步一步往上走 中国经济向新向优发展观察",
+          "url": "https://baijiahao.baidu.com/s?id=1862138977428368634",
+          "domain": "baijiahao.baidu.com",
+          "seendate": "20260411T093000Z",
+          "language": "Chinese",
+          "sourcecountry": "China",
+          "keyword": "open science",
+          "source": "GDELT"
+        }
+      ],
+      "cordis": [],
+      "provider_status": {
+        "grants_gov": true,
+        "nih_reporter": true,
+        "gdelt": true,
+        "cordis": false
+      },
+      "errors": {
+        "grants_gov": null,
+        "nih_reporter": null,
+        "gdelt": null,
+        "cordis": {
+          "error": "missing CORDIS credentials",
+          "query": "open science"
+        }
+      }
+    },
+    {
+      "keyword": "open science infrastructure",
+      "grants_gov": [
+        {
+          "id": "353475",
+          "number": "PD-24-7414",
+          "title": "Cyberinfrastructure for Public Access and Open Science",
+          "agency_code": "NSF",
+          "agency_name": null,
+          "open_date": "04/10/2024",
+          "close_date": "",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "open science infrastructure",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "356536",
+          "number": "PD-24-7789",
+          "title": "Geospace Cluster",
+          "agency_code": "NSF",
+          "agency_name": null,
+          "open_date": "09/26/2024",
+          "close_date": "",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "open science infrastructure",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "344634",
+          "number": "PD-22-1332",
+          "title": "Social Psychology",
+          "agency_code": "NSF",
+          "agency_name": null,
+          "open_date": "11/22/2022",
+          "close_date": "07/15/2026",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "open science infrastructure",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "356538",
+          "number": "PD-24-7790",
+          "title": "Atmosphere Cluster",
+          "agency_code": "NSF",
+          "agency_name": null,
+          "open_date": "09/26/2024",
+          "close_date": "",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "open science infrastructure",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "358397",
+          "number": "PD-25-342Y",
+          "title": "Infrastructure Systems and People",
+          "agency_code": "NSF",
+          "agency_name": null,
+          "open_date": "01/25/2025",
+          "close_date": "",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "open science infrastructure",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "361239",
+          "number": "RFA-OD-26-034",
+          "title": "Building Sustainable Software Tools for Open Science (R03 Clinical Trial Not Allowed)",
+          "agency_code": "HHS-NIH11",
+          "agency_name": null,
+          "open_date": "02/05/2026",
+          "close_date": "",
+          "status": "forecasted",
+          "doc_type": "forecast",
+          "aln": [],
+          "keyword": "open science infrastructure",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "350952",
+          "number": "DE-FOA-0003164",
+          "title": "SPURRING PROJECTS TO ADVANCE ENERGY RESEARCH AND KNOWLEDGE SWIFTLY (SPARKS)",
+          "agency_code": "DOE-ARPAE",
+          "agency_name": null,
+          "open_date": "11/09/2023",
+          "close_date": "09/30/2029",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "open science infrastructure",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "351923",
+          "number": "24-528",
+          "title": "EPSCoR Research Infrastructure Improvement (RII): EPSCoR Research Fellows",
+          "agency_code": "NSF",
+          "agency_name": null,
+          "open_date": "01/23/2024",
+          "close_date": "04/14/2026",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "open science infrastructure",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "361297",
+          "number": "26-505",
+          "title": "National Quantum and Nanotechnology Infrastructure",
+          "agency_code": "NSF",
+          "agency_name": null,
+          "open_date": "02/13/2026",
+          "close_date": "05/14/2026",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "open science infrastructure",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "361840",
+          "number": "PDS-HON-AEIF-FY26-01",
+          "title": "Alumni Engagement Innovation Fund (AEIF) 2026",
+          "agency_code": "DOS-HND",
+          "agency_name": null,
+          "open_date": "04/09/2026",
+          "close_date": "05/12/2026",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "open science infrastructure",
+          "source": "Grants.gov"
+        }
+      ],
+      "nih_projects": [
+        {
+          "appl_id": 11195444,
+          "title": "Electrophilic Halogenated Fatty Aldehydes Target Erythrocytes to Mediate Halogen Toxicity",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "OD",
+              "name": "NIH Office of the Director",
+              "abbreviation": "OD",
+              "total_cost": 1377000.0,
+              "direct_cost_ic": 1120500.0,
+              "indirect_cost_ic": 256500.0
+            }
+          ],
+          "org_name": "SAINT LOUIS UNIVERSITY",
+          "org_city": "SAINT LOUIS",
+          "org_country": "UNITED STATES",
+          "project_num": "1R01ES036487-01A1",
+          "opportunity_number": "RFA-ES-24-005",
+          "award_amount": 1377000,
+          "project_start_date": "2026-04-11T00:00:00",
+          "project_end_date": "2029-04-10T00:00:00",
+          "keyword": "open science infrastructure",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11267570,
+          "title": "Targeting Evasion Factors: Discovery of novel antibodies for durable suppression of HSV reactivation",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "AI",
+              "name": "National Institute of Allergy and Infectious Diseases",
+              "abbreviation": "NIAID",
+              "total_cost": 215758.0,
+              "direct_cost_ic": 136855.0,
+              "indirect_cost_ic": 78903.0
+            }
+          ],
+          "org_name": "DARTMOUTH COLLEGE",
+          "org_city": "HANOVER",
+          "org_country": "UNITED STATES",
+          "project_num": "1R21AI195395-01",
+          "opportunity_number": "RFA-AI-24-068",
+          "award_amount": 215758,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2028-03-31T00:00:00",
+          "keyword": "open science infrastructure",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11281868,
+          "title": "A mouse model to analyze Foxp3+ TFH cells",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "AI",
+              "name": "National Institute of Allergy and Infectious Diseases",
+              "abbreviation": "NIAID",
+              "total_cost": 158500.0,
+              "direct_cost_ic": 100000.0,
+              "indirect_cost_ic": 58500.0
+            }
+          ],
+          "org_name": "INDIANA UNIVERSITY INDIANAPOLIS",
+          "org_city": "INDIANAPOLIS",
+          "org_country": "UNITED STATES",
+          "project_num": "1R03AI196415-01",
+          "opportunity_number": "PA-25-302",
+          "award_amount": 158500,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2028-03-31T00:00:00",
+          "keyword": "open science infrastructure",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11283264,
+          "title": "Comparative vertebrate neural crest contribution to the hematopoietic stem cell specification niche",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "HL",
+              "name": "National Heart Lung and Blood Institute",
+              "abbreviation": "NHLBI",
+              "total_cost": 140809.0,
+              "direct_cost_ic": 130379.0,
+              "indirect_cost_ic": 10430.0
+            }
+          ],
+          "org_name": "ST. JUDE CHILDREN'S RESEARCH HOSPITAL",
+          "org_city": "MEMPHIS",
+          "org_country": "UNITED STATES",
+          "project_num": "1K99HL183751-01",
+          "opportunity_number": "PA-24-194",
+          "award_amount": 140809,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2028-03-31T00:00:00",
+          "keyword": "open science infrastructure",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11285531,
+          "title": "Mechanisms of Macrophage Manipulation by pathogenic SFG Rickettsia: Role of Mitochondrial and Immune Pathways",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "AI",
+              "name": "National Institute of Allergy and Infectious Diseases",
+              "abbreviation": "NIAID",
+              "total_cost": 440949.0,
+              "direct_cost_ic": 354785.0,
+              "indirect_cost_ic": 86164.0
+            }
+          ],
+          "org_name": "OLD DOMINION UNIVERSITY",
+          "org_city": "NORFOLK",
+          "org_country": "UNITED STATES",
+          "project_num": "1R21AI196490-01",
+          "opportunity_number": "PA-25-304",
+          "award_amount": 440949,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2027-03-31T00:00:00",
+          "keyword": "open science infrastructure",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11298702,
+          "title": "Cytosolic DNA sensing pathway regulation via non-canonical NF-kB signaling",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "AI",
+              "name": "National Institute of Allergy and Infectious Diseases",
+              "abbreviation": "NIAID",
+              "total_cost": 372997.0,
+              "direct_cost_ic": 250000.0,
+              "indirect_cost_ic": 122997.0
+            }
+          ],
+          "org_name": "FLORIDA STATE UNIVERSITY",
+          "org_city": "TALLAHASSEE",
+          "org_country": "UNITED STATES",
+          "project_num": "1R01AI190082-01A1",
+          "opportunity_number": "PA-25-301",
+          "award_amount": 372997,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2031-03-31T00:00:00",
+          "keyword": "open science infrastructure",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11289234,
+          "title": "Faster MRI through portable Resonance Gradient Coils with seamless calibration and reconstruction",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "EB",
+              "name": "National Institute of Biomedical Imaging and Bioengineering",
+              "abbreviation": "NIBIB",
+              "total_cost": 217500.0,
+              "direct_cost_ic": 150000.0,
+              "indirect_cost_ic": 67500.0
+            }
+          ],
+          "org_name": "STANFORD UNIVERSITY",
+          "org_city": "STANFORD",
+          "org_country": "UNITED STATES",
+          "project_num": "1R21EB038677-01",
+          "opportunity_number": "PA-25-304",
+          "award_amount": 217500,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2028-03-31T00:00:00",
+          "keyword": "open science infrastructure",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11282378,
+          "title": "Mapping Activated Microglia and Their Effect on Cognitive Deficits in Adults with Sickle Cell Disease",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "HL",
+              "name": "National Heart Lung and Blood Institute",
+              "abbreviation": "NHLBI",
+              "total_cost": 186613.0,
+              "direct_cost_ic": 172957.0,
+              "indirect_cost_ic": 13656.0
+            }
+          ],
+          "org_name": "UNIVERSITY OF CINCINNATI",
+          "org_city": "CINCINNATI",
+          "org_country": "UNITED STATES",
+          "project_num": "1K23HL183818-01",
+          "opportunity_number": "PA-24-185",
+          "award_amount": 186613,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2031-03-31T00:00:00",
+          "keyword": "open science infrastructure",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11388061,
+          "title": "2026 Annual Meeting of the American Society for Investigative Pathology",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "CA",
+              "name": "National Cancer Institute",
+              "abbreviation": "NCI",
+              "total_cost": 10000.0,
+              "direct_cost_ic": 10000.0,
+              "indirect_cost_ic": 0.0
+            }
+          ],
+          "org_name": "AMERICAN SOCIETY/INVESTIGATIVE PATHOLOGY",
+          "org_city": "ROCKVILLE",
+          "org_country": "UNITED STATES",
+          "project_num": "1R13CA314160-01",
+          "opportunity_number": "PA-25-080",
+          "award_amount": 10000,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2027-03-31T00:00:00",
+          "keyword": "open science infrastructure",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11390698,
+          "title": "Real-time, seconds-resolved measurements of amino acid homeostasis and its regulation",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "EB",
+              "name": "National Institute of Biomedical Imaging and Bioengineering",
+              "abbreviation": "NIBIB",
+              "total_cost": 594748.0,
+              "direct_cost_ic": 469500.0,
+              "indirect_cost_ic": 125248.0
+            }
+          ],
+          "org_name": "UNIVERSITY OF CALIFORNIA SANTA BARBARA",
+          "org_city": "SANTA BARBARA",
+          "org_country": "UNITED STATES",
+          "project_num": "1R01EB038757-01A1",
+          "opportunity_number": "PA-25-301",
+          "award_amount": 594748,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2030-01-31T00:00:00",
+          "keyword": "open science infrastructure",
+          "source": "NIH RePORTER"
+        }
+      ],
+      "gdelt_news": [],
+      "cordis": [],
+      "provider_status": {
+        "grants_gov": true,
+        "nih_reporter": true,
+        "gdelt": false,
+        "cordis": false
+      },
+      "errors": {
+        "grants_gov": null,
+        "nih_reporter": null,
+        "gdelt": {
+          "error": "HTTP Error 429: Too Many Requests",
+          "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%22open%20science%20infrastructure%22&mode=ArtList&maxrecords=10&format=json&sort=DateDesc"
+        },
+        "cordis": {
+          "error": "missing CORDIS credentials",
+          "query": "open science infrastructure"
+        }
+      }
+    },
+    {
+      "keyword": "science publishing",
+      "grants_gov": [
+        {
+          "id": "360642",
+          "number": "PAR-26-036",
+          "title": "Centers of Excellence in Genomic Science (CEGS)",
+          "agency_code": "HHS-NIH11",
+          "agency_name": null,
+          "open_date": "09/23/2025",
+          "close_date": "",
+          "status": "forecasted",
+          "doc_type": "forecast",
+          "aln": [],
+          "keyword": "science publishing",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "356204",
+          "number": "NOT-NS-24-061",
+          "title": "Notice of Intent to Publish a Funding Opportunity Announcement for Morris K. Udall Discovery Centers without Walls (DCWoW) for Parkinson's Disease Research (RM1 - Clinical Trial Optional)",
+          "agency_code": "HHS-NIH11",
+          "agency_name": null,
+          "open_date": "08/26/2024",
+          "close_date": "",
+          "status": "forecasted",
+          "doc_type": "forecast",
+          "aln": [],
+          "keyword": "science publishing",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "356559",
+          "number": "GR-RCE-25-001",
+          "title": "RESTORE Act Centers of Excellence Research Grants Program",
+          "agency_code": "USDOT-GCR",
+          "agency_name": null,
+          "open_date": "09/26/2024",
+          "close_date": "10/31/2026",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "science publishing",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "350561",
+          "number": "PD-24-1699",
+          "title": "Cognitive Neuroscience",
+          "agency_code": "NSF",
+          "agency_name": null,
+          "open_date": "10/12/2023",
+          "close_date": "08/17/2026",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "science publishing",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "359149",
+          "number": "FOR-RFA-OD-25-004",
+          "title": "For Funding Opportunity for Maximizing the Scientific Value of Data Generated by the Environmental influences on Child Health Outcomes (ECHO) Program: Dissertation Grant (R36)",
+          "agency_code": "HHS-NIH11",
+          "agency_name": null,
+          "open_date": "05/27/2025",
+          "close_date": "",
+          "status": "forecasted",
+          "doc_type": "forecast",
+          "aln": [],
+          "keyword": "science publishing",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "359150",
+          "number": "FOR-RFA-OD-25-005",
+          "title": "For Funding Opportunity for Maximizing the Scientific Value of Data Generated by the Environmental Influences on Child Health Outcomes (ECHO) Program: Ruth L. Kirschstein NRSA Individual Postdoctoral Fellowship (F32)",
+          "agency_code": "HHS-NIH11",
+          "agency_name": null,
+          "open_date": "05/27/2025",
+          "close_date": "",
+          "status": "forecasted",
+          "doc_type": "forecast",
+          "aln": [],
+          "keyword": "science publishing",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "358854",
+          "number": "FOR-HG-25-018",
+          "title": "Systematic Characterization of Genomic Variation to Assess Effects of Individual Variants on Genome Function and Phenotype (UM1 Clinical Trials Not Allowed)",
+          "agency_code": "HHS-NIH11",
+          "agency_name": null,
+          "open_date": "05/12/2025",
+          "close_date": "",
+          "status": "forecasted",
+          "doc_type": "forecast",
+          "aln": [],
+          "keyword": "science publishing",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "359277",
+          "number": "FOR-HG-25-020",
+          "title": "Genomic Variant Interactions With Other Variants Or The Environment (UM1 Clinical Trials Not Allowed)",
+          "agency_code": "HHS-NIH11",
+          "agency_name": null,
+          "open_date": "06/06/2025",
+          "close_date": "",
+          "status": "forecasted",
+          "doc_type": "forecast",
+          "aln": [],
+          "keyword": "science publishing",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "359279",
+          "number": "FOR-HG-25-026",
+          "title": "GREGoRi Data Coordination and Outreach Center (U01, Clinical Trials Not Allowed)",
+          "agency_code": "HHS-NIH11",
+          "agency_name": null,
+          "open_date": "06/06/2025",
+          "close_date": "",
+          "status": "forecasted",
+          "doc_type": "forecast",
+          "aln": [],
+          "keyword": "science publishing",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "359280",
+          "number": "FOR-HG-25-027",
+          "title": "GREGoRi Technology Integration Center (U01, Clinical Trials Optional)",
+          "agency_code": "HHS-NIH11",
+          "agency_name": null,
+          "open_date": "06/06/2025",
+          "close_date": "",
+          "status": "forecasted",
+          "doc_type": "forecast",
+          "aln": [],
+          "keyword": "science publishing",
+          "source": "Grants.gov"
+        }
+      ],
+      "nih_projects": [
+        {
+          "appl_id": 11195444,
+          "title": "Electrophilic Halogenated Fatty Aldehydes Target Erythrocytes to Mediate Halogen Toxicity",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "OD",
+              "name": "NIH Office of the Director",
+              "abbreviation": "OD",
+              "total_cost": 1377000.0,
+              "direct_cost_ic": 1120500.0,
+              "indirect_cost_ic": 256500.0
+            }
+          ],
+          "org_name": "SAINT LOUIS UNIVERSITY",
+          "org_city": "SAINT LOUIS",
+          "org_country": "UNITED STATES",
+          "project_num": "1R01ES036487-01A1",
+          "opportunity_number": "RFA-ES-24-005",
+          "award_amount": 1377000,
+          "project_start_date": "2026-04-11T00:00:00",
+          "project_end_date": "2029-04-10T00:00:00",
+          "keyword": "science publishing",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11267570,
+          "title": "Targeting Evasion Factors: Discovery of novel antibodies for durable suppression of HSV reactivation",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "AI",
+              "name": "National Institute of Allergy and Infectious Diseases",
+              "abbreviation": "NIAID",
+              "total_cost": 215758.0,
+              "direct_cost_ic": 136855.0,
+              "indirect_cost_ic": 78903.0
+            }
+          ],
+          "org_name": "DARTMOUTH COLLEGE",
+          "org_city": "HANOVER",
+          "org_country": "UNITED STATES",
+          "project_num": "1R21AI195395-01",
+          "opportunity_number": "RFA-AI-24-068",
+          "award_amount": 215758,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2028-03-31T00:00:00",
+          "keyword": "science publishing",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11281868,
+          "title": "A mouse model to analyze Foxp3+ TFH cells",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "AI",
+              "name": "National Institute of Allergy and Infectious Diseases",
+              "abbreviation": "NIAID",
+              "total_cost": 158500.0,
+              "direct_cost_ic": 100000.0,
+              "indirect_cost_ic": 58500.0
+            }
+          ],
+          "org_name": "INDIANA UNIVERSITY INDIANAPOLIS",
+          "org_city": "INDIANAPOLIS",
+          "org_country": "UNITED STATES",
+          "project_num": "1R03AI196415-01",
+          "opportunity_number": "PA-25-302",
+          "award_amount": 158500,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2028-03-31T00:00:00",
+          "keyword": "science publishing",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11283264,
+          "title": "Comparative vertebrate neural crest contribution to the hematopoietic stem cell specification niche",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "HL",
+              "name": "National Heart Lung and Blood Institute",
+              "abbreviation": "NHLBI",
+              "total_cost": 140809.0,
+              "direct_cost_ic": 130379.0,
+              "indirect_cost_ic": 10430.0
+            }
+          ],
+          "org_name": "ST. JUDE CHILDREN'S RESEARCH HOSPITAL",
+          "org_city": "MEMPHIS",
+          "org_country": "UNITED STATES",
+          "project_num": "1K99HL183751-01",
+          "opportunity_number": "PA-24-194",
+          "award_amount": 140809,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2028-03-31T00:00:00",
+          "keyword": "science publishing",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11285531,
+          "title": "Mechanisms of Macrophage Manipulation by pathogenic SFG Rickettsia: Role of Mitochondrial and Immune Pathways",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "AI",
+              "name": "National Institute of Allergy and Infectious Diseases",
+              "abbreviation": "NIAID",
+              "total_cost": 440949.0,
+              "direct_cost_ic": 354785.0,
+              "indirect_cost_ic": 86164.0
+            }
+          ],
+          "org_name": "OLD DOMINION UNIVERSITY",
+          "org_city": "NORFOLK",
+          "org_country": "UNITED STATES",
+          "project_num": "1R21AI196490-01",
+          "opportunity_number": "PA-25-304",
+          "award_amount": 440949,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2027-03-31T00:00:00",
+          "keyword": "science publishing",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11298702,
+          "title": "Cytosolic DNA sensing pathway regulation via non-canonical NF-kB signaling",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "AI",
+              "name": "National Institute of Allergy and Infectious Diseases",
+              "abbreviation": "NIAID",
+              "total_cost": 372997.0,
+              "direct_cost_ic": 250000.0,
+              "indirect_cost_ic": 122997.0
+            }
+          ],
+          "org_name": "FLORIDA STATE UNIVERSITY",
+          "org_city": "TALLAHASSEE",
+          "org_country": "UNITED STATES",
+          "project_num": "1R01AI190082-01A1",
+          "opportunity_number": "PA-25-301",
+          "award_amount": 372997,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2031-03-31T00:00:00",
+          "keyword": "science publishing",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11289234,
+          "title": "Faster MRI through portable Resonance Gradient Coils with seamless calibration and reconstruction",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "EB",
+              "name": "National Institute of Biomedical Imaging and Bioengineering",
+              "abbreviation": "NIBIB",
+              "total_cost": 217500.0,
+              "direct_cost_ic": 150000.0,
+              "indirect_cost_ic": 67500.0
+            }
+          ],
+          "org_name": "STANFORD UNIVERSITY",
+          "org_city": "STANFORD",
+          "org_country": "UNITED STATES",
+          "project_num": "1R21EB038677-01",
+          "opportunity_number": "PA-25-304",
+          "award_amount": 217500,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2028-03-31T00:00:00",
+          "keyword": "science publishing",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11282378,
+          "title": "Mapping Activated Microglia and Their Effect on Cognitive Deficits in Adults with Sickle Cell Disease",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "HL",
+              "name": "National Heart Lung and Blood Institute",
+              "abbreviation": "NHLBI",
+              "total_cost": 186613.0,
+              "direct_cost_ic": 172957.0,
+              "indirect_cost_ic": 13656.0
+            }
+          ],
+          "org_name": "UNIVERSITY OF CINCINNATI",
+          "org_city": "CINCINNATI",
+          "org_country": "UNITED STATES",
+          "project_num": "1K23HL183818-01",
+          "opportunity_number": "PA-24-185",
+          "award_amount": 186613,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2031-03-31T00:00:00",
+          "keyword": "science publishing",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11388061,
+          "title": "2026 Annual Meeting of the American Society for Investigative Pathology",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "CA",
+              "name": "National Cancer Institute",
+              "abbreviation": "NCI",
+              "total_cost": 10000.0,
+              "direct_cost_ic": 10000.0,
+              "indirect_cost_ic": 0.0
+            }
+          ],
+          "org_name": "AMERICAN SOCIETY/INVESTIGATIVE PATHOLOGY",
+          "org_city": "ROCKVILLE",
+          "org_country": "UNITED STATES",
+          "project_num": "1R13CA314160-01",
+          "opportunity_number": "PA-25-080",
+          "award_amount": 10000,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2027-03-31T00:00:00",
+          "keyword": "science publishing",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11390698,
+          "title": "Real-time, seconds-resolved measurements of amino acid homeostasis and its regulation",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "EB",
+              "name": "National Institute of Biomedical Imaging and Bioengineering",
+              "abbreviation": "NIBIB",
+              "total_cost": 594748.0,
+              "direct_cost_ic": 469500.0,
+              "indirect_cost_ic": 125248.0
+            }
+          ],
+          "org_name": "UNIVERSITY OF CALIFORNIA SANTA BARBARA",
+          "org_city": "SANTA BARBARA",
+          "org_country": "UNITED STATES",
+          "project_num": "1R01EB038757-01A1",
+          "opportunity_number": "PA-25-301",
+          "award_amount": 594748,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2030-01-31T00:00:00",
+          "keyword": "science publishing",
+          "source": "NIH RePORTER"
+        }
+      ],
+      "gdelt_news": [],
+      "cordis": [],
+      "provider_status": {
+        "grants_gov": true,
+        "nih_reporter": true,
+        "gdelt": false,
+        "cordis": false
+      },
+      "errors": {
+        "grants_gov": null,
+        "nih_reporter": null,
+        "gdelt": {
+          "error": "HTTP Error 429: Too Many Requests",
+          "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%22science%20publishing%22&mode=ArtList&maxrecords=10&format=json&sort=DateDesc"
+        },
+        "cordis": {
+          "error": "missing CORDIS credentials",
+          "query": "science publishing"
+        }
+      }
+    },
+    {
+      "keyword": "scientific publishing",
+      "grants_gov": [
+        {
+          "id": "359149",
+          "number": "FOR-RFA-OD-25-004",
+          "title": "For Funding Opportunity for Maximizing the Scientific Value of Data Generated by the Environmental influences on Child Health Outcomes (ECHO) Program: Dissertation Grant (R36)",
+          "agency_code": "HHS-NIH11",
+          "agency_name": null,
+          "open_date": "05/27/2025",
+          "close_date": "",
+          "status": "forecasted",
+          "doc_type": "forecast",
+          "aln": [],
+          "keyword": "scientific publishing",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "359150",
+          "number": "FOR-RFA-OD-25-005",
+          "title": "For Funding Opportunity for Maximizing the Scientific Value of Data Generated by the Environmental Influences on Child Health Outcomes (ECHO) Program: Ruth L. Kirschstein NRSA Individual Postdoctoral Fellowship (F32)",
+          "agency_code": "HHS-NIH11",
+          "agency_name": null,
+          "open_date": "05/27/2025",
+          "close_date": "",
+          "status": "forecasted",
+          "doc_type": "forecast",
+          "aln": [],
+          "keyword": "scientific publishing",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "358855",
+          "number": "FOR-HG-25-019",
+          "title": "IGVF Data and Coordinating Center (U24 Clinical trials Not Allowed)",
+          "agency_code": "HHS-NIH11",
+          "agency_name": null,
+          "open_date": "05/12/2025",
+          "close_date": "",
+          "status": "forecasted",
+          "doc_type": "forecast",
+          "aln": [],
+          "keyword": "scientific publishing",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "360642",
+          "number": "PAR-26-036",
+          "title": "Centers of Excellence in Genomic Science (CEGS)",
+          "agency_code": "HHS-NIH11",
+          "agency_name": null,
+          "open_date": "09/23/2025",
+          "close_date": "",
+          "status": "forecasted",
+          "doc_type": "forecast",
+          "aln": [],
+          "keyword": "scientific publishing",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "361208",
+          "number": "RFA-DC-27-002",
+          "title": "Coordinating Center for National Resource Network for the Study of Human Auditory and Vestibular Disorders",
+          "agency_code": "HHS-NIH11",
+          "agency_name": null,
+          "open_date": "01/27/2026",
+          "close_date": "",
+          "status": "forecasted",
+          "doc_type": "forecast",
+          "aln": [],
+          "keyword": "scientific publishing",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "356204",
+          "number": "NOT-NS-24-061",
+          "title": "Notice of Intent to Publish a Funding Opportunity Announcement for Morris K. Udall Discovery Centers without Walls (DCWoW) for Parkinson's Disease Research (RM1 - Clinical Trial Optional)",
+          "agency_code": "HHS-NIH11",
+          "agency_name": null,
+          "open_date": "08/26/2024",
+          "close_date": "",
+          "status": "forecasted",
+          "doc_type": "forecast",
+          "aln": [],
+          "keyword": "scientific publishing",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "358854",
+          "number": "FOR-HG-25-018",
+          "title": "Systematic Characterization of Genomic Variation to Assess Effects of Individual Variants on Genome Function and Phenotype (UM1 Clinical Trials Not Allowed)",
+          "agency_code": "HHS-NIH11",
+          "agency_name": null,
+          "open_date": "05/12/2025",
+          "close_date": "",
+          "status": "forecasted",
+          "doc_type": "forecast",
+          "aln": [],
+          "keyword": "scientific publishing",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "359277",
+          "number": "FOR-HG-25-020",
+          "title": "Genomic Variant Interactions With Other Variants Or The Environment (UM1 Clinical Trials Not Allowed)",
+          "agency_code": "HHS-NIH11",
+          "agency_name": null,
+          "open_date": "06/06/2025",
+          "close_date": "",
+          "status": "forecasted",
+          "doc_type": "forecast",
+          "aln": [],
+          "keyword": "scientific publishing",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "359279",
+          "number": "FOR-HG-25-026",
+          "title": "GREGoRi Data Coordination and Outreach Center (U01, Clinical Trials Not Allowed)",
+          "agency_code": "HHS-NIH11",
+          "agency_name": null,
+          "open_date": "06/06/2025",
+          "close_date": "",
+          "status": "forecasted",
+          "doc_type": "forecast",
+          "aln": [],
+          "keyword": "scientific publishing",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "359280",
+          "number": "FOR-HG-25-027",
+          "title": "GREGoRi Technology Integration Center (U01, Clinical Trials Optional)",
+          "agency_code": "HHS-NIH11",
+          "agency_name": null,
+          "open_date": "06/06/2025",
+          "close_date": "",
+          "status": "forecasted",
+          "doc_type": "forecast",
+          "aln": [],
+          "keyword": "scientific publishing",
+          "source": "Grants.gov"
+        }
+      ],
+      "nih_projects": [
+        {
+          "appl_id": 11195444,
+          "title": "Electrophilic Halogenated Fatty Aldehydes Target Erythrocytes to Mediate Halogen Toxicity",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "OD",
+              "name": "NIH Office of the Director",
+              "abbreviation": "OD",
+              "total_cost": 1377000.0,
+              "direct_cost_ic": 1120500.0,
+              "indirect_cost_ic": 256500.0
+            }
+          ],
+          "org_name": "SAINT LOUIS UNIVERSITY",
+          "org_city": "SAINT LOUIS",
+          "org_country": "UNITED STATES",
+          "project_num": "1R01ES036487-01A1",
+          "opportunity_number": "RFA-ES-24-005",
+          "award_amount": 1377000,
+          "project_start_date": "2026-04-11T00:00:00",
+          "project_end_date": "2029-04-10T00:00:00",
+          "keyword": "scientific publishing",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11267570,
+          "title": "Targeting Evasion Factors: Discovery of novel antibodies for durable suppression of HSV reactivation",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "AI",
+              "name": "National Institute of Allergy and Infectious Diseases",
+              "abbreviation": "NIAID",
+              "total_cost": 215758.0,
+              "direct_cost_ic": 136855.0,
+              "indirect_cost_ic": 78903.0
+            }
+          ],
+          "org_name": "DARTMOUTH COLLEGE",
+          "org_city": "HANOVER",
+          "org_country": "UNITED STATES",
+          "project_num": "1R21AI195395-01",
+          "opportunity_number": "RFA-AI-24-068",
+          "award_amount": 215758,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2028-03-31T00:00:00",
+          "keyword": "scientific publishing",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11281868,
+          "title": "A mouse model to analyze Foxp3+ TFH cells",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "AI",
+              "name": "National Institute of Allergy and Infectious Diseases",
+              "abbreviation": "NIAID",
+              "total_cost": 158500.0,
+              "direct_cost_ic": 100000.0,
+              "indirect_cost_ic": 58500.0
+            }
+          ],
+          "org_name": "INDIANA UNIVERSITY INDIANAPOLIS",
+          "org_city": "INDIANAPOLIS",
+          "org_country": "UNITED STATES",
+          "project_num": "1R03AI196415-01",
+          "opportunity_number": "PA-25-302",
+          "award_amount": 158500,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2028-03-31T00:00:00",
+          "keyword": "scientific publishing",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11283264,
+          "title": "Comparative vertebrate neural crest contribution to the hematopoietic stem cell specification niche",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "HL",
+              "name": "National Heart Lung and Blood Institute",
+              "abbreviation": "NHLBI",
+              "total_cost": 140809.0,
+              "direct_cost_ic": 130379.0,
+              "indirect_cost_ic": 10430.0
+            }
+          ],
+          "org_name": "ST. JUDE CHILDREN'S RESEARCH HOSPITAL",
+          "org_city": "MEMPHIS",
+          "org_country": "UNITED STATES",
+          "project_num": "1K99HL183751-01",
+          "opportunity_number": "PA-24-194",
+          "award_amount": 140809,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2028-03-31T00:00:00",
+          "keyword": "scientific publishing",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11285531,
+          "title": "Mechanisms of Macrophage Manipulation by pathogenic SFG Rickettsia: Role of Mitochondrial and Immune Pathways",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "AI",
+              "name": "National Institute of Allergy and Infectious Diseases",
+              "abbreviation": "NIAID",
+              "total_cost": 440949.0,
+              "direct_cost_ic": 354785.0,
+              "indirect_cost_ic": 86164.0
+            }
+          ],
+          "org_name": "OLD DOMINION UNIVERSITY",
+          "org_city": "NORFOLK",
+          "org_country": "UNITED STATES",
+          "project_num": "1R21AI196490-01",
+          "opportunity_number": "PA-25-304",
+          "award_amount": 440949,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2027-03-31T00:00:00",
+          "keyword": "scientific publishing",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11298702,
+          "title": "Cytosolic DNA sensing pathway regulation via non-canonical NF-kB signaling",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "AI",
+              "name": "National Institute of Allergy and Infectious Diseases",
+              "abbreviation": "NIAID",
+              "total_cost": 372997.0,
+              "direct_cost_ic": 250000.0,
+              "indirect_cost_ic": 122997.0
+            }
+          ],
+          "org_name": "FLORIDA STATE UNIVERSITY",
+          "org_city": "TALLAHASSEE",
+          "org_country": "UNITED STATES",
+          "project_num": "1R01AI190082-01A1",
+          "opportunity_number": "PA-25-301",
+          "award_amount": 372997,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2031-03-31T00:00:00",
+          "keyword": "scientific publishing",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11289234,
+          "title": "Faster MRI through portable Resonance Gradient Coils with seamless calibration and reconstruction",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "EB",
+              "name": "National Institute of Biomedical Imaging and Bioengineering",
+              "abbreviation": "NIBIB",
+              "total_cost": 217500.0,
+              "direct_cost_ic": 150000.0,
+              "indirect_cost_ic": 67500.0
+            }
+          ],
+          "org_name": "STANFORD UNIVERSITY",
+          "org_city": "STANFORD",
+          "org_country": "UNITED STATES",
+          "project_num": "1R21EB038677-01",
+          "opportunity_number": "PA-25-304",
+          "award_amount": 217500,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2028-03-31T00:00:00",
+          "keyword": "scientific publishing",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11282378,
+          "title": "Mapping Activated Microglia and Their Effect on Cognitive Deficits in Adults with Sickle Cell Disease",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "HL",
+              "name": "National Heart Lung and Blood Institute",
+              "abbreviation": "NHLBI",
+              "total_cost": 186613.0,
+              "direct_cost_ic": 172957.0,
+              "indirect_cost_ic": 13656.0
+            }
+          ],
+          "org_name": "UNIVERSITY OF CINCINNATI",
+          "org_city": "CINCINNATI",
+          "org_country": "UNITED STATES",
+          "project_num": "1K23HL183818-01",
+          "opportunity_number": "PA-24-185",
+          "award_amount": 186613,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2031-03-31T00:00:00",
+          "keyword": "scientific publishing",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11388061,
+          "title": "2026 Annual Meeting of the American Society for Investigative Pathology",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "CA",
+              "name": "National Cancer Institute",
+              "abbreviation": "NCI",
+              "total_cost": 10000.0,
+              "direct_cost_ic": 10000.0,
+              "indirect_cost_ic": 0.0
+            }
+          ],
+          "org_name": "AMERICAN SOCIETY/INVESTIGATIVE PATHOLOGY",
+          "org_city": "ROCKVILLE",
+          "org_country": "UNITED STATES",
+          "project_num": "1R13CA314160-01",
+          "opportunity_number": "PA-25-080",
+          "award_amount": 10000,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2027-03-31T00:00:00",
+          "keyword": "scientific publishing",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11390698,
+          "title": "Real-time, seconds-resolved measurements of amino acid homeostasis and its regulation",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "EB",
+              "name": "National Institute of Biomedical Imaging and Bioengineering",
+              "abbreviation": "NIBIB",
+              "total_cost": 594748.0,
+              "direct_cost_ic": 469500.0,
+              "indirect_cost_ic": 125248.0
+            }
+          ],
+          "org_name": "UNIVERSITY OF CALIFORNIA SANTA BARBARA",
+          "org_city": "SANTA BARBARA",
+          "org_country": "UNITED STATES",
+          "project_num": "1R01EB038757-01A1",
+          "opportunity_number": "PA-25-301",
+          "award_amount": 594748,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2030-01-31T00:00:00",
+          "keyword": "scientific publishing",
+          "source": "NIH RePORTER"
+        }
+      ],
+      "gdelt_news": [],
+      "cordis": [],
+      "provider_status": {
+        "grants_gov": true,
+        "nih_reporter": true,
+        "gdelt": false,
+        "cordis": false
+      },
+      "errors": {
+        "grants_gov": null,
+        "nih_reporter": null,
+        "gdelt": {
+          "error": "HTTP Error 429: Too Many Requests",
+          "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%22scientific%20publishing%22&mode=ArtList&maxrecords=10&format=json&sort=DateDesc"
+        },
+        "cordis": {
+          "error": "missing CORDIS credentials",
+          "query": "scientific publishing"
+        }
+      }
+    },
+    {
+      "keyword": "metascience",
+      "grants_gov": [],
+      "nih_projects": [
+        {
+          "appl_id": 11195444,
+          "title": "Electrophilic Halogenated Fatty Aldehydes Target Erythrocytes to Mediate Halogen Toxicity",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "OD",
+              "name": "NIH Office of the Director",
+              "abbreviation": "OD",
+              "total_cost": 1377000.0,
+              "direct_cost_ic": 1120500.0,
+              "indirect_cost_ic": 256500.0
+            }
+          ],
+          "org_name": "SAINT LOUIS UNIVERSITY",
+          "org_city": "SAINT LOUIS",
+          "org_country": "UNITED STATES",
+          "project_num": "1R01ES036487-01A1",
+          "opportunity_number": "RFA-ES-24-005",
+          "award_amount": 1377000,
+          "project_start_date": "2026-04-11T00:00:00",
+          "project_end_date": "2029-04-10T00:00:00",
+          "keyword": "metascience",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11267570,
+          "title": "Targeting Evasion Factors: Discovery of novel antibodies for durable suppression of HSV reactivation",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "AI",
+              "name": "National Institute of Allergy and Infectious Diseases",
+              "abbreviation": "NIAID",
+              "total_cost": 215758.0,
+              "direct_cost_ic": 136855.0,
+              "indirect_cost_ic": 78903.0
+            }
+          ],
+          "org_name": "DARTMOUTH COLLEGE",
+          "org_city": "HANOVER",
+          "org_country": "UNITED STATES",
+          "project_num": "1R21AI195395-01",
+          "opportunity_number": "RFA-AI-24-068",
+          "award_amount": 215758,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2028-03-31T00:00:00",
+          "keyword": "metascience",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11281868,
+          "title": "A mouse model to analyze Foxp3+ TFH cells",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "AI",
+              "name": "National Institute of Allergy and Infectious Diseases",
+              "abbreviation": "NIAID",
+              "total_cost": 158500.0,
+              "direct_cost_ic": 100000.0,
+              "indirect_cost_ic": 58500.0
+            }
+          ],
+          "org_name": "INDIANA UNIVERSITY INDIANAPOLIS",
+          "org_city": "INDIANAPOLIS",
+          "org_country": "UNITED STATES",
+          "project_num": "1R03AI196415-01",
+          "opportunity_number": "PA-25-302",
+          "award_amount": 158500,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2028-03-31T00:00:00",
+          "keyword": "metascience",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11283264,
+          "title": "Comparative vertebrate neural crest contribution to the hematopoietic stem cell specification niche",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "HL",
+              "name": "National Heart Lung and Blood Institute",
+              "abbreviation": "NHLBI",
+              "total_cost": 140809.0,
+              "direct_cost_ic": 130379.0,
+              "indirect_cost_ic": 10430.0
+            }
+          ],
+          "org_name": "ST. JUDE CHILDREN'S RESEARCH HOSPITAL",
+          "org_city": "MEMPHIS",
+          "org_country": "UNITED STATES",
+          "project_num": "1K99HL183751-01",
+          "opportunity_number": "PA-24-194",
+          "award_amount": 140809,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2028-03-31T00:00:00",
+          "keyword": "metascience",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11285531,
+          "title": "Mechanisms of Macrophage Manipulation by pathogenic SFG Rickettsia: Role of Mitochondrial and Immune Pathways",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "AI",
+              "name": "National Institute of Allergy and Infectious Diseases",
+              "abbreviation": "NIAID",
+              "total_cost": 440949.0,
+              "direct_cost_ic": 354785.0,
+              "indirect_cost_ic": 86164.0
+            }
+          ],
+          "org_name": "OLD DOMINION UNIVERSITY",
+          "org_city": "NORFOLK",
+          "org_country": "UNITED STATES",
+          "project_num": "1R21AI196490-01",
+          "opportunity_number": "PA-25-304",
+          "award_amount": 440949,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2027-03-31T00:00:00",
+          "keyword": "metascience",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11298702,
+          "title": "Cytosolic DNA sensing pathway regulation via non-canonical NF-kB signaling",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "AI",
+              "name": "National Institute of Allergy and Infectious Diseases",
+              "abbreviation": "NIAID",
+              "total_cost": 372997.0,
+              "direct_cost_ic": 250000.0,
+              "indirect_cost_ic": 122997.0
+            }
+          ],
+          "org_name": "FLORIDA STATE UNIVERSITY",
+          "org_city": "TALLAHASSEE",
+          "org_country": "UNITED STATES",
+          "project_num": "1R01AI190082-01A1",
+          "opportunity_number": "PA-25-301",
+          "award_amount": 372997,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2031-03-31T00:00:00",
+          "keyword": "metascience",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11289234,
+          "title": "Faster MRI through portable Resonance Gradient Coils with seamless calibration and reconstruction",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "EB",
+              "name": "National Institute of Biomedical Imaging and Bioengineering",
+              "abbreviation": "NIBIB",
+              "total_cost": 217500.0,
+              "direct_cost_ic": 150000.0,
+              "indirect_cost_ic": 67500.0
+            }
+          ],
+          "org_name": "STANFORD UNIVERSITY",
+          "org_city": "STANFORD",
+          "org_country": "UNITED STATES",
+          "project_num": "1R21EB038677-01",
+          "opportunity_number": "PA-25-304",
+          "award_amount": 217500,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2028-03-31T00:00:00",
+          "keyword": "metascience",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11282378,
+          "title": "Mapping Activated Microglia and Their Effect on Cognitive Deficits in Adults with Sickle Cell Disease",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "HL",
+              "name": "National Heart Lung and Blood Institute",
+              "abbreviation": "NHLBI",
+              "total_cost": 186613.0,
+              "direct_cost_ic": 172957.0,
+              "indirect_cost_ic": 13656.0
+            }
+          ],
+          "org_name": "UNIVERSITY OF CINCINNATI",
+          "org_city": "CINCINNATI",
+          "org_country": "UNITED STATES",
+          "project_num": "1K23HL183818-01",
+          "opportunity_number": "PA-24-185",
+          "award_amount": 186613,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2031-03-31T00:00:00",
+          "keyword": "metascience",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11388061,
+          "title": "2026 Annual Meeting of the American Society for Investigative Pathology",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "CA",
+              "name": "National Cancer Institute",
+              "abbreviation": "NCI",
+              "total_cost": 10000.0,
+              "direct_cost_ic": 10000.0,
+              "indirect_cost_ic": 0.0
+            }
+          ],
+          "org_name": "AMERICAN SOCIETY/INVESTIGATIVE PATHOLOGY",
+          "org_city": "ROCKVILLE",
+          "org_country": "UNITED STATES",
+          "project_num": "1R13CA314160-01",
+          "opportunity_number": "PA-25-080",
+          "award_amount": 10000,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2027-03-31T00:00:00",
+          "keyword": "metascience",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11390698,
+          "title": "Real-time, seconds-resolved measurements of amino acid homeostasis and its regulation",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "EB",
+              "name": "National Institute of Biomedical Imaging and Bioengineering",
+              "abbreviation": "NIBIB",
+              "total_cost": 594748.0,
+              "direct_cost_ic": 469500.0,
+              "indirect_cost_ic": 125248.0
+            }
+          ],
+          "org_name": "UNIVERSITY OF CALIFORNIA SANTA BARBARA",
+          "org_city": "SANTA BARBARA",
+          "org_country": "UNITED STATES",
+          "project_num": "1R01EB038757-01A1",
+          "opportunity_number": "PA-25-301",
+          "award_amount": 594748,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2030-01-31T00:00:00",
+          "keyword": "metascience",
+          "source": "NIH RePORTER"
+        }
+      ],
+      "gdelt_news": [
+        {
+          "title": "Most People Are on the Losing Side of a New AI Divide , Researcher Says",
+          "url": "https://www.businessinsider.com/ai-impact-on-thinking-cognitive-skills-researcher-2026-3",
+          "domain": "businessinsider.com",
+          "seendate": "20260330T164500Z",
+          "language": "English",
+          "sourcecountry": "United States",
+          "keyword": "metascience",
+          "source": "GDELT"
+        },
+        {
+          "title": "NSF announces winners of the U . S . critical minerals challenge to secure key domestic supply chain",
+          "url": "https://www.nsf.gov/news/nsf-announces-winners-us-critical-minerals-challenge-secure",
+          "domain": "nsf.gov",
+          "seendate": "20260324T191500Z",
+          "language": "English",
+          "sourcecountry": "United States",
+          "keyword": "metascience",
+          "source": "GDELT"
+        },
+        {
+          "title": "Building Collaborations for Impact",
+          "url": "https://fas.org/publication/building-collaborations-for-impact/",
+          "domain": "fas.org",
+          "seendate": "20260204T021500Z",
+          "language": "English",
+          "sourcecountry": "United States",
+          "keyword": "metascience",
+          "source": "GDELT"
+        }
+      ],
+      "cordis": [],
+      "provider_status": {
+        "grants_gov": true,
+        "nih_reporter": true,
+        "gdelt": true,
+        "cordis": false
+      },
+      "errors": {
+        "grants_gov": null,
+        "nih_reporter": null,
+        "gdelt": null,
+        "cordis": {
+          "error": "missing CORDIS credentials",
+          "query": "metascience"
+        }
+      }
+    },
+    {
+      "keyword": "research integrity",
+      "grants_gov": [
+        {
+          "id": "360056",
+          "number": "IR-ORI-25-001-117335",
+          "title": "Ensuring Research Integrity - Research on Research Integrity (RRI)",
+          "agency_code": "HHS-OPHS",
+          "agency_name": null,
+          "open_date": "07/17/2025",
+          "close_date": "",
+          "status": "forecasted",
+          "doc_type": "forecast",
+          "aln": [],
+          "keyword": "research integrity",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "356412",
+          "number": "ETA-UI-2024-01",
+          "title": "Unemployment Insurance Integrity Center of Excellence Operations",
+          "agency_code": "DOL-ETA",
+          "agency_name": null,
+          "open_date": "09/12/2024",
+          "close_date": "",
+          "status": "forecasted",
+          "doc_type": "forecast",
+          "aln": [],
+          "keyword": "research integrity",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "358004",
+          "number": "25-531",
+          "title": "Cybersecurity Innovation for Cyberinfrastructure",
+          "agency_code": "NSF",
+          "agency_name": null,
+          "open_date": "01/04/2025",
+          "close_date": "01/20/2027",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "research integrity",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "346203",
+          "number": "PD-23-221Y",
+          "title": "Growing Research Access for Nationally Transformative Economic Development",
+          "agency_code": "NSF",
+          "agency_name": null,
+          "open_date": "02/17/2023",
+          "close_date": "",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "research integrity",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "359236",
+          "number": "W911NF25S0007",
+          "title": "Staff Research Program",
+          "agency_code": "DOD-AMC",
+          "agency_name": null,
+          "open_date": "06/03/2025",
+          "close_date": "06/02/2030",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "research integrity",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "347858",
+          "number": "W911NF-23-S-0010",
+          "title": "UNITED STATES ARMY RESEARCH INSTITUTE FOR THE BEHAVIORAL AND SOCIAL SCIENCES (ARI) BROAD AGENCY ANNOUNCEMENT FOR BASIC, APPLIED, AND ADVANCED SCIENTIFIC RESEARCH",
+          "agency_code": "DOD-AMC",
+          "agency_name": null,
+          "open_date": "05/01/2023",
+          "close_date": "04/30/2028",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "research integrity",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "361008",
+          "number": "26-501",
+          "title": "Collaboratory to Advance Mathematics Education and Learning (CAMEL) for K-12",
+          "agency_code": "NSF",
+          "agency_name": null,
+          "open_date": "12/12/2025",
+          "close_date": "",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "research integrity",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "361820",
+          "number": "RFA-AI-28-002",
+          "title": "HIV/AIDS Clinical Trials Network Laboratory Centers",
+          "agency_code": "HHS-NIH11",
+          "agency_name": null,
+          "open_date": "04/08/2026",
+          "close_date": "",
+          "status": "forecasted",
+          "doc_type": "forecast",
+          "aln": [],
+          "keyword": "research integrity",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "361818",
+          "number": "G26AS00010",
+          "title": "USGS Cooperative Landslide Hazard Mapping and Assessment Program Announcement for Fiscal Year 2026",
+          "agency_code": "DOI-USGS1",
+          "agency_name": null,
+          "open_date": "04/08/2026",
+          "close_date": "06/08/2026",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "research integrity",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "361290",
+          "number": "RDBCP-VAPG-2026",
+          "title": "Value-Added Producer Grant",
+          "agency_code": "USDA-RBCS",
+          "agency_name": null,
+          "open_date": "02/17/2026",
+          "close_date": "04/22/2026",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "research integrity",
+          "source": "Grants.gov"
+        }
+      ],
+      "nih_projects": [
+        {
+          "appl_id": 11195444,
+          "title": "Electrophilic Halogenated Fatty Aldehydes Target Erythrocytes to Mediate Halogen Toxicity",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "OD",
+              "name": "NIH Office of the Director",
+              "abbreviation": "OD",
+              "total_cost": 1377000.0,
+              "direct_cost_ic": 1120500.0,
+              "indirect_cost_ic": 256500.0
+            }
+          ],
+          "org_name": "SAINT LOUIS UNIVERSITY",
+          "org_city": "SAINT LOUIS",
+          "org_country": "UNITED STATES",
+          "project_num": "1R01ES036487-01A1",
+          "opportunity_number": "RFA-ES-24-005",
+          "award_amount": 1377000,
+          "project_start_date": "2026-04-11T00:00:00",
+          "project_end_date": "2029-04-10T00:00:00",
+          "keyword": "research integrity",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11267570,
+          "title": "Targeting Evasion Factors: Discovery of novel antibodies for durable suppression of HSV reactivation",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "AI",
+              "name": "National Institute of Allergy and Infectious Diseases",
+              "abbreviation": "NIAID",
+              "total_cost": 215758.0,
+              "direct_cost_ic": 136855.0,
+              "indirect_cost_ic": 78903.0
+            }
+          ],
+          "org_name": "DARTMOUTH COLLEGE",
+          "org_city": "HANOVER",
+          "org_country": "UNITED STATES",
+          "project_num": "1R21AI195395-01",
+          "opportunity_number": "RFA-AI-24-068",
+          "award_amount": 215758,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2028-03-31T00:00:00",
+          "keyword": "research integrity",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11281868,
+          "title": "A mouse model to analyze Foxp3+ TFH cells",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "AI",
+              "name": "National Institute of Allergy and Infectious Diseases",
+              "abbreviation": "NIAID",
+              "total_cost": 158500.0,
+              "direct_cost_ic": 100000.0,
+              "indirect_cost_ic": 58500.0
+            }
+          ],
+          "org_name": "INDIANA UNIVERSITY INDIANAPOLIS",
+          "org_city": "INDIANAPOLIS",
+          "org_country": "UNITED STATES",
+          "project_num": "1R03AI196415-01",
+          "opportunity_number": "PA-25-302",
+          "award_amount": 158500,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2028-03-31T00:00:00",
+          "keyword": "research integrity",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11283264,
+          "title": "Comparative vertebrate neural crest contribution to the hematopoietic stem cell specification niche",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "HL",
+              "name": "National Heart Lung and Blood Institute",
+              "abbreviation": "NHLBI",
+              "total_cost": 140809.0,
+              "direct_cost_ic": 130379.0,
+              "indirect_cost_ic": 10430.0
+            }
+          ],
+          "org_name": "ST. JUDE CHILDREN'S RESEARCH HOSPITAL",
+          "org_city": "MEMPHIS",
+          "org_country": "UNITED STATES",
+          "project_num": "1K99HL183751-01",
+          "opportunity_number": "PA-24-194",
+          "award_amount": 140809,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2028-03-31T00:00:00",
+          "keyword": "research integrity",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11285531,
+          "title": "Mechanisms of Macrophage Manipulation by pathogenic SFG Rickettsia: Role of Mitochondrial and Immune Pathways",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "AI",
+              "name": "National Institute of Allergy and Infectious Diseases",
+              "abbreviation": "NIAID",
+              "total_cost": 440949.0,
+              "direct_cost_ic": 354785.0,
+              "indirect_cost_ic": 86164.0
+            }
+          ],
+          "org_name": "OLD DOMINION UNIVERSITY",
+          "org_city": "NORFOLK",
+          "org_country": "UNITED STATES",
+          "project_num": "1R21AI196490-01",
+          "opportunity_number": "PA-25-304",
+          "award_amount": 440949,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2027-03-31T00:00:00",
+          "keyword": "research integrity",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11298702,
+          "title": "Cytosolic DNA sensing pathway regulation via non-canonical NF-kB signaling",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "AI",
+              "name": "National Institute of Allergy and Infectious Diseases",
+              "abbreviation": "NIAID",
+              "total_cost": 372997.0,
+              "direct_cost_ic": 250000.0,
+              "indirect_cost_ic": 122997.0
+            }
+          ],
+          "org_name": "FLORIDA STATE UNIVERSITY",
+          "org_city": "TALLAHASSEE",
+          "org_country": "UNITED STATES",
+          "project_num": "1R01AI190082-01A1",
+          "opportunity_number": "PA-25-301",
+          "award_amount": 372997,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2031-03-31T00:00:00",
+          "keyword": "research integrity",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11289234,
+          "title": "Faster MRI through portable Resonance Gradient Coils with seamless calibration and reconstruction",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "EB",
+              "name": "National Institute of Biomedical Imaging and Bioengineering",
+              "abbreviation": "NIBIB",
+              "total_cost": 217500.0,
+              "direct_cost_ic": 150000.0,
+              "indirect_cost_ic": 67500.0
+            }
+          ],
+          "org_name": "STANFORD UNIVERSITY",
+          "org_city": "STANFORD",
+          "org_country": "UNITED STATES",
+          "project_num": "1R21EB038677-01",
+          "opportunity_number": "PA-25-304",
+          "award_amount": 217500,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2028-03-31T00:00:00",
+          "keyword": "research integrity",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11282378,
+          "title": "Mapping Activated Microglia and Their Effect on Cognitive Deficits in Adults with Sickle Cell Disease",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "HL",
+              "name": "National Heart Lung and Blood Institute",
+              "abbreviation": "NHLBI",
+              "total_cost": 186613.0,
+              "direct_cost_ic": 172957.0,
+              "indirect_cost_ic": 13656.0
+            }
+          ],
+          "org_name": "UNIVERSITY OF CINCINNATI",
+          "org_city": "CINCINNATI",
+          "org_country": "UNITED STATES",
+          "project_num": "1K23HL183818-01",
+          "opportunity_number": "PA-24-185",
+          "award_amount": 186613,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2031-03-31T00:00:00",
+          "keyword": "research integrity",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11388061,
+          "title": "2026 Annual Meeting of the American Society for Investigative Pathology",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "CA",
+              "name": "National Cancer Institute",
+              "abbreviation": "NCI",
+              "total_cost": 10000.0,
+              "direct_cost_ic": 10000.0,
+              "indirect_cost_ic": 0.0
+            }
+          ],
+          "org_name": "AMERICAN SOCIETY/INVESTIGATIVE PATHOLOGY",
+          "org_city": "ROCKVILLE",
+          "org_country": "UNITED STATES",
+          "project_num": "1R13CA314160-01",
+          "opportunity_number": "PA-25-080",
+          "award_amount": 10000,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2027-03-31T00:00:00",
+          "keyword": "research integrity",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11390698,
+          "title": "Real-time, seconds-resolved measurements of amino acid homeostasis and its regulation",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "EB",
+              "name": "National Institute of Biomedical Imaging and Bioengineering",
+              "abbreviation": "NIBIB",
+              "total_cost": 594748.0,
+              "direct_cost_ic": 469500.0,
+              "indirect_cost_ic": 125248.0
+            }
+          ],
+          "org_name": "UNIVERSITY OF CALIFORNIA SANTA BARBARA",
+          "org_city": "SANTA BARBARA",
+          "org_country": "UNITED STATES",
+          "project_num": "1R01EB038757-01A1",
+          "opportunity_number": "PA-25-301",
+          "award_amount": 594748,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2030-01-31T00:00:00",
+          "keyword": "research integrity",
+          "source": "NIH RePORTER"
+        }
+      ],
+      "gdelt_news": [
+        {
+          "title": "科学家呼吁建立学术不端行为数据库",
+          "url": "https://finance.sina.com.cn/tech/discovery/2026-04-12/doc-inhufqse0549866.shtml",
+          "domain": "finance.sina.com.cn",
+          "seendate": "20260412T090000Z",
+          "language": "Chinese",
+          "sourcecountry": "China",
+          "keyword": "research integrity",
+          "source": "GDELT"
+        },
+        {
+          "title": "卫健委通报首批10起科研失信行为 严惩不贷 _ 新闻频道 _ 中华网",
+          "url": "https://news.china.com/socialgd/10000169/20260412/49407384.html",
+          "domain": "news.china.com",
+          "seendate": "20260411T180000Z",
+          "language": "Chinese",
+          "sourcecountry": "China",
+          "keyword": "research integrity",
+          "source": "GDELT"
+        },
+        {
+          "title": "Advancing the Science of Engagement in Research Grant Opportunity ( US )",
+          "url": "https://www2.fundsforngos.org/science/advancing-the-science-of-engagement-in-research-grant-opportunity-us/",
+          "domain": "fundsforngos.org",
+          "seendate": "20260410T181500Z",
+          "language": "English",
+          "sourcecountry": "United States",
+          "keyword": "research integrity",
+          "source": "GDELT"
+        },
+        {
+          "title": "Global Metabolomics Market Poised for Strong Growth as Advancements in Precision Medicine and Biomarker Discovery Accelerate Adoption : Verified Market Research",
+          "url": "https://www.finanznachrichten.de/nachrichten-2026-04/68171320-global-metabolomics-market-poised-for-strong-growth-as-advancements-in-precision-medicine-and-biomarker-discovery-accelerate-adoption-verified-market-008.htm",
+          "domain": "finanznachrichten.de",
+          "seendate": "20260410T171500Z",
+          "language": "English",
+          "sourcecountry": "Germany",
+          "keyword": "research integrity",
+          "source": "GDELT"
+        },
+        {
+          "title": "Global Metabolomics Market Poised for Strong Growth as Advancements in Precision Medicine and Biomarker Discovery Accelerate Adoption : Verified Market Research®",
+          "url": "http://www.prnewswire.com/news-releases/global-metabolomics-market-poised-for-strong-growth-as-advancements-in-precision-medicine-and-biomarker-discovery-accelerate-adoption-verified-market-research-302739217.html",
+          "domain": "prnewswire.com",
+          "seendate": "20260410T171500Z",
+          "language": "English",
+          "sourcecountry": "United States",
+          "keyword": "research integrity",
+          "source": "GDELT"
+        },
+        {
+          "title": "国家卫健委通报10起科研失信行为 ， 山东省某医院辛秉昌 涉两起 - 半岛网",
+          "url": "http://news.bandao.cn/a/1775795060993919.html",
+          "domain": "news.bandao.cn",
+          "seendate": "20260410T101500Z",
+          "language": "Chinese",
+          "sourcecountry": "China",
+          "keyword": "research integrity",
+          "source": "GDELT"
+        },
+        {
+          "title": "国家卫健委通报10起科研失信行为 _ 海口网",
+          "url": "http://www.hkwb.net/news/content/2026-04/10/content_4358025.htm",
+          "domain": "hkwb.net",
+          "seendate": "20260410T050000Z",
+          "language": "Chinese",
+          "sourcecountry": "China",
+          "keyword": "research integrity",
+          "source": "GDELT"
+        },
+        {
+          "title": "多篇论文造假 ， 通讯作者将10年不得参与财政性科技活动",
+          "url": "https://www.163.com/dy/article/KQ5D0SLU0519DDQ2.html",
+          "domain": "163.com",
+          "seendate": "20260410T044500Z",
+          "language": "Chinese",
+          "sourcecountry": "China",
+          "keyword": "research integrity",
+          "source": "GDELT"
+        },
+        {
+          "title": "多篇论文造假 ， 通讯作者将10年不得参与财政性科技活动",
+          "url": "https://www.yicai.com/news/103126854.html",
+          "domain": "yicai.com",
+          "seendate": "20260410T041500Z",
+          "language": "Chinese",
+          "sourcecountry": "China",
+          "keyword": "research integrity",
+          "source": "GDELT"
+        },
+        {
+          "title": "国家卫生健康委通报10起科研失信行为 - 华侨网",
+          "url": "https://www.chinesepress.com/archives/142260",
+          "domain": "chinesepress.com",
+          "seendate": "20260410T021500Z",
+          "language": "Chinese",
+          "sourcecountry": "China",
+          "keyword": "research integrity",
+          "source": "GDELT"
+        }
+      ],
+      "cordis": [],
+      "provider_status": {
+        "grants_gov": true,
+        "nih_reporter": true,
+        "gdelt": true,
+        "cordis": false
+      },
+      "errors": {
+        "grants_gov": null,
+        "nih_reporter": null,
+        "gdelt": null,
+        "cordis": {
+          "error": "missing CORDIS credentials",
+          "query": "research integrity"
+        }
+      }
+    },
+    {
+      "keyword": "reproducibility",
+      "grants_gov": [
+        {
+          "id": "359941",
+          "number": "FOR-AT-25-007",
+          "title": "Assessing the Feasibility of Incorporating Mechanisms in Multisite Clinical Trials of Mind and Body Interventions on Whole Person Health Restoration",
+          "agency_code": "HHS-NIH11",
+          "agency_name": null,
+          "open_date": "07/08/2025",
+          "close_date": "",
+          "status": "forecasted",
+          "doc_type": "forecast",
+          "aln": [],
+          "keyword": "reproducibility",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "361449",
+          "number": "RFA-MH-27-120",
+          "title": "BRAIN Initiative Cell Atlas Network (BICAN): Coordinating Unit for Biostatistics, Informatics, and Engagement (CUBIE)",
+          "agency_code": "HHS-NIH11",
+          "agency_name": null,
+          "open_date": "03/11/2026",
+          "close_date": "",
+          "status": "forecasted",
+          "doc_type": "forecast",
+          "aln": [],
+          "keyword": "reproducibility",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "358004",
+          "number": "25-531",
+          "title": "Cybersecurity Innovation for Cyberinfrastructure",
+          "agency_code": "NSF",
+          "agency_name": null,
+          "open_date": "01/04/2025",
+          "close_date": "01/20/2027",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "reproducibility",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "352947",
+          "number": "PAR-24-167",
+          "title": "Utilizing Equipment to Study Environmental Extrinsic Factors and Enhance Rigor and Reproducibility of Animal Research (R24, Clinical Trials Not-Allowed)",
+          "agency_code": "HHS-NIH11",
+          "agency_name": null,
+          "open_date": "03/13/2024",
+          "close_date": "09/25/2026",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "reproducibility",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "361235",
+          "number": "RFA-DK-27-140",
+          "title": "Rigor and Reproducibility for Biomarkers in Type 1 Diabetes Clinical Research",
+          "agency_code": "HHS-NIH11",
+          "agency_name": null,
+          "open_date": "02/04/2026",
+          "close_date": "",
+          "status": "forecasted",
+          "doc_type": "forecast",
+          "aln": [],
+          "keyword": "reproducibility",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "359646",
+          "number": "RFA-OD-25-011",
+          "title": "Animal and Biological Material Resource Centers (P40 Clinical Trial Not Allowed)",
+          "agency_code": "HHS-NIH11",
+          "agency_name": null,
+          "open_date": "12/05/2025",
+          "close_date": "01/09/2029",
+          "status": "posted",
+          "doc_type": "synopsis",
+          "aln": [],
+          "keyword": "reproducibility",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "359820",
+          "number": "TEMP-31698",
+          "title": "Resource and Capacity Building to Advance the Science of Aggression across Species and Disciplines (R24 Clinical Trial Optional)",
+          "agency_code": "HHS-NIH11",
+          "agency_name": null,
+          "open_date": "06/25/2025",
+          "close_date": "",
+          "status": "forecasted",
+          "doc_type": "forecast",
+          "aln": [],
+          "keyword": "reproducibility",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "359864",
+          "number": "FOR-MD-25-009",
+          "title": "Forecast to Publish a Funding Opportunity Announcement for EmbraceHealth Clinical Research Network to Reduce Health Disparities &ndash; Coordinating Center",
+          "agency_code": "HHS-NIH11",
+          "agency_name": null,
+          "open_date": "06/27/2025",
+          "close_date": "",
+          "status": "forecasted",
+          "doc_type": "forecast",
+          "aln": [],
+          "keyword": "reproducibility",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "359865",
+          "number": "FOR-MD-25-008",
+          "title": "Notice of Intent to Publish a Forecast for EmbraceHealth Clinical Research Network to Reduce Health Disparities &ndash; Research Sites",
+          "agency_code": "HHS-NIH11",
+          "agency_name": null,
+          "open_date": "06/27/2025",
+          "close_date": "",
+          "status": "forecasted",
+          "doc_type": "forecast",
+          "aln": [],
+          "keyword": "reproducibility",
+          "source": "Grants.gov"
+        },
+        {
+          "id": "358826",
+          "number": "NOT-AA-25-010",
+          "title": "Forecast to Publish a Funding Opportunity Announcement for Copy of Integrative Neuroscience Initiative on Alcoholism (INIA) Consortia Research Resource (U24) (Clinical Trial Optional)",
+          "agency_code": "HHS-NIH11",
+          "agency_name": null,
+          "open_date": "05/05/2025",
+          "close_date": "",
+          "status": "forecasted",
+          "doc_type": "forecast",
+          "aln": [],
+          "keyword": "reproducibility",
+          "source": "Grants.gov"
+        }
+      ],
+      "nih_projects": [
+        {
+          "appl_id": 11195444,
+          "title": "Electrophilic Halogenated Fatty Aldehydes Target Erythrocytes to Mediate Halogen Toxicity",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "OD",
+              "name": "NIH Office of the Director",
+              "abbreviation": "OD",
+              "total_cost": 1377000.0,
+              "direct_cost_ic": 1120500.0,
+              "indirect_cost_ic": 256500.0
+            }
+          ],
+          "org_name": "SAINT LOUIS UNIVERSITY",
+          "org_city": "SAINT LOUIS",
+          "org_country": "UNITED STATES",
+          "project_num": "1R01ES036487-01A1",
+          "opportunity_number": "RFA-ES-24-005",
+          "award_amount": 1377000,
+          "project_start_date": "2026-04-11T00:00:00",
+          "project_end_date": "2029-04-10T00:00:00",
+          "keyword": "reproducibility",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11267570,
+          "title": "Targeting Evasion Factors: Discovery of novel antibodies for durable suppression of HSV reactivation",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "AI",
+              "name": "National Institute of Allergy and Infectious Diseases",
+              "abbreviation": "NIAID",
+              "total_cost": 215758.0,
+              "direct_cost_ic": 136855.0,
+              "indirect_cost_ic": 78903.0
+            }
+          ],
+          "org_name": "DARTMOUTH COLLEGE",
+          "org_city": "HANOVER",
+          "org_country": "UNITED STATES",
+          "project_num": "1R21AI195395-01",
+          "opportunity_number": "RFA-AI-24-068",
+          "award_amount": 215758,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2028-03-31T00:00:00",
+          "keyword": "reproducibility",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11281868,
+          "title": "A mouse model to analyze Foxp3+ TFH cells",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "AI",
+              "name": "National Institute of Allergy and Infectious Diseases",
+              "abbreviation": "NIAID",
+              "total_cost": 158500.0,
+              "direct_cost_ic": 100000.0,
+              "indirect_cost_ic": 58500.0
+            }
+          ],
+          "org_name": "INDIANA UNIVERSITY INDIANAPOLIS",
+          "org_city": "INDIANAPOLIS",
+          "org_country": "UNITED STATES",
+          "project_num": "1R03AI196415-01",
+          "opportunity_number": "PA-25-302",
+          "award_amount": 158500,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2028-03-31T00:00:00",
+          "keyword": "reproducibility",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11283264,
+          "title": "Comparative vertebrate neural crest contribution to the hematopoietic stem cell specification niche",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "HL",
+              "name": "National Heart Lung and Blood Institute",
+              "abbreviation": "NHLBI",
+              "total_cost": 140809.0,
+              "direct_cost_ic": 130379.0,
+              "indirect_cost_ic": 10430.0
+            }
+          ],
+          "org_name": "ST. JUDE CHILDREN'S RESEARCH HOSPITAL",
+          "org_city": "MEMPHIS",
+          "org_country": "UNITED STATES",
+          "project_num": "1K99HL183751-01",
+          "opportunity_number": "PA-24-194",
+          "award_amount": 140809,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2028-03-31T00:00:00",
+          "keyword": "reproducibility",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11285531,
+          "title": "Mechanisms of Macrophage Manipulation by pathogenic SFG Rickettsia: Role of Mitochondrial and Immune Pathways",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "AI",
+              "name": "National Institute of Allergy and Infectious Diseases",
+              "abbreviation": "NIAID",
+              "total_cost": 440949.0,
+              "direct_cost_ic": 354785.0,
+              "indirect_cost_ic": 86164.0
+            }
+          ],
+          "org_name": "OLD DOMINION UNIVERSITY",
+          "org_city": "NORFOLK",
+          "org_country": "UNITED STATES",
+          "project_num": "1R21AI196490-01",
+          "opportunity_number": "PA-25-304",
+          "award_amount": 440949,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2027-03-31T00:00:00",
+          "keyword": "reproducibility",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11298702,
+          "title": "Cytosolic DNA sensing pathway regulation via non-canonical NF-kB signaling",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "AI",
+              "name": "National Institute of Allergy and Infectious Diseases",
+              "abbreviation": "NIAID",
+              "total_cost": 372997.0,
+              "direct_cost_ic": 250000.0,
+              "indirect_cost_ic": 122997.0
+            }
+          ],
+          "org_name": "FLORIDA STATE UNIVERSITY",
+          "org_city": "TALLAHASSEE",
+          "org_country": "UNITED STATES",
+          "project_num": "1R01AI190082-01A1",
+          "opportunity_number": "PA-25-301",
+          "award_amount": 372997,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2031-03-31T00:00:00",
+          "keyword": "reproducibility",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11289234,
+          "title": "Faster MRI through portable Resonance Gradient Coils with seamless calibration and reconstruction",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "EB",
+              "name": "National Institute of Biomedical Imaging and Bioengineering",
+              "abbreviation": "NIBIB",
+              "total_cost": 217500.0,
+              "direct_cost_ic": 150000.0,
+              "indirect_cost_ic": 67500.0
+            }
+          ],
+          "org_name": "STANFORD UNIVERSITY",
+          "org_city": "STANFORD",
+          "org_country": "UNITED STATES",
+          "project_num": "1R21EB038677-01",
+          "opportunity_number": "PA-25-304",
+          "award_amount": 217500,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2028-03-31T00:00:00",
+          "keyword": "reproducibility",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11282378,
+          "title": "Mapping Activated Microglia and Their Effect on Cognitive Deficits in Adults with Sickle Cell Disease",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "HL",
+              "name": "National Heart Lung and Blood Institute",
+              "abbreviation": "NHLBI",
+              "total_cost": 186613.0,
+              "direct_cost_ic": 172957.0,
+              "indirect_cost_ic": 13656.0
+            }
+          ],
+          "org_name": "UNIVERSITY OF CINCINNATI",
+          "org_city": "CINCINNATI",
+          "org_country": "UNITED STATES",
+          "project_num": "1K23HL183818-01",
+          "opportunity_number": "PA-24-185",
+          "award_amount": 186613,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2031-03-31T00:00:00",
+          "keyword": "reproducibility",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11388061,
+          "title": "2026 Annual Meeting of the American Society for Investigative Pathology",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "CA",
+              "name": "National Cancer Institute",
+              "abbreviation": "NCI",
+              "total_cost": 10000.0,
+              "direct_cost_ic": 10000.0,
+              "indirect_cost_ic": 0.0
+            }
+          ],
+          "org_name": "AMERICAN SOCIETY/INVESTIGATIVE PATHOLOGY",
+          "org_city": "ROCKVILLE",
+          "org_country": "UNITED STATES",
+          "project_num": "1R13CA314160-01",
+          "opportunity_number": "PA-25-080",
+          "award_amount": 10000,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2027-03-31T00:00:00",
+          "keyword": "reproducibility",
+          "source": "NIH RePORTER"
+        },
+        {
+          "appl_id": 11390698,
+          "title": "Real-time, seconds-resolved measurements of amino acid homeostasis and its regulation",
+          "agency": [
+            {
+              "fy": 2026,
+              "code": "EB",
+              "name": "National Institute of Biomedical Imaging and Bioengineering",
+              "abbreviation": "NIBIB",
+              "total_cost": 594748.0,
+              "direct_cost_ic": 469500.0,
+              "indirect_cost_ic": 125248.0
+            }
+          ],
+          "org_name": "UNIVERSITY OF CALIFORNIA SANTA BARBARA",
+          "org_city": "SANTA BARBARA",
+          "org_country": "UNITED STATES",
+          "project_num": "1R01EB038757-01A1",
+          "opportunity_number": "PA-25-301",
+          "award_amount": 594748,
+          "project_start_date": "2026-04-10T00:00:00",
+          "project_end_date": "2030-01-31T00:00:00",
+          "keyword": "reproducibility",
+          "source": "NIH RePORTER"
+        }
+      ],
+      "gdelt_news": [],
+      "cordis": [],
+      "provider_status": {
+        "grants_gov": true,
+        "nih_reporter": true,
+        "gdelt": false,
+        "cordis": false
+      },
+      "errors": {
+        "grants_gov": null,
+        "nih_reporter": null,
+        "gdelt": {
+          "error": "HTTP Error 429: Too Many Requests",
+          "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%22reproducibility%22&mode=ArtList&maxrecords=10&format=json&sort=DateDesc"
+        },
+        "cordis": {
+          "error": "missing CORDIS credentials",
+          "query": "reproducibility"
+        }
+      }
+    }
+  ],
+  "analytics": {
+    "top_agencies": [],
+    "top_keywords": [
+      {
+        "keyword": "open science",
+        "count": 30
+      },
+      {
+        "keyword": "research integrity",
+        "count": 30
+      },
+      {
+        "keyword": "decentralized science",
+        "count": 20
+      },
+      {
+        "keyword": "decentralized peer review",
+        "count": 20
+      },
+      {
+        "keyword": "open science infrastructure",
+        "count": 20
+      },
+      {
+        "keyword": "science publishing",
+        "count": 20
+      },
+      {
+        "keyword": "scientific publishing",
+        "count": 20
+      },
+      {
+        "keyword": "reproducibility",
+        "count": 20
+      },
+      {
+        "keyword": "metascience",
+        "count": 13
+      },
+      {
+        "keyword": "desci",
+        "count": 10
+      }
+    ],
+    "grants_gov_hits": 80,
+    "nih_project_hits": 100,
+    "gdelt_hits": 23
+  },
+  "provider_status": {
+    "grants_gov": true,
+    "nih_reporter": true,
+    "gdelt": true,
+    "cordis_optional": false
+  }
+}

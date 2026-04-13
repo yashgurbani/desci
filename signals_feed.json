@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-12T22:50:33.910630+00:00",
+  "generatedAt": "2026-04-13T00:31:40.338299+00:00",
   "configPath": "signals_config.json",
   "registry": {
     "keywords": [
@@ -58,6 +58,8 @@
     "x_handles": [
       "CrossrefOrg",
       "DeSciLabs",
+      "JocelynnPearl",
+      "ORCID_Org",
       "OpenAlex_org",
       "OpenReviewNet",
       "PREreview",
@@ -71,7 +73,9 @@
       "opsaboratory",
       "paulkhls",
       "saborsky",
-      "talentDAO_"
+      "sarahhamburg_",
+      "talentDAO_",
+      "vincentweisser"
     ],
     "reddit_subreddits": [
       "deSci",
@@ -117,17 +121,19 @@
     ],
     "entity_queries": [
       "Ants-Review",
-      "Bianca Trovò",
+      "Bianca Trovo",
       "Crossref",
       "Crossref / DOI",
       "DOI",
       "DeSci Labs",
       "DeSci Labs / Nodes",
+      "DeSci Publish",
       "F1000Research",
       "Holonym",
       "LabDAO",
       "Molecule",
       "Nodes",
+      "ORCID",
       "OpScientia",
       "OpScientia / Holonym",
       "OpenAlex",
@@ -140,7 +146,8 @@
       "ResearchHub",
       "Review Commons",
       "TalentDAO",
-      "VitaDAO"
+      "VitaDAO",
+      "eLife"
     ],
     "site_urls": [
       "https://blog.openalex.org/a-new-way-to-support-openalex-become-a-member",
@@ -229,6 +236,15 @@
   "sections": {
     "news": [
       {
+        "title": "Frontiers issues AI guidance spanning full publishing lifecycle - Research Information",
+        "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxONW5yMGU4bjJScmtyUm4zTUZUeVFoYkhsRzBwcm5IaFEtNE85MDU4Tzhja2VnekUyd0NyS3N3UmVzSG5kQlJMT3FmS2stODEyS0xsQXlvX0Y3RndDRTdRWXVQMnh5dnE5bkFRWXgxSDlxT2EwYmhGWUtodDE1MFplUlprUXNZTFlHaWlZdFpGdzRKd2tvd21uNGZ1RGJkeWhXZm1hMDJIZEliUQ?oc=5",
+        "pubDate": "2026-04-13T00:00:57+00:00",
+        "source": "Google News",
+        "topic": "\"research integrity\"",
+        "summary": "Frontiers issues AI guidance spanning full publishing lifecycle Research Information",
+        "section": "news"
+      },
+      {
         "title": "Oncotarget editorial highlights advances in scientific integrity and publishing transparency - EurekAlert!",
         "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9KREdHTVFWQWtGQW9abmN2Q1A4QmNhXzdxZFdEeWxwcXM2RW5VanlCZW1CYlhSY0hYbzRiLUlLazBJQzRabzFCbDVMXzdGOXYyd05MeExReTQzUlVD?oc=5",
         "pubDate": "2026-04-10T17:22:01+00:00",
@@ -292,21 +308,21 @@
         "section": "news"
       },
       {
+        "title": "Introduction: Research Integrity and Trustworthy Science: Challenges and Solutions - Petrie-Flom Center",
+        "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPZFphRV9CSHo0X2hrYWo3UTllZzRLLWVuek1Qdk1Ga2VLSm5hWTdaN2VzS2lQaW9Gelk1eHZlcmxhdnF6elpHT24tejg0STJOaHFHSnNmbnByaU9pd0QzRWJiMzZTTm5MWW8zXzZNaTVlWHR5OUFTbHFTa2dOQnMyRTJnc2RJVWFSR1VtYTBqWVM3Z1lVeHRVeERIdkFicDB2ajhZWWJPdy1oVEpFamQ5YjZ0WERuUENBcU1oZndn?oc=5",
+        "pubDate": "2026-04-05T15:07:04+00:00",
+        "source": "Google News",
+        "topic": "\"research integrity\"",
+        "summary": "Introduction: Research Integrity and Trustworthy Science: Challenges and Solutions Petrie-Flom Center",
+        "section": "news"
+      },
+      {
         "title": "Trump administration proposes massive budget cuts to science - Scientific American",
         "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPSWUyREtod3VzVWk2MGI2SWlDaVJfSUtPOFdBR0xMcUpGbGVHUGxYdXpTQ3hBSzZxS0Z1d0tKd3dWbTROcjI4LVk3clBwZDFnNElRcTBGdW8tdDRlem04UzlablpNdHFFOUxNTzdJbHk1cGtHV0xsRjRqWmw0eEt6bFVpdWQyeG5ydF8tMHdqUVNweldZRERrNG1VM2kzUXdZUHNGVUtrWQ?oc=5",
         "pubDate": "2026-04-03T07:00:00+00:00",
         "source": "Google News",
         "topic": "\"scientific publishing\"",
         "summary": "Trump administration proposes massive budget cuts to science Scientific American",
-        "section": "news"
-      },
-      {
-        "title": "Why journals are put on hold in Web of Science Core Collection – and how research integrity guides the process - Clarivate",
-        "link": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxQb1NMNjhTZkxhWE5WNEJ4QWhkVWt1UDNyQmJLSDRJWUpBZklrR21veHo1dXdrdGlwQ1VYTTZHc3AteVVrQ0JLblpFLVR3bmx2cmtHZDRjWENiLTdQSXZocWczdUgwMTNUZmNTN19EZ3BPRUIyNkdPbUd0ckFjWUZxMWh3ZkptWXJDeVk2MGVkdVBEN3FfOF9ZczZSZGQyYmE0TEdMODdhVXpTRU1zMXFITlhBYTdwY2pNaG9JMnRmMmJlYnNQYkU4anJDMzQta2FTY3cyYk90Y05TQkNTdVlZVFViQU5MUEtVdFo0cg?oc=5",
-        "pubDate": "2026-04-02T07:00:00+00:00",
-        "source": "Google News",
-        "topic": "\"research integrity\"",
-        "summary": "Why journals are put on hold in Web of Science Core Collection – and how research integrity guides the process Clarivate",
         "section": "news"
       },
       {
@@ -445,24 +461,6 @@
         "section": "news"
       },
       {
-        "title": "Spotify | Description, History, & Facts - Britannica",
-        "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5qUmE1cHJoeVlOSGREY05jOEhHS0pBcFBMV0p2SDg1NjdhSmRRbWdSeS11RDVJTWlfRkFEOU1lSlYzXy1xaXhKaUlwOXVKMXdJeUE?oc=5",
-        "pubDate": "2026-04-09T05:00:00+00:00",
-        "source": "Google News",
-        "topic": "desci",
-        "summary": "Spotify | Description, History, & Facts Britannica",
-        "section": "news"
-      },
-      {
-        "title": "Research integrity is locked into an arms race with agentic AI slop - The London School of Economics and Political Science",
-        "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNcVRRcFdjTWFRWWlVX3h2cy1PcjJ2dHluQUVaczlWQTJIdGpMZTR0dkk4TjhWNG5LeDZDeGdkLW5TWjZIalpLb2Nuc0xhOUF4TU9NX0lZc3oxc09qMlJsbVRqcy1meVZ4SC1rZ05pVDJ1aTIxZW12RTVoMW02Unl0MDdRVUE3X1dlbUNCWFBKTmJnVjc5ckduak1HREJLTzczSU1Wd29iWC1fZ0FOMmNIdG5OY2k0ZHFkNnRHN2lMcV9YYXI3?oc=5",
-        "pubDate": "2026-03-17T07:00:00+00:00",
-        "source": "Google News",
-        "topic": "\"research integrity\"",
-        "summary": "Research integrity is locked into an arms race with agentic AI slop The London School of Economics and Political Science",
-        "section": "news"
-      },
-      {
         "title": "Recommitting to the Principles of Open Scholarly Infrastructure (POSI) - OpenAlex blog -",
         "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQaEJ6Szl6ZThhZVNuVGE4WGdkYmd5a0ZOcWMwXzQ4Ukp2QWloQmtfVkk1WnU0SUNDc2owU056WGhNa0V5SU1UenEyX0JOY1VsT3Q0VUNXTHNuNzV0bHdQb0hXTEpNSGhxV2VzYl9Sd2JiZG42NGRNbmJnODJjODBFZXd1U2x0dkVyWFR4Tm1DcWpBdm93MU5GWWJ3SQ?oc=5",
         "pubDate": "2026-03-30T17:07:55+00:00",
@@ -478,15 +476,6 @@
         "source": "Google News",
         "topic": "\"research integrity\"",
         "summary": "How AI use in scholarly publishing threatens research integrity, lessens trust, and invites misinformation Bulletin of the Atomic Scientists",
-        "section": "news"
-      },
-      {
-        "title": "Scientific sleuths come in from the cold - C&EN",
-        "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPaURYS0dwQ2tsbHlJUGhzYzA4MVRLVkpsYXVnb3ZKTjdKVVVLTWRXRXdhVXh3SUZYUURqbUR1X01lQ3k3M1NqWUQwRkpfZnFaQmY0MDRGZ0t3dnp5Z0hxdDFha0kzeFh1YW10cnRkbURlb2ZRdTdDS3RMUDU4VURMcE1OTDJLUTV1RWszeUFPZFhWTUJJM3NJ?oc=5",
-        "pubDate": "2026-03-11T07:00:00+00:00",
-        "source": "Google News",
-        "topic": "\"research integrity\"",
-        "summary": "Scientific sleuths come in from the cold C&EN",
         "section": "news"
       },
       {
@@ -586,6 +575,15 @@
         "source": "Google News",
         "topic": "site:blog.openalex.org",
         "summary": "OpenAlex and NORA Collaborate to connect publications to the OECD FORD Taxonomy OpenAlex blog -",
+        "section": "news"
+      },
+      {
+        "title": "Creator Chain To Commence DeSci Initiative With Exosome Token - GlobeNewswire",
+        "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQNEVxRVA0QTVXY09LNVNacktDM2JmNm5ucjdXdUEtMEd6b21XNmNsRWxTaXhlaVBDeDJvei1KUzBBOGtRZUw3TlluZS1vM0tNY3ZNQm5TVDZmWGRnWG1JZE5vTUN4MWJ2eVhjX3VITklRTzRKUW5pV3hRVXVoZl9kRGROc2I5d0czZnVpdUtaN3FNOHBWQjdDVi1SMmw4c1lhaDlHellraFVvMnlBTHFnUVhCM2JwVFNhRnNvT3RHYmVjRjd4bk1pWU9MRkI0UQ?oc=5",
+        "pubDate": "2026-01-13T08:00:00+00:00",
+        "source": "Google News",
+        "topic": "desci",
+        "summary": "Creator Chain To Commence DeSci Initiative With Exosome Token GlobeNewswire",
         "section": "news"
       }
     ],
@@ -751,12 +749,12 @@
     ],
     "all": [
       {
-        "title": "Oncotarget editorial highlights advances in scientific integrity and publishing transparency - EurekAlert!",
-        "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9KREdHTVFWQWtGQW9abmN2Q1A4QmNhXzdxZFdEeWxwcXM2RW5VanlCZW1CYlhSY0hYbzRiLUlLazBJQzRabzFCbDVMXzdGOXYyd05MeExReTQzUlVD?oc=5",
-        "pubDate": "2026-04-10T17:22:01+00:00",
+        "title": "Frontiers issues AI guidance spanning full publishing lifecycle - Research Information",
+        "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxONW5yMGU4bjJScmtyUm4zTUZUeVFoYkhsRzBwcm5IaFEtNE85MDU4Tzhja2VnekUyd0NyS3N3UmVzSG5kQlJMT3FmS2stODEyS0xsQXlvX0Y3RndDRTdRWXVQMnh5dnE5bkFRWXgxSDlxT2EwYmhGWUtodDE1MFplUlprUXNZTFlHaWlZdFpGdzRKd2tvd21uNGZ1RGJkeWhXZm1hMDJIZEliUQ?oc=5",
+        "pubDate": "2026-04-13T00:00:57+00:00",
         "source": "Google News",
-        "topic": "\"scientific publishing\"",
-        "summary": "Oncotarget editorial highlights advances in scientific integrity and publishing transparency EurekAlert!",
+        "topic": "\"research integrity\"",
+        "summary": "Frontiers issues AI guidance spanning full publishing lifecycle Research Information",
         "section": "news"
       },
       {
@@ -787,12 +785,12 @@
         "section": "github"
       },
       {
-        "title": "AI meets science at speed: Inside Australia’s AI for science hackathon - Monash Lens",
-        "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOX1NSX3lDVU1DUXJLeE9sNXdfUXRUOENaT1BWa0ZlOTNhSzA2Rm5uVmFqa2N3bWNERmFBR2dFT0hQeE1RMG4walZNb2NqOUJEMVd2MjRSelh2SlFQVGRVdDBwSjRPV3UwQUVRYjVnRUtWMkdQMHdqRHRaeWxSYzJ4ZDFpczNhWWhxRkRfQTVQQUlycExadWZ3aw?oc=5",
-        "pubDate": "2026-04-10T02:12:48+00:00",
+        "title": "Oncotarget editorial highlights advances in scientific integrity and publishing transparency - EurekAlert!",
+        "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9KREdHTVFWQWtGQW9abmN2Q1A4QmNhXzdxZFdEeWxwcXM2RW5VanlCZW1CYlhSY0hYbzRiLUlLazBJQzRabzFCbDVMXzdGOXYyd05MeExReTQzUlVD?oc=5",
+        "pubDate": "2026-04-10T17:22:01+00:00",
         "source": "Google News",
-        "topic": "\"ai for science\"",
-        "summary": "AI meets science at speed: Inside Australia’s AI for science hackathon Monash Lens",
+        "topic": "\"scientific publishing\"",
+        "summary": "Oncotarget editorial highlights advances in scientific integrity and publishing transparency EurekAlert!",
         "section": "news"
       },
       {
@@ -823,12 +821,12 @@
         "section": "github"
       },
       {
-        "title": "Taylor & Francis summit highlights need for stronger research integrity practices in India - Taylor & Francis Newsroom",
-        "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNRFFvbENIVUdjWGV1SUhOUkxTbTFEUllvUzM3NmFGbWdMZEU5NUtrRk42S0xraEJTYzFfRVMtSWJobnZyUE1TNGxIVFkwQl9YYlJHLUdQNHRxMWJJckd2eWJWR3hSSE5rUzMxWHp3RGpZWHZXYkY4TXVYam5nOFdNSDlETUg4NXpNdXBmSDFrQmJwY1lic1IxakdqY2h5SUt5bGF5QW8wTnFuOVV0R3JJMWM0WFRucGl0ZG5uQjlMLXRFWEsxOW96bWFQU0Z2ZEZQcFE?oc=5",
-        "pubDate": "2026-04-10T00:00:00+00:00",
+        "title": "AI meets science at speed: Inside Australia’s AI for science hackathon - Monash Lens",
+        "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOX1NSX3lDVU1DUXJLeE9sNXdfUXRUOENaT1BWa0ZlOTNhSzA2Rm5uVmFqa2N3bWNERmFBR2dFT0hQeE1RMG4walZNb2NqOUJEMVd2MjRSelh2SlFQVGRVdDBwSjRPV3UwQUVRYjVnRUtWMkdQMHdqRHRaeWxSYzJ4ZDFpczNhWWhxRkRfQTVQQUlycExadWZ3aw?oc=5",
+        "pubDate": "2026-04-10T02:12:48+00:00",
         "source": "Google News",
-        "topic": "\"research integrity\"",
-        "summary": "Taylor & Francis summit highlights need for stronger research integrity practices in India Taylor & Francis Newsroom",
+        "topic": "\"ai for science\"",
+        "summary": "AI meets science at speed: Inside Australia’s AI for science hackathon Monash Lens",
         "section": "news"
       },
       {
@@ -859,12 +857,12 @@
         "section": "github"
       },
       {
-        "title": "Opinion: Scientific Journals Need Dedicated Fact-Checkers - Undark Magazine",
-        "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1KMWdrX3hJcmhKLWdtS0ZfOHE0dlJzbkNnZmpwLWtaRFZMY2p6bk9mdGt3Q2FqaUhEWWxsaW1hU1hWbDR4Sm1qLXkzT3pkeWdRVXBDbllFMS1mdGFjZ1NQdW80V1VZYnpjazU3eA?oc=5",
-        "pubDate": "2026-04-09T16:01:31+00:00",
+        "title": "Taylor & Francis summit highlights need for stronger research integrity practices in India - Taylor & Francis Newsroom",
+        "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNRFFvbENIVUdjWGV1SUhOUkxTbTFEUllvUzM3NmFGbWdMZEU5NUtrRk42S0xraEJTYzFfRVMtSWJobnZyUE1TNGxIVFkwQl9YYlJHLUdQNHRxMWJJckd2eWJWR3hSSE5rUzMxWHp3RGpZWHZXYkY4TXVYam5nOFdNSDlETUg4NXpNdXBmSDFrQmJwY1lic1IxakdqY2h5SUt5bGF5QW8wTnFuOVV0R3JJMWM0WFRucGl0ZG5uQjlMLXRFWEsxOW96bWFQU0Z2ZEZQcFE?oc=5",
+        "pubDate": "2026-04-10T00:00:00+00:00",
         "source": "Google News",
-        "topic": "\"scientific publishing\"",
-        "summary": "Opinion: Scientific Journals Need Dedicated Fact-Checkers Undark Magazine",
+        "topic": "\"research integrity\"",
+        "summary": "Taylor & Francis summit highlights need for stronger research integrity practices in India Taylor & Francis Newsroom",
         "section": "news"
       },
       {
@@ -886,12 +884,12 @@
         "section": "blogs"
       },
       {
-        "title": "Hedayah Center and Emirates Scholar Center review latest approaches to scientific publishing and research - ZAWYA",
-        "link": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxOOGtweHR1R0dfU0RDd1BOdnFrd3lGMjdlREVfdDRsOENvSUIyWnJKRHhPVkd0SGdDT1l4ZG16dU5RaXlPQTlWV1FEYkVpNmVWR241aDN5eFVQZUZPQjRfT25uR0FCdnlLRVhfQkhFbTBYQmxQYUg1Z3RzNWYtcUItTzU5bGJISV9wdVIxUElvMTVzSHpKeWt0MTdKSTRLVkdNYmxpZS1aSmpjdmluc1BIckZUTkh5WFhKaE1sMDFzNzg0QTl2Nm9xYmVnLTFuQm94R0d3MUo0TmtieFhJbFFGejI2M0RRNmdKN2lfZE0tcjNuc0pEOXNHLXJGako?oc=5",
-        "pubDate": "2026-04-09T08:19:02+00:00",
+        "title": "Opinion: Scientific Journals Need Dedicated Fact-Checkers - Undark Magazine",
+        "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1KMWdrX3hJcmhKLWdtS0ZfOHE0dlJzbkNnZmpwLWtaRFZMY2p6bk9mdGt3Q2FqaUhEWWxsaW1hU1hWbDR4Sm1qLXkzT3pkeWdRVXBDbllFMS1mdGFjZ1NQdW80V1VZYnpjazU3eA?oc=5",
+        "pubDate": "2026-04-09T16:01:31+00:00",
         "source": "Google News",
         "topic": "\"scientific publishing\"",
-        "summary": "Hedayah Center and Emirates Scholar Center review latest approaches to scientific publishing and research ZAWYA",
+        "summary": "Opinion: Scientific Journals Need Dedicated Fact-Checkers Undark Magazine",
         "section": "news"
       },
       {
@@ -913,12 +911,12 @@
         "section": "blogs"
       },
       {
-        "title": "Meet CAS Newton: Agentic AI built for science | Corporate - EQS News",
-        "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPamU4WTJpYWItRXhubk1HNTJBUnpiR25jNG9lQlo1d1NBbTVPU1dRWllaSXBURjgxcHhiVzladEk4NGVtRWFfMWtIZEhlV3I3SDVzeWo4UTRDdjdZRW9VSU9LN3NNcXVZOHRqR08tUXlfVWFXVE9GamtjQU13Y2pxWVZCTnhBSHBoWUFfazlBamFhOHBPM0NfUTFRYjN4ZTYtMzhqRHFqVi1hd2tOUFZ3MTVDS2xOZURyeFlvcEx5MjFYZw?oc=5",
-        "pubDate": "2026-04-08T12:07:19+00:00",
+        "title": "Hedayah Center and Emirates Scholar Center review latest approaches to scientific publishing and research - ZAWYA",
+        "link": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxOOGtweHR1R0dfU0RDd1BOdnFrd3lGMjdlREVfdDRsOENvSUIyWnJKRHhPVkd0SGdDT1l4ZG16dU5RaXlPQTlWV1FEYkVpNmVWR241aDN5eFVQZUZPQjRfT25uR0FCdnlLRVhfQkhFbTBYQmxQYUg1Z3RzNWYtcUItTzU5bGJISV9wdVIxUElvMTVzSHpKeWt0MTdKSTRLVkdNYmxpZS1aSmpjdmluc1BIckZUTkh5WFhKaE1sMDFzNzg0QTl2Nm9xYmVnLTFuQm94R0d3MUo0TmtieFhJbFFGejI2M0RRNmdKN2lfZE0tcjNuc0pEOXNHLXJGako?oc=5",
+        "pubDate": "2026-04-09T08:19:02+00:00",
         "source": "Google News",
-        "topic": "\"ai for science\"",
-        "summary": "Meet CAS Newton: Agentic AI built for science | Corporate EQS News",
+        "topic": "\"scientific publishing\"",
+        "summary": "Hedayah Center and Emirates Scholar Center review latest approaches to scientific publishing and research ZAWYA",
         "section": "news"
       },
       {
@@ -931,12 +929,12 @@
         "section": "blogs"
       },
       {
-        "title": "Genesis Mission Now Accepting Applications to Fund AI-for-Science Projects - HPCwire",
-        "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNaHNCMVU5TGg5U2VlZnBnSjQzWEZyemVwLUdRR2ZmZ1VVbDU5YWFmd2x6c0VMOGpmbEhZZ2ctOVd6OHNUczVMWXg3YTNyVVoyOUVOaGt1WTlpRmRNS0JVNUh5elVWcW44bHA1UkF0bUJjMzhabTBCTkdWZHdXdGJVR01oemtDbWdNX1lLSVZiNFZDQ21IdWVnX25tVjVxbW56X09tMjVqOGtlVTJhX3ZR?oc=5",
-        "pubDate": "2026-04-06T22:48:54+00:00",
+        "title": "Meet CAS Newton: Agentic AI built for science | Corporate - EQS News",
+        "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPamU4WTJpYWItRXhubk1HNTJBUnpiR25jNG9lQlo1d1NBbTVPU1dRWllaSXBURjgxcHhiVzladEk4NGVtRWFfMWtIZEhlV3I3SDVzeWo4UTRDdjdZRW9VSU9LN3NNcXVZOHRqR08tUXlfVWFXVE9GamtjQU13Y2pxWVZCTnhBSHBoWUFfazlBamFhOHBPM0NfUTFRYjN4ZTYtMzhqRHFqVi1hd2tOUFZ3MTVDS2xOZURyeFlvcEx5MjFYZw?oc=5",
+        "pubDate": "2026-04-08T12:07:19+00:00",
         "source": "Google News",
         "topic": "\"ai for science\"",
-        "summary": "Genesis Mission Now Accepting Applications to Fund AI-for-Science Projects HPCwire",
+        "summary": "Meet CAS Newton: Agentic AI built for science | Corporate EQS News",
         "section": "news"
       },
       {
@@ -949,12 +947,12 @@
         "section": "blogs"
       },
       {
-        "title": "Trump administration proposes massive budget cuts to science - Scientific American",
-        "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPSWUyREtod3VzVWk2MGI2SWlDaVJfSUtPOFdBR0xMcUpGbGVHUGxYdXpTQ3hBSzZxS0Z1d0tKd3dWbTROcjI4LVk3clBwZDFnNElRcTBGdW8tdDRlem04UzlablpNdHFFOUxNTzdJbHk1cGtHV0xsRjRqWmw0eEt6bFVpdWQyeG5ydF8tMHdqUVNweldZRERrNG1VM2kzUXdZUHNGVUtrWQ?oc=5",
-        "pubDate": "2026-04-03T07:00:00+00:00",
+        "title": "Genesis Mission Now Accepting Applications to Fund AI-for-Science Projects - HPCwire",
+        "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNaHNCMVU5TGg5U2VlZnBnSjQzWEZyemVwLUdRR2ZmZ1VVbDU5YWFmd2x6c0VMOGpmbEhZZ2ctOVd6OHNUczVMWXg3YTNyVVoyOUVOaGt1WTlpRmRNS0JVNUh5elVWcW44bHA1UkF0bUJjMzhabTBCTkdWZHdXdGJVR01oemtDbWdNX1lLSVZiNFZDQ21IdWVnX25tVjVxbW56X09tMjVqOGtlVTJhX3ZR?oc=5",
+        "pubDate": "2026-04-06T22:48:54+00:00",
         "source": "Google News",
-        "topic": "\"scientific publishing\"",
-        "summary": "Trump administration proposes massive budget cuts to science Scientific American",
+        "topic": "\"ai for science\"",
+        "summary": "Genesis Mission Now Accepting Applications to Fund AI-for-Science Projects HPCwire",
         "section": "news"
       },
       {
@@ -967,12 +965,12 @@
         "section": "blogs"
       },
       {
-        "title": "Why journals are put on hold in Web of Science Core Collection – and how research integrity guides the process - Clarivate",
-        "link": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxQb1NMNjhTZkxhWE5WNEJ4QWhkVWt1UDNyQmJLSDRJWUpBZklrR21veHo1dXdrdGlwQ1VYTTZHc3AteVVrQ0JLblpFLVR3bmx2cmtHZDRjWENiLTdQSXZocWczdUgwMTNUZmNTN19EZ3BPRUIyNkdPbUd0ckFjWUZxMWh3ZkptWXJDeVk2MGVkdVBEN3FfOF9ZczZSZGQyYmE0TEdMODdhVXpTRU1zMXFITlhBYTdwY2pNaG9JMnRmMmJlYnNQYkU4anJDMzQta2FTY3cyYk90Y05TQkNTdVlZVFViQU5MUEtVdFo0cg?oc=5",
-        "pubDate": "2026-04-02T07:00:00+00:00",
+        "title": "Introduction: Research Integrity and Trustworthy Science: Challenges and Solutions - Petrie-Flom Center",
+        "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPZFphRV9CSHo0X2hrYWo3UTllZzRLLWVuek1Qdk1Ga2VLSm5hWTdaN2VzS2lQaW9Gelk1eHZlcmxhdnF6elpHT24tejg0STJOaHFHSnNmbnByaU9pd0QzRWJiMzZTTm5MWW8zXzZNaTVlWHR5OUFTbHFTa2dOQnMyRTJnc2RJVWFSR1VtYTBqWVM3Z1lVeHRVeERIdkFicDB2ajhZWWJPdy1oVEpFamQ5YjZ0WERuUENBcU1oZndn?oc=5",
+        "pubDate": "2026-04-05T15:07:04+00:00",
         "source": "Google News",
         "topic": "\"research integrity\"",
-        "summary": "Why journals are put on hold in Web of Science Core Collection – and how research integrity guides the process Clarivate",
+        "summary": "Introduction: Research Integrity and Trustworthy Science: Challenges and Solutions Petrie-Flom Center",
         "section": "news"
       },
       {
@@ -983,6 +981,15 @@
         "topic": "https://crossref.org",
         "summary": "This year, we placed a spotlight on the Latin American community, hosting the second Crossref Metadata Sprint in São Paulo, Brazil from 4 - 6 March 2026. In our first tri-lingual event, we brought together 31 particip...",
         "section": "blogs"
+      },
+      {
+        "title": "Trump administration proposes massive budget cuts to science - Scientific American",
+        "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPSWUyREtod3VzVWk2MGI2SWlDaVJfSUtPOFdBR0xMcUpGbGVHUGxYdXpTQ3hBSzZxS0Z1d0tKd3dWbTROcjI4LVk3clBwZDFnNElRcTBGdW8tdDRlem04UzlablpNdHFFOUxNTzdJbHk1cGtHV0xsRjRqWmw0eEt6bFVpdWQyeG5ydF8tMHdqUVNweldZRERrNG1VM2kzUXdZUHNGVUtrWQ?oc=5",
+        "pubDate": "2026-04-03T07:00:00+00:00",
+        "source": "Google News",
+        "topic": "\"scientific publishing\"",
+        "summary": "Trump administration proposes massive budget cuts to science Scientific American",
+        "section": "news"
       },
       {
         "title": "AI turns electron microscopy into materials insights in minutes - Cornell Chronicle",
@@ -1055,26 +1062,17 @@
         "topic": "\"Molecule\"",
         "summary": "A 67-year-old “crazy” theory about vitamin B1 has finally been proven ScienceDaily",
         "section": "news"
-      },
-      {
-        "title": "Publisher changes citation, registration policies following Retraction Watch investigation",
-        "link": "https://retractionwatch.com/2026/04/07/wolters-kluwer-international-journal-surgery-changes-citation-registration-policies/",
-        "pubDate": "2026-04-07T12:12:17+00:00",
-        "source": "Retraction Watch",
-        "topic": "research integrity",
-        "summary": "The Dutch publisher Wolters Kluwer has scrapped some of its citation and study-registration requirements at a top-ranked surgery journal founded by the U.K. plastic surgeon Riaz Agha, Retraction Watch has learned. The...",
-        "section": "news"
       }
     ]
   },
   "items": [
     {
-      "title": "Oncotarget editorial highlights advances in scientific integrity and publishing transparency - EurekAlert!",
-      "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9KREdHTVFWQWtGQW9abmN2Q1A4QmNhXzdxZFdEeWxwcXM2RW5VanlCZW1CYlhSY0hYbzRiLUlLazBJQzRabzFCbDVMXzdGOXYyd05MeExReTQzUlVD?oc=5",
-      "pubDate": "2026-04-10T17:22:01+00:00",
+      "title": "Frontiers issues AI guidance spanning full publishing lifecycle - Research Information",
+      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxONW5yMGU4bjJScmtyUm4zTUZUeVFoYkhsRzBwcm5IaFEtNE85MDU4Tzhja2VnekUyd0NyS3N3UmVzSG5kQlJMT3FmS2stODEyS0xsQXlvX0Y3RndDRTdRWXVQMnh5dnE5bkFRWXgxSDlxT2EwYmhGWUtodDE1MFplUlprUXNZTFlHaWlZdFpGdzRKd2tvd21uNGZ1RGJkeWhXZm1hMDJIZEliUQ?oc=5",
+      "pubDate": "2026-04-13T00:00:57+00:00",
       "source": "Google News",
-      "topic": "\"scientific publishing\"",
-      "summary": "Oncotarget editorial highlights advances in scientific integrity and publishing transparency EurekAlert!",
+      "topic": "\"research integrity\"",
+      "summary": "Frontiers issues AI guidance spanning full publishing lifecycle Research Information",
       "section": "news"
     },
     {
@@ -1105,12 +1103,12 @@
       "section": "github"
     },
     {
-      "title": "AI meets science at speed: Inside Australia’s AI for science hackathon - Monash Lens",
-      "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOX1NSX3lDVU1DUXJLeE9sNXdfUXRUOENaT1BWa0ZlOTNhSzA2Rm5uVmFqa2N3bWNERmFBR2dFT0hQeE1RMG4walZNb2NqOUJEMVd2MjRSelh2SlFQVGRVdDBwSjRPV3UwQUVRYjVnRUtWMkdQMHdqRHRaeWxSYzJ4ZDFpczNhWWhxRkRfQTVQQUlycExadWZ3aw?oc=5",
-      "pubDate": "2026-04-10T02:12:48+00:00",
+      "title": "Oncotarget editorial highlights advances in scientific integrity and publishing transparency - EurekAlert!",
+      "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9KREdHTVFWQWtGQW9abmN2Q1A4QmNhXzdxZFdEeWxwcXM2RW5VanlCZW1CYlhSY0hYbzRiLUlLazBJQzRabzFCbDVMXzdGOXYyd05MeExReTQzUlVD?oc=5",
+      "pubDate": "2026-04-10T17:22:01+00:00",
       "source": "Google News",
-      "topic": "\"ai for science\"",
-      "summary": "AI meets science at speed: Inside Australia’s AI for science hackathon Monash Lens",
+      "topic": "\"scientific publishing\"",
+      "summary": "Oncotarget editorial highlights advances in scientific integrity and publishing transparency EurekAlert!",
       "section": "news"
     },
     {
@@ -1141,12 +1139,12 @@
       "section": "github"
     },
     {
-      "title": "Taylor & Francis summit highlights need for stronger research integrity practices in India - Taylor & Francis Newsroom",
-      "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNRFFvbENIVUdjWGV1SUhOUkxTbTFEUllvUzM3NmFGbWdMZEU5NUtrRk42S0xraEJTYzFfRVMtSWJobnZyUE1TNGxIVFkwQl9YYlJHLUdQNHRxMWJJckd2eWJWR3hSSE5rUzMxWHp3RGpZWHZXYkY4TXVYam5nOFdNSDlETUg4NXpNdXBmSDFrQmJwY1lic1IxakdqY2h5SUt5bGF5QW8wTnFuOVV0R3JJMWM0WFRucGl0ZG5uQjlMLXRFWEsxOW96bWFQU0Z2ZEZQcFE?oc=5",
-      "pubDate": "2026-04-10T00:00:00+00:00",
+      "title": "AI meets science at speed: Inside Australia’s AI for science hackathon - Monash Lens",
+      "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOX1NSX3lDVU1DUXJLeE9sNXdfUXRUOENaT1BWa0ZlOTNhSzA2Rm5uVmFqa2N3bWNERmFBR2dFT0hQeE1RMG4walZNb2NqOUJEMVd2MjRSelh2SlFQVGRVdDBwSjRPV3UwQUVRYjVnRUtWMkdQMHdqRHRaeWxSYzJ4ZDFpczNhWWhxRkRfQTVQQUlycExadWZ3aw?oc=5",
+      "pubDate": "2026-04-10T02:12:48+00:00",
       "source": "Google News",
-      "topic": "\"research integrity\"",
-      "summary": "Taylor & Francis summit highlights need for stronger research integrity practices in India Taylor & Francis Newsroom",
+      "topic": "\"ai for science\"",
+      "summary": "AI meets science at speed: Inside Australia’s AI for science hackathon Monash Lens",
       "section": "news"
     },
     {
@@ -1177,12 +1175,12 @@
       "section": "github"
     },
     {
-      "title": "Opinion: Scientific Journals Need Dedicated Fact-Checkers - Undark Magazine",
-      "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1KMWdrX3hJcmhKLWdtS0ZfOHE0dlJzbkNnZmpwLWtaRFZMY2p6bk9mdGt3Q2FqaUhEWWxsaW1hU1hWbDR4Sm1qLXkzT3pkeWdRVXBDbllFMS1mdGFjZ1NQdW80V1VZYnpjazU3eA?oc=5",
-      "pubDate": "2026-04-09T16:01:31+00:00",
+      "title": "Taylor & Francis summit highlights need for stronger research integrity practices in India - Taylor & Francis Newsroom",
+      "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNRFFvbENIVUdjWGV1SUhOUkxTbTFEUllvUzM3NmFGbWdMZEU5NUtrRk42S0xraEJTYzFfRVMtSWJobnZyUE1TNGxIVFkwQl9YYlJHLUdQNHRxMWJJckd2eWJWR3hSSE5rUzMxWHp3RGpZWHZXYkY4TXVYam5nOFdNSDlETUg4NXpNdXBmSDFrQmJwY1lic1IxakdqY2h5SUt5bGF5QW8wTnFuOVV0R3JJMWM0WFRucGl0ZG5uQjlMLXRFWEsxOW96bWFQU0Z2ZEZQcFE?oc=5",
+      "pubDate": "2026-04-10T00:00:00+00:00",
       "source": "Google News",
-      "topic": "\"scientific publishing\"",
-      "summary": "Opinion: Scientific Journals Need Dedicated Fact-Checkers Undark Magazine",
+      "topic": "\"research integrity\"",
+      "summary": "Taylor & Francis summit highlights need for stronger research integrity practices in India Taylor & Francis Newsroom",
       "section": "news"
     },
     {
@@ -1204,12 +1202,12 @@
       "section": "blogs"
     },
     {
-      "title": "Hedayah Center and Emirates Scholar Center review latest approaches to scientific publishing and research - ZAWYA",
-      "link": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxOOGtweHR1R0dfU0RDd1BOdnFrd3lGMjdlREVfdDRsOENvSUIyWnJKRHhPVkd0SGdDT1l4ZG16dU5RaXlPQTlWV1FEYkVpNmVWR241aDN5eFVQZUZPQjRfT25uR0FCdnlLRVhfQkhFbTBYQmxQYUg1Z3RzNWYtcUItTzU5bGJISV9wdVIxUElvMTVzSHpKeWt0MTdKSTRLVkdNYmxpZS1aSmpjdmluc1BIckZUTkh5WFhKaE1sMDFzNzg0QTl2Nm9xYmVnLTFuQm94R0d3MUo0TmtieFhJbFFGejI2M0RRNmdKN2lfZE0tcjNuc0pEOXNHLXJGako?oc=5",
-      "pubDate": "2026-04-09T08:19:02+00:00",
+      "title": "Opinion: Scientific Journals Need Dedicated Fact-Checkers - Undark Magazine",
+      "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1KMWdrX3hJcmhKLWdtS0ZfOHE0dlJzbkNnZmpwLWtaRFZMY2p6bk9mdGt3Q2FqaUhEWWxsaW1hU1hWbDR4Sm1qLXkzT3pkeWdRVXBDbllFMS1mdGFjZ1NQdW80V1VZYnpjazU3eA?oc=5",
+      "pubDate": "2026-04-09T16:01:31+00:00",
       "source": "Google News",
       "topic": "\"scientific publishing\"",
-      "summary": "Hedayah Center and Emirates Scholar Center review latest approaches to scientific publishing and research ZAWYA",
+      "summary": "Opinion: Scientific Journals Need Dedicated Fact-Checkers Undark Magazine",
       "section": "news"
     },
     {
@@ -1231,12 +1229,12 @@
       "section": "blogs"
     },
     {
-      "title": "Meet CAS Newton: Agentic AI built for science | Corporate - EQS News",
-      "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPamU4WTJpYWItRXhubk1HNTJBUnpiR25jNG9lQlo1d1NBbTVPU1dRWllaSXBURjgxcHhiVzladEk4NGVtRWFfMWtIZEhlV3I3SDVzeWo4UTRDdjdZRW9VSU9LN3NNcXVZOHRqR08tUXlfVWFXVE9GamtjQU13Y2pxWVZCTnhBSHBoWUFfazlBamFhOHBPM0NfUTFRYjN4ZTYtMzhqRHFqVi1hd2tOUFZ3MTVDS2xOZURyeFlvcEx5MjFYZw?oc=5",
-      "pubDate": "2026-04-08T12:07:19+00:00",
+      "title": "Hedayah Center and Emirates Scholar Center review latest approaches to scientific publishing and research - ZAWYA",
+      "link": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxOOGtweHR1R0dfU0RDd1BOdnFrd3lGMjdlREVfdDRsOENvSUIyWnJKRHhPVkd0SGdDT1l4ZG16dU5RaXlPQTlWV1FEYkVpNmVWR241aDN5eFVQZUZPQjRfT25uR0FCdnlLRVhfQkhFbTBYQmxQYUg1Z3RzNWYtcUItTzU5bGJISV9wdVIxUElvMTVzSHpKeWt0MTdKSTRLVkdNYmxpZS1aSmpjdmluc1BIckZUTkh5WFhKaE1sMDFzNzg0QTl2Nm9xYmVnLTFuQm94R0d3MUo0TmtieFhJbFFGejI2M0RRNmdKN2lfZE0tcjNuc0pEOXNHLXJGako?oc=5",
+      "pubDate": "2026-04-09T08:19:02+00:00",
       "source": "Google News",
-      "topic": "\"ai for science\"",
-      "summary": "Meet CAS Newton: Agentic AI built for science | Corporate EQS News",
+      "topic": "\"scientific publishing\"",
+      "summary": "Hedayah Center and Emirates Scholar Center review latest approaches to scientific publishing and research ZAWYA",
       "section": "news"
     },
     {
@@ -1249,12 +1247,12 @@
       "section": "blogs"
     },
     {
-      "title": "Genesis Mission Now Accepting Applications to Fund AI-for-Science Projects - HPCwire",
-      "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNaHNCMVU5TGg5U2VlZnBnSjQzWEZyemVwLUdRR2ZmZ1VVbDU5YWFmd2x6c0VMOGpmbEhZZ2ctOVd6OHNUczVMWXg3YTNyVVoyOUVOaGt1WTlpRmRNS0JVNUh5elVWcW44bHA1UkF0bUJjMzhabTBCTkdWZHdXdGJVR01oemtDbWdNX1lLSVZiNFZDQ21IdWVnX25tVjVxbW56X09tMjVqOGtlVTJhX3ZR?oc=5",
-      "pubDate": "2026-04-06T22:48:54+00:00",
+      "title": "Meet CAS Newton: Agentic AI built for science | Corporate - EQS News",
+      "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPamU4WTJpYWItRXhubk1HNTJBUnpiR25jNG9lQlo1d1NBbTVPU1dRWllaSXBURjgxcHhiVzladEk4NGVtRWFfMWtIZEhlV3I3SDVzeWo4UTRDdjdZRW9VSU9LN3NNcXVZOHRqR08tUXlfVWFXVE9GamtjQU13Y2pxWVZCTnhBSHBoWUFfazlBamFhOHBPM0NfUTFRYjN4ZTYtMzhqRHFqVi1hd2tOUFZ3MTVDS2xOZURyeFlvcEx5MjFYZw?oc=5",
+      "pubDate": "2026-04-08T12:07:19+00:00",
       "source": "Google News",
       "topic": "\"ai for science\"",
-      "summary": "Genesis Mission Now Accepting Applications to Fund AI-for-Science Projects HPCwire",
+      "summary": "Meet CAS Newton: Agentic AI built for science | Corporate EQS News",
       "section": "news"
     },
     {
@@ -1267,12 +1265,12 @@
       "section": "blogs"
     },
     {
-      "title": "Trump administration proposes massive budget cuts to science - Scientific American",
-      "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPSWUyREtod3VzVWk2MGI2SWlDaVJfSUtPOFdBR0xMcUpGbGVHUGxYdXpTQ3hBSzZxS0Z1d0tKd3dWbTROcjI4LVk3clBwZDFnNElRcTBGdW8tdDRlem04UzlablpNdHFFOUxNTzdJbHk1cGtHV0xsRjRqWmw0eEt6bFVpdWQyeG5ydF8tMHdqUVNweldZRERrNG1VM2kzUXdZUHNGVUtrWQ?oc=5",
-      "pubDate": "2026-04-03T07:00:00+00:00",
+      "title": "Genesis Mission Now Accepting Applications to Fund AI-for-Science Projects - HPCwire",
+      "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNaHNCMVU5TGg5U2VlZnBnSjQzWEZyemVwLUdRR2ZmZ1VVbDU5YWFmd2x6c0VMOGpmbEhZZ2ctOVd6OHNUczVMWXg3YTNyVVoyOUVOaGt1WTlpRmRNS0JVNUh5elVWcW44bHA1UkF0bUJjMzhabTBCTkdWZHdXdGJVR01oemtDbWdNX1lLSVZiNFZDQ21IdWVnX25tVjVxbW56X09tMjVqOGtlVTJhX3ZR?oc=5",
+      "pubDate": "2026-04-06T22:48:54+00:00",
       "source": "Google News",
-      "topic": "\"scientific publishing\"",
-      "summary": "Trump administration proposes massive budget cuts to science Scientific American",
+      "topic": "\"ai for science\"",
+      "summary": "Genesis Mission Now Accepting Applications to Fund AI-for-Science Projects HPCwire",
       "section": "news"
     },
     {
@@ -1285,12 +1283,12 @@
       "section": "blogs"
     },
     {
-      "title": "Why journals are put on hold in Web of Science Core Collection – and how research integrity guides the process - Clarivate",
-      "link": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxQb1NMNjhTZkxhWE5WNEJ4QWhkVWt1UDNyQmJLSDRJWUpBZklrR21veHo1dXdrdGlwQ1VYTTZHc3AteVVrQ0JLblpFLVR3bmx2cmtHZDRjWENiLTdQSXZocWczdUgwMTNUZmNTN19EZ3BPRUIyNkdPbUd0ckFjWUZxMWh3ZkptWXJDeVk2MGVkdVBEN3FfOF9ZczZSZGQyYmE0TEdMODdhVXpTRU1zMXFITlhBYTdwY2pNaG9JMnRmMmJlYnNQYkU4anJDMzQta2FTY3cyYk90Y05TQkNTdVlZVFViQU5MUEtVdFo0cg?oc=5",
-      "pubDate": "2026-04-02T07:00:00+00:00",
+      "title": "Introduction: Research Integrity and Trustworthy Science: Challenges and Solutions - Petrie-Flom Center",
+      "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPZFphRV9CSHo0X2hrYWo3UTllZzRLLWVuek1Qdk1Ga2VLSm5hWTdaN2VzS2lQaW9Gelk1eHZlcmxhdnF6elpHT24tejg0STJOaHFHSnNmbnByaU9pd0QzRWJiMzZTTm5MWW8zXzZNaTVlWHR5OUFTbHFTa2dOQnMyRTJnc2RJVWFSR1VtYTBqWVM3Z1lVeHRVeERIdkFicDB2ajhZWWJPdy1oVEpFamQ5YjZ0WERuUENBcU1oZndn?oc=5",
+      "pubDate": "2026-04-05T15:07:04+00:00",
       "source": "Google News",
       "topic": "\"research integrity\"",
-      "summary": "Why journals are put on hold in Web of Science Core Collection – and how research integrity guides the process Clarivate",
+      "summary": "Introduction: Research Integrity and Trustworthy Science: Challenges and Solutions Petrie-Flom Center",
       "section": "news"
     },
     {
@@ -1301,6 +1299,15 @@
       "topic": "https://crossref.org",
       "summary": "This year, we placed a spotlight on the Latin American community, hosting the second Crossref Metadata Sprint in São Paulo, Brazil from 4 - 6 March 2026. In our first tri-lingual event, we brought together 31 particip...",
       "section": "blogs"
+    },
+    {
+      "title": "Trump administration proposes massive budget cuts to science - Scientific American",
+      "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPSWUyREtod3VzVWk2MGI2SWlDaVJfSUtPOFdBR0xMcUpGbGVHUGxYdXpTQ3hBSzZxS0Z1d0tKd3dWbTROcjI4LVk3clBwZDFnNElRcTBGdW8tdDRlem04UzlablpNdHFFOUxNTzdJbHk1cGtHV0xsRjRqWmw0eEt6bFVpdWQyeG5ydF8tMHdqUVNweldZRERrNG1VM2kzUXdZUHNGVUtrWQ?oc=5",
+      "pubDate": "2026-04-03T07:00:00+00:00",
+      "source": "Google News",
+      "topic": "\"scientific publishing\"",
+      "summary": "Trump administration proposes massive budget cuts to science Scientific American",
+      "section": "news"
     },
     {
       "title": "AI turns electron microscopy into materials insights in minutes - Cornell Chronicle",
@@ -1372,15 +1379,6 @@
       "source": "Google News",
       "topic": "\"Molecule\"",
       "summary": "A 67-year-old “crazy” theory about vitamin B1 has finally been proven ScienceDaily",
-      "section": "news"
-    },
-    {
-      "title": "Publisher changes citation, registration policies following Retraction Watch investigation",
-      "link": "https://retractionwatch.com/2026/04/07/wolters-kluwer-international-journal-surgery-changes-citation-registration-policies/",
-      "pubDate": "2026-04-07T12:12:17+00:00",
-      "source": "Retraction Watch",
-      "topic": "research integrity",
-      "summary": "The Dutch publisher Wolters Kluwer has scrapped some of its citation and study-registration requirements at a top-ranked surgery journal founded by the U.K. plastic surgeon Riaz Agha, Retraction Watch has learned. The...",
       "section": "news"
     }
   ]

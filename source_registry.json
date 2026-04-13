@@ -1,0 +1,5883 @@
+{
+  "generatedAt": "2026-04-13T01:33:24.009924+00:00",
+  "dataPath": "data.json",
+  "signalsConfigPath": "signals_config.json",
+  "tracked_topics": [
+    "desci",
+    "decentralized science",
+    "decentralized peer review",
+    "open science",
+    "open science infrastructure",
+    "science publishing",
+    "scientific publishing",
+    "metascience",
+    "research integrity",
+    "reproducibility",
+    "research credibility",
+    "ai for science",
+    "ai and science",
+    "peer review",
+    "publishing",
+    "smart contracts",
+    "compute",
+    "tokenomics",
+    "ai ml",
+    "dao gov",
+    "ai",
+    "biodao",
+    "reputation",
+    "data sovereignty",
+    "open access",
+    "ip nft",
+    "citizen sci",
+    "data",
+    "citation graph",
+    "healthcare",
+    "prediction market",
+    "open source",
+    "identity"
+  ],
+  "watchlists": {
+    "x_handles": [
+      "DeSciLabs",
+      "ResearchHub",
+      "OpenAlex_org",
+      "OpenReviewNet",
+      "PREreview",
+      "opencitations",
+      "CrossrefOrg",
+      "lab_dao",
+      "molecule_dao",
+      "opsaboratory",
+      "talentDAO_",
+      "paulkhls",
+      "nrindtorff",
+      "saborsky",
+      "eperlste",
+      "vincentweisser",
+      "JocelynnPearl",
+      "ORCID_Org",
+      "sarahhamburg_"
+    ],
+    "rss_feeds": [
+      {
+        "url": "https://retractionwatch.com/feed/",
+        "source": "Retraction Watch",
+        "topic": "research integrity",
+        "section": "news"
+      },
+      {
+        "url": "https://scholarlykitchen.sspnet.org/feed/",
+        "source": "The Scholarly Kitchen",
+        "topic": "science publishing",
+        "section": "news"
+      },
+      {
+        "url": "https://elifesciences.org/rss/current.xml",
+        "source": "eLife",
+        "topic": "open science",
+        "section": "news"
+      },
+      {
+        "url": "https://blog.openalex.org/feed/",
+        "source": "OpenAlex blog",
+        "topic": "open science infrastructure",
+        "section": "blogs"
+      },
+      {
+        "url": "https://www.crossref.org/blog/feed/",
+        "source": "Crossref blog",
+        "topic": "research infrastructure",
+        "section": "blogs"
+      },
+      {
+        "url": "https://content.prereview.org/feed.xml",
+        "source": "PREreview blog",
+        "topic": "preprint review",
+        "section": "blogs"
+      }
+    ],
+    "manual_entity_queries": [
+      "Ants-Review",
+      "Bianca Trovo",
+      "DeSci Labs",
+      "DeSci Publish",
+      "ResearchHub",
+      "OpenReview",
+      "OpenAlex",
+      "PREreview",
+      "Orvium",
+      "Peer Community In",
+      "Review Commons",
+      "LabDAO",
+      "Molecule",
+      "VitaDAO",
+      "F1000Research",
+      "Crossref",
+      "ORCID",
+      "eLife"
+    ],
+    "blocked_domains": [
+      "bitget.com"
+    ],
+    "blocked_terms": [
+      "bitget",
+      "please help us identify this woman",
+      "40 essential websites every phd student should know"
+    ]
+  },
+  "organizations": [
+    {
+      "id": "desci-labs",
+      "kind": "organization",
+      "name": "DeSci Labs / Nodes",
+      "aliases": [
+        "DeSci Labs / Nodes",
+        "DeSci Labs",
+        "Nodes"
+      ],
+      "stack": "infrastructure",
+      "type": "Publishing Infra",
+      "tags": [
+        "publishing",
+        "infrastructure",
+        "open-access",
+        "peer-review",
+        "reputation",
+        "citation-graph"
+      ],
+      "watch_priority": 189.4,
+      "scores": {
+        "overlap": 60.0,
+        "credibility": 95.0,
+        "decentralization": 70.0,
+        "open_science_fit": 75.0
+      },
+      "official_urls": [
+        "https://desci.com",
+        "https://www.desci.com",
+        "https://www.desci.com/about",
+        "https://startupsmagazine.co.uk/article-desci-labs-raises-65m-transform-scientific-publishing"
+      ],
+      "domains": [
+        "desci.com",
+        "startupsmagazine.co.uk"
+      ],
+      "rss_candidates": [
+        "https://desci.com/feed",
+        "https://desci.com/rss",
+        "https://desci.com/rss.xml",
+        "https://desci.com/feed.xml",
+        "https://desci.com/atom.xml",
+        "https://desci.com/blog/feed",
+        "https://desci.com/news/feed",
+        "https://www.desci.com/feed",
+        "https://www.desci.com/rss",
+        "https://www.desci.com/rss.xml",
+        "https://www.desci.com/feed.xml",
+        "https://www.desci.com/atom.xml"
+      ],
+      "x_handles": [
+        "DeSciLabs"
+      ],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [
+        {
+          "id": "p-hill",
+          "name": "Chris Hill",
+          "role": "Founder, DeSci Labs / Nodes",
+          "x_handle": ""
+        },
+        {
+          "id": "p-koellinger",
+          "name": "Philipp Koellinger",
+          "role": "Co-founder DeSci Labs & DeSci Foundation. VU Amsterdam professor. Published in Nature/Science.",
+          "x_handle": ""
+        },
+        {
+          "id": "p-jerschow",
+          "name": "Nikita Jerschow",
+          "role": "CEO, DeSci Labs / DeSci Publish.",
+          "x_handle": ""
+        }
+      ],
+      "provenance_urls": [
+        "https://desci.com",
+        "https://www.desci.com",
+        "https://www.desci.com/about",
+        "https://startupsmagazine.co.uk/article-desci-labs-raises-65m-transform-scientific-publishing"
+      ]
+    },
+    {
+      "id": "researchhub",
+      "kind": "organization",
+      "name": "ResearchHub",
+      "aliases": [
+        "ResearchHub"
+      ],
+      "stack": "application",
+      "type": "Publishing",
+      "tags": [
+        "publishing",
+        "peer-review",
+        "tokenomics",
+        "AI",
+        "open-access",
+        "reputation",
+        "ai-ml",
+        "smart-contracts"
+      ],
+      "watch_priority": 183.2,
+      "scores": {
+        "overlap": 75.0,
+        "credibility": 80.0,
+        "decentralization": 50.0,
+        "open_science_fit": 64.0
+      },
+      "official_urls": [
+        "https://researchhub.com",
+        "https://www.researchhub.com/post/979/researchhub-raises-5m-to-help-scientists-monetize-their-research",
+        "https://www.researchhub.com",
+        "https://www.researchhub.com/paper/819400/the-researchcoin-whitepaper"
+      ],
+      "domains": [
+        "researchhub.com"
+      ],
+      "rss_candidates": [
+        "https://researchhub.com/feed",
+        "https://researchhub.com/rss",
+        "https://researchhub.com/rss.xml",
+        "https://researchhub.com/feed.xml",
+        "https://researchhub.com/atom.xml",
+        "https://researchhub.com/blog/feed",
+        "https://researchhub.com/news/feed",
+        "https://www.researchhub.com/post/979/researchhub-raises-5m-to-help-scientists-monetize-their-research/feed",
+        "https://www.researchhub.com/post/979/researchhub-raises-5m-to-help-scientists-monetize-their-research/rss",
+        "https://www.researchhub.com/post/979/researchhub-raises-5m-to-help-scientists-monetize-their-research/rss.xml",
+        "https://www.researchhub.com/post/979/researchhub-raises-5m-to-help-scientists-monetize-their-research/feed.xml",
+        "https://www.researchhub.com/post/979/researchhub-raises-5m-to-help-scientists-monetize-their-research/atom.xml"
+      ],
+      "x_handles": [
+        "ResearchHub"
+      ],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [
+        {
+          "id": "p-joyce",
+          "name": "Patrick Joyce",
+          "role": "CEO, ResearchHub",
+          "x_handle": ""
+        },
+        {
+          "id": "p-armstrong",
+          "name": "Brian Armstrong",
+          "role": "CEO, Coinbase. Backer of ResearchHub.",
+          "x_handle": "brian_armstrong"
+        }
+      ],
+      "provenance_urls": [
+        "https://www.researchhub.com/post/979/researchhub-raises-5m-to-help-scientists-monetize-their-research",
+        "https://www.researchhub.com",
+        "https://www.researchhub.com/paper/819400/the-researchcoin-whitepaper"
+      ]
+    },
+    {
+      "id": "orvium",
+      "kind": "organization",
+      "name": "Orvium",
+      "aliases": [
+        "Orvium"
+      ],
+      "stack": "application",
+      "type": "Publishing",
+      "tags": [
+        "publishing",
+        "peer-review",
+        "open-access",
+        "dao-gov",
+        "smart-contracts"
+      ],
+      "watch_priority": 167.75,
+      "scores": {
+        "overlap": 70.0,
+        "credibility": 70.0,
+        "decentralization": 55.0,
+        "open_science_fit": 53.0
+      },
+      "official_urls": [
+        "https://orvium.io",
+        "https://kt.cern/startups/orvium"
+      ],
+      "domains": [
+        "orvium.io",
+        "kt.cern"
+      ],
+      "rss_candidates": [
+        "https://orvium.io/feed",
+        "https://orvium.io/rss",
+        "https://orvium.io/rss.xml",
+        "https://orvium.io/feed.xml",
+        "https://orvium.io/atom.xml",
+        "https://orvium.io/blog/feed",
+        "https://orvium.io/news/feed",
+        "https://kt.cern/startups/orvium/feed",
+        "https://kt.cern/startups/orvium/rss",
+        "https://kt.cern/startups/orvium/rss.xml",
+        "https://kt.cern/startups/orvium/feed.xml",
+        "https://kt.cern/startups/orvium/atom.xml"
+      ],
+      "x_handles": [],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://orvium.io",
+        "https://kt.cern/startups/orvium"
+      ]
+    },
+    {
+      "id": "openax",
+      "kind": "organization",
+      "name": "OpenAlex",
+      "aliases": [
+        "OpenAlex"
+      ],
+      "stack": "infrastructure",
+      "type": "Open Infrastructure",
+      "tags": [
+        "open-data",
+        "bibliography",
+        "CC0",
+        "API",
+        "citation-graph",
+        "ai-ml"
+      ],
+      "watch_priority": 160.4,
+      "scores": {
+        "overlap": 35.0,
+        "credibility": 95.0,
+        "decentralization": 60.0,
+        "open_science_fit": 90.0
+      },
+      "official_urls": [
+        "https://openalex.org",
+        "https://blog.openalex.org/ourresearch-receives-7-5m-grant-from-arcadia-to-establish-openalex-a-milestone-development-for-open-science",
+        "https://blog.openalex.org/arcadia-2021-grant",
+        "https://blog.openalex.org/openalex-2024-in-review",
+        "https://help.openalex.org/hc/en-us/articles/24397762024087-Pricing",
+        "https://blog.openalex.org/a-new-way-to-support-openalex-become-a-member"
+      ],
+      "domains": [
+        "openalex.org",
+        "blog.openalex.org",
+        "help.openalex.org"
+      ],
+      "rss_candidates": [
+        "https://openalex.org/feed",
+        "https://openalex.org/rss",
+        "https://openalex.org/rss.xml",
+        "https://openalex.org/feed.xml",
+        "https://openalex.org/atom.xml",
+        "https://openalex.org/blog/feed",
+        "https://openalex.org/news/feed",
+        "https://blog.openalex.org/ourresearch-receives-7-5m-grant-from-arcadia-to-establish-openalex-a-milestone-development-for-open-science/feed",
+        "https://blog.openalex.org/ourresearch-receives-7-5m-grant-from-arcadia-to-establish-openalex-a-milestone-development-for-open-science/rss",
+        "https://blog.openalex.org/ourresearch-receives-7-5m-grant-from-arcadia-to-establish-openalex-a-milestone-development-for-open-science/rss.xml",
+        "https://blog.openalex.org/ourresearch-receives-7-5m-grant-from-arcadia-to-establish-openalex-a-milestone-development-for-open-science/feed.xml",
+        "https://blog.openalex.org/ourresearch-receives-7-5m-grant-from-arcadia-to-establish-openalex-a-milestone-development-for-open-science/atom.xml"
+      ],
+      "x_handles": [
+        "OpenAlex_org"
+      ],
+      "github_repos": [
+        "ourresearch/openalex-guts"
+      ],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://blog.openalex.org/ourresearch-receives-7-5m-grant-from-arcadia-to-establish-openalex-a-milestone-development-for-open-science",
+        "https://blog.openalex.org/arcadia-2021-grant",
+        "https://blog.openalex.org/openalex-2024-in-review",
+        "https://help.openalex.org/hc/en-us/articles/24397762024087-Pricing",
+        "https://blog.openalex.org/a-new-way-to-support-openalex-become-a-member",
+        "https://openalex.org"
+      ]
+    },
+    {
+      "id": "openreview",
+      "kind": "organization",
+      "name": "OpenReview",
+      "aliases": [
+        "OpenReview"
+      ],
+      "stack": "application",
+      "type": "Review Platform",
+      "tags": [
+        "peer-review",
+        "open-access",
+        "ML/AI-conferences",
+        "publishing"
+      ],
+      "watch_priority": 156.25,
+      "scores": {
+        "overlap": 40.0,
+        "credibility": 90.0,
+        "decentralization": 45.0,
+        "open_science_fit": 96.0
+      },
+      "official_urls": [
+        "https://openreview.net",
+        "https://openreview.net/about",
+        "https://openreview.net/donate"
+      ],
+      "domains": [
+        "openreview.net"
+      ],
+      "rss_candidates": [
+        "https://openreview.net/feed",
+        "https://openreview.net/rss",
+        "https://openreview.net/rss.xml",
+        "https://openreview.net/feed.xml",
+        "https://openreview.net/atom.xml",
+        "https://openreview.net/blog/feed",
+        "https://openreview.net/news/feed",
+        "https://openreview.net/about/feed",
+        "https://openreview.net/about/rss",
+        "https://openreview.net/about/rss.xml",
+        "https://openreview.net/about/feed.xml",
+        "https://openreview.net/about/atom.xml"
+      ],
+      "x_handles": [
+        "OpenReviewNet"
+      ],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://openreview.net/about",
+        "https://openreview.net/donate"
+      ]
+    },
+    {
+      "id": "prereview",
+      "kind": "organization",
+      "name": "PREreview",
+      "aliases": [
+        "PREreview"
+      ],
+      "stack": "application",
+      "type": "Review Platform",
+      "tags": [
+        "peer-review",
+        "preprints",
+        "ORCID",
+        "equity",
+        "open-source",
+        "reputation",
+        "citizen-sci"
+      ],
+      "watch_priority": 152.65,
+      "scores": {
+        "overlap": 45.0,
+        "credibility": 80.0,
+        "decentralization": 55.0,
+        "open_science_fit": 100.0
+      },
+      "official_urls": [
+        "https://prereview.org",
+        "https://prereview.org/en-us/funding",
+        "https://content.prereview.org/prereview-welcomes-funding"
+      ],
+      "domains": [
+        "prereview.org",
+        "content.prereview.org"
+      ],
+      "rss_candidates": [
+        "https://prereview.org/feed",
+        "https://prereview.org/rss",
+        "https://prereview.org/rss.xml",
+        "https://prereview.org/feed.xml",
+        "https://prereview.org/atom.xml",
+        "https://prereview.org/blog/feed",
+        "https://prereview.org/news/feed",
+        "https://prereview.org/en-us/funding/feed",
+        "https://prereview.org/en-us/funding/rss",
+        "https://prereview.org/en-us/funding/rss.xml",
+        "https://prereview.org/en-us/funding/feed.xml",
+        "https://prereview.org/en-us/funding/atom.xml"
+      ],
+      "x_handles": [
+        "PREreview"
+      ],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://prereview.org/en-us/funding",
+        "https://content.prereview.org/prereview-welcomes-funding"
+      ]
+    },
+    {
+      "id": "opscientia",
+      "kind": "organization",
+      "name": "OpScientia / Holonym",
+      "aliases": [
+        "OpScientia / Holonym",
+        "OpScientia",
+        "Holonym"
+      ],
+      "stack": "infrastructure",
+      "type": "Identity",
+      "tags": [
+        "identity",
+        "ORCID",
+        "ZK-proofs",
+        "DID",
+        "reputation",
+        "smart-contracts",
+        "data-sovereignty"
+      ],
+      "watch_priority": 149.05,
+      "scores": {
+        "overlap": 50.0,
+        "credibility": 70.0,
+        "decentralization": 65.0,
+        "open_science_fit": 59.0
+      },
+      "official_urls": [
+        "https://opsci.io",
+        "https://www.opsci.io",
+        "https://fil.org/blog/case-study-opsci-how-an-open-science-commons-project-built-on-web3-infrastructure-empowers-community-discovery"
+      ],
+      "domains": [
+        "opsci.io",
+        "fil.org"
+      ],
+      "rss_candidates": [
+        "https://opsci.io/feed",
+        "https://opsci.io/rss",
+        "https://opsci.io/rss.xml",
+        "https://opsci.io/feed.xml",
+        "https://opsci.io/atom.xml",
+        "https://opsci.io/blog/feed",
+        "https://opsci.io/news/feed",
+        "https://www.opsci.io/feed",
+        "https://www.opsci.io/rss",
+        "https://www.opsci.io/rss.xml",
+        "https://www.opsci.io/feed.xml",
+        "https://www.opsci.io/atom.xml"
+      ],
+      "x_handles": [
+        "opsaboratory"
+      ],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://opsci.io",
+        "https://www.opsci.io",
+        "https://fil.org/blog/case-study-opsci-how-an-open-science-commons-project-built-on-web3-infrastructure-empowers-community-discovery"
+      ]
+    },
+    {
+      "id": "opencitations",
+      "kind": "organization",
+      "name": "OpenCitations",
+      "aliases": [
+        "OpenCitations"
+      ],
+      "stack": "infrastructure",
+      "type": "Open Infrastructure",
+      "tags": [
+        "citations",
+        "open-data",
+        "linked-data",
+        "citation-graph"
+      ],
+      "watch_priority": 148.15,
+      "scores": {
+        "overlap": 30.0,
+        "credibility": 90.0,
+        "decentralization": 55.0,
+        "open_science_fit": 98.0
+      },
+      "official_urls": [
+        "https://opencitations.net",
+        "https://scoss.org/how-it-works/current-funding-calls"
+      ],
+      "domains": [
+        "opencitations.net",
+        "scoss.org"
+      ],
+      "rss_candidates": [
+        "https://opencitations.net/feed",
+        "https://opencitations.net/rss",
+        "https://opencitations.net/rss.xml",
+        "https://opencitations.net/feed.xml",
+        "https://opencitations.net/atom.xml",
+        "https://opencitations.net/blog/feed",
+        "https://opencitations.net/news/feed",
+        "https://scoss.org/how-it-works/current-funding-calls/feed",
+        "https://scoss.org/how-it-works/current-funding-calls/rss",
+        "https://scoss.org/how-it-works/current-funding-calls/rss.xml",
+        "https://scoss.org/how-it-works/current-funding-calls/feed.xml",
+        "https://scoss.org/how-it-works/current-funding-calls/atom.xml"
+      ],
+      "x_handles": [
+        "opencitations"
+      ],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://opencitations.net",
+        "https://scoss.org/how-it-works/current-funding-calls"
+      ]
+    },
+    {
+      "id": "labdao",
+      "kind": "organization",
+      "name": "LabDAO",
+      "aliases": [
+        "LabDAO"
+      ],
+      "stack": "infrastructure",
+      "type": "Compute/Lab",
+      "tags": [
+        "compute",
+        "reproducibility",
+        "open-source",
+        "dao-gov"
+      ],
+      "watch_priority": 147.85,
+      "scores": {
+        "overlap": 25.0,
+        "credibility": 90.0,
+        "decentralization": 75.0,
+        "open_science_fit": 79.0
+      },
+      "official_urls": [
+        "https://labdao.xyz",
+        "https://github.com/labdao",
+        "https://www.coindesk.com/business/2023/05/23/labdao-raises-36m-to-decentralize-drug-discovery"
+      ],
+      "domains": [
+        "labdao.xyz",
+        "github.com",
+        "coindesk.com"
+      ],
+      "rss_candidates": [
+        "https://labdao.xyz/feed",
+        "https://labdao.xyz/rss",
+        "https://labdao.xyz/rss.xml",
+        "https://labdao.xyz/feed.xml",
+        "https://labdao.xyz/atom.xml",
+        "https://labdao.xyz/blog/feed",
+        "https://labdao.xyz/news/feed",
+        "https://github.com/labdao/feed",
+        "https://github.com/labdao/rss",
+        "https://github.com/labdao/rss.xml",
+        "https://github.com/labdao/feed.xml",
+        "https://github.com/labdao/atom.xml"
+      ],
+      "x_handles": [
+        "lab_dao"
+      ],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [
+        {
+          "id": "p-rindtorff",
+          "name": "Niklas Rindtorff",
+          "role": "Founder, LabDAO",
+          "x_handle": "nrindtorff"
+        },
+        {
+          "id": "p-pearl",
+          "name": "Jocelynn Pearl",
+          "role": "Co-founded LabDAO. DeSci Wiki curator. UltraRare Podcast host.",
+          "x_handle": "JocelynnPearl"
+        },
+        {
+          "id": "p-srinivasan",
+          "name": "Balaji Srinivasan",
+          "role": "Former Coinbase CTO. Most prolific DeSci angel: Molecule, VitaDAO, LabDAO.",
+          "x_handle": "balajis"
+        }
+      ],
+      "provenance_urls": [
+        "https://github.com/labdao",
+        "https://www.coindesk.com/business/2023/05/23/labdao-raises-36m-to-decentralize-drug-discovery",
+        "https://www.coindesk.com/business/2023/05/23/labdao-raises-36m-to-decentralize-drug-discovery"
+      ]
+    },
+    {
+      "id": "crossref",
+      "kind": "organization",
+      "name": "Crossref / DOI",
+      "aliases": [
+        "Crossref / DOI",
+        "Crossref",
+        "DOI"
+      ],
+      "stack": "infrastructure",
+      "type": "Identifier Infra",
+      "tags": [
+        "identity",
+        "infrastructure",
+        "metadata",
+        "reputation"
+      ],
+      "watch_priority": 142.0,
+      "scores": {
+        "overlap": 20.0,
+        "credibility": 95.0,
+        "decentralization": 50.0,
+        "open_science_fit": 98.0
+      },
+      "official_urls": [
+        "https://crossref.org",
+        "https://www.crossref.org/operations-and-sustainability/financials",
+        "https://www.crossref.org/fees",
+        "https://www.crossref.org/operations-and-sustainability/annual-report"
+      ],
+      "domains": [
+        "crossref.org"
+      ],
+      "rss_candidates": [
+        "https://crossref.org/feed",
+        "https://crossref.org/rss",
+        "https://crossref.org/rss.xml",
+        "https://crossref.org/feed.xml",
+        "https://crossref.org/atom.xml",
+        "https://crossref.org/blog/feed",
+        "https://crossref.org/news/feed",
+        "https://www.crossref.org/operations-and-sustainability/financials/feed",
+        "https://www.crossref.org/operations-and-sustainability/financials/rss",
+        "https://www.crossref.org/operations-and-sustainability/financials/rss.xml",
+        "https://www.crossref.org/operations-and-sustainability/financials/feed.xml",
+        "https://www.crossref.org/operations-and-sustainability/financials/atom.xml"
+      ],
+      "x_handles": [
+        "CrossrefOrg"
+      ],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://www.crossref.org/operations-and-sustainability/financials",
+        "https://www.crossref.org/fees",
+        "https://www.crossref.org/operations-and-sustainability/annual-report"
+      ]
+    },
+    {
+      "id": "pci",
+      "kind": "organization",
+      "name": "Peer Community In (PCI)",
+      "aliases": [
+        "Peer Community In (PCI)",
+        "Peer Community In"
+      ],
+      "stack": "application",
+      "type": "Overlay Journal",
+      "tags": [
+        "peer-review",
+        "open-access",
+        "preprints",
+        "diamond-OA",
+        "publishing",
+        "citizen-sci"
+      ],
+      "watch_priority": 141.7,
+      "scores": {
+        "overlap": 55.0,
+        "credibility": 60.0,
+        "decentralization": 60.0,
+        "open_science_fit": 100.0
+      },
+      "official_urls": [
+        "https://peercommunityin.org",
+        "https://peercommunityin.org/pci-finances",
+        "https://peercommunityin.org/endorse-and-financially-support-pci"
+      ],
+      "domains": [
+        "peercommunityin.org"
+      ],
+      "rss_candidates": [
+        "https://peercommunityin.org/feed",
+        "https://peercommunityin.org/rss",
+        "https://peercommunityin.org/rss.xml",
+        "https://peercommunityin.org/feed.xml",
+        "https://peercommunityin.org/atom.xml",
+        "https://peercommunityin.org/blog/feed",
+        "https://peercommunityin.org/news/feed",
+        "https://peercommunityin.org/pci-finances/feed",
+        "https://peercommunityin.org/pci-finances/rss",
+        "https://peercommunityin.org/pci-finances/rss.xml",
+        "https://peercommunityin.org/pci-finances/feed.xml",
+        "https://peercommunityin.org/pci-finances/atom.xml"
+      ],
+      "x_handles": [
+        "PaboratoryIn"
+      ],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://peercommunityin.org/pci-finances",
+        "https://peercommunityin.org/endorse-and-financially-support-pci",
+        "https://peercommunityin.org"
+      ]
+    },
+    {
+      "id": "talentdao",
+      "kind": "organization",
+      "name": "TalentDAO",
+      "aliases": [
+        "TalentDAO"
+      ],
+      "stack": "application",
+      "type": "DAO Publishing",
+      "tags": [
+        "publishing",
+        "peer-review",
+        "DAO-governance",
+        "social-science",
+        "dao-gov"
+      ],
+      "watch_priority": 141.25,
+      "scores": {
+        "overlap": 45.0,
+        "credibility": 70.0,
+        "decentralization": 55.0,
+        "open_science_fit": 71.0
+      },
+      "official_urls": [
+        "https://talentdao.io",
+        "https://talentdao.substack.com",
+        "https://gitcoin.co/program",
+        "https://x.com/talentDAO_"
+      ],
+      "domains": [
+        "talentdao.io",
+        "talentdao.substack.com",
+        "gitcoin.co",
+        "x.com"
+      ],
+      "rss_candidates": [
+        "https://talentdao.io/feed",
+        "https://talentdao.io/rss",
+        "https://talentdao.io/rss.xml",
+        "https://talentdao.io/feed.xml",
+        "https://talentdao.io/atom.xml",
+        "https://talentdao.io/blog/feed",
+        "https://talentdao.io/news/feed",
+        "https://talentdao.substack.com/feed",
+        "https://talentdao.substack.com/rss",
+        "https://talentdao.substack.com/rss.xml",
+        "https://talentdao.substack.com/feed.xml",
+        "https://talentdao.substack.com/atom.xml"
+      ],
+      "x_handles": [
+        "talentDAO_"
+      ],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://talentdao.io",
+        "https://talentdao.substack.com",
+        "https://gitcoin.co/program",
+        "https://x.com/talentDAO_"
+      ]
+    },
+    {
+      "id": "origintrail",
+      "kind": "organization",
+      "name": "OriginTrail",
+      "aliases": [
+        "OriginTrail"
+      ],
+      "stack": "infrastructure",
+      "type": "Knowledge Graph",
+      "tags": [
+        "knowledge-graph",
+        "data",
+        "AI",
+        "tokenomics",
+        "citation-graph",
+        "data-sovereignty",
+        "ai-ml"
+      ],
+      "watch_priority": 140.05,
+      "scores": {
+        "overlap": 20.0,
+        "credibility": 90.0,
+        "decentralization": 65.0,
+        "open_science_fit": 47.0
+      },
+      "official_urls": [
+        "https://origintrail.io",
+        "https://www.globenewswire.com/news-release/2018/01/18/1296517/0/en/OriginTrail-ICO-Raises-22-5-Million-to-Build-Transparency-in-Supply-Chains.html",
+        "https://ngi.eu/funded_solution/ngi-ontochainproject-22"
+      ],
+      "domains": [
+        "origintrail.io",
+        "globenewswire.com",
+        "ngi.eu"
+      ],
+      "rss_candidates": [
+        "https://origintrail.io/feed",
+        "https://origintrail.io/rss",
+        "https://origintrail.io/rss.xml",
+        "https://origintrail.io/feed.xml",
+        "https://origintrail.io/atom.xml",
+        "https://origintrail.io/blog/feed",
+        "https://origintrail.io/news/feed",
+        "https://www.globenewswire.com/feed",
+        "https://www.globenewswire.com/rss",
+        "https://www.globenewswire.com/rss.xml",
+        "https://www.globenewswire.com/feed.xml",
+        "https://www.globenewswire.com/atom.xml"
+      ],
+      "x_handles": [
+        "origin_trail"
+      ],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://origintrail.io",
+        "https://origintrail.io",
+        "https://www.globenewswire.com/news-release/2018/01/18/1296517/0/en/OriginTrail-ICO-Raises-22-5-Million-to-Build-Transparency-in-Supply-Chains.html",
+        "https://ngi.eu/funded_solution/ngi-ontochainproject-22"
+      ]
+    },
+    {
+      "id": "nobleblocks",
+      "kind": "organization",
+      "name": "NobleBlocks",
+      "aliases": [
+        "NobleBlocks"
+      ],
+      "stack": "application",
+      "type": "Publishing",
+      "tags": [
+        "publishing",
+        "ICP",
+        "tokenomics",
+        "peer-review",
+        "reputation",
+        "smart-contracts"
+      ],
+      "watch_priority": 139.65,
+      "scores": {
+        "overlap": 65.0,
+        "credibility": 50.0,
+        "decentralization": 55.0,
+        "open_science_fit": 44.0
+      },
+      "official_urls": [
+        "https://nobleblocks.com",
+        "https://www.nobleblocks.com",
+        "https://docs.nobleblocks.com/whitepaper",
+        "https://docs.nobleblocks.com/whitepaper/tokenomics"
+      ],
+      "domains": [
+        "nobleblocks.com",
+        "docs.nobleblocks.com"
+      ],
+      "rss_candidates": [
+        "https://nobleblocks.com/feed",
+        "https://nobleblocks.com/rss",
+        "https://nobleblocks.com/rss.xml",
+        "https://nobleblocks.com/feed.xml",
+        "https://nobleblocks.com/atom.xml",
+        "https://nobleblocks.com/blog/feed",
+        "https://nobleblocks.com/news/feed",
+        "https://www.nobleblocks.com/feed",
+        "https://www.nobleblocks.com/rss",
+        "https://www.nobleblocks.com/rss.xml",
+        "https://www.nobleblocks.com/feed.xml",
+        "https://www.nobleblocks.com/atom.xml"
+      ],
+      "x_handles": [],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://nobleblocks.com",
+        "https://www.nobleblocks.com",
+        "https://docs.nobleblocks.com/whitepaper",
+        "https://docs.nobleblocks.com/whitepaper/tokenomics"
+      ]
+    },
+    {
+      "id": "elizaos",
+      "kind": "organization",
+      "name": "elizaOS",
+      "aliases": [
+        "elizaOS"
+      ],
+      "stack": "infrastructure",
+      "type": "AI Framework",
+      "tags": [
+        "AI",
+        "agents",
+        "open-source",
+        "ai-ml",
+        "compute"
+      ],
+      "watch_priority": 138.9,
+      "scores": {
+        "overlap": 10.0,
+        "credibility": 95.0,
+        "decentralization": 80.0,
+        "open_science_fit": 44.0
+      },
+      "official_urls": [
+        "https://elizaos.ai",
+        "https://www.elizaos.ai",
+        "https://docs.elizaos.ai/tokenomics"
+      ],
+      "domains": [
+        "elizaos.ai",
+        "docs.elizaos.ai"
+      ],
+      "rss_candidates": [
+        "https://elizaos.ai/feed",
+        "https://elizaos.ai/rss",
+        "https://elizaos.ai/rss.xml",
+        "https://elizaos.ai/feed.xml",
+        "https://elizaos.ai/atom.xml",
+        "https://elizaos.ai/blog/feed",
+        "https://elizaos.ai/news/feed",
+        "https://www.elizaos.ai/feed",
+        "https://www.elizaos.ai/rss",
+        "https://www.elizaos.ai/rss.xml",
+        "https://www.elizaos.ai/feed.xml",
+        "https://www.elizaos.ai/atom.xml"
+      ],
+      "x_handles": [
+        "elizaOS"
+      ],
+      "github_repos": [
+        "elizaOS/eliza"
+      ],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://elizaos.ai",
+        "https://www.elizaos.ai",
+        "https://docs.elizaos.ai/tokenomics"
+      ]
+    },
+    {
+      "id": "etica",
+      "kind": "organization",
+      "name": "Etica Protocol",
+      "aliases": [
+        "Etica Protocol"
+      ],
+      "stack": "governance",
+      "type": "Research DAO",
+      "tags": [
+        "DAO-governance",
+        "research-funding",
+        "PoW",
+        "dao-gov",
+        "smart-contracts"
+      ],
+      "watch_priority": 138.1,
+      "scores": {
+        "overlap": 20.0,
+        "credibility": 85.0,
+        "decentralization": 80.0,
+        "open_science_fit": 48.0
+      },
+      "official_urls": [
+        "https://eticaprotocol.org",
+        "https://www.eticaprotocol.org",
+        "https://www.researchhub.com/post/420/an-introduction-to-etica-a-new-blockchain-for-funding-medical-research",
+        "https://medium.com/%40kevinwad.oss/etica-open-source-protocol-for-medical-research-without-intellectual-property-520f1421630d",
+        "https://www.eticaprotocol.org/viewwhitepaper"
+      ],
+      "domains": [
+        "eticaprotocol.org",
+        "researchhub.com",
+        "medium.com"
+      ],
+      "rss_candidates": [
+        "https://eticaprotocol.org/feed",
+        "https://eticaprotocol.org/rss",
+        "https://eticaprotocol.org/rss.xml",
+        "https://eticaprotocol.org/feed.xml",
+        "https://eticaprotocol.org/atom.xml",
+        "https://eticaprotocol.org/blog/feed",
+        "https://eticaprotocol.org/news/feed",
+        "https://www.eticaprotocol.org/feed",
+        "https://www.eticaprotocol.org/rss",
+        "https://www.eticaprotocol.org/rss.xml",
+        "https://www.eticaprotocol.org/feed.xml",
+        "https://www.eticaprotocol.org/atom.xml"
+      ],
+      "x_handles": [],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://eticaprotocol.org",
+        "https://www.eticaprotocol.org",
+        "https://www.researchhub.com/post/420/an-introduction-to-etica-a-new-blockchain-for-funding-medical-research",
+        "https://medium.com/%40kevinwad.oss/etica-open-source-protocol-for-medical-research-without-intellectual-property-520f1421630d",
+        "https://www.eticaprotocol.org/viewwhitepaper"
+      ]
+    },
+    {
+      "id": "molecule",
+      "kind": "organization",
+      "name": "Molecule",
+      "aliases": [
+        "Molecule"
+      ],
+      "stack": "infrastructure",
+      "type": "Infra/Launchpad",
+      "tags": [
+        "IP-NFT",
+        "infrastructure",
+        "launchpad",
+        "ip-nft",
+        "dao-gov",
+        "smart-contracts"
+      ],
+      "watch_priority": 137.95,
+      "scores": {
+        "overlap": 15.0,
+        "credibility": 95.0,
+        "decentralization": 55.0,
+        "open_science_fit": 18.0
+      },
+      "official_urls": [
+        "https://molecule.xyz",
+        "https://molecule.xyz/blog/we-have-raised-12-7-million-in-seed-funding-to-build-the-future-of-decentralized-science-and-biotech"
+      ],
+      "domains": [
+        "molecule.xyz"
+      ],
+      "rss_candidates": [
+        "https://molecule.xyz/feed",
+        "https://molecule.xyz/rss",
+        "https://molecule.xyz/rss.xml",
+        "https://molecule.xyz/feed.xml",
+        "https://molecule.xyz/atom.xml",
+        "https://molecule.xyz/blog/feed",
+        "https://molecule.xyz/news/feed",
+        "https://molecule.xyz/blog/we-have-raised-12-7-million-in-seed-funding-to-build-the-future-of-decentralized-science-and-biotech/feed",
+        "https://molecule.xyz/blog/we-have-raised-12-7-million-in-seed-funding-to-build-the-future-of-decentralized-science-and-biotech/rss",
+        "https://molecule.xyz/blog/we-have-raised-12-7-million-in-seed-funding-to-build-the-future-of-decentralized-science-and-biotech/rss.xml",
+        "https://molecule.xyz/blog/we-have-raised-12-7-million-in-seed-funding-to-build-the-future-of-decentralized-science-and-biotech/feed.xml",
+        "https://molecule.xyz/blog/we-have-raised-12-7-million-in-seed-funding-to-build-the-future-of-decentralized-science-and-biotech/atom.xml"
+      ],
+      "x_handles": [
+        "molecule_dao"
+      ],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [
+        {
+          "id": "p-kohlhaas",
+          "name": "Paul Kohlhaas",
+          "role": "Co-founder & CEO, Molecule. Founding Member, BIO Protocol. Co-initiator, VitaDAO.",
+          "x_handle": "paulkhls"
+        },
+        {
+          "id": "p-golato",
+          "name": "Tyler Golato",
+          "role": "Co-founder & CSO, Molecule",
+          "x_handle": ""
+        },
+        {
+          "id": "p-noessler",
+          "name": "Kevin Noessler",
+          "role": "CPO, Molecule",
+          "x_handle": ""
+        },
+        {
+          "id": "p-weisser",
+          "name": "Vincent Weisser",
+          "role": "Co-founder VitaDAO, Molecule. Prime Intellect co-founder.",
+          "x_handle": "vincentweisser"
+        },
+        {
+          "id": "p-srinivasan",
+          "name": "Balaji Srinivasan",
+          "role": "Former Coinbase CTO. Most prolific DeSci angel: Molecule, VitaDAO, LabDAO.",
+          "x_handle": "balajis"
+        }
+      ],
+      "provenance_urls": [
+        "https://molecule.xyz",
+        "https://molecule.xyz/blog/we-have-raised-12-7-million-in-seed-funding-to-build-the-future-of-decentralized-science-and-biotech"
+      ]
+    },
+    {
+      "id": "prime-intellect",
+      "kind": "organization",
+      "name": "Prime Intellect",
+      "aliases": [
+        "Prime Intellect"
+      ],
+      "stack": "infrastructure",
+      "type": "Compute",
+      "tags": [
+        "compute",
+        "AI",
+        "distributed-training",
+        "ai-ml"
+      ],
+      "watch_priority": 136.4,
+      "scores": {
+        "overlap": 10.0,
+        "credibility": 95.0,
+        "decentralization": 70.0,
+        "open_science_fit": 46.0
+      },
+      "official_urls": [
+        "https://primeintellect.ai",
+        "https://www.primeintellect.ai/blog/fundraise",
+        "https://www.primeintellect.ai"
+      ],
+      "domains": [
+        "primeintellect.ai"
+      ],
+      "rss_candidates": [
+        "https://primeintellect.ai/feed",
+        "https://primeintellect.ai/rss",
+        "https://primeintellect.ai/rss.xml",
+        "https://primeintellect.ai/feed.xml",
+        "https://primeintellect.ai/atom.xml",
+        "https://primeintellect.ai/blog/feed",
+        "https://primeintellect.ai/news/feed",
+        "https://www.primeintellect.ai/blog/fundraise/feed",
+        "https://www.primeintellect.ai/blog/fundraise/rss",
+        "https://www.primeintellect.ai/blog/fundraise/rss.xml",
+        "https://www.primeintellect.ai/blog/fundraise/feed.xml",
+        "https://www.primeintellect.ai/blog/fundraise/atom.xml"
+      ],
+      "x_handles": [
+        "PrimeIntellect"
+      ],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [
+        {
+          "id": "p-weisser",
+          "name": "Vincent Weisser",
+          "role": "Co-founder VitaDAO, Molecule. Prime Intellect co-founder.",
+          "x_handle": "vincentweisser"
+        }
+      ],
+      "provenance_urls": [
+        "https://www.primeintellect.ai/blog/fundraise",
+        "https://www.primeintellect.ai"
+      ]
+    },
+    {
+      "id": "ocean",
+      "kind": "organization",
+      "name": "Ocean Protocol",
+      "aliases": [
+        "Ocean Protocol"
+      ],
+      "stack": "infrastructure",
+      "type": "Data Platform",
+      "tags": [
+        "data",
+        "tokenomics",
+        "marketplace",
+        "data-sovereignty",
+        "smart-contracts",
+        "compute"
+      ],
+      "watch_priority": 134.75,
+      "scores": {
+        "overlap": 15.0,
+        "credibility": 90.0,
+        "decentralization": 65.0,
+        "open_science_fit": 74.0
+      },
+      "official_urls": [
+        "https://oceanprotocol.com",
+        "https://oceanprotocol.com/terms-launch",
+        "https://docs.oceanprotocol.com/discover/faq"
+      ],
+      "domains": [
+        "oceanprotocol.com",
+        "docs.oceanprotocol.com"
+      ],
+      "rss_candidates": [
+        "https://oceanprotocol.com/feed",
+        "https://oceanprotocol.com/rss",
+        "https://oceanprotocol.com/rss.xml",
+        "https://oceanprotocol.com/feed.xml",
+        "https://oceanprotocol.com/atom.xml",
+        "https://oceanprotocol.com/blog/feed",
+        "https://oceanprotocol.com/news/feed",
+        "https://oceanprotocol.com/terms-launch/feed",
+        "https://oceanprotocol.com/terms-launch/rss",
+        "https://oceanprotocol.com/terms-launch/rss.xml",
+        "https://oceanprotocol.com/terms-launch/feed.xml",
+        "https://oceanprotocol.com/terms-launch/atom.xml"
+      ],
+      "x_handles": [
+        "oceanprotocol"
+      ],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [
+        {
+          "id": "p-mcconaghy",
+          "name": "Trent McConaghy",
+          "role": "Founder, Ocean Protocol",
+          "x_handle": "taborvm"
+        },
+        {
+          "id": "p-pon",
+          "name": "Bruce Pon",
+          "role": "Co-founder, Ocean Protocol",
+          "x_handle": ""
+        }
+      ],
+      "provenance_urls": [
+        "https://oceanprotocol.com",
+        "https://oceanprotocol.com",
+        "https://oceanprotocol.com/terms-launch",
+        "https://docs.oceanprotocol.com/discover/faq"
+      ]
+    },
+    {
+      "id": "bloxberg",
+      "kind": "organization",
+      "name": "bloxberg",
+      "aliases": [
+        "bloxberg"
+      ],
+      "stack": "infrastructure",
+      "type": "Research Blockchain",
+      "tags": [
+        "blockchain",
+        "research",
+        "consortium",
+        "smart-contracts"
+      ],
+      "watch_priority": 134.25,
+      "scores": {
+        "overlap": 30.0,
+        "credibility": 80.0,
+        "decentralization": 45.0,
+        "open_science_fit": 67.0
+      },
+      "official_urls": [
+        "https://bloxberg.org",
+        "https://www.mpdl.mpg.de/ueber-uns/presse/presse-archiv/894-bloxberg-becomes-the-first-association-for-the-advancement-of-science-and-blockchain-e-v.html",
+        "https://bloxberg.org/wp-content/uploads/2024/02/bloxberg_whitepaper_3.0.pdf"
+      ],
+      "domains": [
+        "bloxberg.org",
+        "mpdl.mpg.de"
+      ],
+      "rss_candidates": [
+        "https://bloxberg.org/feed",
+        "https://bloxberg.org/rss",
+        "https://bloxberg.org/rss.xml",
+        "https://bloxberg.org/feed.xml",
+        "https://bloxberg.org/atom.xml",
+        "https://bloxberg.org/blog/feed",
+        "https://bloxberg.org/news/feed",
+        "https://www.mpdl.mpg.de/feed",
+        "https://www.mpdl.mpg.de/rss",
+        "https://www.mpdl.mpg.de/rss.xml",
+        "https://www.mpdl.mpg.de/feed.xml",
+        "https://www.mpdl.mpg.de/atom.xml"
+      ],
+      "x_handles": [
+        "blaboratories"
+      ],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://bloxberg.org",
+        "https://www.mpdl.mpg.de/ueber-uns/presse/presse-archiv/894-bloxberg-becomes-the-first-association-for-the-advancement-of-science-and-blockchain-e-v.html",
+        "https://bloxberg.org/wp-content/uploads/2024/02/bloxberg_whitepaper_3.0.pdf"
+      ]
+    },
+    {
+      "id": "orcid",
+      "kind": "organization",
+      "name": "ORCID",
+      "aliases": [
+        "ORCID"
+      ],
+      "stack": "infrastructure",
+      "type": "Identity Infra",
+      "tags": [
+        "identity",
+        "open-data",
+        "infrastructure",
+        "reputation"
+      ],
+      "watch_priority": 134.25,
+      "scores": {
+        "overlap": 30.0,
+        "credibility": 80.0,
+        "decentralization": 45.0,
+        "open_science_fit": 100.0
+      },
+      "official_urls": [
+        "https://orcid.org",
+        "https://info.orcid.org/annual-reports",
+        "https://info.orcid.org/wp-content/uploads/2025/11/ORCID-2024-FORM-990-Public-Disclosure-Copy.pdf",
+        "https://info.orcid.org/wp-content/uploads/2024/10/ORCID-POSI-Self-assessment.pdf"
+      ],
+      "domains": [
+        "orcid.org",
+        "info.orcid.org"
+      ],
+      "rss_candidates": [
+        "https://orcid.org/feed",
+        "https://orcid.org/rss",
+        "https://orcid.org/rss.xml",
+        "https://orcid.org/feed.xml",
+        "https://orcid.org/atom.xml",
+        "https://orcid.org/blog/feed",
+        "https://orcid.org/news/feed",
+        "https://info.orcid.org/annual-reports/feed",
+        "https://info.orcid.org/annual-reports/rss",
+        "https://info.orcid.org/annual-reports/rss.xml",
+        "https://info.orcid.org/annual-reports/feed.xml",
+        "https://info.orcid.org/annual-reports/atom.xml"
+      ],
+      "x_handles": [
+        "ORCID_Org"
+      ],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://info.orcid.org/annual-reports",
+        "https://info.orcid.org/wp-content/uploads/2025/11/ORCID-2024-FORM-990-Public-Disclosure-Copy.pdf",
+        "https://info.orcid.org/wp-content/uploads/2024/10/ORCID-POSI-Self-assessment.pdf"
+      ]
+    },
+    {
+      "id": "elife-new",
+      "kind": "organization",
+      "name": "eLife (new model)",
+      "aliases": [
+        "eLife (new model)",
+        "eLife"
+      ],
+      "stack": "application",
+      "type": "Reformed Journal",
+      "tags": [
+        "peer-review",
+        "open-access",
+        "preprints",
+        "PRC",
+        "publishing"
+      ],
+      "watch_priority": 133.9,
+      "scores": {
+        "overlap": 50.0,
+        "credibility": 60.0,
+        "decentralization": 50.0,
+        "open_science_fit": 34.0
+      },
+      "official_urls": [
+        "https://elifesciences.org",
+        "https://elifesciences.org/about/submit-your-research",
+        "https://elifesciences.org/about/peer-review",
+        "https://elifesciences.org/inside-elife/7da92a51/the-elife-model-three-year-update"
+      ],
+      "domains": [
+        "elifesciences.org"
+      ],
+      "rss_candidates": [
+        "https://elifesciences.org/feed",
+        "https://elifesciences.org/rss",
+        "https://elifesciences.org/rss.xml",
+        "https://elifesciences.org/feed.xml",
+        "https://elifesciences.org/atom.xml",
+        "https://elifesciences.org/blog/feed",
+        "https://elifesciences.org/news/feed",
+        "https://elifesciences.org/about/submit-your-research/feed",
+        "https://elifesciences.org/about/submit-your-research/rss",
+        "https://elifesciences.org/about/submit-your-research/rss.xml",
+        "https://elifesciences.org/about/submit-your-research/feed.xml",
+        "https://elifesciences.org/about/submit-your-research/atom.xml"
+      ],
+      "x_handles": [
+        "eaboratory"
+      ],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://elifesciences.org/about/submit-your-research",
+        "https://elifesciences.org/about/peer-review",
+        "https://elifesciences.org/inside-elife/7da92a51/the-elife-model-three-year-update"
+      ]
+    },
+    {
+      "id": "open-humans",
+      "kind": "organization",
+      "name": "Open Humans",
+      "aliases": [
+        "Open Humans"
+      ],
+      "stack": "application",
+      "type": "Citizen Science",
+      "tags": [
+        "citizen-science",
+        "healthcare",
+        "data",
+        "open-access",
+        "citizen-sci",
+        "data-sovereignty"
+      ],
+      "watch_priority": 132.25,
+      "scores": {
+        "overlap": 15.0,
+        "credibility": 90.0,
+        "decentralization": 55.0,
+        "open_science_fit": 100.0
+      },
+      "official_urls": [
+        "https://openhumans.org",
+        "https://www.openhumans.org/about",
+        "https://openhumansfoundation.org",
+        "https://projects.propublica.org/nonprofits/organizations/262973607"
+      ],
+      "domains": [
+        "openhumans.org",
+        "openhumansfoundation.org",
+        "projects.propublica.org"
+      ],
+      "rss_candidates": [
+        "https://openhumans.org/feed",
+        "https://openhumans.org/rss",
+        "https://openhumans.org/rss.xml",
+        "https://openhumans.org/feed.xml",
+        "https://openhumans.org/atom.xml",
+        "https://openhumans.org/blog/feed",
+        "https://openhumans.org/news/feed",
+        "https://www.openhumans.org/about/feed",
+        "https://www.openhumans.org/about/rss",
+        "https://www.openhumans.org/about/rss.xml",
+        "https://www.openhumans.org/about/feed.xml",
+        "https://www.openhumans.org/about/atom.xml"
+      ],
+      "x_handles": [
+        "OpenHumansOrg"
+      ],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://www.openhumans.org/about",
+        "https://openhumansfoundation.org",
+        "https://projects.propublica.org/nonprofits/organizations/262973607"
+      ]
+    },
+    {
+      "id": "ants-review",
+      "kind": "organization",
+      "name": "Ants-Review",
+      "aliases": [
+        "Ants-Review"
+      ],
+      "stack": "application",
+      "type": "Academic Prototype",
+      "tags": [
+        "peer-review",
+        "ZK-proofs",
+        "open-source",
+        "Ethereum",
+        "smart-contracts",
+        "reputation"
+      ],
+      "watch_priority": 132.0,
+      "scores": {
+        "overlap": 65.0,
+        "credibility": 40.0,
+        "decentralization": 70.0,
+        "open_science_fit": 42.0
+      },
+      "official_urls": [
+        "https://github.com/ants-review",
+        "https://arxiv.org/abs/2101.09378",
+        "https://zenodo.org/record/3828087"
+      ],
+      "domains": [
+        "github.com",
+        "arxiv.org",
+        "zenodo.org"
+      ],
+      "rss_candidates": [
+        "https://github.com/ants-review/feed",
+        "https://github.com/ants-review/rss",
+        "https://github.com/ants-review/rss.xml",
+        "https://github.com/ants-review/feed.xml",
+        "https://github.com/ants-review/atom.xml",
+        "https://github.com/ants-review/blog/feed",
+        "https://github.com/ants-review/news/feed",
+        "https://github.com/feed",
+        "https://github.com/rss",
+        "https://github.com/rss.xml",
+        "https://github.com/feed.xml",
+        "https://github.com/atom.xml"
+      ],
+      "x_handles": [],
+      "github_repos": [
+        "naszam/ants-review"
+      ],
+      "paper_urls": [
+        "https://arxiv.org/abs/2101.09378"
+      ],
+      "linked_people": [
+        {
+          "id": "p-trovo",
+          "name": "Bianca TrovÃ²",
+          "role": "Developer, Ants-Review. Sorbonne/CEA NeuroSpin researcher.",
+          "x_handle": ""
+        }
+      ],
+      "provenance_urls": [
+        "https://arxiv.org/abs/2101.09378",
+        "https://github.com/ants-review",
+        "https://zenodo.org/record/3828087"
+      ]
+    },
+    {
+      "id": "gridcoin",
+      "kind": "organization",
+      "name": "Gridcoin",
+      "aliases": [
+        "Gridcoin"
+      ],
+      "stack": "infrastructure",
+      "type": "Compute Reward",
+      "tags": [
+        "compute",
+        "citizen-science",
+        "PoR",
+        "citizen-sci"
+      ],
+      "watch_priority": 131.95,
+      "scores": {
+        "overlap": 10.0,
+        "credibility": 90.0,
+        "decentralization": 75.0,
+        "open_science_fit": 64.0
+      },
+      "official_urls": [
+        "https://gridcoin.us",
+        "https://gridcoin.us/assets/docs/whitepaper.pdf",
+        "https://gridcoin.us/wiki"
+      ],
+      "domains": [
+        "gridcoin.us"
+      ],
+      "rss_candidates": [
+        "https://gridcoin.us/feed",
+        "https://gridcoin.us/rss",
+        "https://gridcoin.us/rss.xml",
+        "https://gridcoin.us/feed.xml",
+        "https://gridcoin.us/atom.xml",
+        "https://gridcoin.us/blog/feed",
+        "https://gridcoin.us/news/feed",
+        "https://gridcoin.us/wiki/feed",
+        "https://gridcoin.us/wiki/rss",
+        "https://gridcoin.us/wiki/rss.xml",
+        "https://gridcoin.us/wiki/feed.xml",
+        "https://gridcoin.us/wiki/atom.xml"
+      ],
+      "x_handles": [
+        "GridcoinNetwork"
+      ],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://gridcoin.us",
+        "https://gridcoin.us/assets/docs/whitepaper.pdf",
+        "https://gridcoin.us/wiki",
+        "https://gridcoin.us"
+      ]
+    },
+    {
+      "id": "singularitynet",
+      "kind": "organization",
+      "name": "SingularityNET",
+      "aliases": [
+        "SingularityNET"
+      ],
+      "stack": "infrastructure",
+      "type": "AI Platform",
+      "tags": [
+        "AI",
+        "ecosystem",
+        "tokenomics",
+        "ai-ml",
+        "compute"
+      ],
+      "watch_priority": 125.7,
+      "scores": {
+        "overlap": 10.0,
+        "credibility": 90.0,
+        "decentralization": 50.0,
+        "open_science_fit": 74.0
+      },
+      "official_urls": [
+        "https://singularitynet.io",
+        "https://singularitynet.io/singularitynet-annual-report-2024-advancing-beneficial-agi-and-decentralized-ai",
+        "https://singularitynet.io/singularitynet-latest-ecosystem-updates-april-2024",
+        "https://singularitynet.io/wp-content/uploads/2024/10/Blueprint-for-Decentralization.pdf"
+      ],
+      "domains": [
+        "singularitynet.io"
+      ],
+      "rss_candidates": [
+        "https://singularitynet.io/feed",
+        "https://singularitynet.io/rss",
+        "https://singularitynet.io/rss.xml",
+        "https://singularitynet.io/feed.xml",
+        "https://singularitynet.io/atom.xml",
+        "https://singularitynet.io/blog/feed",
+        "https://singularitynet.io/news/feed",
+        "https://singularitynet.io/singularitynet-annual-report-2024-advancing-beneficial-agi-and-decentralized-ai/feed",
+        "https://singularitynet.io/singularitynet-annual-report-2024-advancing-beneficial-agi-and-decentralized-ai/rss",
+        "https://singularitynet.io/singularitynet-annual-report-2024-advancing-beneficial-agi-and-decentralized-ai/rss.xml",
+        "https://singularitynet.io/singularitynet-annual-report-2024-advancing-beneficial-agi-and-decentralized-ai/feed.xml",
+        "https://singularitynet.io/singularitynet-annual-report-2024-advancing-beneficial-agi-and-decentralized-ai/atom.xml"
+      ],
+      "x_handles": [
+        "SingularityNET"
+      ],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [
+        {
+          "id": "p-goertzel",
+          "name": "Ben Goertzel",
+          "role": "CEO, SingularityNET. Founder, Rejuve AI.",
+          "x_handle": "bengoertzel"
+        }
+      ],
+      "provenance_urls": [
+        "https://singularitynet.io",
+        "https://singularitynet.io/singularitynet-annual-report-2024-advancing-beneficial-agi-and-decentralized-ai",
+        "https://singularitynet.io/singularitynet-latest-ecosystem-updates-april-2024",
+        "https://singularitynet.io/wp-content/uploads/2024/10/Blueprint-for-Decentralization.pdf"
+      ]
+    },
+    {
+      "id": "bacalhau",
+      "kind": "organization",
+      "name": "Bacalhau",
+      "aliases": [
+        "Bacalhau"
+      ],
+      "stack": "infrastructure",
+      "type": "Compute Infra",
+      "tags": [
+        "compute",
+        "IPFS",
+        "Filecoin"
+      ],
+      "watch_priority": 124.6,
+      "scores": {
+        "overlap": 15.0,
+        "credibility": 80.0,
+        "decentralization": 70.0,
+        "open_science_fit": 88.0
+      },
+      "official_urls": [
+        "https://bacalhau.org",
+        "https://github.com/bacalhau-project/bacalhau",
+        "https://fil.org/ecosystem-explorer"
+      ],
+      "domains": [
+        "bacalhau.org",
+        "github.com",
+        "fil.org"
+      ],
+      "rss_candidates": [
+        "https://bacalhau.org/feed",
+        "https://bacalhau.org/rss",
+        "https://bacalhau.org/rss.xml",
+        "https://bacalhau.org/feed.xml",
+        "https://bacalhau.org/atom.xml",
+        "https://bacalhau.org/blog/feed",
+        "https://bacalhau.org/news/feed",
+        "https://github.com/bacalhau-project/bacalhau/feed",
+        "https://github.com/bacalhau-project/bacalhau/rss",
+        "https://github.com/bacalhau-project/bacalhau/rss.xml",
+        "https://github.com/bacalhau-project/bacalhau/feed.xml",
+        "https://github.com/bacalhau-project/bacalhau/atom.xml"
+      ],
+      "x_handles": [
+        "BacalhauProject"
+      ],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://bacalhau.org",
+        "https://github.com/bacalhau-project/bacalhau",
+        "https://fil.org/ecosystem-explorer"
+      ]
+    },
+    {
+      "id": "vitadao",
+      "kind": "organization",
+      "name": "VitaDAO",
+      "aliases": [
+        "VitaDAO"
+      ],
+      "stack": "governance",
+      "type": "BioDAO",
+      "tags": [
+        "bioDAO",
+        "longevity",
+        "IP-NFT",
+        "tokenomics",
+        "dao-gov",
+        "ip-nft",
+        "smart-contracts"
+      ],
+      "watch_priority": 124.2,
+      "scores": {
+        "overlap": 20.0,
+        "credibility": 75.0,
+        "decentralization": 70.0,
+        "open_science_fit": 48.0
+      },
+      "official_urls": [
+        "https://vitadao.com",
+        "https://www.vitadao.com/blog/vitadao-closes-4-1m-fundraising-round-with-pfizer-and-shine-capital",
+        "https://www.ledgerinsights.com/pfizer-vitadao-decentralized-science"
+      ],
+      "domains": [
+        "vitadao.com",
+        "ledgerinsights.com"
+      ],
+      "rss_candidates": [
+        "https://vitadao.com/feed",
+        "https://vitadao.com/rss",
+        "https://vitadao.com/rss.xml",
+        "https://vitadao.com/feed.xml",
+        "https://vitadao.com/atom.xml",
+        "https://vitadao.com/blog/feed",
+        "https://vitadao.com/news/feed",
+        "https://www.vitadao.com/blog/vitadao-closes-4-1m-fundraising-round-with-pfizer-and-shine-capital/feed",
+        "https://www.vitadao.com/blog/vitadao-closes-4-1m-fundraising-round-with-pfizer-and-shine-capital/rss",
+        "https://www.vitadao.com/blog/vitadao-closes-4-1m-fundraising-round-with-pfizer-and-shine-capital/rss.xml",
+        "https://www.vitadao.com/blog/vitadao-closes-4-1m-fundraising-round-with-pfizer-and-shine-capital/feed.xml",
+        "https://www.vitadao.com/blog/vitadao-closes-4-1m-fundraising-round-with-pfizer-and-shine-capital/atom.xml"
+      ],
+      "x_handles": [
+        "vita_dao"
+      ],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [
+        {
+          "id": "p-kohlhaas",
+          "name": "Paul Kohlhaas",
+          "role": "Co-founder & CEO, Molecule. Founding Member, BIO Protocol. Co-initiator, VitaDAO.",
+          "x_handle": "paulkhls"
+        },
+        {
+          "id": "p-weisser",
+          "name": "Vincent Weisser",
+          "role": "Co-founder VitaDAO, Molecule. Prime Intellect co-founder.",
+          "x_handle": "vincentweisser"
+        },
+        {
+          "id": "p-srinivasan",
+          "name": "Balaji Srinivasan",
+          "role": "Former Coinbase CTO. Most prolific DeSci angel: Molecule, VitaDAO, LabDAO.",
+          "x_handle": "balajis"
+        }
+      ],
+      "provenance_urls": [
+        "https://vitadao.com",
+        "https://www.vitadao.com/blog/vitadao-closes-4-1m-fundraising-round-with-pfizer-and-shine-capital",
+        "https://www.ledgerinsights.com/pfizer-vitadao-decentralized-science"
+      ]
+    },
+    {
+      "id": "numerai",
+      "kind": "organization",
+      "name": "Numerai",
+      "aliases": [
+        "Numerai"
+      ],
+      "stack": "application",
+      "type": "Prediction Market",
+      "tags": [
+        "prediction-market",
+        "market-oriented",
+        "AI",
+        "ai-ml",
+        "smart-contracts",
+        "reputation"
+      ],
+      "watch_priority": 123.2,
+      "scores": {
+        "overlap": 10.0,
+        "credibility": 90.0,
+        "decentralization": 40.0,
+        "open_science_fit": 13.0
+      },
+      "official_urls": [
+        "https://numer.ai",
+        "https://blog.numer.ai/numerai-raises-30m-series-c-at-500m-valuation",
+        "https://blog.numer.ai/jpmorgan-secures-500m-capacity"
+      ],
+      "domains": [
+        "numer.ai",
+        "blog.numer.ai"
+      ],
+      "rss_candidates": [
+        "https://numer.ai/feed",
+        "https://numer.ai/rss",
+        "https://numer.ai/rss.xml",
+        "https://numer.ai/feed.xml",
+        "https://numer.ai/atom.xml",
+        "https://numer.ai/blog/feed",
+        "https://numer.ai/news/feed",
+        "https://blog.numer.ai/numerai-raises-30m-series-c-at-500m-valuation/feed",
+        "https://blog.numer.ai/numerai-raises-30m-series-c-at-500m-valuation/rss",
+        "https://blog.numer.ai/numerai-raises-30m-series-c-at-500m-valuation/rss.xml",
+        "https://blog.numer.ai/numerai-raises-30m-series-c-at-500m-valuation/feed.xml",
+        "https://blog.numer.ai/numerai-raises-30m-series-c-at-500m-valuation/atom.xml"
+      ],
+      "x_handles": [
+        "numerai"
+      ],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [
+        {
+          "id": "p-craib",
+          "name": "Richard Craib",
+          "role": "Founder, Numerai",
+          "x_handle": "richardcraib"
+        }
+      ],
+      "provenance_urls": [
+        "https://blog.numer.ai/numerai-raises-30m-series-c-at-500m-valuation",
+        "https://blog.numer.ai/jpmorgan-secures-500m-capacity",
+        "https://numer.ai"
+      ]
+    },
+    {
+      "id": "review-commons",
+      "kind": "organization",
+      "name": "Review Commons",
+      "aliases": [
+        "Review Commons"
+      ],
+      "stack": "application",
+      "type": "Review Platform",
+      "tags": [
+        "peer-review",
+        "preprints",
+        "portable-review",
+        "publishing"
+      ],
+      "watch_priority": 120.4,
+      "scores": {
+        "overlap": 45.0,
+        "credibility": 55.0,
+        "decentralization": 40.0,
+        "open_science_fit": 95.0
+      },
+      "official_urls": [
+        "https://reviewcommons.org",
+        "https://www.reviewcommons.org/flyer",
+        "https://www.embo.org/press-releases/review-commons-a-pre-journal-portable-review-platform",
+        "https://www.reviewcommons.org"
+      ],
+      "domains": [
+        "reviewcommons.org",
+        "embo.org"
+      ],
+      "rss_candidates": [
+        "https://reviewcommons.org/feed",
+        "https://reviewcommons.org/rss",
+        "https://reviewcommons.org/rss.xml",
+        "https://reviewcommons.org/feed.xml",
+        "https://reviewcommons.org/atom.xml",
+        "https://reviewcommons.org/blog/feed",
+        "https://reviewcommons.org/news/feed",
+        "https://www.reviewcommons.org/flyer/feed",
+        "https://www.reviewcommons.org/flyer/rss",
+        "https://www.reviewcommons.org/flyer/rss.xml",
+        "https://www.reviewcommons.org/flyer/feed.xml",
+        "https://www.reviewcommons.org/flyer/atom.xml"
+      ],
+      "x_handles": [],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://www.reviewcommons.org/flyer",
+        "https://www.embo.org/press-releases/review-commons-a-pre-journal-portable-review-platform",
+        "https://www.reviewcommons.org"
+      ]
+    },
+    {
+      "id": "desci-world",
+      "kind": "organization",
+      "name": "DeSci World",
+      "aliases": [
+        "DeSci World"
+      ],
+      "stack": "governance",
+      "type": "Community Hub",
+      "tags": [
+        "community",
+        "directory",
+        "citizen-sci"
+      ],
+      "watch_priority": 120.4,
+      "scores": {
+        "overlap": 5.0,
+        "credibility": 90.0,
+        "decentralization": 50.0,
+        "open_science_fit": 56.0
+      },
+      "official_urls": [
+        "https://desci.world",
+        "https://desci.world/projects"
+      ],
+      "domains": [
+        "desci.world"
+      ],
+      "rss_candidates": [
+        "https://desci.world/feed",
+        "https://desci.world/rss",
+        "https://desci.world/rss.xml",
+        "https://desci.world/feed.xml",
+        "https://desci.world/atom.xml",
+        "https://desci.world/blog/feed",
+        "https://desci.world/news/feed",
+        "https://desci.world/projects/feed",
+        "https://desci.world/projects/rss",
+        "https://desci.world/projects/rss.xml",
+        "https://desci.world/projects/feed.xml",
+        "https://desci.world/projects/atom.xml"
+      ],
+      "x_handles": [
+        "DeSciWorld"
+      ],
+      "github_repos": [
+        "DeSciWorldDAO/awesome-desci"
+      ],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://desci.world",
+        "https://desci.world",
+        "https://desci.world/projects"
+      ]
+    },
+    {
+      "id": "seeds-of-science",
+      "kind": "organization",
+      "name": "Seeds of Science",
+      "aliases": [
+        "Seeds of Science"
+      ],
+      "stack": "application",
+      "type": "Community Journal",
+      "tags": [
+        "publishing",
+        "peer-review",
+        "community",
+        "citizen-sci",
+        "dao-gov"
+      ],
+      "watch_priority": 116.05,
+      "scores": {
+        "overlap": 35.0,
+        "credibility": 55.0,
+        "decentralization": 65.0,
+        "open_science_fit": 100.0
+      },
+      "official_urls": [
+        "https://theseedsofscience.org",
+        "https://www.theseedsofscience.org",
+        "https://scienceeurope.org/our-priorities/open-science/diamond-open-access"
+      ],
+      "domains": [
+        "theseedsofscience.org",
+        "scienceeurope.org"
+      ],
+      "rss_candidates": [
+        "https://theseedsofscience.org/feed",
+        "https://theseedsofscience.org/rss",
+        "https://theseedsofscience.org/rss.xml",
+        "https://theseedsofscience.org/feed.xml",
+        "https://theseedsofscience.org/atom.xml",
+        "https://theseedsofscience.org/blog/feed",
+        "https://theseedsofscience.org/news/feed",
+        "https://www.theseedsofscience.org/feed",
+        "https://www.theseedsofscience.org/rss",
+        "https://www.theseedsofscience.org/rss.xml",
+        "https://www.theseedsofscience.org/feed.xml",
+        "https://www.theseedsofscience.org/atom.xml"
+      ],
+      "x_handles": [],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://theseedsofscience.org",
+        "https://www.theseedsofscience.org",
+        "https://scienceeurope.org/our-priorities/open-science/diamond-open-access"
+      ]
+    },
+    {
+      "id": "dynex",
+      "kind": "organization",
+      "name": "Dynex",
+      "aliases": [
+        "Dynex"
+      ],
+      "stack": "infrastructure",
+      "type": "Compute",
+      "tags": [
+        "compute",
+        "tokenomics",
+        "smart-contracts"
+      ],
+      "watch_priority": 115.95,
+      "scores": {
+        "overlap": 5.0,
+        "credibility": 85.0,
+        "decentralization": 55.0,
+        "open_science_fit": 44.0
+      },
+      "official_urls": [
+        "https://dynex.co",
+        "https://dynexcoin.org",
+        "https://dynexcoin.org/roadmap",
+        "https://dynex.medium.com/dynex-announces-transition-to-institutionalised-security-token-and-entry-into-global-capital-a4754dd58d3a"
+      ],
+      "domains": [
+        "dynex.co",
+        "dynexcoin.org",
+        "dynex.medium.com"
+      ],
+      "rss_candidates": [
+        "https://dynex.co/feed",
+        "https://dynex.co/rss",
+        "https://dynex.co/rss.xml",
+        "https://dynex.co/feed.xml",
+        "https://dynex.co/atom.xml",
+        "https://dynex.co/blog/feed",
+        "https://dynex.co/news/feed",
+        "https://dynexcoin.org/feed",
+        "https://dynexcoin.org/rss",
+        "https://dynexcoin.org/rss.xml",
+        "https://dynexcoin.org/feed.xml",
+        "https://dynexcoin.org/atom.xml"
+      ],
+      "x_handles": [],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://dynex.co",
+        "https://dynexcoin.org",
+        "https://dynexcoin.org/roadmap",
+        "https://dynex.medium.com/dynex-announces-transition-to-institutionalised-security-token-and-entry-into-global-capital-a4754dd58d3a"
+      ]
+    },
+    {
+      "id": "gitcoin-desci",
+      "kind": "organization",
+      "name": "Gitcoin DeSci Rounds",
+      "aliases": [
+        "Gitcoin DeSci Rounds"
+      ],
+      "stack": "governance",
+      "type": "Grants Program",
+      "tags": [
+        "grants",
+        "quadratic-funding",
+        "Ethereum",
+        "dao-gov",
+        "smart-contracts"
+      ],
+      "watch_priority": 114.85,
+      "scores": {
+        "overlap": 10.0,
+        "credibility": 75.0,
+        "decentralization": 75.0,
+        "open_science_fit": 78.0
+      },
+      "official_urls": [
+        "https://gitcoin.co",
+        "https://grants.gitcoin.co",
+        "https://gitcoin.co/case-studies/gg24-first-funding-round-of-gitcoin-3-0"
+      ],
+      "domains": [
+        "gitcoin.co",
+        "grants.gitcoin.co"
+      ],
+      "rss_candidates": [
+        "https://gitcoin.co/feed",
+        "https://gitcoin.co/rss",
+        "https://gitcoin.co/rss.xml",
+        "https://gitcoin.co/feed.xml",
+        "https://gitcoin.co/atom.xml",
+        "https://gitcoin.co/blog/feed",
+        "https://gitcoin.co/news/feed",
+        "https://grants.gitcoin.co/feed",
+        "https://grants.gitcoin.co/rss",
+        "https://grants.gitcoin.co/rss.xml",
+        "https://grants.gitcoin.co/feed.xml",
+        "https://grants.gitcoin.co/atom.xml"
+      ],
+      "x_handles": [
+        "gitcoin"
+      ],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://gitcoin.co",
+        "https://grants.gitcoin.co",
+        "https://gitcoin.co/case-studies/gg24-first-funding-round-of-gitcoin-3-0"
+      ]
+    },
+    {
+      "id": "jove",
+      "kind": "organization",
+      "name": "JoVE",
+      "aliases": [
+        "JoVE"
+      ],
+      "stack": "application",
+      "type": "Video Journal",
+      "tags": [
+        "scicomm",
+        "video",
+        "publishing"
+      ],
+      "watch_priority": 114.5,
+      "scores": {
+        "overlap": 25.0,
+        "credibility": 75.0,
+        "decentralization": 10.0,
+        "open_science_fit": 8.0
+      },
+      "official_urls": [
+        "https://jove.com",
+        "https://www.jove.com/librarians/subscriptions",
+        "https://www.jove.com/authors/editorial-policies",
+        "https://www.jove.com/about",
+        "https://help.jove.com/hc/en-us/articles/31079436357780-Access-and-Publication-Policies"
+      ],
+      "domains": [
+        "jove.com",
+        "help.jove.com"
+      ],
+      "rss_candidates": [
+        "https://jove.com/feed",
+        "https://jove.com/rss",
+        "https://jove.com/rss.xml",
+        "https://jove.com/feed.xml",
+        "https://jove.com/atom.xml",
+        "https://jove.com/blog/feed",
+        "https://jove.com/news/feed",
+        "https://www.jove.com/librarians/subscriptions/feed",
+        "https://www.jove.com/librarians/subscriptions/rss",
+        "https://www.jove.com/librarians/subscriptions/rss.xml",
+        "https://www.jove.com/librarians/subscriptions/feed.xml",
+        "https://www.jove.com/librarians/subscriptions/atom.xml"
+      ],
+      "x_handles": [
+        "JoVEjournal"
+      ],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://www.jove.com/librarians/subscriptions",
+        "https://www.jove.com/authors/editorial-policies",
+        "https://www.jove.com/about",
+        "https://help.jove.com/hc/en-us/articles/31079436357780-Access-and-Publication-Policies"
+      ]
+    },
+    {
+      "id": "pubpeer",
+      "kind": "organization",
+      "name": "PubPeer",
+      "aliases": [
+        "PubPeer"
+      ],
+      "stack": "application",
+      "type": "Review Platform",
+      "tags": [
+        "peer-review",
+        "fraud-detection",
+        "post-publication",
+        "reputation"
+      ],
+      "watch_priority": 113.95,
+      "scores": {
+        "overlap": 30.0,
+        "credibility": 60.0,
+        "decentralization": 55.0,
+        "open_science_fit": 100.0
+      },
+      "official_urls": [
+        "https://pubpeer.com",
+        "https://pubpeer.com/static/about",
+        "https://projects.propublica.org/nonprofits/organizations/474729597",
+        "https://award.einsteinfoundation.de/award-winners-finalists/recipients-2024/pubpeer"
+      ],
+      "domains": [
+        "pubpeer.com",
+        "projects.propublica.org",
+        "award.einsteinfoundation.de"
+      ],
+      "rss_candidates": [
+        "https://pubpeer.com/feed",
+        "https://pubpeer.com/rss",
+        "https://pubpeer.com/rss.xml",
+        "https://pubpeer.com/feed.xml",
+        "https://pubpeer.com/atom.xml",
+        "https://pubpeer.com/blog/feed",
+        "https://pubpeer.com/news/feed",
+        "https://pubpeer.com/static/about/feed",
+        "https://pubpeer.com/static/about/rss",
+        "https://pubpeer.com/static/about/rss.xml",
+        "https://pubpeer.com/static/about/feed.xml",
+        "https://pubpeer.com/static/about/atom.xml"
+      ],
+      "x_handles": [
+        "PubPeer"
+      ],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://pubpeer.com/static/about",
+        "https://projects.propublica.org/nonprofits/organizations/474729597",
+        "https://award.einsteinfoundation.de/award-winners-finalists/recipients-2024/pubpeer"
+      ]
+    },
+    {
+      "id": "f1000research",
+      "kind": "organization",
+      "name": "F1000Research",
+      "aliases": [
+        "F1000Research"
+      ],
+      "stack": "application",
+      "type": "OA Publisher",
+      "tags": [
+        "publishing",
+        "peer-review",
+        "open-access"
+      ],
+      "watch_priority": 111.75,
+      "scores": {
+        "overlap": 35.0,
+        "credibility": 60.0,
+        "decentralization": 25.0,
+        "open_science_fit": 12.0
+      },
+      "official_urls": [
+        "https://f1000research.com",
+        "https://f1000research.com/for-authors/article-processing-charges"
+      ],
+      "domains": [
+        "f1000research.com"
+      ],
+      "rss_candidates": [
+        "https://f1000research.com/feed",
+        "https://f1000research.com/rss",
+        "https://f1000research.com/rss.xml",
+        "https://f1000research.com/feed.xml",
+        "https://f1000research.com/atom.xml",
+        "https://f1000research.com/blog/feed",
+        "https://f1000research.com/news/feed",
+        "https://f1000research.com/for-authors/article-processing-charges/feed",
+        "https://f1000research.com/for-authors/article-processing-charges/rss",
+        "https://f1000research.com/for-authors/article-processing-charges/rss.xml",
+        "https://f1000research.com/for-authors/article-processing-charges/feed.xml",
+        "https://f1000research.com/for-authors/article-processing-charges/atom.xml"
+      ],
+      "x_handles": [
+        "F1000Research"
+      ],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://f1000research.com/for-authors/article-processing-charges",
+        "https://f1000research.com"
+      ]
+    },
+    {
+      "id": "bio-protocol",
+      "kind": "organization",
+      "name": "BIO Protocol",
+      "aliases": [
+        "BIO Protocol"
+      ],
+      "stack": "governance",
+      "type": "Accelerator",
+      "tags": [
+        "metaplatform",
+        "bioDAO",
+        "accelerator",
+        "tokenomics",
+        "dao-gov",
+        "ip-nft",
+        "smart-contracts"
+      ],
+      "watch_priority": 111.1,
+      "scores": {
+        "overlap": 10.0,
+        "credibility": 75.0,
+        "decentralization": 60.0,
+        "open_science_fit": 44.0
+      },
+      "official_urls": [
+        "https://bio.xyz",
+        "https://www.bio.xyz/blog-posts/bio-protocol-vision",
+        "https://www.bio.xyz/blog-posts/bio-launchpad-system-design",
+        "https://www.theblock.co/post/370757/bio-protocol-funding-arthur-hayes-maelstrom-fund"
+      ],
+      "domains": [
+        "bio.xyz",
+        "theblock.co"
+      ],
+      "rss_candidates": [
+        "https://bio.xyz/feed",
+        "https://bio.xyz/rss",
+        "https://bio.xyz/rss.xml",
+        "https://bio.xyz/feed.xml",
+        "https://bio.xyz/atom.xml",
+        "https://bio.xyz/blog/feed",
+        "https://bio.xyz/news/feed",
+        "https://www.bio.xyz/blog-posts/bio-protocol-vision/feed",
+        "https://www.bio.xyz/blog-posts/bio-protocol-vision/rss",
+        "https://www.bio.xyz/blog-posts/bio-protocol-vision/rss.xml",
+        "https://www.bio.xyz/blog-posts/bio-protocol-vision/feed.xml",
+        "https://www.bio.xyz/blog-posts/bio-protocol-vision/atom.xml"
+      ],
+      "x_handles": [
+        "bioprotocol"
+      ],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [
+        {
+          "id": "p-kohlhaas",
+          "name": "Paul Kohlhaas",
+          "role": "Co-founder & CEO, Molecule. Founding Member, BIO Protocol. Co-initiator, VitaDAO.",
+          "x_handle": "paulkhls"
+        }
+      ],
+      "provenance_urls": [
+        "https://bio.xyz",
+        "https://www.bio.xyz/blog-posts/bio-protocol-vision",
+        "https://www.bio.xyz/blog-posts/bio-launchpad-system-design",
+        "https://www.theblock.co/post/370757/bio-protocol-funding-arthur-hayes-maelstrom-fund"
+      ]
+    },
+    {
+      "id": "kudos",
+      "kind": "organization",
+      "name": "Kudos",
+      "aliases": [
+        "Kudos"
+      ],
+      "stack": "application",
+      "type": "SciComm",
+      "tags": [
+        "scicomm",
+        "impact",
+        "metrics"
+      ],
+      "watch_priority": 110.45,
+      "scores": {
+        "overlap": 20.0,
+        "credibility": 75.0,
+        "decentralization": 15.0,
+        "open_science_fit": 7.0
+      },
+      "official_urls": [
+        "https://growkudos.com",
+        "https://info.growkudos.com/landing/publishers",
+        "https://info.growkudos.com/landing/about",
+        "https://info.growkudos.com/landing/kudos-for-researchers-basic-vs-premium",
+        "https://www.growkudos.com"
+      ],
+      "domains": [
+        "growkudos.com",
+        "info.growkudos.com"
+      ],
+      "rss_candidates": [
+        "https://growkudos.com/feed",
+        "https://growkudos.com/rss",
+        "https://growkudos.com/rss.xml",
+        "https://growkudos.com/feed.xml",
+        "https://growkudos.com/atom.xml",
+        "https://growkudos.com/blog/feed",
+        "https://growkudos.com/news/feed",
+        "https://info.growkudos.com/landing/publishers/feed",
+        "https://info.growkudos.com/landing/publishers/rss",
+        "https://info.growkudos.com/landing/publishers/rss.xml",
+        "https://info.growkudos.com/landing/publishers/feed.xml",
+        "https://info.growkudos.com/landing/publishers/atom.xml"
+      ],
+      "x_handles": [
+        "GrowKudos"
+      ],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://info.growkudos.com/landing/publishers",
+        "https://info.growkudos.com/landing/about",
+        "https://info.growkudos.com/landing/kudos-for-researchers-basic-vs-premium",
+        "https://www.growkudos.com"
+      ]
+    },
+    {
+      "id": "vibe-bio",
+      "kind": "organization",
+      "name": "Vibe Bio",
+      "aliases": [
+        "Vibe Bio"
+      ],
+      "stack": "governance",
+      "type": "BioDAO",
+      "tags": [
+        "bioDAO",
+        "rare-disease",
+        "AI",
+        "tokenomics",
+        "ai-ml",
+        "dao-gov"
+      ],
+      "watch_priority": 109.85,
+      "scores": {
+        "overlap": 10.0,
+        "credibility": 75.0,
+        "decentralization": 55.0,
+        "open_science_fit": 56.0
+      },
+      "official_urls": [
+        "https://vibebio.com",
+        "https://vibebio.com/about-vibe-bio",
+        "https://vibebio.com/portfolio",
+        "https://globalgenes.org/raredaily/vibe-bio-launches-to-transform-drug-development-for-patients-with-rare-diseases"
+      ],
+      "domains": [
+        "vibebio.com",
+        "globalgenes.org"
+      ],
+      "rss_candidates": [
+        "https://vibebio.com/feed",
+        "https://vibebio.com/rss",
+        "https://vibebio.com/rss.xml",
+        "https://vibebio.com/feed.xml",
+        "https://vibebio.com/atom.xml",
+        "https://vibebio.com/blog/feed",
+        "https://vibebio.com/news/feed",
+        "https://vibebio.com/about-vibe-bio/feed",
+        "https://vibebio.com/about-vibe-bio/rss",
+        "https://vibebio.com/about-vibe-bio/rss.xml",
+        "https://vibebio.com/about-vibe-bio/feed.xml",
+        "https://vibebio.com/about-vibe-bio/atom.xml"
+      ],
+      "x_handles": [
+        "VibeBio"
+      ],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [
+        {
+          "id": "p-tayi",
+          "name": "Alok Tayi",
+          "role": "Founder, Vibe Bio. Scientist and entrepreneur using DAO models for orphan drugs.",
+          "x_handle": ""
+        }
+      ],
+      "provenance_urls": [
+        "https://vibebio.com/about-vibe-bio",
+        "https://vibebio.com/portfolio",
+        "https://globalgenes.org/raredaily/vibe-bio-launches-to-transform-drug-development-for-patients-with-rare-diseases"
+      ]
+    },
+    {
+      "id": "valleydao",
+      "kind": "organization",
+      "name": "ValleyDAO / Phlo",
+      "aliases": [
+        "ValleyDAO / Phlo",
+        "ValleyDAO",
+        "Phlo"
+      ],
+      "stack": "application",
+      "type": "BioDAO",
+      "tags": [
+        "bioDAO",
+        "synbio",
+        "climate",
+        "AI",
+        "ai-ml",
+        "dao-gov",
+        "ip-nft"
+      ],
+      "watch_priority": 109.45,
+      "scores": {
+        "overlap": 15.0,
+        "credibility": 70.0,
+        "decentralization": 55.0,
+        "open_science_fit": 63.0
+      },
+      "official_urls": [
+        "https://valleydao.xyz",
+        "https://www.valleydao.bio",
+        "https://www.valleydao.bio/grow",
+        "https://valleydao.substack.com/p/valleydao-a-year-in-review-another"
+      ],
+      "domains": [
+        "valleydao.xyz",
+        "valleydao.bio",
+        "valleydao.substack.com"
+      ],
+      "rss_candidates": [
+        "https://valleydao.xyz/feed",
+        "https://valleydao.xyz/rss",
+        "https://valleydao.xyz/rss.xml",
+        "https://valleydao.xyz/feed.xml",
+        "https://valleydao.xyz/atom.xml",
+        "https://valleydao.xyz/blog/feed",
+        "https://valleydao.xyz/news/feed",
+        "https://www.valleydao.bio/feed",
+        "https://www.valleydao.bio/rss",
+        "https://www.valleydao.bio/rss.xml",
+        "https://www.valleydao.bio/feed.xml",
+        "https://www.valleydao.bio/atom.xml"
+      ],
+      "x_handles": [
+        "valley_dao"
+      ],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://valleydao.xyz",
+        "https://www.valleydao.bio",
+        "https://www.valleydao.bio/grow",
+        "https://valleydao.substack.com/p/valleydao-a-year-in-review-another",
+        "https://www.valleydao.bio/grow"
+      ]
+    },
+    {
+      "id": "galeon",
+      "kind": "organization",
+      "name": "Galeon Care",
+      "aliases": [
+        "Galeon Care"
+      ],
+      "stack": "application",
+      "type": "HealthTech",
+      "tags": [
+        "healthcare",
+        "AI",
+        "federated-learning",
+        "tokenomics",
+        "ai-ml",
+        "data-sovereignty"
+      ],
+      "watch_priority": 108.6,
+      "scores": {
+        "overlap": 10.0,
+        "credibility": 75.0,
+        "decentralization": 50.0,
+        "open_science_fit": 23.0
+      },
+      "official_urls": [
+        "https://galeon.care",
+        "https://www.galeon.care",
+        "https://galeoncare.medium.com/15m-raised-we-did-it-d2995c98d030",
+        "https://whitepaper.galeon.care/whitepaper/solution/roadmap",
+        "https://whitepaper.galeon.care/whitepaper/usdgaleon-token/the-usdgaleon-token"
+      ],
+      "domains": [
+        "galeon.care",
+        "galeoncare.medium.com",
+        "whitepaper.galeon.care"
+      ],
+      "rss_candidates": [
+        "https://galeon.care/feed",
+        "https://galeon.care/rss",
+        "https://galeon.care/rss.xml",
+        "https://galeon.care/feed.xml",
+        "https://galeon.care/atom.xml",
+        "https://galeon.care/blog/feed",
+        "https://galeon.care/news/feed",
+        "https://www.galeon.care/feed",
+        "https://www.galeon.care/rss",
+        "https://www.galeon.care/rss.xml",
+        "https://www.galeon.care/feed.xml",
+        "https://www.galeon.care/atom.xml"
+      ],
+      "x_handles": [
+        "GaleonCare"
+      ],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://www.galeon.care",
+        "https://galeoncare.medium.com/15m-raised-we-did-it-d2995c98d030",
+        "https://whitepaper.galeon.care/whitepaper/solution/roadmap",
+        "https://whitepaper.galeon.care/whitepaper/usdgaleon-token/the-usdgaleon-token"
+      ]
+    },
+    {
+      "id": "yesnoerror",
+      "kind": "organization",
+      "name": "YesNoError",
+      "aliases": [
+        "YesNoError"
+      ],
+      "stack": "application",
+      "type": "AI Audit",
+      "tags": [
+        "AI",
+        "verification",
+        "audit",
+        "peer-review",
+        "ai-ml"
+      ],
+      "watch_priority": 106.2,
+      "scores": {
+        "overlap": 40.0,
+        "credibility": 45.0,
+        "decentralization": 50.0,
+        "open_science_fit": 60.0
+      },
+      "official_urls": [
+        "https://yesnoerror.com",
+        "https://yesnoerror.com/whitepaper"
+      ],
+      "domains": [
+        "yesnoerror.com"
+      ],
+      "rss_candidates": [
+        "https://yesnoerror.com/feed",
+        "https://yesnoerror.com/rss",
+        "https://yesnoerror.com/rss.xml",
+        "https://yesnoerror.com/feed.xml",
+        "https://yesnoerror.com/atom.xml",
+        "https://yesnoerror.com/blog/feed",
+        "https://yesnoerror.com/news/feed",
+        "https://yesnoerror.com/whitepaper/feed",
+        "https://yesnoerror.com/whitepaper/rss",
+        "https://yesnoerror.com/whitepaper/rss.xml",
+        "https://yesnoerror.com/whitepaper/feed.xml",
+        "https://yesnoerror.com/whitepaper/atom.xml"
+      ],
+      "x_handles": [],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://yesnoerror.com",
+        "https://yesnoerror.com/whitepaper"
+      ]
+    },
+    {
+      "id": "hairdao",
+      "kind": "organization",
+      "name": "HairDAO",
+      "aliases": [
+        "HairDAO"
+      ],
+      "stack": "governance",
+      "type": "BioDAO",
+      "tags": [
+        "bioDAO",
+        "IP-NFT",
+        "tokenomics",
+        "dao-gov",
+        "ip-nft"
+      ],
+      "watch_priority": 105.4,
+      "scores": {
+        "overlap": 10.0,
+        "credibility": 70.0,
+        "decentralization": 60.0,
+        "open_science_fit": 51.0
+      },
+      "official_urls": [
+        "https://hairdao.xyz",
+        "https://www.hairdao.xyz/hair-token",
+        "https://about.hairdao.xyz/apply-for-funding",
+        "https://uploads-ssl.webflow.com/61a12cfcc8291d38310ab2a4/61fb7b4f82f61e246e1d1f10_HairDAO%20White%20Paper.pdf"
+      ],
+      "domains": [
+        "hairdao.xyz",
+        "about.hairdao.xyz",
+        "uploads-ssl.webflow.com"
+      ],
+      "rss_candidates": [
+        "https://hairdao.xyz/feed",
+        "https://hairdao.xyz/rss",
+        "https://hairdao.xyz/rss.xml",
+        "https://hairdao.xyz/feed.xml",
+        "https://hairdao.xyz/atom.xml",
+        "https://hairdao.xyz/blog/feed",
+        "https://hairdao.xyz/news/feed",
+        "https://www.hairdao.xyz/hair-token/feed",
+        "https://www.hairdao.xyz/hair-token/rss",
+        "https://www.hairdao.xyz/hair-token/rss.xml",
+        "https://www.hairdao.xyz/hair-token/feed.xml",
+        "https://www.hairdao.xyz/hair-token/atom.xml"
+      ],
+      "x_handles": [
+        "HairDAO_"
+      ],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://hairdao.xyz",
+        "https://www.hairdao.xyz/hair-token",
+        "https://about.hairdao.xyz/apply-for-funding",
+        "https://uploads-ssl.webflow.com/61a12cfcc8291d38310ab2a4/61fb7b4f82f61e246e1d1f10_HairDAO%20White%20Paper.pdf",
+        "https://about.hairdao.xyz/apply-for-funding"
+      ]
+    },
+    {
+      "id": "hippocrat",
+      "kind": "organization",
+      "name": "Hippocrat",
+      "aliases": [
+        "Hippocrat"
+      ],
+      "stack": "infrastructure",
+      "type": "Health Protocol",
+      "tags": [
+        "healthcare",
+        "data",
+        "ZK-proofs",
+        "tokenomics",
+        "data-sovereignty",
+        "smart-contracts"
+      ],
+      "watch_priority": 105.4,
+      "scores": {
+        "overlap": 10.0,
+        "credibility": 70.0,
+        "decentralization": 60.0,
+        "open_science_fit": 48.0
+      },
+      "official_urls": [
+        "https://hippocrat.io",
+        "https://hippocrat.io/hippocratCommunityVote",
+        "https://whitepaper.hippocrat.io/index",
+        "https://whitepaper.hippocrat.io/index/whatis/hpo"
+      ],
+      "domains": [
+        "hippocrat.io",
+        "whitepaper.hippocrat.io"
+      ],
+      "rss_candidates": [
+        "https://hippocrat.io/feed",
+        "https://hippocrat.io/rss",
+        "https://hippocrat.io/rss.xml",
+        "https://hippocrat.io/feed.xml",
+        "https://hippocrat.io/atom.xml",
+        "https://hippocrat.io/blog/feed",
+        "https://hippocrat.io/news/feed",
+        "https://hippocrat.io/hippocratCommunityVote/feed",
+        "https://hippocrat.io/hippocratCommunityVote/rss",
+        "https://hippocrat.io/hippocratCommunityVote/rss.xml",
+        "https://hippocrat.io/hippocratCommunityVote/feed.xml",
+        "https://hippocrat.io/hippocratCommunityVote/atom.xml"
+      ],
+      "x_handles": [
+        "hippocrat_io"
+      ],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://hippocrat.io",
+        "https://hippocrat.io/hippocratCommunityVote",
+        "https://whitepaper.hippocrat.io/index",
+        "https://whitepaper.hippocrat.io/index/whatis/hpo"
+      ]
+    },
+    {
+      "id": "episteme",
+      "kind": "organization",
+      "name": "Episteme",
+      "aliases": [
+        "Episteme"
+      ],
+      "stack": "application",
+      "type": "Prediction/Publishing",
+      "tags": [
+        "prediction-market",
+        "AI",
+        "market-oriented",
+        "peer-review",
+        "ai-ml",
+        "smart-contracts",
+        "reputation"
+      ],
+      "watch_priority": 102.6,
+      "scores": {
+        "overlap": 45.0,
+        "credibility": 35.0,
+        "decentralization": 60.0,
+        "open_science_fit": 46.0
+      },
+      "official_urls": [
+        "https://episteme.ac",
+        "https://www.episteme.ac",
+        "https://www.sshshln.com/research"
+      ],
+      "domains": [
+        "episteme.ac",
+        "sshshln.com"
+      ],
+      "rss_candidates": [
+        "https://episteme.ac/feed",
+        "https://episteme.ac/rss",
+        "https://episteme.ac/rss.xml",
+        "https://episteme.ac/feed.xml",
+        "https://episteme.ac/atom.xml",
+        "https://episteme.ac/blog/feed",
+        "https://episteme.ac/news/feed",
+        "https://www.episteme.ac/feed",
+        "https://www.episteme.ac/rss",
+        "https://www.episteme.ac/rss.xml",
+        "https://www.episteme.ac/feed.xml",
+        "https://www.episteme.ac/atom.xml"
+      ],
+      "x_handles": [
+        "saborsky"
+      ],
+      "github_repos": [],
+      "paper_urls": [
+        "https://episteme.ac"
+      ],
+      "linked_people": [
+        {
+          "id": "p-shilina",
+          "name": "Sasha Shilina",
+          "role": "Founder, Episteme. DeScAI researcher.",
+          "x_handle": "saborsky"
+        }
+      ],
+      "provenance_urls": [
+        "https://episteme.ac",
+        "https://www.episteme.ac",
+        "https://www.sshshln.com/research"
+      ]
+    },
+    {
+      "id": "polymarket",
+      "kind": "organization",
+      "name": "Polymarket",
+      "aliases": [
+        "Polymarket"
+      ],
+      "stack": "application",
+      "type": "Prediction Market",
+      "tags": [
+        "prediction-market",
+        "market-oriented",
+        "smart-contracts"
+      ],
+      "watch_priority": 99.55,
+      "scores": {
+        "overlap": 5.0,
+        "credibility": 75.0,
+        "decentralization": 35.0,
+        "open_science_fit": 8.0
+      },
+      "official_urls": [
+        "https://polymarket.com",
+        "https://ir.theice.com/press/news-details/2026/Intercontinental-Exchange-Announces-New-600-Million-Investment-in-Polymarket/default.aspx"
+      ],
+      "domains": [
+        "polymarket.com",
+        "ir.theice.com"
+      ],
+      "rss_candidates": [
+        "https://polymarket.com/feed",
+        "https://polymarket.com/rss",
+        "https://polymarket.com/rss.xml",
+        "https://polymarket.com/feed.xml",
+        "https://polymarket.com/atom.xml",
+        "https://polymarket.com/blog/feed",
+        "https://polymarket.com/news/feed",
+        "https://ir.theice.com/feed",
+        "https://ir.theice.com/rss",
+        "https://ir.theice.com/rss.xml",
+        "https://ir.theice.com/feed.xml",
+        "https://ir.theice.com/atom.xml"
+      ],
+      "x_handles": [
+        "Polymarket"
+      ],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [
+        {
+          "id": "p-coplan",
+          "name": "Shayne Coplan",
+          "role": "Founder & CEO, Polymarket",
+          "x_handle": ""
+        }
+      ],
+      "provenance_urls": [
+        "https://ir.theice.com/press/news-details/2026/Intercontinental-Exchange-Announces-New-600-Million-Investment-in-Polymarket/default.aspx",
+        "https://polymarket.com"
+      ]
+    },
+    {
+      "id": "genomesdao",
+      "kind": "organization",
+      "name": "GenomesDAO",
+      "aliases": [
+        "GenomesDAO"
+      ],
+      "stack": "application",
+      "type": "Genomics",
+      "tags": [
+        "genomics",
+        "data",
+        "tokenomics",
+        "data-sovereignty",
+        "smart-contracts"
+      ],
+      "watch_priority": 98.85,
+      "scores": {
+        "overlap": 5.0,
+        "credibility": 70.0,
+        "decentralization": 55.0,
+        "open_science_fit": 54.0
+      },
+      "official_urls": [
+        "https://genomes.io",
+        "https://www.bitget.com/news/detail/12560604044138",
+        "https://www.coinbase.com/en-in/price/genomesdao-genome",
+        "https://blog.genomes.io/genomesdao-secures-investment-from-pantera-capital-and-modular-capital-f7b6a4caf94d"
+      ],
+      "domains": [
+        "genomes.io",
+        "bitget.com",
+        "coinbase.com",
+        "blog.genomes.io"
+      ],
+      "rss_candidates": [
+        "https://genomes.io/feed",
+        "https://genomes.io/rss",
+        "https://genomes.io/rss.xml",
+        "https://genomes.io/feed.xml",
+        "https://genomes.io/atom.xml",
+        "https://genomes.io/blog/feed",
+        "https://genomes.io/news/feed",
+        "https://www.bitget.com/news/detail/12560604044138/feed",
+        "https://www.bitget.com/news/detail/12560604044138/rss",
+        "https://www.bitget.com/news/detail/12560604044138/rss.xml",
+        "https://www.bitget.com/news/detail/12560604044138/feed.xml",
+        "https://www.bitget.com/news/detail/12560604044138/atom.xml"
+      ],
+      "x_handles": [
+        "GenomesDAO"
+      ],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://genomes.io",
+        "https://www.bitget.com/news/detail/12560604044138",
+        "https://www.coinbase.com/en-in/price/genomesdao-genome",
+        "https://blog.genomes.io/genomesdao-secures-investment-from-pantera-capital-and-modular-capital-f7b6a4caf94d"
+      ]
+    },
+    {
+      "id": "athenadao",
+      "kind": "organization",
+      "name": "AthenaDAO",
+      "aliases": [
+        "AthenaDAO"
+      ],
+      "stack": "governance",
+      "type": "BioDAO",
+      "tags": [
+        "bioDAO",
+        "womens-health",
+        "IP-NFT",
+        "dao-gov",
+        "ip-nft"
+      ],
+      "watch_priority": 98.45,
+      "scores": {
+        "overlap": 10.0,
+        "credibility": 65.0,
+        "decentralization": 55.0,
+        "open_science_fit": 55.0
+      },
+      "official_urls": [
+        "https://athenadao.co",
+        "https://www.athenadao.co",
+        "https://www.athenadao.co/athtoken"
+      ],
+      "domains": [
+        "athenadao.co"
+      ],
+      "rss_candidates": [
+        "https://athenadao.co/feed",
+        "https://athenadao.co/rss",
+        "https://athenadao.co/rss.xml",
+        "https://athenadao.co/feed.xml",
+        "https://athenadao.co/atom.xml",
+        "https://athenadao.co/blog/feed",
+        "https://athenadao.co/news/feed",
+        "https://www.athenadao.co/feed",
+        "https://www.athenadao.co/rss",
+        "https://www.athenadao.co/rss.xml",
+        "https://www.athenadao.co/feed.xml",
+        "https://www.athenadao.co/atom.xml"
+      ],
+      "x_handles": [],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://athenadao.co",
+        "https://www.athenadao.co",
+        "https://www.athenadao.co/athtoken"
+      ]
+    },
+    {
+      "id": "desci-foundation",
+      "kind": "organization",
+      "name": "DeSci Foundation",
+      "aliases": [
+        "DeSci Foundation"
+      ],
+      "stack": "governance",
+      "type": "Foundation",
+      "tags": [
+        "community",
+        "policy",
+        "nonprofit"
+      ],
+      "watch_priority": 97.6,
+      "scores": {
+        "overlap": 5.0,
+        "credibility": 70.0,
+        "decentralization": 50.0,
+        "open_science_fit": 100.0
+      },
+      "official_urls": [
+        "https://descifoundation.org",
+        "https://www.descifoundation.org/about",
+        "https://www.descifoundation.org"
+      ],
+      "domains": [
+        "descifoundation.org"
+      ],
+      "rss_candidates": [
+        "https://descifoundation.org/feed",
+        "https://descifoundation.org/rss",
+        "https://descifoundation.org/rss.xml",
+        "https://descifoundation.org/feed.xml",
+        "https://descifoundation.org/atom.xml",
+        "https://descifoundation.org/blog/feed",
+        "https://descifoundation.org/news/feed",
+        "https://www.descifoundation.org/about/feed",
+        "https://www.descifoundation.org/about/rss",
+        "https://www.descifoundation.org/about/rss.xml",
+        "https://www.descifoundation.org/about/feed.xml",
+        "https://www.descifoundation.org/about/atom.xml"
+      ],
+      "x_handles": [
+        "DeSciFoundation"
+      ],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [
+        {
+          "id": "p-koellinger",
+          "name": "Philipp Koellinger",
+          "role": "Co-founder DeSci Labs & DeSci Foundation. VU Amsterdam professor. Published in Nature/Science.",
+          "x_handle": ""
+        },
+        {
+          "id": "p-benet",
+          "name": "Juan Benet",
+          "role": "Founder, Protocol Labs (IPFS/Filecoin). DeSci Foundation board.",
+          "x_handle": "juanbenet"
+        }
+      ],
+      "provenance_urls": [
+        "https://www.descifoundation.org/about",
+        "https://www.descifoundation.org"
+      ]
+    },
+    {
+      "id": "beerreview",
+      "kind": "organization",
+      "name": "BeerReview",
+      "aliases": [
+        "BeerReview"
+      ],
+      "stack": "application",
+      "type": "Academic Prototype",
+      "tags": [
+        "peer-review",
+        "AI",
+        "LLM",
+        "ai-ml",
+        "smart-contracts"
+      ],
+      "watch_priority": 96.8,
+      "scores": {
+        "overlap": 55.0,
+        "credibility": 25.0,
+        "decentralization": 40.0,
+        "open_science_fit": 55.0
+      },
+      "official_urls": [
+        "https://arxiv.org/abs/2405.20220",
+        "https://arxiv.org/html/2405.20220v1"
+      ],
+      "domains": [
+        "arxiv.org"
+      ],
+      "rss_candidates": [
+        "https://arxiv.org/feed",
+        "https://arxiv.org/rss",
+        "https://arxiv.org/rss.xml",
+        "https://arxiv.org/feed.xml",
+        "https://arxiv.org/atom.xml",
+        "https://arxiv.org/blog/feed",
+        "https://arxiv.org/news/feed",
+        "https://arxiv.org/html/2405.20220v1/feed",
+        "https://arxiv.org/html/2405.20220v1/rss",
+        "https://arxiv.org/html/2405.20220v1/rss.xml",
+        "https://arxiv.org/html/2405.20220v1/feed.xml",
+        "https://arxiv.org/html/2405.20220v1/atom.xml"
+      ],
+      "x_handles": [],
+      "github_repos": [],
+      "paper_urls": [
+        "https://arxiv.org/abs/2405.20220"
+      ],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://arxiv.org/abs/2405.20220",
+        "https://arxiv.org/html/2405.20220v1"
+      ]
+    },
+    {
+      "id": "rejuve",
+      "kind": "organization",
+      "name": "Rejuve AI",
+      "aliases": [
+        "Rejuve AI"
+      ],
+      "stack": "application",
+      "type": "Longevity",
+      "tags": [
+        "longevity",
+        "AI",
+        "healthcare",
+        "tokenomics",
+        "ai-ml",
+        "data-sovereignty"
+      ],
+      "watch_priority": 95.25,
+      "scores": {
+        "overlap": 10.0,
+        "credibility": 60.0,
+        "decentralization": 65.0,
+        "open_science_fit": 28.0
+      },
+      "official_urls": [
+        "https://rejuve.ai",
+        "https://www.rejuve.ai",
+        "https://medium.com/singularitynet/rejuve-network-token-launch-a-leap-forward-in-quest-to-apply-ai-and-blockchain-to-human-longevity-8f405d5beb85",
+        "https://blog.rejuve.ai/rejuve-tokenomics-deep-dive-47e5df28afca"
+      ],
+      "domains": [
+        "rejuve.ai",
+        "medium.com",
+        "blog.rejuve.ai"
+      ],
+      "rss_candidates": [
+        "https://rejuve.ai/feed",
+        "https://rejuve.ai/rss",
+        "https://rejuve.ai/rss.xml",
+        "https://rejuve.ai/feed.xml",
+        "https://rejuve.ai/atom.xml",
+        "https://rejuve.ai/blog/feed",
+        "https://rejuve.ai/news/feed",
+        "https://www.rejuve.ai/feed",
+        "https://www.rejuve.ai/rss",
+        "https://www.rejuve.ai/rss.xml",
+        "https://www.rejuve.ai/feed.xml",
+        "https://www.rejuve.ai/atom.xml"
+      ],
+      "x_handles": [
+        "rejaboratories"
+      ],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [
+        {
+          "id": "p-goertzel",
+          "name": "Ben Goertzel",
+          "role": "CEO, SingularityNET. Founder, Rejuve AI.",
+          "x_handle": "bengoertzel"
+        }
+      ],
+      "provenance_urls": [
+        "https://rejuve.ai",
+        "https://www.rejuve.ai",
+        "https://medium.com/singularitynet/rejuve-network-token-launch-a-leap-forward-in-quest-to-apply-ai-and-blockchain-to-human-longevity-8f405d5beb85",
+        "https://blog.rejuve.ai/rejuve-tokenomics-deep-dive-47e5df28afca"
+      ]
+    },
+    {
+      "id": "stadium-science",
+      "kind": "organization",
+      "name": "Stadium.Science",
+      "aliases": [
+        "Stadium.Science"
+      ],
+      "stack": "application",
+      "type": "Gamified Science",
+      "tags": [
+        "prediction-market",
+        "gamified",
+        "healthcare",
+        "DePIN",
+        "citizen-sci",
+        "smart-contracts"
+      ],
+      "watch_priority": 89.45,
+      "scores": {
+        "overlap": 20.0,
+        "credibility": 50.0,
+        "decentralization": 45.0,
+        "open_science_fit": 48.0
+      },
+      "official_urls": [
+        "https://stadium.science",
+        "https://www.stadium.science",
+        "https://messari.io/project/stadium-science/fundraising"
+      ],
+      "domains": [
+        "stadium.science",
+        "messari.io"
+      ],
+      "rss_candidates": [
+        "https://stadium.science/feed",
+        "https://stadium.science/rss",
+        "https://stadium.science/rss.xml",
+        "https://stadium.science/feed.xml",
+        "https://stadium.science/atom.xml",
+        "https://stadium.science/blog/feed",
+        "https://stadium.science/news/feed",
+        "https://www.stadium.science/feed",
+        "https://www.stadium.science/rss",
+        "https://www.stadium.science/rss.xml",
+        "https://www.stadium.science/feed.xml",
+        "https://www.stadium.science/atom.xml"
+      ],
+      "x_handles": [],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://stadium.science",
+        "https://www.stadium.science",
+        "https://messari.io/project/stadium-science/fundraising"
+      ]
+    },
+    {
+      "id": "pump-science",
+      "kind": "organization",
+      "name": "Pump Science",
+      "aliases": [
+        "Pump Science"
+      ],
+      "stack": "application",
+      "type": "Gamified Science",
+      "tags": [
+        "longevity",
+        "gamified",
+        "tokenomics",
+        "ai-ml",
+        "smart-contracts",
+        "citizen-sci"
+      ],
+      "watch_priority": 88.6,
+      "scores": {
+        "overlap": 15.0,
+        "credibility": 55.0,
+        "decentralization": 40.0,
+        "open_science_fit": 11.0
+      },
+      "official_urls": [
+        "https://pump.science",
+        "https://www.gate.com/learn/articles/what-is-pump-science-trade-on-real-scientific-experiments/4892",
+        "https://cryptonews.net/news/altcoins/30699351"
+      ],
+      "domains": [
+        "pump.science",
+        "gate.com",
+        "cryptonews.net"
+      ],
+      "rss_candidates": [
+        "https://pump.science/feed",
+        "https://pump.science/rss",
+        "https://pump.science/rss.xml",
+        "https://pump.science/feed.xml",
+        "https://pump.science/atom.xml",
+        "https://pump.science/blog/feed",
+        "https://pump.science/news/feed",
+        "https://www.gate.com/learn/articles/what-is-pump-science-trade-on-real-scientific-experiments/4892/feed",
+        "https://www.gate.com/learn/articles/what-is-pump-science-trade-on-real-scientific-experiments/4892/rss",
+        "https://www.gate.com/learn/articles/what-is-pump-science-trade-on-real-scientific-experiments/4892/rss.xml",
+        "https://www.gate.com/learn/articles/what-is-pump-science-trade-on-real-scientific-experiments/4892/feed.xml",
+        "https://www.gate.com/learn/articles/what-is-pump-science-trade-on-real-scientific-experiments/4892/atom.xml"
+      ],
+      "x_handles": [
+        "pumpdotscience"
+      ],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://pump.science",
+        "https://www.gate.com/learn/articles/what-is-pump-science-trade-on-real-scientific-experiments/4892",
+        "https://cryptonews.net/news/altcoins/30699351"
+      ]
+    },
+    {
+      "id": "hetu",
+      "kind": "organization",
+      "name": "Hetu Protocol",
+      "aliases": [
+        "Hetu Protocol"
+      ],
+      "stack": "infrastructure",
+      "type": "Verification",
+      "tags": [
+        "AI",
+        "verification",
+        "causal-inference",
+        "ai-ml",
+        "peer-review",
+        "smart-contracts"
+      ],
+      "watch_priority": 87.25,
+      "scores": {
+        "overlap": 30.0,
+        "credibility": 30.0,
+        "decentralization": 85.0,
+        "open_science_fit": 60.0
+      },
+      "official_urls": [
+        "https://hetu.org",
+        "https://docs.hetu.org/parallel-net/pocw/pocw-protocol"
+      ],
+      "domains": [
+        "hetu.org",
+        "docs.hetu.org"
+      ],
+      "rss_candidates": [
+        "https://hetu.org/feed",
+        "https://hetu.org/rss",
+        "https://hetu.org/rss.xml",
+        "https://hetu.org/feed.xml",
+        "https://hetu.org/atom.xml",
+        "https://hetu.org/blog/feed",
+        "https://hetu.org/news/feed",
+        "https://docs.hetu.org/parallel-net/pocw/pocw-protocol/feed",
+        "https://docs.hetu.org/parallel-net/pocw/pocw-protocol/rss",
+        "https://docs.hetu.org/parallel-net/pocw/pocw-protocol/rss.xml",
+        "https://docs.hetu.org/parallel-net/pocw/pocw-protocol/feed.xml",
+        "https://docs.hetu.org/parallel-net/pocw/pocw-protocol/atom.xml"
+      ],
+      "x_handles": [],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://hetu.org",
+        "https://docs.hetu.org/parallel-net/pocw/pocw-protocol"
+      ]
+    },
+    {
+      "id": "aminochain",
+      "kind": "organization",
+      "name": "AminoChain",
+      "aliases": [
+        "AminoChain"
+      ],
+      "stack": "infrastructure",
+      "type": "Biobank Infra",
+      "tags": [
+        "biobank",
+        "data",
+        "Layer-2",
+        "data-sovereignty"
+      ],
+      "watch_priority": 80.5,
+      "scores": {
+        "overlap": 5.0,
+        "credibility": 55.0,
+        "decentralization": 50.0,
+        "open_science_fit": 48.0
+      },
+      "official_urls": [
+        "https://aminochain.io",
+        "https://www.binance.com/en/square/post/14024719209370",
+        "https://www.biobanking.com/aminochain-secured-7-million-funding-to-revolutionize-biobanking-with-blockchain-technology",
+        "https://aminochain.io/blog/introducing-aminochain",
+        "https://www.theblock.co/post/318158/a16z-makes-first-desci-investment-in-decentralized-biobank-platform-aminochain"
+      ],
+      "domains": [
+        "aminochain.io",
+        "binance.com",
+        "biobanking.com",
+        "theblock.co"
+      ],
+      "rss_candidates": [
+        "https://aminochain.io/feed",
+        "https://aminochain.io/rss",
+        "https://aminochain.io/rss.xml",
+        "https://aminochain.io/feed.xml",
+        "https://aminochain.io/atom.xml",
+        "https://aminochain.io/blog/feed",
+        "https://aminochain.io/news/feed",
+        "https://www.binance.com/en/square/post/14024719209370/feed",
+        "https://www.binance.com/en/square/post/14024719209370/rss",
+        "https://www.binance.com/en/square/post/14024719209370/rss.xml",
+        "https://www.binance.com/en/square/post/14024719209370/feed.xml",
+        "https://www.binance.com/en/square/post/14024719209370/atom.xml"
+      ],
+      "x_handles": [],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [
+        {
+          "id": "p-clarke",
+          "name": "Jelani Clarke",
+          "role": "Executive Lead, AminoChain. Advocate for data sovereignty in healthcare.",
+          "x_handle": ""
+        },
+        {
+          "id": "p-simpson",
+          "name": "Arianna Simpson",
+          "role": "a16z Crypto GP. Led AminoChain (first DeSci deal).",
+          "x_handle": "AriannaSimpson"
+        }
+      ],
+      "provenance_urls": [
+        "https://aminochain.io",
+        "https://www.binance.com/en/square/post/14024719209370",
+        "https://www.biobanking.com/aminochain-secured-7-million-funding-to-revolutionize-biobanking-with-blockchain-technology",
+        "https://aminochain.io/blog/introducing-aminochain",
+        "https://www.theblock.co/post/318158/a16z-makes-first-desci-investment-in-decentralized-biobank-platform-aminochain"
+      ]
+    },
+    {
+      "id": "axondao",
+      "kind": "organization",
+      "name": "AxonDAO",
+      "aliases": [
+        "AxonDAO"
+      ],
+      "stack": "infrastructure",
+      "type": "BioDAO",
+      "tags": [
+        "bioDAO",
+        "neuroscience",
+        "AI",
+        "tokenomics",
+        "ai-ml",
+        "dao-gov"
+      ],
+      "watch_priority": 79.0,
+      "scores": {
+        "overlap": 15.0,
+        "credibility": 40.0,
+        "decentralization": 70.0,
+        "open_science_fit": 65.0
+      },
+      "official_urls": [
+        "https://axondao.io",
+        "https://www.axondao.io/token",
+        "https://whitepaper.axondao.io/axondao/usdaxgt-tokenomics"
+      ],
+      "domains": [
+        "axondao.io",
+        "whitepaper.axondao.io"
+      ],
+      "rss_candidates": [
+        "https://axondao.io/feed",
+        "https://axondao.io/rss",
+        "https://axondao.io/rss.xml",
+        "https://axondao.io/feed.xml",
+        "https://axondao.io/atom.xml",
+        "https://axondao.io/blog/feed",
+        "https://axondao.io/news/feed",
+        "https://www.axondao.io/token/feed",
+        "https://www.axondao.io/token/rss",
+        "https://www.axondao.io/token/rss.xml",
+        "https://www.axondao.io/token/feed.xml",
+        "https://www.axondao.io/token/atom.xml"
+      ],
+      "x_handles": [],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://axondao.io",
+        "https://www.axondao.io/token",
+        "https://whitepaper.axondao.io/axondao/usdaxgt-tokenomics"
+      ]
+    },
+    {
+      "id": "rare-compute",
+      "kind": "organization",
+      "name": "Rare Compute",
+      "aliases": [
+        "Rare Compute"
+      ],
+      "stack": "infrastructure",
+      "type": "Compute",
+      "tags": [
+        "compute",
+        "tokenomics",
+        "GPU",
+        "smart-contracts"
+      ],
+      "watch_priority": 71.6,
+      "scores": {
+        "overlap": 5.0,
+        "credibility": 45.0,
+        "decentralization": 60.0,
+        "open_science_fit": 84.0
+      },
+      "official_urls": [
+        "https://www.rarecompute.io",
+        "https://www.rarecompute.io/about",
+        "https://blog.lilypad.tech/lilypad-project-report-june-19-2024"
+      ],
+      "domains": [
+        "rarecompute.io",
+        "blog.lilypad.tech"
+      ],
+      "rss_candidates": [
+        "https://www.rarecompute.io/feed",
+        "https://www.rarecompute.io/rss",
+        "https://www.rarecompute.io/rss.xml",
+        "https://www.rarecompute.io/feed.xml",
+        "https://www.rarecompute.io/atom.xml",
+        "https://www.rarecompute.io/blog/feed",
+        "https://www.rarecompute.io/news/feed",
+        "https://www.rarecompute.io/about/feed",
+        "https://www.rarecompute.io/about/rss",
+        "https://www.rarecompute.io/about/rss.xml",
+        "https://www.rarecompute.io/about/feed.xml",
+        "https://www.rarecompute.io/about/atom.xml"
+      ],
+      "x_handles": [],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://www.rarecompute.io",
+        "https://www.rarecompute.io/about",
+        "https://blog.lilypad.tech/lilypad-project-report-june-19-2024"
+      ]
+    },
+    {
+      "id": "psydao",
+      "kind": "organization",
+      "name": "PsyDAO",
+      "aliases": [
+        "PsyDAO"
+      ],
+      "stack": "governance",
+      "type": "BioDAO",
+      "tags": [
+        "bioDAO",
+        "mental-health",
+        "psychedelics",
+        "dao-gov"
+      ],
+      "watch_priority": 69.1,
+      "scores": {
+        "overlap": 5.0,
+        "credibility": 45.0,
+        "decentralization": 50.0,
+        "open_science_fit": 68.0
+      },
+      "official_urls": [
+        "https://psydao.io",
+        "https://radix.wiki/ecosystem/psydao",
+        "https://www.psydao.io"
+      ],
+      "domains": [
+        "psydao.io",
+        "radix.wiki"
+      ],
+      "rss_candidates": [
+        "https://psydao.io/feed",
+        "https://psydao.io/rss",
+        "https://psydao.io/rss.xml",
+        "https://psydao.io/feed.xml",
+        "https://psydao.io/atom.xml",
+        "https://psydao.io/blog/feed",
+        "https://psydao.io/news/feed",
+        "https://radix.wiki/ecosystem/psydao/feed",
+        "https://radix.wiki/ecosystem/psydao/rss",
+        "https://radix.wiki/ecosystem/psydao/rss.xml",
+        "https://radix.wiki/ecosystem/psydao/feed.xml",
+        "https://radix.wiki/ecosystem/psydao/atom.xml"
+      ],
+      "x_handles": [
+        "PsyDAO_"
+      ],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://psydao.io",
+        "https://radix.wiki/ecosystem/psydao",
+        "https://www.psydao.io"
+      ]
+    },
+    {
+      "id": "binance-labs",
+      "kind": "organization",
+      "name": "Binance Labs",
+      "aliases": [
+        "Binance Labs"
+      ],
+      "stack": "governance",
+      "type": "Funder",
+      "tags": [
+        "crypto-VC"
+      ],
+      "watch_priority": 65.2,
+      "scores": {
+        "overlap": 0.0,
+        "credibility": 55.0,
+        "decentralization": 10.0,
+        "open_science_fit": 29.0
+      },
+      "official_urls": [
+        "https://labs.binance.com",
+        "https://www.binance.com/en/square/post/30729356517602",
+        "https://cryptorank.io/funds/binance-labs"
+      ],
+      "domains": [
+        "labs.binance.com",
+        "binance.com",
+        "cryptorank.io"
+      ],
+      "rss_candidates": [
+        "https://labs.binance.com/feed",
+        "https://labs.binance.com/rss",
+        "https://labs.binance.com/rss.xml",
+        "https://labs.binance.com/feed.xml",
+        "https://labs.binance.com/atom.xml",
+        "https://labs.binance.com/blog/feed",
+        "https://labs.binance.com/news/feed",
+        "https://www.binance.com/en/square/post/30729356517602/feed",
+        "https://www.binance.com/en/square/post/30729356517602/rss",
+        "https://www.binance.com/en/square/post/30729356517602/rss.xml",
+        "https://www.binance.com/en/square/post/30729356517602/feed.xml",
+        "https://www.binance.com/en/square/post/30729356517602/atom.xml"
+      ],
+      "x_handles": [
+        "BinanceLabs"
+      ],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://labs.binance.com",
+        "https://www.binance.com/en/square/post/30729356517602",
+        "https://cryptorank.io/funds/binance-labs"
+      ]
+    },
+    {
+      "id": "scinet",
+      "kind": "organization",
+      "name": "SciNet / OpSci",
+      "aliases": [
+        "SciNet / OpSci",
+        "SciNet",
+        "OpSci"
+      ],
+      "stack": "infrastructure",
+      "type": "Data Infra",
+      "tags": [
+        "data",
+        "IPFS",
+        "knowledge-graph",
+        "citation-graph",
+        "data-sovereignty"
+      ],
+      "watch_priority": 65.1,
+      "scores": {
+        "overlap": 15.0,
+        "credibility": 30.0,
+        "decentralization": 60.0,
+        "open_science_fit": 88.0
+      },
+      "official_urls": [
+        "https://www.opsci.io",
+        "https://fil.org/blog/case-study-opsci-how-an-open-science-commons-project-built-on-web3-infrastructure-empowers-community-discovery"
+      ],
+      "domains": [
+        "opsci.io",
+        "fil.org"
+      ],
+      "rss_candidates": [
+        "https://www.opsci.io/feed",
+        "https://www.opsci.io/rss",
+        "https://www.opsci.io/rss.xml",
+        "https://www.opsci.io/feed.xml",
+        "https://www.opsci.io/atom.xml",
+        "https://www.opsci.io/blog/feed",
+        "https://www.opsci.io/news/feed",
+        "https://fil.org/blog/case-study-opsci-how-an-open-science-commons-project-built-on-web3-infrastructure-empowers-community-discovery/feed",
+        "https://fil.org/blog/case-study-opsci-how-an-open-science-commons-project-built-on-web3-infrastructure-empowers-community-discovery/rss",
+        "https://fil.org/blog/case-study-opsci-how-an-open-science-commons-project-built-on-web3-infrastructure-empowers-community-discovery/rss.xml",
+        "https://fil.org/blog/case-study-opsci-how-an-open-science-commons-project-built-on-web3-infrastructure-empowers-community-discovery/feed.xml",
+        "https://fil.org/blog/case-study-opsci-how-an-open-science-commons-project-built-on-web3-infrastructure-empowers-community-discovery/atom.xml"
+      ],
+      "x_handles": [],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://www.opsci.io",
+        "https://fil.org/blog/case-study-opsci-how-an-open-science-commons-project-built-on-web3-infrastructure-empowers-community-discovery"
+      ]
+    },
+    {
+      "id": "hippo-protocol",
+      "kind": "organization",
+      "name": "Hippo Protocol",
+      "aliases": [
+        "Hippo Protocol"
+      ],
+      "stack": "infrastructure",
+      "type": "Health Protocol",
+      "tags": [
+        "healthcare",
+        "ZK-proofs",
+        "Layer-1",
+        "HIPAA",
+        "data-sovereignty",
+        "smart-contracts"
+      ],
+      "watch_priority": 63.0,
+      "scores": {
+        "overlap": 10.0,
+        "credibility": 35.0,
+        "decentralization": 50.0,
+        "open_science_fit": 44.0
+      },
+      "official_urls": [
+        "https://hippoprotocol.ai",
+        "https://whitepaper.hippoprotocol.ai/5.-ecosystem-overview",
+        "https://github.com/hippo-protocol"
+      ],
+      "domains": [
+        "hippoprotocol.ai",
+        "whitepaper.hippoprotocol.ai",
+        "github.com"
+      ],
+      "rss_candidates": [
+        "https://hippoprotocol.ai/feed",
+        "https://hippoprotocol.ai/rss",
+        "https://hippoprotocol.ai/rss.xml",
+        "https://hippoprotocol.ai/feed.xml",
+        "https://hippoprotocol.ai/atom.xml",
+        "https://hippoprotocol.ai/blog/feed",
+        "https://hippoprotocol.ai/news/feed",
+        "https://whitepaper.hippoprotocol.ai/5.-ecosystem-overview/feed",
+        "https://whitepaper.hippoprotocol.ai/5.-ecosystem-overview/rss",
+        "https://whitepaper.hippoprotocol.ai/5.-ecosystem-overview/rss.xml",
+        "https://whitepaper.hippoprotocol.ai/5.-ecosystem-overview/feed.xml",
+        "https://whitepaper.hippoprotocol.ai/5.-ecosystem-overview/atom.xml"
+      ],
+      "x_handles": [],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://hippoprotocol.ai",
+        "https://whitepaper.hippoprotocol.ai/5.-ecosystem-overview",
+        "https://github.com/hippo-protocol"
+      ]
+    },
+    {
+      "id": "datalake",
+      "kind": "organization",
+      "name": "DataLake",
+      "aliases": [
+        "DataLake"
+      ],
+      "stack": "infrastructure",
+      "type": "Data Platform",
+      "tags": [
+        "data",
+        "AI",
+        "tokenomics",
+        "ai-ml",
+        "data-sovereignty"
+      ],
+      "watch_priority": 59.8,
+      "scores": {
+        "overlap": 10.0,
+        "credibility": 30.0,
+        "decentralization": 60.0,
+        "open_science_fit": 33.0
+      },
+      "official_urls": [
+        "https://data-lake.co",
+        "https://data-lake.co/about-data-lake",
+        "https://data-lake.co/data-lakes-first-data-sale-and-inaugural-lake-buyback",
+        "https://data-lake.co/data-lake-application-to-hit-public-launch-with-a-grant-program-opened"
+      ],
+      "domains": [
+        "data-lake.co"
+      ],
+      "rss_candidates": [
+        "https://data-lake.co/feed",
+        "https://data-lake.co/rss",
+        "https://data-lake.co/rss.xml",
+        "https://data-lake.co/feed.xml",
+        "https://data-lake.co/atom.xml",
+        "https://data-lake.co/blog/feed",
+        "https://data-lake.co/news/feed",
+        "https://data-lake.co/about-data-lake/feed",
+        "https://data-lake.co/about-data-lake/rss",
+        "https://data-lake.co/about-data-lake/rss.xml",
+        "https://data-lake.co/about-data-lake/feed.xml",
+        "https://data-lake.co/about-data-lake/atom.xml"
+      ],
+      "x_handles": [],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://data-lake.co/about-data-lake",
+        "https://data-lake.co/data-lakes-first-data-sale-and-inaugural-lake-buyback",
+        "https://data-lake.co",
+        "https://data-lake.co/data-lake-application-to-hit-public-launch-with-a-grant-program-opened"
+      ]
+    },
+    {
+      "id": "welshare",
+      "kind": "organization",
+      "name": "Welshare Health",
+      "aliases": [
+        "Welshare Health"
+      ],
+      "stack": "application",
+      "type": "HealthTech",
+      "tags": [
+        "healthcare",
+        "data",
+        "ZK-proofs",
+        "tokenomics",
+        "data-sovereignty",
+        "smart-contracts"
+      ],
+      "watch_priority": 58.55,
+      "scores": {
+        "overlap": 10.0,
+        "credibility": 30.0,
+        "decentralization": 55.0,
+        "open_science_fit": 30.0
+      },
+      "official_urls": [
+        "https://welshare.health",
+        "https://whitepaper.welshare.health",
+        "https://whitepaper.welshare.health/wel-token/tokenomics",
+        "https://whitepaper.welshare.health/wel-token/how-to-buy-wel"
+      ],
+      "domains": [
+        "welshare.health",
+        "whitepaper.welshare.health"
+      ],
+      "rss_candidates": [
+        "https://welshare.health/feed",
+        "https://welshare.health/rss",
+        "https://welshare.health/rss.xml",
+        "https://welshare.health/feed.xml",
+        "https://welshare.health/atom.xml",
+        "https://welshare.health/blog/feed",
+        "https://welshare.health/news/feed",
+        "https://whitepaper.welshare.health/feed",
+        "https://whitepaper.welshare.health/rss",
+        "https://whitepaper.welshare.health/rss.xml",
+        "https://whitepaper.welshare.health/feed.xml",
+        "https://whitepaper.welshare.health/atom.xml"
+      ],
+      "x_handles": [],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://welshare.health",
+        "https://whitepaper.welshare.health",
+        "https://whitepaper.welshare.health/wel-token/tokenomics",
+        "https://whitepaper.welshare.health/wel-token/how-to-buy-wel"
+      ]
+    },
+    {
+      "id": "tig",
+      "kind": "organization",
+      "name": "The Innovation Game",
+      "aliases": [
+        "The Innovation Game"
+      ],
+      "stack": "infrastructure",
+      "type": "Compute",
+      "tags": [
+        "compute",
+        "algorithms",
+        "tokenomics"
+      ],
+      "watch_priority": 54.5,
+      "scores": {
+        "overlap": 5.0,
+        "credibility": 30.0,
+        "decentralization": 60.0,
+        "open_science_fit": 56.0
+      },
+      "official_urls": [
+        "https://tig.foundation",
+        "https://docs.tig.foundation/tokenomics",
+        "https://tigstats.com"
+      ],
+      "domains": [
+        "tig.foundation",
+        "docs.tig.foundation",
+        "tigstats.com"
+      ],
+      "rss_candidates": [
+        "https://tig.foundation/feed",
+        "https://tig.foundation/rss",
+        "https://tig.foundation/rss.xml",
+        "https://tig.foundation/feed.xml",
+        "https://tig.foundation/atom.xml",
+        "https://tig.foundation/blog/feed",
+        "https://tig.foundation/news/feed",
+        "https://docs.tig.foundation/tokenomics/feed",
+        "https://docs.tig.foundation/tokenomics/rss",
+        "https://docs.tig.foundation/tokenomics/rss.xml",
+        "https://docs.tig.foundation/tokenomics/feed.xml",
+        "https://docs.tig.foundation/tokenomics/atom.xml"
+      ],
+      "x_handles": [],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://tig.foundation",
+        "https://docs.tig.foundation/tokenomics",
+        "https://tigstats.com"
+      ]
+    },
+    {
+      "id": "northpond",
+      "kind": "organization",
+      "name": "Northpond Ventures",
+      "aliases": [
+        "Northpond Ventures"
+      ],
+      "stack": "governance",
+      "type": "Funder",
+      "tags": [
+        "VC",
+        "biotech"
+      ],
+      "watch_priority": 52.55,
+      "scores": {
+        "overlap": 0.0,
+        "credibility": 45.0,
+        "decentralization": 5.0,
+        "open_science_fit": 8.0
+      },
+      "official_urls": [
+        "https://www.npv.vc",
+        "https://www.npv.vc/wp-content/uploads/2021/08/Northpond-Ventures_Investment-Team_Director-1.pdf",
+        "https://launchbio.org/event/northpond-ventures"
+      ],
+      "domains": [
+        "npv.vc",
+        "launchbio.org"
+      ],
+      "rss_candidates": [
+        "https://www.npv.vc/feed",
+        "https://www.npv.vc/rss",
+        "https://www.npv.vc/rss.xml",
+        "https://www.npv.vc/feed.xml",
+        "https://www.npv.vc/atom.xml",
+        "https://www.npv.vc/blog/feed",
+        "https://www.npv.vc/news/feed",
+        "https://launchbio.org/event/northpond-ventures/feed",
+        "https://launchbio.org/event/northpond-ventures/rss",
+        "https://launchbio.org/event/northpond-ventures/rss.xml",
+        "https://launchbio.org/event/northpond-ventures/feed.xml",
+        "https://launchbio.org/event/northpond-ventures/atom.xml"
+      ],
+      "x_handles": [],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [
+        {
+          "id": "p-malone",
+          "name": "Patrick Malone",
+          "role": "Partner, Northpond Ventures. MD PhD. Led Molecule $12.7M seed.",
+          "x_handle": ""
+        }
+      ],
+      "provenance_urls": [
+        "https://www.npv.vc",
+        "https://www.npv.vc/wp-content/uploads/2021/08/Northpond-Ventures_Investment-Team_Director-1.pdf",
+        "https://launchbio.org/event/northpond-ventures"
+      ]
+    },
+    {
+      "id": "desci-berlin",
+      "kind": "organization",
+      "name": "DeSci Berlin",
+      "aliases": [
+        "DeSci Berlin"
+      ],
+      "stack": "governance",
+      "type": "Conference",
+      "tags": [
+        "community",
+        "conference"
+      ],
+      "watch_priority": 46.7,
+      "scores": {
+        "overlap": 0.0,
+        "credibility": 30.0,
+        "decentralization": 50.0,
+        "open_science_fit": 51.0
+      },
+      "official_urls": [
+        "https://desci.berlin",
+        "https://luma.com/desci.berlin",
+        "https://x.com/DeSciBerlin"
+      ],
+      "domains": [
+        "desci.berlin",
+        "luma.com",
+        "x.com"
+      ],
+      "rss_candidates": [
+        "https://desci.berlin/feed",
+        "https://desci.berlin/rss",
+        "https://desci.berlin/rss.xml",
+        "https://desci.berlin/feed.xml",
+        "https://desci.berlin/atom.xml",
+        "https://desci.berlin/blog/feed",
+        "https://desci.berlin/news/feed",
+        "https://luma.com/feed",
+        "https://luma.com/rss",
+        "https://luma.com/rss.xml",
+        "https://luma.com/feed.xml",
+        "https://luma.com/atom.xml"
+      ],
+      "x_handles": [
+        "DeSciBerlin"
+      ],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://desci.berlin",
+        "https://luma.com/desci.berlin",
+        "https://x.com/DeSciBerlin"
+      ]
+    },
+    {
+      "id": "cryodao",
+      "kind": "organization",
+      "name": "CryoDAO",
+      "aliases": [
+        "CryoDAO"
+      ],
+      "stack": "governance",
+      "type": "BioDAO",
+      "tags": [
+        "bioDAO",
+        "longevity",
+        "dao-gov"
+      ],
+      "watch_priority": 46.3,
+      "scores": {
+        "overlap": 5.0,
+        "credibility": 25.0,
+        "decentralization": 50.0,
+        "open_science_fit": 96.0
+      },
+      "official_urls": [
+        "https://www.cryodao.org",
+        "https://www.cryodao.org/the-cryo-token",
+        "https://www.cryorat.com"
+      ],
+      "domains": [
+        "cryodao.org",
+        "cryorat.com"
+      ],
+      "rss_candidates": [
+        "https://www.cryodao.org/feed",
+        "https://www.cryodao.org/rss",
+        "https://www.cryodao.org/rss.xml",
+        "https://www.cryodao.org/feed.xml",
+        "https://www.cryodao.org/atom.xml",
+        "https://www.cryodao.org/blog/feed",
+        "https://www.cryodao.org/news/feed",
+        "https://www.cryodao.org/the-cryo-token/feed",
+        "https://www.cryodao.org/the-cryo-token/rss",
+        "https://www.cryodao.org/the-cryo-token/rss.xml",
+        "https://www.cryodao.org/the-cryo-token/feed.xml",
+        "https://www.cryodao.org/the-cryo-token/atom.xml"
+      ],
+      "x_handles": [
+        "CryoDAO"
+      ],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://www.cryodao.org",
+        "https://www.cryodao.org/the-cryo-token",
+        "https://www.cryorat.com"
+      ]
+    },
+    {
+      "id": "cerebrumdao",
+      "kind": "organization",
+      "name": "CerebrumDAO",
+      "aliases": [
+        "CerebrumDAO"
+      ],
+      "stack": "governance",
+      "type": "BioDAO",
+      "tags": [
+        "bioDAO",
+        "neuroscience",
+        "dao-gov"
+      ],
+      "watch_priority": 45.9,
+      "scores": {
+        "overlap": 10.0,
+        "credibility": 20.0,
+        "decentralization": 50.0,
+        "open_science_fit": 69.0
+      },
+      "official_urls": [
+        "https://www.cerebrumdao.com",
+        "https://www.cerebrumdao.com/apply-for-funding",
+        "https://www.cerebrumdao.com/projects",
+        "https://www.cerebrumdao.com/neuron-token"
+      ],
+      "domains": [
+        "cerebrumdao.com"
+      ],
+      "rss_candidates": [
+        "https://www.cerebrumdao.com/feed",
+        "https://www.cerebrumdao.com/rss",
+        "https://www.cerebrumdao.com/rss.xml",
+        "https://www.cerebrumdao.com/feed.xml",
+        "https://www.cerebrumdao.com/atom.xml",
+        "https://www.cerebrumdao.com/blog/feed",
+        "https://www.cerebrumdao.com/news/feed",
+        "https://www.cerebrumdao.com/apply-for-funding/feed",
+        "https://www.cerebrumdao.com/apply-for-funding/rss",
+        "https://www.cerebrumdao.com/apply-for-funding/rss.xml",
+        "https://www.cerebrumdao.com/apply-for-funding/feed.xml",
+        "https://www.cerebrumdao.com/apply-for-funding/atom.xml"
+      ],
+      "x_handles": [],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://www.cerebrumdao.com",
+        "https://www.cerebrumdao.com/apply-for-funding",
+        "https://www.cerebrumdao.com/projects",
+        "https://www.cerebrumdao.com/neuron-token"
+      ]
+    },
+    {
+      "id": "curetopia",
+      "kind": "organization",
+      "name": "Curetopia",
+      "aliases": [
+        "Curetopia"
+      ],
+      "stack": "governance",
+      "type": "BioDAO",
+      "tags": [
+        "bioDAO",
+        "rare-disease",
+        "tokenomics",
+        "dao-gov"
+      ],
+      "watch_priority": 45.05,
+      "scores": {
+        "overlap": 5.0,
+        "credibility": 25.0,
+        "decentralization": 45.0,
+        "open_science_fit": 86.0
+      },
+      "official_urls": [
+        "https://www.curetopia.xyz",
+        "https://www.curetopia.xyz/cures",
+        "https://www.biospace.com/press-releases/rare-disease-community-raises-1-77m-advances-research-toward-potential-treatment"
+      ],
+      "domains": [
+        "curetopia.xyz",
+        "biospace.com"
+      ],
+      "rss_candidates": [
+        "https://www.curetopia.xyz/feed",
+        "https://www.curetopia.xyz/rss",
+        "https://www.curetopia.xyz/rss.xml",
+        "https://www.curetopia.xyz/feed.xml",
+        "https://www.curetopia.xyz/atom.xml",
+        "https://www.curetopia.xyz/blog/feed",
+        "https://www.curetopia.xyz/news/feed",
+        "https://www.curetopia.xyz/cures/feed",
+        "https://www.curetopia.xyz/cures/rss",
+        "https://www.curetopia.xyz/cures/rss.xml",
+        "https://www.curetopia.xyz/cures/feed.xml",
+        "https://www.curetopia.xyz/cures/atom.xml"
+      ],
+      "x_handles": [],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [
+        {
+          "id": "p-perlstein",
+          "name": "Ethan Perlstein",
+          "role": "CSO, Curetopia. Harvard PhD, Y Combinator alum. Community-driven rare disease drug dev.",
+          "x_handle": "eperlste"
+        }
+      ],
+      "provenance_urls": [
+        "https://www.curetopia.xyz",
+        "https://www.curetopia.xyz/cures",
+        "https://www.biospace.com/press-releases/rare-disease-community-raises-1-77m-advances-research-toward-potential-treatment"
+      ]
+    },
+    {
+      "id": "desci-london",
+      "kind": "organization",
+      "name": "DeSci London",
+      "aliases": [
+        "DeSci London"
+      ],
+      "stack": "governance",
+      "type": "Conference",
+      "tags": [
+        "community",
+        "conference"
+      ],
+      "watch_priority": 44.2,
+      "scores": {
+        "overlap": 0.0,
+        "credibility": 30.0,
+        "decentralization": 40.0,
+        "open_science_fit": 56.0
+      },
+      "official_urls": [
+        "https://desci.london",
+        "https://www.desci.london",
+        "https://luma.com/DeSciLondon2025"
+      ],
+      "domains": [
+        "desci.london",
+        "luma.com"
+      ],
+      "rss_candidates": [
+        "https://desci.london/feed",
+        "https://desci.london/rss",
+        "https://desci.london/rss.xml",
+        "https://desci.london/feed.xml",
+        "https://desci.london/atom.xml",
+        "https://desci.london/blog/feed",
+        "https://desci.london/news/feed",
+        "https://www.desci.london/feed",
+        "https://www.desci.london/rss",
+        "https://www.desci.london/rss.xml",
+        "https://www.desci.london/feed.xml",
+        "https://www.desci.london/atom.xml"
+      ],
+      "x_handles": [
+        "DesciLondon"
+      ],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://desci.london",
+        "https://www.desci.london",
+        "https://luma.com/DeSciLondon2025"
+      ]
+    },
+    {
+      "id": "genpulse",
+      "kind": "organization",
+      "name": "Genpulse",
+      "aliases": [
+        "Genpulse"
+      ],
+      "stack": "application",
+      "type": "DePIN",
+      "tags": [
+        "DePIN",
+        "dermatology",
+        "data",
+        "citizen-sci",
+        "data-sovereignty"
+      ],
+      "watch_priority": 39.35,
+      "scores": {
+        "overlap": 5.0,
+        "credibility": 20.0,
+        "decentralization": 45.0,
+        "open_science_fit": 18.0
+      },
+      "official_urls": [
+        "https://www.gen-pulse.com",
+        "https://www.linkedin.com/posts/solanalabs_cohort-3-of-the-solana-incubator-kicks-off-activity-7369440814336204806-LKkA",
+        "https://x.com/GenpulseAI/highlights"
+      ],
+      "domains": [
+        "gen-pulse.com",
+        "linkedin.com",
+        "x.com"
+      ],
+      "rss_candidates": [
+        "https://www.gen-pulse.com/feed",
+        "https://www.gen-pulse.com/rss",
+        "https://www.gen-pulse.com/rss.xml",
+        "https://www.gen-pulse.com/feed.xml",
+        "https://www.gen-pulse.com/atom.xml",
+        "https://www.gen-pulse.com/blog/feed",
+        "https://www.gen-pulse.com/news/feed",
+        "https://www.linkedin.com/posts/solanalabs_cohort-3-of-the-solana-incubator-kicks-off-activity-7369440814336204806-LKkA/feed",
+        "https://www.linkedin.com/posts/solanalabs_cohort-3-of-the-solana-incubator-kicks-off-activity-7369440814336204806-LKkA/rss",
+        "https://www.linkedin.com/posts/solanalabs_cohort-3-of-the-solana-incubator-kicks-off-activity-7369440814336204806-LKkA/rss.xml",
+        "https://www.linkedin.com/posts/solanalabs_cohort-3-of-the-solana-incubator-kicks-off-activity-7369440814336204806-LKkA/feed.xml",
+        "https://www.linkedin.com/posts/solanalabs_cohort-3-of-the-solana-incubator-kicks-off-activity-7369440814336204806-LKkA/atom.xml"
+      ],
+      "x_handles": [],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://www.gen-pulse.com",
+        "https://www.linkedin.com/posts/solanalabs_cohort-3-of-the-solana-incubator-kicks-off-activity-7369440814336204806-LKkA",
+        "https://x.com/GenpulseAI/highlights"
+      ]
+    },
+    {
+      "id": "nanovita",
+      "kind": "organization",
+      "name": "NanoVita",
+      "aliases": [
+        "NanoVita"
+      ],
+      "stack": "infrastructure",
+      "type": "Health/AI",
+      "tags": [
+        "AI",
+        "nanotech",
+        "healthcare",
+        "RWA",
+        "ai-ml",
+        "data-sovereignty"
+      ],
+      "watch_priority": 38.1,
+      "scores": {
+        "overlap": 5.0,
+        "credibility": 20.0,
+        "decentralization": 40.0,
+        "open_science_fit": 60.0
+      },
+      "official_urls": [
+        "https://www.nanovitalab.com",
+        "https://www.rootdata.com/Projects/detail/NanoVita?k=MjMwMjc%3D",
+        "https://www.binance.com/en/square/post/04-09-2026-nanovita-secures-series-a-funding-with-20-million-valuation-310619437558641",
+        "https://www.bitget.com/news/detail/12560605351246"
+      ],
+      "domains": [
+        "nanovitalab.com",
+        "rootdata.com",
+        "binance.com",
+        "bitget.com"
+      ],
+      "rss_candidates": [
+        "https://www.nanovitalab.com/feed",
+        "https://www.nanovitalab.com/rss",
+        "https://www.nanovitalab.com/rss.xml",
+        "https://www.nanovitalab.com/feed.xml",
+        "https://www.nanovitalab.com/atom.xml",
+        "https://www.nanovitalab.com/blog/feed",
+        "https://www.nanovitalab.com/news/feed",
+        "https://www.rootdata.com/Projects/detail/NanoVita/feed",
+        "https://www.rootdata.com/Projects/detail/NanoVita/rss",
+        "https://www.rootdata.com/Projects/detail/NanoVita/rss.xml",
+        "https://www.rootdata.com/Projects/detail/NanoVita/feed.xml",
+        "https://www.rootdata.com/Projects/detail/NanoVita/atom.xml"
+      ],
+      "x_handles": [],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://www.nanovitalab.com",
+        "https://www.rootdata.com/Projects/detail/NanoVita?k=MjMwMjc%3D",
+        "https://www.binance.com/en/square/post/04-09-2026-nanovita-secures-series-a-funding-with-20-million-valuation-310619437558641",
+        "https://www.bitget.com/news/detail/12560605351246"
+      ]
+    },
+    {
+      "id": "sapien-capital",
+      "kind": "organization",
+      "name": "Sapien Capital",
+      "aliases": [
+        "Sapien Capital"
+      ],
+      "stack": "governance",
+      "type": "Funder",
+      "tags": [
+        "VC",
+        "DeSci-fund"
+      ],
+      "watch_priority": 37.95,
+      "scores": {
+        "overlap": 0.0,
+        "credibility": 30.0,
+        "decentralization": 15.0,
+        "open_science_fit": 58.0
+      },
+      "official_urls": [
+        "https://www.sapienfund.xyz",
+        "https://www.seifdn.org/blog/biopharma-veteran-and-venture-capital-leader-michael-baran-joins-sapien-capital-as-strategic-desci-advisor"
+      ],
+      "domains": [
+        "sapienfund.xyz",
+        "seifdn.org"
+      ],
+      "rss_candidates": [
+        "https://www.sapienfund.xyz/feed",
+        "https://www.sapienfund.xyz/rss",
+        "https://www.sapienfund.xyz/rss.xml",
+        "https://www.sapienfund.xyz/feed.xml",
+        "https://www.sapienfund.xyz/atom.xml",
+        "https://www.sapienfund.xyz/blog/feed",
+        "https://www.sapienfund.xyz/news/feed",
+        "https://www.seifdn.org/blog/biopharma-veteran-and-venture-capital-leader-michael-baran-joins-sapien-capital-as-strategic-desci-advisor/feed",
+        "https://www.seifdn.org/blog/biopharma-veteran-and-venture-capital-leader-michael-baran-joins-sapien-capital-as-strategic-desci-advisor/rss",
+        "https://www.seifdn.org/blog/biopharma-veteran-and-venture-capital-leader-michael-baran-joins-sapien-capital-as-strategic-desci-advisor/rss.xml",
+        "https://www.seifdn.org/blog/biopharma-veteran-and-venture-capital-leader-michael-baran-joins-sapien-capital-as-strategic-desci-advisor/feed.xml",
+        "https://www.seifdn.org/blog/biopharma-veteran-and-venture-capital-leader-michael-baran-joins-sapien-capital-as-strategic-desci-advisor/atom.xml"
+      ],
+      "x_handles": [],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [
+        {
+          "id": "p-baran",
+          "name": "Michael Baran",
+          "role": "Pfizer Ventures Partner. Sapien Capital DeSci Advisor. PhD MBA.",
+          "x_handle": ""
+        },
+        {
+          "id": "p-barlow",
+          "name": "Justin Barlow",
+          "role": "Head of BD, Sapien Capital. Ex-Solana Ventures. Deploying $65M DeSci fund.",
+          "x_handle": ""
+        }
+      ],
+      "provenance_urls": [
+        "https://www.sapienfund.xyz",
+        "https://www.seifdn.org/blog/biopharma-veteran-and-venture-capital-leader-michael-baran-joins-sapien-capital-as-strategic-desci-advisor"
+      ]
+    },
+    {
+      "id": "maelstrom",
+      "kind": "organization",
+      "name": "Maelstrom Fund (Arthur Hayes)",
+      "aliases": [
+        "Maelstrom Fund (Arthur Hayes)",
+        "Maelstrom Fund"
+      ],
+      "stack": "governance",
+      "type": "Funder",
+      "tags": [
+        "VC",
+        "crypto-fund"
+      ],
+      "watch_priority": 36.7,
+      "scores": {
+        "overlap": 0.0,
+        "credibility": 30.0,
+        "decentralization": 10.0,
+        "open_science_fit": 8.0
+      },
+      "official_urls": [
+        "https://maelstrom.fund",
+        "https://maelstrom.fund/about",
+        "https://www.prnewswire.com/news-releases/bio-protocol-raises-6-9m-to-launch-ai-native-decentralized-science-platform-for-biotech-funding--drug-discovery-302558983.html"
+      ],
+      "domains": [
+        "maelstrom.fund",
+        "prnewswire.com"
+      ],
+      "rss_candidates": [
+        "https://maelstrom.fund/feed",
+        "https://maelstrom.fund/rss",
+        "https://maelstrom.fund/rss.xml",
+        "https://maelstrom.fund/feed.xml",
+        "https://maelstrom.fund/atom.xml",
+        "https://maelstrom.fund/blog/feed",
+        "https://maelstrom.fund/news/feed",
+        "https://maelstrom.fund/about/feed",
+        "https://maelstrom.fund/about/rss",
+        "https://maelstrom.fund/about/rss.xml",
+        "https://maelstrom.fund/about/feed.xml",
+        "https://maelstrom.fund/about/atom.xml"
+      ],
+      "x_handles": [],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [
+        {
+          "id": "p-hayes",
+          "name": "Arthur Hayes",
+          "role": "Founder, Maelstrom Fund. Led BIO Protocol seed. BitMEX co-founder.",
+          "x_handle": "CryptoHayes"
+        }
+      ],
+      "provenance_urls": [
+        "https://maelstrom.fund/about",
+        "https://maelstrom.fund",
+        "https://www.prnewswire.com/news-releases/bio-protocol-raises-6-9m-to-launch-ai-native-decentralized-science-platform-for-biotech-funding--drug-discovery-302558983.html"
+      ]
+    },
+    {
+      "id": "pfizer-ventures",
+      "kind": "organization",
+      "name": "Pfizer Ventures",
+      "aliases": [
+        "Pfizer Ventures"
+      ],
+      "stack": "governance",
+      "type": "Funder",
+      "tags": [
+        "pharma",
+        "VC"
+      ],
+      "watch_priority": 35.45,
+      "scores": {
+        "overlap": 0.0,
+        "credibility": 30.0,
+        "decentralization": 5.0,
+        "open_science_fit": 0.0
+      },
+      "official_urls": [
+        "https://www.pfizer.com/about/partners/venture-investments",
+        "https://cdn.pfizer.com/pfizercom/Pfizer_Ventures_Brochure_2025.pdf"
+      ],
+      "domains": [
+        "pfizer.com",
+        "cdn.pfizer.com"
+      ],
+      "rss_candidates": [
+        "https://www.pfizer.com/about/partners/venture-investments/feed",
+        "https://www.pfizer.com/about/partners/venture-investments/rss",
+        "https://www.pfizer.com/about/partners/venture-investments/rss.xml",
+        "https://www.pfizer.com/about/partners/venture-investments/feed.xml",
+        "https://www.pfizer.com/about/partners/venture-investments/atom.xml",
+        "https://www.pfizer.com/about/partners/venture-investments/blog/feed",
+        "https://www.pfizer.com/about/partners/venture-investments/news/feed",
+        "https://www.pfizer.com/feed",
+        "https://www.pfizer.com/rss",
+        "https://www.pfizer.com/rss.xml",
+        "https://www.pfizer.com/feed.xml",
+        "https://www.pfizer.com/atom.xml"
+      ],
+      "x_handles": [],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [
+        {
+          "id": "p-baran",
+          "name": "Michael Baran",
+          "role": "Pfizer Ventures Partner. Sapien Capital DeSci Advisor. PhD MBA.",
+          "x_handle": ""
+        }
+      ],
+      "provenance_urls": [
+        "https://www.pfizer.com/about/partners/venture-investments",
+        "https://cdn.pfizer.com/pfizercom/Pfizer_Ventures_Brochure_2025.pdf"
+      ]
+    },
+    {
+      "id": "oss-capital",
+      "kind": "organization",
+      "name": "OSS Capital",
+      "aliases": [
+        "OSS Capital"
+      ],
+      "stack": "governance",
+      "type": "Funder",
+      "tags": [
+        "VC",
+        "open-source"
+      ],
+      "watch_priority": 35.45,
+      "scores": {
+        "overlap": 0.0,
+        "credibility": 30.0,
+        "decentralization": 5.0,
+        "open_science_fit": 48.0
+      },
+      "official_urls": [
+        "https://oss.capital",
+        "https://oss.capital/portfolio/research-hub"
+      ],
+      "domains": [
+        "oss.capital"
+      ],
+      "rss_candidates": [
+        "https://oss.capital/feed",
+        "https://oss.capital/rss",
+        "https://oss.capital/rss.xml",
+        "https://oss.capital/feed.xml",
+        "https://oss.capital/atom.xml",
+        "https://oss.capital/blog/feed",
+        "https://oss.capital/news/feed",
+        "https://oss.capital/portfolio/research-hub/feed",
+        "https://oss.capital/portfolio/research-hub/rss",
+        "https://oss.capital/portfolio/research-hub/rss.xml",
+        "https://oss.capital/portfolio/research-hub/feed.xml",
+        "https://oss.capital/portfolio/research-hub/atom.xml"
+      ],
+      "x_handles": [],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://oss.capital",
+        "https://oss.capital/portfolio/research-hub"
+      ]
+    },
+    {
+      "id": "quantum-bio-dao",
+      "kind": "organization",
+      "name": "Quantum Biology DAO",
+      "aliases": [
+        "Quantum Biology DAO"
+      ],
+      "stack": "governance",
+      "type": "BioDAO",
+      "tags": [
+        "bioDAO",
+        "quantum",
+        "physics",
+        "dao-gov"
+      ],
+      "watch_priority": 29.2,
+      "scores": {
+        "overlap": 5.0,
+        "credibility": 10.0,
+        "decentralization": 50.0,
+        "open_science_fit": 90.0
+      },
+      "official_urls": [
+        "https://www.quantumbiology.xyz",
+        "https://www.quantumbiology.org",
+        "https://www.chaincatcher.com/en/article/2157458",
+        "https://quantumbiology.inc",
+        "https://quantumbiology.eco"
+      ],
+      "domains": [
+        "quantumbiology.xyz",
+        "quantumbiology.org",
+        "chaincatcher.com",
+        "quantumbiology.inc",
+        "quantumbiology.eco"
+      ],
+      "rss_candidates": [
+        "https://www.quantumbiology.xyz/feed",
+        "https://www.quantumbiology.xyz/rss",
+        "https://www.quantumbiology.xyz/rss.xml",
+        "https://www.quantumbiology.xyz/feed.xml",
+        "https://www.quantumbiology.xyz/atom.xml",
+        "https://www.quantumbiology.xyz/blog/feed",
+        "https://www.quantumbiology.xyz/news/feed",
+        "https://www.quantumbiology.org/feed",
+        "https://www.quantumbiology.org/rss",
+        "https://www.quantumbiology.org/rss.xml",
+        "https://www.quantumbiology.org/feed.xml",
+        "https://www.quantumbiology.org/atom.xml"
+      ],
+      "x_handles": [],
+      "github_repos": [],
+      "paper_urls": [],
+      "linked_people": [],
+      "provenance_urls": [
+        "https://www.quantumbiology.xyz",
+        "https://www.quantumbiology.org",
+        "https://www.chaincatcher.com/en/article/2157458",
+        "https://quantumbiology.inc",
+        "https://quantumbiology.eco"
+      ]
+    }
+  ],
+  "people": [
+    {
+      "id": "p-srinivasan",
+      "kind": "person",
+      "name": "Balaji Srinivasan",
+      "aliases": [
+        "Balaji Srinivasan"
+      ],
+      "role": "Former Coinbase CTO. Most prolific DeSci angel: Molecule, VitaDAO, LabDAO.",
+      "watch_priority": 424.0,
+      "x_handles": [
+        "balajis"
+      ],
+      "github_repos": [],
+      "official_urls": [
+        "https://linkedin.com/in/balajis"
+      ],
+      "orcid": "",
+      "notes": "",
+      "open_source_info": "",
+      "org_ids": [
+        "molecule",
+        "vitadao",
+        "labdao"
+      ],
+      "organizations": [
+        {
+          "id": "molecule",
+          "name": "Molecule",
+          "stack": "infrastructure",
+          "type": "Infra/Launchpad"
+        },
+        {
+          "id": "vitadao",
+          "name": "VitaDAO",
+          "stack": "governance",
+          "type": "BioDAO"
+        },
+        {
+          "id": "labdao",
+          "name": "LabDAO",
+          "stack": "infrastructure",
+          "type": "Compute/Lab"
+        }
+      ]
+    },
+    {
+      "id": "p-weisser",
+      "kind": "person",
+      "name": "Vincent Weisser",
+      "aliases": [
+        "Vincent Weisser"
+      ],
+      "role": "Co-founder VitaDAO, Molecule. Prime Intellect co-founder.",
+      "watch_priority": 412.55,
+      "x_handles": [
+        "vincentweisser"
+      ],
+      "github_repos": [],
+      "official_urls": [
+        "https://linkedin.com/in/vincentweisser"
+      ],
+      "orcid": "",
+      "notes": "",
+      "open_source_info": "",
+      "org_ids": [
+        "vitadao",
+        "molecule",
+        "prime-intellect"
+      ],
+      "organizations": [
+        {
+          "id": "vitadao",
+          "name": "VitaDAO",
+          "stack": "governance",
+          "type": "BioDAO"
+        },
+        {
+          "id": "molecule",
+          "name": "Molecule",
+          "stack": "infrastructure",
+          "type": "Infra/Launchpad"
+        },
+        {
+          "id": "prime-intellect",
+          "name": "Prime Intellect",
+          "stack": "infrastructure",
+          "type": "Compute"
+        }
+      ]
+    },
+    {
+      "id": "p-kohlhaas",
+      "kind": "person",
+      "name": "Paul Kohlhaas",
+      "aliases": [
+        "Paul Kohlhaas"
+      ],
+      "role": "Co-founder & CEO, Molecule. Founding Member, BIO Protocol. Co-initiator, VitaDAO.",
+      "watch_priority": 387.25,
+      "x_handles": [
+        "paulkhls"
+      ],
+      "github_repos": [],
+      "official_urls": [
+        "https://linkedin.com/in/kohlhaas"
+      ],
+      "orcid": "",
+      "notes": "",
+      "open_source_info": "",
+      "org_ids": [
+        "molecule",
+        "bio-protocol",
+        "vitadao"
+      ],
+      "organizations": [
+        {
+          "id": "molecule",
+          "name": "Molecule",
+          "stack": "infrastructure",
+          "type": "Infra/Launchpad"
+        },
+        {
+          "id": "bio-protocol",
+          "name": "BIO Protocol",
+          "stack": "governance",
+          "type": "Accelerator"
+        },
+        {
+          "id": "vitadao",
+          "name": "VitaDAO",
+          "stack": "governance",
+          "type": "BioDAO"
+        }
+      ]
+    },
+    {
+      "id": "p-koellinger",
+      "kind": "person",
+      "name": "Philipp Koellinger",
+      "aliases": [
+        "Philipp Koellinger"
+      ],
+      "role": "Co-founder DeSci Labs & DeSci Foundation. VU Amsterdam professor. Published in Nature/Science.",
+      "watch_priority": 287.0,
+      "x_handles": [],
+      "github_repos": [],
+      "official_urls": [
+        "https://linkedin.com/in/pkoellinger"
+      ],
+      "orcid": "",
+      "notes": "",
+      "open_source_info": "",
+      "org_ids": [
+        "desci-labs",
+        "desci-foundation"
+      ],
+      "organizations": [
+        {
+          "id": "desci-labs",
+          "name": "DeSci Labs / Nodes",
+          "stack": "infrastructure",
+          "type": "Publishing Infra"
+        },
+        {
+          "id": "desci-foundation",
+          "name": "DeSci Foundation",
+          "stack": "governance",
+          "type": "Foundation"
+        }
+      ]
+    },
+    {
+      "id": "p-goertzel",
+      "kind": "person",
+      "name": "Ben Goertzel",
+      "aliases": [
+        "Ben Goertzel"
+      ],
+      "role": "CEO, SingularityNET. Founder, Rejuve AI.",
+      "watch_priority": 234.95,
+      "x_handles": [
+        "bengoertzel"
+      ],
+      "github_repos": [],
+      "official_urls": [
+        "https://linkedin.com/in/bengoertzel"
+      ],
+      "orcid": "",
+      "notes": "",
+      "open_source_info": "",
+      "org_ids": [
+        "rejuve",
+        "singularitynet"
+      ],
+      "organizations": [
+        {
+          "id": "rejuve",
+          "name": "Rejuve AI",
+          "stack": "application",
+          "type": "Longevity"
+        },
+        {
+          "id": "singularitynet",
+          "name": "SingularityNET",
+          "stack": "infrastructure",
+          "type": "AI Platform"
+        }
+      ]
+    },
+    {
+      "id": "p-armstrong",
+      "kind": "person",
+      "name": "Brian Armstrong",
+      "aliases": [
+        "Brian Armstrong"
+      ],
+      "role": "CEO, Coinbase. Backer of ResearchHub.",
+      "watch_priority": 197.2,
+      "x_handles": [
+        "brian_armstrong"
+      ],
+      "github_repos": [],
+      "official_urls": [
+        "https://linkedin.com/in/barmstrong"
+      ],
+      "orcid": "",
+      "notes": "",
+      "open_source_info": "",
+      "org_ids": [
+        "researchhub"
+      ],
+      "organizations": [
+        {
+          "id": "researchhub",
+          "name": "ResearchHub",
+          "stack": "application",
+          "type": "Publishing"
+        }
+      ]
+    },
+    {
+      "id": "p-hill",
+      "kind": "person",
+      "name": "Chris Hill",
+      "aliases": [
+        "Chris Hill"
+      ],
+      "role": "Founder, DeSci Labs / Nodes",
+      "watch_priority": 189.4,
+      "x_handles": [],
+      "github_repos": [],
+      "official_urls": [],
+      "orcid": "",
+      "notes": "",
+      "open_source_info": "",
+      "org_ids": [
+        "desci-labs"
+      ],
+      "organizations": [
+        {
+          "id": "desci-labs",
+          "name": "DeSci Labs / Nodes",
+          "stack": "infrastructure",
+          "type": "Publishing Infra"
+        }
+      ]
+    },
+    {
+      "id": "p-jerschow",
+      "kind": "person",
+      "name": "Nikita Jerschow",
+      "aliases": [
+        "Nikita Jerschow"
+      ],
+      "role": "CEO, DeSci Labs / DeSci Publish.",
+      "watch_priority": 189.4,
+      "x_handles": [],
+      "github_repos": [],
+      "official_urls": [],
+      "orcid": "",
+      "notes": "",
+      "open_source_info": "",
+      "org_ids": [
+        "desci-labs"
+      ],
+      "organizations": [
+        {
+          "id": "desci-labs",
+          "name": "DeSci Labs / Nodes",
+          "stack": "infrastructure",
+          "type": "Publishing Infra"
+        }
+      ]
+    },
+    {
+      "id": "p-joyce",
+      "kind": "person",
+      "name": "Patrick Joyce",
+      "aliases": [
+        "Patrick Joyce"
+      ],
+      "role": "CEO, ResearchHub",
+      "watch_priority": 183.2,
+      "x_handles": [],
+      "github_repos": [],
+      "official_urls": [
+        "https://linkedin.com/in/patrickjoyce1"
+      ],
+      "orcid": "",
+      "notes": "",
+      "open_source_info": "",
+      "org_ids": [
+        "researchhub"
+      ],
+      "organizations": [
+        {
+          "id": "researchhub",
+          "name": "ResearchHub",
+          "stack": "application",
+          "type": "Publishing"
+        }
+      ]
+    },
+    {
+      "id": "p-rindtorff",
+      "kind": "person",
+      "name": "Niklas Rindtorff",
+      "aliases": [
+        "Niklas Rindtorff"
+      ],
+      "role": "Founder, LabDAO",
+      "watch_priority": 161.85,
+      "x_handles": [
+        "nrindtorff"
+      ],
+      "github_repos": [],
+      "official_urls": [
+        "https://linkedin.com/in/niklasrindtorff"
+      ],
+      "orcid": "",
+      "notes": "",
+      "open_source_info": "",
+      "org_ids": [
+        "labdao"
+      ],
+      "organizations": [
+        {
+          "id": "labdao",
+          "name": "LabDAO",
+          "stack": "infrastructure",
+          "type": "Compute/Lab"
+        }
+      ]
+    },
+    {
+      "id": "p-pearl",
+      "kind": "person",
+      "name": "Jocelynn Pearl",
+      "aliases": [
+        "Jocelynn Pearl"
+      ],
+      "role": "Co-founded LabDAO. DeSci Wiki curator. UltraRare Podcast host.",
+      "watch_priority": 161.85,
+      "x_handles": [
+        "JocelynnPearl"
+      ],
+      "github_repos": [],
+      "official_urls": [],
+      "orcid": "",
+      "notes": "",
+      "open_source_info": "",
+      "org_ids": [
+        "labdao"
+      ],
+      "organizations": [
+        {
+          "id": "labdao",
+          "name": "LabDAO",
+          "stack": "infrastructure",
+          "type": "Compute/Lab"
+        }
+      ]
+    },
+    {
+      "id": "p-mcconaghy",
+      "kind": "person",
+      "name": "Trent McConaghy",
+      "aliases": [
+        "Trent McConaghy"
+      ],
+      "role": "Founder, Ocean Protocol",
+      "watch_priority": 148.75,
+      "x_handles": [
+        "taborvm"
+      ],
+      "github_repos": [],
+      "official_urls": [
+        "https://linkedin.com/in/trentmc0"
+      ],
+      "orcid": "",
+      "notes": "",
+      "open_source_info": "",
+      "org_ids": [
+        "ocean"
+      ],
+      "organizations": [
+        {
+          "id": "ocean",
+          "name": "Ocean Protocol",
+          "stack": "infrastructure",
+          "type": "Data Platform"
+        }
+      ]
+    },
+    {
+      "id": "p-golato",
+      "kind": "person",
+      "name": "Tyler Golato",
+      "aliases": [
+        "Tyler Golato"
+      ],
+      "role": "Co-founder & CSO, Molecule",
+      "watch_priority": 137.95,
+      "x_handles": [],
+      "github_repos": [],
+      "official_urls": [
+        "https://linkedin.com/in/tylergolato"
+      ],
+      "orcid": "",
+      "notes": "",
+      "open_source_info": "",
+      "org_ids": [
+        "molecule"
+      ],
+      "organizations": [
+        {
+          "id": "molecule",
+          "name": "Molecule",
+          "stack": "infrastructure",
+          "type": "Infra/Launchpad"
+        }
+      ]
+    },
+    {
+      "id": "p-noessler",
+      "kind": "person",
+      "name": "Kevin Noessler",
+      "aliases": [
+        "Kevin Noessler"
+      ],
+      "role": "CPO, Molecule",
+      "watch_priority": 137.95,
+      "x_handles": [],
+      "github_repos": [],
+      "official_urls": [
+        "https://linkedin.com/in/kevinnoessler"
+      ],
+      "orcid": "",
+      "notes": "",
+      "open_source_info": "",
+      "org_ids": [
+        "molecule"
+      ],
+      "organizations": [
+        {
+          "id": "molecule",
+          "name": "Molecule",
+          "stack": "infrastructure",
+          "type": "Infra/Launchpad"
+        }
+      ]
+    },
+    {
+      "id": "p-craib",
+      "kind": "person",
+      "name": "Richard Craib",
+      "aliases": [
+        "Richard Craib"
+      ],
+      "role": "Founder, Numerai",
+      "watch_priority": 137.2,
+      "x_handles": [
+        "richardcraib"
+      ],
+      "github_repos": [],
+      "official_urls": [
+        "https://linkedin.com/in/richardcraib"
+      ],
+      "orcid": "",
+      "notes": "",
+      "open_source_info": "",
+      "org_ids": [
+        "numerai"
+      ],
+      "organizations": [
+        {
+          "id": "numerai",
+          "name": "Numerai",
+          "stack": "application",
+          "type": "Prediction Market"
+        }
+      ]
+    },
+    {
+      "id": "p-pon",
+      "kind": "person",
+      "name": "Bruce Pon",
+      "aliases": [
+        "Bruce Pon"
+      ],
+      "role": "Co-founder, Ocean Protocol",
+      "watch_priority": 134.75,
+      "x_handles": [],
+      "github_repos": [],
+      "official_urls": [
+        "https://linkedin.com/in/brucepon"
+      ],
+      "orcid": "",
+      "notes": "",
+      "open_source_info": "",
+      "org_ids": [
+        "ocean"
+      ],
+      "organizations": [
+        {
+          "id": "ocean",
+          "name": "Ocean Protocol",
+          "stack": "infrastructure",
+          "type": "Data Platform"
+        }
+      ]
+    },
+    {
+      "id": "p-trovo",
+      "kind": "person",
+      "name": "Bianca TrovÃ²",
+      "aliases": [
+        "Bianca TrovÃ²"
+      ],
+      "role": "Developer, Ants-Review. Sorbonne/CEA NeuroSpin researcher.",
+      "watch_priority": 132.0,
+      "x_handles": [],
+      "github_repos": [],
+      "official_urls": [],
+      "orcid": "",
+      "notes": "",
+      "open_source_info": "",
+      "org_ids": [
+        "ants-review"
+      ],
+      "organizations": [
+        {
+          "id": "ants-review",
+          "name": "Ants-Review",
+          "stack": "application",
+          "type": "Academic Prototype"
+        }
+      ]
+    },
+    {
+      "id": "p-shilina",
+      "kind": "person",
+      "name": "Sasha Shilina",
+      "aliases": [
+        "Sasha Shilina"
+      ],
+      "role": "Founder, Episteme. DeScAI researcher.",
+      "watch_priority": 116.6,
+      "x_handles": [
+        "saborsky"
+      ],
+      "github_repos": [],
+      "official_urls": [
+        "https://linkedin.com/in/sashashilina"
+      ],
+      "orcid": "",
+      "notes": "",
+      "open_source_info": "",
+      "org_ids": [
+        "episteme"
+      ],
+      "organizations": [
+        {
+          "id": "episteme",
+          "name": "Episteme",
+          "stack": "application",
+          "type": "Prediction/Publishing"
+        }
+      ]
+    },
+    {
+      "id": "p-benet",
+      "kind": "person",
+      "name": "Juan Benet",
+      "aliases": [
+        "Juan Benet"
+      ],
+      "role": "Founder, Protocol Labs (IPFS/Filecoin). DeSci Foundation board.",
+      "watch_priority": 111.6,
+      "x_handles": [
+        "juanbenet"
+      ],
+      "github_repos": [],
+      "official_urls": [
+        "https://linkedin.com/in/juanbenet"
+      ],
+      "orcid": "",
+      "notes": "",
+      "open_source_info": "",
+      "org_ids": [
+        "desci-foundation"
+      ],
+      "organizations": [
+        {
+          "id": "desci-foundation",
+          "name": "DeSci Foundation",
+          "stack": "governance",
+          "type": "Foundation"
+        }
+      ]
+    },
+    {
+      "id": "p-tayi",
+      "kind": "person",
+      "name": "Alok Tayi",
+      "aliases": [
+        "Alok Tayi"
+      ],
+      "role": "Founder, Vibe Bio. Scientist and entrepreneur using DAO models for orphan drugs.",
+      "watch_priority": 109.85,
+      "x_handles": [],
+      "github_repos": [],
+      "official_urls": [
+        "https://linkedin.com/in/aloktayi"
+      ],
+      "orcid": "",
+      "notes": "",
+      "open_source_info": "",
+      "org_ids": [
+        "vibe-bio"
+      ],
+      "organizations": [
+        {
+          "id": "vibe-bio",
+          "name": "Vibe Bio",
+          "stack": "governance",
+          "type": "BioDAO"
+        }
+      ]
+    },
+    {
+      "id": "p-coplan",
+      "kind": "person",
+      "name": "Shayne Coplan",
+      "aliases": [
+        "Shayne Coplan"
+      ],
+      "role": "Founder & CEO, Polymarket",
+      "watch_priority": 99.55,
+      "x_handles": [],
+      "github_repos": [],
+      "official_urls": [
+        "https://linkedin.com/in/shaynecoplan"
+      ],
+      "orcid": "",
+      "notes": "",
+      "open_source_info": "",
+      "org_ids": [
+        "polymarket"
+      ],
+      "organizations": [
+        {
+          "id": "polymarket",
+          "name": "Polymarket",
+          "stack": "application",
+          "type": "Prediction Market"
+        }
+      ]
+    },
+    {
+      "id": "p-simpson",
+      "kind": "person",
+      "name": "Arianna Simpson",
+      "aliases": [
+        "Arianna Simpson"
+      ],
+      "role": "a16z Crypto GP. Led AminoChain (first DeSci deal).",
+      "watch_priority": 94.5,
+      "x_handles": [
+        "AriannaSimpson"
+      ],
+      "github_repos": [],
+      "official_urls": [],
+      "orcid": "",
+      "notes": "",
+      "open_source_info": "",
+      "org_ids": [
+        "aminochain"
+      ],
+      "organizations": [
+        {
+          "id": "aminochain",
+          "name": "AminoChain",
+          "stack": "infrastructure",
+          "type": "Biobank Infra"
+        }
+      ]
+    },
+    {
+      "id": "p-clarke",
+      "kind": "person",
+      "name": "Jelani Clarke",
+      "aliases": [
+        "Jelani Clarke"
+      ],
+      "role": "Executive Lead, AminoChain. Advocate for data sovereignty in healthcare.",
+      "watch_priority": 80.5,
+      "x_handles": [],
+      "github_repos": [],
+      "official_urls": [
+        "https://linkedin.com/in/jelaniclarke"
+      ],
+      "orcid": "",
+      "notes": "",
+      "open_source_info": "",
+      "org_ids": [
+        "aminochain"
+      ],
+      "organizations": [
+        {
+          "id": "aminochain",
+          "name": "AminoChain",
+          "stack": "infrastructure",
+          "type": "Biobank Infra"
+        }
+      ]
+    },
+    {
+      "id": "p-baran",
+      "kind": "person",
+      "name": "Michael Baran",
+      "aliases": [
+        "Michael Baran"
+      ],
+      "role": "Pfizer Ventures Partner. Sapien Capital DeSci Advisor. PhD MBA.",
+      "watch_priority": 73.4,
+      "x_handles": [],
+      "github_repos": [],
+      "official_urls": [
+        "https://linkedin.com/in/michaelbaran"
+      ],
+      "orcid": "",
+      "notes": "",
+      "open_source_info": "",
+      "org_ids": [
+        "pfizer-ventures",
+        "sapien-capital"
+      ],
+      "organizations": [
+        {
+          "id": "pfizer-ventures",
+          "name": "Pfizer Ventures",
+          "stack": "governance",
+          "type": "Funder"
+        },
+        {
+          "id": "sapien-capital",
+          "name": "Sapien Capital",
+          "stack": "governance",
+          "type": "Funder"
+        }
+      ]
+    },
+    {
+      "id": "p-perlstein",
+      "kind": "person",
+      "name": "Ethan Perlstein",
+      "aliases": [
+        "Ethan Perlstein"
+      ],
+      "role": "CSO, Curetopia. Harvard PhD, Y Combinator alum. Community-driven rare disease drug dev.",
+      "watch_priority": 59.05,
+      "x_handles": [
+        "eperlste"
+      ],
+      "github_repos": [],
+      "official_urls": [
+        "https://linkedin.com/in/ethanperlstein"
+      ],
+      "orcid": "",
+      "notes": "",
+      "open_source_info": "",
+      "org_ids": [
+        "curetopia"
+      ],
+      "organizations": [
+        {
+          "id": "curetopia",
+          "name": "Curetopia",
+          "stack": "governance",
+          "type": "BioDAO"
+        }
+      ]
+    },
+    {
+      "id": "p-malone",
+      "kind": "person",
+      "name": "Patrick Malone",
+      "aliases": [
+        "Patrick Malone"
+      ],
+      "role": "Partner, Northpond Ventures. MD PhD. Led Molecule $12.7M seed.",
+      "watch_priority": 52.55,
+      "x_handles": [],
+      "github_repos": [],
+      "official_urls": [],
+      "orcid": "",
+      "notes": "",
+      "open_source_info": "",
+      "org_ids": [
+        "northpond"
+      ],
+      "organizations": [
+        {
+          "id": "northpond",
+          "name": "Northpond Ventures",
+          "stack": "governance",
+          "type": "Funder"
+        }
+      ]
+    },
+    {
+      "id": "p-hayes",
+      "kind": "person",
+      "name": "Arthur Hayes",
+      "aliases": [
+        "Arthur Hayes"
+      ],
+      "role": "Founder, Maelstrom Fund. Led BIO Protocol seed. BitMEX co-founder.",
+      "watch_priority": 50.7,
+      "x_handles": [
+        "CryptoHayes"
+      ],
+      "github_repos": [],
+      "official_urls": [],
+      "orcid": "",
+      "notes": "",
+      "open_source_info": "",
+      "org_ids": [
+        "maelstrom"
+      ],
+      "organizations": [
+        {
+          "id": "maelstrom",
+          "name": "Maelstrom Fund (Arthur Hayes)",
+          "stack": "governance",
+          "type": "Funder"
+        }
+      ]
+    },
+    {
+      "id": "p-barlow",
+      "kind": "person",
+      "name": "Justin Barlow",
+      "aliases": [
+        "Justin Barlow"
+      ],
+      "role": "Head of BD, Sapien Capital. Ex-Solana Ventures. Deploying $65M DeSci fund.",
+      "watch_priority": 37.95,
+      "x_handles": [],
+      "github_repos": [],
+      "official_urls": [],
+      "orcid": "",
+      "notes": "",
+      "open_source_info": "",
+      "org_ids": [
+        "sapien-capital"
+      ],
+      "organizations": [
+        {
+          "id": "sapien-capital",
+          "name": "Sapien Capital",
+          "stack": "governance",
+          "type": "Funder"
+        }
+      ]
+    },
+    {
+      "id": "p-hamburg",
+      "kind": "person",
+      "name": "Sarah Hamburg",
+      "aliases": [
+        "Sarah Hamburg"
+      ],
+      "role": "Coined 'DeSci' (Nature 2021). UCL Blockchain Centre. Phas3.io.",
+      "watch_priority": 14.0,
+      "x_handles": [
+        "sarahhamburg_"
+      ],
+      "github_repos": [],
+      "official_urls": [
+        "https://linkedin.com/in/sarah-hamburg-phd-9510a910a"
+      ],
+      "orcid": "",
+      "notes": "",
+      "open_source_info": "",
+      "org_ids": [],
+      "organizations": []
+    },
+    {
+      "id": "p-tenorio",
+      "kind": "person",
+      "name": "Antonio Tenorio-Fornes",
+      "aliases": [
+        "Antonio Tenorio-Fornes"
+      ],
+      "role": "Researcher, UCM Madrid. Blockchain peer review pioneer.",
+      "watch_priority": 0.0,
+      "x_handles": [],
+      "github_repos": [],
+      "official_urls": [],
+      "orcid": "",
+      "notes": "",
+      "open_source_info": "",
+      "org_ids": [],
+      "organizations": []
+    },
+    {
+      "id": "p-weidener",
+      "kind": "person",
+      "name": "Lukas Weidener",
+      "aliases": [
+        "Lukas Weidener"
+      ],
+      "role": "DeSci researcher. Definition/values framework (Frontiers 2024).",
+      "watch_priority": 0.0,
+      "x_handles": [],
+      "github_repos": [],
+      "official_urls": [],
+      "orcid": "",
+      "notes": "",
+      "open_source_info": "",
+      "org_ids": [],
+      "organizations": []
+    },
+    {
+      "id": "p-ernst",
+      "kind": "person",
+      "name": "Friederike Ernst",
+      "aliases": [
+        "Friederike Ernst"
+      ],
+      "role": "Co-founder Gnosis. DeSci Berlin panelist.",
+      "watch_priority": 0.0,
+      "x_handles": [],
+      "github_repos": [],
+      "official_urls": [],
+      "orcid": "",
+      "notes": "",
+      "open_source_info": "",
+      "org_ids": [],
+      "organizations": []
+    },
+    {
+      "id": "p-diaz",
+      "kind": "person",
+      "name": "Francisco Diaz",
+      "aliases": [
+        "Francisco Diaz"
+      ],
+      "role": "DeSci ecosystem survey (Frontiers 2025, 49 projects).",
+      "watch_priority": 0.0,
+      "x_handles": [],
+      "github_repos": [],
+      "official_urls": [],
+      "orcid": "",
+      "notes": "",
+      "open_source_info": "",
+      "org_ids": [],
+      "organizations": []
+    }
+  ],
+  "summary": {
+    "organization_count": 78,
+    "people_count": 33,
+    "high_priority_orgs": 31,
+    "high_priority_people": 23
+  }
+}

@@ -60,7 +60,7 @@ def load_json(path: Path, default: Any) -> Any:
     if not path.exists():
         return default
     try:
-        return json.loads(path.read_text(encoding="utf-8"))
+        return json.loads(path.read_text(encoding="utf-8-sig"))
     except Exception:
         return default
 
@@ -133,6 +133,55 @@ def url_domain(url: str) -> str:
         return urllib.parse.urlparse(url).netloc.lower().replace("www.", "")
     except Exception:
         return ""
+
+
+def merge_signal_settings(config: dict[str, Any], data: dict[str, Any]) -> dict[str, Any]:
+    settings = data.get("signalSettings") if isinstance(data, dict) else None
+    if not isinstance(settings, dict):
+        return config
+
+    merged = dict(config)
+
+    def merged_text_list(key: str, formatter=None) -> list[str]:
+        seen = set()
+        out: list[str] = []
+        for raw in list(config.get(key, [])) + list(settings.get(key, [])):
+            value = formatter(raw) if formatter else clean_text(raw)
+            if not value:
+                continue
+            low = value.lower()
+            if low in seen:
+                continue
+            seen.add(low)
+            out.append(value)
+        return out
+
+    merged["x_handles"] = merged_text_list("x_handles", normalize_twitter_handle)
+    merged["manual_entity_queries"] = merged_text_list("manual_entity_queries")
+    merged["blocked_terms"] = merged_text_list("blocked_terms", lambda x: clean_text(x).lower())
+    merged["blocked_domains"] = merged_text_list(
+        "blocked_domains",
+        lambda x: re.sub(r"/.*$", "", re.sub(r"^www\.", "", re.sub(r"^https?://", "", str(x or "").strip().lower()))),
+    )
+
+    seen_urls = set()
+    rss_rows: list[dict[str, Any]] = []
+    for raw in list(config.get("rss_feeds", [])) + list(settings.get("rss_feeds", [])):
+        spec = {"url": raw} if isinstance(raw, str) else dict(raw or {})
+        url = normalize_http_url(spec.get("url"))
+        if not url or url in seen_urls:
+            continue
+        seen_urls.add(url)
+        rss_rows.append(
+            {
+                "url": url,
+                "source": clean_text(spec.get("source") or url_domain(url) or "rss"),
+                "topic": clean_text(spec.get("topic", "")),
+                "section": "news" if str(spec.get("section", "blogs")).strip().lower() == "news" else "blogs",
+            }
+        )
+    merged["rss_feeds"] = rss_rows
+    return merged
 
 
 def entity_aliases(name: str) -> list[str]:
@@ -784,6 +833,7 @@ def main() -> int:
 
     output_path = Path(args.output).resolve() if args.output else (ROOT / str(config.get("output_path", "signals_feed.json"))).resolve()
     data = load_json(DATA_PATH, {"nodes": [], "edges": [], "people": []})
+    config = merge_signal_settings(config, data)
     payload = collect(config, data)
     save_json(output_path, payload)
     print(f"Wrote {output_path}")

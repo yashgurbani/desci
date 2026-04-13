@@ -170,3 +170,43 @@ Hand-curation flow:
 
 The frontend defaults to `signals_feed.json` when present via `signalCollectorUrl`.
 
+## OSINT platform
+The dashboard now has a broader entity-intelligence layer that treats organizations and people as tracked entities and enriches them with research, opportunity, and signal data.
+
+Core files:
+- `build_source_registry.py`: builds `source_registry.json` from `data.json` and `signals_config.json`
+- `collector_research_graph.py`: builds `research_graph.json` from OpenAlex, Crossref, and optional ORCID credentials
+- `collector_entity_intel.py`: builds `entity_intel.json` from entity blogs, X, GitHub, and exact-name web/news queries
+- `collector_opportunities.py`: builds `opportunity_intel.json` from Grants.gov, NIH RePORTER, GDELT, and optional CORDIS
+- `collect_osint_all.py`: convenience runner for the full pipeline
+
+Outputs:
+- `source_registry.json`: canonical watchlist of organizations, people, aliases, domains, handles, repos, and tracked topics
+- `research_graph.json`: matched works, authors, institutions, and research-topic analytics
+- `entity_intel.json`: entity-level signals grouped by organization and person
+- `opportunity_intel.json`: external grant, project, and article hits by tracked topic
+
+Suggested run order:
+```bash
+python build_source_registry.py
+python collector_research_graph.py
+python collector_entity_intel.py
+python collector_opportunities.py
+```
+
+Or:
+```bash
+python collect_osint_all.py
+```
+
+What the UI uses:
+- `People` tab: merged people + organizations as one entity-intelligence surface
+- right sidebar for people: linked orgs, registry info, latest signals, research graph, opportunity intelligence
+- right sidebar for organizations: registry info, latest signals, research graph, opportunity intelligence
+- `Grants` tab: curated tracker plus live collector-status summary
+
+Notes:
+- ORCID is optional and requires `ORCID_CLIENT_ID` and `ORCID_CLIENT_SECRET`
+- CORDIS is optional and requires `CORDIS_DET_URL` and `CORDIS_API_KEY`
+- the browser UI can run without these files, but the richer OSINT experience appears once the collector outputs exist
+

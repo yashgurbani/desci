@@ -1,0 +1,1797 @@
+{
+  "generatedAt": "2026-04-13T01:34:31.215117+00:00",
+  "registryPath": "source_registry.json",
+  "organizations": [
+    {
+      "id": "desci-labs",
+      "kind": "organization",
+      "name": "DeSci Labs / Nodes",
+      "signals": [
+        {
+          "title": "Economic and finance claims often look more definitive than the underlying evidence really is. Statistical significance and robustness checks can create confidence that outpaces identification, assumptions, or data limits. How to read these claims with discipline: https://www.desci.com/blog/how-to-evaluate-economic-and-finance-claims-using-academic-evidence",
+          "link": "https://nitter.net/DeSciLabs/status/2038971325960569053#m",
+          "pubDate": "2026-03-31T13:27:01+00:00",
+          "source": "x",
+          "topic": "@DeSciLabs",
+          "summary": "Economic and finance claims often look more definitive than the underlying evidence really is. Statistical significance and robustness checks can create confidence that outpaces identification, assumptions, or data li...",
+          "section": "x"
+        },
+        {
+          "title": "SciWeave is now live on Android 📱 Our AI research assistant helps you find, analyze, and understand academic studies faster than ever. Download: https://play.google.com/store/apps/details?id=com.desci.research",
+          "link": "https://nitter.net/DeSciLabs/status/2038927787529007216#m",
+          "pubDate": "2026-03-31T10:34:00+00:00",
+          "source": "x",
+          "topic": "@DeSciLabs",
+          "summary": "SciWeave is now live on Android 📱 Our AI research assistant helps you find, analyze, and understand academic studies faster than ever. Download: play.google.com/store/apps/d…",
+          "section": "x"
+        },
+        {
+          "title": "Bias in peer review is a known problem. But what happens when the system is: • transparent • structured • data-driven 👉 You get measurable fairness. See how DeSci Publish is changing the game: https://www.desci.com/blog/automatic-fairness-on-desci-publish-what-the-evidence-shows",
+          "link": "https://nitter.net/DeSciLabs/status/2037525551305363552#m",
+          "pubDate": "2026-03-27T13:42:01+00:00",
+          "source": "x",
+          "topic": "@DeSciLabs",
+          "summary": "Bias in peer review is a known problem. But what happens when the system is: • transparent • structured • data-driven 👉 You get measurable fairness. See how DeSci Publish is changing the game: desci.com/blog/automatic...",
+          "section": "x"
+        }
+      ],
+      "counts": {
+        "blog": 0,
+        "github": 0,
+        "x": 3,
+        "news": 0,
+        "total_ranked": 3
+      }
+    },
+    {
+      "id": "researchhub",
+      "kind": "organization",
+      "name": "ResearchHub",
+      "signals": [
+        {
+          "title": "RT by @ResearchHub: The word “Peptide” just overtook “Pickleball” in Google search popularity. So, the hype is real. The science often is not. There is a growing gap between public perception and what peptide research actually supports and we want to help close this gap through @ResearchHub and the @ResearchHubF . Therefore, we are launching TWO seed funding opportunities each $10,000 USD. (1) Peptides for Human Health: Focused on therapeutic applications across metabolism, tissue repair, neuroregeneration, aging, and more. (2) Next-gen human enhancement: Targeting muscle performance, cognition, and mood beyond current approaches like GLP 1. Projects can be mechanistic studies or translational and may include reanalysis of existing datasets or cross disciplinary approaches. Eligibility: BS, MS, PhD, MD, postdocs, and early stage faculty worldwide Timeline: Projects should be completed within 6 months and generate meaningful preliminary insights. Applications are short, typically 1–3 pages, and we encourage you to apply within the next 2-3 weeks. More details and the application for both funding opportunies link are in the comments. PS: If your project spans both areas, you are welcome to apply to both opportunities. Feel free to share with your network if you know someone who should apply.",
+          "link": "https://nitter.net/rust_ruslan/status/2043054094353604830#m",
+          "pubDate": "2026-04-11T19:50:28+00:00",
+          "source": "x",
+          "topic": "@ResearchHub",
+          "summary": "The word “Peptide” just overtook “Pickleball” in Google search popularity. So, the hype is real. The science often is not. There is a growing gap between public perception and what peptide research actually supports a...",
+          "section": "x"
+        },
+        {
+          "title": "RT by @ResearchHub: The model of the future, now.",
+          "link": "https://nitter.net/itchdoctor/status/2042907391444816321#m",
+          "pubDate": "2026-04-11T10:07:32+00:00",
+          "source": "x",
+          "topic": "@ResearchHub",
+          "summary": "The model of the future, now. ResearchHub Foundation (@ResearchHubF) Something huge just landed at @ResearchHub . Introducing: Endowments. Starting today, everyone holding ResearchCoin (RSC) in their ResearchHub accou...",
+          "section": "x"
+        },
+        {
+          "title": "RT by @ResearchHub: @ResearchHub bringing $1 trillion in science funding onchain",
+          "link": "https://nitter.net/ScottExplores29/status/2042833540061237319#m",
+          "pubDate": "2026-04-11T05:14:04+00:00",
+          "source": "x",
+          "topic": "@ResearchHub",
+          "summary": "@ResearchHub bringing $1 trillion in science funding onchain ResearchHub Foundation (@ResearchHubF) Something huge just landed at @ResearchHub . Introducing: Endowments. Starting today, everyone holding ResearchCoin (...",
+          "section": "x"
+        },
+        {
+          "title": "RSC to AWG: Convert ResearchHub to Aruban Florin | Live RSC Price in AWG - MEXC",
+          "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE5zNm81RmxtaXBiTzFBM0E0R3oyMXYxc29EdHhqZkU2VmN3Rkc0eW92WnFLYXl2b0dwQ0JFRlNERFhKUDZmQm9YNXpkb3d5UjlZ?oc=5",
+          "pubDate": "2025-09-29T21:55:13+00:00",
+          "source": "Google News",
+          "topic": "\"ResearchHub\"",
+          "summary": "RSC to AWG: Convert ResearchHub to Aruban Florin | Live RSC Price in AWG MEXC",
+          "section": "news"
+        },
+        {
+          "title": "ResearchCoin jumps 15% on Coinbase listing; exchange says it is unaffiliated despite CEO Brian Armstrong’s involvement - The Block",
+          "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPb2tjeDkxb0pVUFZHb3pjVU5KUEpPYTYyWC1udjZhOTZIY3BFbVhZTHV3ZVZIRnI0eW1CbjJxTlIyRDZrcWNlbGVVTnZna00zZE0yaEtLZkl3N3ZnU21CcS1oUEpwckV3Tk1SMlpQcXROTk9MMlRJbUtKMTJqZC1vMlpVQjVwaVhySF9qUldFaVBUcmhk?oc=5",
+          "pubDate": "2025-07-31T07:00:00+00:00",
+          "source": "Google News",
+          "topic": "\"ResearchHub\"",
+          "summary": "ResearchCoin jumps 15% on Coinbase listing; exchange says it is unaffiliated despite CEO Brian Armstrong’s involvement The Block",
+          "section": "news"
+        },
+        {
+          "title": "Coinbase CEO Faces Conflict of Interest Allegations Following RSC Listing - ForkLog",
+          "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxOSDRpZGxGM2d5M3BjVVdqcUNvckR5ejY2RDBacU5lQXNkeHFvbVpnMTJGY2FBak1wbWthNkpybHVIT3dDZlpwYW1MVmF2d1JYWXV6NTBQT09RZ0FRU0YtV2YtNk9lSDRzOWdpT0tKbldOWkhsYVBVaDM4RWg2b3BNV1Y1NUZiVUZQaEhEWEdHUHlERTJvUzBQbHNyMTFWQdIBowFBVV95cUxPeG14QTZpdnZhbEtqN0l0Ul80MkVEeGQyQ1RBYWlpTDdIRDFma0t3eU9pMTVDUS12QUZINEZrUkExdHBvOXRxdWVhSUl2bG1ZSmNwSzczV1BzQnVXQ0pHYWZqQzhzOGRybVNadUp0RDYtTG81dVV4cm8tb3IxMzEzUjhZYlVkRDlvSUZQU1NpTWV0cDBvSFBxOHBXUWtvRmdDM3kw?oc=5",
+          "pubDate": "2025-07-31T07:00:00+00:00",
+          "source": "Google News",
+          "topic": "\"ResearchHub\"",
+          "summary": "Coinbase CEO Faces Conflict of Interest Allegations Following RSC Listing ForkLog",
+          "section": "news"
+        }
+      ],
+      "counts": {
+        "blog": 0,
+        "github": 0,
+        "x": 3,
+        "news": 4,
+        "total_ranked": 6
+      }
+    },
+    {
+      "id": "orvium",
+      "kind": "organization",
+      "name": "Orvium",
+      "signals": [],
+      "counts": {
+        "blog": 0,
+        "github": 0,
+        "x": 0,
+        "news": 1,
+        "total_ranked": 0
+      }
+    },
+    {
+      "id": "openax",
+      "kind": "organization",
+      "name": "OpenAlex",
+      "signals": [
+        {
+          "title": "A dataset of scientific citations in U.S. patent Office Actions - Nature",
+          "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE00VHR5cV9Cb2RsUnVVYnkyYmtpQ21xVS1CcExLNnBEYlFFSVJfUEl1R1hZVFF0d3JGem5POHBhN2VmZGl4RWJFX1ZFNHFJaWpDbnk3UmlEM3dfUzNJLUI4?oc=5",
+          "pubDate": "2026-01-31T08:00:00+00:00",
+          "source": "Google News",
+          "topic": "\"OpenAlex\"",
+          "summary": "A dataset of scientific citations in U.S. patent Office Actions Nature",
+          "section": "news"
+        },
+        {
+          "title": "Rogue Scholar is improving subject classification - DOI",
+          "link": "https://news.google.com/rss/articles/CBMiTEFVX3lxTFB1VTVwT1gyMDAyckhKaXRvYnUySFpMMk56ajd1WW1YTzlsSk50bHVCaURmV2xCMGNRaUFsZ1E2UEdPVnZnT1g3ZVk0V04?oc=5",
+          "pubDate": "2025-11-26T08:00:00+00:00",
+          "source": "Google News",
+          "topic": "\"OpenAlex\"",
+          "summary": "Rogue Scholar is improving subject classification DOI",
+          "section": "news"
+        },
+        {
+          "title": "Evaluating Your RAG Solution - Towards Data Science",
+          "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1mWHhPY2NYc1o1OG9Ub2FNYUtucURjVUFldElKMzk4U2ZvcllkUjNVbFBaLVlEWU1TQW1xS2c4RXlNOGxROUxKMWlIU1hxbUQ3RXp1NVZLMVRxdVc5UXF5OGRla2RNMU9QdnpyTQ?oc=5",
+          "pubDate": "2025-09-17T07:00:00+00:00",
+          "source": "Google News",
+          "topic": "\"OpenAlex\"",
+          "summary": "Evaluating Your RAG Solution Towards Data Science",
+          "section": "news"
+        },
+        {
+          "title": "Diamond Funding Navigator: A new TIB service that strengthens Diamond Open Access - TIB-Blog",
+          "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPbGdKeFpGSlV2MkVCQ3N0N3hJNUpyZFhSYnZ1T05mcnBKVXV6eVpNaUloY2tTc3Z0UUJ0OGFiRml1WG9BZDI2Yk53SnNiRmFmZTRoUXFBS3J6Mm5iUGJicVg1bmVUcnViaUZHTzlEaE5sMXdHU3hFTkZLWm5PMHpEUXdqTkhzbXYzcWxFd1lNWXRlUjFyMUhsWTdDRlBac3VUNzRPcGhpTUtaTm41ZjNwMVhn?oc=5",
+          "pubDate": "2025-06-16T07:00:00+00:00",
+          "source": "Google News",
+          "topic": "\"OpenAlex\"",
+          "summary": "Diamond Funding Navigator: A new TIB service that strengthens Diamond Open Access TIB-Blog",
+          "section": "news"
+        },
+        {
+          "title": "new features and new pricing dropping today! features: - advanced search - semantic search pricing: - usage-based (dataset still free, as always) - $1/day of free usage--enough for 99% of users - beyond that, pay for just what you use https://blog.openalex.org/openalex-api-new-features-and-usage-based-pricing/",
+          "link": "https://nitter.net/OpenAlex_org/status/2026496889152049346#m",
+          "pubDate": "2026-02-25T03:18:03+00:00",
+          "source": "x",
+          "topic": "@OpenAlex_org",
+          "summary": "new features and new pricing dropping today! features: - advanced search - semantic search pricing: - usage-based (dataset still free, as always) - $1/day of free usage--enough for 99% of users - beyond that, pay for...",
+          "section": "x"
+        },
+        {
+          "title": "RT by @OpenAlex_org: I'm doing a free webinar: A beginner's guide to vibe coding with @OpenAlex_org. Learn how to make free, custom, polished research dashboards and tools, even if you have ZERO experience coding. Librarians and research admins this one's for you! https://zoom.us/webinar/register/WN_E6YF7z8ZT7q8jh9j4ofCGA#/registration",
+          "link": "https://nitter.net/jasonpriem/status/2024624761343533469#m",
+          "pubDate": "2026-02-19T23:18:53+00:00",
+          "source": "x",
+          "topic": "@OpenAlex_org",
+          "summary": "I'm doing a free webinar: A beginner's guide to vibe coding with @OpenAlex_org . Learn how to make free, custom, polished research dashboards and tools, even if you have ZERO experience coding. Librarians and research...",
+          "section": "x"
+        },
+        {
+          "title": "We just announced three new OpenAlex webinars this quarter: - Vibe coding with OpenAlex [jan 29, 11am est] - Funding metadata in OpenAlex [feb 19, 10am est] - Affiliation curation in ROR/OpenAlex [mar 19, 11am est] Details and registration below: https://help.openalex.org/hc/en-us/articles/24428492324631-Webinars",
+          "link": "https://nitter.net/OpenAlex_org/status/2014046647861518370#m",
+          "pubDate": "2026-01-21T18:45:14+00:00",
+          "source": "x",
+          "topic": "@OpenAlex_org",
+          "summary": "We just announced three new OpenAlex webinars this quarter: - Vibe coding with OpenAlex [jan 29, 11am est] - Funding metadata in OpenAlex [feb 19, 10am est] - Affiliation curation in ROR/OpenAlex [mar 19, 11am est] De...",
+          "section": "x"
+        },
+        {
+          "title": "Update documentation URLs from docs.openalex.org to developers.openal…",
+          "link": "https://github.com/ourresearch/openalex-guts/commit/8b0e87d0589abb75e03b66dbc7e6b6a00896688f",
+          "pubDate": "2026-03-06T03:01:56+00:00",
+          "source": "github",
+          "topic": "OpenAlex",
+          "summary": "Update documentation URLs from docs.openalex.org to developers.openalex.org Co-Authored-By: Claude Opus 4.6",
+          "section": "github"
+        },
+        {
+          "title": "update release notes",
+          "link": "https://github.com/ourresearch/openalex-guts/commit/0bbf6cb97bd3a2e28aed38d16c10de232b517859",
+          "pubDate": "2026-02-03T20:07:44+00:00",
+          "source": "github",
+          "topic": "OpenAlex",
+          "summary": "update release notes Co-Authored-By: Claude Opus 4.5",
+          "section": "github"
+        },
+        {
+          "title": "add logging for distinct dates in export",
+          "link": "https://github.com/ourresearch/openalex-guts/commit/d9bf4fed624d0b9ab5281b0242d139abf4765713",
+          "pubDate": "2026-02-03T19:05:37+00:00",
+          "source": "github",
+          "topic": "OpenAlex",
+          "summary": "add logging for distinct dates in export Co-Authored-By: Claude Opus 4.5",
+          "section": "github"
+        }
+      ],
+      "counts": {
+        "blog": 0,
+        "github": 3,
+        "x": 3,
+        "news": 4,
+        "total_ranked": 10
+      }
+    },
+    {
+      "id": "openreview",
+      "kind": "organization",
+      "name": "OpenReview",
+      "signals": [
+        {
+          "title": "Pineau, Bengio join AI researchers jointly committing US$1M to OpenReview - The Logic",
+          "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNWmw1aVVrVEVzdTQxSDI5X1BFY0FTUUkxZzdSLWc1eVBjTWFIQzlYeUpYY2NWYVFiZlNJUUw5dkxjV3pBbzhEOTZRelZLTFhTUWhrb3Qwd1BlNWlCUlpwOFV1c1BRYmNGZWhVRmlxNmN4VmtQSW4wN0puX1hKLVQ1QmVSUDYyY2ZadlBGTlBnMk9kSk1oSGUzS1lJUkFJdkdpUU93?oc=5",
+          "pubDate": "2025-12-19T08:00:00+00:00",
+          "source": "Google News",
+          "topic": "\"OpenReview\"",
+          "summary": "Pineau, Bengio join AI researchers jointly committing US$1M to OpenReview The Logic",
+          "section": "news"
+        },
+        {
+          "title": "Hack reveals reviewer identities for huge AI conference - Science | AAAS",
+          "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNWlZIejRZVTVkQ0EwX3hJa3BFSlVLZkFnQ1pQWVRSNlZ2SUNIZjVZUzFLajdkbDRTaWJVRlg2VlNoUDJNQUo5VktjWEdjbzZ2WUxMTl80Sk9yV215MkJYU21PX0JlZEoxeHpzTVRPcHdvRUdjUlJyNklIeTNVLVRLazd5emZhaVE2NUtfR3VsNndjM3J3aGc?oc=5",
+          "pubDate": "2025-12-15T08:00:00+00:00",
+          "source": "Google News",
+          "topic": "\"OpenReview\"",
+          "summary": "Hack reveals reviewer identities for huge AI conference Science | AAAS",
+          "section": "news"
+        },
+        {
+          "title": "Academic Circle in Uproar: ICLR Reviewers Reveal Identities, Low Scores Given by Friends - 36 Kr",
+          "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFA0MEFNeFpnSTZnR2hHekdHYUo5YWJ4T1ZnS2VGcTZZMW1jTHFmeHNrZXJVSUFZZ0QxZkxmM1ZQNklDYzFMYWV1QUNxUUc5QnNTeHM0?oc=5",
+          "pubDate": "2025-11-28T08:00:00+00:00",
+          "source": "Google News",
+          "topic": "\"OpenReview\"",
+          "summary": "Academic Circle in Uproar: ICLR Reviewers Reveal Identities, Low Scores Given by Friends 36 Kr",
+          "section": "news"
+        },
+        {
+          "title": "OpenReview API Bug Exposed Thousands of Anonymous Peer Reviewers and Sparked Crisis Over Academic Publishing's Future - CTOL Digital Solutions",
+          "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOalp2YWVuQmJkdm9OZmZjRm84eTF6NVZyMjlhZWN2Q1FIYS1lXy1STzFYdnN0ZUxxbHZMYjd1aDNQV0RrOHczWERINDZxMmdHZlN3eWRzRnZJN3BIcU11ODVKUnB2dFJZX3NWbTdqTDJwVjFUVHB6Vndvd19iZHFBOEdwc3JCZ2ZDalRaQWZ6M1RoOTRBUVZmQU5BM3dsb0QxaE9VREphUXZjWmVkN0E?oc=5",
+          "pubDate": "2025-11-28T08:00:00+00:00",
+          "source": "Google News",
+          "topic": "\"OpenReview\"",
+          "summary": "OpenReview API Bug Exposed Thousands of Anonymous Peer Reviewers and Sparked Crisis Over Academic Publishing's Future CTOL Digital Solutions",
+          "section": "news"
+        },
+        {
+          "title": "RT by @openreviewnet: I decided not to buy skyrocketing-price DDR5 RAMs and used the money for OpenReview I strongly believe that OpenReview is indispensable for our research communities A huge number of conferences, workshops, ARR, and even journals (TMLR, DMLR) are standing on their shoulder 1/2",
+          "link": "https://nitter.net/yoshitomo_cs/status/2002111565227831746#m",
+          "pubDate": "2025-12-19T20:19:29+00:00",
+          "source": "x",
+          "topic": "@OpenReviewNet",
+          "summary": "I decided not to buy skyrocketing-price DDR5 RAMs and used the money for OpenReview I strongly believe that OpenReview is indispensable for our research communities A huge number of conferences, workshops, ARR, and ev...",
+          "section": "x"
+        },
+        {
+          "title": "RT by @openreviewnet: OpenReview is exemplary case for strong work done by small dedicated community that is critical for so many, still staying underfunded and lacking proper support. If we dont change ways open science is supported, it will vanish.",
+          "link": "https://nitter.net/JJitsev/status/2002036796218339364#m",
+          "pubDate": "2025-12-19T15:22:22+00:00",
+          "source": "x",
+          "topic": "@OpenReviewNet",
+          "summary": "OpenReview is exemplary case for strong work done by small dedicated community that is critical for so many, still staying underfunded and lacking proper support. If we dont change ways open science is supported, it w...",
+          "section": "x"
+        },
+        {
+          "title": "RT by @openreviewnet: OpenReview is a lifeline for progress in the AI research community, and it urgently needs our increased support. https://openreview.net/donate In 2025 alone, OpenReview supported over 1,300 conferences and workshops, served 3.3 million active monthly users, handled over 278,000 paper submissions. I personally had not fully appreciated the magnitude of its role until seeing these numbers. Yet, OpenReview remains underfunded, operating under severe financial constraints with a small team. This is just crazy! Please consider donating. Many organizations that benefit enormously from advances in AI have not yet chosen to support OpenReview. Now is the time to do so. It is also time for all conferences to step up and substantially increase their support.",
+          "link": "https://nitter.net/rsalakhu/status/2001786078076821678#m",
+          "pubDate": "2025-12-18T22:46:07+00:00",
+          "source": "x",
+          "topic": "@OpenReviewNet",
+          "summary": "OpenReview is a lifeline for progress in the AI research community, and it urgently needs our increased support. openreview.net/donate In 2025 alone, OpenReview supported over 1,300 conferences and workshops, served 3...",
+          "section": "x"
+        }
+      ],
+      "counts": {
+        "blog": 0,
+        "github": 0,
+        "x": 3,
+        "news": 4,
+        "total_ranked": 7
+      }
+    },
+    {
+      "id": "prereview",
+      "kind": "organization",
+      "name": "PREreview",
+      "signals": [
+        {
+          "title": "Website allows researchers to request evaluation of their preprints - Revista Pesquisa Fapesp",
+          "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOVUFnNmFCOW1nN2MwSjE2NHhqelgyRHdsdGhLRjVUSGJublhWbVQ2bFg1N3BFWnNsZDFxM19fWXRPUGx0RE1mNDBUTGw2MWNraENvdkFqT0FPclJCUDFTVHVpUmlqNHZaX0ZlYzZFckhnMXFPYUc5eGZMaUM1Rk1rTGYwUzRDel94WTM0OGplOEMxcndiTTNHWFVDYi1EeVR2UzU2MGp0SHk?oc=5",
+          "pubDate": "2025-11-14T22:10:17+00:00",
+          "source": "Google News",
+          "topic": "\"PREreview\"",
+          "summary": "Website allows researchers to request evaluation of their preprints Revista Pesquisa Fapesp",
+          "section": "news"
+        },
+        {
+          "title": "Preprints.org and PREreview deepen collaboration - Research Information",
+          "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQcjlvSXhTMDN1QjJEcEROdzlURlAtVmY1em9RbkU0RUdlQ1pidW9FbnFlY3MtNzlnd09EZG1yaV8yUlp1S2J2cVI0c0VZLUxNZUs3cDQ2QmVjYkF1NmJKeVFhd2lsY2llRGtMWEt4SjY0T3lZc1ZZWTNDbGVnMGY2MHp5aTdzZWUweW5oaEwtVTlJMGR0VlE?oc=5",
+          "pubDate": "2025-04-14T07:00:00+00:00",
+          "source": "Google News",
+          "topic": "\"PREreview\"",
+          "summary": "Preprints.org and PREreview deepen collaboration Research Information",
+          "section": "news"
+        }
+      ],
+      "counts": {
+        "blog": 0,
+        "github": 0,
+        "x": 2,
+        "news": 4,
+        "total_ranked": 2
+      }
+    },
+    {
+      "id": "opscientia",
+      "kind": "organization",
+      "name": "OpScientia / Holonym",
+      "signals": [],
+      "counts": {
+        "blog": 0,
+        "github": 0,
+        "x": 0,
+        "news": 0,
+        "total_ranked": 0
+      }
+    },
+    {
+      "id": "opencitations",
+      "kind": "organization",
+      "name": "OpenCitations",
+      "signals": [
+        {
+          "title": "Pinned: 👋Goodbye X We’ve decided to pause posting here to focus on spaces where we can better connect with our community and share what we’re building. Follow us on: LinkedIn https://www.linkedin.com/company/opencitations/ Bluesky https://bsky.app/profile/opencitations.bsky.social Mastodon https://scicomm.xyz/@opencitations See you there!",
+          "link": "https://nitter.net/opencitations/status/2011399021009756162#m",
+          "pubDate": "2026-01-14T11:24:31+00:00",
+          "source": "x",
+          "topic": "@opencitations",
+          "summary": "👋Goodbye X We’ve decided to pause posting here to focus on spaces where we can better connect with our community and share what we’re building. Follow us on: LinkedIn linkedin.com/company/opencit… Bluesky bsky.app/pro...",
+          "section": "x"
+        },
+        {
+          "title": "Holiday wishes from the #OpenCitations team!🎄✨ Sharing good food, great conversations, and ideas around the table. We’ll be back in January, recharged and ready to make the new year count. Wishing everyone a bright time ahead!🌟",
+          "link": "https://nitter.net/opencitations/status/2003449173023293932#m",
+          "pubDate": "2025-12-23T12:54:39+00:00",
+          "source": "x",
+          "topic": "@opencitations",
+          "summary": "Holiday wishes from the #OpenCitations team!🎄✨ Sharing good food, great conversations, and ideas around the table. We’ll be back in January, recharged and ready to make the new year count. Wishing everyone a bright ti...",
+          "section": "x"
+        },
+        {
+          "title": "The presentation from @essepuntato's keynote speech at 1st SESAME-2025 workshop is now available on #Zenodo 📥Peroni, S. (2025, December 19). OpenCitations: recent developments and future directions. Zenodo. https://doi.org/10.5281/zenodo.17991410",
+          "link": "https://nitter.net/opencitations/status/2003136670590476536#m",
+          "pubDate": "2025-12-22T16:12:53+00:00",
+          "source": "x",
+          "topic": "@opencitations",
+          "summary": "The presentation from @essepuntato 's keynote speech at 1st SESAME-2025 workshop is now available on #Zenodo 📥Peroni, S. (2025, December 19). OpenCitations: recent developments and future directions. Zenodo. doi.org/1...",
+          "section": "x"
+        }
+      ],
+      "counts": {
+        "blog": 0,
+        "github": 0,
+        "x": 3,
+        "news": 2,
+        "total_ranked": 3
+      }
+    },
+    {
+      "id": "labdao",
+      "kind": "organization",
+      "name": "LabDAO",
+      "signals": [],
+      "counts": {
+        "blog": 0,
+        "github": 0,
+        "x": 3,
+        "news": 1,
+        "total_ranked": 0
+      }
+    },
+    {
+      "id": "crossref",
+      "kind": "organization",
+      "name": "Crossref / DOI",
+      "signals": [
+        {
+          "title": "Reflections from Bangkok",
+          "link": "https://www.crossref.org/blog/reflections-from-bangkok/",
+          "pubDate": "2026-04-01T00:00:00+00:00",
+          "source": "Crossref / DOI blog",
+          "topic": "Crossref / DOI",
+          "summary": "Each organization in the global community of Crossref members (that’s currently over 24k organizations in 166 different countries) plays a key role in building the Research Nexus. Any opportunity we have to meet with...",
+          "section": "blogs"
+        },
+        {
+          "title": "Voices from Crossref Metadata Sprint in São Paulo",
+          "link": "https://www.crossref.org/blog/voices-from-crossref-metadata-sprint-in-s%C3%A3o-paulo/",
+          "pubDate": "2026-03-31T00:00:00+00:00",
+          "source": "Crossref / DOI blog",
+          "topic": "Crossref / DOI",
+          "summary": "This year, we placed a spotlight on the Latin American community, hosting the second Crossref Metadata Sprint in São Paulo, Brazil from 4 - 6 March 2026. In our first tri-lingual event, we brought together 31 particip...",
+          "section": "blogs"
+        },
+        {
+          "title": "DOI resolution and deposit outage on 17 March 2026",
+          "link": "https://www.crossref.org/blog/doi-resolution-and-deposit-outage-on-17-march-2026/",
+          "pubDate": "2026-03-30T00:00:00+00:00",
+          "source": "Crossref / DOI blog",
+          "topic": "Crossref / DOI",
+          "summary": "On 17 March 2026, we experienced an outage that affected DOI resolution for Crossref DOIs and the deposit of metadata records by Crossref members. In this summary, we outline what happened, the impact on our community...",
+          "section": "blogs"
+        },
+        {
+          "title": "We're hiring: Senior Software Developer (backend) Remote, global (EU time overlap). Work on JVM-based, cloud-native systems powering scholarly metadata at global scale. Deadline: March 10, 2026 https://www.crossref.org/jobs/2026-02-17-senior-software-developer-backend .",
+          "link": "https://nitter.net/CrossrefOrg/status/2026450593426842103#m",
+          "pubDate": "2026-02-25T00:14:05+00:00",
+          "source": "x",
+          "topic": "@CrossrefOrg",
+          "summary": "We're hiring: Senior Software Developer (backend) Remote, global (EU time overlap). Work on JVM-based, cloud-native systems powering scholarly metadata at global scale. Deadline: March 10, 2026 crossref.org/jobs/2026-...",
+          "section": "x"
+        }
+      ],
+      "counts": {
+        "blog": 3,
+        "github": 0,
+        "x": 3,
+        "news": 4,
+        "total_ranked": 4
+      }
+    },
+    {
+      "id": "pci",
+      "kind": "organization",
+      "name": "Peer Community In (PCI)",
+      "signals": [
+        {
+          "title": "How Academics Are Pushing Back On The For-Profit Academic Publishing Industry – OpEd - Eurasia Review",
+          "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQUlRCd3dfaHVsMnZyNjM1VHZQek9CbUpLNnJKUW5lMDNVRWdab0Z6QlUwWlo0WlV2MW5CMkJfVmRUSlpsSlFHSXJ0Z29xbUFxTTdLSnJYM2MzUU9HeVlqRGZLeVgxVkFSR1YtY2dNREtRZWtUaUNCVllfV01peGRIVnE5MVNfVWcxRXFlMFE0Q09ialEyQ0w4OC1FYlBLc1R6VWZEOE1TdUNjRDRIUGlHYnVvZVhXdTVWMWl0YXM2OA?oc=5",
+          "pubDate": "2025-06-24T07:00:00+00:00",
+          "source": "Google News",
+          "topic": "\"Peer Community In (PCI)\"",
+          "summary": "How Academics Are Pushing Back On The For-Profit Academic Publishing Industry – OpEd Eurasia Review",
+          "section": "news"
+        },
+        {
+          "title": "PCI and Peer Community Journal: Highlights of 2025",
+          "link": "https://peercommunityin.org/2026/01/14/pci-and-peer-community-journal-highlights-of-2025/",
+          "pubDate": "2026-01-14T10:01:05+00:00",
+          "source": "Peer Community In (PCI) blog",
+          "topic": "Peer Community In (PCI)",
+          "summary": "PCI Recommenders manage the evaluation of articles in the same way as editors do at journals, with a few differences. The post PCI and Peer Community Journal: Highlights of 2025 appeared first on Peer Community In .",
+          "section": "blogs"
+        },
+        {
+          "title": "2025 PCI’s finances and article costs",
+          "link": "https://peercommunityin.org/2026/01/12/2025-finances-article-costs/",
+          "pubDate": "2026-01-12T16:16:37+00:00",
+          "source": "Peer Community In (PCI) blog",
+          "topic": "Peer Community In (PCI)",
+          "summary": "PCI Recommenders manage the evaluation of articles in the same way as editors do at journals, with a few differences. The post 2025 PCI’s finances and article costs appeared first on Peer Community In .",
+          "section": "blogs"
+        },
+        {
+          "title": "PCI 2025 activity figures",
+          "link": "https://peercommunityin.org/2026/01/07/pci-2025-activity-figures/",
+          "pubDate": "2026-01-07T15:47:00+00:00",
+          "source": "Peer Community In (PCI) blog",
+          "topic": "Peer Community In (PCI)",
+          "summary": "PCI Recommenders manage the evaluation of articles in the same way as editors do at journals, with a few differences. The post PCI 2025 activity figures appeared first on Peer Community In .",
+          "section": "blogs"
+        }
+      ],
+      "counts": {
+        "blog": 3,
+        "github": 0,
+        "x": 0,
+        "news": 4,
+        "total_ranked": 4
+      }
+    },
+    {
+      "id": "talentdao",
+      "kind": "organization",
+      "name": "TalentDAO",
+      "signals": [
+        {
+          "title": "RT by @talentDAO_: Important poll! Please share your perspective:) TalentDAO has some dry powder left and we'd love to focus on something with high impact.",
+          "link": "https://nitter.net/reneedaos/status/1913200452855873889#m",
+          "pubDate": "2025-04-18T11:58:28+00:00",
+          "source": "x",
+          "topic": "@talentDAO_",
+          "summary": "Important poll! Please share your perspective:) TalentDAO has some dry powder left and we'd love to focus on something with high impact. talentDAO.eth (@talentDAO_) talentDAO team wants to make a comeback and has form...",
+          "section": "x"
+        },
+        {
+          "title": "talentDAO team wants to make a comeback and has formed an official international entity to support our efforts. We are looking for community feedback on next steps. Should we",
+          "link": "https://nitter.net/talentDAO_/status/1913199009189031944#m",
+          "pubDate": "2025-04-18T11:52:43+00:00",
+          "source": "x",
+          "topic": "@talentDAO_",
+          "summary": "talentDAO team wants to make a comeback and has formed an official international entity to support our efforts. We are looking for community feedback on next steps. Should we",
+          "section": "x"
+        },
+        {
+          "title": "RT by @talentDAO_: What is collaborative computing? It’s a model where researchers, clinicians, and patient communities share computational resources and tools across a distributed network. Instead of working in isolation, science becomes cooperative—pooling data, GPU power, and analysis to accelerate discovery. Why does this matter for rare disease research? Because the biggest barriers aren’t ideas—they’re access. Collaborative computing helps scale analysis, improve reproducibility, and lower the cost of doing science, all without relying on centralized institutions. It’s not just faster—it’s more open, resilient, and equitable.",
+          "link": "https://nitter.net/rarecompute/status/1913073670488219959#m",
+          "pubDate": "2025-04-18T03:34:40+00:00",
+          "source": "x",
+          "topic": "@talentDAO_",
+          "summary": "What is collaborative computing? It’s a model where researchers, clinicians, and patient communities share computational resources and tools across a distributed network. Instead of working in isolation, science becom...",
+          "section": "x"
+        }
+      ],
+      "counts": {
+        "blog": 0,
+        "github": 0,
+        "x": 3,
+        "news": 0,
+        "total_ranked": 3
+      }
+    },
+    {
+      "id": "origintrail",
+      "kind": "organization",
+      "name": "OriginTrail",
+      "signals": [
+        {
+          "title": "R to @origin_trail: Explore free courses ↓ https://academy.origintrail.io/home?utm_source=x&utm_medium=post&utm_campaign=academy-promo",
+          "link": "https://nitter.net/origin_trail/status/2043298237151363299#m",
+          "pubDate": "2026-04-12T12:00:37+00:00",
+          "source": "x",
+          "topic": "@origin_trail",
+          "summary": "Explore free courses ↓ academy.origintrail.io/home?…",
+          "section": "x"
+        },
+        {
+          "title": "R to @BUILDCHAIN_HE: 🎥 How can trusted building data help preserve Europe’s heritage? Watch this free OriginTrail Academy course with insights from experts and engineers ⤵️ https://academy.origintrail.io/course/buildchain?utm_source=x&utm_medium=post&utm_campaign=buildchain",
+          "link": "https://nitter.net/origin_trail/status/2042936511927034228#m",
+          "pubDate": "2026-04-11T12:03:15+00:00",
+          "source": "x",
+          "topic": "@origin_trail",
+          "summary": "🎥 How can trusted building data help preserve Europe’s heritage? Watch this free OriginTrail Academy course with insights from experts and engineers ⤵️ academy.origintrail.io/cours…",
+          "section": "x"
+        },
+        {
+          "title": "OriginTrail to Hold AMA on YouTube on April 3rd - TradingView — Track All Markets",
+          "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOSEwxX3NrcU45aHh6eU5mX2Y5TkRWU041YW9TbF9WSjFpU2FFYk5QN3ppZDVfZk95aG9EWHhvNnFHd2VfWWNiUXNuOVNpVkZ5Q3V5SEFBcm02T3Y2aTV2LXF0bDJrcUxFbDJLbkJNb29PcXFiSk83dEw2aDU5SEFVSzM1NXRObUNpVnRWbFNfYjRUQ3pOUDg2dXpOeWptX0JyT0xTYkZyNGI?oc=5",
+          "pubDate": "2026-04-01T19:52:03+00:00",
+          "source": "Google News",
+          "topic": "\"OriginTrail\"",
+          "summary": "OriginTrail to Hold AMA on YouTube on April 3rd TradingView — Track All Markets",
+          "section": "news"
+        },
+        {
+          "title": "AI is only as useful as the context behind it. @origin_trail Academy helps users move beyond prompt-based AI toward shared, verifiable context, so agents can operate on trusted knowledge instead of guesswork. Start learning ↓",
+          "link": "https://nitter.net/origin_trail/status/2043298235830169823#m",
+          "pubDate": "2026-04-12T12:00:36+00:00",
+          "source": "x",
+          "topic": "@origin_trail",
+          "summary": "AI is only as useful as the context behind it. @origin_trail Academy helps users move beyond prompt-based AI toward shared, verifiable context, so agents can operate on trusted knowledge instead of guesswork. Start le...",
+          "section": "x"
+        },
+        {
+          "title": "How to buy OriginTrail (TRAC) - Crypto.com",
+          "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBlVm5RdmxRMWhZaXRWQndaNDBrTmRWcVloeGxOMDdWakJvWTJwTEJYZFo5cl83WC1uVXFFZVNGdV9xQ1lUQ2FqbE9RblZZTGhscEwxc3JjaHZpWmhsZ3hfdnJrWFEzQmRJQkI5NWlfYw?oc=5",
+          "pubDate": "2026-03-10T13:12:32+00:00",
+          "source": "Google News",
+          "topic": "\"OriginTrail\"",
+          "summary": "How to buy OriginTrail (TRAC) Crypto.com",
+          "section": "news"
+        },
+        {
+          "title": "OriginTrail Price Prediction: Is TRAC Crypto a Good Investment? - StealthEX",
+          "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNWDJzT2stV1hUMjhkMVc3SkFJSjV5NjBKU3JCdFVLU2k0ZjQtcVNyajhEUVY4YkNYd1NBdXN2ZXIzR2VCc1hUMkdkRHRySndUXzB1Q0FJcG5UWENjTERJUWxKcExIR2xCdUlPTzcwQTRfVDgyQ2p5cmNhbmxMVFNIZnFMb0l0Vkhza0k0LUJNM2xndw?oc=5",
+          "pubDate": "2025-10-22T07:00:00+00:00",
+          "source": "Google News",
+          "topic": "\"OriginTrail\"",
+          "summary": "OriginTrail Price Prediction: Is TRAC Crypto a Good Investment? StealthEX",
+          "section": "news"
+        },
+        {
+          "title": "TRAC price prediction 2025-2031: Is OriginTrail a good investment? - Cryptopolitan",
+          "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBObkNkSG52WWJ6eTVYem5lZ1ViRVVzNExjZXdJVF9VLUM0aWM3cXFWYVBFdUZncjlGWUl4MDB3SWEtbzhSd2JtZjdWUk9PNmdFUnF1dHQzTTQ2NkJ2MmdkU193?oc=5",
+          "pubDate": "2025-09-20T07:00:00+00:00",
+          "source": "Google News",
+          "topic": "\"OriginTrail\"",
+          "summary": "TRAC price prediction 2025-2031: Is OriginTrail a good investment? Cryptopolitan",
+          "section": "news"
+        }
+      ],
+      "counts": {
+        "blog": 0,
+        "github": 0,
+        "x": 3,
+        "news": 4,
+        "total_ranked": 7
+      }
+    },
+    {
+      "id": "nobleblocks",
+      "kind": "organization",
+      "name": "NobleBlocks",
+      "signals": [],
+      "counts": {
+        "blog": 0,
+        "github": 0,
+        "x": 0,
+        "news": 3,
+        "total_ranked": 0
+      }
+    },
+    {
+      "id": "elizaos",
+      "kind": "organization",
+      "name": "elizaOS",
+      "signals": [
+        {
+          "title": "elizaOS Price Today | ELIZAOS to USD Live Price, Market Cap & Chart - Binance",
+          "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFA4TEhhbjh3Q0lsMEV1Y3VoRndhSW80ZVJaaFhfNWY4RURCSHVtNGc4VDBIRlZPMGlRekg4VTQ1OExUeEk4QS11Wjl2T2xnQkRnWHc?oc=5",
+          "pubDate": "2026-04-11T11:10:00+00:00",
+          "source": "Google News",
+          "topic": "\"elizaOS\"",
+          "summary": "elizaOS Price Today | ELIZAOS to USD Live Price, Market Cap & Chart Binance",
+          "section": "news"
+        },
+        {
+          "title": "Secure Blockchain acquires an AI Agent company based on ElizaOS and receives a $1.5 million investment led by the Eliza Foundation - Bitget",
+          "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9qNjMyQWFxLUlRNXduTklKVENIeVFhbHFlVnVKU2FVNWNqaVRYWEFueEtqUXhUTldVT0t2YVM3eG5UWFhkYW9vY3ktS3UwelJxOWJyRlhuVEZFVzJzM3N0RTFWUdIBY0FVX3lxTE9qNjMyQWFxLUlRNXduTklKVENIeVFhbHFlVnVKU2FVNWNqaVRYWEFueEtqUXhUTldVT0t2YVM3eG5UWFhkYW9vY3ktS3UwelJxOWJyRlhuVEZFVzJzM3N0RTFWUQ?oc=5",
+          "pubDate": "2026-04-10T23:48:45+00:00",
+          "source": "Google News",
+          "topic": "\"elizaOS\"",
+          "summary": "Secure Blockchain acquires an AI Agent company based on ElizaOS and receives a $1.5 million investment led by the Eliza Foundation Bitget",
+          "section": "news"
+        },
+        {
+          "title": "Secure Blockchain Completes Acquisition of Agentic Solutions Limited, Launches Enterprise Agentic AI Platform - The Globe and Mail",
+          "link": "https://news.google.com/rss/articles/CBMipAJBVV95cUxPcXFsYnZfRlVla0lRVGlZRXB6ZmtVUlZtR0NkNmFsb0RpYlNQZ3BHYzhEOTdSbGlBSEVyRU93bF9heDNiWmFiSXdCVm9kcXg4QmxWbnJzZ09zY1YxeXN5M0x5cHlfZ1VWdkpOSDJlX1hiTjZRZy10XzJFWXcwY2VsRmdSY0Q4cXdiY0ZJbkpyZFpLWThYRk1pc3doampFamFWVWZRWXowYzFYX0gwWThsNXFadDdINW9WTi1qMk00cnBITnlzSnRhZlhJOFkzRkRScndxRW9PMEdiMjk2Z0FGTGJmTUcxV0V0WWNjcW42eDd1cElfQ1gwZ1NlWHBqLWg1Q3FKUU0tMWN4Qm1heExmVzMxcF95cWZwNGx0Mzk5ajlTVzBJ?oc=5",
+          "pubDate": "2026-04-10T08:45:00+00:00",
+          "source": "Google News",
+          "topic": "\"elizaOS\"",
+          "summary": "Secure Blockchain Completes Acquisition of Agentic Solutions Limited, Launches Enterprise Agentic AI Platform The Globe and Mail",
+          "section": "news"
+        },
+        {
+          "title": "v2.0.0-alpha.138",
+          "link": "https://github.com/elizaOS/eliza/releases/tag/v2.0.0-alpha.138",
+          "pubDate": "2026-04-12T23:38:15+00:00",
+          "source": "github",
+          "topic": "elizaOS",
+          "summary": "🚀 Alpha Release Version: v2.0.0-alpha.138 Channel: alpha Quick Start Install the CLI globally to get started: bun i -g @elizaos/cli@alpha Or add packages to your project: bun add @elizaos/core@alpha Note: This is a al...",
+          "section": "github"
+        },
+        {
+          "title": "v2.0.0-alpha.137",
+          "link": "https://github.com/elizaOS/eliza/releases/tag/v2.0.0-alpha.137",
+          "pubDate": "2026-04-12T23:34:59+00:00",
+          "source": "github",
+          "topic": "elizaOS",
+          "summary": "🚀 Alpha Release Version: v2.0.0-alpha.137 Channel: alpha Quick Start Install the CLI globally to get started: bun i -g @elizaos/cli@alpha Or add packages to your project: bun add @elizaos/core@alpha Note: This is a al...",
+          "section": "github"
+        },
+        {
+          "title": "chore: release v2.0.0-alpha.138 (alpha) [skip ci]",
+          "link": "https://github.com/elizaOS/eliza/commit/080fe60c566440a11a0c6e90fe8966326118332b",
+          "pubDate": "2026-04-12T23:33:32+00:00",
+          "source": "github",
+          "topic": "elizaOS",
+          "summary": "chore: release v2.0.0-alpha.138 (alpha) [skip ci]",
+          "section": "github"
+        },
+        {
+          "title": "chore: add e2e smoke test runner script",
+          "link": "https://github.com/elizaOS/eliza/commit/41ddcf16b71aaa6180795b1bdbc187886d54782f",
+          "pubDate": "2026-04-12T23:31:40+00:00",
+          "source": "github",
+          "topic": "elizaOS",
+          "summary": "chore: add e2e smoke test runner script",
+          "section": "github"
+        },
+        {
+          "title": "chore: release v2.0.0-alpha.137 (alpha) [skip ci]",
+          "link": "https://github.com/elizaOS/eliza/commit/a4979e9c8464ad4af596be84fe3dbce6b363779e",
+          "pubDate": "2026-04-12T23:30:15+00:00",
+          "source": "github",
+          "topic": "elizaOS",
+          "summary": "chore: release v2.0.0-alpha.137 (alpha) [skip ci]",
+          "section": "github"
+        },
+        {
+          "title": "v2.0.0-alpha.136",
+          "link": "https://github.com/elizaOS/eliza/releases/tag/v2.0.0-alpha.136",
+          "pubDate": "2026-04-12T19:32:38+00:00",
+          "source": "github",
+          "topic": "elizaOS",
+          "summary": "🚀 Alpha Release Version: v2.0.0-alpha.136 Channel: alpha Quick Start Install the CLI globally to get started: bun i -g @elizaos/cli@alpha Or add packages to your project: bun add @elizaos/core@alpha Note: This is a al...",
+          "section": "github"
+        },
+        {
+          "title": "Milady is a fully autonomous agent built on elizaOS, and is completely free and open source It's not just waifus, we have husbandos too!",
+          "link": "https://nitter.net/elizaOS/status/2038065737529688064#m",
+          "pubDate": "2026-03-29T01:28:31+00:00",
+          "source": "x",
+          "topic": "@elizaOS",
+          "summary": "Milady is a fully autonomous agent built on elizaOS, and is completely free and open source It's not just waifus, we have husbandos too! Shaw (spirit/acc) (@shawmakesmagic) Milady is a new open source AI agent It's li...",
+          "section": "x"
+        },
+        {
+          "title": "RT by @elizaOS: Milady is a new open source AI agent It's like OpenClaw but with waifus, wallets and games your agents can play with each other It's an app you can run on your computer (mobile soon) Download on http://milady.ai Free open source under VPL: https://github.com/milady-ai/milady",
+          "link": "https://nitter.net/shawmakesmagic/status/2038062207125410289#m",
+          "pubDate": "2026-03-29T01:14:30+00:00",
+          "source": "x",
+          "topic": "@elizaOS",
+          "summary": "Milady is a new open source AI agent It's like OpenClaw but with waifus, wallets and games your agents can play with each other It's an app you can run on your computer (mobile soon) Download on milady.ai Free open so...",
+          "section": "x"
+        },
+        {
+          "title": "RT @shawmakesmagic: Today two of the teams we have been incubating presented what they've been working on. Soulmates is a new kind of matc…",
+          "link": "https://nitter.net/elizaOS/status/2037690338756997224#m",
+          "pubDate": "2026-03-28T00:36:49+00:00",
+          "source": "x",
+          "topic": "@elizaOS",
+          "summary": "RT @shawmakesmagic : Today two of the teams we have been incubating presented what they've been working on. Soulmates is a new kind of matc…",
+          "section": "x"
+        }
+      ],
+      "counts": {
+        "blog": 0,
+        "github": 6,
+        "x": 3,
+        "news": 4,
+        "total_ranked": 12
+      }
+    },
+    {
+      "id": "etica",
+      "kind": "organization",
+      "name": "Etica Protocol",
+      "signals": [],
+      "counts": {
+        "blog": 0,
+        "github": 0,
+        "x": 0,
+        "news": 4,
+        "total_ranked": 0
+      }
+    },
+    {
+      "id": "molecule",
+      "kind": "organization",
+      "name": "Molecule",
+      "signals": [
+        {
+          "title": "This RNA Almost Self-Replicates, Which Could Explain Life's Origins - ScienceAlert",
+          "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPekFLWURzQjV4S1BFNE5aVGxDSmtLbmE2ekJKT19tN3E2bnl3QUdTd29zNnNObUYwVWVlUk5KTVhHVnpQR0NBUVNqN0E3NWFWRTdPZWRNNWFoTUdCVHMzWktPNDlFajlkMHRKUmw4WU52b25WRllEZXdyX00yNVJHWkJadWEwRVpla0RpZ29Jb2NfMzlraVVFWTZ3?oc=5",
+          "pubDate": "2026-04-12T12:04:32+00:00",
+          "source": "Google News",
+          "topic": "\"Molecule\"",
+          "summary": "This RNA Almost Self-Replicates, Which Could Explain Life's Origins ScienceAlert",
+          "section": "news"
+        },
+        {
+          "title": "Scientists Unveil Microscopy Breakthrough That Reveals “Invisible” Molecular States - SciTechDaily",
+          "link": "https://news.google.com/rss/articles/CBMiSkFVX3lxTE50aGJwVG5CZl9yU0VRcHBLWkpGdUhSZ1RPZktrZTJRamNpM3VhcERYZUNtVTB5VmMzRnhKb1N2TXdzMU5RWE1PVnN3?oc=5",
+          "pubDate": "2026-04-12T11:53:06+00:00",
+          "source": "Google News",
+          "topic": "\"Molecule\"",
+          "summary": "Scientists Unveil Microscopy Breakthrough That Reveals “Invisible” Molecular States SciTechDaily",
+          "section": "news"
+        },
+        {
+          "title": "A 67-year-old “crazy” theory about vitamin B1 has finally been proven - ScienceDaily",
+          "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBocnlRN0x1Vm1PUlNodWxYZ3ppUHRJa21MRlBMT3lkS0ZicS1OOF92TzRqLVlpQWpDcHFVN1l1dkJjQXN6a3pIbl82Y2ljTGVoSkhnN09IazNmU0prVXRwbUpvQ3VaSk5VZENfSkxOaw?oc=5",
+          "pubDate": "2026-04-11T12:35:15+00:00",
+          "source": "Google News",
+          "topic": "\"Molecule\"",
+          "summary": "A 67-year-old “crazy” theory about vitamin B1 has finally been proven ScienceDaily",
+          "section": "news"
+        },
+        {
+          "title": "Energy storage breakthrough traps sunlight in a molecule - New Atlas",
+          "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPcFlBclgyNDZmUGc3Rl9fbEw1dGVBV0U1R1RYUDVQaHBzclV0dVBfVGtIbkVnbVdTR2w4S3lITTZ6R1lqSEhGR1oza0JsdWJFMzBrTWs5TmZQQ3VPVlEzX0VQcUVSTV9zNlBEdjJkWlRfX3NGVWR0X19CeXFOR3N3Tg?oc=5",
+          "pubDate": "2026-04-11T05:10:10+00:00",
+          "source": "Google News",
+          "topic": "\"Molecule\"",
+          "summary": "Energy storage breakthrough traps sunlight in a molecule New Atlas",
+          "section": "news"
+        },
+        {
+          "title": "New @Nature study maps how our brains age at single-cell resolution. 🚨 Housekeeping genes (ribosome, metabolism, transport) are hit hardest, silenced by accumulated DNA damage + premature stop codons. @molecule_dao @paulkhls @vitadao @artan_ - x.com",
+          "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1DTHFJNUN3alA3T0tVSDVvY0FCYzF4WWtFeXRYSDhxVkVNZVd3RVFONjRUeVoxTWFEMTc5azJwX0RQemVPQmdiTG5GbG1xMnJVMHk1QUlhRHdRZHNWa0E?oc=5",
+          "pubDate": "2025-09-07T07:00:00+00:00",
+          "source": "Google News",
+          "topic": "site:x.com \"@molecule_dao\"",
+          "summary": "New @Nature study maps how our brains age at single-cell resolution. 🚨 Housekeeping genes (ribosome, metabolism, transport) are hit hardest, silenced by accumulated DNA damage + premature stop codons. @molecule_dao @p...",
+          "section": "x"
+        }
+      ],
+      "counts": {
+        "blog": 0,
+        "github": 0,
+        "x": 3,
+        "news": 4,
+        "total_ranked": 5
+      }
+    },
+    {
+      "id": "prime-intellect",
+      "kind": "organization",
+      "name": "Prime Intellect",
+      "signals": [
+        {
+          "title": "RT by @PrimeIntellect: gonna be chatting w @danielhanchen + the @nvidia nemotron team next week + talking RL come hang out :)",
+          "link": "https://nitter.net/willccbb/status/2042727649232212210#m",
+          "pubDate": "2026-04-10T22:13:18+00:00",
+          "source": "x",
+          "topic": "@PrimeIntellect",
+          "summary": "gonna be chatting w @danielhanchen + the @nvidia nemotron team next week + talking RL come hang out :) NVIDIA AI Developer (@NVIDIAAIDev) ✨ New livestream: How to implement reinforcement learning effectively? @PrimeIn...",
+          "section": "x"
+        },
+        {
+          "title": "RT by @PrimeIntellect: solving continual learning requires thinking about it clearly here is my attempt to specify the problem stay tuned for part 2, where we'll attempt to benchmark it with @PrimeIntellect :)",
+          "link": "https://nitter.net/carnot_cyclist/status/2041480700885340379#m",
+          "pubDate": "2026-04-07T11:38:22+00:00",
+          "source": "x",
+          "topic": "@PrimeIntellect",
+          "summary": "solving continual learning requires thinking about it clearly here is my attempt to specify the problem stay tuned for part 2, where we'll attempt to benchmark it with @PrimeIntellect :) Ilija Lichkovski (@carnot_cycl...",
+          "section": "x"
+        },
+        {
+          "title": "RT by @PrimeIntellect: x.com/i/article/204092346571…",
+          "link": "https://nitter.net/27upon2/status/2040975201068810670#m",
+          "pubDate": "2026-04-06T02:09:42+00:00",
+          "source": "x",
+          "topic": "@PrimeIntellect",
+          "summary": "x.com/i/article/204092346571…",
+          "section": "x"
+        },
+        {
+          "title": "Prime Intellect: Distributed training and RL with NVIDIA GB200 NVL72 - Nebius",
+          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE90TTJpX2VtcThpNXczSW5tSEhlcWp2b1pPeHlndU13cjh6b1l5S083Zk5SbE1YMGxfTS1zUWRKZ0pmWEkzaGQxQ1pVWUljR2pxQ3JUcUhXVFJTLVRYdkQzSw?oc=5",
+          "pubDate": "2026-01-14T13:28:52+00:00",
+          "source": "Google News",
+          "topic": "\"Prime Intellect\"",
+          "summary": "Prime Intellect: Distributed training and RL with NVIDIA GB200 NVL72 Nebius",
+          "section": "news"
+        },
+        {
+          "title": "This Startup Wants to Spark a US DeepSeek Moment - WIRED",
+          "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9xYXZnWi12bE9rZnA5bE5WVVB5YWdQXzdWWkhUeV85amtkbnFOa0tndU5tcHo3RFotZWNlbTRYcXBNVVhxMDRJZE53MW9iWXJxdkNPZUtSSTVfUllmQnR1bTZyNEg4Rk9FeEVOMmlGcm9uekxuMHd4ZzdCOA?oc=5",
+          "pubDate": "2025-10-08T07:00:00+00:00",
+          "source": "Google News",
+          "topic": "\"Prime Intellect\"",
+          "summary": "This Startup Wants to Spark a US DeepSeek Moment WIRED",
+          "section": "news"
+        },
+        {
+          "title": "US Startup Prime Intellect Challenges China's AI Dominance - The Tech Buzz",
+          "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPbms1amplVUk5bnVua0xqSzRuSG5IRFE5Zk1OZzlCX3FnRC1TQzVjUDdiMVF4N3hBMVBVQWg2NnFneXd4WEltSE0welR0aXZiaFNneEstaXF5WHRtWWpobE14SDBmMlctWHZTNWZhVldCX05TQUtQMkV1UzQzeUxhMjQyYThpUFMtZlNKeGRhTVBTRzBYMVE?oc=5",
+          "pubDate": "2025-10-08T07:00:00+00:00",
+          "source": "Google News",
+          "topic": "\"Prime Intellect\"",
+          "summary": "US Startup Prime Intellect Challenges China's AI Dominance The Tech Buzz",
+          "section": "news"
+        },
+        {
+          "title": "Prime Intellect launches an open platform for reinforcement learning environments - the-decoder.com",
+          "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOSml1STMtOVBmWXlFekFZVDI0SkhKVzRNWFJ4Ung1czRXNllWSzNDNFRCaWpvNFliaVBzT1YwTG8yclZLQ2pwQmY3cHR2VnpOWUYwSjh5cGo0clVkMGlRTll2WVg2NkcxY1FLUW9rMVFtRzlMckhHcTlsLVdfWGtnRzlfMW00WW1LdlVaX3pVdWhBMkhBbmRVQV9GRjdqNjlMdVNhWVlacUZwUQ?oc=5",
+          "pubDate": "2025-09-01T07:00:00+00:00",
+          "source": "Google News",
+          "topic": "\"Prime Intellect\"",
+          "summary": "Prime Intellect launches an open platform for reinforcement learning environments the-decoder.com",
+          "section": "news"
+        }
+      ],
+      "counts": {
+        "blog": 0,
+        "github": 0,
+        "x": 3,
+        "news": 4,
+        "total_ranked": 7
+      }
+    }
+  ],
+  "people": [
+    {
+      "id": "p-srinivasan",
+      "kind": "person",
+      "name": "Balaji Srinivasan",
+      "signals": [
+        {
+          "title": "AI Needs Humans: Balaji Srinivasan on AI's Limits - StartupHub.ai",
+          "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOY0hOS2R0TnRzNWVXaXk2emhkb19LQzRlUjFjZEdBcVlsaHNRMmV2SEo3eFVkN0xiQzZYVjBDMjhkTF81MzVjVmIycUtJZEtxQ08xOXNyYnlfalNPTkVOUUNLeDJxNk4zOWZ0RG81clhTbW1tRkR1VDhfTUxDQ25tWjJnbDhEbjJDVFR0ZnU1bEl5eUVUa2tqOGRmMHRIWTFTWkRFUmNoWE92Wk5YcHNWcQ?oc=5",
+          "pubDate": "2026-04-07T15:02:24+00:00",
+          "source": "Google News",
+          "topic": "\"Balaji Srinivasan\"",
+          "summary": "AI Needs Humans: Balaji Srinivasan on AI's Limits StartupHub.ai",
+          "section": "news"
+        },
+        {
+          "title": "Balaji’s viral post says Singapore-style order makes libertarianism work - Cryptonews.net",
+          "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5FaDJWZWI5QVctc0V6QmtPYVpGWUNmanc5c2lRV0ZVMDA1Zm9VZzRUZFlGMzJ3R2ZsYTU0SVFweVBLUkFmX2RZNDZxYmt1VWFxV3lfYkhB?oc=5",
+          "pubDate": "2026-03-24T18:45:25+00:00",
+          "source": "Google News",
+          "topic": "\"Balaji Srinivasan\"",
+          "summary": "Balaji’s viral post says Singapore-style order makes libertarianism work Cryptonews.net",
+          "section": "news"
+        },
+        {
+          "title": "RT by @balajis: .@balajis says AI verification is much harder in the digital world than it is for the physical world: \"AI for the physical world is very verifiable because the thing is, the digital world is fundamentally decentralized in a way the physical world isn't.\" \"There's only one physical world. You can say: did the AI move this box from this pallet to that pallet? That is something where you can probably get it to 100% over time.\" \"By contrast, in the digital world, there are all these people who live in their own constructed environments.\" \"How do you know when you're done with your to-do list? That's harder. Those things are fuzzier.\"",
+          "link": "https://nitter.net/a16z/status/2041557749230923910#m",
+          "pubDate": "2026-04-07T16:44:32+00:00",
+          "source": "x",
+          "topic": "@balajis",
+          "summary": ". @balajis says AI verification is much harder in the digital world than it is for the physical world: \"AI for the physical world is very verifiable because the thing is, the digital world is fundamentally decentraliz...",
+          "section": "x"
+        },
+        {
+          "title": "RT by @balajis: Someone made a global map of gas price increases since the Iran War began. Take a look:",
+          "link": "https://nitter.net/cremieuxrecueil/status/2040497939013914701#m",
+          "pubDate": "2026-04-04T18:33:13+00:00",
+          "source": "x",
+          "topic": "@balajis",
+          "summary": "Someone made a global map of gas price increases since the Iran War began. Take a look:",
+          "section": "x"
+        },
+        {
+          "title": "Network School is growing. Come visit us at http://ns.com.",
+          "link": "https://nitter.net/balajis/status/2039749444921692603#m",
+          "pubDate": "2026-04-02T16:58:59+00:00",
+          "source": "x",
+          "topic": "@balajis",
+          "summary": "Network School is growing. Come visit us at ns.com .",
+          "section": "x"
+        },
+        {
+          "title": "Balaji Srinivasan Says Block Firings Will Send 'Shockwaves,' Angel Investor Says Jack Dorsey Is Signallin - Benzinga",
+          "link": "https://news.google.com/rss/articles/CBMimwJBVV95cUxQQ2NFMzVfeWtCXzY1ckZUZGMxOU95bU5nWkdFYVY0ckJUdnFRZ2JXcl9GaWl1R1I1R19La3JvdVRtTUFwc1R6alR6NHROOExabEY3WFRKQ0JhZ2dfeF9XZ195UDl0Q0E1WXJ2VVdDcHAxdUluSVZxNHBpeGY4aE5IYW43Sk15WGQxM1dqaUlqVTZ1UmJIOW0zd3cwdjdadDF1dUJMWkkyYV9fNVNGQUdnalVsdVRyMWp1cTFXUXZ1a3VPbTZzWHlMWnF2RHJBdlRuVEpScGRrc1kyN1hIelk1V0ZwNk5XZlVWY1RidHhBb24tMzk1bWJBcno4QThQeFlVSnkxWWtWMFU0N1pNTnRvT1A2ekUtRDQzN0E4?oc=5",
+          "pubDate": "2026-02-27T08:00:00+00:00",
+          "source": "Google News",
+          "topic": "\"Balaji Srinivasan\"",
+          "summary": "Balaji Srinivasan Says Block Firings Will Send 'Shockwaves,' Angel Investor Says Jack Dorsey Is Signallin Benzinga",
+          "section": "news"
+        },
+        {
+          "title": "‘I’ve Never Been More Bullish on Crypto’: Balaji Srinivasan on Why Today’s Price Doesn’t Reflect What’s Coming - Bitcoin.com News",
+          "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPX2liWXRxaDR2aTBEQ3FqYnlfUXVKTmxTYVY3dHVfRWxYRGZXcE9UdU5ScGpEQ0RkYXpzajVrdkprXzBlV3BVSjlmd3lHcTFaZmpxMmozeUZJc3loUGJlUU4tRGRtMk95UEJpNzBMUHdyVjZQXzA1MWJJZWxjVE9kLXN0THZWTXhrYm9PYXZRVzF3T2txSGRTT08wZk0xOExiVU5tM3RnLUx1ZHpVcjktbDhmcXl6RmIzT0tSTERZdnBNVXJqZ1JuSw?oc=5",
+          "pubDate": "2026-02-05T08:00:00+00:00",
+          "source": "Google News",
+          "topic": "\"Balaji Srinivasan\"",
+          "summary": "‘I’ve Never Been More Bullish on Crypto’: Balaji Srinivasan on Why Today’s Price Doesn’t Reflect What’s Coming Bitcoin.com News",
+          "section": "news"
+        }
+      ],
+      "counts": {
+        "x": 3,
+        "news": 4,
+        "total_ranked": 7
+      }
+    },
+    {
+      "id": "p-weisser",
+      "kind": "person",
+      "name": "Vincent Weisser",
+      "signals": [
+        {
+          "title": "RT by @vincentweisser: The StopAI and PauseAI people have really fomented stochastic terrorism at this point. This needs to stop. Now. AI researchers and execs should be safe in SF, it's a matter of national security.",
+          "link": "https://nitter.net/beffjezos/status/2043460844986491065#m",
+          "pubDate": "2026-04-12T22:46:45+00:00",
+          "source": "x",
+          "topic": "@vincentweisser",
+          "summary": "The StopAI and PauseAI people have really fomented stochastic terrorism at this point. This needs to stop. Now. AI researchers and execs should be safe in SF, it's a matter of national security. Jimmy Apples 🍎/acc (@a...",
+          "section": "x"
+        },
+        {
+          "title": "RT by @vincentweisser: tldr; in 2026, phd'ing can be really fun! an opinion you don't hear that often for other students and researchers, I figured it's worth providing a vague chronological sense for how these thoughts panned out over the course of my first year in my PhD! it's been a blast so far, and I figured it was worth sharing what's been going on for me in case younger researchers are curious about whether pursuing a PhD is fruitful. It's funny because as @m_sirovatka & @simonguozirui & other GPU MODE folks know, my initial interest pre-PhD was LM-generated GPU kernels / compilers (sadly I'm washed now...), which is just completely unrelated :p Around the start of the PhD we floated around the idea of general sub-agent calling / recursive LM-calling, and I iterated very quickly (basically every day I'd have a new update or version of the idea and new results) until around October, where we were super happy with how it was designed & articulated. Everything in the REPL seemed to be the key. I had an upcoming midterm, but pushed for getting results out for an initial blog to get some external feedback, something I learned from @OfirPress when doing VideoGameBench -- tbh didn't think it'd blow up, but was pleasantly surprised with the feedback. It was around this time that the idea for THIS BLOG (MGH) was first vaguely formalized in my head, although it generally was just to motivate why RLMs were interesting beyond long context. I delayed putting it out in favor of polishing and finishing out the RLM paper itself. First semester ends. Around winter break time I ended up spending a lot of time just chatting with new people after the RLM paper release, and although it was useful I ended up not being that productive because of it (if I'm not as receptive to meetings anymore sorry, it's not personal, it's mostly just to give back more time to focus on research). @omouamoua's @PrimeIntellect blog on RLMs also comes out, and I figure it's worth seeing through how their model will be trained and I join their effort (amazing group of ppl btw, I still think they're all somehow highly underrated despite containing many clear superstars). Semester 2 starts, and I generally have a sense for what I want to work on (WIP so can't talk too much about it). Around this time I actually wanted to work again on this blog because I felt it was worth articulating why these compositional scaffolds are so important for people to work on, but ended up writing a different version of it (LMs will be scaffolds) to clear up a point that Omar and I had frequently talked about, which is that likely many future models will actually just be scaffolded things but appear like a model. It also was generally to explain the naming for Recursive \"Language Model\". Finally around 2 weeks ago, I was having a dry period in my research results, and I decided it was time to finally articulate this idea. I figured it would've been articulated by someone else at some point (I think most people share the rough intuition that it's likely true) but somehow it didn't, so I ended up asking @zli11010 to help me co-author & formalize it (he's awesome you should go follow him, another fellow 1st year MIT CSAIL PhD student) because he's much better than me at math! we ended up going back and forth about formalization and realized actually formalizing things was a massive footgun (the way we thought about it from the beginning was in terms of functions that LMs can express and how composition is useful in this sense) and ended up rewriting the entire thing in the last few days to be this form. I'm super happy with how it turned out! all I can really say at the end of the day is that the PhD has been a super pleasant surprise for me so far. there's always the allure of industry (and it's ability to steal all your peers), but I'm like 99.9% sure if I went to a frontier lab this past year I would've never had the chance to think through these super cool research ideas or meet my advisors, who have all been so supportive and helpful in guiding my research. all this to say sadly I don't plan to leave any time soon, and phd'ing can be really really fun!",
+          "link": "https://nitter.net/a1zhang/status/2042831754440962116#m",
+          "pubDate": "2026-04-11T05:06:58+00:00",
+          "source": "x",
+          "topic": "@vincentweisser",
+          "summary": "tldr; in 2026, phd'ing can be really fun! an opinion you don't hear that often for other students and researchers, I figured it's worth providing a vague chronological sense for how these thoughts panned out over the...",
+          "section": "x"
+        },
+        {
+          "title": "RT by @vincentweisser: ✨ New livestream: How to implement reinforcement learning effectively? @PrimeIntellect & @UnslothAI join us for a deep-dive into RL with Nemotron — covering GRPO, RLVR, and building memory-efficient RL pipelines for domain-specific training. 🗓️ Apr 14 | 11am PT → https://nvda.ws/3Q1GWEh Bring your questions for the live Q&A, and share in comments.",
+          "link": "https://nitter.net/NVIDIAAIDev/status/2042724808446578801#m",
+          "pubDate": "2026-04-10T22:02:00+00:00",
+          "source": "x",
+          "topic": "@vincentweisser",
+          "summary": "✨ New livestream: How to implement reinforcement learning effectively? @PrimeIntellect & @UnslothAI join us for a deep-dive into RL with Nemotron — covering GRPO, RLVR, and building memory-efficient RL pipelines for d...",
+          "section": "x"
+        }
+      ],
+      "counts": {
+        "x": 3,
+        "news": 4,
+        "total_ranked": 3
+      }
+    },
+    {
+      "id": "p-kohlhaas",
+      "kind": "person",
+      "name": "Paul Kohlhaas",
+      "signals": [
+        {
+          "title": "RT by @paulkhls: If biotech industry leaders talked like AI industry leaders",
+          "link": "https://nitter.net/SynBio1/status/2038588464296263752#m",
+          "pubDate": "2026-03-30T12:05:39+00:00",
+          "source": "x",
+          "topic": "@paulkhls",
+          "summary": "If biotech industry leaders talked like AI industry leaders",
+          "section": "x"
+        },
+        {
+          "title": "RT by @paulkhls: you’re laughing? people are curing their own cancer and you’re laughing?!",
+          "link": "https://nitter.net/IterIntellectus/status/2037963834141360541#m",
+          "pubDate": "2026-03-28T18:43:36+00:00",
+          "source": "x",
+          "topic": "@paulkhls",
+          "summary": "you’re laughing? people are curing their own cancer and you’re laughing?! orph (@orphcorp) this is excellent >GitLab founder diagnosed with rare cancer (osteosarcoma) >standard care works but cancer comes back later >...",
+          "section": "x"
+        },
+        {
+          "title": "RT by @paulkhls: A synthetic biologist just designed an RNA vaccine for canine cancer with just $100 in AI credits. His tech stack: an OpenClaw agent running Claude Sonnet 4.6 as the workhorse. BIOS by @BioProtocol as the AI scientist for literature search and data analysis. A minimal cloud setup with no GPUs and no model training. His words: \"Could this design really work? Did we actually design a medicine which usually takes many years and many millions of dollars in three days and with a hundred dollars in AI credits?\" The answer is closer than you'd think. He ran a full bioinformatics workflow and came away with what he calls a \"bonafide, totally plausible neoantigen vaccine candidate.\" He also said something that matters more than the result: \"If we fuck this up, people can die. So I need to say that in all humility. There is no way that I got this perfect. There is a mistake in here for sure.\" That's the difference between someone doing real science with AI tools and someone doing a demo. He knows where the limits are because he has the domain expertise to see them. This is what BIOS was built for. A callable AI scientist that any agent or researcher can plug into their workflow for deep literature search and analysis. @SynBio1 used it alongside OpenClaw and got from hypothesis to vaccine design in a weekend. Three days. One hundred dollars. One real candidate.",
+          "link": "https://nitter.net/BioProtocol/status/2037551215027134612#m",
+          "pubDate": "2026-03-27T15:24:00+00:00",
+          "source": "x",
+          "topic": "@paulkhls",
+          "summary": "A synthetic biologist just designed an RNA vaccine for canine cancer with just $100 in AI credits. His tech stack: an OpenClaw agent running Claude Sonnet 4.6 as the workhorse. BIOS by @BioProtocol as the AI scientist...",
+          "section": "x"
+        }
+      ],
+      "counts": {
+        "x": 3,
+        "news": 4,
+        "total_ranked": 3
+      }
+    },
+    {
+      "id": "p-koellinger",
+      "kind": "person",
+      "name": "Philipp Koellinger",
+      "signals": [],
+      "counts": {
+        "x": 0,
+        "news": 4,
+        "total_ranked": 0
+      }
+    },
+    {
+      "id": "p-goertzel",
+      "kind": "person",
+      "name": "Ben Goertzel",
+      "signals": [
+        {
+          "title": "'An attempt to cripple Anthropic': US judge questions Anthropic ban - Euronews.com",
+          "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQcU1ad1Z0b214cUJ5RTBuanJHVXNfTC1WYjJYT0F0cEtwOHhQV01pUFpodm9vSlVDSkE5T2FRRzNzcWwtRFpWMVNPY09HbXprZmR1bkhabC1nUHQ2Ql9xWnBnNGhuNFNYa2lSVVF3eWZJUFdhbExXWDZ4alhVMGF5bDFTN1pKVDR6U1YzXzVqTEZaZHNHbEQ2ZVN3aGtpbllHc1BzeWFDSEthc1dKdjBpemtRd0ctZjctQUlGRF8zekdtdFRLN2NyWQ?oc=5",
+          "pubDate": "2026-03-25T07:00:00+00:00",
+          "source": "Google News",
+          "topic": "\"Ben Goertzel\"",
+          "summary": "'An attempt to cripple Anthropic': US judge questions Anthropic ban Euronews.com",
+          "section": "news"
+        },
+        {
+          "title": "After Epstein: Goertzel on funding, fallout, rumors - Vashon-Maury Island Beachcomber",
+          "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQNVNnY09Dd0wwVUdzWVBLU0RxUV82VWNmZ0NMSzZtdHFLLS1RX0c3VWh5MGdFUTRtcW5rQU9Gem9jRElHYklSRFhvOGt4SFU5VjF4WThEVlcwaGdVTkJYNnpHTzFad3JINHNOdFZKRW9ERTNMM0Y4dTZSU3p4VTNMSDJ4VTZ6MWx1MHpKRTgxNGZZbUgxT1BBWjZR?oc=5",
+          "pubDate": "2026-03-11T07:00:00+00:00",
+          "source": "Google News",
+          "topic": "\"Ben Goertzel\"",
+          "summary": "After Epstein: Goertzel on funding, fallout, rumors Vashon-Maury Island Beachcomber",
+          "section": "news"
+        },
+        {
+          "title": "Quantum computing gets closer and closer... for good and for scary... Looking at Google's paper on quantum circuits for cracking today's encryption methods, it's clear that while they kept the circuit secret, any team with reasonable related expertise and some compute time could roughly reverse-engineer it. Now: We don't have a big enough quantum computer yet to actually run this sort of circuit anyway ... and by the time we get these QCs, we will be able to use them to run all sorts of amazing quantum AI as well. What's clear is we all need to be paying attention to the risks and opportunities of quantum... QC getting real in various forms is not so far off. In designing our ASI:chain L1 for example, we are making things quantum-friendly right at the foundation, both in terms of easily supporting quantum-resistant encryption and in terms of fostering innovative quantum AI... Here's a blog post on the matter https://open.substack.com/pub/bengoertzel/p/googles-quantum-crypto-paper-tells?r=6oxx&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true And an associated (less in depth) article in a crypto mag, quoting me: https://beincrypto.com/goertzel-asi-alliance-rebuild-google-quantum-circuit/",
+          "link": "https://nitter.net/bengoertzel/status/2039411863424041233#m",
+          "pubDate": "2026-04-01T18:37:33+00:00",
+          "source": "x",
+          "topic": "@bengoertzel",
+          "summary": "Quantum computing gets closer and closer... for good and for scary... Looking at Google's paper on quantum circuits for cracking today's encryption methods, it's clear that while they kept the circuit secret, any team...",
+          "section": "x"
+        },
+        {
+          "title": "RT by @bengoertzel: \"they're not even CLOSE to being profitable- how is it possible that they just raised the largest private funding round in history?!\" because AGI is what money wishes it was. AGI is pure power, while money is power only when humans agree about it. hence, all $ must flow to AGI:",
+          "link": "https://nitter.net/danfaggella/status/2039249265893994901#m",
+          "pubDate": "2026-04-01T07:51:27+00:00",
+          "source": "x",
+          "topic": "@bengoertzel",
+          "summary": "\"they're not even CLOSE to being profitable- how is it possible that they just raised the largest private funding round in history?!\" because AGI is what money wishes it was. AGI is pure power, while money is power on...",
+          "section": "x"
+        },
+        {
+          "title": "Emails show 'Godfather of AGI' Ben Goertzel courted Epstein for funding and congratulated him on jail release - Business Insider",
+          "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOamNxa0Z6M01Ubkh6QVNSS01icFlSSkRIOEU1QzdZUHZsY3VfWi1MdXE5ZU1rbF9HNHdPQU9XWWtQTE54elo0Sm9DeW93T2d4bUNVazNqMHllbm9KTHdkSFRwX0FDRTF3b0trYXZjenB3VzRiSzBYVWFiMFN0ZFN2T19odlctV2NsRHZxbnpyaWgwcC1LSG5FMDBR?oc=5",
+          "pubDate": "2026-02-19T08:00:00+00:00",
+          "source": "Google News",
+          "topic": "\"Ben Goertzel\"",
+          "summary": "Emails show 'Godfather of AGI' Ben Goertzel courted Epstein for funding and congratulated him on jail release Business Insider",
+          "section": "news"
+        },
+        {
+          "title": "The human brain's edge is fading. AI could outhink us in 2 years, Ben Goertzel says - Yahoo Finance",
+          "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTE1TeXEzTllCZEhzYlJ0YVdhdWZDYnM0TzlkS2JZZzhxWHJQWjZtNHJPakVKV0ZfNlA4Y0JKWmhZMjhveUJsX1FlM28zeWtGLUFnWXpaTkJtZmJRU1lhR2dFeVE0WUVHTFVjMGlTWmNyY0MtMmJrZUZMbEpaT1NJdw?oc=5",
+          "pubDate": "2026-02-11T08:00:00+00:00",
+          "source": "Google News",
+          "topic": "\"Ben Goertzel\"",
+          "summary": "The human brain's edge is fading. AI could outhink us in 2 years, Ben Goertzel says Yahoo Finance",
+          "section": "news"
+        },
+        {
+          "title": "Open Source Your Self !! -- What If You Uploaded Your Mind Into a Community Instead of a Copy? https://bengoertzel.substack.com/p/open-sourcing-your-self",
+          "link": "https://nitter.net/bengoertzel/status/2037398690189693086#m",
+          "pubDate": "2026-03-27T05:17:55+00:00",
+          "source": "x",
+          "topic": "@bengoertzel",
+          "summary": "Open Source Your Self !! -- What If You Uploaded Your Mind Into a Community Instead of a Copy? bengoertzel.substack.com/p/o…",
+          "section": "x"
+        }
+      ],
+      "counts": {
+        "x": 3,
+        "news": 4,
+        "total_ranked": 7
+      }
+    },
+    {
+      "id": "p-armstrong",
+      "kind": "person",
+      "name": "Brian Armstrong",
+      "signals": [
+        {
+          "title": "Brian Armstrong Killed The Clarity Act In January — But Now He's Changed His Mind - Benzinga",
+          "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxOaXNhdDlXbzdSRjA4WUVSeUl6aDBaemJoWmtqX1NHQ1E0QmVGQWZvMjl2RkxuR2hOeXpUMnRjVXNXUmxuSi1lN2hrVlYzQzFuSndTUU81dFplWU8xOVktOFl2bU44enZsVDJ1b094ZVJPdk5Rc1hFOWRTS2VYa1FiSUtCcDJ5Y0puRUFnc05QR25VNDc1VzF0VHF4TFNCQnlaRzE0UG15cnQxREc3dG9lSHhlZFNkZno3cmRTaU55MTRrU2Q1NFU2bGpPZFJtYTJDcVJoLTJ6MA?oc=5",
+          "pubDate": "2026-04-10T15:38:23+00:00",
+          "source": "Google News",
+          "topic": "\"Brian Armstrong\"",
+          "summary": "Brian Armstrong Killed The Clarity Act In January — But Now He's Changed His Mind Benzinga",
+          "section": "news"
+        },
+        {
+          "title": "Coinbase CEO Calls For Passage Of U.S. Clarity Act - Yahoo Finance",
+          "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPZExJRTBqLTRJQVN3cXdWcThKVkF1S1RlcEhFT2tjWDBpNGpRNkgta1R4VlF1Mk1pRjZ6YTUyd2p5RXhPV3pkc1JydFljdkd5YnhYbEFGU2VHVlluQV9kczZnRFdGeThpTzdzUUt3RVJBUTRnTl9ZV2tKY0pCOGZOS0dJa3FkaVppU2s3dDlNcjByQmhWQ2NmRg?oc=5",
+          "pubDate": "2026-04-10T13:10:00+00:00",
+          "source": "Google News",
+          "topic": "\"Brian Armstrong\"",
+          "summary": "Coinbase CEO Calls For Passage Of U.S. Clarity Act Yahoo Finance",
+          "section": "news"
+        },
+        {
+          "title": "'It's time to pass the Clarity Act': Coinbase CEO Brian Armstrong backs Bessent's crypto bill push - The Block",
+          "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPSmtWLXJ4aVVFSjlLUThpWkhVUkZlMzJPS2htaExnZzBIRmd6dkRfWVctTTlCUHBNX2UwOFB2S0c0MGlDRFJWRmlOQzNCZnhrRU1zNThGSFlQT0dmZWtQZ0I0a3lHQVF5YzZYbW5XTUlZU2t5ZzJVYlQ4QVU0WE1iWnFn?oc=5",
+          "pubDate": "2026-04-10T11:45:21+00:00",
+          "source": "Google News",
+          "topic": "\"Brian Armstrong\"",
+          "summary": "'It's time to pass the Clarity Act': Coinbase CEO Brian Armstrong backs Bessent's crypto bill push The Block",
+          "section": "news"
+        },
+        {
+          "title": "Brian Armstrong Has Not Commented on the New CLARITY Act Text. His Previous Positions Tell the Story. - FinTech Weekly",
+          "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQLUp5WlhZb0psaVhjeWF3aGdHWkRJNndNOEJRMDNiZ0JiUGdkRWNURHpVaG1IcFFjclQxNU8za0pHaG5JYnlOTTVYNHpSeUFqOXZBTnI2b1U0TEpRUjlwZzNxTDlCeEYycUFHYVV3WVI5MmFmX2ZHeHFxUWl2OHB1SlNQbjhoVjJKa2RKSm90Ui1UN3E1OFFBcQ?oc=5",
+          "pubDate": "2026-03-24T07:00:00+00:00",
+          "source": "Google News",
+          "topic": "\"Brian Armstrong\"",
+          "summary": "Brian Armstrong Has Not Commented on the New CLARITY Act Text. His Previous Positions Tell the Story. FinTech Weekly",
+          "section": "news"
+        },
+        {
+          "title": "Happy National Pet Day from my favorite journalist at the Bark Street Journal.",
+          "link": "https://nitter.net/brian_armstrong/status/2043101091882242258#m",
+          "pubDate": "2026-04-11T22:57:13+00:00",
+          "source": "x",
+          "topic": "@brian_armstrong",
+          "summary": "Happy National Pet Day from my favorite journalist at the Bark Street Journal.",
+          "section": "x"
+        },
+        {
+          "title": "Base is now even faster (5k TPS and growing). Base is the best chain for trading, payments, and agents.",
+          "link": "https://nitter.net/brian_armstrong/status/2043094876963651765#m",
+          "pubDate": "2026-04-11T22:32:32+00:00",
+          "source": "x",
+          "topic": "@brian_armstrong",
+          "summary": "Base is now even faster (5k TPS and growing). Base is the best chain for trading, payments, and agents. wilson.base.eth (@WilsonCusack) Making progress! Been in the trenches with the team building but want to highligh...",
+          "section": "x"
+        },
+        {
+          "title": "RT by @brian_armstrong: Stablecoins move on Base",
+          "link": "https://nitter.net/WilsonCusack/status/2042655467092988092#m",
+          "pubDate": "2026-04-10T17:26:28+00:00",
+          "source": "x",
+          "topic": "@brian_armstrong",
+          "summary": "Stablecoins move on Base",
+          "section": "x"
+        }
+      ],
+      "counts": {
+        "x": 3,
+        "news": 4,
+        "total_ranked": 7
+      }
+    },
+    {
+      "id": "p-hill",
+      "kind": "person",
+      "name": "Chris Hill",
+      "signals": [
+        {
+          "title": "Christopher Hill Obituary and Online Memorial (2018) - Legacy obituary",
+          "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQYTdPeEMwQ0RndGhMWWxSYlY3VkhfVU9tQ0N3c3lseS1yS004N09RSks1TE5ncEJHQ2RNN2J6ZFE1RWc0eDlrUHU0TlFpNnc1MC1tOW1YcnV0TTk2ZkZPSnJ2NFVRckFkWHdRMWwzVVZRZ2o3TTBpOFdXMkZiN1dsWkZZSE5QSkpIenY5ajQ3OUFGSHBt?oc=5",
+          "pubDate": "2026-04-12T10:04:13+00:00",
+          "source": "Google News",
+          "topic": "\"Chris Hill\"",
+          "summary": "Christopher Hill Obituary and Online Memorial (2018) Legacy obituary",
+          "section": "news"
+        },
+        {
+          "title": "David Hill Obituary - San Angelo, TX - Dignity Memorial",
+          "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPSW9fdXRla3BrOWNNNHI4QjVENnZRY0gyOW1lRTVCb2NaYnpyekhvd3ZsdWV5Nk50Q2ppWkF3X0ozbmdLNjJVNUZXLXNpNlpZbDJLcDhBamk2cERpN251cEkwel9DY0tkYS1jWDJSeUFWeGxWa3VMU0dyZk5ndlVYeGpn?oc=5",
+          "pubDate": "2026-04-08T07:00:00+00:00",
+          "source": "Google News",
+          "topic": "\"Chris Hill\"",
+          "summary": "David Hill Obituary - San Angelo, TX Dignity Memorial",
+          "section": "news"
+        },
+        {
+          "title": "User Clip: Chris Hill on Foreign Policy 2016 - C-SPAN",
+          "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQN2tJY0drVi1iWklkS1kzQ092QWlwZlZNOU8zS3BLSldBZ1BGc3JybW90NWsyTUtfdVFOdmw4WU1uelJxZjBNbTlDNTZPbENlMU1QdF8wajdHVkVDaURQMWZHQ1lKQmdKVG9MdV9LbU5ma3B5UmcybFc2eDFjbUJJTVNiZHVwbkpFV3cxUXZ3bWp2SDkzaU5ZdlRYTUN1SHRuX2c?oc=5",
+          "pubDate": "2026-04-02T18:41:29+00:00",
+          "source": "Google News",
+          "topic": "\"Chris Hill\"",
+          "summary": "User Clip: Chris Hill on Foreign Policy 2016 C-SPAN",
+          "section": "news"
+        },
+        {
+          "title": "El Dorado hires former Razorback Brett Shockley to replace Chris Hill - Wynne Progress",
+          "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNdHFiWUpDd1RnTFBCS1FUcEV0TFVnVk9tRkhUcUdQLWxoSWV5Z2JmSDdvbkQ2akZybGc0OUI5d3BNSkhkNFlWbzU0ZFNwTXl3ZzVCQTI3MFhXZmJxT0M1YzlmQjA5THFvdkZEZWtGNm1BWXBHTzNuVnByVzZ6NDBtaTJWb08yZmdpVkFBNUMyN3ZibHNZUUx3b3NvUndGS3Fs?oc=5",
+          "pubDate": "2026-03-31T15:46:21+00:00",
+          "source": "Google News",
+          "topic": "\"Chris Hill\"",
+          "summary": "El Dorado hires former Razorback Brett Shockley to replace Chris Hill Wynne Progress",
+          "section": "news"
+        }
+      ],
+      "counts": {
+        "x": 0,
+        "news": 4,
+        "total_ranked": 4
+      }
+    },
+    {
+      "id": "p-jerschow",
+      "kind": "person",
+      "name": "Nikita Jerschow",
+      "signals": [],
+      "counts": {
+        "x": 0,
+        "news": 1,
+        "total_ranked": 0
+      }
+    },
+    {
+      "id": "p-joyce",
+      "kind": "person",
+      "name": "Patrick Joyce",
+      "signals": [
+        {
+          "title": "Joyce: Strength in the face of challenges across the 40th district - Shaw Local",
+          "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPVkdQU0tyMzhsOFlNR0VjWWhmbVNoWHhGWThacVVuY0hJbTM2M20wRlBxcERvTjlmWVp6cFItcTNVcV95a1pFSDdNc0oxUkZ5OU5iS3NRa3pWLVNYWGw4U1o1NjU0bUp5RnBDdGsyS21OX2Z3cUg4alBFOGUxNWxJLVB3TWVhdGNCX3E5VWtFTG5LSzBQQzJzYnBDbDZnZElVUDN0Uk05cG0yY0hBdGdxTXJCSDRWR2Zq?oc=5",
+          "pubDate": "2026-04-06T23:00:00+00:00",
+          "source": "Google News",
+          "topic": "\"Patrick Joyce\"",
+          "summary": "Joyce: Strength in the face of challenges across the 40th district Shaw Local",
+          "section": "news"
+        },
+        {
+          "title": "Donald M. Mealey Obituary | 2025 - 2025 - Star Tribune",
+          "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9Xb2JoVFVDbTI0eWhlcFIxNG9iaEtwZ3dFTFU4UnZVN0YtaE12R1RXMVlMMUFmQmRra1pkVUNlR3RlYXp3RTRNN0dmaFhjQ2UyM1IzZTlCdzFxTWdwUFhrMVM0dVNvS1Z3RHltcWJnbF8zMDVvZ0F2aGtn?oc=5",
+          "pubDate": "2026-04-06T04:01:27+00:00",
+          "source": "Google News",
+          "topic": "\"Patrick Joyce\"",
+          "summary": "Donald M. Mealey Obituary | 2025 - 2025 Star Tribune",
+          "section": "news"
+        },
+        {
+          "title": "Patrick Joyce Obituary (1940 - 2026) - Fair Oaks, CA - The Sacramento Bee - Legacy obituary",
+          "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOY1ZsUmRvbHIzVmZNLWR5Q1F3RDBKTTN2QklBdEJENGQtUnBNemNldzhyWHIxYjY3Q0JJV3d2cE8tVmlaWDB0bWFueU5ISDBDVXFRVEdYT1BVVzh3UklGVDBFVVhXRnRoX1BuWWtxWHV2LThWVkNlaDFqYllLZl8xZzI3VnhkNzBjUEVn?oc=5",
+          "pubDate": "2026-03-03T08:00:00+00:00",
+          "source": "Google News",
+          "topic": "\"Patrick Joyce\"",
+          "summary": "Patrick Joyce Obituary (1940 - 2026) - Fair Oaks, CA - The Sacramento Bee Legacy obituary",
+          "section": "news"
+        },
+        {
+          "title": "Joyce looking to expand hunting industry in Illinois - Illinois Senate Democratic",
+          "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxNTjhXUjBKUFYya2dibmJOZGdaeGdFT1haUkVBZzRfM2hhQVFyY3FudW94aE1OSXBHMUdKM3BFdjBySnliYm16RFowcy1kM2VWdERlZXhTRVloUUhQQUxKUnpib1dvWWd5NXFSdU1pVWFMLV9DM0E0dW1taGFBZGVRN0c4Y2VvaGhVMmxQZzBIOXhjNk5mRjhsVF9ZN1JVeTFOUFhad1pyWXpPUE51TndOSUNjZ1NNZ2xtUXFyTWFYN1k2MENLeElyRVRCZWlhX0tXVE12U3lR?oc=5",
+          "pubDate": "2026-02-26T08:00:00+00:00",
+          "source": "Google News",
+          "topic": "\"Patrick Joyce\"",
+          "summary": "Joyce looking to expand hunting industry in Illinois Illinois Senate Democratic",
+          "section": "news"
+        }
+      ],
+      "counts": {
+        "x": 0,
+        "news": 4,
+        "total_ranked": 4
+      }
+    },
+    {
+      "id": "p-rindtorff",
+      "kind": "person",
+      "name": "Niklas Rindtorff",
+      "signals": [],
+      "counts": {
+        "x": 0,
+        "news": 4,
+        "total_ranked": 0
+      }
+    },
+    {
+      "id": "p-pearl",
+      "kind": "person",
+      "name": "Jocelynn Pearl",
+      "signals": [
+        {
+          "title": "Welp, I guess this is the path... of LLMs? My favorite LLM for scientific research (FutureHouse's Platform) is now part of @EdisonSci and only offers a $200/month option or enterprise option. Nothing in between? Sad because I was actually using it to help patients.",
+          "link": "https://nitter.net/JocelynnPearl/status/2036453225759646076#m",
+          "pubDate": "2026-03-24T14:40:59+00:00",
+          "source": "x",
+          "topic": "@JocelynnPearl",
+          "summary": "Welp, I guess this is the path... of LLMs? My favorite LLM for scientific research (FutureHouse's Platform) is now part of @EdisonSci and only offers a $200/month option or enterprise option. Nothing in between? Sad b...",
+          "section": "x"
+        },
+        {
+          "title": "Houston, my husband has a problem.",
+          "link": "https://nitter.net/JocelynnPearl/status/2035185782336659838#m",
+          "pubDate": "2026-03-21T02:44:37+00:00",
+          "source": "x",
+          "topic": "@JocelynnPearl",
+          "summary": "Houston, my husband has a problem. Ava (@noampomsky) friend is in the stage of claude psychosis where he asks claude to send him newspapers about what claude is doing for him — https://nitter.net/noampomsky/status/203...",
+          "section": "x"
+        },
+        {
+          "title": "RT by @JocelynnPearl: In a phase 1 study of the oral p53 reactivator rezatapopt in heavily pretreated patients with TP53 Y220C–mutated solid tumors, the most common adverse events were nausea and vomiting, and the overall response was 20%. Full PYNNACLE study results: https://nej.md/3OIQC5P Science behind the Study: Restoring Function to a Variant of p53 in Solid Tumors https://nej.md/3N0pQW8",
+          "link": "https://nitter.net/NEJM/status/2026781762123427840#m",
+          "pubDate": "2026-02-25T22:10:02+00:00",
+          "source": "x",
+          "topic": "@JocelynnPearl",
+          "summary": "In a phase 1 study of the oral p53 reactivator rezatapopt in heavily pretreated patients with TP53 Y220C–mutated solid tumors, the most common adverse events were nausea and vomiting, and the overall response was 20%....",
+          "section": "x"
+        }
+      ],
+      "counts": {
+        "x": 3,
+        "news": 3,
+        "total_ranked": 3
+      }
+    },
+    {
+      "id": "p-mcconaghy",
+      "kind": "person",
+      "name": "Trent McConaghy",
+      "signals": [
+        {
+          "title": "Who Governs the Bots? AI Agents and the Future of Web3 Power in 2026 - ForkLog",
+          "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNaGZVVWhiZWFiZHZ6N2xWVkNyWmtEOGhQQk11akRGOWNnOUw4MVA0TE5yenRFNUh0a0hYVzNsb1RlWElNYWwtOEl6SXpiRFNVU1M4N1MyRzBmeEdRV0xyakw4NGZyUFAwVTBtX3FhU2ZqbmVIa2dJclVwd182eXVnbGs0SGg0cUJYdVpBN1hDOVA1VjJvUnc?oc=5",
+          "pubDate": "2026-02-17T08:00:00+00:00",
+          "source": "Google News",
+          "topic": "\"Trent McConaghy\"",
+          "summary": "Who Governs the Bots? AI Agents and the Future of Web3 Power in 2026 ForkLog",
+          "section": "news"
+        },
+        {
+          "title": "Crypto’s flagship AI project fractures: Fetch sues Ocean over 263M FET ‘community’ sales - Bitget",
+          "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1NZS1DRDFyb0ZHRTNaMm8taFNFZlhnbTdMTDN2U0ZwQlJVZmRaT2RIUGdfSE1KTFF3M2pSeGZPNUFWMVVhWTlFSFB2V1AzTVVQZDE1XzY0dVA5cGZzZVHSAWNBVV95cUxOck1iaDY0TlBEcDZOdWZudmtERTcxVDY4SGpaZURZbGs3SHRSY3ZjT0gtWjQzbkFhNTY1VGZfdm1EQjZRb2FwY19kNnl2QzdHZW1NTi1tSmdFbldkam1MQlItbWs?oc=5",
+          "pubDate": "2025-11-07T08:00:00+00:00",
+          "source": "Google News",
+          "topic": "\"Trent McConaghy\"",
+          "summary": "Crypto’s flagship AI project fractures: Fetch sues Ocean over 263M FET ‘community’ sales Bitget",
+          "section": "news"
+        },
+        {
+          "title": "Ocean Protocol left the ASI alliance after governance disputes and a 93% drop in the FET token - Coinspot.io",
+          "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOdGVienRvUjZwa0FGZmt3V2JhLTZ6ZWJPU3I3VElSYkl6aEJTLVVVaWxtXy00WDZxeWJFcmVsUjVjX0hPalJzV1JxSTV4N24ycWNIaXZCZEQwRUJrd1QzaTdlSFhUUnBDS3dsWkttN1p3alpmalZWeURrd3VhM0FieTkyeHpMN2JrVGpBV2FBd0ZNbFJ1X1lyc2NSWG4yYmNwYmhXSFNKd0ZRYWx1MXdXWGszVHU2YTBhTnpPcjY5ZlBHNDZF?oc=5",
+          "pubDate": "2025-10-23T07:00:00+00:00",
+          "source": "Google News",
+          "topic": "\"Trent McConaghy\"",
+          "summary": "Ocean Protocol left the ASI alliance after governance disputes and a 93% drop in the FET token Coinspot.io",
+          "section": "news"
+        }
+      ],
+      "counts": {
+        "x": 0,
+        "news": 4,
+        "total_ranked": 3
+      }
+    },
+    {
+      "id": "p-golato",
+      "kind": "person",
+      "name": "Tyler Golato",
+      "signals": [],
+      "counts": {
+        "x": 0,
+        "news": 4,
+        "total_ranked": 0
+      }
+    },
+    {
+      "id": "p-noessler",
+      "kind": "person",
+      "name": "Kevin Noessler",
+      "signals": [],
+      "counts": {
+        "x": 0,
+        "news": 0,
+        "total_ranked": 0
+      }
+    },
+    {
+      "id": "p-craib",
+      "kind": "person",
+      "name": "Richard Craib",
+      "signals": [
+        {
+          "title": "RT by @richardcraib: Numerai, in the beginning. Founder and CEO Richard Craib reflects on Numerai's original mission. Full session: https://www.youtube.com/watch?v=WDZPJZ-guzA&list=PLz3D6SeXhT3sJCUZAWnafTEfgB35xg5Ys&index=3",
+          "link": "https://nitter.net/numerai/status/2033916352185176207#m",
+          "pubDate": "2026-03-17T14:40:21+00:00",
+          "source": "x",
+          "topic": "@richardcraib",
+          "summary": "Numerai, in the beginning. Founder and CEO Richard Craib reflects on Numerai's original mission. Full session: piped.video/watch?v=WDZPJZ-g… Video",
+          "section": "x"
+        },
+        {
+          "title": "There is a $500m quant fund run by AI that might want to hire you - eFinancialCareers",
+          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1nSzlxeEp3dFRtbkw1N2xPSk1xNTh0elNzdHdYbU1pdnozREdQRmFZZ0R0ZXpDN1VjVENVbHJIaWYyRlRwdTduRzc4Vm04UUVMOE5kSEUxNk9nZw?oc=5",
+          "pubDate": "2025-11-25T08:00:00+00:00",
+          "source": "Google News",
+          "topic": "\"Richard Craib\"",
+          "summary": "There is a $500m quant fund run by AI that might want to hire you eFinancialCareers",
+          "section": "news"
+        },
+        {
+          "title": "JPMorgan Commits US$500M to AI Hedge Fund Numerai, Doubling Crypto-Friendly Manager's Assets - Crypto News Australia",
+          "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQSWxHUUhHZUpjLVUtYUZUWFV3bll5TG11NG1kNHExQ0IxT3JTUXFrT2gyMUpDbkZrVGpqb04wTzhWaVJNSHZ1ZnBxMVlQWDVqN05DeG1kUnJ0bGJmM3pHd1ZnU1ZIbWxCSEYxZ0FvZlBPWnQ4MExnRmpTd29XenV1MUNfckhZYjNDUlpSbWlaM3pPOENrMnU1VmxDWUhNWWRLSTdRLXJjRkZKUE1yNG9VaGxzU3Q4VDd4TXFoOUJLWUVxUUM2MF9n?oc=5",
+          "pubDate": "2025-08-29T07:00:00+00:00",
+          "source": "Google News",
+          "topic": "\"Richard Craib\"",
+          "summary": "JPMorgan Commits US$500M to AI Hedge Fund Numerai, Doubling Crypto-Friendly Manager's Assets Crypto News Australia",
+          "section": "news"
+        },
+        {
+          "title": "Numerai Secures Up To $500M Commitment From JPMorgan Asset Management - Sahm",
+          "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPSEpvaF94NXV2OTJzZWJCZTdyRDVrZ0lTNVR4bFptRTJxVWtNQlFmNjJYWjIyR2M2V002eFJUdjNnSlQxeW5OdXRqTndSaERyQVhFdlVGb0hLdnJ3NnFaQ05xYl9ySW5BZkJLaEJsZE00SGxXamlqUnFlb2lsdXk5M0RWbUtudEw0SS1ZclMwZ3FVdVdXem9iTFNJMllXRUZoODI4UDFhRXBiUG5NUndta3VWNWhaODUxNG9xUA?oc=5",
+          "pubDate": "2025-08-26T07:00:00+00:00",
+          "source": "Google News",
+          "topic": "\"Richard Craib\"",
+          "summary": "Numerai Secures Up To $500M Commitment From JPMorgan Asset Management Sahm",
+          "section": "news"
+        },
+        {
+          "title": "Numerai secures $500M from JPMorgan to scale its AI-driven hedge fund - Crypto Briefing",
+          "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTFB5c2xrY3F2QzFFX2pXQjBqaXpWR2ZTSWh6RTlWeDZaY3JFYmg0MHVZLVNfTWwyQzNSZEFnb2ZqYzNTVG5xRG8xOGh4WXRlY3pQai1uSFpRZzNkS3BVMmhtcjVobmE4cTBMNW9DVEMxal8zWUxMRy1SUWZ5T2s0bnM?oc=5",
+          "pubDate": "2025-08-26T07:00:00+00:00",
+          "source": "Google News",
+          "topic": "\"Richard Craib\"",
+          "summary": "Numerai secures $500M from JPMorgan to scale its AI-driven hedge fund Crypto Briefing",
+          "section": "news"
+        },
+        {
+          "title": "RT by @richardcraib: Welcome to church, everybody. https://www.youtube.com/playlist?list=PLz3D6SeXhT3sJCUZAWnafTEfgB35xg5Ys",
+          "link": "https://nitter.net/numerai/status/2031355550915854681#m",
+          "pubDate": "2026-03-10T13:04:38+00:00",
+          "source": "x",
+          "topic": "@richardcraib",
+          "summary": "Welcome to church, everybody. piped.video/playlist?list=PL… Video",
+          "section": "x"
+        },
+        {
+          "title": "RT by @richardcraib: \"Numerai has always been built to benefit from AI advances\" - Michael Phillips, Chief Data Officer Watch the full session announcement: https://www.youtube.com/watch?v=xh5T_QMz3cM&list=PLz3D6SeXhT3sJCUZAWnafTEfgB35xg5Ys&index=4&t=1s NumerCon2026",
+          "link": "https://nitter.net/numerai/status/2028605376846086431#m",
+          "pubDate": "2026-03-02T22:56:26+00:00",
+          "source": "x",
+          "topic": "@richardcraib",
+          "summary": "\"Numerai has always been built to benefit from AI advances\" - Michael Phillips, Chief Data Officer Watch the full session announcement: piped.video/watch?v=xh5T_QMz… NumerCon2026 Video",
+          "section": "x"
+        }
+      ],
+      "counts": {
+        "x": 3,
+        "news": 4,
+        "total_ranked": 7
+      }
+    },
+    {
+      "id": "p-pon",
+      "kind": "person",
+      "name": "Bruce Pon",
+      "signals": [
+        {
+          "title": "Crypto’s flagship AI project fractures: Fetch sues Ocean over 263M FET ‘community’ sales - Bitget",
+          "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1NZS1DRDFyb0ZHRTNaMm8taFNFZlhnbTdMTDN2U0ZwQlJVZmRaT2RIUGdfSE1KTFF3M2pSeGZPNUFWMVVhWTlFSFB2V1AzTVVQZDE1XzY0dVA5cGZzZVHSAWNBVV95cUxOck1iaDY0TlBEcDZOdWZudmtERTcxVDY4SGpaZURZbGs3SHRSY3ZjT0gtWjQzbkFhNTY1VGZfdm1EQjZRb2FwY19kNnl2QzdHZW1NTi1tSmdFbldkam1MQlItbWs?oc=5",
+          "pubDate": "2025-11-07T08:00:00+00:00",
+          "source": "Google News",
+          "topic": "\"Bruce Pon\"",
+          "summary": "Crypto’s flagship AI project fractures: Fetch sues Ocean over 263M FET ‘community’ sales Bitget",
+          "section": "news"
+        },
+        {
+          "title": "Fetch.ai and Ocean Protocol Move Toward Peace Deal - Coinpaper",
+          "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPUmtheWtzVGdwR09UNW1IZ0E2dXdRRkdkUFNnMjk0RUI3VERIdzhwRG9WOU9yWlVXdU84ekRrZXdUbDJaNDhDb3JRVmlGZWFPejBWbFhSN2V4NUtaZE9tRmk3UmFMaFBDZE5SZnVmT3UwNWw5dHJYU0RoRm00Y1k1SU9qQmw?oc=5",
+          "pubDate": "2025-10-24T07:00:00+00:00",
+          "source": "Google News",
+          "topic": "\"Bruce Pon\"",
+          "summary": "Fetch.ai and Ocean Protocol Move Toward Peace Deal Coinpaper",
+          "section": "news"
+        }
+      ],
+      "counts": {
+        "x": 0,
+        "news": 4,
+        "total_ranked": 2
+      }
+    },
+    {
+      "id": "p-trovo",
+      "kind": "person",
+      "name": "Bianca TrovÃ²",
+      "signals": [],
+      "counts": {
+        "x": 0,
+        "news": 0,
+        "total_ranked": 0
+      }
+    },
+    {
+      "id": "p-shilina",
+      "kind": "person",
+      "name": "Sasha Shilina",
+      "signals": [
+        {
+          "title": "Science needs prediction markets that can’t be Sybil-attacked - Bitget",
+          "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFAzR095QjJJeGRlNk9vNGdtckMxMmlQRVRkQmJSbVdPUW5UbkVyTmM5QVpDYlJQVldxSUFINThTMjY0MFRJSTFTMlk1YzJESkJBUWROWVBER0dSZ3FabWfSAWNBVV95cUxPaGVLdEI1TGRLMGpjeEdYbldRNC12dnJiZVBQMmtyWHZVMDVlWWVCSzBhZUlEYUNWeWtsNG5LQm10M3ZjZFNIZnNQZ2Z2aEZBeHBRem5VUGZPQ193c1lZTllGSUU?oc=5",
+          "pubDate": "2026-02-19T08:00:00+00:00",
+          "source": "Google News",
+          "topic": "\"Sasha Shilina\"",
+          "summary": "Science needs prediction markets that can’t be Sybil-attacked Bitget",
+          "section": "news"
+        },
+        {
+          "title": "DeScAI: the convergence of decentralized science and artificial intelligence - Frontiers",
+          "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNZXpwRnNoVG9USHJJQmhIMF9sWkNqa29PdTU1SkRHbGRiZmhZeVpkVGxaSVBpTk5HczVya0tPVHBFYkdWOFowYXVaRzhUbzRFWUN5Vk9YMXVjYWhoUm96WENFcHV5UElJSk95QmVEcElUMTh1eHJtZzlxSFp5c21BUGhDQmtlRE9pcjlyWThHckhxdw?oc=5",
+          "pubDate": "2025-09-02T19:14:31+00:00",
+          "source": "Google News",
+          "topic": "\"Sasha Shilina\"",
+          "summary": "DeScAI: the convergence of decentralized science and artificial intelligence Frontiers",
+          "section": "news"
+        }
+      ],
+      "counts": {
+        "x": 0,
+        "news": 2,
+        "total_ranked": 2
+      }
+    },
+    {
+      "id": "p-benet",
+      "kind": "person",
+      "name": "Juan Benet",
+      "signals": [
+        {
+          "title": "RT by @juanbenet: omnifs: the universe, mounted on your filesystem (sound on 🔊) starting with github. cd into any repo. cat an issue. grep PRs. tail CI logs. everything is a file, for humans and agents. demo with the @NousResearch hermes repo below. bring your own provider. coming next: linear, hugging face, slack, arxiv plan 9 was right, just 40 years early. now we have WASM + FUSE + modern capabilities. repo goes public today 🫡",
+          "link": "https://nitter.net/raulvk/status/2043415858035499496#m",
+          "pubDate": "2026-04-12T19:48:00+00:00",
+          "source": "x",
+          "topic": "@juanbenet",
+          "summary": "omnifs: the universe, mounted on your filesystem (sound on 🔊) starting with github. cd into any repo. cat an issue. grep PRs. tail CI logs. everything is a file, for humans and agents. demo with the @NousResearch herm...",
+          "section": "x"
+        },
+        {
+          "title": "Links from the podcast: Science: https://science.xyz/ PRIMA: https://science.xyz/technologies/prima/ Biohybrid: https://science.xyz/technologies/biohybrid/ PL Neuro: http://plneuro.xyz Protocol Labs: http://protocol.ai Link to this podcast on Substack: https://www.juanbenetpodcast.com/p/2de6bf2c-9712-4c12-95dd-003c0fb8eade Accounts to follow: @maxhodak_ @ScienceCorp_ @protocollabs",
+          "link": "https://nitter.net/juanbenet/status/2041915374690578643#m",
+          "pubDate": "2026-04-08T16:25:36+00:00",
+          "source": "x",
+          "topic": "@juanbenet",
+          "summary": "Links from the podcast: Science: science.xyz/ PRIMA: science.xyz/technologies/pri… Biohybrid: science.xyz/technologies/bio… PL Neuro: plneuro.xyz Protocol Labs: protocol.ai Link to this podcast on Substack: juanbenetp...",
+          "section": "x"
+        },
+        {
+          "title": "Excited to launch a new podcast dedicated to conversations on the future of neurotech, computing, intelligence, and more. First guest: @maxhodak_ founder & CEO of @ScienceCorp_, which is building PRIMA, a retinal prosthetic that’s restoring meaningful vision for patients with blindness caused by age-related macular degeneration. Science is also developing a biohybrid brain implant that grows living neurons directly onto a silicon chip, then interfaces that system with the cortex. The possibility space here is vast and new. Imagine growing new areas of the brain. Sections 00:00 What counts as neurotech? 01:45 History of brain-computer interfaces and the smartphone dividend 07:25 PRIMA - How Science is restoring vision in blind patients 10:10 Why stimulating bipolar cells works when the optic nerve doesn't 30:30 Are we bottlenecked by biology or engineering? 32:40 Expanding the brain's bandwidth beyond 10 bits per second 37:00 Can we add new areas to the brain? 37:46 Biohybrid BCIs: neurons growing on a chip 39:20 What could neural augmentation look like? 01:13:20 How Science drives Fast R&D 01:44:00 How founders learn and level up This is the kind of discussion I’m excited to explore on this podcast. Enjoy! Full Episode 1 here and in links below.",
+          "link": "https://nitter.net/juanbenet/status/2041915044363976864#m",
+          "pubDate": "2026-04-08T16:24:18+00:00",
+          "source": "x",
+          "topic": "@juanbenet",
+          "summary": "Excited to launch a new podcast dedicated to conversations on the future of neurotech, computing, intelligence, and more. First guest: @maxhodak_ founder & CEO of @ScienceCorp_ , which is building PRIMA, a retinal pro...",
+          "section": "x"
+        },
+        {
+          "title": "Filecoin Foundation, FilOz unveil decentralized cloud to build more resilient and customizable apps - The Block",
+          "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxORlkzNmRpRkdmRDVCLUMxcG9VTVBwX2p0ellza01jVXA4ODRlblUtUTQ1WFFUQXBtaFZTREE1VjcwSVpib2k3X2l4S051OTVBM3JoQVJqRDg4eFdSSWozQnhPVXZoMmxyc3EyNTFVV1o1SkJqVTVwVVhwSlFFRWxMMWFyYnB2eEprUTFwSDlULUE0NjJOakFzVms4bGdWNmJOTVdYUXUwdV93YnpCcURqSlAyMjZDc1dRdUZUZXh5TQ?oc=5",
+          "pubDate": "2025-11-18T08:00:00+00:00",
+          "source": "Google News",
+          "topic": "\"Juan Benet\"",
+          "summary": "Filecoin Foundation, FilOz unveil decentralized cloud to build more resilient and customizable apps The Block",
+          "section": "news"
+        }
+      ],
+      "counts": {
+        "x": 3,
+        "news": 4,
+        "total_ranked": 4
+      }
+    },
+    {
+      "id": "p-tayi",
+      "kind": "person",
+      "name": "Alok Tayi",
+      "signals": [],
+      "counts": {
+        "x": 0,
+        "news": 4,
+        "total_ranked": 0
+      }
+    }
+  ],
+  "analytics": {
+    "top_sources": [
+      {
+        "source": "Google News",
+        "count": 62
+      },
+      {
+        "source": "x",
+        "count": 52
+      },
+      {
+        "source": "github",
+        "count": 9
+      },
+      {
+        "source": "Crossref / DOI blog",
+        "count": 3
+      },
+      {
+        "source": "Peer Community In (PCI) blog",
+        "count": 3
+      }
+    ],
+    "top_entities": [
+      {
+        "id": "elizaos",
+        "name": "elizaOS",
+        "kind": "organization",
+        "signal_count": 12
+      },
+      {
+        "id": "openax",
+        "name": "OpenAlex",
+        "kind": "organization",
+        "signal_count": 10
+      },
+      {
+        "id": "p-srinivasan",
+        "name": "Balaji Srinivasan",
+        "kind": "person",
+        "signal_count": 7
+      },
+      {
+        "id": "p-goertzel",
+        "name": "Ben Goertzel",
+        "kind": "person",
+        "signal_count": 7
+      },
+      {
+        "id": "p-armstrong",
+        "name": "Brian Armstrong",
+        "kind": "person",
+        "signal_count": 7
+      },
+      {
+        "id": "p-craib",
+        "name": "Richard Craib",
+        "kind": "person",
+        "signal_count": 7
+      },
+      {
+        "id": "openreview",
+        "name": "OpenReview",
+        "kind": "organization",
+        "signal_count": 7
+      },
+      {
+        "id": "origintrail",
+        "name": "OriginTrail",
+        "kind": "organization",
+        "signal_count": 7
+      },
+      {
+        "id": "prime-intellect",
+        "name": "Prime Intellect",
+        "kind": "organization",
+        "signal_count": 7
+      },
+      {
+        "id": "researchhub",
+        "name": "ResearchHub",
+        "kind": "organization",
+        "signal_count": 6
+      },
+      {
+        "id": "molecule",
+        "name": "Molecule",
+        "kind": "organization",
+        "signal_count": 5
+      },
+      {
+        "id": "p-hill",
+        "name": "Chris Hill",
+        "kind": "person",
+        "signal_count": 4
+      },
+      {
+        "id": "p-joyce",
+        "name": "Patrick Joyce",
+        "kind": "person",
+        "signal_count": 4
+      },
+      {
+        "id": "p-benet",
+        "name": "Juan Benet",
+        "kind": "person",
+        "signal_count": 4
+      },
+      {
+        "id": "crossref",
+        "name": "Crossref / DOI",
+        "kind": "organization",
+        "signal_count": 4
+      },
+      {
+        "id": "pci",
+        "name": "Peer Community In (PCI)",
+        "kind": "organization",
+        "signal_count": 4
+      },
+      {
+        "id": "p-weisser",
+        "name": "Vincent Weisser",
+        "kind": "person",
+        "signal_count": 3
+      },
+      {
+        "id": "p-kohlhaas",
+        "name": "Paul Kohlhaas",
+        "kind": "person",
+        "signal_count": 3
+      },
+      {
+        "id": "p-pearl",
+        "name": "Jocelynn Pearl",
+        "kind": "person",
+        "signal_count": 3
+      },
+      {
+        "id": "p-mcconaghy",
+        "name": "Trent McConaghy",
+        "kind": "person",
+        "signal_count": 3
+      }
+    ],
+    "people_with_signals": 13,
+    "orgs_with_signals": 13
+  }
+}
