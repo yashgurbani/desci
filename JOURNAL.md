@@ -1,6 +1,6 @@
 # DeSci Map Journal
 
-Last updated: 2026-04-13T03:33:34.419Z
+Last updated: 2026-04-13T04:31:09.464Z
 
 ## Project Kanban Snapshot
 
@@ -8,7 +8,13 @@ Last updated: 2026-04-13T03:33:34.419Z
 - (empty)
 
 ### In Progress
-- (empty)
+- Refine values profile: AxonDAO
+- Refine values profile: DataLake
+- Refine values profile: elizaOS
+- Refine values profile: Hetu Protocol
 
 ### Done
-- (empty)
+- Verified: Galeon Care
+- Verified: LabDAO
+- Verified: Prime Intellect
+- Verified: ResearchHub
