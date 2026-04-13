@@ -18565,17 +18565,7 @@
   "signalReadingList": [],
   "kanban": {
     "todo": [],
-    "doing": [
-      "Refine values profile: AxonDAO",
-      "Refine values profile: DataLake",
-      "Refine values profile: elizaOS",
-      "Refine values profile: Hetu Protocol"
-    ],
-    "done": [
-      "Verified: Galeon Care",
-      "Verified: LabDAO",
-      "Verified: Prime Intellect",
-      "Verified: ResearchHub"
-    ]
+    "doing": [],
+    "done": []
   }
 }
