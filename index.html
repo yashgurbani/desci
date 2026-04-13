@@ -176,6 +176,20 @@ select.finput{appearance:none;cursor:pointer}
 .entity-tags{display:flex;gap:6px;flex-wrap:wrap}
 .entity-tag{padding:4px 7px;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);font-size:.67rem;color:var(--text-3)}
 .entity-empty{padding:18px;border:1px dashed var(--border);border-radius:var(--radius);color:var(--text-3);font-size:.82rem;background:rgba(255,255,255,.02)}
+.pgraph-shell{display:flex;flex-direction:column;height:100%;padding:18px 18px 20px;gap:14px}
+.pgraph-toolbar{display:flex;gap:10px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap}
+.pgraph-toolbar-left{display:flex;flex-direction:column;gap:10px;min-width:min(100%,560px)}
+.pgraph-toolbar-right{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.pgraph-search{max-width:280px;min-width:220px}
+.pgraph-pills{display:flex;gap:8px;flex-wrap:wrap}
+.pgraph-canvas{position:relative;flex:1;min-height:540px;border:1px solid var(--border);border-radius:var(--radius);background:
+  radial-gradient(circle at 20% 18%, rgba(212,168,83,.06), transparent 26%),
+  radial-gradient(circle at 78% 26%, rgba(110,200,155,.055), transparent 24%),
+  linear-gradient(180deg, rgba(255,255,255,.025), rgba(255,255,255,.01));
+  overflow:hidden}
+.pgraph-summary{display:flex;gap:8px;flex-wrap:wrap}
+.pgraph-note{font-size:.78rem;color:var(--text-2);line-height:1.5;max-width:72ch}
+.pgraph-canvas svg{display:block;width:100%;height:100%}
 
 /* TABLE */
 .table-wrap{overflow:auto;height:100%;padding:12px}
@@ -1391,6 +1405,7 @@ let homeFeedLastFetchMs=0;
 let litQuery='';
 let panelPrefs={leftHidden:false,rightHidden:false};
 let grantState={query:'',track:'all',region:'all',status:'all',tag:'all',sortKey:'deadline',sortDir:'asc',selected:''};
+let pgraphState={role:'all',labelMode:'key',query:''};
 let literatureSignalCache={terms:[],fetchedAt:0};
 let signalViewState={settingsOpen:false,trustedOnly:false};
 let sourceRegistryState={organizations:[],people:[],tracked_topics:[],summary:{}};
@@ -2550,11 +2565,18 @@ function labelPlacement(d, anchorById, mode='org'){
 function resizeGraphViewport(){
   if(view==='graph' || view==='pgraph') render();
 }
+function renderMainMessage(title,body){
+  const m=el('main');
+  const box=document.createElement('div');
+  box.className='entity-shell graph-error';
+  box.innerHTML=`<div class="entity-head"><div><div class="entity-title">${escapeHtml(title||'View unavailable')}</div><div class="entity-sub">${escapeHtml(body||'This view could not be rendered right now.')}</div></div></div>`;
+  m.appendChild(box);
+}
 
 
 // ===== RENDER =====
 function render(){
-  const m=el('main');m.querySelectorAll('svg,.table-wrap,.people-grid,.lit-panel,.legend,.biz-wrap,.home-wrap,.info-wrap,.journal-wrap,.lit-wrap,.grants-wrap,.signals-wrap').forEach(e=>e.remove());
+  const m=el('main');m.querySelectorAll('svg,.table-wrap,.people-grid,.lit-panel,.legend,.biz-wrap,.home-wrap,.info-wrap,.journal-wrap,.lit-wrap,.grants-wrap,.signals-wrap,.entity-shell,.graph-error').forEach(e=>e.remove());
   if(homeTickerTimer){clearInterval(homeTickerTimer);homeTickerTimer=null;}
   if(homeRefreshTimer){clearInterval(homeRefreshTimer);homeRefreshTimer=null;}
   if(homeAsciiTimer){clearInterval(homeAsciiTimer);homeAsciiTimer=null;}
@@ -2569,17 +2591,22 @@ function render(){
   if(tLeft)tLeft.classList.toggle('edge-toggle',edgeToggles);
   if(tRight)tRight.classList.toggle('edge-toggle',edgeToggles);
   if(sim)sim.stop();
-  if(view==='home')renderHome();
-  else if(view==='signals')renderSignals();
-  else if(view==='graph')buildGraph();
-  else if(view==='table')renderTable();
-  else if(view==='people')renderPeople();
-  else if(view==='pgraph')renderPeopleGraph();
-  else if(view==='lit')renderLit();
-  else if(view==='biz')renderBiz();
-  else if(view==='journal')renderJournal();
-  else if(view==='grants')renderGrants();
-  else buildGraph();
+  try{
+    if(view==='home')renderHome();
+    else if(view==='signals')renderSignals();
+    else if(view==='graph')buildGraph();
+    else if(view==='table')renderTable();
+    else if(view==='people')renderPeople();
+    else if(view==='pgraph')renderPeopleGraph();
+    else if(view==='lit')renderLit();
+    else if(view==='biz')renderBiz();
+    else if(view==='journal')renderJournal();
+    else if(view==='grants')renderGrants();
+    else buildGraph();
+  }catch(err){
+    console.error('Render failure:', view, err);
+    renderMainMessage(view==='pgraph'?'Connections unavailable':'View unavailable', err && err.message ? err.message : 'An unexpected rendering error occurred.');
+  }
   sanitizeVisibleText(m);
 }
 
@@ -2717,37 +2744,66 @@ function researchOrgById(id){return (researchGraphState.organizations||[]).find(
 function researchPersonById(id){return (researchGraphState.people||[]).find(x=>x.id===id)||null}
 function intelOrgById(id){return (entityIntelState.organizations||[]).find(x=>x.id===id)||null}
 function intelPersonById(id){return (entityIntelState.people||[]).find(x=>x.id===id)||null}
+const ENTITY_OPP_THEME_RULES=[
+  {theme:'desci',terms:['desci','decentralized science','decentralized peer review','dao publishing','research blockchain','biodao','bio dao']},
+  {theme:'open science',terms:['open science','open infrastructure','open data','open-source','open source','commons']},
+  {theme:'publishing',terms:['publishing','publisher','journal','overlay journal','preprint','publication']},
+  {theme:'peer review',terms:['peer review','review platform','review commons','prereview','ants-review','review']},
+  {theme:'metascience',terms:['metascience','reproducibility','research integrity','quality in research','science of science']},
+  {theme:'ai',terms:['ai','machine learning','ai audit','science x ai','ai for science']},
+  {theme:'blockchain',terms:['blockchain','ethereum','token','dao','smart contract','ip-nft','ledger']},
+  {theme:'infrastructure',terms:['infrastructure','identity','verification','compute','protocol','open infrastructure']},
+  {theme:'health',terms:['health','longevity','aging','biotech','bio']},
+  {theme:'research',terms:['research','scientific','science','academy','academic']}
+];
+function inferOpportunityThemesFromText(text){
+  const hay=String(text||'').toLowerCase();
+  const themes=[];
+  ENTITY_OPP_THEME_RULES.forEach(rule=>{
+    if(rule.terms.some(term=>hay.includes(term)))themes.push(rule.theme);
+  });
+  return [...new Set(themes)];
+}
+function entityOpportunityTerms(entity){
+  const raw=[
+    entity&&entity.name,
+    entity&&entity.subtitle,
+    ...((entity&&entity.tags)||[]),
+    ...((entity&&entity.orgNames)||[])
+  ].filter(Boolean).map(v=>String(v).toLowerCase());
+  return [...new Set(raw)];
+}
 function entityOpportunitySnapshot(entity){
-  const text=[entity&&entity.name,entity&&entity.subtitle,...(entity&&entity.tags||[])].filter(Boolean).join(' ').toLowerCase();
-  if(!text)return {count:0,staticHits:[],externalHits:[]};
-  const staticHits=[];
-  const externalHits=[];
-  let count=0;
-  (OPPORTUNITIES||[]).forEach(op=>{
+  const terms=entityOpportunityTerms(entity);
+  if(!terms.length)return {count:0,matches:[]};
+  const entityThemes=inferOpportunityThemesFromText(terms.join(' '));
+  const matches=(OPPORTUNITIES||[]).map(op=>{
     const hay=[op.name,op.niche,op.why,op.mapContext,(op.tags||[]).join(' '),(op.region||[]).join(' ')].filter(Boolean).join(' ').toLowerCase();
-    const match=entity.kind==='organization'
-      ? (hay.includes((entity.name||'').toLowerCase()) || (entity.tags||[]).some(tag=>hay.includes(String(tag||'').toLowerCase())))
-      : (entity.orgNames||[]).some(name=>hay.includes(String(name||'').toLowerCase()));
-    if(match){
-      count++;
-      if(staticHits.length<5)staticHits.push({name:op.name,track:op.track,meta:opportunityDateText(op)});
+    const opThemes=inferOpportunityThemesFromText(hay);
+    const sharedThemes=entityThemes.filter(theme=>opThemes.includes(theme));
+    const mentionReasons=[];
+    const directTerms=terms.filter(term=>term.length>3 && hay.includes(term)).slice(0,2);
+    if(entity.kind==='organization' && directTerms.length)mentionReasons.push(`mentions ${directTerms.join(', ')}`);
+    if(entity.kind==='person'){
+      const orgMentions=((entity.orgNames)||[]).map(v=>String(v).toLowerCase()).filter(v=>v.length>3 && hay.includes(v)).slice(0,2);
+      if(orgMentions.length)mentionReasons.push(`linked org ${orgMentions.join(', ')}`);
     }
-  });
-  (opportunityIntelState.queries||[]).forEach(row=>{
-    const key=String(row.keyword||'').toLowerCase();
-    const hitCount=(row.grants_gov||[]).length+(row.nih_projects||[]).length+(row.gdelt_news||[]).length;
-    if(key && text.includes(key) && hitCount){
-      count+=hitCount;
-      if(externalHits.length<5)externalHits.push({
-        keyword:row.keyword,
-        hits:hitCount,
-        grants:(row.grants_gov||[]).length,
-        nih:(row.nih_projects||[]).length,
-        news:(row.gdelt_news||[]).length
-      });
-    }
-  });
-  return {count,staticHits,externalHits};
+    const reasons=[];
+    if(sharedThemes.length)reasons.push(`theme: ${sharedThemes.slice(0,2).join(', ')}`);
+    mentionReasons.forEach(reason=>reasons.push(reason));
+    const score=sharedThemes.length*3 + mentionReasons.length*4;
+    return {op,score,reasons};
+  }).filter(row=>row.score>=3 && row.reasons.length)
+    .sort((a,b)=>b.score-a.score)
+    .slice(0,4)
+    .map(row=>({
+      id:row.op.id,
+      name:row.op.name,
+      track:row.op.track,
+      meta:opportunityDateText(row.op),
+      reasons:row.reasons
+    }));
+  return {count:matches.length,matches};
 }
 function entityOppCount(entity){
   return entityOpportunitySnapshot(entity).count;
@@ -2778,13 +2834,8 @@ function registrySummaryHtml(registry,emptyText){
 }
 function opportunitySummaryHtml(snapshot,emptyText){
   if(!snapshot || !snapshot.count)return `<div class="detail-empty-note">${escapeHtml(emptyText)}</div>`;
-  const staticHtml=(snapshot.staticHits||[]).length
-    ? `<div class="detail-micro">Tracker matches: ${(snapshot.staticHits||[]).map(hit=>`${hit.name}${hit.meta?` (${hit.meta})`:''}`).join('; ')}</div>`
-    : '';
-  const liveHtml=(snapshot.externalHits||[]).length
-    ? `<ul class="rel-list">${snapshot.externalHits.map(hit=>`<li class="rel-item"><span>${escapeHtml(hit.keyword||'query')}</span><span style="margin-left:auto;color:var(--text-3)">${hit.hits} hits</span></li>`).join('')}</ul>`
-    : '';
-  return `<div class="detail-micro">Matched opportunity signals: ${snapshot.count}</div>${staticHtml}${liveHtml}`;
+  return `<div class="detail-micro">Potential matches from your curated tracker, with explicit rationale.</div>
+    <ul class="rel-list">${(snapshot.matches||[]).map(hit=>`<li class="rel-item"><span><strong>${escapeHtml(hit.name)}</strong><span style="color:var(--text-3)"> | ${escapeHtml(hit.meta||'')}</span><div class="detail-micro">${escapeHtml((hit.reasons||[]).join('; '))}</div></span></li>`).join('')}</ul>`;
 }
 function mergedEntityRecords(){
   const orgs=(D.nodes||[]).map(n=>{
@@ -3057,7 +3108,7 @@ function showPerson(pid){
     <div class="field"><div class="flabel">Source registry</div>${registryHtml}</div>
     <div class="field"><div class="flabel">Latest signals</div>${intelHtml}</div>
     <div class="field"><div class="flabel">Research graph</div>${worksHtml}</div>
-    <div class="field"><div class="flabel">Opportunity intelligence</div>${oppHtml}</div>
+    <div class="field"><div class="flabel">Relevant opportunities</div>${oppHtml}</div>
     <div class="field"><div class="flabel">Open-source context</div>${contextHtml}<div class="detail-empty-note" style="margin-top:8px">High-confidence context from linked organizations. Add your own person-specific notes below.</div></div>
     <div class="field"><div class="flabel">Name</div><input class="finput" value="${escapeHtml(p.name||'')}" onchange="updPerson('${pid}','name',this.value)"></div>
     <div class="field"><div class="flabel">Role</div><input class="finput" value="${escapeHtml(p.role||'')}" onchange="updPerson('${pid}','role',this.value)"></div>
@@ -3073,80 +3124,302 @@ function showPerson(pid){
 }
 
 // ===== PEOPLE GRAPH =====
+function peopleGraphRoleBucket(person){
+  const role=String(person&&person.role||'').toLowerCase();
+  if(/\b(founder|co-founder|cofounder|ceo|chief executive|creator)\b/.test(role))return 'founders';
+  if(/\b(advisor|adviser|mentor|board|fellow)\b/.test(role))return 'advisors';
+  return isKeyPerson(person)?'key':'all';
+}
+function isKeyPerson(person){
+  if(!person)return false;
+  const intel=intelPersonById(person.id)||{};
+  const research=researchPersonById(person.id)||{};
+  const role=String(person.role||'').toLowerCase();
+  const strongRole=/\b(founder|co-founder|cofounder|ceo|director|lead|head|principal|advisor|board|maintainer)\b/.test(role);
+  const orgPriority=(person.orgs||[]).some(id=>{
+    const node=D.nodes.find(n=>n.id===id);
+    return node && ((node.overlapScore||0)>=55 || (node.credScore||0)>=70);
+  });
+  const works=((research.openalex_works)||[]).length+((research.crossref_works)||[]).length;
+  const signals=((intel.signals)||[]).length;
+  const hasLinks=!!(person.twitter||person.github||person.website||person.orcid||person.linkedin);
+  return strongRole || orgPriority || works>0 || signals>0 || hasLinks;
+}
+function peopleGraphMatchesRole(person){
+  if(pgraphState.role==='all')return true;
+  if(pgraphState.role==='founders')return peopleGraphRoleBucket(person)==='founders';
+  if(pgraphState.role==='advisors')return peopleGraphRoleBucket(person)==='advisors';
+  if(pgraphState.role==='key')return isKeyPerson(person);
+  return true;
+}
+function peopleGraphSearchMatch(person){
+  const q=String(pgraphState.query||'').trim().toLowerCase();
+  if(!q)return true;
+  const orgNames=(person.orgs||[]).map(id=>D.nodes.find(n=>n.id===id)?.name).filter(Boolean);
+  const hay=[person.name,person.role,...orgNames].filter(Boolean).join(' ').toLowerCase();
+  return hay.includes(q);
+}
+function peopleGraphShowLabel(node,degree){
+  if(node._t==='org')return true;
+  if(pgraphState.labelMode==='all')return true;
+  if(pgraphState.labelMode==='orgs')return false;
+  const searchActive=!!String(pgraphState.query||'').trim();
+  return isKeyPerson(node._sourcePerson||node) || degree>=2 || searchActive || pgraphState.role!=='all';
+}
+function setPeopleGraphRole(v){pgraphState.role=v||'all';render()}
+function setPeopleGraphLabelMode(v){pgraphState.labelMode=v||'key';render()}
+function setPeopleGraphQuery(v){
+  pgraphState.query=v||'';
+  render();
+  requestAnimationFrame(()=>{
+    const input=document.querySelector('.pgraph-search');
+    if(input){
+      input.focus();
+      const len=input.value.length;
+      try{input.setSelectionRange(len,len)}catch(e){}
+    }
+  });
+}
+function organizationAnchorPositions(nodes,w,h){
+  const sorted=[...nodes].sort((a,b)=>(b._memberCount||0)-(a._memberCount||0));
+  const map=new Map();
+  if(!sorted.length)return map;
+  const cx=w/2, cy=h/2;
+  if(sorted.length===1){
+    map.set(sorted[0].id,{x:cx,y:cy});
+    return map;
+  }
+  const base=Math.min(w,h)*0.22;
+  const perRing=Math.max(6,Math.ceil(sorted.length/2));
+  sorted.forEach((node,idx)=>{
+    const ring=Math.floor(idx/perRing);
+    const pos=idx%perRing;
+    const localCount=Math.min(perRing, sorted.length-ring*perRing);
+    const radius=base + ring*118;
+    const angle=(-Math.PI/2)+(pos/localCount)*Math.PI*2;
+    map.set(node.id,{x:cx+Math.cos(angle)*radius,y:cy+Math.sin(angle)*radius});
+  });
+  return map;
+}
 function renderPeopleGraph(){
   const m=el('main'),w=m.clientWidth,h=m.clientHeight;
   if(!w||!h)return;
-
-  const pN=D.people.map(p=>({...p,_t:'person'}));
-  const oN=D.nodes.filter(n=>D.people.some(p=>p.orgs.includes(n.id))).map(n=>({id:n.id,name:n.name,_t:'org',stack:n.stack}));
-  const allN=[...pN,...oN];
+  const people=(D.people||[]).map(p=>ensurePersonDefaults({...p}))
+    .filter(p=>p.id && p.name)
+    .filter(p=>peopleGraphMatchesRole(p) && peopleGraphSearchMatch(p));
+  const linkedOrgIds=[...new Set(people.flatMap(p=>Array.isArray(p.orgs)?p.orgs:[]))];
+  const orgNodes=D.nodes.filter(n=>linkedOrgIds.includes(n.id)).map(n=>({
+    id:n.id,
+    name:n.name,
+    _t:'org',
+    stack:n.stack,
+    _memberCount:people.filter(p=>(p.orgs||[]).includes(n.id)).length
+  }));
+  const orgAnchorMap=organizationAnchorPositions(orgNodes,w,h);
+  const personNodes=people.map(p=>{
+    const anchorPoints=(p.orgs||[]).map(id=>orgAnchorMap.get(id)).filter(Boolean);
+    const avg=anchorPoints.length
+      ? {x:anchorPoints.reduce((s,a)=>s+a.x,0)/anchorPoints.length,y:anchorPoints.reduce((s,a)=>s+a.y,0)/anchorPoints.length}
+      : {x:w/2,y:h/2};
+    const bucket=peopleGraphRoleBucket(p);
+    const degree=(p.orgs||[]).length;
+    return {
+      ...p,
+      _t:'person',
+      _roleBucket:bucket,
+      _targetX:avg.x,
+      _targetY:avg.y,
+      _radius:bucket==='founders'?10:bucket==='advisors'?9:isKeyPerson(p)?8.5:7.2,
+      _sourcePerson:p,
+      _degreeHint:degree
+    };
+  });
+  const oN=orgNodes.map(o=>{
+    const a=orgAnchorMap.get(o.id)||{x:w/2,y:h/2};
+    return {...o,_targetX:a.x,_targetY:a.y,_radius:12.5};
+  });
+  const allN=[...personNodes,...oN];
+  if(!allN.length){
+    renderMainMessage('Connections unavailable','No linked people or organization relationships are available to draw yet.');
+    return;
+  }
   const links=[];
-  D.people.forEach(p=>p.orgs.forEach(o=>{if(D.nodes.find(n=>n.id===o))links.push({source:p.id,target:o,_t:'member'})}));
-  D.people.forEach((p1,i)=>D.people.forEach((p2,j)=>{if(j>i&&p1.orgs.some(o=>p2.orgs.includes(o)))links.push({source:p1.id,target:p2.id,_t:'colleague'})}));
+  people.forEach(p=>(p.orgs||[]).forEach(o=>{if(linkedOrgIds.includes(o))links.push({source:p.id,target:o,_t:'member'})}));
+  people.forEach((p1,i)=>people.forEach((p2,j)=>{
+    const shared=(p1.orgs||[]).filter(o=>(p2.orgs||[]).includes(o));
+    if(j>i && shared.length)links.push({source:p1.id,target:p2.id,_t:'colleague',shared});
+  }));
+  const degreeById=new Map();
+  allN.forEach(n=>degreeById.set(n.id,0));
+  links.forEach(link=>{
+    degreeById.set(link.source,(degreeById.get(link.source)||0)+1);
+    degreeById.set(link.target,(degreeById.get(link.target)||0)+1);
+  });
 
-  const svgEl=d3.select(m).append('svg').attr('width',w).attr('height',h);
-  svgEl.call(d3.zoom().scaleExtent([.2,4]).on('zoom',e=>gEl.attr('transform',e.transform)));
+  const wrap=document.createElement('div');
+  wrap.className='pgraph-shell';
+  const founderCount=people.filter(p=>peopleGraphRoleBucket(p)==='founders').length;
+  const advisorCount=people.filter(p=>peopleGraphRoleBucket(p)==='advisors').length;
+  const keyCount=people.filter(p=>isKeyPerson(p)).length;
+  wrap.innerHTML=`
+    <div class="entity-head">
+      <div>
+        <div class="entity-title">Connections</div>
+        <div class="pgraph-note">People cluster around their linked organizations so shared teams and cross-organization bridges are easier to read. Keep labels on key people by default and narrow the graph with quick role filters.</div>
+      </div>
+      <div class="pgraph-summary">
+        <span class="tag-chip">${people.length} people</span>
+        <span class="tag-chip">${oN.length} orgs</span>
+        <span class="tag-chip">${links.length} links</span>
+        <span class="tag-chip">${founderCount} founders</span>
+        <span class="tag-chip">${advisorCount} advisors</span>
+        <span class="tag-chip">${keyCount} key people</span>
+      </div>
+    </div>
+    <div class="pgraph-toolbar">
+      <div class="pgraph-toolbar-left">
+        <input class="sb-search pgraph-search" placeholder="Search people, roles, or organizations..." value="${escapeHtml(pgraphState.query||'')}" oninput="setPeopleGraphQuery(this.value)">
+        <div class="pgraph-pills">
+          <button class="pill ${pgraphState.role==='all'?'on':''}" onclick="setPeopleGraphRole('all')">All people</button>
+          <button class="pill ${pgraphState.role==='founders'?'on':''}" onclick="setPeopleGraphRole('founders')">Founders</button>
+          <button class="pill ${pgraphState.role==='advisors'?'on':''}" onclick="setPeopleGraphRole('advisors')">Advisors</button>
+          <button class="pill ${pgraphState.role==='key'?'on':''}" onclick="setPeopleGraphRole('key')">Key people</button>
+        </div>
+      </div>
+      <div class="pgraph-toolbar-right">
+        <button class="pill ${pgraphState.labelMode==='orgs'?'on':''}" onclick="setPeopleGraphLabelMode('orgs')">Org labels</button>
+        <button class="pill ${pgraphState.labelMode==='key'?'on':''}" onclick="setPeopleGraphLabelMode('key')">Key labels</button>
+        <button class="pill ${pgraphState.labelMode==='all'?'on':''}" onclick="setPeopleGraphLabelMode('all')">All labels</button>
+      </div>
+    </div>
+    <div class="pgraph-canvas" id="pgraphCanvas"></div>
+  `;
+  m.appendChild(wrap);
+  const host=el('pgraphCanvas');
+  const hostRect=host.getBoundingClientRect();
+  const canvasW=Math.max(320,Math.floor(hostRect.width));
+  const canvasH=Math.max(420,Math.floor(hostRect.height));
+  const svgEl=d3.select(host).append('svg').attr('width',canvasW).attr('height',canvasH);
   const gEl=svgEl.append('g'),lG=gEl.append('g'),nG=gEl.append('g'),tG=gEl.append('g');
+  svgEl.call(d3.zoom().scaleExtent([.2,4]).on('zoom',e=>gEl.attr('transform',e.transform)));
 
   const s=d3.forceSimulation(allN)
-    .force('link',d3.forceLink(links).id(d=>d.id).distance(d=>d._t==='colleague'?86:76).strength(.28))
-    .force('charge',d3.forceManyBody().strength(-190))
-    .force('center',d3.forceCenter(w/2,h/2))
-    .force('x',d3.forceX(w/2).strength(.024))
-    .force('y',d3.forceY(h/2).strength(.024))
-    .force('collision',d3.forceCollide(26))
-    .alphaDecay(.036)
-    .velocityDecay(.34);
+    .force('link',d3.forceLink(links).id(d=>d.id).distance(d=>d._t==='colleague'?98:64).strength(d=>d._t==='colleague'?.1:.6))
+    .force('charge',d3.forceManyBody().strength(d=>d._t==='org'?-480:-125))
+    .force('center',d3.forceCenter(canvasW/2,canvasH/2))
+    .force('x',d3.forceX(d=>d._targetX||canvasW/2).strength(d=>d._t==='org'?.24:.11))
+    .force('y',d3.forceY(d=>d._targetY||canvasH/2).strength(d=>d._t==='org'?.24:.11))
+    .force('collision',d3.forceCollide().radius(d=>(d._radius||8)+(d._t==='org'?16:(peopleGraphShowLabel(d,degreeById.get(d.id)||0)?14:9))))
+    .alphaDecay(.04)
+    .velocityDecay(.38);
   sim=s;
 
-  lG.selectAll('line').data(links).enter().append('line')
-    .attr('stroke',d=>d._t==='colleague'?'var(--gold)':'var(--blue)')
-    .attr('stroke-width',d=>d._t==='colleague'?1.5:1.2)
-    .attr('stroke-opacity',d=>d._t==='colleague'?0.9:0.55)
-    .attr('stroke-dasharray',d=>d._t==='colleague'?'6,4':null)
+  const lines=lG.selectAll('line').data(links).enter().append('line')
+    .attr('stroke',d=>d._t==='colleague'?'rgba(212,168,83,.82)':'rgba(103,216,245,.72)')
+    .attr('stroke-width',d=>d._t==='colleague'?1.45:1.1)
+    .attr('stroke-opacity',d=>d._t==='colleague'?0.78:0.42)
+    .attr('stroke-dasharray',d=>d._t==='colleague'?'5,4':null)
     .attr('stroke-linecap','round');
 
   const ns=nG.selectAll('g').data(allN).enter().append('g').style('cursor','pointer')
-    .call(d3.drag().on('start',(e,d)=>{if(!e.active)s.alphaTarget(.25).restart();d.fx=d.x;d.fy=d.y}).on('drag',(e,d)=>{d.fx=e.x;d.fy=e.y}).on('end',(e,d)=>{if(!e.active)s.alphaTarget(0);d.fx=null;d.fy=null}));
+    .call(d3.drag()
+      .on('start',(e,d)=>{if(!e.active)s.alphaTarget(.25).restart();d.fx=d.x;d.fy=d.y})
+      .on('drag',(e,d)=>{d.fx=e.x;d.fy=e.y})
+      .on('end',(e,d)=>{if(!e.active)s.alphaTarget(0);d.fx=null;d.fy=null}));
 
-  ns.filter(d=>d._t==='person').append('circle').attr('r',10).attr('fill','var(--gold)').attr('fill-opacity',.15).attr('stroke','var(--gold)').attr('stroke-width',1.5);
-  ns.filter(d=>d._t==='org').append('rect').attr('x',-9).attr('y',-9).attr('width',18).attr('height',18).attr('rx',4).attr('fill',d=>SC[d.stack]||'var(--text-3)').attr('fill-opacity',.15).attr('stroke',d=>SC[d.stack]||'var(--text-3)').attr('stroke-width',1.2);
+  ns.filter(d=>d._t==='person').append('circle')
+    .attr('r',d=>d._radius||7.2)
+    .attr('fill',d=>d._roleBucket==='founders'?'var(--rose)':d._roleBucket==='advisors'?'var(--teal)':'var(--gold)')
+    .attr('fill-opacity',.18)
+    .attr('stroke',d=>d._roleBucket==='founders'?'var(--rose)':d._roleBucket==='advisors'?'var(--teal)':'var(--gold)')
+    .attr('stroke-width',d=>isKeyPerson(d._sourcePerson||d)?1.7:1.2);
+  ns.filter(d=>d._t==='person').append('circle')
+    .attr('r',d=>Math.max(2.2,(d._radius||7.2)*0.34))
+    .attr('fill',d=>d._roleBucket==='founders'?'var(--rose)':d._roleBucket==='advisors'?'var(--teal)':'var(--gold)')
+    .attr('fill-opacity',.95);
+  ns.filter(d=>d._t==='org').append('rect')
+    .attr('x',-10)
+    .attr('y',-10)
+    .attr('width',20)
+    .attr('height',20)
+    .attr('rx',5)
+    .attr('fill',d=>SC[d.stack]||'var(--text-3)')
+    .attr('fill-opacity',.16)
+    .attr('stroke',d=>SC[d.stack]||'var(--text-3)')
+    .attr('stroke-width',1.4);
+  ns.filter(d=>d._t==='org').append('rect')
+    .attr('x',-4)
+    .attr('y',-4)
+    .attr('width',8)
+    .attr('height',8)
+    .attr('rx',2.5)
+    .attr('fill',d=>SC[d.stack]||'var(--text-3)');
 
-  tG.selectAll('text').data(allN).enter().append('text').text(d=>d.name)
-    .attr('font-size',10)
+  const labels=tG.selectAll('text').data(allN).enter().append('text').text(d=>d.name)
+    .attr('font-size',d=>d._t==='org'?10.5:9.3)
     .attr('font-family','Nunito Sans,sans-serif')
-    .attr('font-weight',d=>d._t==='person'?600:400)
-    .attr('fill',d=>d._t==='person'?'var(--gold)':'var(--text-2)')
-    .attr('stroke','rgba(0,0,0,.75)')
-    .attr('stroke-width',1.25)
+    .attr('font-weight',d=>d._t==='org'?700:(peopleGraphShowLabel(d,degreeById.get(d.id)||0)?600:500))
+    .attr('fill',d=>d._t==='org'?'#f0efe8':(d._roleBucket==='founders'?'#ffb7c7':d._roleBucket==='advisors'?'#9eddd9':'#e6d7a4'))
+    .attr('stroke','rgba(0,0,0,.82)')
+    .attr('stroke-width',1.4)
     .attr('paint-order','stroke')
-    .attr('text-anchor','middle')
-    .attr('dy',-16)
-    .style('pointer-events','none');
+    .style('pointer-events','none')
+    .style('opacity',d=>peopleGraphShowLabel(d,degreeById.get(d.id)||0)?1:0);
 
-  ns.on('click',(e,d)=>{if(d._t==='org')selNode(d.id);else showPerson(d.id)});
+  ns.on('click',(e,d)=>{if(d._t==='org')selNode(d.id);else showPerson(d.id);el('app').classList.remove('hide-right')});
 
   const tip=el('tip');
-  ns.on('mouseenter',(e,d)=>{tip.innerHTML=`<h4>${d.name}</h4><div class="tm">${d._t==='person'?(d.role||''):(d.name)}</div>`;tip.classList.add('vis')}).on('mousemove',e=>{const r=m.getBoundingClientRect();tip.style.left=(e.clientX-r.left+12)+'px';tip.style.top=(e.clientY-r.top-8)+'px'}).on('mouseleave',()=>tip.classList.remove('vis'));
+  ns.on('mouseenter',(e,d)=>{
+    if(d._t==='person'){
+      const linked=(d.orgs||[]).map(id=>D.nodes.find(n=>n.id===id)?.name).filter(Boolean).slice(0,3).join(' | ');
+      tip.innerHTML=`<h4>${d.name}</h4><div class="tm">${escapeHtml(d.role||'Person')}${linked?` | ${escapeHtml(linked)}`:''}</div>`;
+    }else{
+      tip.innerHTML=`<h4>${d.name}</h4><div class="tm">${escapeHtml(d.stack||'organization')} | ${d._memberCount||0} linked people</div>`;
+    }
+    tip.classList.add('vis');
+  }).on('mousemove',e=>{
+    const r=host.getBoundingClientRect();
+    tip.style.left=(e.clientX-r.left+18)+'px';
+    tip.style.top=(e.clientY-r.top+18)+'px';
+  }).on('mouseleave',()=>tip.classList.remove('vis'));
+
+  lines.on('mouseenter',(e,d)=>{
+    const sName=typeof d.source==='object'?d.source.name:(people.find(p=>p.id===d.source)?.name||D.nodes.find(n=>n.id===d.source)?.name||d.source);
+    const tName=typeof d.target==='object'?d.target.name:(people.find(p=>p.id===d.target)?.name||D.nodes.find(n=>n.id===d.target)?.name||d.target);
+    const extra=d._t==='colleague' && d.shared && d.shared.length?` | shared: ${d.shared.map(id=>D.nodes.find(n=>n.id===id)?.name).filter(Boolean).slice(0,2).join(', ')}`:'';
+    tip.innerHTML=`<h4>${escapeHtml(String(sName||''))} -> ${escapeHtml(String(tName||''))}</h4><div class="tm">${d._t==='colleague'?'shared organization':'member of'}${escapeHtml(extra)}</div>`;
+    tip.classList.add('vis');
+    d3.select(e.currentTarget).attr('stroke-opacity',.95).attr('stroke-width',d._t==='colleague'?1.8:1.4);
+  }).on('mousemove',e=>{
+    const r=host.getBoundingClientRect();
+    tip.style.left=(e.clientX-r.left+18)+'px';
+    tip.style.top=(e.clientY-r.top+18)+'px';
+  }).on('mouseleave',e=>{
+    tip.classList.remove('vis');
+    d3.select(e.currentTarget).attr('stroke-opacity',d=>d._t==='colleague'?0.78:0.42).attr('stroke-width',d=>d._t==='colleague'?1.45:1.1);
+  });
 
   s.on('tick',()=>{
-    lG.selectAll('line').attr('x1',d=>d.source.x).attr('y1',d=>d.source.y).attr('x2',d=>d.target.x).attr('y2',d=>d.target.y);
+    lines.attr('x1',d=>d.source.x).attr('y1',d=>d.source.y).attr('x2',d=>d.target.x).attr('y2',d=>d.target.y);
     ns.attr('transform',d=>`translate(${d.x},${d.y})`);
-    tG.selectAll('text').attr('x',d=>d.x).attr('y',d=>d.y);
+    labels
+      .attr('x',d=>d.x)
+      .attr('y',d=>d.y + (d._t==='org'?28:-(d._radius||7.2)-10))
+      .attr('text-anchor','middle');
   });
 
   const lg=document.createElement('div');
   lg.className='legend';
-  lg.innerHTML=`<div class="legend-title">People Graph</div>
-    <div class="legend-row"><div class="legend-dot" style="background:var(--gold)"></div>Person</div>
-    <div class="legend-row"><div class="legend-dot" style="background:${SC.infrastructure}"></div>Org (Infra)</div>
-    <div class="legend-row"><div class="legend-dot" style="background:${SC.application}"></div>Org (App)</div>
-    <div class="legend-row"><div class="legend-dot" style="background:${SC.governance}"></div>Org (Gov)</div>
+  lg.innerHTML=`<div class="legend-title">Connections</div>
+    <div class="legend-row"><div class="legend-dot" style="background:var(--rose)"></div>Founder / core builder</div>
+    <div class="legend-row"><div class="legend-dot" style="background:var(--teal)"></div>Advisor / fellow</div>
+    <div class="legend-row"><div class="legend-dot" style="background:var(--gold)"></div>Other person</div>
+    <div class="legend-row"><div class="legend-dot" style="background:${SC.infrastructure}"></div>Organization</div>
     <div style="margin-top:6px">
-      <div class="legend-row"><div class="legend-line" style="background:var(--gold);width:18px;height:2px;border-top:2px dashed var(--gold)"></div>Colleagues (shared org)</div>
-      <div class="legend-row"><div class="legend-line" style="background:var(--blue);opacity:.7;width:18px;height:2px"></div>Member of</div>
+      <div class="legend-row"><div class="legend-line" style="background:rgba(212,168,83,.82);width:18px;height:2px;border-top:2px dashed rgba(212,168,83,.82)"></div>Shared org bridge</div>
+      <div class="legend-row"><div class="legend-line" style="background:rgba(103,216,245,.72);opacity:.8;width:18px;height:2px"></div>Membership</div>
     </div>`;
-  m.appendChild(lg);
+  host.appendChild(lg);
 }
 
 // ===== LITERATURE =====
@@ -6091,7 +6364,7 @@ function renderGrants(){
       <div class="grants-hero">
         <div>
           <h2>Opportunities / Grant Tracker</h2>
-          <p>Verified 2026 calls first, then rolling programs and last-cycle references where 2026 pages are not posted yet. Use this as a living application queue, not a generic startup list.</p>
+          <p>Main table = your curated tracker of verified 2026 calls, rolling programs, and last-cycle references. Live collector stats are additive and do not replace the curated list.</p>
         </div>
         <div class="grants-summary">
           <span class="tag-chip">${rows.length} visible</span>
@@ -6455,7 +6728,7 @@ function selNode(id){
   <div class="field"><div class="flabel">Source registry</div>${registryHtml}</div>
   <div class="field"><div class="flabel">Latest signals</div>${intelHtml}</div>
   <div class="field"><div class="flabel">Research graph</div>${worksHtml}</div>
-  <div class="field"><div class="flabel">Opportunity intelligence</div>${oppHtml}</div>
+  <div class="field"><div class="flabel">Relevant opportunities</div>${oppHtml}</div>
   <div class="detail-grid-2 field" style="margin-bottom:12px">
     <div><div class="flabel">Type</div><input class="finput" value="${escapeHtml(n.type||'')}" onchange="upd('${id}','type',this.value)"></div>
     <div><div class="flabel">Stage</div><input class="finput" value="${escapeHtml(n.stage||'')}" onchange="upd('${id}','stage',this.value)"></div>
@@ -6660,6 +6933,26 @@ const GH={get owner(){return localStorage.getItem('gh-owner')||''},get repo(){re
 function detectGHPages(){const h=location.hostname;if(h.endsWith('.github.io')){const o=h.replace('.github.io','');const r=location.pathname.split('/').filter(Boolean)[0]||o+'.github.io';if(!localStorage.getItem('gh-owner'))localStorage.setItem('gh-owner',o);if(!localStorage.getItem('gh-repo'))localStorage.setItem('gh-repo',r);if(!localStorage.getItem('gh-path'))localStorage.setItem('gh-path','data.json')}}
 function promptToken(){if(GH.token)return true;const t=prompt('GitHub PAT (fine-grained, Contents read+write):');if(!t)return false;localStorage.setItem('gh-token',t.trim());return true}
 function setSyncUI(state,msg){const s=el('syncStatus'),t=el('syncText');s.className='sync-status'+(state==='ok'?' synced':state==='err'?' error':'');t.textContent=msg}
+function decodeGitHubContentString(content){
+  const raw=atob((content||'').replace(/\n/g,''));
+  const bytes=Uint8Array.from([...raw].map(ch=>ch.charCodeAt(0)));
+  return new TextDecoder('utf-8').decode(bytes);
+}
+async function fetchGitHubJsonContent(meta){
+  if(meta && meta.encoding==='base64' && meta.content){
+    const text=decodeGitHubContentString(meta.content);
+    if(!String(text||'').trim())throw new Error('Remote file content is empty');
+    return cleanMojibakeDeep(JSON.parse(text));
+  }
+  if(meta && meta.download_url){
+    const raw=await fetch(meta.download_url,{cache:'no-store'});
+    if(!raw.ok)throw new Error('HTTP '+raw.status);
+    const text=await raw.text();
+    if(!String(text||'').trim())throw new Error('Remote file download is empty');
+    return cleanMojibakeDeep(JSON.parse(text));
+  }
+  throw new Error('Remote file could not be decoded');
+}
 let pushTimer=null;
 function debouncedPush(){if(!GH.ok)return;clearTimeout(pushTimer);setSyncUI('','saving...');pushTimer=setTimeout(()=>ghPush(),2000)}
 async function ghPull(){
@@ -6672,8 +6965,7 @@ async function ghPull(){
     if(r.status===401||r.status===403){localStorage.removeItem('gh-token');setSyncUI('err','bad token');return}
     if(!r.ok)throw new Error('HTTP '+r.status);
     const j=await r.json();
-    const raw=atob(j.content.replace(/\n/g,''));
-    D=cleanMojibakeDeep(JSON.parse(raw));
+    D=await fetchGitHubJsonContent(j);
     localStorage.setItem('gh-sha',j.sha);
     normalizeDatasetState();
     save(true);
